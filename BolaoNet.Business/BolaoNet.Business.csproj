@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -39,6 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\BaseAuditBO.cs" />
+    <Compile Include="Base\BaseGenericBusinessBO.cs" />
+    <Compile Include="Base\IGenericBusiness.cs" />
+    <Compile Include="FactoryBO.cs" />
+    <Compile Include="Interfaces\IFactoryBO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -58,7 +64,12 @@
       <Project>{544d4741-4ade-49b0-bd91-a6c26fc0087e}</Project>
       <Name>BolaoNet.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.LogManager\BolaoNet.LogManager.csproj">
+      <Project>{a72efe92-42a8-44cb-b411-bae3d821b3f4}</Project>
+      <Name>BolaoNet.LogManager</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

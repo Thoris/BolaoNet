@@ -47,6 +47,52 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BolaoNet.Business\BolaoNet.Business.csproj">
+      <Project>{de4229ed-648b-4ca0-9631-db7013d419ca}</Project>
+      <Name>BolaoNet.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Dao.Collection\BolaoNet.Dao.Collection.csproj">
+      <Project>{170a0f00-0f81-42a0-bfb6-36e9c81bd2b2}</Project>
+      <Name>BolaoNet.Dao.Collection</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Dao.EF\BolaoNet.Dao.EF.csproj">
+      <Project>{4cbdd9ad-59ee-4905-b9de-2e040f743fe8}</Project>
+      <Name>BolaoNet.Dao.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Dao\BolaoNet.Dao.csproj">
+      <Project>{d451000e-0bf8-44ca-88c7-ea59941ce625}</Project>
+      <Name>BolaoNet.Dao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Entities\BolaoNet.Entities.csproj">
+      <Project>{544d4741-4ade-49b0-bd91-a6c26fc0087e}</Project>
+      <Name>BolaoNet.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Integration\BolaoNet.Integration.csproj">
+      <Project>{e15411d7-17c7-402e-93dd-24eddcbc73d7}</Project>
+      <Name>BolaoNet.Integration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.LogManager\BolaoNet.LogManager.csproj">
+      <Project>{a72efe92-42a8-44cb-b411-bae3d821b3f4}</Project>
+      <Name>BolaoNet.LogManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Portal\BolaoNet.Portal.csproj">
+      <Project>{c4b74485-3872-4bf9-ae0e-c62e91a8f983}</Project>
+      <Name>BolaoNet.Portal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Resources\BolaoNet.Resources.csproj">
+      <Project>{97d09f0a-d65d-42ea-aa49-ea15e74b10c2}</Project>
+      <Name>BolaoNet.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Services\BolaoNet.Services.csproj">
+      <Project>{c17b60f1-a5f0-4ebf-b814-f479e8ef9d72}</Project>
+      <Name>BolaoNet.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.TestsVS\BolaoNet.TestsVS.csproj">
+      <Project>{e7c33d6c-be25-48b8-8af4-b77a98e4a283}</Project>
+      <Name>BolaoNet.TestsVS</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

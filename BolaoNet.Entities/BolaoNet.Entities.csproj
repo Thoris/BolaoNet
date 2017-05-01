@@ -31,7 +31,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -39,7 +41,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\AuditModel.cs" />
+    <Compile Include="Base\BaseEntity.cs" />
+    <Compile Include="Boloes\ApostaExtra.cs" />
+    <Compile Include="Boloes\ApostaExtraUsuario.cs" />
+    <Compile Include="Boloes\ApostaPontos.cs" />
+    <Compile Include="Boloes\ApostasRestantesUser.cs" />
+    <Compile Include="Boloes\Bolao.cs" />
+    <Compile Include="Boloes\BolaoCriterioPontos.cs" />
+    <Compile Include="Boloes\BolaoCriterioPontosTimes.cs" />
+    <Compile Include="Boloes\BolaoMembros.cs" />
+    <Compile Include="Boloes\BolaoPremio.cs" />
+    <Compile Include="Boloes\BolaoRequest.cs" />
+    <Compile Include="Boloes\BoloesPontuacao.cs" />
+    <Compile Include="Boloes\Criterio.cs" />
+    <Compile Include="Boloes\JogoUsuario.cs" />
+    <Compile Include="Boloes\Mensagem.cs" />
+    <Compile Include="Boloes\Pagamento.cs" />
+    <Compile Include="Boloes\Pontuacao.cs" />
+    <Compile Include="Boloes\Regra.cs" />
+    <Compile Include="Boloes\Reports\UserClassificacao.cs" />
+    <Compile Include="Boloes\Reports\UserClassificacaoRodada.cs" />
+    <Compile Include="Boloes\Reports\UserPontosData.cs" />
+    <Compile Include="Boloes\Simulation\ApostasExtrasBolaoMembros.cs" />
+    <Compile Include="Boloes\Simulation\JogoUsuarioPosicao.cs" />
+    <Compile Include="Campeonatos\Campeonato.cs" />
+    <Compile Include="Campeonatos\CampeonatoClassificacao.cs" />
+    <Compile Include="Campeonatos\CampeonatoPosicao.cs" />
+    <Compile Include="Campeonatos\CampeonatoRecord.cs" />
+    <Compile Include="Campeonatos\Fase.cs" />
+    <Compile Include="Campeonatos\Grupo.cs" />
+    <Compile Include="Campeonatos\Historico.cs" />
+    <Compile Include="Campeonatos\Jogo.cs" />
+    <Compile Include="Campeonatos\Pontuacao.cs" />
+    <Compile Include="Campeonatos\Reports\GolsFrequencia.cs" />
+    <Compile Include="Campeonatos\Reports\TimeRodadas.cs" />
+    <Compile Include="DadosBasicos\Estadio.cs" />
+    <Compile Include="DadosBasicos\HighLightItem.cs" />
+    <Compile Include="DadosBasicos\Time.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Users\UserBoloes.cs" />
+    <Compile Include="Users\UserPagamentos.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
