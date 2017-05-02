@@ -19,6 +19,10 @@ namespace BolaoNet.Dao.EF
         public DbSet<Entities.DadosBasicos.CriterioFixo> CriteriosFixos { get; set; }
         public DbSet<Entities.Campeonatos.Campeonato> Campeonatos { get; set; }
         public DbSet<Entities.Campeonatos.CampeonatoTime> CampeonatosTimes { get; set; }
+        public DbSet<Entities.Campeonatos.CampeonatoFase> CampeonatosFases { get; set; }
+        public DbSet<Entities.Campeonatos.CampeonatoGrupo> CampeonatosGrupos { get; set; }
+        public DbSet<Entities.Campeonatos.CampeonatoGrupoTime> CampeonatosGruposTimes { get; set; }
+        //public DbSet<Entities.Campeonatos.Jogo> Jogos { get; set; }
 
         //public DbSet<Entities.Boloes.ApostaExtra> ApostasExtras { get; set; }
         //public DbSet<Entities.Boloes.ApostaExtraUsuario> ApostasExtrasUsuarios { get; set; }
@@ -39,14 +43,12 @@ namespace BolaoNet.Dao.EF
         //public DbSet<Entities.Boloes.BolaoRequestStatus> BoloesRequestsStatus { get; set; }
         
         //public DbSet<Entities.Campeonatos.CampeonatoClassificacao> CampeonatosClassificacao { get; set; }
-        //public DbSet<Entities.Campeonatos.CampeonatoFase> CampeonatosFases { get; set; }
-        //public DbSet<Entities.Campeonatos.CampeonatoGrupo> CampeonatosGrupos { get; set; }
-        //public DbSet<Entities.Campeonatos.CampeonatoGrupoTime> CampeonatosGruposTimes { get; set; }
+        
         //public DbSet<Entities.Campeonatos.CampeonatoHistorico> CampeonatosHistorico { get; set; }
         //public DbSet<Entities.Campeonatos.CampeonatoPosicao> CampeonatosPosicoes { get; set; }
         
         
-        //public DbSet<Entities.Campeonatos.Jogo> Jogos { get; set; }
+        
         //public DbSet<Entities.Boloes.JogoUsuario> JogosUsuarios { get; set; }
         //public DbSet<Entities.Boloes.Mensagem> Mensagens { get; set; }
         //public DbSet<Entities.Boloes.Pagamento> Pagamentos { get; set; }
