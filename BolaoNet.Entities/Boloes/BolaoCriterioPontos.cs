@@ -34,14 +34,22 @@ namespace BolaoNet.Entities.Boloes
 
         #region Properties
 
-        public Bolao Bolao { get; set; }
+        public virtual Bolao Bolao { get; set; }
         public CriteriosID CriterioID { get; set; }
         public int Pontos { get; set; }
         public string Descricao { get; set; }
-        public Entities.DadosBasicos.Time Time { get; set; }
+        public virtual Entities.DadosBasicos.Time Time { get; set; }
         public int MultiploTime { get; set; }
         
         #endregion
 
+        #region Constructors/Destructors
+
+        public BolaoCriterioPontos()
+        {
+
+        }
+
+        #endregion
     }
 }

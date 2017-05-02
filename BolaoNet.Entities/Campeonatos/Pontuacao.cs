@@ -6,19 +6,18 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Entities.Campeonatos
 {
-    public class Pontuacao : Base.BaseEntity
+    public class Pontuacao : Base.AuditModel
     {
-
         #region Properties
 
-        public int TotalVitorias {get;set;}
-        public int TotalDerrotas{get;set;}
-        public int TotalEmpates{get;set;}
-        public int TotalGolsContra{get;set;}
-        public int TotalGolsPro{get;set;}
-        public int TotalPontos{get;set;}
-        public int Jogos{get;set;}
-        public int Saldo{get;set;}
+        public int TotalVitorias { get; set; }
+        public int TotalDerrotas { get; set; }
+        public int TotalEmpates { get; set; }
+        public int TotalGolsContra { get; set; }
+        public int TotalGolsPro { get; set; }
+        public int TotalPontos { get; set; }
+        public int Jogos { get; set; }
+        public int Saldo { get; set; }
         public double Aproveitamento
         {
             get
@@ -39,5 +38,13 @@ namespace BolaoNet.Entities.Campeonatos
 
         #endregion
 
+        #region Constructors/Destructors
+
+        public Pontuacao()
+        {
+
+        }
+
+        #endregion
     }
 }

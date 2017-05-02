@@ -69,9 +69,16 @@ namespace BolaoNet.Dao.EF
         //{
         //    return new ModalidadeRepositoryDao(CreateUnitOfWork());
         //}
+        
+
+
+
+
+        public Dao.Campeonatos.ICampeonatoDao CreateCampeonatoDao()
+        {
+            return new Dao.EF.Campeonatos.CampeonatoRepositoryDao(CreateUnitOfWork());
+        }
+
         #endregion
-
-
-
     }
 }

@@ -11,7 +11,7 @@ namespace BolaoNet.Entities.Boloes.Simulation
         #region Variables
 
         private IList<Entities.Boloes.ApostaExtraUsuario> _listApostasExtras = new List<Entities.Boloes.ApostaExtraUsuario>();
-        
+
         #endregion
 
         #region Properties
@@ -33,8 +33,8 @@ namespace BolaoNet.Entities.Boloes.Simulation
                 return totalPontos + this.LastPontos;
             }
         }
-        public int LastPontos {get;set;}
-        public new int LastPosicao {get;set;}
+        public int LastPontos { get; set; }
+        public new int LastPosicao { get; set; }
         public IList<Entities.Boloes.ApostaExtraUsuario> ListApostasExtras
         {
             get { return _listApostasExtras; }
@@ -85,6 +85,15 @@ namespace BolaoNet.Entities.Boloes.Simulation
 
             }
         }
+        #endregion
+
+        #region Constructors/Destructors
+
+        public ApostasExtrasBolaoMembros()
+        {
+
+        }
+
         #endregion
     }
 }

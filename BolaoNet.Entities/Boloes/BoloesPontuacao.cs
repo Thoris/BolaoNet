@@ -6,11 +6,20 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Entities.Boloes
 {
-    class BoloesPontuacao
+    public class BoloesPontuacao : DadosBasicos.HighLightItem
     {
         #region Properties
 
-        public Entities.Boloes.Bolao Bolao {get;set;}
+        public virtual Entities.Boloes.Bolao Bolao {get;set;}
+
+        #endregion
+        
+        #region Constructors/Destructors
+
+        public BoloesPontuacao()
+        {
+
+        }
 
         #endregion
     }

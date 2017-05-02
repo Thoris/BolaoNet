@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -11,8 +13,11 @@ namespace BolaoNet.Entities.Boloes
     {
         #region Properties
 
+        [Key]
+        [Column(Order = 1)]
         public string Nome { get; set; }
-        public Campeonatos.Campeonato Campeonato { get; set; }
+
+        public virtual Campeonatos.Campeonato Campeonato { get; set; }
         public string Descricao { get; set; }
         public decimal TaxaParticipacao { get; set; }
         public Image Foto { get; set; }
@@ -28,6 +33,15 @@ namespace BolaoNet.Entities.Boloes
         public bool IsIniciado { get; set; }
         public string IniciadoBy { get; set; }
         public DateTime DataIniciado { get; set; }
+
+        #endregion
+
+        #region Constructors/Destructors
+
+        public Bolao()
+        {
+
+        }
 
         #endregion
     }

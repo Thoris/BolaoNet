@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Entities.Boloes
 {
-    public class ApostasRestantesUser
+    public class ApostasRestantesUser 
     {       
         #region Properties
         
@@ -21,6 +21,15 @@ namespace BolaoNet.Entities.Boloes
                 else
                     return true;
             }
+        }
+
+        #endregion
+
+        #region Constructors/Destructors
+
+        public ApostasRestantesUser()
+        {
+
         }
 
         #endregion

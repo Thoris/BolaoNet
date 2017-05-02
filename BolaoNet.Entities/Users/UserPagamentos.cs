@@ -6,7 +6,37 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Entities.Users
 {
-    class UserPagamentos
+    public class UserPagamentos : Base.AuditModel
     {
+        #region Properties
+
+        public decimal Devendo
+        {
+            get
+            {
+                decimal saldo = this.Total - this.Valor;
+
+                if (saldo < 0)
+                    saldo = 0;
+
+                return saldo;
+            }
+        }
+        public Campeonatos.Campeonato Campeonato { get; set; }
+        public decimal Valor { get; set; }
+        public Boloes.Bolao Bolao { get; set; }
+        public decimal Total { get; set; }
+        public DateTime DataInicio { get; set; }
+
+        #endregion
+        
+        #region Constructors/Destructors
+
+        public UserPagamentos()
+        {
+
+        }
+
+        #endregion
     }
 }

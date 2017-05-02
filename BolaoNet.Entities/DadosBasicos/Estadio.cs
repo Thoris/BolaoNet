@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -7,20 +9,34 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Entities.DadosBasicos
 {
-    public class Estadio : Base.BaseEntity
+    public class Estadio : Base.AuditModel
     {
         #region Properties
 
-        public string Nome {get;set;}
-        public string Pais{get;set;}
-        public string Estado{get;set;}
-        public string Cidade{get;set;}
-        public Image Foto{get;set;}
-        public long Capacidade{get;set;}
-        public string Descricao{get;set;}
-        public DadosBasicos.Time Time{get;set;}
+        [Key]
+        public string Nome { get; set; }
+        public string Pais { get; set; }
+        public string Estado { get; set; }
+        public string Cidade { get; set; }
+        public long Capacidade { get; set; }
+        public string Descricao { get; set; }
+
+        [NotMapped]
+        public Image Foto { get; set; }
+
+        [ForeignKey("NomeTime"), Column(Order = 0)]
+        public virtual DadosBasicos.Time Time { get; set; }
+        public string NomeTime { get; set; }
 
         #endregion
 
+        #region Constructors/Destructors
+
+        public Estadio()
+        {
+
+        }
+
+        #endregion
     }
 }

@@ -22,12 +22,21 @@ namespace BolaoNet.Entities.Boloes
 
         #region Properties
         
-        public Bolao Bolao {get;set;}
+        public virtual Bolao Bolao {get;set;}
         public string UserName{get;set;}
         public DateTime DataPagamento{get;set;}
         public Tipo TipoPagamento{get;set;}
         public decimal Valor{get;set;}
         public string Descricao{get;set;}
+
+        #endregion
+        
+        #region Constructors/Destructors
+
+        public Pagamento()
+        {
+
+        }
 
         #endregion
     }

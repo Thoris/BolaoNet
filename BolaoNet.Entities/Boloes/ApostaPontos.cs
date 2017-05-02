@@ -32,5 +32,14 @@ namespace BolaoNet.Entities.Boloes
         public int MultiploTime { get; set; }
 
         #endregion
+
+        #region Constructors/Destructors
+
+        public ApostaPontos()
+        {
+
+        }
+
+        #endregion
     }
 }

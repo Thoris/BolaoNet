@@ -16,5 +16,8 @@ namespace BolaoNet.Dao
         ///// </summary>
         ///// <returns>Objeto que possui a instância do jogador.</returns>
         //IJogadorDao CreateJogadorDao();
+
+
+        Campeonatos.ICampeonatoDao CreateCampeonatoDao();
     }
 }

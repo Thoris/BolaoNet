@@ -57,5 +57,58 @@
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="build" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="build\0001.Cleaning_Up.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="build\0008.Create_Table_UserMaritalStatus.sql" />
+    <Build Include="build\0009.Create_Table_Users.sql" />
+    <Build Include="build\0010.Create_Table_Roles.sql" />
+    <Build Include="build\0011.Create_Table_UsersInRoles.sql" />
+    <Build Include="build\0012.Create_Table_Profiles.sql" />
+    <Build Include="build\0013.Create_Table_Times.sql" />
+    <Build Include="build\0014.Create_Table_Estadios.sql" />
+    <Build Include="build\0015.Create_Table_Campeonatos.sql" />
+    <Build Include="build\0016.Create_Table_CampeonatosTimes.sql" />
+    <Build Include="build\0017.Create_Table_CampeonatosFases.sql" />
+    <Build Include="build\0018.Create_Table_CampeonatosGrupos.sql" />
+    <Build Include="build\0019.Create_Table_CampeonatosGruposTimes.sql" />
+    <Build Include="build\0020.Create_Table_CampeonatosHistorico.sql" />
+    <Build Include="build\0021.Create_Table_CampeonatosPosicoes.sql" />
+    <Build Include="build\0022.Create_Table_CampeonatosClassificacao.sql" />
+    <Build Include="build\0023.Create_Table_Jogos.sql" />
+    <Build Include="build\0024.Create_Table_Boloes.sql" />
+    <Build Include="build\0025.Create_Table_BoloesMembros.sql" />
+    <Build Include="build\0026.Create_Table_BoloesPontuacao.sql" />
+    <Build Include="build\0027.Create_Table_BoloesPremios.sql" />
+    <Build Include="build\0028.Create_Table_BoloesRegras.sql" />
+    <Build Include="build\0029.Create_Table_BoloesRequestsStatus.sql" />
+    <Build Include="build\0030.Create_Table_BoloesRequests.sql" />
+    <Build Include="build\0031.Create_Table_CriteriosFixos.sql" />
+    <Build Include="build\0032.Create_Table_BoloesCriteriosPontos.sql" />
+    <Build Include="build\0033.Create_Table_BoloesMembrosClassificacao.sql" />
+    <Build Include="build\0034.Create_Table_BoloesMembrosPontos.sql" />
+    <Build Include="build\0035.Create_Table_BoloesPontosRodadas.sql" />
+    <Build Include="build\0036.Create_Table_BoloesPontosRodadasUsuarios.sql" />
+    <Build Include="build\0037.Create_Table_BoloesCampeonatosClassificacaoUsuarios.sql" />
+    <Build Include="build\0038.Create_Table_ApostasExtras.sql" />
+    <Build Include="build\0039.Create_Table_ApostasExtrasUsuarios.sql" />
+    <Build Include="build\0040.Create_Table_Mensagens.sql" />
+    <Build Include="build\0041.Create_Table_PagamentosTipo.sql" />
+    <Build Include="build\0042.Create_Table_Pagamentos.sql" />
+    <Build Include="build\0043.Create_Table_BoloesCriteriosPontosTimes.sql" />
+    <Build Include="build\0044.Create_Table_JogosUsuarios.sql" />
+    <Build Include="build\0045.Create_Table_BoloesMembrosGrupo.sql" />
+    <Build Include="build\0051.Insert_Table_lg_content_types.sql" />
+    <Build Include="build\0052.Insert_Table_lg_log_level_types.sql" />
+    <Build Include="build\0054.Insert_Table_CriteriosFixos.sql" />
+    <Build Include="build\0055.Insert_Table_UserMaritalStatus.sql" />
+    <Build Include="build\0056.Insert_Table_Users.sql" />
+    <Build Include="build\0057.Insert_PagamentoTipo.sql" />
+    <Build Include="build\0058.Insert_Table_Roles.sql" />
+    <Build Include="build\0059.Insert_Table_UsersInRoles.sql" />
+    <Build Include="build\0060.Insert_Table_BoloesRequestsStatus.sql" />
   </ItemGroup>
 </Project>

@@ -9,6 +9,7 @@ namespace BolaoNet.Entities.Boloes
     public class BolaoRequest : Base.AuditModel
     {
         #region Enumeration
+
         public enum Status
         {
             Participar = 1,
@@ -19,9 +20,11 @@ namespace BolaoNet.Entities.Boloes
             Mantido = 6,
             Convidado = 7,
         }
+
         #endregion
 
         #region Properties
+
         public string Descricao { get; set; }
         public DateTime AnsweredDate { get; set; }
         public string AnsweredBy { get; set; }
@@ -30,7 +33,16 @@ namespace BolaoNet.Entities.Boloes
         public DateTime RequestedDate { get; set; }
         public string RequestedBy { get; set; }
         public int RequestID { get; set; }
-        public Bolao Bolao { get; set; }
+        public virtual Bolao Bolao { get; set; }
+
+        #endregion
+
+        #region Constructors/Destructors
+
+        public BolaoRequest()
+        {
+
+        }
 
         #endregion
     }

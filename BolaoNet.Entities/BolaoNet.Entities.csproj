@@ -48,11 +48,19 @@
     <Compile Include="Boloes\ApostaPontos.cs" />
     <Compile Include="Boloes\ApostasRestantesUser.cs" />
     <Compile Include="Boloes\Bolao.cs" />
+    <Compile Include="Boloes\BolaoCampeonatoClassificacaoUsuario.cs" />
     <Compile Include="Boloes\BolaoCriterioPontos.cs" />
     <Compile Include="Boloes\BolaoCriterioPontosTimes.cs" />
+    <Compile Include="Boloes\BolaoMembroClassificacao.cs" />
+    <Compile Include="Boloes\BolaoMembroGrupo.cs" />
+    <Compile Include="Boloes\BolaoMembroGrupoPonto.cs" />
     <Compile Include="Boloes\BolaoMembros.cs" />
+    <Compile Include="Boloes\BolaoPontoRodada.cs" />
+    <Compile Include="Boloes\BolaoPontoRodadaUsuario.cs" />
     <Compile Include="Boloes\BolaoPremio.cs" />
+    <Compile Include="Boloes\BolaoRegra.cs" />
     <Compile Include="Boloes\BolaoRequest.cs" />
+    <Compile Include="Boloes\BolaoRequestStatus.cs" />
     <Compile Include="Boloes\BoloesPontuacao.cs" />
     <Compile Include="Boloes\Criterio.cs" />
     <Compile Include="Boloes\JogoUsuario.cs" />
@@ -67,8 +75,13 @@
     <Compile Include="Boloes\Simulation\JogoUsuarioPosicao.cs" />
     <Compile Include="Campeonatos\Campeonato.cs" />
     <Compile Include="Campeonatos\CampeonatoClassificacao.cs" />
+    <Compile Include="Campeonatos\CampeonatoFase.cs" />
+    <Compile Include="Campeonatos\CampeonatoGrupo.cs" />
+    <Compile Include="Campeonatos\CampeonatoGrupoTime.cs" />
+    <Compile Include="Campeonatos\CampeonatoHistorico.cs" />
     <Compile Include="Campeonatos\CampeonatoPosicao.cs" />
     <Compile Include="Campeonatos\CampeonatoRecord.cs" />
+    <Compile Include="Campeonatos\CampeonatoTime.cs" />
     <Compile Include="Campeonatos\Fase.cs" />
     <Compile Include="Campeonatos\Grupo.cs" />
     <Compile Include="Campeonatos\Historico.cs" />
@@ -76,10 +89,13 @@
     <Compile Include="Campeonatos\Pontuacao.cs" />
     <Compile Include="Campeonatos\Reports\GolsFrequencia.cs" />
     <Compile Include="Campeonatos\Reports\TimeRodadas.cs" />
+    <Compile Include="DadosBasicos\CriterioFixo.cs" />
     <Compile Include="DadosBasicos\Estadio.cs" />
     <Compile Include="DadosBasicos\HighLightItem.cs" />
+    <Compile Include="DadosBasicos\PagamentoTipo.cs" />
     <Compile Include="DadosBasicos\Time.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecordTime.cs" />
     <Compile Include="Users\UserBoloes.cs" />
     <Compile Include="Users\UserPagamentos.cs" />
   </ItemGroup>

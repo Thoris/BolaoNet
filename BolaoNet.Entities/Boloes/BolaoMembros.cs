@@ -13,8 +13,17 @@ namespace BolaoNet.Entities.Boloes
         public int Posicao {get;set;}
         public int LastPosicao{get;set;}
         public string UserName{get;set;}
-        public Entities.Boloes.Bolao Bolao{get;set;}
+        public virtual Entities.Boloes.Bolao Bolao{get;set;}
         public string FullName{get;set;}
+
+        #endregion
+
+        #region Constructors/Destructors
+
+        public BolaoMembros()
+        {
+
+        }
 
         #endregion
     }

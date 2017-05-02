@@ -9,9 +9,18 @@ namespace BolaoNet.Entities.Campeonatos.Reports
     public class TimeRodadas
     {
         #region Properties
-        public int Rodada {get;set;}
-        public DadosBasicos.Time Time{get;set;}
-        public int Posicao{get;set;}
+        public int Rodada { get; set; }
+        public virtual DadosBasicos.Time Time { get; set; }
+        public int Posicao { get; set; }
+
+        #endregion
+
+        #region Constructors/Destructors
+
+        public TimeRodadas()
+        {
+
+        }
 
         #endregion
     }

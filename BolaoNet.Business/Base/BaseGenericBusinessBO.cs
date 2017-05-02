@@ -116,10 +116,10 @@ namespace BolaoNet.Business.Base
                 typeof(T) == typeof(Entities.Base.AuditModel))
             {
                 Entities.Base.AuditModel baseModel = entity as Entities.Base.AuditModel;
-                baseModel.CriadoPor = _currentUserName;
-                baseModel.DataCriacao = DateTime.Now;
-                baseModel.ModificadoPor = _currentUserName;
-                baseModel.DataModificacao = DateTime.Now;
+                baseModel.CreatedBy = _currentUserName;
+                baseModel.CreatedDate = DateTime.Now;
+                baseModel.ModifiedBy = _currentUserName;
+                baseModel.ModifiedDate = DateTime.Now;
                 //baseModel.StatusRegistro = (int)Entities.Enum.RowType.Nennhum;
             }
 
@@ -191,8 +191,8 @@ namespace BolaoNet.Business.Base
                 typeof(T) == typeof(Entities.Base.AuditModel))
             {
                 Entities.Base.AuditModel baseModel = entity as Entities.Base.AuditModel;
-                baseModel.ModificadoPor = this.CurrentUserName;
-                baseModel.DataModificacao = DateTime.Now;
+                baseModel.ModifiedBy = this.CurrentUserName;
+                baseModel.ModifiedDate = DateTime.Now;
             }
             int result = _dao.Update(entity);
 

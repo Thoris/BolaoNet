@@ -9,8 +9,17 @@ namespace BolaoNet.Entities.Boloes.Reports
     public class UserPontosData : BolaoMembros
     {
         #region Properties
-        
-        public DateTime Date {get;set;}
+
+        public DateTime Date { get; set; }
+
+        #endregion
+
+        #region Constructors/Destructors
+
+        public UserPontosData()
+        {
+            
+        }
 
         #endregion
     }

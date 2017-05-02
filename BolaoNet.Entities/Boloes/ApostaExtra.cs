@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,8 +12,15 @@ namespace BolaoNet.Entities.Boloes
     {
         #region Properties
 
+        [Key]
+        [Column(Order = 1)]
         public int Posicao { get; set; }
-        public Bolao Bolao { get; set; }
+        
+        [Key]
+        [Column(Order = 2)]
+        public string NomeBolao { get; set; }
+        public virtual Bolao Bolao { get; set; }
+
         public string Titulo { get; set; }
         public string Descricao { get; set; }
         public int TotalPontos { get; set; }
@@ -19,6 +28,15 @@ namespace BolaoNet.Entities.Boloes
         public DateTime DataValidacao { get; set; }
         public string ValidadoBy { get; set; }
         public string NomeTimeValidado { get; set; }
+
+        #endregion
+
+        #region Constructors/Destructors
+
+        public ApostaExtra()
+        {
+
+        }
 
         #endregion
     }

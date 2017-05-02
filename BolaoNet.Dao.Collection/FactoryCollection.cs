@@ -8,5 +8,9 @@ namespace BolaoNet.Dao.Collection
 {
     public class FactoryCollection : Dao.IFactoryDao
     {
+        public Campeonatos.ICampeonatoDao CreateCampeonatoDao()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

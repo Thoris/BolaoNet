@@ -10,10 +10,19 @@ namespace BolaoNet.Entities.Boloes
     {
         #region Properties
         
-        public Bolao Bolao { get; set; }
-        public Entities.DadosBasicos.Time Time { get; set; }
+        public virtual Bolao Bolao { get; set; }
+        public virtual Entities.DadosBasicos.Time Time { get; set; }
         public int MultiploTime { get; set; }
      
+        #endregion
+        
+        #region Constructors/Destructors
+
+        public BolaoCriterioPontosTimes()
+        {
+
+        }
+
         #endregion
     }
 }

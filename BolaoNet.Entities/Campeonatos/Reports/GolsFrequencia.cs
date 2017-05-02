@@ -15,5 +15,14 @@ namespace BolaoNet.Entities.Campeonatos.Reports
         public int Total { get; set; }
 
         #endregion
+        
+        #region Constructors/Destructors
+
+        public GolsFrequencia()
+        {
+
+        }
+
+        #endregion
     }
 }

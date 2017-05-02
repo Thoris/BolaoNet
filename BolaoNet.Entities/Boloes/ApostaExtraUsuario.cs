@@ -17,5 +17,14 @@ namespace BolaoNet.Entities.Boloes
         public bool IsApostaValida { get; set; }
 
         #endregion
+
+        #region Constructors/Destructors
+
+        public ApostaExtraUsuario()
+        {
+
+        }
+
+        #endregion
     }
 }

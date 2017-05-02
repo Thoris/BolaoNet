@@ -8,27 +8,41 @@ namespace BolaoNet.Entities.Campeonatos
 {
     public class CampeonatoRecord : Base.AuditModel
     {
+        #region Variables
+
+        private int _jogos;
+
+        #endregion
 
         #region Properties
 
-        public int JogosSemMarcar {get;set;}
-        public int JogosSemLevar {get;set;}
-        public int Posicao {get;set;}
-        public int Vitorias {get;set;}
-        public int Derrotas {get;set;}
-        public int Empates {get;set;}
+        public int JogosSemMarcar { get; set; }
+        public int JogosSemLevar { get; set; }
+        public int Posicao { get; set; }
+        public int Vitorias { get; set; }
+        public int Derrotas { get; set; }
+        public int Empates { get; set; }
         public int Jogos
         {
             get
             {
-                if (this.Jogos == 0)
+                if (_jogos == 0)
                     return this.Vitorias + this.Derrotas + this.Empates;
                 else
-                    return this.Jogos;
+                    return _jogos;
             }
-            set;
+            set { _jogos = value; }
         }
-        public DadosBasicos.Time Time {get;set;}
+        public virtual DadosBasicos.Time Time { get; set; }
+
+        #endregion
+
+        #region Constructors/Destructors
+
+        public CampeonatoRecord()
+        {
+
+        }
 
         #endregion
 

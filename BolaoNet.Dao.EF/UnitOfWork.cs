@@ -13,7 +13,47 @@ namespace BolaoNet.Dao.EF
     {
         #region Properties
 
-        //public DbSet<Entities.Modalidade> Modalidades { get; set; }
+        public DbSet<Entities.DadosBasicos.Time> Times { get; set; }
+        public DbSet<Entities.DadosBasicos.Estadio> Estadios { get; set; }
+        public DbSet<Entities.DadosBasicos.PagamentoTipo> PagamentosTipo { get; set; }
+        public DbSet<Entities.DadosBasicos.CriterioFixo> CriteriosFixos { get; set; }
+        public DbSet<Entities.Campeonatos.Campeonato> Campeonatos { get; set; }
+        public DbSet<Entities.Campeonatos.CampeonatoTime> CampeonatosTimes { get; set; }
+
+        //public DbSet<Entities.Boloes.ApostaExtra> ApostasExtras { get; set; }
+        //public DbSet<Entities.Boloes.ApostaExtraUsuario> ApostasExtrasUsuarios { get; set; }
+        //public DbSet<Entities.Boloes.Bolao> Boloes { get; set; }
+        //public DbSet<Entities.Boloes.BolaoCampeonatoClassificacaoUsuario> BoloesCampeonatosClassificacaoUsuarios { get; set; }
+        //public DbSet<Entities.Boloes.BolaoCriterioPontos> BoloesCriteriosPontos { get; set; }
+        //public DbSet<Entities.Boloes.BolaoCriterioPontosTimes> BoloesCriteriosPontosTimes { get; set; }
+        //public DbSet<Entities.Boloes.BolaoMembros> BoloesMembros { get; set; }
+        //public DbSet<Entities.Boloes.BolaoMembroClassificacao> BoloesMembrosClassificacao { get; set; }
+        //public DbSet<Entities.Boloes.BolaoMembroGrupo> BoloesMembrosGrupos { get; set; }
+        //public DbSet<Entities.Boloes.BolaoMembroGrupoPonto> BoloesMembrosGruposPontos { get; set; }
+        //public DbSet<Entities.Boloes.BolaoPontoRodada> BoloesPontosRodadas { get; set; }
+        //public DbSet<Entities.Boloes.BolaoPontoRodadaUsuario> BoloesPontosRodadasUsuarios { get; set; }
+        //public DbSet<Entities.Boloes.BoloesPontuacao> BoloesPontuacao { get; set; }
+        //public DbSet<Entities.Boloes.BolaoPremio> BoloesPremios { get; set; }
+        //public DbSet<Entities.Boloes.BolaoRegra> BoloesRegras { get; set; }
+        //public DbSet<Entities.Boloes.BolaoRequest> BoloesRequests { get; set; }
+        //public DbSet<Entities.Boloes.BolaoRequestStatus> BoloesRequestsStatus { get; set; }
+        
+        //public DbSet<Entities.Campeonatos.CampeonatoClassificacao> CampeonatosClassificacao { get; set; }
+        //public DbSet<Entities.Campeonatos.CampeonatoFase> CampeonatosFases { get; set; }
+        //public DbSet<Entities.Campeonatos.CampeonatoGrupo> CampeonatosGrupos { get; set; }
+        //public DbSet<Entities.Campeonatos.CampeonatoGrupoTime> CampeonatosGruposTimes { get; set; }
+        //public DbSet<Entities.Campeonatos.CampeonatoHistorico> CampeonatosHistorico { get; set; }
+        //public DbSet<Entities.Campeonatos.CampeonatoPosicao> CampeonatosPosicoes { get; set; }
+        
+        
+        //public DbSet<Entities.Campeonatos.Jogo> Jogos { get; set; }
+        //public DbSet<Entities.Boloes.JogoUsuario> JogosUsuarios { get; set; }
+        //public DbSet<Entities.Boloes.Mensagem> Mensagens { get; set; }
+        //public DbSet<Entities.Boloes.Pagamento> Pagamentos { get; set; }
+        
+        //public DbSet<Entities.Boloes.Profiles> Profiles{ get; set; }
+        //public DbSet<Entities.Boloes.Roles> Roles { get; set; }
+        
 
         #endregion
 
@@ -29,11 +69,28 @@ namespace BolaoNet.Dao.EF
 
 #if (DEBUG)
 
+            //Database.SetInitializer<UnitOfWork>(new CreateDatabaseIfNotExists<UnitOfWork>());           
+            Database.SetInitializer<UnitOfWork>(new DropCreateDatabaseAlways<UnitOfWork>());           
             //Database.SetInitializer<UnitOfWork>(new Initializer.AcademiaDataContextInitializer());
 #else
             Database.SetInitializer<UnitOfWork>(new CreateDatabaseIfNotExists<UnitOfWork>());           
 
 #endif
+            //Dentro do construtor, eu costumo desabilitar o Lazy Loading, esse mecanismo faz com 
+            //que o Entity Framework carregue automaticamente os relacionamentos em memória, 
+            //o que pode causar perda de performance ao fazer um select na base de dados, 
+            //quando essa opção é desabilitada (deixado como false), ele não carrega as dependências 
+            //automaticamente e quando for necessário carregar, basta usar o método Include():
+            Configuration.LazyLoadingEnabled = false;
+
+
+            //Eu também costumo desabilitar a criação de proxy, o Entity Framework por padrão cria 
+            //um proxy toda vez que é instanciado uma entidade POCO para que possa ser realizado 
+            //eventuais mudanças e fazer o carregamento automático das propriedades virtuais, 
+            //como não estamos usando o Lazy Loading habilitado, não tem muito sentido manter a 
+            //criação de proxy habilitada também.
+            Configuration.ProxyCreationEnabled = false;
+
         }
 
         #endregion
@@ -65,12 +122,31 @@ namespace BolaoNet.Dao.EF
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //Removendo a pluralização de nomes das entidades
+            ////Aqui vamos remover a pluralização padrão do Etity Framework que é em inglês
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            //Basicamente a mesma configuração, porém em relacionamenos N:N
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+            
+            //Desabilitamos o delete em cascata em relacionamentos 1:N evitando ter registros filhos sem registros pai
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 
 
             //modelBuilder.Entity<Entities.Modalidade>().ToTable("Modalidades");
+
+
+            //Definimos usando reflexão que toda propriedade que contenha
+            //"Nome da classe" + Id como "CursoId" por exemplo, seja dada como
+            //chave primária, caso não tenha sido especificado
+            modelBuilder.Properties()
+                         .Where(p => p.Name == p.ReflectedType.Name + "Id")
+                         .Configure(p => p.IsKey());
+
+            //Toda propriedade do tipo string na entidade POCO seja configurado como VARCHAR no SQL Server
+            modelBuilder.Properties<string>().Configure(p => p.HasColumnType("varchar"));
+
+            //Toda propriedade do tipo string na entidade POCO seja configurado como VARCHAR (150) no banco de dados 
+            modelBuilder.Properties<string>().Configure(p => p.HasMaxLength(150));
 
             base.OnModelCreating(modelBuilder);
         }

@@ -9,11 +9,20 @@ namespace BolaoNet.Entities.Boloes.Reports
     public class UserClassificacao : Base.AuditModel
     {
         #region Properties
-        
-        public int Posicao {get;set;}
-        public int Pontos{get;set;}
-        public int Rodada{get;set;}
-        public string UserName{get;set;}
+
+        public int Posicao { get; set; }
+        public int Pontos { get; set; }
+        public int Rodada { get; set; }
+        public string UserName { get; set; }
+
+        #endregion
+
+        #region Constructors/Destructors
+
+        public UserClassificacao()
+        {
+
+        }
 
         #endregion
     }
