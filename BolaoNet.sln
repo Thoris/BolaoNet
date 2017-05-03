@@ -95,6 +95,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Json", "Json", "{7FD690E3-9
 		ReferencedComponents\Json\System.Net.Http.Formatting.dll = ReferencedComponents\Json\System.Net.Http.Formatting.dll
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BolaoNet.ReverseDatabase", "BolaoNet.ReverseDatabase\BolaoNet.ReverseDatabase.csproj", "{5AC619EE-AE22-42DC-893B-A648B63D8D3D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -153,6 +155,10 @@ Global
 		{94A61BF9-A917-4337-A3FB-0C655CDBB560}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94A61BF9-A917-4337-A3FB-0C655CDBB560}.Release|Any CPU.Build.0 = Release|Any CPU
 		{94A61BF9-A917-4337-A3FB-0C655CDBB560}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{5AC619EE-AE22-42DC-893B-A648B63D8D3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AC619EE-AE22-42DC-893B-A648B63D8D3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AC619EE-AE22-42DC-893B-A648B63D8D3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AC619EE-AE22-42DC-893B-A648B63D8D3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -185,5 +191,6 @@ Global
 		{20D33228-8908-4778-A52D-31E829592E55} = {0DD79E73-9DDE-475A-A7AC-DDE941D14543}
 		{2574F601-971A-4E3F-8FF7-1E7B7B042F43} = {0DD79E73-9DDE-475A-A7AC-DDE941D14543}
 		{7FD690E3-939A-46BF-ABA7-CDCD1B873523} = {0DD79E73-9DDE-475A-A7AC-DDE941D14543}
+		{5AC619EE-AE22-42DC-893B-A648B63D8D3D} = {278BD254-22F2-4DA5-A514-D0B001F292B1}
 	EndGlobalSection
 EndGlobal

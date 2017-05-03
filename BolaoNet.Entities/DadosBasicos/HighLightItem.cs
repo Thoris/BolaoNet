@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,15 @@ namespace BolaoNet.Entities.DadosBasicos
         #region Properties
 
         public string Titulo { get; set; }
+
+        public string ForeColorName { get; set; }
+        [NotMapped]
         public Color ForeColor { get; set; }
+
+        public string BackColorName { get; set; }
+        [NotMapped]
         public Color BackColor { get; set; }
+
         public int Posicao { get; set; }
 
         #endregion

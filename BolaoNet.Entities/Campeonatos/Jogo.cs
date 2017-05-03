@@ -29,7 +29,7 @@ namespace BolaoNet.Entities.Campeonatos
         public int PenaltisTime1 { get; set; }
 
         public string NomeTime2 { get; set; }
-        [ForeignKey("NomeTime2")]        
+        [ForeignKey("NomeTime2")]
         public virtual DadosBasicos.Time Time2 { get; set; }
 
         public string DescricaoTime2 { get; set; }
@@ -37,7 +37,7 @@ namespace BolaoNet.Entities.Campeonatos
         public int PenaltisTime2 { get; set; }
 
         public string NomeEstadio { get; set; }
-        [ForeignKey("NomeEstadio")]   
+        [ForeignKey("NomeEstadio")]
         public virtual DadosBasicos.Estadio Estadio { get; set; }
 
         public DateTime DataJogo { get; set; }
@@ -57,13 +57,13 @@ namespace BolaoNet.Entities.Campeonatos
 
 
         public string NomeFase { get; set; }
-        [ForeignKey("NomeFase")]   
+        [ForeignKey("NomeFase")]
         public virtual Campeonatos.Fase Fase { get; set; }
 
         public string NomeGrupo { get; set; }
-        [ForeignKey("NomeGrupo")]   
+        [ForeignKey("NomeGrupo")]
         public virtual Campeonatos.Grupo Grupo { get; set; }
-        
+
         public string ValidadoBy { get; set; }
         public string Titulo { get; set; }
         public string JogoLabel { get; set; }

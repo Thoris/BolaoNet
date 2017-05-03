@@ -13,13 +13,16 @@ namespace BolaoNet.Entities.Boloes
     {
         #region Properties
 
-        [Key]
-        [Column(Order = 1)]
+        [Key, Column(Order = 1)]
         public string Nome { get; set; }
 
+        public string NomeCampeonato { get; set; }
+        [ForeignKey("NomeCampeonato")]
         public virtual Campeonatos.Campeonato Campeonato { get; set; }
+
         public string Descricao { get; set; }
         public decimal TaxaParticipacao { get; set; }
+        [NotMapped]
         public Image Foto { get; set; }
         public bool Publico { get; set; }
         public bool ForumAtivado { get; set; }

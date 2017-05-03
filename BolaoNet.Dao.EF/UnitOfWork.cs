@@ -13,6 +13,7 @@ namespace BolaoNet.Dao.EF
     {
         #region Properties
 
+        public DbSet<Entities.Users.User> Usuarios { get; set; }
         public DbSet<Entities.DadosBasicos.Time> Times { get; set; }
         public DbSet<Entities.DadosBasicos.Estadio> Estadios { get; set; }
         public DbSet<Entities.DadosBasicos.PagamentoTipo> PagamentosTipo { get; set; }
@@ -24,28 +25,43 @@ namespace BolaoNet.Dao.EF
         public DbSet<Entities.Campeonatos.CampeonatoGrupoTime> CampeonatosGruposTimes { get; set; }
         //public DbSet<Entities.Campeonatos.Jogo> Jogos { get; set; }
 
+
+        public DbSet<Entities.Campeonatos.CampeonatoClassificacao> CampeonatosClassificacao { get; set; }
+        public DbSet<Entities.Campeonatos.CampeonatoPosicao> CampeonatosPosicoes { get; set; }
+
+        public DbSet<Entities.Boloes.Bolao> Boloes { get; set; }
+        public DbSet<Entities.Boloes.BolaoMembros> BoloesMembros { get; set; }
+        public DbSet<Entities.Boloes.BolaoCriterioPontos> BoloesCriteriosPontos { get; set; }
+        public DbSet<Entities.Boloes.BolaoPremio> BoloesPremios { get; set; }
+        public DbSet<Entities.Boloes.BolaoRegra> BoloesRegras { get; set; }
+        public DbSet<Entities.Boloes.BolaoRequest> BoloesRequests { get; set; }
+        public DbSet<Entities.Boloes.BolaoRequestStatus> BoloesRequestsStatus { get; set; }
+        public DbSet<Entities.Boloes.BoloesPontuacao> BoloesPontuacao { get; set; }
+        public DbSet<Entities.Boloes.BolaoCriterioPontosTimes> BoloesCriteriosPontosTimes { get; set; }
+        public DbSet<Entities.Boloes.BolaoPontoRodada> BoloesPontosRodadas { get; set; }
+        public DbSet<Entities.Boloes.BolaoPontoRodadaUsuario> BoloesPontosRodadasUsuarios { get; set; }
+
         //public DbSet<Entities.Boloes.ApostaExtra> ApostasExtras { get; set; }
         //public DbSet<Entities.Boloes.ApostaExtraUsuario> ApostasExtrasUsuarios { get; set; }
-        //public DbSet<Entities.Boloes.Bolao> Boloes { get; set; }
+        
         //public DbSet<Entities.Boloes.BolaoCampeonatoClassificacaoUsuario> BoloesCampeonatosClassificacaoUsuarios { get; set; }
-        //public DbSet<Entities.Boloes.BolaoCriterioPontos> BoloesCriteriosPontos { get; set; }
-        //public DbSet<Entities.Boloes.BolaoCriterioPontosTimes> BoloesCriteriosPontosTimes { get; set; }
-        //public DbSet<Entities.Boloes.BolaoMembros> BoloesMembros { get; set; }
+        
+        
         //public DbSet<Entities.Boloes.BolaoMembroClassificacao> BoloesMembrosClassificacao { get; set; }
         //public DbSet<Entities.Boloes.BolaoMembroGrupo> BoloesMembrosGrupos { get; set; }
         //public DbSet<Entities.Boloes.BolaoMembroGrupoPonto> BoloesMembrosGruposPontos { get; set; }
-        //public DbSet<Entities.Boloes.BolaoPontoRodada> BoloesPontosRodadas { get; set; }
-        //public DbSet<Entities.Boloes.BolaoPontoRodadaUsuario> BoloesPontosRodadasUsuarios { get; set; }
-        //public DbSet<Entities.Boloes.BoloesPontuacao> BoloesPontuacao { get; set; }
-        //public DbSet<Entities.Boloes.BolaoPremio> BoloesPremios { get; set; }
-        //public DbSet<Entities.Boloes.BolaoRegra> BoloesRegras { get; set; }
-        //public DbSet<Entities.Boloes.BolaoRequest> BoloesRequests { get; set; }
-        //public DbSet<Entities.Boloes.BolaoRequestStatus> BoloesRequestsStatus { get; set; }
         
-        //public DbSet<Entities.Campeonatos.CampeonatoClassificacao> CampeonatosClassificacao { get; set; }
+        
+        
+        
+        
+        
+        
+        
+        
         
         //public DbSet<Entities.Campeonatos.CampeonatoHistorico> CampeonatosHistorico { get; set; }
-        //public DbSet<Entities.Campeonatos.CampeonatoPosicao> CampeonatosPosicoes { get; set; }
+        
         
         
         

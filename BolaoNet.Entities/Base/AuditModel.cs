@@ -17,6 +17,7 @@ namespace BolaoNet.Entities.Base
         /// <summary>
         /// Propriedade que configura/retorna o login do usuário que criou o registro.
         /// </summary>
+        [StringLength(25)]
         public string CreatedBy { get; set; }
         /// <summary>
         /// Propriedade que configura/retorna a data de criação do registro.
@@ -26,6 +27,7 @@ namespace BolaoNet.Entities.Base
         /// <summary>
         /// Propriedade que configura/retorna o login do usuário que modificou o registro.
         /// </summary>
+        [StringLength(25)]
         public string ModifiedBy { get; set; }
         /// <summary>
         /// Propriedade que configura/retorna a data de modificação do registro.

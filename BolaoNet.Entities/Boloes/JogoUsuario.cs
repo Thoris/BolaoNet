@@ -44,28 +44,28 @@ namespace BolaoNet.Entities.Boloes
         public virtual DadosBasicos.Time NomeTimeResult1 { get; set; }
         public virtual DadosBasicos.Time NomeTimeResult2 { get; set; }
 
-        public virtual new DadosBasicos.Time Time1
-        {
-            get
-            {
-                if (_timeResult1 == null || string.IsNullOrEmpty(_timeResult1.Nome))
-                    return base.Time1;
-                else
-                    return _timeResult1;
-            }
-            set { base.Time1 = value; }
-        }
-        public virtual new DadosBasicos.Time Time2
-        {
-            get
-            {
-                if (_timeResult2 == null || string.IsNullOrEmpty(_timeResult2.Nome))
-                    return base.Time2;
-                else
-                    return _timeResult2;
-            }
-            set { base.Time2 = value; }
-        }
+        //public virtual new DadosBasicos.Time Time1
+        //{
+        //    get
+        //    {
+        //        if (_timeResult1 == null || string.IsNullOrEmpty(_timeResult1.Nome))
+        //            return base.Time1;
+        //        else
+        //            return _timeResult1;
+        //    }
+        //    set { base.Time1 = value; }
+        //}
+        //public virtual new DadosBasicos.Time Time2
+        //{
+        //    get
+        //    {
+        //        if (_timeResult2 == null || string.IsNullOrEmpty(_timeResult2.Nome))
+        //            return base.Time2;
+        //        else
+        //            return _timeResult2;
+        //    }
+        //    set { base.Time2 = value; }
+        //}
 
         public virtual DadosBasicos.Time Time1Classificado { get; set; }
         public virtual DadosBasicos.Time Time2Classificado { get; set; }
