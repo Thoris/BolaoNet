@@ -9,8 +9,12 @@ namespace BolaoNet.Entities.Boloes
 {
     public class BolaoRequestStatus : Base.AuditModel
     {
+        #region Properties
+
         [Key]
         public int StatusRequestID { get; set; }
         public string Descricao { get; set; }
+
+        #endregion
     }
 }

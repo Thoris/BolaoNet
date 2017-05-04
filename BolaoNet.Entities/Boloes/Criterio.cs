@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 namespace BolaoNet.Entities.Boloes
 {
     public class Criterio
-    {
-        
+    { 
         #region Constructors/Destructors
 
         public Criterio()

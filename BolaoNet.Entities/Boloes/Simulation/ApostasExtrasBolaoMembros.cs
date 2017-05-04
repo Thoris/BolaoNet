@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Entities.Boloes.Simulation
 {
-    public class ApostasExtrasBolaoMembros : BolaoMembros
+    public class ApostasExtrasBolaoMembros : BolaoMembro
     {
         #region Variables
 

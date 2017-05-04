@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Entities.Boloes.Reports
 {
-    public class UserPontosData : BolaoMembros
+    public class UserPontosData : BolaoMembro
     {
         #region Properties
 

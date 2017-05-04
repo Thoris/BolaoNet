@@ -42,15 +42,17 @@ namespace BolaoNet.Entities.Boloes
         public virtual Bolao Bolao { get; set; }
 
         [Key, Column(Order=1)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public CriteriosID CriterioID { get; set; }
-        public int Pontos { get; set; }
+
+        public int ? Pontos { get; set; }
         public string Descricao { get; set; }
 
         public string NomeTime { get; set; }
         [ForeignKey("NomeTime")]
         public virtual Entities.DadosBasicos.Time Time { get; set; }
 
-        public int MultiploTime { get; set; }
+        public int ? MultiploTime { get; set; }
         
         #endregion
 

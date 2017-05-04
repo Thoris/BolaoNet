@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Entities.Boloes
 {
-    public class BolaoMembroClassificacao : Base.AuditModel
+    public class BolaoMembroClassificacao : Entities.Boloes.Pontuacao
     {
+        #region Properties
+
+        public int ? Posicao {get;set;}
+        public int ? LastPosicao{get;set;}
+
+        #endregion
     }
 }

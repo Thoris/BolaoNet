@@ -14,64 +14,51 @@ namespace BolaoNet.Dao.EF
         #region Properties
 
         public DbSet<Entities.Users.User> Usuarios { get; set; }
+        
         public DbSet<Entities.DadosBasicos.Time> Times { get; set; }
         public DbSet<Entities.DadosBasicos.Estadio> Estadios { get; set; }
         public DbSet<Entities.DadosBasicos.PagamentoTipo> PagamentosTipo { get; set; }
         public DbSet<Entities.DadosBasicos.CriterioFixo> CriteriosFixos { get; set; }
+
         public DbSet<Entities.Campeonatos.Campeonato> Campeonatos { get; set; }
         public DbSet<Entities.Campeonatos.CampeonatoTime> CampeonatosTimes { get; set; }
         public DbSet<Entities.Campeonatos.CampeonatoFase> CampeonatosFases { get; set; }
         public DbSet<Entities.Campeonatos.CampeonatoGrupo> CampeonatosGrupos { get; set; }
-        public DbSet<Entities.Campeonatos.CampeonatoGrupoTime> CampeonatosGruposTimes { get; set; }
-        //public DbSet<Entities.Campeonatos.Jogo> Jogos { get; set; }
-
-
+        public DbSet<Entities.Campeonatos.CampeonatoGrupoTime> CampeonatosGruposTimes { get; set; }        
         public DbSet<Entities.Campeonatos.CampeonatoClassificacao> CampeonatosClassificacao { get; set; }
         public DbSet<Entities.Campeonatos.CampeonatoPosicao> CampeonatosPosicoes { get; set; }
-
+        public DbSet<Entities.Campeonatos.CampeonatoHistorico> CampeonatosHistorico { get; set; }
+        public DbSet<Entities.Campeonatos.Jogo> Jogos { get; set; }
+        
         public DbSet<Entities.Boloes.Bolao> Boloes { get; set; }
-        public DbSet<Entities.Boloes.BolaoMembros> BoloesMembros { get; set; }
+        public DbSet<Entities.Boloes.BolaoMembro> BoloesMembros { get; set; }
+        public DbSet<Entities.Boloes.BolaoMembroClassificacao> BoloesMembrosClassificacao { get; set; }
+        public DbSet<Entities.Boloes.BolaoMembroGrupo> BoloesMembrosGrupos { get; set; }
+        public DbSet<Entities.Boloes.BolaoMembroGrupoPonto> BoloesMembrosGruposPontos { get; set; }
+        
         public DbSet<Entities.Boloes.BolaoCriterioPontos> BoloesCriteriosPontos { get; set; }
+        public DbSet<Entities.Boloes.BolaoCriterioPontosTimes> BoloesCriteriosPontosTimes { get; set; }
         public DbSet<Entities.Boloes.BolaoPremio> BoloesPremios { get; set; }
         public DbSet<Entities.Boloes.BolaoRegra> BoloesRegras { get; set; }
         public DbSet<Entities.Boloes.BolaoRequest> BoloesRequests { get; set; }
         public DbSet<Entities.Boloes.BolaoRequestStatus> BoloesRequestsStatus { get; set; }
-        public DbSet<Entities.Boloes.BoloesPontuacao> BoloesPontuacao { get; set; }
-        public DbSet<Entities.Boloes.BolaoCriterioPontosTimes> BoloesCriteriosPontosTimes { get; set; }
+
+        public DbSet<Entities.Boloes.BolaoPontuacao> BoloesPontuacao { get; set; }
         public DbSet<Entities.Boloes.BolaoPontoRodada> BoloesPontosRodadas { get; set; }
         public DbSet<Entities.Boloes.BolaoPontoRodadaUsuario> BoloesPontosRodadasUsuarios { get; set; }
 
-        //public DbSet<Entities.Boloes.ApostaExtra> ApostasExtras { get; set; }
-        //public DbSet<Entities.Boloes.ApostaExtraUsuario> ApostasExtrasUsuarios { get; set; }
+        public DbSet<Entities.Boloes.ApostaExtra> ApostasExtras { get; set; }
+        public DbSet<Entities.Boloes.ApostaExtraUsuario> ApostasExtrasUsuarios { get; set; }
         
-        //public DbSet<Entities.Boloes.BolaoCampeonatoClassificacaoUsuario> BoloesCampeonatosClassificacaoUsuarios { get; set; }
-        
-        
-        //public DbSet<Entities.Boloes.BolaoMembroClassificacao> BoloesMembrosClassificacao { get; set; }
-        //public DbSet<Entities.Boloes.BolaoMembroGrupo> BoloesMembrosGrupos { get; set; }
-        //public DbSet<Entities.Boloes.BolaoMembroGrupoPonto> BoloesMembrosGruposPontos { get; set; }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        //public DbSet<Entities.Campeonatos.CampeonatoHistorico> CampeonatosHistorico { get; set; }
-        
-        
-        
-        
-        //public DbSet<Entities.Boloes.JogoUsuario> JogosUsuarios { get; set; }
-        //public DbSet<Entities.Boloes.Mensagem> Mensagens { get; set; }
-        //public DbSet<Entities.Boloes.Pagamento> Pagamentos { get; set; }
+        public DbSet<Entities.Boloes.BolaoCampeonatoClassificacaoUsuario> BoloesCampeonatosClassificacaoUsuarios { get; set; }        
+         
+        public DbSet<Entities.Boloes.JogoUsuario> JogosUsuarios { get; set; }
+        public DbSet<Entities.Boloes.Mensagem> Mensagens { get; set; }
+        public DbSet<Entities.Boloes.Pagamento> Pagamentos { get; set; }
         
         //public DbSet<Entities.Boloes.Profiles> Profiles{ get; set; }
         //public DbSet<Entities.Boloes.Roles> Roles { get; set; }
-        
+        //public DbSet<Entities.Boloes.UserInRoles> UserInRole { get; set; }
 
         #endregion
 
@@ -112,29 +99,7 @@ namespace BolaoNet.Dao.EF
         }
 
         #endregion
-
-        #region Comments
-
-        //public new IDbSet<TEntity> Set<TEntity>() where TEntity : Entities.Base.BaseEntity
-        //{
-        //    return base.Set<TEntity>();
-        //}
-
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    var typesToRegister = Assembly.GetExecutingAssembly().GetTypes()
-        //   .Where(type => !String.IsNullOrEmpty(type.Namespace))
-        //   .Where(type => type.BaseType != null && type.BaseType.IsGenericType
-        //        && type.BaseType.GetGenericTypeDefinition() == typeof(EntityTypeConfiguration<>));
-        //    foreach (var type in typesToRegister)
-        //    {
-        //        dynamic configurationInstance = Activator.CreateInstance(type);
-        //        modelBuilder.Configurations.Add(configurationInstance);
-        //    }
-        //    base.OnModelCreating(modelBuilder);
-        //}
-        #endregion
-
+        
         #region Methods
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

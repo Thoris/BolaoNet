@@ -8,7 +8,6 @@ namespace BolaoNet.Entities.Users
 {
     public class UserBoloes : Base.AuditModel
     {
-
         #region Properties
         
         public virtual Campeonatos.Campeonato Campeonato {get;set;}

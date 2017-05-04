@@ -21,21 +21,23 @@ namespace BolaoNet.Entities.Boloes
         public virtual Campeonatos.Campeonato Campeonato { get; set; }
 
         public string Descricao { get; set; }
-        public decimal TaxaParticipacao { get; set; }
+        public decimal ? TaxaParticipacao { get; set; }
+        
         [NotMapped]
         public Image Foto { get; set; }
-        public bool Publico { get; set; }
-        public bool ForumAtivado { get; set; }
-        public bool PermitirMsgAnonimos { get; set; }
-        public DateTime DataInicio { get; set; }
+
+        public bool ? Publico { get; set; }
+        public bool ? ForumAtivado { get; set; }
+        public bool ? PermitirMsgAnonimos { get; set; }
+        public DateTime ? DataInicio { get; set; }
         public string Pais { get; set; }
         public string Estado { get; set; }
         public string Cidade { get; set; }
-        public bool ApostasApenasAntes { get; set; }
+        public bool ? ApostasApenasAntes { get; set; }
         public int HorasLimiteAposta { get; set; }
-        public bool IsIniciado { get; set; }
+        public bool ? IsIniciado { get; set; }
         public string IniciadoBy { get; set; }
-        public DateTime DataIniciado { get; set; }
+        public DateTime ? DataIniciado { get; set; }
 
         #endregion
 
