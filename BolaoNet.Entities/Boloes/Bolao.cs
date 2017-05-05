@@ -21,11 +21,7 @@ namespace BolaoNet.Entities.Boloes
         public virtual Campeonatos.Campeonato Campeonato { get; set; }
 
         public string Descricao { get; set; }
-        public decimal ? TaxaParticipacao { get; set; }
-        
-        [NotMapped]
-        public Image Foto { get; set; }
-
+        public decimal ? TaxaParticipacao { get; set; }     
         public bool ? Publico { get; set; }
         public bool ? ForumAtivado { get; set; }
         public bool ? PermitirMsgAnonimos { get; set; }
@@ -38,6 +34,9 @@ namespace BolaoNet.Entities.Boloes
         public bool ? IsIniciado { get; set; }
         public string IniciadoBy { get; set; }
         public DateTime ? DataIniciado { get; set; }
+
+        [NotMapped]
+        public Image Foto { get; set; }
 
         #endregion
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Entities.Users
 {
-    public class UserBoloes : Base.AuditModel
+    public class UserBoloes 
     {
         #region Properties
         

@@ -51,8 +51,8 @@ namespace BolaoNet.Entities.Users
             }
         }
 
-        [Key]
-        [StringLength(25)]
+        //[StringLength(25)]
+        [Key]        
         public string UserName { get; set; }
         public string Password{ get; set; }
         public int PasswordFormat{ get; set; }

@@ -27,7 +27,8 @@ namespace BolaoNet.Entities.Boloes.Simulation
 
                 for (int c = 0; c < _listApostasExtras.Count; c++)
                 {
-                    totalPontos += _listApostasExtras[c].Pontos;
+                    if (_listApostasExtras[c].Pontos != null)
+                        totalPontos += (int) _listApostasExtras[c].Pontos;
                 }
 
                 return totalPontos + this.LastPontos;

@@ -67,7 +67,6 @@
     <Compile Include="Boloes\Mensagem.cs" />
     <Compile Include="Boloes\Pagamento.cs" />
     <Compile Include="Boloes\Pontuacao.cs" />
-    <Compile Include="Boloes\Regra.cs" />
     <Compile Include="Boloes\Reports\UserClassificacao.cs" />
     <Compile Include="Boloes\Reports\UserClassificacaoRodada.cs" />
     <Compile Include="Boloes\Reports\UserPontosData.cs" />

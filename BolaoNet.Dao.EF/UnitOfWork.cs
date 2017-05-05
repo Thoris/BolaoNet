@@ -57,8 +57,8 @@ namespace BolaoNet.Dao.EF
         public DbSet<Entities.Boloes.Pagamento> Pagamentos { get; set; }
         
         //public DbSet<Entities.Boloes.Profiles> Profiles{ get; set; }
-        //public DbSet<Entities.Boloes.Roles> Roles { get; set; }
-        //public DbSet<Entities.Boloes.UserInRoles> UserInRole { get; set; }
+        public DbSet<Entities.Users.Role> Roles { get; set; }
+        public DbSet<Entities.Users.UserInRole> UserInRole { get; set; }
 
         #endregion
 

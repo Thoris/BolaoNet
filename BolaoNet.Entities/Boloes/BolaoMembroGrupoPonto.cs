@@ -12,7 +12,7 @@ namespace BolaoNet.Entities.Boloes
     {
         #region Properties
 
-        [Key, Column(Order = 0)]
+        [Key, Column(Order = 3)]
         public int Rodada { get; set; }
 
         #endregion

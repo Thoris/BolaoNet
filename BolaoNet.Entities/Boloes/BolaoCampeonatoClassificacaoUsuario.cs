@@ -18,12 +18,12 @@ namespace BolaoNet.Entities.Boloes
 
         [Key, Column(Order = 1)]
         public string NomeFase { get; set; }
-        [ForeignKey ("NomeFase")]
+        //[ForeignKey ("NomeFase")]
         public virtual Campeonatos.CampeonatoFase CampeonatoFase { get; set; }
 
         [Key, Column(Order = 2)]
         public string NomeGrupo { get; set; }
-        [ForeignKey("NomeGrupo")]
+        //[ForeignKey("NomeGrupo")]
         public virtual Campeonatos.CampeonatoGrupo CampeonatoGrupo { get; set; }
 
         [Key, Column(Order = 3)]
