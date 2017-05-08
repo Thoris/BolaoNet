@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Business.Boloes
 {
-    public class ApostaExtraBO : Base.BaseGenericBusinessBO<Entities.Boloes.ApostaExtra>
+    public class ApostaExtraBO : 
+        Base.BaseGenericBusinessBO<Entities.Boloes.ApostaExtra>,
+        Interfaces.Boloes.IApostaExtraBO
     {      
         
         #region Constructors/Destructors
 
         public ApostaExtraBO(string userName, Dao.Boloes.IApostaExtraDao dao)
-            : base (userName, dao)
+            : base(userName, (Dao.Base.IGenericDao<Entities.Boloes.ApostaExtra>)dao)
         {
 
         }

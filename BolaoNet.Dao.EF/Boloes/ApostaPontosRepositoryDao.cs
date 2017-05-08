@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace BolaoNet.Dao.EF.Boloes
 {
     public class ApostaPontosRepositoryDao : 
-        Base.BaseRepositoryDao<Entities.Boloes.ApostaPontos>
+        Base.BaseRepositoryDao<Entities.Boloes.ApostaPontos>,
+        Dao.Boloes.IApostaPontosDao
     {
         
         #region Constructors/Destructors

@@ -19,5 +19,19 @@ namespace BolaoNet.Dao.EF.Boloes
         }
 
         #endregion
+
+        #region IApostaExtraUsuarioDao members
+
+        public IList<Entities.Boloes.ApostaExtraUsuario> SelectByUser(string currentUserName, Entities.Boloes.Bolao bolao, string userName, string condition)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<Entities.Boloes.ApostaExtraUsuario> SelectByPosicao(string currentUserName, Entities.Boloes.Bolao bolao, int posicao, string condition)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

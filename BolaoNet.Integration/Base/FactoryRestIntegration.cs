@@ -17,7 +17,6 @@ namespace BolaoNet.Integration.Base
 
         #endregion
 
-
         #region Constructors/Destructors
 
         /// <summary>
@@ -68,7 +67,6 @@ namespace BolaoNet.Integration.Base
 
         #endregion
 
-
         #region IFactoryBO members
 
         //public Business.Interfaces.IJogadorBO CreateJogador()
@@ -80,6 +78,232 @@ namespace BolaoNet.Integration.Base
         //{
         //    return new ModalidadeIntegration(GetUrl());
         //}
+
+
+        public Business.Interfaces.Boloes.IApostaExtraBO CreateApostaExtraBO()
+        {
+            throw new Exception();
+        }
+
+        public Business.Interfaces.Boloes.IApostaExtraUsuarioBO CreateApostaExtraUsuarioBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Boloes.IApostaPontosBO CreateApostaPontosBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Boloes.IApostasRestantesBO CreateApostasRestantesBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Boloes.IBolaoBO CreateBolaoBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Boloes.IBolaoCampeonatoClassificacaoUsuarioBO CreateBolaoCampeonatoClassificacaoUsuarioBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Boloes.IBolaoCriterioPontosBO CreateBolaoCriterioPontosBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Boloes.IBolaoCriterioPontosTimesBO CreateBolaoCriterioPontosTimesBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Boloes.IBolaoMembroBO CreateBolaoMembroBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Boloes.IBolaoMembroClassificacaoBO CreateBolaoMembroClassificacaoBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Boloes.IBolaoMembroGrupoBO CreateBolaoMembroGrupoBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Boloes.IBolaoMembroGrupoPontoBO CreateBolaoMembroGrupoPontoBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Boloes.IBolaoPontoRodadaBO CreateBolaoPontoRodadaBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Boloes.IBolaoPontoRodadaUsuarioBO CreateBolaoPontoRodadaUsuarioBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Boloes.IBolaoPontuacaoBO CreateBolaoPontuacaoBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Boloes.IBolaoPremioBO CreateBolaoPremioBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Boloes.IBolaoRegraBO CreateBolaoRegraBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Boloes.IBolaoRequestBO CreateBolaoRequestBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Boloes.IBolaoRequestStatusBO CreateBolaoRequestStatusBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Boloes.ICriterioBO CreateCriterioBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Boloes.IJogoUsuarioBO CreateJogoUsuarioBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Boloes.IMensagemBO CreateMensagemBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Boloes.IPagamentoBO CreatePagamentoBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Boloes.IPontuacaoBO CreatePontuacaoBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Campeonatos.ICampeonatoBO CreateCampeonatoBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Campeonatos.ICampeonatoClassificacaoBO CreateCampeonatoClassificacaoBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Campeonatos.ICampeonatoFaseBO CreateCampeonatoFaseBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Campeonatos.ICampeonatoGrupoBO CreateCampeonatoGrupoBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Campeonatos.ICampeonatoGrupoTimeBO CreateCampeonatoGrupoTimeBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Campeonatos.ICampeonatoHistoricoBO CreateCampeonatoHistoricoBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Campeonatos.ICampeonatoPosicaoBO CreateCampeonatoPosicaoBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Campeonatos.ICampeonatoRecordBO CreateCampeonatoRecordBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Campeonatos.ICampeonatoTimeBO CreateCampeonatoTimeBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Campeonatos.IFaseBO CreateFaseBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Campeonatos.IGrupoBO CreateGrupoBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Campeonatos.IHistoricoBO CreateHistoricoBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Campeonatos.IJogoBO CreateJogoBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Campeonatos.IPontuacaoBO CreateCampeonatoPontuacaoBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.DadosBasicos.ICriterioFixoBO CreateCriterioFixoBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.DadosBasicos.IEstadioBO CreateEstadioBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.DadosBasicos.IPagamentoTipoBO CreatePagamentoTipoBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.DadosBasicos.ITimeBO CreateTimeBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Users.IRoleBO CreateRoleBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Users.IUserBO CreateUserBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Users.IUserInRoleBO CreateUserInRoleBO()
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
     }

@@ -8,5 +8,7 @@ namespace BolaoNet.Dao.Boloes
 {
     public interface IApostaExtraDao : IGenericDao<Entities.Boloes.ApostaExtra>
     {
+        bool InsertResult(string currentUserName, Entities.Boloes.ApostaExtra entry);
+        
     }
 }

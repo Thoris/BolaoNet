@@ -19,5 +19,14 @@ namespace BolaoNet.Dao.EF.Boloes
         }
 
         #endregion
+
+        #region IApostaExtraDao members
+
+        public bool InsertResult(string currentUserName, Entities.Boloes.ApostaExtra entry)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }
