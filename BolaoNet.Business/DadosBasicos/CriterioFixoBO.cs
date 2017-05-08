@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BolaoNet.Dao.DadosBasicos
+namespace BolaoNet.Business.DadosBasicos
 {
-    public interface ICriterioFixoDao : IGenericDao<Entities.DadosBasicos.CriterioFixo>
+    public class CriterioFixoBO : 
+        Base.BaseGenericBusinessBO<Entities.DadosBasicos.CriterioFixo>
     {
     }
 }

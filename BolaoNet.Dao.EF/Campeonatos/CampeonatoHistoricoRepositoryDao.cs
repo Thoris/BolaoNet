@@ -4,9 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BolaoNet.Dao.Campeonatos
+namespace BolaoNet.Dao.EF.Campeonatos
 {
-    public interface ICampeonatoHistoricoDao : IGenericDao<Entities.Campeonatos.CampeonatoHistorico>
+    public class CampeonatoHistoricoRepositoryDao : 
+        Base.BaseRepositoryDao<Entities.Campeonatos.CampeonatoHistorico>, Dao.Campeonatos.ICampeonatoHistoricoDao
     {
+        
+        #region Constructors/Destructors
+
+        public CampeonatoHistoricoRepositoryDao(Base.IUnitOfWork unitOfWork)
+            : base(unitOfWork)
+        {
+
+        }
+
+        #endregion
     }
 }

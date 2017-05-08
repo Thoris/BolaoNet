@@ -4,9 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BolaoNet.Dao.DadosBasicos
+namespace BolaoNet.Dao.EF.DadosBasicos
 {
-    public interface ICriterioFixoDao : IGenericDao<Entities.DadosBasicos.CriterioFixo>
+    public class CriterioFixoRepositoryDao : 
+        Base.BaseRepositoryDao<Entities.DadosBasicos.CriterioFixo>, Dao.DadosBasicos.ICriterioFixoDao
     {
+        
+        #region Constructors/Destructors
+
+        public CriterioFixoRepositoryDao(Base.IUnitOfWork unitOfWork)
+            : base(unitOfWork)
+        {
+
+        }
+
+        #endregion
     }
 }

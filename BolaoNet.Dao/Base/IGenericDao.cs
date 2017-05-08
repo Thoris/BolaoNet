@@ -62,5 +62,6 @@ namespace BolaoNet.Dao.Base
         /// <param name="where">Condição que atende aos registros pesquisados.</param>
         /// <returns>Total de itens encontrados.</returns>
         long Count(Expression<Func<T, bool>> where);
+
     }
 }

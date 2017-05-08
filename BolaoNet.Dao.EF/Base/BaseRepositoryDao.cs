@@ -368,6 +368,7 @@ namespace BolaoNet.Dao.EF.Base
         {
             return _context.Set<T>().Where(where).ToList().Count;
         }
+
         #endregion
 
         #region IDiposable members

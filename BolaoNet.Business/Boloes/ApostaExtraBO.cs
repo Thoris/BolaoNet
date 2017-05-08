@@ -4,9 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BolaoNet.Dao.Boloes
+namespace BolaoNet.Business.Boloes
 {
-    public interface IApostaExtraDao : IGenericDao<Entities.Boloes.ApostaExtra>
-    {
+    public class ApostaExtraBO : Base.BaseGenericBusinessBO<Entities.Boloes.ApostaExtra>
+    {      
+        
+        #region Constructors/Destructors
+
+        public ApostaExtraBO(string userName, Dao.Boloes.IApostaExtraDao dao)
+            : base (userName, dao)
+        {
+
+        }
+
+        #endregion
     }
 }

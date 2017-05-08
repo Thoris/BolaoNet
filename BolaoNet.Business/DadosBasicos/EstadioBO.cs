@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BolaoNet.Dao.DadosBasicos
+namespace BolaoNet.Business.DadosBasicos
 {
-    public interface IEstadioDao : IGenericDao<Entities.DadosBasicos.Estadio>
+    public class EstadioBO : 
+        Base.BaseGenericBusinessBO<Entities.DadosBasicos.Estadio>
     {
     }
 }

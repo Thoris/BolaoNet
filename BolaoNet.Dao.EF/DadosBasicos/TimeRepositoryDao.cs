@@ -4,9 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BolaoNet.Dao.DadosBasicos
+namespace BolaoNet.Dao.EF.DadosBasicos
 {
-    public interface ITimeDao : IGenericDao<Entities.DadosBasicos.Time>
+    public class TimeRepositoryDao : 
+        Base.BaseRepositoryDao<Entities.DadosBasicos.Time>, Dao.DadosBasicos.ITimeDao
     {
+        
+        #region Constructors/Destructors
+
+        public TimeRepositoryDao(Base.IUnitOfWork unitOfWork)
+            : base(unitOfWork)
+        {
+
+        }
+
+        #endregion
     }
 }

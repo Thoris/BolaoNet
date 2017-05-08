@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Dao.Boloes
 {
-    class IBolaoPontoRodadaDao
+    public interface IBolaoPontoRodadaDao
     {
     }
 }

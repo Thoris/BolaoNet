@@ -4,17 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BolaoNet.Dao.EF.Campeonatos
+namespace BolaoNet.Business.Campeonatos
 {
-    public class CampeonatoRepositoryDao: Base.BaseRepositoryDao<Entities.Campeonatos.Campeonato>, Dao.Campeonatos.ICampeonatoDao
+    public class CampeonatoBO :
+        Base.BaseGenericBusinessBO<Entities.Campeonatos.Campeonato>
     {
         #region Constructors/Destructors
 
-        public CampeonatoRepositoryDao(Base.IUnitOfWork unitOfWork)
-            : base(unitOfWork)
-        {
-
-        }
 
         #endregion
     }

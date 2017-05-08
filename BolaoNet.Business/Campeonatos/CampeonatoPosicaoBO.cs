@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BolaoNet.Dao.Campeonatos
+namespace BolaoNet.Business.Campeonatos
 {
-    public interface ICampeonatoPosicaoDao : IGenericDao<Entities.Campeonatos.CampeonatoPosicao>
+    public class CampeonatoPosicaoBO :
+        Base.BaseGenericBusinessBO<Entities.Campeonatos.CampeonatoPosicao>
     {
     }
 }

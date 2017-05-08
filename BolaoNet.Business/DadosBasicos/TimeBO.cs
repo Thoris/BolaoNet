@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BolaoNet.Dao.DadosBasicos
+namespace BolaoNet.Business.DadosBasicos
 {
-    public interface ITimeDao : IGenericDao<Entities.DadosBasicos.Time>
+    public class TimeBO : 
+        Base.BaseGenericBusinessBO<Entities.DadosBasicos.Time>
     {
     }
 }

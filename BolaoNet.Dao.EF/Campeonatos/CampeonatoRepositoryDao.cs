@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Dao.EF.Campeonatos
 {
-    public class CampeonatoRepositoryDao: Base.BaseRepositoryDao<Entities.Campeonatos.Campeonato>, Dao.Campeonatos.ICampeonatoDao
+    public class CampeonatoRepositoryDao :
+        Base.BaseRepositoryDao<Entities.Campeonatos.Campeonato>, Dao.Campeonatos.ICampeonatoDao
     {
         #region Constructors/Destructors
 

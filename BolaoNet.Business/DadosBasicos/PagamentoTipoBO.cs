@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BolaoNet.Dao.DadosBasicos
+namespace BolaoNet.Business.DadosBasicos
 {
-    public interface IPagamentoTipoDao : IGenericDao<Entities.DadosBasicos.PagamentoTipo>
+    public class PagamentoTipoBO : 
+        Base.BaseGenericBusinessBO<Entities.DadosBasicos.PagamentoTipo>
     {
     }
 }

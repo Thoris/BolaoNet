@@ -4,9 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BolaoNet.Dao.Users
+namespace BolaoNet.Dao.EF.Users
 {
-    public interface IUserDao : IGenericDao<Entities.Users.User>
+    public class UserRespositoryDao : 
+        Base.BaseRepositoryDao<Entities.Users.User>, Dao.Users.IUserDao
     {
+        
+        #region Constructors/Destructors
+
+        public UserRespositoryDao(Base.IUnitOfWork unitOfWork)
+            : base(unitOfWork)
+        {
+
+        }
+
+        #endregion
     }
 }

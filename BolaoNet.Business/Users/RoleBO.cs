@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BolaoNet.Dao.Users
+namespace BolaoNet.Business.Users
 {
-    public interface IRoleDao : IGenericDao<Entities.Users.Role>
+    public class RoleBO : 
+        Base.BaseGenericBusinessBO<Entities.Users.Role>
     {
     }
 }

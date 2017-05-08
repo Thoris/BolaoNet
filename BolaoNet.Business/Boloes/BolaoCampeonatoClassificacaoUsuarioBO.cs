@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BolaoNet.Dao.Boloes
+namespace BolaoNet.Business.Boloes
 {
-    public interface IBolaoCampeonatoClassificacaoUsuarioDao : IGenericDao<Entities.Boloes.BolaoCampeonatoClassificacaoUsuario>
+    public class BolaoCampeonatoClassificacaoUsuarioBO : Base.BaseGenericBusinessBO<Entities.Boloes.BolaoCampeonatoClassificacaoUsuario>
     {
     }
 }

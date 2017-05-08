@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BolaoNet.Dao.Boloes
+namespace BolaoNet.Business.Boloes
 {
-    class IPagamentoDao
+    public class PagamentoBO
     {
     }
 }

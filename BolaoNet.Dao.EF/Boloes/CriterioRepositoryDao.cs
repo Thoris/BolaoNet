@@ -4,9 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BolaoNet.Dao.Boloes
+namespace BolaoNet.Dao.EF.Boloes
 {
-    class ICriterioDao
+    public class CriterioRepositoryDao :
+        Base.BaseRepositoryDao<Entities.Boloes.Criterio>, Dao.Boloes.ICriterioDao
     {
+        
+        #region Constructors/Destructors
+
+        public CriterioRepositoryDao(Base.IUnitOfWork unitOfWork)
+            : base(unitOfWork)
+        {
+
+        }
+
+        #endregion
     }
 }

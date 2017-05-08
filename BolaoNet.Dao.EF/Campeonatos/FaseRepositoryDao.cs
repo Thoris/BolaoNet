@@ -4,9 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BolaoNet.Dao.Campeonatos
+namespace BolaoNet.Dao.EF.Campeonatos
 {
-    public class IFaseDao : IGenericDao<Entities.Campeonatos.Fase>
+    public class FaseRepositoryDao :
+        Base.BaseRepositoryDao<Entities.Campeonatos.Fase>, Dao.Campeonatos.IFaseDao
     {
+        
+        #region Constructors/Destructors
+
+        public FaseRepositoryDao(Base.IUnitOfWork unitOfWork)
+            : base(unitOfWork)
+        {
+
+        }
+
+        #endregion
     }
 }

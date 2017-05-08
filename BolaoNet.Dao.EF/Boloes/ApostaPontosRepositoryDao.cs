@@ -4,9 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BolaoNet.Dao.Boloes
+namespace BolaoNet.Dao.EF.Boloes
 {
-    public interface IApostaPontosDao : IGenericDao<Entities.Boloes.ApostaPontos>
+    public class ApostaPontosRepositoryDao : 
+        Base.BaseRepositoryDao<Entities.Boloes.ApostaPontos>
     {
+        
+        #region Constructors/Destructors
+
+        public ApostaPontosRepositoryDao(Base.IUnitOfWork unitOfWork)
+            : base(unitOfWork)
+        {
+
+        }
+
+        #endregion
     }
 }

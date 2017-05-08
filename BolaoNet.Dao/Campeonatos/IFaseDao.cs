@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Dao.Campeonatos
 {
-    public class IFaseDao : IGenericDao<Entities.Campeonatos.Fase>
+    public interface IFaseDao : IGenericDao<Entities.Campeonatos.Fase>
     {
     }
 }

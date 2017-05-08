@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BolaoNet.Dao.Boloes
+namespace BolaoNet.Business.Boloes
 {
-    public interface IApostaExtraUsuarioDao : IGenericDao<Entities.Boloes.ApostaExtraUsuario>
+    public class ApostaExtraUsuarioBO : Base.BaseGenericBusinessBO<Entities.Boloes.ApostaExtraUsuario>
     {
     }
 }

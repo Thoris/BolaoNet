@@ -4,9 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BolaoNet.Dao.Boloes
+namespace BolaoNet.Dao.EF.Boloes
 {
-    class IBolaoPontuacaoDao
+    public class BolaoPontuacaoRepositoryDao :
+        Base.BaseRepositoryDao<Entities.Boloes.BolaoPontuacao>, Dao.Boloes.IBolaoPontuacaoDao
     {
+        
+        #region Constructors/Destructors
+
+        public BolaoPontuacaoRepositoryDao(Base.IUnitOfWork unitOfWork)
+            : base(unitOfWork)
+        {
+
+        }
+
+        #endregion
     }
 }

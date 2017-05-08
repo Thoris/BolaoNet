@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BolaoNet.Dao.Campeonatos
+namespace BolaoNet.Business.Campeonatos
 {
-    public class IFaseDao : IGenericDao<Entities.Campeonatos.Fase>
+    public class FaseBO : 
+        Base.BaseGenericBusinessBO<Entities.Campeonatos.Fase>
     {
     }
 }
