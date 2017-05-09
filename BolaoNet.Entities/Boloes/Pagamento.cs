@@ -33,7 +33,6 @@ namespace BolaoNet.Entities.Boloes
         public virtual Bolao Bolao {get;set;}
 
         [Key, Column(Order = 2)]
-        [StringLength(25)]
         public string UserName { get; set; }
         [ForeignKey("UserName")]
         public virtual Users.User User { get; set; }

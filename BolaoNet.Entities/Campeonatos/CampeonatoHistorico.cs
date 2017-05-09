@@ -13,8 +13,7 @@ namespace BolaoNet.Entities.Campeonatos
         [Key, Column(Order = 0)]
         public int Ano { get; set; }
 
-        [Key, Column(Order = 1)]
-        [StringLength(50)]
+        [Key, Column(Order = 1)]       
         public string NomeCampeonato { get; set; }
         [ForeignKey("NomeCampeonato")]
         public virtual Campeonato Campeonato { get; set; }

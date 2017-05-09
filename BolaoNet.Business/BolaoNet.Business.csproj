@@ -85,6 +85,9 @@
     <Compile Include="DadosBasicos\EstadioBO.cs" />
     <Compile Include="DadosBasicos\PagamentoTipoBO.cs" />
     <Compile Include="DadosBasicos\TimeBO.cs" />
+    <Compile Include="Facade\BolaoFacadeBO.cs" />
+    <Compile Include="Facade\CampeonatoFacadeBO.cs" />
+    <Compile Include="Facade\UserFacadeBO.cs" />
     <Compile Include="FactoryBO.cs" />
     <Compile Include="Interfaces\Boloes\IApostaExtraBO.cs" />
     <Compile Include="Interfaces\Boloes\IApostaExtraUsuarioBO.cs" />
