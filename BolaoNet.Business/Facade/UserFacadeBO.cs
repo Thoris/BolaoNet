@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Business.Facade
 {
-    class UserFacadeBO
+    public class UserFacadeBO : Interfaces.Facade.IUserFacadeBO
     {
     }
 }

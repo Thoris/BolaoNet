@@ -12,7 +12,8 @@ namespace BolaoNet.Entities.DadosBasicos
         #region Properties
 
         [Key]
-        public string TipoPagamento { get; set; }
+        public int TipoPagamento { get; set; }
+
         public string Descricao { get; set; }
 
         #endregion 

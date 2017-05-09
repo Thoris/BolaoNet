@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Business.Facade
 {
-    class CampeonatoFacadeBO
+    public class CampeonatoFacadeBO : Interfaces.Facade.ICampeonatoFacadeBO
     {
+
     }
 }

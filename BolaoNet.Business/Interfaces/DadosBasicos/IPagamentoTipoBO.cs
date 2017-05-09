@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Business.Interfaces.DadosBasicos
 {
-    public interface IPagamentoTipoBO
+    public interface IPagamentoTipoBO : Base.IGenericBusiness<Entities.DadosBasicos.PagamentoTipo>
     {
     }
 }

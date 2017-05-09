@@ -87,6 +87,7 @@
     <Compile Include="DadosBasicos\TimeBO.cs" />
     <Compile Include="Facade\BolaoFacadeBO.cs" />
     <Compile Include="Facade\CampeonatoFacadeBO.cs" />
+    <Compile Include="Facade\InitializationFacadeBO.cs" />
     <Compile Include="Facade\UserFacadeBO.cs" />
     <Compile Include="FactoryBO.cs" />
     <Compile Include="Interfaces\Boloes\IApostaExtraBO.cs" />
@@ -131,6 +132,10 @@
     <Compile Include="Interfaces\DadosBasicos\IEstadioBO.cs" />
     <Compile Include="Interfaces\DadosBasicos\IPagamentoTipoBO.cs" />
     <Compile Include="Interfaces\DadosBasicos\ITimeBO.cs" />
+    <Compile Include="Interfaces\Facade\IBolaoFacadeBO.cs" />
+    <Compile Include="Interfaces\Facade\ICampeonatoFacadeBO.cs" />
+    <Compile Include="Interfaces\Facade\IInitializationFacadeBO.cs" />
+    <Compile Include="Interfaces\Facade\IUserFacadeBO.cs" />
     <Compile Include="Interfaces\IBolaoRegraBO.cs" />
     <Compile Include="Interfaces\IFactoryBO.cs" />
     <Compile Include="Interfaces\Users\IRoleBO.cs" />

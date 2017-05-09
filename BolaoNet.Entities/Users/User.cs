@@ -99,6 +99,20 @@ namespace BolaoNet.Entities.Users
         public DateTime ApprovedDate{ get; set; }
 
         public bool IsOnline{ get; set; }
+        public bool IsAdmin { get; set; }
+
+        #endregion
+
+        #region Constructors/Destructors
+
+        public User()
+        {
+
+        }
+        public User(string userName)
+        {
+            this.UserName = userName;
+        }
 
         #endregion
     }
