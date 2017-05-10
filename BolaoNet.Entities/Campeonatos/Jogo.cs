@@ -85,6 +85,17 @@ namespace BolaoNet.Entities.Campeonatos
         {
 
         }
+        //public Jogo(string nomeCampeonato, int rodada, string nomeFase, string nomeGrupo, string nomeTime1, string nomeTime2, string nomeEstadio, DateTime dataJogo)
+        //{
+        //    this.NomeCampeonato = nomeCampeonato;
+        //    this.Rodada = rodada;
+        //    this.NomeFase = nomeFase;
+        //    this.NomeGrupo = nomeGrupo;
+        //    this.NomeTime1 = nomeTime1;
+        //    this.NomeTime2 = nomeTime2;
+        //    this.NomeEstadio = nomeEstadio;
+        //    this.DataJogo = dataJogo;
+        //}
 
         #endregion
     }

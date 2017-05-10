@@ -21,5 +21,19 @@ namespace BolaoNet.Entities.Campeonatos
         public virtual Campeonato Campeonato { get; set; }
 
         #endregion
+
+        #region Constructors/Destructors
+
+        public CampeonatoGrupo()
+        {
+
+        }
+        public CampeonatoGrupo(string nomeGrupo, string nomeCampeonato)
+        {
+            this.Nome = nomeGrupo;
+            this.NomeCampeonato = nomeCampeonato;
+        }
+
+        #endregion
     }
 }

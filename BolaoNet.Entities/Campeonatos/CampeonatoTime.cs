@@ -24,5 +24,20 @@ namespace BolaoNet.Entities.Campeonatos
         public string NomeCampeonato { get; set; }
 
         #endregion
+
+        #region Constructors/Destructors
+
+        public CampeonatoTime()
+        {
+
+        }
+        public CampeonatoTime(string nomeTime, string nomeCampeonato)
+        {
+            this.NomeTime = nomeTime;
+            this.NomeCampeonato = nomeCampeonato;
+        }
+
+        #endregion
+
     }
 }

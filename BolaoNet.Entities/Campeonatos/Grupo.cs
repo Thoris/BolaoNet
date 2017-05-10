@@ -31,6 +31,10 @@ namespace BolaoNet.Entities.Campeonatos
         {
 
         }
+        public Grupo(string nome)
+        {
+            this.Nome = nome;
+        }
 
         #endregion
     }

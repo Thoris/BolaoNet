@@ -8,5 +8,6 @@ namespace BolaoNet.Business.Interfaces.Facade.Campeonatos
 {
     public interface ICopaMundoFacadeBO
     {
+        IList<Entities.Campeonatos.Jogo> GetJogosGrupo(Entities.Campeonatos.Campeonato campeonato);
     }
 }
