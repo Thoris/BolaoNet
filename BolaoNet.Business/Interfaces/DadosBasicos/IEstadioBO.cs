@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Business.Interfaces.DadosBasicos
 {
-    public interface IEstadioBO
+    public interface IEstadioBO : Base.IGenericBusiness<Entities.DadosBasicos.Estadio>
     {
     }
 }

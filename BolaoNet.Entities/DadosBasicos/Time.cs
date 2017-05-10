@@ -37,6 +37,10 @@ namespace BolaoNet.Entities.DadosBasicos
         {
 
         }
+        public Time(string nome)
+        {
+            this.Nome = nome;
+        }
 
         #endregion
     }

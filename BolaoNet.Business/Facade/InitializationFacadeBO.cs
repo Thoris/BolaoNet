@@ -290,8 +290,5 @@ namespace BolaoNet.Business.Facade
         }        
          
         #endregion
-
-
-
     }
 }

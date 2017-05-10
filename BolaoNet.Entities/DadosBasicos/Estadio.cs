@@ -36,6 +36,10 @@ namespace BolaoNet.Entities.DadosBasicos
         {
 
         }
+        public Estadio(string nome)
+        {
+            this.Nome = nome;
+        }
 
         #endregion
     }

@@ -371,6 +371,29 @@ namespace BolaoNet.Business
             return new Campeonatos.PontuacaoBO(_userName, GetFactoryDao().CreateCampeonatoPontuacaoDao());
         }
 
+        public Interfaces.Facade.IBolaoFacadeBO CreateBolaoFacadeBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Interfaces.Facade.ICampeonatoFacadeBO CreateCampeonatoFacadeBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Interfaces.Facade.IInitializationFacadeBO CreateInitializationFacadeBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Interfaces.Facade.IUserFacadeBO CreateUserFacadeBO()
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
+
+
+
     }
 }

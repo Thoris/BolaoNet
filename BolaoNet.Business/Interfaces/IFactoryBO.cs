@@ -57,6 +57,10 @@ namespace BolaoNet.Business.Interfaces
         Users.IUserBO CreateUserBO();
         Users.IUserInRoleBO CreateUserInRoleBO();
 
+        Interfaces.Facade.IBolaoFacadeBO CreateBolaoFacadeBO();
+        Interfaces.Facade.ICampeonatoFacadeBO CreateCampeonatoFacadeBO();
+        Interfaces.Facade.IInitializationFacadeBO CreateInitializationFacadeBO();
+        Interfaces.Facade.IUserFacadeBO CreateUserFacadeBO();
 
     }
 }

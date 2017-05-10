@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Business.Interfaces.DadosBasicos
 {
-    public interface ITimeBO
+    public interface ITimeBO : Base.IGenericBusiness<Entities.DadosBasicos.Time>
     {
     }
 }

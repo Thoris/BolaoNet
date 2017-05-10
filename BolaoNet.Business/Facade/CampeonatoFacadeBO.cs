@@ -9,5 +9,9 @@ namespace BolaoNet.Business.Facade
     public class CampeonatoFacadeBO : Interfaces.Facade.ICampeonatoFacadeBO
     {
 
+        public bool CreateCampeonato(Entities.Campeonatos.Campeonato campeonato)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

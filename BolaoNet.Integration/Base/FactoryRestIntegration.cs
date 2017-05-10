@@ -306,5 +306,26 @@ namespace BolaoNet.Integration.Base
         }
 
         #endregion
+
+
+        public Business.Interfaces.Facade.IBolaoFacadeBO CreateBolaoFacadeBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Facade.ICampeonatoFacadeBO CreateCampeonatoFacadeBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Facade.IInitializationFacadeBO CreateInitializationFacadeBO()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Business.Interfaces.Facade.IUserFacadeBO CreateUserFacadeBO()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
