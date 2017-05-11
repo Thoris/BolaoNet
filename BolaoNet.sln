@@ -97,6 +97,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Json", "Json", "{7FD690E3-9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BolaoNet.ReverseDatabase", "BolaoNet.ReverseDatabase\BolaoNet.ReverseDatabase.csproj", "{5AC619EE-AE22-42DC-893B-A648B63D8D3D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reports", "Reports", "{52A2FC5F-A0CC-4596-99D3-E8D31AD5EA2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BolaoNet.Reports", "BolaoNet.Reports\BolaoNet.Reports.csproj", "{2977E641-629A-4640-9E94-502BA267987B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -159,6 +163,10 @@ Global
 		{5AC619EE-AE22-42DC-893B-A648B63D8D3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5AC619EE-AE22-42DC-893B-A648B63D8D3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5AC619EE-AE22-42DC-893B-A648B63D8D3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2977E641-629A-4640-9E94-502BA267987B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2977E641-629A-4640-9E94-502BA267987B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2977E641-629A-4640-9E94-502BA267987B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2977E641-629A-4640-9E94-502BA267987B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -192,5 +200,6 @@ Global
 		{2574F601-971A-4E3F-8FF7-1E7B7B042F43} = {0DD79E73-9DDE-475A-A7AC-DDE941D14543}
 		{7FD690E3-939A-46BF-ABA7-CDCD1B873523} = {0DD79E73-9DDE-475A-A7AC-DDE941D14543}
 		{5AC619EE-AE22-42DC-893B-A648B63D8D3D} = {278BD254-22F2-4DA5-A514-D0B001F292B1}
+		{2977E641-629A-4640-9E94-502BA267987B} = {52A2FC5F-A0CC-4596-99D3-E8D31AD5EA2A}
 	EndGlobalSection
 EndGlobal

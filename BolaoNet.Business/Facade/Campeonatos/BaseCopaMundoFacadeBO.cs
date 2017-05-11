@@ -232,15 +232,48 @@ namespace BolaoNet.Business.Facade.Campeonatos
             list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], idsGanhadores[l++], true, idsGanhadores[l++], true));
             c++;
             list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], idsGanhadores[l++], true, idsGanhadores[l++], true));
-            c++;
-            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], idsGanhadores[l++], true, idsGanhadores[l++], true));
+            
+            return list;
+
+        }
+        public IList<Entities.Campeonatos.Jogo> GetJogosFinal(Entities.Campeonatos.Campeonato campeonato, int rodada, string nomeGrupo, string nomeFase, IList<DateTime> datas, IList<string> estadios, IList<int> ids, IList<int> idsGanhadores)
+        {
+            if (campeonato == null)
+                throw new ArgumentException("campeonato");
+            if (string.IsNullOrEmpty(campeonato.Nome))
+                throw new ArgumentException("campeonato.Nome");
+            if (string.IsNullOrEmpty(nomeGrupo))
+                throw new ArgumentException("nomeGrupo");
+            if (string.IsNullOrEmpty(nomeFase))
+                throw new ArgumentException("nomeFase");
+            if (datas == null)
+                throw new ArgumentException("datas");
+            if (estadios == null)
+                throw new ArgumentException("estadios");
+            if (ids == null)
+                throw new ArgumentException("ids");
+            if (estadios.Count != 4)
+                throw new ArgumentException("estadios.Count != 2");
+            if (ids.Count != 4)
+                throw new ArgumentException("ids.Count != 2");
+            if (datas.Count != 4)
+                throw new ArgumentException("datas.Count != 2");
+            if (idsGanhadores == null)
+                throw new ArgumentException("idsGanhadores");
+            if (idsGanhadores.Count != 8)
+                throw new ArgumentException("idsGanhadores.Count != 4");
+
+            IList<Entities.Campeonatos.Jogo> list = new List<Entities.Campeonatos.Jogo>();
+
+            int c = 0;
+            int l = 0;
+            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], idsGanhadores[l++], false, idsGanhadores[l++], false));
             c++;
             list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], idsGanhadores[l++], true, idsGanhadores[l++], true));
 
             return list;
 
         }
-
 
         public IList<Entities.Campeonatos.Jogo> GetJogosGrupo(Entities.Campeonatos.Campeonato campeonato, string nomeGrupo, string nomeFase, IList<string> times, IList<DateTime> datas, IList<string> estadios, IList<int> ids)
         {

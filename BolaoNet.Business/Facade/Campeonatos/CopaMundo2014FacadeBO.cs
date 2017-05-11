@@ -22,6 +22,20 @@ namespace BolaoNet.Business.Facade.Campeonatos
  
         public bool CreateCampeonato()
         {
+            Entities.Campeonatos.Campeonato campeonato = new Entities.Campeonatos.Campeonato("Copa do Mundo 2014")
+            {
+                IsClube = false,
+                IsIniciado = false                
+            };
+
+            IList<Entities.Campeonatos.Jogo> list = new List<Entities.Campeonatos.Jogo>();
+
+            list = base.Merge(list, GetJogosGrupo(campeonato));
+            list = base.Merge(list, GetOitavasFinal(campeonato));
+            list = base.Merge(list, GetQuartasFinal(campeonato));
+            list = base.Merge(list, GetSemiFinal(campeonato));
+            list = base.Merge(list, GetFinal(campeonato));
+
             return true;
         }
         public IList<Entities.Campeonatos.Jogo> GetJogosGrupo(Entities.Campeonatos.Campeonato campeonato)
@@ -157,6 +171,44 @@ namespace BolaoNet.Business.Facade.Campeonatos
             string nomeGrupo = " ";
 
             return base.GetJogosQuartas(campeonato, rodada, nomeGrupo, nomeFase, datas, estadios, ids, idsGanhadores);            
+        }
+        public IList<Entities.Campeonatos.Jogo> GetSemiFinal(Entities.Campeonatos.Campeonato campeonato)
+        {
+            string nomeFase = "Semi Final";
+            IList<DateTime> datas = new List<DateTime>();
+            IList<int> ids = new List<int>();
+            IList<int> idsGanhadores = new List<int>();
+            IList<string> estadios = new List<string>();
+
+            datas.Add(new DateTime(2014, 7, 8, 17, 0, 0, 0)); estadios.Add("Belo Horizonte"); ids.Add(61);
+            idsGanhadores.Add(57); idsGanhadores.Add(58);
+            datas.Add(new DateTime(2014, 7, 9, 17, 0, 0, 0)); estadios.Add("São Paulo"); ids.Add(62);
+            idsGanhadores.Add(59); idsGanhadores.Add(60);
+
+
+            int rodada = 6;
+            string nomeGrupo = " ";
+
+            return base.GetJogosSemi(campeonato, rodada, nomeGrupo, nomeFase, datas, estadios, ids, idsGanhadores);
+        }
+        public IList<Entities.Campeonatos.Jogo> GetFinal(Entities.Campeonatos.Campeonato campeonato)
+        {
+            string nomeFase = "Final";
+            IList<DateTime> datas = new List<DateTime>();
+            IList<int> ids = new List<int>();
+            IList<int> idsGanhadores = new List<int>();
+            IList<string> estadios = new List<string>();
+
+            datas.Add(new DateTime(2014, 7, 12, 17, 0, 0, 0)); estadios.Add("Brasília"); ids.Add(63);
+            idsGanhadores.Add(61); idsGanhadores.Add(62);
+            datas.Add(new DateTime(2014, 7, 13, 16, 0, 0, 0)); estadios.Add("São Paulo"); ids.Add(64);
+            idsGanhadores.Add(61); idsGanhadores.Add(61);
+
+
+            int rodada = 6;
+            string nomeGrupo = " ";
+
+            return base.GetJogosFinal(campeonato, rodada, nomeGrupo, nomeFase, datas, estadios, ids, idsGanhadores);
         }
 
         #endregion
