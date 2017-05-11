@@ -46,6 +46,10 @@ namespace BolaoNet.Entities.Boloes
         {
 
         }
+        public Bolao(string nomeBolao)
+        {
+            this.Nome = nomeBolao;            
+        }
 
         #endregion
     }

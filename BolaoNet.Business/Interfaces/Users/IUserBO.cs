@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Business.Interfaces.Users
 {
-    public interface IUserBO
+    public interface IUserBO : Base.IGenericBusiness<Entities.Users.User>
     {
     }
 }

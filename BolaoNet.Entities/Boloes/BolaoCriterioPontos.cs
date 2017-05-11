@@ -62,6 +62,11 @@ namespace BolaoNet.Entities.Boloes
         {
 
         }
+        public BolaoCriterioPontos(string nomeBolao, CriteriosID criterioID)
+        {
+            this.NomeBolao = nomeBolao;
+            this.CriterioID = criterioID;
+        }
 
         #endregion
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Business.Interfaces.Boloes
 {
-    public interface IApostaExtraUsuarioBO
+    public interface IApostaExtraUsuarioBO : Base.IGenericBusiness<Entities.Boloes.ApostaExtraUsuario>
     {
     }
 }

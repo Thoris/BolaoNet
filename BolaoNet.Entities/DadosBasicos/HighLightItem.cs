@@ -22,7 +22,6 @@ namespace BolaoNet.Entities.DadosBasicos
         [NotMapped]
         public Color BackColor { get; set; }
 
-        public int Posicao { get; set; }
 
         #endregion
 

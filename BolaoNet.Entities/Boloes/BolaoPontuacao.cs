@@ -28,6 +28,11 @@ namespace BolaoNet.Entities.Boloes
         {
 
         }
+        public BolaoPontuacao(string nomeBolao, int pontos)
+        {
+            this.NomeBolao = nomeBolao;
+            this.Pontos = pontos;
+        }
 
         #endregion
     }

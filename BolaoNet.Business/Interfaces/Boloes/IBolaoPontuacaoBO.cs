@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Business.Interfaces.Boloes
 {
-    public interface IBolaoPontuacaoBO
+    public interface IBolaoPontuacaoBO : Base.IGenericBusiness<Entities.Boloes.BolaoPontuacao>
     {
     }
 }

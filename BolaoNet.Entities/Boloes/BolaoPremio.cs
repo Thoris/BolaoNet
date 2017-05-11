@@ -17,6 +17,9 @@ namespace BolaoNet.Entities.Boloes
         [ForeignKey("NomeBolao")]
         public virtual Entities.Boloes.Bolao Bolao {get;set; }
 
+        [Key, Column(Order=1)]
+        public int Posicao { get; set; }
+
         #endregion
 
         #region Constructors/Destructors
@@ -24,6 +27,11 @@ namespace BolaoNet.Entities.Boloes
         public BolaoPremio()
         {
 
+        }
+        public BolaoPremio(string nomeBolao, int posicao)
+        {
+            this.NomeBolao = nomeBolao;
+            this.Posicao = posicao;
         }
 
         #endregion

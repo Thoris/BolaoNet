@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Business.Interfaces.Users
 {
-    public interface IUserInRoleBO
+    public interface IUserInRoleBO : Base.IGenericBusiness<Entities.Users.UserInRole>
     {
     }
 }

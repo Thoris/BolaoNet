@@ -42,8 +42,7 @@ namespace BolaoNet.Business.Facade.Campeonatos
 
         #region Methods
 
-        public Entities.Campeonatos.Jogo CreateJogo(string nomeCampeonato, DateTime dataJogo, string nomeEstadio, string nomeFase, string nomeGrupo, 
-            int rodada, int id, string pendenteTime1NomeGrupo, int pendenteTime1PosGrupo, string pendenteTime2NomeGrupo, int pendenteTime2PosGrupo)
+        public Entities.Campeonatos.Jogo CreateJogo(string nomeCampeonato, DateTime dataJogo, string nomeEstadio, string nomeFase, string nomeGrupo, int rodada, int id, string pendenteTime1NomeGrupo, int pendenteTime1PosGrupo, string pendenteTime2NomeGrupo, int pendenteTime2PosGrupo)
         {
             return new Entities.Campeonatos.Jogo()
             {
@@ -60,10 +59,8 @@ namespace BolaoNet.Business.Facade.Campeonatos
                 DescricaoTime1 = pendenteTime1PosGrupo + pendenteTime1NomeGrupo,
                 DescricaoTime2 = pendenteTime2PosGrupo + pendenteTime2NomeGrupo
             };
-        }
-        
-        public Entities.Campeonatos.Jogo CreateJogo(string nomeCampeonato, DateTime dataJogo, string nomeEstadio, string nomeFase, string nomeGrupo,
-            int rodada, int id, int pendenteTime1, bool ganhadorTime1, int pendenteTime2, bool ganhadorTime2 )
+        }        
+        public Entities.Campeonatos.Jogo CreateJogo(string nomeCampeonato, DateTime dataJogo, string nomeEstadio, string nomeFase, string nomeGrupo,int rodada, int id, int pendenteTime1, bool ganhadorTime1, int pendenteTime2, bool ganhadorTime2 )
         {
             string descricaoTime1 = "";
             if (ganhadorTime1)
@@ -94,8 +91,7 @@ namespace BolaoNet.Business.Facade.Campeonatos
                 DescricaoTime2 = descricaoTime2,
 
             };
-        }
-        
+        }        
         public Entities.Campeonatos.Jogo CreateJogo(string nomeCampeonato, DateTime dataJogo, string nomeEstadio, string nomeFase, string nomeGrupo, string nomeTime1, string nomeTime2, int rodada, int id)
         {
             return new Entities.Campeonatos.Jogo()
@@ -326,6 +322,12 @@ namespace BolaoNet.Business.Facade.Campeonatos
         }
         public IList<Entities.Campeonatos.Jogo> Merge(IList<Entities.Campeonatos.Jogo> baseList, IList<Entities.Campeonatos.Jogo> mergeList)
         {
+            if (baseList == null)
+                throw new ArgumentException("baseList");
+            if (mergeList == null)
+                throw new ArgumentException("mergeList");
+
+
             for (int c = 0; c < mergeList.Count; c++)
             {
                 baseList.Add(mergeList[c]);
@@ -446,6 +448,14 @@ namespace BolaoNet.Business.Facade.Campeonatos
             }
 
             return false;
+        }
+
+        public bool InsertResult(int jogoLabel, int golsTime1, int golsTime2, int ? penaltis1, int ? penaltis2)
+        {
+
+
+
+            return true;
         }
 
         #endregion

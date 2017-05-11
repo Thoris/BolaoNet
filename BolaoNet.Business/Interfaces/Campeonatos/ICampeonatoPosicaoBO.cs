@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Business.Interfaces.Campeonatos
 {
-    public interface ICampeonatoPosicaoBO
+    public interface ICampeonatoPosicaoBO : Base.IGenericBusiness<Entities.Campeonatos.CampeonatoPosicao>
     {
     }
 }

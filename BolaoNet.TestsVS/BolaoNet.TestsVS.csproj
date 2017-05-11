@@ -50,6 +50,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Business\Facade\BolaoCopaMundo2014FacadeBO.cs" />
+    <Compile Include="Business\Facade\BolaoCopaMundo2014UserFacadeBO.cs" />
     <Compile Include="IntegrationTests\BolaoIntegrationTests.cs" />
     <Compile Include="IntegrationTests\CampeonatoIntegrationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

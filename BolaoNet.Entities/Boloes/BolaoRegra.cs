@@ -23,5 +23,19 @@ namespace BolaoNet.Entities.Boloes
         public string Descricao { get; set; }
 
         #endregion
+
+        #region Constructors/Destructors
+
+        public BolaoRegra()
+        {
+
+        }
+        public BolaoRegra(string nomeBolao, int regraID)
+        {
+            this.NomeBolao = nomeBolao;
+            this.RegraID = regraID;
+        }
+
+        #endregion
     }
 }
