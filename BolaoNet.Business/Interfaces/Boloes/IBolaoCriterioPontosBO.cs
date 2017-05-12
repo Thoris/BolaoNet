@@ -8,5 +8,7 @@ namespace BolaoNet.Business.Interfaces.Boloes
 {
     public interface IBolaoCriterioPontosBO : Base.IGenericBusiness<Entities.Boloes.BolaoCriterioPontos>
     {
+        int[] GetCriteriosPontos(Entities.Boloes.Bolao bolao);
+        IList<Entities.Boloes.BolaoCriterioPontos> GetCriterioPontosBolao(Entities.Boloes.Bolao bolao);
     }
 }

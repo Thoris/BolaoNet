@@ -19,6 +19,8 @@ namespace BolaoNet.Business.Facade.Campeonatos
         protected Interfaces.DadosBasicos.IEstadioBO _estadioBO;
         protected Interfaces.Campeonatos.IGrupoBO _grupoBO;
         protected Interfaces.Campeonatos.IJogoBO _jogoBO;
+
+        protected Interfaces.Facade.ICampeonatoFacadeBO _campeonatoFacadeBO;
         
         #endregion
 
@@ -450,11 +452,14 @@ namespace BolaoNet.Business.Facade.Campeonatos
             return false;
         }
 
-        public bool InsertResult(int jogoLabel, int golsTime1, int golsTime2, int ? penaltis1, int ? penaltis2)
+        public bool InsertResult(Entities.Campeonatos.Campeonato campeonato, int jogoID, int golsTime1, int golsTime2, int ? penaltis1, int ? penaltis2)
         {
-
-
-
+            Entities.Campeonatos.Jogo jogo = new Entities.Campeonatos.Jogo(campeonato.Nome, jogoID);
+            jogo.GolsTime1 = golsTime1;
+            jogo.GolsTime2 = golsTime2;
+            jogo.PenaltisTime1 = penaltis1;
+            jogo.PenaltisTime2 = penaltis2;
+            _campeonatoFacadeBO.InsertJogo(jogo);
             return true;
         }
 

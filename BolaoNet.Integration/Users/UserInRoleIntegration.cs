@@ -8,7 +8,7 @@ namespace BolaoNet.Integration.Users
 {
     public class UserInRoleIntegration :
         Base.GenericIntegration<Entities.Users.UserInRole>, 
-        Business.Interfaces.Users.IUserBO
+        Business.Interfaces.Users.IUserInRoleBO
     {
         #region Constants
 

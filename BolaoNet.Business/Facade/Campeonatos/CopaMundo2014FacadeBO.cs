@@ -210,7 +210,7 @@ namespace BolaoNet.Business.Facade.Campeonatos
 
             return base.GetJogosFinal(campeonato, rodada, nomeGrupo, nomeFase, datas, estadios, ids, idsGanhadores);
         }
-        public bool InsertResults()
+        public bool InsertResults(Entities.Campeonatos.Campeonato campeonato)
         {
             IList<int> jogoLabels = new List<int>();
             IList<int> time1 = new List<int>();
@@ -298,7 +298,7 @@ namespace BolaoNet.Business.Facade.Campeonatos
 
             for (int c = 0; c < jogoLabels.Count; c++ )
             {
-                base.InsertResult(jogoLabels[c], time1[c], time2[c], penaltis1[c], penaltis2[c]);
+                base.InsertResult(campeonato, jogoLabels[c], time1[c], time2[c], penaltis1[c], penaltis2[c]);   
             }
 
             return true;

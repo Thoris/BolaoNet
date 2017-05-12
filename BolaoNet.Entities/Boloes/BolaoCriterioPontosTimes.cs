@@ -22,7 +22,7 @@ namespace BolaoNet.Entities.Boloes
         [ForeignKey("NomeTime")]
         public virtual Entities.DadosBasicos.Time Time { get; set; }
 
-        public int ? MultiploTime { get; set; }
+        public int MultiploTime { get; set; }
      
         #endregion
         

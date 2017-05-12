@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BolaoNet.Entities.Boloes
 {
-    public class JogoUsuario : Entities.Campeonatos.Jogo
+    public class JogoUsuario : Entities.Campeonatos.Jogo, Interfaces.IPontosJogosUsuarioEntity
     {
         #region Enumeration
         public enum TypeAposta
@@ -33,44 +35,37 @@ namespace BolaoNet.Entities.Boloes
 
         #region Properties
 
+        [Key, Column(Order = 2)]
+        public string NomeBolao { get; set; }
+        [ForeignKey("NomeBolao")]
+        public virtual Bolao Bolao { get; set; }
+
+        [Key, Column(Order = 3)]
+        public string UserName { get; set; }
+        [ForeignKey("UserName")]
+        public virtual Users.User User { get; set; }
+
         public DateTime DataAposta {get;set;}
         public bool Automatico{get;set;}
+
         public int ApostaTime1{get;set;}
         public int ApostaTime2{get;set;}
-        public virtual ApostaPontos ApostaPontos{get;set;}
+        public int? ApostaPenaltis1 { get; set; }
+        public int? ApostaPenaltis2 { get; set; }
+
         public bool Valido{get;set;}
-        public string UserName{get;set;}
-        public virtual Bolao Bolao{get;set;}
-        public virtual DadosBasicos.Time NomeTimeResult1 { get; set; }
-        public virtual DadosBasicos.Time NomeTimeResult2 { get; set; }
 
-        //public virtual new DadosBasicos.Time Time1
-        //{
-        //    get
-        //    {
-        //        if (_timeResult1 == null || string.IsNullOrEmpty(_timeResult1.Nome))
-        //            return base.Time1;
-        //        else
-        //            return _timeResult1;
-        //    }
-        //    set { base.Time1 = value; }
-        //}
-        //public virtual new DadosBasicos.Time Time2
-        //{
-        //    get
-        //    {
-        //        if (_timeResult2 == null || string.IsNullOrEmpty(_timeResult2.Nome))
-        //            return base.Time2;
-        //        else
-        //            return _timeResult2;
-        //    }
-        //    set { base.Time2 = value; }
-        //}
 
-        public virtual DadosBasicos.Time Time1Classificado { get; set; }
-        public virtual DadosBasicos.Time Time2Classificado { get; set; }
+        public string NomeTimeResult1 { get; set; }
+        [ForeignKey("NomeTime1Result1")]
+        public virtual DadosBasicos.Time TimeResult1 { get; set; }
 
+        public string NomeTimeResult2 { get; set; }
+        [ForeignKey("TimeResult2")]
+        public virtual DadosBasicos.Time TimeResult2 { get; set; }
+        
         public int Pontos {get;set;}
+
         public bool IsEmpate {get;set;}
         public bool IsDerrota{get;set;}
         public bool IsVitoria{get;set;}
@@ -90,6 +85,7 @@ namespace BolaoNet.Entities.Boloes
         public bool IsPlacarCheio{get;set;}
         public bool IsMultiploTime{get;set;}
         public int MultiploTime{get;set;} 
+
         public int Ganhador{get;set;} 
         public DateTime DataFacebook{get;set;}
 
@@ -98,6 +94,11 @@ namespace BolaoNet.Entities.Boloes
         #region Constructors/Destructors
 
         public JogoUsuario()
+        {
+
+        }
+        public JogoUsuario(string userName, string nomeBolao, string nomeCampeonato, int jogoId)
+            : base(nomeCampeonato, jogoId)
         {
 
         }

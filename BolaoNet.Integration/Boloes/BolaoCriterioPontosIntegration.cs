@@ -32,5 +32,19 @@ namespace BolaoNet.Integration.Boloes
         }
 
         #endregion    
+    
+        #region IBolaoCriterioPontosBO members
+
+        public int[] GetCriteriosPontos(Entities.Boloes.Bolao bolao)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<Entities.Boloes.BolaoCriterioPontos> GetCriterioPontosBolao(Entities.Boloes.Bolao bolao)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

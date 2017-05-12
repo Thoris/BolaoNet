@@ -33,6 +33,11 @@ namespace BolaoNet.Entities.Boloes
         {
 
         }
+        public BolaoMembro (string userName, string nomeBolao)
+        {
+            this.UserName = userName;
+            this.NomeBolao = nomeBolao;
+        }
 
         #endregion
     }

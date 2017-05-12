@@ -20,5 +20,30 @@ namespace BolaoNet.Business.Boloes
         }
 
         #endregion
+
+        #region IBolaoCriterioPontosBO members
+
+        public int[] GetCriteriosPontos(Entities.Boloes.Bolao bolao)
+        {
+
+            IList<Entities.Boloes.BolaoCriterioPontos> criterios = GetCriterioPontosBolao(bolao);
+
+            int[] values = new int[(int)Entities.Boloes.BolaoCriterioPontos.CriteriosID.Cheio + 1];
+
+            for (int c = 0; c < criterios.Count; c++)
+            {
+                if (criterios[c].Pontos != null)
+                    values[(int)criterios[c].CriterioID] = (int)criterios[c].Pontos;
+            }
+
+            return values;
+        }
+
+        public IList<Entities.Boloes.BolaoCriterioPontos> GetCriterioPontosBolao(Entities.Boloes.Bolao bolao)
+        {
+            return null;
+        }
+        
+        #endregion
     }
 }

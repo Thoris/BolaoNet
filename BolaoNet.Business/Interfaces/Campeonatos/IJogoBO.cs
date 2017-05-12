@@ -8,5 +8,6 @@ namespace BolaoNet.Business.Interfaces.Campeonatos
 {
     public interface IJogoBO : Base.IGenericBusiness<Entities.Campeonatos.Jogo>
     {
+        
     }
 }

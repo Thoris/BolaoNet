@@ -10,7 +10,7 @@ namespace BolaoNet.TestsVS.IntegrationTests
     {
         #region Variables
 
-        private Business.Interfaces.Campeonatos.ICampeonatoBO _campeonatoBO;
+        //private Business.Interfaces.Campeonatos.ICampeonatoBO _campeonatoBO;
         
 
         #endregion
