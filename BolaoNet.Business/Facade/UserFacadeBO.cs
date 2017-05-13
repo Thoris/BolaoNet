@@ -8,6 +8,23 @@ namespace BolaoNet.Business.Facade
 {
     public class UserFacadeBO : Interfaces.Facade.IUserFacadeBO
     {
+        #region Variables
+
+        private Interfaces.Users.IUserBO _userBO;
+        private Interfaces.Users.IUserInRoleBO _userInRoleBO;
+
+        #endregion
+
+        #region Constructors/Destructors
+
+        public UserFacadeBO(Interfaces.IFactoryBO factory)
+        {
+            _userBO = factory.CreateUserBO();
+
+        }
+
+        #endregion
+
         #region IUserFacadeBO members
 
         public bool CreateUser(Entities.Users.User user)

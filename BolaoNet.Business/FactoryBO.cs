@@ -373,7 +373,7 @@ namespace BolaoNet.Business
 
         public Interfaces.Facade.IBolaoFacadeBO CreateBolaoFacadeBO()
         {
-            throw new NotImplementedException();
+            return new Facade.BolaoFacadeBO(this);           
         }
 
         public Interfaces.Facade.ICampeonatoFacadeBO CreateCampeonatoFacadeBO()
@@ -383,12 +383,12 @@ namespace BolaoNet.Business
 
         public Interfaces.Facade.IInitializationFacadeBO CreateInitializationFacadeBO()
         {
-            throw new NotImplementedException();
+            return new Facade.InitializationFacadeBO(this);
         }
 
         public Interfaces.Facade.IUserFacadeBO CreateUserFacadeBO()
         {
-            throw new NotImplementedException();
+            return new Facade.UserFacadeBO();
         }
 
         #endregion

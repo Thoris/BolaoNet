@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Business.Facade
 {
-    public class BolaoFacadeBO
+    public class BolaoFacadeBO : Interfaces.Facade.IBolaoFacadeBO
     {
         #region Variables
 
@@ -22,5 +22,10 @@ namespace BolaoNet.Business.Facade
         }
 
         #endregion
+
+        public IList<Entities.Boloes.JogoUsuario> InsertJogoUsuario(Entities.Boloes.JogoUsuario jogo)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
