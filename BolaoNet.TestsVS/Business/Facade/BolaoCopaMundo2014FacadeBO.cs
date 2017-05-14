@@ -179,39 +179,40 @@ namespace BolaoNet.TestsVS.Business.Facade
 
             #region Bolao Regras
 
-            StoreData<Entities.Boloes.BolaoRegra>(_bolaoRegraBO, new Entities.Boloes.BolaoRegra(bolao.Nome, 1)
+            int c = 1;
+            StoreData<Entities.Boloes.BolaoRegra>(_bolaoRegraBO, new Entities.Boloes.BolaoRegra(bolao.Nome, c++)
                 {Descricao = "Premiação para o primeiro lugar: 70% do dinheiro arrecadado"});
-			StoreData<Entities.Boloes.BolaoRegra>(_bolaoRegraBO, new Entities.Boloes.BolaoRegra(bolao.Nome, 1)
+            StoreData<Entities.Boloes.BolaoRegra>(_bolaoRegraBO, new Entities.Boloes.BolaoRegra(bolao.Nome, c++)
                 {Descricao = "Premiação para o segundo lugar: 20% do dinheiro arrecadado"});
-			StoreData<Entities.Boloes.BolaoRegra>(_bolaoRegraBO, new Entities.Boloes.BolaoRegra(bolao.Nome, 1)
+            StoreData<Entities.Boloes.BolaoRegra>(_bolaoRegraBO, new Entities.Boloes.BolaoRegra(bolao.Nome, c++)
                 {Descricao = "Premiação para o terceiro lugar: 10% do dinheiro arrecadado"});
-			StoreData<Entities.Boloes.BolaoRegra>(_bolaoRegraBO, new Entities.Boloes.BolaoRegra(bolao.Nome, 1)
+            StoreData<Entities.Boloes.BolaoRegra>(_bolaoRegraBO, new Entities.Boloes.BolaoRegra(bolao.Nome, c++)
                 {Descricao = "havendo dois primeiros lugares, 45% para cada e o próximo leva 10%; havendo empate no segundo lugar, divide-se entre eles os 30% (se dois empatarem 15% para cada)"});
-			StoreData<Entities.Boloes.BolaoRegra>(_bolaoRegraBO, new Entities.Boloes.BolaoRegra(bolao.Nome, 1)
+            StoreData<Entities.Boloes.BolaoRegra>(_bolaoRegraBO, new Entities.Boloes.BolaoRegra(bolao.Nome, c++)
                 {Descricao = "Se caso a aposta não foi realizado, será considerado o placar de 0x0"});
-			StoreData<Entities.Boloes.BolaoRegra>(_bolaoRegraBO, new Entities.Boloes.BolaoRegra(bolao.Nome, 1)
+            StoreData<Entities.Boloes.BolaoRegra>(_bolaoRegraBO, new Entities.Boloes.BolaoRegra(bolao.Nome, c++)
                 {Descricao = "A taxa de participação do bolão será de 20 reais"});
-			StoreData<Entities.Boloes.BolaoRegra>(_bolaoRegraBO, new Entities.Boloes.BolaoRegra(bolao.Nome, 1)
+            StoreData<Entities.Boloes.BolaoRegra>(_bolaoRegraBO, new Entities.Boloes.BolaoRegra(bolao.Nome, c++)
                 {Descricao = "Pontuação:"});
-			StoreData<Entities.Boloes.BolaoRegra>(_bolaoRegraBO, new Entities.Boloes.BolaoRegra(bolao.Nome, 1)
+            StoreData<Entities.Boloes.BolaoRegra>(_bolaoRegraBO, new Entities.Boloes.BolaoRegra(bolao.Nome, c++)
                 {Descricao = "10 PONTOS - Acertar o resultado em cheio: Ex.: Aposta 2 x 1; Resultado 2 x 1;"});
-			StoreData<Entities.Boloes.BolaoRegra>(_bolaoRegraBO, new Entities.Boloes.BolaoRegra(bolao.Nome, 1)
+            StoreData<Entities.Boloes.BolaoRegra>(_bolaoRegraBO, new Entities.Boloes.BolaoRegra(bolao.Nome, c++)
                 {Descricao = "5  PONTOS - Acertar o empate errando o número de gols: Ex.: Aposta 1 x 1; Resultado 2 x 2;"});
-			StoreData<Entities.Boloes.BolaoRegra>(_bolaoRegraBO, new Entities.Boloes.BolaoRegra(bolao.Nome, 1)
+            StoreData<Entities.Boloes.BolaoRegra>(_bolaoRegraBO, new Entities.Boloes.BolaoRegra(bolao.Nome, c++)
                 {Descricao = "4  PONTOS - Acertar vencedor e acertar apenas um dos placares: Ex.: Aposta 2 x 1; Resultado 3 x 1;"});
-			StoreData<Entities.Boloes.BolaoRegra>(_bolaoRegraBO, new Entities.Boloes.BolaoRegra(bolao.Nome, 1)
+            StoreData<Entities.Boloes.BolaoRegra>(_bolaoRegraBO, new Entities.Boloes.BolaoRegra(bolao.Nome, c++)
                 {Descricao = "3  PONTOS - Acertar apenas o vencedor e errar os placares: Ex.: Aposta 2 x 1; Resultado 1 x 0;"});
-			StoreData<Entities.Boloes.BolaoRegra>(_bolaoRegraBO, new Entities.Boloes.BolaoRegra(bolao.Nome, 1)
+            StoreData<Entities.Boloes.BolaoRegra>(_bolaoRegraBO, new Entities.Boloes.BolaoRegra(bolao.Nome, c++)
                 {Descricao = "1  PONTO  - Errar o resultado jogo e acertar apenas um dos placares: Ex.: Aposta 2 x 1; Resultado 0 x 1 ou 1 x 1;"});
-			StoreData<Entities.Boloes.BolaoRegra>(_bolaoRegraBO, new Entities.Boloes.BolaoRegra(bolao.Nome, 1)
+            StoreData<Entities.Boloes.BolaoRegra>(_bolaoRegraBO, new Entities.Boloes.BolaoRegra(bolao.Nome, c++)
                 {Descricao = "0  PONTO  - Para as outras situações."});
-		    StoreData<Entities.Boloes.BolaoRegra>(_bolaoRegraBO, new Entities.Boloes.BolaoRegra(bolao.Nome, 1)
+            StoreData<Entities.Boloes.BolaoRegra>(_bolaoRegraBO, new Entities.Boloes.BolaoRegra(bolao.Nome, c++)
                 {Descricao = "Com relação ao resultado dos 4 primeiros: Valerá apenas 15 pontos cada acerto."});
-			StoreData<Entities.Boloes.BolaoRegra>(_bolaoRegraBO, new Entities.Boloes.BolaoRegra(bolao.Nome, 1)
+            StoreData<Entities.Boloes.BolaoRegra>(_bolaoRegraBO, new Entities.Boloes.BolaoRegra(bolao.Nome, c++)
                 {Descricao = "Obs.: Na medida que você vai apostando o software vai fazendo uma previsão de quem serão os classificados."});
-			StoreData<Entities.Boloes.BolaoRegra>(_bolaoRegraBO, new Entities.Boloes.BolaoRegra(bolao.Nome, 1)
+            StoreData<Entities.Boloes.BolaoRegra>(_bolaoRegraBO, new Entities.Boloes.BolaoRegra(bolao.Nome, c++)
                 {Descricao = "Porém, ainda que na sua aposta esteja aparecendo Brasil 2 x 1 Chile, o no jogo real seja Portugal x Chile, vale o resultado."});
-			StoreData<Entities.Boloes.BolaoRegra>(_bolaoRegraBO, new Entities.Boloes.BolaoRegra(bolao.Nome, 1) 
+            StoreData<Entities.Boloes.BolaoRegra>(_bolaoRegraBO, new Entities.Boloes.BolaoRegra(bolao.Nome, c++) 
                 { Descricao = "Ou seja, você estará apostando no primeiro classificado do grupo A x Segundo classificado do grupo B, independente do time que classificar." });
 
 

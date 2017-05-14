@@ -8,5 +8,6 @@ namespace BolaoNet.Dao.Boloes
 {
     public interface IJogoUsuarioDao
     {
+        //bool InsertAposta(Entities.Users.User user, Entities.)
     }
 }

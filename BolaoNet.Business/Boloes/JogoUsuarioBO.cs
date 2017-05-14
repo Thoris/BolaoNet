@@ -21,14 +21,19 @@ namespace BolaoNet.Business.Boloes
         #endregion
 
         #region IJogoUsuarioBO members
-        
-        public bool InsertAposta(Entities.Campeonatos.Jogo jogo, int apostaTime1, int apostaTime2, int? penaltis1, int? penaltis2)
-        {
-            throw new NotImplementedException();
-        }
+
         public bool InsertAposta(Entities.Users.User user, Entities.Boloes.Bolao bolao, Entities.Campeonatos.Jogo jogo, int apostaTime1, int apostaTime2, int? penaltis1, int? penaltis2)
         {
-            throw new NotImplementedException();
+            Entities.Boloes.JogoUsuario entrySearch = new Entities.Boloes.JogoUsuario(
+                user.UserName, bolao.Nome, jogo.NomeCampeonato, jogo.JogoId)
+                {
+                    ApostaTime1 = apostaTime1,
+                    ApostaTime2 = apostaTime2,
+                    ApostaPenaltis1 = penaltis1, 
+                    ApostaPenaltis2 = penaltis2,
+                };
+
+            return true;
         }
         public IList<Entities.Boloes.JogoUsuario> SearchJogoByDependenciaId(Entities.Users.User user, Entities.Boloes.Bolao bolao, Entities.Campeonatos.Jogo jogo)
         {

@@ -15,7 +15,6 @@ namespace BolaoNet.TestsVS.Business.Facade
         private BolaoNet.Business.Interfaces.Campeonatos.IJogoBO _jogoBO;
         private BolaoNet.Business.Interfaces.Boloes.IBolaoBO _bolaoBO;
         private BolaoNet.Business.Interfaces.Boloes.IBolaoMembroBO _bolaoMembroBO;
-
         private BolaoNet.Business.Interfaces.Campeonatos.ICampeonatoBO _campeonatoBO;
         private BolaoNet.Business.Interfaces.Facade.IBolaoFacadeBO _bolaoFacadeBO;
         private BolaoNet.Business.Interfaces.Facade.IUserFacadeBO _userFacadeBO;
@@ -30,6 +29,14 @@ namespace BolaoNet.TestsVS.Business.Facade
         {
             _factory = factory;
             _userBO = factory.CreateUserBO();
+            _jogoUsuarioBO = factory.CreateJogoUsuarioBO();
+            _jogoBO = factory.CreateJogoBO();
+            _bolaoBO = factory.CreateBolaoBO();
+            _bolaoMembroBO = factory.CreateBolaoMembroBO();
+            _campeonatoBO = factory.CreateCampeonatoBO();
+            _bolaoFacadeBO = factory.CreateBolaoFacadeBO();
+            _userFacadeBO = factory.CreateUserFacadeBO();
+
         }
 
         #endregion
@@ -61,17 +68,9 @@ namespace BolaoNet.TestsVS.Business.Facade
 
             for (int c = 0; c < jogoLabel.Count; c++)
             {
-                Entities.Boloes.JogoUsuario jogoUsuario = new Entities.Boloes.JogoUsuario(
-                    user.UserName, bolao.Nome, campeonato.Nome, jogoLabel[c])
-                    {
-                        ApostaTime1 = time1[c],
-                        ApostaTime2 = time2[c],
-                        ApostaPenaltis1 = penaltis1[c],
-                        ApostaPenaltis2 = penaltis2[c]
-                    };
+                Entities.Campeonatos.Jogo jogo = new Entities.Campeonatos.Jogo(campeonato.Nome, jogoLabel[c]);
 
-                
-                _bolaoFacadeBO.InsertJogoUsuario(jogoUsuario);
+                _bolaoFacadeBO.InsertJogoUsuario(user, bolao, jogo, time1[c], time2[c], penaltis1[c], penaltis2[c]);
 
             }//end for c
 
@@ -100,6 +99,8 @@ namespace BolaoNet.TestsVS.Business.Facade
         {
             string activationCode = "";
 
+            Entities.Boloes.Bolao bolaoLoaded = _bolaoBO.Load(bolao);
+
             _userFacadeBO.CreateUser(user);
             _userFacadeBO.SendActivationCode(user);
 
@@ -113,7 +114,10 @@ namespace BolaoNet.TestsVS.Business.Facade
 
             for (int c = 0; c < jogos.Count; c++ )
             {
-                _bolaoFacadeBO.InsertJogoUsuario(jogos[c]);
+                Entities.Campeonatos.Jogo jogo = new Entities.Campeonatos.Jogo(bolaoLoaded.NomeCampeonato, jogos[c].JogoId);
+
+                _bolaoFacadeBO.InsertJogoUsuario(user, bolao, jogo, jogos[c].ApostaTime1, jogos[c].ApostaTime2, 
+                    jogos[c].ApostaPenaltis1, jogos[c].ApostaPenaltis2);
             }
 
             return true;

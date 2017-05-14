@@ -347,10 +347,10 @@ namespace BolaoNet.Business.Facade.Campeonatos
                 throw new ArgumentException("campeonato.Nome");
             if (jogo == null)
                 throw new ArgumentException("jogo");
-            if (string.IsNullOrEmpty(jogo.NomeTime1))
-                throw new ArgumentException("jogo.NomeTime1");
-            if (string.IsNullOrEmpty(jogo.NomeTime2))
-                throw new ArgumentException("jogo.NomeTime2");
+            //if (string.IsNullOrEmpty(jogo.NomeTime1))
+            //    throw new ArgumentException("jogo.NomeTime1");
+            //if (string.IsNullOrEmpty(jogo.NomeTime2))
+            //    throw new ArgumentException("jogo.NomeTime2");
             if (string.IsNullOrEmpty(jogo.NomeEstadio))
                 throw new ArgumentException("jogo.NomeEstadio");
             if (string.IsNullOrEmpty(jogo.NomeGrupo))
@@ -358,37 +358,10 @@ namespace BolaoNet.Business.Facade.Campeonatos
             if (string.IsNullOrEmpty(jogo.NomeFase))
                 throw new ArgumentException("jogo.NomeFase");
 
-
-            #region Times
-
-            Entities.DadosBasicos.Time time1 = new Entities.DadosBasicos.Time(jogo.NomeTime1)
-            {
-                IsClube = isClube
-            };
-            StoreData<Entities.DadosBasicos.Time>(_timeBO, time1);
-
-
-            Entities.DadosBasicos.Time time2 = new Entities.DadosBasicos.Time(jogo.NomeTime2)
-            {
-                IsClube = isClube
-            };
-            StoreData<Entities.DadosBasicos.Time>(_timeBO, time2);
-
-            #endregion
-
             #region Estadio
 
             StoreData<Entities.DadosBasicos.Estadio>(_estadioBO,
                 new Entities.DadosBasicos.Estadio(jogo.NomeEstadio));
-
-            #endregion
-
-            #region CampeonatosTimes
-
-            StoreData<Entities.Campeonatos.CampeonatoTime>(_campeonatoTimeBO,
-                new Entities.Campeonatos.CampeonatoTime(time1.Nome, campeonato.Nome));
-            StoreData<Entities.Campeonatos.CampeonatoTime>(_campeonatoTimeBO,
-                new Entities.Campeonatos.CampeonatoTime(time2.Nome, campeonato.Nome));
 
             #endregion
 
@@ -405,12 +378,45 @@ namespace BolaoNet.Business.Facade.Campeonatos
 
             #endregion
 
+            #region Times
+
+            if (!string.IsNullOrEmpty(jogo.NomeTime1) && !string.IsNullOrEmpty(jogo.NomeTime2))
+            {
+                Entities.DadosBasicos.Time time1 = new Entities.DadosBasicos.Time(jogo.NomeTime1)
+                {
+                    IsClube = isClube
+                };
+                StoreData<Entities.DadosBasicos.Time>(_timeBO, time1);
+
+
+                Entities.DadosBasicos.Time time2 = new Entities.DadosBasicos.Time(jogo.NomeTime2)
+                {
+                    IsClube = isClube
+                };
+                StoreData<Entities.DadosBasicos.Time>(_timeBO, time2);
+
+
+            #endregion
+
+
+            #region CampeonatosTimes
+
+
+                StoreData<Entities.Campeonatos.CampeonatoTime>(_campeonatoTimeBO,
+                    new Entities.Campeonatos.CampeonatoTime(time1.Nome, campeonato.Nome));
+                StoreData<Entities.Campeonatos.CampeonatoTime>(_campeonatoTimeBO,
+                    new Entities.Campeonatos.CampeonatoTime(time2.Nome, campeonato.Nome));
+
+            #endregion
+
             #region Campeonato Grupos Times
 
-            StoreData<Entities.Campeonatos.CampeonatoGrupoTime>(_campeonatoGrupoTimeBO,
-                new Entities.Campeonatos.CampeonatoGrupoTime(time1.Nome, jogo.NomeGrupo, campeonato.Nome));
-            StoreData<Entities.Campeonatos.CampeonatoGrupoTime>(_campeonatoGrupoTimeBO,
-                new Entities.Campeonatos.CampeonatoGrupoTime(time2.Nome, jogo.NomeGrupo, campeonato.Nome));
+
+                StoreData<Entities.Campeonatos.CampeonatoGrupoTime>(_campeonatoGrupoTimeBO,
+                    new Entities.Campeonatos.CampeonatoGrupoTime(time1.Nome, jogo.NomeGrupo, campeonato.Nome));
+                StoreData<Entities.Campeonatos.CampeonatoGrupoTime>(_campeonatoGrupoTimeBO,
+                    new Entities.Campeonatos.CampeonatoGrupoTime(time2.Nome, jogo.NomeGrupo, campeonato.Nome));
+            }
 
             #endregion
 

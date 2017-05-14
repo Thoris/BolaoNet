@@ -11,18 +11,23 @@ namespace BolaoNet.Business.Facade
         #region Variables
 
         private string _userName;
-        private Business.Campeonatos.JogoBO _jogoBO;
-        private Business.Boloes.JogoUsuarioBO _jogoUsuarioBO;
-        private Business.Boloes.BolaoCriterioPontosBO _bolaoCriterioPontosBO;
-        private Business.Boloes.BolaoCriterioPontosTimesBO _bolaoCriterioPontosTimesBO;
+        private Interfaces.Campeonatos.IJogoBO _jogoBO;
+        private Interfaces.Boloes.IJogoUsuarioBO _jogoUsuarioBO;
+        private Interfaces.Boloes.IBolaoCriterioPontosBO _bolaoCriterioPontosBO;
+        private Interfaces.Boloes.IBolaoCriterioPontosTimesBO _bolaoCriterioPontosTimesBO;
         
 
         #endregion
 
         #region Constructors/Destructors
 
-        public CampeonatoFacadeBO()
+        public CampeonatoFacadeBO(string userName, Interfaces.IFactoryBO factory)
         {
+            _userName = userName;
+            _jogoBO = factory.CreateJogoBO();
+            _jogoUsuarioBO = factory.CreateJogoUsuarioBO();
+            _bolaoCriterioPontosBO = factory.CreateBolaoCriterioPontosBO();
+            _bolaoCriterioPontosTimesBO = factory.CreateBolaoCriterioPontosTimesBO();
 
         }
 

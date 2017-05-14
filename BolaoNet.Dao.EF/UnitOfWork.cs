@@ -121,15 +121,15 @@ namespace BolaoNet.Dao.EF
             //Definimos usando reflexão que toda propriedade que contenha
             //"Nome da classe" + Id como "CursoId" por exemplo, seja dada como
             //chave primária, caso não tenha sido especificado
-            modelBuilder.Properties()
-                         .Where(p => p.Name == p.ReflectedType.Name + "Id")
-                         .Configure(p => p.IsKey());
+            //modelBuilder.Properties()
+            //             .Where(p => p.Name == p.ReflectedType.Name + "Id")
+            //             .Configure(p => p.IsKey());
 
             //Toda propriedade do tipo string na entidade POCO seja configurado como VARCHAR no SQL Server
             modelBuilder.Properties<string>().Configure(p => p.HasColumnType("varchar"));
 
             //Toda propriedade do tipo string na entidade POCO seja configurado como VARCHAR (150) no banco de dados 
-            modelBuilder.Properties<string>().Configure(p => p.HasMaxLength(150));
+            modelBuilder.Properties<string>().Configure(p => p.HasMaxLength(250));
 
             base.OnModelCreating(modelBuilder);
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -49,8 +50,15 @@ namespace BolaoNet.Entities.Base
             {
                 if (Attribute.IsDefined(property, typeof(KeyAttribute)))
                 {
+                    if (Attribute.IsDefined(property, typeof(ColumnAttribute)))
+                    {
+
+                    }
+
+
                     keys.Add(property.GetValue(this));
                 }
+
             }
 
             object[] res = new object[keys.Count];

@@ -8,7 +8,7 @@ namespace BolaoNet.Business.Interfaces.Facade
 {
     public interface IBolaoFacadeBO
     {
-        
-        IList<Entities.Boloes.JogoUsuario> InsertJogoUsuario(Entities.Boloes.JogoUsuario jogo); 
+        IList<Entities.Boloes.JogoUsuario> InsertJogoUsuario(Entities.Users.User user, Entities.Boloes.Bolao bolao, Entities.Campeonatos.Jogo jogo, int time1, int time2, int? penaltis1, int? penaltis2);
+        //IList<Entities.Boloes.JogoUsuario> InsertJogoUsuario(Entities.Boloes.JogoUsuario jogo); 
     }
 }

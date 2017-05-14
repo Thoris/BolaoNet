@@ -264,7 +264,7 @@ namespace BolaoNet.Business
 
         public Interfaces.Boloes.IPontuacaoBO CreatePontuacaoBO()
         {
-            // return new Boloes.PontuacaoBO(_userName, GetFactoryDao().CreatePontuacaoDao());
+            //return new Boloes.PontuacaoBO(_userName, GetFactoryDao().CreateBolaoPontuacaoDao());
             return null;
         }
 
@@ -380,7 +380,7 @@ namespace BolaoNet.Business
 
         public Interfaces.Facade.ICampeonatoFacadeBO CreateCampeonatoFacadeBO()
         {
-            throw new NotImplementedException();
+            return new Facade.CampeonatoFacadeBO(_userName, this);
         }
 
         public Interfaces.Facade.IInitializationFacadeBO CreateInitializationFacadeBO()
@@ -390,8 +390,7 @@ namespace BolaoNet.Business
 
         public Interfaces.Facade.IUserFacadeBO CreateUserFacadeBO()
         {
-            //return new Facade.UserFacadeBO();
-            return null;
+            return new Facade.UserFacadeBO(this);
         }
 
         #endregion

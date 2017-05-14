@@ -20,6 +20,7 @@ namespace BolaoNet.Business.Facade
         public UserFacadeBO(Interfaces.IFactoryBO factory)
         {
             _userBO = factory.CreateUserBO();
+            _userInRoleBO = factory.CreateUserInRoleBO();
 
         }
 
@@ -29,17 +30,23 @@ namespace BolaoNet.Business.Facade
 
         public bool CreateUser(Entities.Users.User user)
         {
-            throw new NotImplementedException();
+            long res = _userBO.Insert(user);
+
+            if (res > 0)
+                return true;
+            else
+                return false;
+
         }
 
         public bool SendActivationCode(Entities.Users.User user)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public bool ActivateUser(Entities.Users.User user, string activationCode)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         #endregion
