@@ -30,11 +30,18 @@ namespace BolaoNet.Business.Facade.Campeonatos
 
             IList<Entities.Campeonatos.Jogo> list = new List<Entities.Campeonatos.Jogo>();
 
+            StoreData<Entities.Campeonatos.Campeonato>(_campeonatoBO, campeonato);
+
             list = base.Merge(list, GetJogosGrupo(campeonato));
             list = base.Merge(list, GetOitavasFinal(campeonato));
             list = base.Merge(list, GetQuartasFinal(campeonato));
             list = base.Merge(list, GetSemiFinal(campeonato));
             list = base.Merge(list, GetFinal(campeonato));
+
+            for (int c = 0; c < list.Count;c ++ )
+            {
+                base.InsertAllJogoInformation(campeonato.IsClube, campeonato, list[c]);
+            }
 
             return campeonato;
         }

@@ -53,7 +53,7 @@ namespace BolaoNet.Entities.Campeonatos
         }
         public int Rodada { get; set; }
         public bool PartidaValida { get; set; }
-        public DateTime DataValidacao { get; set; }
+        public DateTime ? DataValidacao { get; set; }
 
 
         public string NomeFase { get; set; }

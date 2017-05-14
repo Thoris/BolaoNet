@@ -16,7 +16,7 @@ namespace BolaoNet.Entities.DadosBasicos
         [Key]
         public string Nome { get; set; }
         public bool IsClube { get; set; }
-        public DateTime Fundacao { get; set; }
+        public DateTime ? Fundacao { get; set; }
         public string Site { get; set; }
         public string Pais { get; set; }
         public string Estado { get; set; }

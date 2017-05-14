@@ -20,12 +20,15 @@ namespace BolaoNet.TestsVS.Business.Facade
         private BolaoNet.Business.Interfaces.Facade.IBolaoFacadeBO _bolaoFacadeBO;
         private BolaoNet.Business.Interfaces.Facade.IUserFacadeBO _userFacadeBO;
 
+        private BolaoNet.Business.Interfaces.IFactoryBO _factory;
+
         #endregion
 
         #region Constructors/Destructors
 
         public BolaoCopaMundo2014UserFacadeBO(BolaoNet.Business.Interfaces.IFactoryBO factory)
         {
+            _factory = factory;
             _userBO = factory.CreateUserBO();
         }
 
@@ -260,14 +263,13 @@ namespace BolaoNet.TestsVS.Business.Facade
 
         public void CreateAllData()
         {
-            BolaoNet.Business.Interfaces.IFactoryBO factory = new BolaoNet.Business.FactoryBO();
 
             BolaoNet.Business.Facade.Campeonatos.CopaMundo2014FacadeBO campeonatoBO =
-                new BolaoNet.Business.Facade.Campeonatos.CopaMundo2014FacadeBO(factory);
+                new BolaoNet.Business.Facade.Campeonatos.CopaMundo2014FacadeBO(_factory);
 
             Entities.Campeonatos.Campeonato campeonato = campeonatoBO.CreateCampeonato();
 
-            TestsVS.Business.Facade.BolaoCopaMundo2014FacadeBO bolaoBO = new BolaoCopaMundo2014FacadeBO(factory);
+            TestsVS.Business.Facade.BolaoCopaMundo2014FacadeBO bolaoBO = new BolaoCopaMundo2014FacadeBO(_factory);
 
             Entities.Boloes.Bolao bolao = bolaoBO.CreateBolao(campeonato);
 

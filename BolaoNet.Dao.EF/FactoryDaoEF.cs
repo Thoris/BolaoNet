@@ -192,8 +192,7 @@ namespace BolaoNet.Dao.EF
 
         public Dao.Campeonatos.ICampeonatoGrupoTimeDao CreateCampeonatoGrupoTimeDao()
         {
-            //return new Dao.EF.Campeonatos.CampeonatoGrupoTimeRepositoryDao(CreateUnitOfWork());
-            return null;
+            return new Dao.EF.Campeonatos.CampeonatoGrupoTimeRepositoryDao(CreateUnitOfWork());            
         }
 
         public Dao.Campeonatos.ICampeonatoHistoricoDao CreateCampeonatoHistoricoDao()

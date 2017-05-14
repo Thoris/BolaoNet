@@ -49,6 +49,7 @@ namespace BolaoNet.Business
         #endregion
 
         #region Constructors/Destructors
+        
         /// <summary>
         /// Inicializa nova instância da classe <see cref="FactoryBO" />.
         /// </summary>
@@ -69,6 +70,7 @@ namespace BolaoNet.Business
             _userName = userName;
             _factoryDao = factoryDao;
         }
+
         #endregion
 
         #region Methods
@@ -388,7 +390,8 @@ namespace BolaoNet.Business
 
         public Interfaces.Facade.IUserFacadeBO CreateUserFacadeBO()
         {
-            return new Facade.UserFacadeBO();
+            //return new Facade.UserFacadeBO();
+            return null;
         }
 
         #endregion

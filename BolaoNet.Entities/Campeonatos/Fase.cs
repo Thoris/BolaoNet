@@ -15,9 +15,9 @@ namespace BolaoNet.Entities.Campeonatos
         [Key]
         public string Nome { get; set; }
          
-        [ForeignKey("NomeCampeonato"), Column(Order = 0)]
-        public virtual Campeonatos.Campeonato Campeonato { get; set; }
-        public string NomeCampeonato { get; set; }
+        //[ForeignKey("NomeCampeonato"), Column(Order = 0)]
+        //public virtual Campeonatos.Campeonato Campeonato { get; set; }
+        //public string NomeCampeonato { get; set; }
 
         public string Descricao { get; set; }
 
@@ -28,6 +28,10 @@ namespace BolaoNet.Entities.Campeonatos
         public Fase()
         {
 
+        }
+        public Fase(string nomeFase)
+        {
+            this.Nome = nomeFase;
         }
 
         #endregion

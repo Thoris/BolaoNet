@@ -57,11 +57,11 @@ namespace BolaoNet.Entities.Boloes
 
 
         public string NomeTimeResult1 { get; set; }
-        [ForeignKey("NomeTime1Result1")]
+        [ForeignKey("NomeTimeResult1")]
         public virtual DadosBasicos.Time TimeResult1 { get; set; }
 
         public string NomeTimeResult2 { get; set; }
-        [ForeignKey("TimeResult2")]
+        [ForeignKey("NomeTimeResult2")]
         public virtual DadosBasicos.Time TimeResult2 { get; set; }
         
         public int Pontos {get;set;}

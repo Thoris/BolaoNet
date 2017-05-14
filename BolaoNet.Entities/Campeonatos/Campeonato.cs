@@ -18,7 +18,7 @@ namespace BolaoNet.Entities.Campeonatos
         public string FaseAtual { get; set; }
         public int RodadaAtual { get; set; }
         public bool IsIniciado { get; set; }
-        public DateTime DataIniciado { get; set; }
+        public DateTime ? DataIniciado { get; set; }
 
         public ICollection<DadosBasicos.Time> Times { get; set; }
         public ICollection<Grupo> Grupos { get; set; }

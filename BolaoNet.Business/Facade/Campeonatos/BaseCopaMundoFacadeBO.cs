@@ -19,6 +19,7 @@ namespace BolaoNet.Business.Facade.Campeonatos
         protected Interfaces.DadosBasicos.IEstadioBO _estadioBO;
         protected Interfaces.Campeonatos.IGrupoBO _grupoBO;
         protected Interfaces.Campeonatos.IJogoBO _jogoBO;
+        protected Interfaces.Campeonatos.IFaseBO _faseBO;
 
         protected Interfaces.Facade.ICampeonatoFacadeBO _campeonatoFacadeBO;
         
@@ -37,6 +38,7 @@ namespace BolaoNet.Business.Facade.Campeonatos
             _estadioBO = factory.CreateEstadioBO();
             _grupoBO = factory.CreateGrupoBO();
             _jogoBO = factory.CreateJogoBO();
+            _faseBO = factory.CreateFaseBO();
             
         }
 
@@ -46,7 +48,7 @@ namespace BolaoNet.Business.Facade.Campeonatos
 
         public Entities.Campeonatos.Jogo CreateJogo(string nomeCampeonato, DateTime dataJogo, string nomeEstadio, string nomeFase, string nomeGrupo, int rodada, int id, string pendenteTime1NomeGrupo, int pendenteTime1PosGrupo, string pendenteTime2NomeGrupo, int pendenteTime2PosGrupo)
         {
-            return new Entities.Campeonatos.Jogo()
+            return new Entities.Campeonatos.Jogo(nomeCampeonato, id)
             {
                 NomeCampeonato = nomeCampeonato,
                 DataJogo = dataJogo,
@@ -77,7 +79,7 @@ namespace BolaoNet.Business.Facade.Campeonatos
                 descricaoTime2 += "Perdedor jogo " + pendenteTime2;
 
 
-            return new Entities.Campeonatos.Jogo()
+            return new Entities.Campeonatos.Jogo(nomeCampeonato, id)
             {
                 NomeCampeonato = nomeCampeonato,
                 DataJogo = dataJogo,
@@ -96,7 +98,7 @@ namespace BolaoNet.Business.Facade.Campeonatos
         }        
         public Entities.Campeonatos.Jogo CreateJogo(string nomeCampeonato, DateTime dataJogo, string nomeEstadio, string nomeFase, string nomeGrupo, string nomeTime1, string nomeTime2, int rodada, int id)
         {
-            return new Entities.Campeonatos.Jogo()
+            return new Entities.Campeonatos.Jogo(nomeCampeonato, id)
             {
                 NomeCampeonato = nomeCampeonato,
                 DataJogo = dataJogo,
@@ -212,15 +214,15 @@ namespace BolaoNet.Business.Facade.Campeonatos
                 throw new ArgumentException("estadios");
             if (ids == null)
                 throw new ArgumentException("ids");
-            if (estadios.Count != 4)
+            if (estadios.Count != 2)
                 throw new ArgumentException("estadios.Count != 2");
-            if (ids.Count != 4)
+            if (ids.Count != 2)
                 throw new ArgumentException("ids.Count != 2");
-            if (datas.Count != 4)
+            if (datas.Count != 2)
                 throw new ArgumentException("datas.Count != 2");
             if (idsGanhadores == null)
                 throw new ArgumentException("idsGanhadores");
-            if (idsGanhadores.Count != 8)
+            if (idsGanhadores.Count != 4)
                 throw new ArgumentException("idsGanhadores.Count != 4");
 
             IList<Entities.Campeonatos.Jogo> list = new List<Entities.Campeonatos.Jogo>();
@@ -250,15 +252,15 @@ namespace BolaoNet.Business.Facade.Campeonatos
                 throw new ArgumentException("estadios");
             if (ids == null)
                 throw new ArgumentException("ids");
-            if (estadios.Count != 4)
+            if (estadios.Count != 2)
                 throw new ArgumentException("estadios.Count != 2");
-            if (ids.Count != 4)
+            if (ids.Count != 2)
                 throw new ArgumentException("ids.Count != 2");
-            if (datas.Count != 4)
+            if (datas.Count != 2)
                 throw new ArgumentException("datas.Count != 2");
             if (idsGanhadores == null)
                 throw new ArgumentException("idsGanhadores");
-            if (idsGanhadores.Count != 8)
+            if (idsGanhadores.Count != 4)
                 throw new ArgumentException("idsGanhadores.Count != 4");
 
             IList<Entities.Campeonatos.Jogo> list = new List<Entities.Campeonatos.Jogo>();
@@ -412,6 +414,13 @@ namespace BolaoNet.Business.Facade.Campeonatos
 
             #endregion
 
+            #region Fases
+
+            StoreData<Entities.Campeonatos.Fase>(_faseBO,
+                new Entities.Campeonatos.Fase(jogo.NomeFase));
+
+            #endregion
+
             #region Campeonato Fases
 
             StoreData<Entities.Campeonatos.CampeonatoFase>(_campeonatoFaseBO,
@@ -433,6 +442,12 @@ namespace BolaoNet.Business.Facade.Campeonatos
         }
         public bool IsAlreadyStored(Entities.Campeonatos.Jogo jogo)
         {
+            Entities.Campeonatos.Jogo jogoLoaded = _jogoBO.Load(jogo);
+
+            if (jogoLoaded == null)
+                return false;
+
+
             return true;
         }
         public bool StoreData<T>(Base.IGenericBusiness<T> bo, T data)
