@@ -20,9 +20,9 @@ namespace BolaoNet.Entities.Campeonatos
         public bool IsIniciado { get; set; }
         public DateTime ? DataIniciado { get; set; }
 
-        public ICollection<DadosBasicos.Time> Times { get; set; }
-        public ICollection<Grupo> Grupos { get; set; }
-        public ICollection<Fase> Fases { get; set; }
+        //public ICollection<DadosBasicos.Time> Times { get; set; }
+        //public ICollection<Grupo> Grupos { get; set; }
+        //public ICollection<Fase> Fases { get; set; }
 
         #endregion
 
