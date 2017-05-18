@@ -14,18 +14,24 @@ namespace BolaoNet.Entities.Campeonatos
 
         [Key, Column(Order = 0)]
         public string NomeCampeonato { get; set; }
-        [ForeignKey("NomeCampeonato")]
-        public virtual Campeonatos.Campeonato Campeonato {get;set;}
+        //[ForeignKey("NomeCampeonato")]
+        //public virtual Campeonatos.Campeonato Campeonato {get;set;}
 
         [Key, Column(Order = 1)]
         public string NomeFase { get; set; }
-        [ForeignKey("NomeFase")]
-        public virtual Campeonatos.Fase Fase { get; set; }
+        [ForeignKey("NomeCampeonato, NomeFase")]
+        public virtual Campeonatos.CampeonatoFase Fase { get; set; }
 
         [Key, Column(Order = 2)]
         public string NomeGrupo { get; set; }
-        [ForeignKey("NomeGrupo")]
-        public virtual Campeonatos.Grupo Grupo { get; set; }
+        [ForeignKey("NomeCampeonato, NomeGrupo")]
+        public virtual Campeonatos.CampeonatoGrupo Grupo { get; set; }
+
+        [Key, Column(Order = 3)]
+        public string NomeTime { get; set; }
+
+        [Key, Column(Order = 4)]
+        public int Posicao { get; set; }
 
         #endregion
         

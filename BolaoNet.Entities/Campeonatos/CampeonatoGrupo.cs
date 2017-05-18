@@ -20,6 +20,8 @@ namespace BolaoNet.Entities.Campeonatos
         [ForeignKey("NomeCampeonato")]
         public virtual Campeonato Campeonato { get; set; }
 
+        public string Descricao { get; set; }
+
         #endregion
 
         #region Constructors/Destructors
