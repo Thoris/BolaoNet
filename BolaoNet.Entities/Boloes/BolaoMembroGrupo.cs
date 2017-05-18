@@ -14,12 +14,18 @@ namespace BolaoNet.Entities.Boloes
 
         [Key, Column(Order = 0)]
         public string UserName { get; set; }
-        
-        [Key, Column(Order = 1)]
+        [ForeignKey("UserName")]
+        public Users.User User { get; set; }
+
+        [Key, Column(Order = 1)]        
         public string UserNameSelecionado { get; set; }
+        [ForeignKey("UserNameSelecionado")]
+        public Users.User UserSelecionado { get; set; }
 
         [Key, Column(Order = 2)]
         public string NomeBolao { get; set; }
+        [ForeignKey("NomeBolao")]
+        public virtual Bolao Bolao { get; set; }
 
         #endregion
     }

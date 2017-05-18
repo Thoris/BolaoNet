@@ -27,6 +27,8 @@ namespace BolaoNet.Entities.Boloes
         public DateTime ? DataValidacao { get; set; }
         public string ValidadoBy { get; set; }
         public string NomeTimeValidado { get; set; }
+        [ForeignKey("NomeTimeValidado")]
+        public virtual DadosBasicos.Time TimeValidado { get; set; }
 
         #endregion
 

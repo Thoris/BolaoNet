@@ -168,16 +168,6 @@ namespace BolaoNet.Dao.Collection
             throw new NotImplementedException();
         }
 
-        public Campeonatos.IFaseDao CreateFaseDao()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Campeonatos.IGrupoDao CreateGrupoDao()
-        {
-            throw new NotImplementedException();
-        }
-
         public Campeonatos.IHistoricoDao CreateHistoricoDao()
         {
             throw new NotImplementedException();

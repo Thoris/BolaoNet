@@ -135,11 +135,6 @@ namespace BolaoNet.Integration.Base
             throw new NotImplementedException();
         }
 
-        public Business.Interfaces.Boloes.IBolaoMembroGrupoPontoBO CreateBolaoMembroGrupoPontoBO()
-        {
-            throw new NotImplementedException();
-        }
-
         public Business.Interfaces.Boloes.IBolaoPontoRodadaBO CreateBolaoPontoRodadaBO()
         {
             throw new NotImplementedException();

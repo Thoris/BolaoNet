@@ -17,10 +17,8 @@ namespace BolaoNet.Business.Facade.Campeonatos
         protected Interfaces.Campeonatos.ICampeonatoGrupoBO _campeonatoGrupoBO;
         protected Interfaces.Campeonatos.ICampeonatoGrupoTimeBO _campeonatoGrupoTimeBO;
         protected Interfaces.DadosBasicos.IEstadioBO _estadioBO;
-        protected Interfaces.Campeonatos.IGrupoBO _grupoBO;
         protected Interfaces.Campeonatos.IJogoBO _jogoBO;
-        protected Interfaces.Campeonatos.IFaseBO _faseBO;
-
+        
         protected Interfaces.Facade.ICampeonatoFacadeBO _campeonatoFacadeBO;
         
         #endregion
@@ -36,9 +34,7 @@ namespace BolaoNet.Business.Facade.Campeonatos
             _campeonatoGrupoBO = factory.CreateCampeonatoGrupoBO();
             _campeonatoGrupoTimeBO = factory.CreateCampeonatoGrupoTimeBO();
             _estadioBO = factory.CreateEstadioBO();
-            _grupoBO = factory.CreateGrupoBO();
             _jogoBO = factory.CreateJogoBO();
-            _faseBO = factory.CreateFaseBO();
             
         }
 

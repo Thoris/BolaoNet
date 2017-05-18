@@ -57,12 +57,12 @@ namespace BolaoNet.Entities.Campeonatos
 
 
         public string NomeFase { get; set; }
-        [ForeignKey("NomeFase")]
-        public virtual Campeonatos.Fase Fase { get; set; }
+        [ForeignKey("NomeCampeonato, NomeFase")]
+        public virtual Campeonatos.CampeonatoFase Fase { get; set; }
 
         public string NomeGrupo { get; set; }
-        [ForeignKey("NomeGrupo")]
-        public virtual Campeonatos.Grupo Grupo { get; set; }
+        [ForeignKey("NomeCampeonato, NomeGrupo")]
+        public virtual Campeonatos.CampeonatoGrupo Grupo { get; set; }
 
         public string ValidadoBy { get; set; }
         public string Titulo { get; set; }

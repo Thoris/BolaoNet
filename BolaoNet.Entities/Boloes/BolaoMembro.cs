@@ -7,8 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BolaoNet.Entities.Boloes
-{
-    //public class BolaoMembro : Entities.Boloes.Pontuacao
+{    
     public class BolaoMembro : Base.AuditModel
     {
         #region Properties

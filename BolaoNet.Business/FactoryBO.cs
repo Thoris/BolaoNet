@@ -202,10 +202,6 @@ namespace BolaoNet.Business
             return new Boloes.BolaoMembroGrupoBO(_userName, GetFactoryDao().CreateBolaoMembroGrupoDao());
         }
 
-        public Interfaces.Boloes.IBolaoMembroGrupoPontoBO CreateBolaoMembroGrupoPontoBO()
-        {
-            return new Boloes.BolaoMembroGrupoPontoBO(_userName, GetFactoryDao().CreateBolaoMembroGrupoPontoDao());
-        }
 
         public Interfaces.Boloes.IBolaoPontoRodadaBO CreateBolaoPontoRodadaBO()
         {
@@ -311,16 +307,6 @@ namespace BolaoNet.Business
         public Interfaces.Campeonatos.ICampeonatoTimeBO CreateCampeonatoTimeBO()
         {
             return new Campeonatos.CampeonatoTimeBO(_userName, GetFactoryDao().CreateCampeonatoTimeDao());
-        }
-
-        public Interfaces.Campeonatos.IFaseBO CreateFaseBO()
-        {
-            return new Campeonatos.FaseBO(_userName, GetFactoryDao().CreateFaseDao());
-        }
-
-        public Interfaces.Campeonatos.IGrupoBO CreateGrupoBO()
-        {
-            return new Campeonatos.GrupoBO(_userName, GetFactoryDao().CreateGrupoDao());
         }
 
         public Interfaces.Campeonatos.IHistoricoBO CreateHistoricoBO()

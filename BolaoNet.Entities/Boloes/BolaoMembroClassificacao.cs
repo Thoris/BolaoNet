@@ -14,11 +14,10 @@ namespace BolaoNet.Entities.Boloes
 
         [Key, Column(Order = 0)]
         public string UserName { get; set; }
-        [ForeignKey("UserName")]
-        public virtual Users.User Users { get; set; }
-
+        
         [Key, Column(Order = 1)]
         public string NomeBolao { get; set; }
+        [ForeignKey("UserName, NomeBolao")]
         public virtual BolaoMembro BolaoMembro { get; set; }
 
         public int ? Posicao {get;set;}

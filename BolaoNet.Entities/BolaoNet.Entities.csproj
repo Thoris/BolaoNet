@@ -53,8 +53,8 @@
     <Compile Include="Boloes\BolaoCriterioPontosTimes.cs" />
     <Compile Include="Boloes\BolaoMembroClassificacao.cs" />
     <Compile Include="Boloes\BolaoMembroGrupo.cs" />
-    <Compile Include="Boloes\BolaoMembroGrupoPonto.cs" />
     <Compile Include="Boloes\BolaoMembro.cs" />
+    <Compile Include="Boloes\BolaoMembroPonto.cs" />
     <Compile Include="Boloes\BolaoPontoRodada.cs" />
     <Compile Include="Boloes\BolaoPontoRodadaUsuario.cs" />
     <Compile Include="Boloes\BolaoPremio.cs" />
@@ -81,8 +81,6 @@
     <Compile Include="Campeonatos\CampeonatoPosicao.cs" />
     <Compile Include="Campeonatos\CampeonatoRecord.cs" />
     <Compile Include="Campeonatos\CampeonatoTime.cs" />
-    <Compile Include="Campeonatos\Fase.cs" />
-    <Compile Include="Campeonatos\Grupo.cs" />
     <Compile Include="Campeonatos\Historico.cs" />
     <Compile Include="Campeonatos\Jogo.cs" />
     <Compile Include="Campeonatos\Pontuacao.cs" />

@@ -22,7 +22,6 @@ namespace BolaoNet.Dao
         Boloes.IBolaoMembroDao CreateBolaoMembroDao();
         Boloes.IBolaoMembroClassificacaoDao CreateBolaoMembroClassificacaoDao();
         Boloes.IBolaoMembroGrupoDao CreateBolaoMembroGrupoDao();
-        Boloes.IBolaoMembroGrupoPontoDao CreateBolaoMembroGrupoPontoDao();
         Boloes.IBolaoPontoRodadaDao CreateBolaoPontoRodadaDao();
         Boloes.IBolaoPontoRodadaUsuarioDao CreateBolaoPontoRodadaUsuarioDao();
         Boloes.IBolaoPontuacaoDao CreateBolaoPontuacaoDao();
@@ -45,8 +44,6 @@ namespace BolaoNet.Dao
         Campeonatos.ICampeonatoPosicaoDao CreateCampeonatoPosicaoDao();
         Campeonatos.ICampeonatoRecordDao CreateCampeonatoRecordDao();
         Campeonatos.ICampeonatoTimeDao CreateCampeonatoTimeDao();
-        Campeonatos.IFaseDao CreateFaseDao();
-        Campeonatos.IGrupoDao CreateGrupoDao();
         Campeonatos.IHistoricoDao CreateHistoricoDao();
         Campeonatos.IJogoDao CreateJogoDao();
         Campeonatos.IPontuacaoDao CreateCampeonatoPontuacaoDao();

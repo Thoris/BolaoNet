@@ -59,7 +59,6 @@
     <Compile Include="Boloes\BolaoMembroClassificacaoRepositoryDao.cs" />
     <Compile Include="Boloes\BolaoMembroRepositoryDao.cs" />
     <Compile Include="Boloes\BolaoMembroGrupoRepositoryDao.cs" />
-    <Compile Include="Boloes\BolaoMembroGrupoPontoRepositoryDao.cs" />
     <Compile Include="Boloes\BolaoPontoRodadaRepositoryDao.cs" />
     <Compile Include="Boloes\BolaoPontoRodadaUsuarioRepositoryDao.cs" />
     <Compile Include="Boloes\BolaoPontuacaoRepositoryDao.cs" />
@@ -81,8 +80,6 @@
     <Compile Include="Campeonatos\CampeonatoPosicaoRepositoryDao.cs" />
     <Compile Include="Campeonatos\CampeonatoRecordRepositoryDao.cs" />
     <Compile Include="Campeonatos\CampeonatoTimeRepositoryDao.cs" />
-    <Compile Include="Campeonatos\FaseRepositoryDao.cs" />
-    <Compile Include="Campeonatos\GrupoRepositoryDao.cs" />
     <Compile Include="Campeonatos\HistoricoRepositoryDao.cs" />
     <Compile Include="Campeonatos\JogoRepositoryDao.cs" />
     <Compile Include="Campeonatos\PontuacaoRepositoryDao.cs" />

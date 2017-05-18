@@ -63,7 +63,6 @@
     <Compile Include="Boloes\BolaoIntegration.cs" />
     <Compile Include="Boloes\BolaoMembroClassificacaoIntegration.cs" />
     <Compile Include="Boloes\BolaoMembroGrupoIntegration.cs" />
-    <Compile Include="Boloes\BolaoMembroGrupoPontoIntegration.cs" />
     <Compile Include="Boloes\BolaoMembroIntegration.cs" />
     <Compile Include="Boloes\BolaoPontoRodadaIntegration.cs" />
     <Compile Include="Boloes\BolaoPontoRodadaUsuarioIntegration.cs" />

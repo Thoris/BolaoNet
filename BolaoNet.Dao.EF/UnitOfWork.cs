@@ -34,7 +34,7 @@ namespace BolaoNet.Dao.EF
         public DbSet<Entities.Boloes.BolaoMembro> BoloesMembros { get; set; }
         public DbSet<Entities.Boloes.BolaoMembroClassificacao> BoloesMembrosClassificacao { get; set; }
         public DbSet<Entities.Boloes.BolaoMembroGrupo> BoloesMembrosGrupos { get; set; }
-        public DbSet<Entities.Boloes.BolaoMembroGrupoPonto> BoloesMembrosGruposPontos { get; set; }
+        public DbSet<Entities.Boloes.BolaoMembroPonto> BoloesMembrosPontos { get; set; }
         
         public DbSet<Entities.Boloes.BolaoCriterioPontos> BoloesCriteriosPontos { get; set; }
         public DbSet<Entities.Boloes.BolaoCriterioPontosTimes> BoloesCriteriosPontosTimes { get; set; }

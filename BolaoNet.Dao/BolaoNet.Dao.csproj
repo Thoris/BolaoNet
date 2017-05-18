@@ -73,8 +73,6 @@
     <Compile Include="Campeonatos\ICampeonatoPosicaoDao.cs" />
     <Compile Include="Campeonatos\ICampeonatoRecordDao.cs" />
     <Compile Include="Campeonatos\ICampeonatoTimeDao.cs" />
-    <Compile Include="Campeonatos\IFaseDao.cs" />
-    <Compile Include="Campeonatos\IGrupoDao.cs" />
     <Compile Include="Campeonatos\IHistoricoDao.cs" />
     <Compile Include="Campeonatos\IJogoDao.cs" />
     <Compile Include="Campeonatos\IPontuacaoDao.cs" />

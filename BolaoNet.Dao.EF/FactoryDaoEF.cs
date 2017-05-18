@@ -110,11 +110,6 @@ namespace BolaoNet.Dao.EF
             return new Dao.EF.Boloes.BolaoMembroGrupoRepositoryDao(CreateUnitOfWork());
         }
 
-        public Dao.Boloes.IBolaoMembroGrupoPontoDao CreateBolaoMembroGrupoPontoDao()
-        {
-            return new Dao.EF.Boloes.BolaoMembroGrupoPontoRepositoryDao(CreateUnitOfWork());
-        }
-
         public Dao.Boloes.IBolaoPontoRodadaDao CreateBolaoPontoRodadaDao()
         {
             return new Dao.EF.Boloes.BolaoPontoRodadaRepositoryDao(CreateUnitOfWork());
@@ -214,18 +209,7 @@ namespace BolaoNet.Dao.EF
         {
             return new Dao.EF.Campeonatos.CampeonatoTimeRepositoryDao(CreateUnitOfWork());
         }
-
-        public Dao.Campeonatos.IFaseDao CreateFaseDao()
-        {
-            return new Dao.EF.Campeonatos.FaseRepositoryDao(CreateUnitOfWork());
-            
-        }
-
-        public Dao.Campeonatos.IGrupoDao CreateGrupoDao()
-        {
-            return new Dao.EF.Campeonatos.GrupoRepositoryDao(CreateUnitOfWork());
-        }
-
+             
         public Dao.Campeonatos.IHistoricoDao CreateHistoricoDao()
         {
             return new Dao.EF.Campeonatos.HistoricoRepositoryDao(CreateUnitOfWork());

@@ -51,7 +51,6 @@
     <Compile Include="Boloes\BolaoCriterioPontosBO.cs" />
     <Compile Include="Boloes\BolaoCriterioPontosTimesBO.cs" />
     <Compile Include="Boloes\BolaoMembroClassificacaoBO.cs" />
-    <Compile Include="Boloes\BolaoMembroGrupoPontoBO.cs" />
     <Compile Include="Boloes\BolaoMembroGrupoBO.cs" />
     <Compile Include="Boloes\BolaoMembroBO.cs" />
     <Compile Include="Boloes\BolaoPontoRodadaBO.cs" />
@@ -76,8 +75,6 @@
     <Compile Include="Campeonatos\CampeonatoRecordBO.cs" />
     <Compile Include="Campeonatos\CampeonatoBO.cs" />
     <Compile Include="Campeonatos\CampeonatoTimeBO.cs" />
-    <Compile Include="Campeonatos\FaseBO.cs" />
-    <Compile Include="Campeonatos\GrupoBO.cs" />
     <Compile Include="Campeonatos\HistoricoBO.cs" />
     <Compile Include="Campeonatos\JogoBO.cs" />
     <Compile Include="Campeonatos\PontuacaoBO.cs" />
@@ -103,7 +100,6 @@
     <Compile Include="Interfaces\Boloes\IBolaoMembroBO.cs" />
     <Compile Include="Interfaces\Boloes\IBolaoMembroClassificacaoBO.cs" />
     <Compile Include="Interfaces\Boloes\IBolaoMembroGrupoBO.cs" />
-    <Compile Include="Interfaces\Boloes\IBolaoMembroGrupoPontoBO.cs" />
     <Compile Include="Interfaces\Boloes\IBolaoPontoRodadaBO.cs" />
     <Compile Include="Interfaces\Boloes\IBolaoPontoRodadaUsuarioBO.cs" />
     <Compile Include="Interfaces\Boloes\IBolaoPontuacaoBO.cs" />
@@ -125,8 +121,6 @@
     <Compile Include="Interfaces\Campeonatos\ICampeonatoPosicaoBO.cs" />
     <Compile Include="Interfaces\Campeonatos\ICampeonatoRecordBO.cs" />
     <Compile Include="Interfaces\Campeonatos\ICampeonatoTimeBO.cs" />
-    <Compile Include="Interfaces\Campeonatos\IFaseBO.cs" />
-    <Compile Include="Interfaces\Campeonatos\IGrupoBO.cs" />
     <Compile Include="Interfaces\Campeonatos\IHistoricoBO.cs" />
     <Compile Include="Interfaces\Campeonatos\IJogoBO.cs" />
     <Compile Include="Interfaces\Campeonatos\IPontuacaoBO.cs" />

@@ -19,7 +19,6 @@ namespace BolaoNet.Business.Interfaces
         Boloes.IBolaoMembroBO CreateBolaoMembroBO();
         Boloes.IBolaoMembroClassificacaoBO CreateBolaoMembroClassificacaoBO();
         Boloes.IBolaoMembroGrupoBO CreateBolaoMembroGrupoBO();
-        Boloes.IBolaoMembroGrupoPontoBO CreateBolaoMembroGrupoPontoBO();
         Boloes.IBolaoPontoRodadaBO CreateBolaoPontoRodadaBO();
         Boloes.IBolaoPontoRodadaUsuarioBO CreateBolaoPontoRodadaUsuarioBO();
         Boloes.IBolaoPontuacaoBO CreateBolaoPontuacaoBO();
@@ -42,8 +41,6 @@ namespace BolaoNet.Business.Interfaces
         Campeonatos.ICampeonatoPosicaoBO CreateCampeonatoPosicaoBO();
         Campeonatos.ICampeonatoRecordBO CreateCampeonatoRecordBO();
         Campeonatos.ICampeonatoTimeBO CreateCampeonatoTimeBO();
-        Campeonatos.IFaseBO CreateFaseBO();
-        Campeonatos.IGrupoBO CreateGrupoBO();
         Campeonatos.IHistoricoBO CreateHistoricoBO();
         Campeonatos.IJogoBO CreateJogoBO();
         Campeonatos.IPontuacaoBO CreateCampeonatoPontuacaoBO();
