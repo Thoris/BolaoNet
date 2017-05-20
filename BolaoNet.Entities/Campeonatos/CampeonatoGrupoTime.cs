@@ -39,7 +39,7 @@ namespace BolaoNet.Entities.Campeonatos
         {
             this.NomeTime = nomeTime;
             this.NomeGrupo = nomeGrupo;
-            this.NomeCampeonato = nomeCampeonato;
+            this.NomeCampeonato = nomeCampeonato;            
         }
 
         #endregion

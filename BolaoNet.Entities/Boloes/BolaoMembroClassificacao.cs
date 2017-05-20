@@ -24,5 +24,18 @@ namespace BolaoNet.Entities.Boloes
         public int ? LastPosicao{get;set;}
 
         #endregion
+
+        #region Constructors/Destructors
+
+        public BolaoMembroClassificacao()
+        {
+        }
+        public BolaoMembroClassificacao(string userName, string nomeBolao)
+        {
+            this.UserName = userName;
+            this.NomeBolao = nomeBolao;
+        }
+
+        #endregion
     }
 }

@@ -16,5 +16,18 @@ namespace BolaoNet.Entities.Boloes
         public string Descricao { get; set; }
 
         #endregion
+
+        #region Constructors/Destructors
+
+        public BolaoRequestStatus()
+        {
+
+        }
+        public BolaoRequestStatus(int statusRequestID)
+        {
+            this.StatusRequestID = statusRequestID;
+        }
+
+        #endregion
     }
 }

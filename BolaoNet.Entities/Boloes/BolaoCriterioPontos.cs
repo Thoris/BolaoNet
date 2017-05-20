@@ -41,9 +41,12 @@ namespace BolaoNet.Entities.Boloes
         [ForeignKey("NomeBolao")]
         public virtual Bolao Bolao { get; set; }
 
-        [Key, Column(Order=1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public CriteriosID CriterioID { get; set; }
+        [Key, Column(Order = 1)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
+        //public CriteriosID CriterioID { get; set; }
+        public int CriterioID { get; set; }
+        [ForeignKey("CriterioID")]
+        public virtual DadosBasicos.CriterioFixo CriterioFixo { get; set; }
 
         public int ? Pontos { get; set; }
         public string Descricao { get; set; }
@@ -62,7 +65,7 @@ namespace BolaoNet.Entities.Boloes
         {
 
         }
-        public BolaoCriterioPontos(string nomeBolao, CriteriosID criterioID)
+        public BolaoCriterioPontos(string nomeBolao, int criterioID)
         {
             this.NomeBolao = nomeBolao;
             this.CriterioID = criterioID;

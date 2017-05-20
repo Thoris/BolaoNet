@@ -17,15 +17,29 @@ namespace BolaoNet.Entities.Boloes
         [ForeignKey("UserName")]
         public Users.User User { get; set; }
 
-        [Key, Column(Order = 1)]        
-        public string UserNameSelecionado { get; set; }
-        [ForeignKey("UserNameSelecionado")]
-        public Users.User UserSelecionado { get; set; }
-
-        [Key, Column(Order = 2)]
+        [Key, Column(Order = 1)]
         public string NomeBolao { get; set; }
         [ForeignKey("NomeBolao")]
         public virtual Bolao Bolao { get; set; }
+
+        public string IncluidoBy { get; set; }
+        [ForeignKey("IncluidoBy")]
+        public Users.User UserInclusao { get; set; }
+
+
+        #endregion
+
+        #region Constructors/Destructors
+
+        public BolaoMembroGrupo()
+        {
+
+        }
+        public BolaoMembroGrupo(string userName, string nomeBolao)
+        {
+            this.UserName = userName;
+            this.NomeBolao = nomeBolao;
+        }
 
         #endregion
     }

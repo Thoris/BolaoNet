@@ -90,9 +90,7 @@ namespace BolaoNet.Business.Facade
                         jogos[c].ApostaTime1, jogos[c].ApostaTime2, jogos[c].ApostaPenaltis1, jogos[c].ApostaPenaltis2);
 
                     jogos[c].Pontos = total;
-                    jogos[c].ValidadoBy = _userName;
                     jogos[c].Valido = true;
-                    jogos[c].PartidaValida = true;
                     
                     //Atualizando pontuação do usuário
                     _jogoUsuarioBO.UpdatePontuacao(jogos[c]);

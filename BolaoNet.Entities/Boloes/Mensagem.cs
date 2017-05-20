@@ -38,6 +38,12 @@ namespace BolaoNet.Entities.Boloes
         {
 
         }
+        public Mensagem (string nomeBolao, int messageID)
+        {
+            this.NomeBolao = nomeBolao;
+            this.MessageID = messageID;
+
+        }
 
         #endregion
     }

@@ -40,5 +40,24 @@ namespace BolaoNet.Entities.Boloes
         public virtual BolaoPontoRodada BolaoPontoRodada { get; set; }
 
         #endregion
+
+        #region Constructors/Destructors
+
+        public BolaoPontoRodadaUsuario(int posicao, string nomeCampeonato, string nomeGrupo, string nomeFase, string nomeBolao, string userName, int rodada)
+        {
+            this.Posicao = posicao;
+            this.NomeCampeonato = nomeCampeonato;
+            this.NomeGrupo = nomeGrupo;
+            this.NomeFase = nomeFase;
+            this.NomeBolao = nomeBolao;
+            this.UserName = userName;
+            this.Rodada = rodada;
+        }
+        public BolaoPontoRodadaUsuario()
+        {
+
+        }
+
+        #endregion
     }
 }

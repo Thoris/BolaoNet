@@ -37,12 +37,26 @@ namespace BolaoNet.Entities.Boloes
         [ForeignKey("NomeCampeonato, NomeGrupo")]
         public virtual Campeonatos.CampeonatoGrupo CampeonatoGrupo { get; set; }
 
-
-
         public string Titulo { get; set; }
         public int Pontos { get; set; }
         public DateTime DataValidacao { get; set; }
 
+        #endregion
+
+        #region Constructors/Destructors
+
+        public BolaoPontoRodada(int posicao, string nomeCampeonato, string nomeGrupo, string nomeFase, string nomeBolao)
+        {
+            this.Posicao = posicao;
+            this.NomeCampeonato = nomeCampeonato;
+            this.NomeGrupo = nomeGrupo;
+            this.NomeFase = nomeFase;
+            this.NomeBolao = nomeBolao;
+        }
+        public BolaoPontoRodada()
+        {
+
+        }
 
         #endregion
     }

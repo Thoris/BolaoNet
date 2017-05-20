@@ -32,6 +32,11 @@ namespace BolaoNet.Entities.Boloes
         {
 
         }
+        public BolaoCriterioPontosTimes(string nomeBolao, string nomeTime)
+        {
+            this.NomeBolao = nomeBolao;
+            this.NomeTime = nomeTime;
+        }
 
         #endregion
     }

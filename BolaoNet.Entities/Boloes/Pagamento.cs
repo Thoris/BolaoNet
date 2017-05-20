@@ -37,8 +37,12 @@ namespace BolaoNet.Entities.Boloes
         [ForeignKey("UserName")]
         public virtual Users.User User { get; set; }
 
-        
-        public Tipo TipoPagamento{get;set;}
+
+        public int PagamentoTipoID { get; set; }
+        [ForeignKey("PagamentoTipoID")]
+        public virtual DadosBasicos.PagamentoTipo PagamentoTipo { get; set; }
+
+        //public Tipo TipoPagamento{get;set;}
         public decimal ? Valor{get;set;}
         public string Descricao{get;set;}
 
@@ -46,6 +50,12 @@ namespace BolaoNet.Entities.Boloes
         
         #region Constructors/Destructors
 
+        public Pagamento (DateTime dataPagamento, string nomeBolao, string userName)
+        {
+            this.DataPagamento = dataPagamento;
+            this.NomeBolao = nomeBolao;
+            this.UserName = userName;
+        }
         public Pagamento()
         {
 

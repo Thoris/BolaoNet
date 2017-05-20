@@ -360,13 +360,7 @@ namespace BolaoNet.Business.Facade.Campeonatos
                 new Entities.DadosBasicos.Estadio(jogo.NomeEstadio));
 
             #endregion
-
-            #region Grupos
-
-            StoreData<Entities.Campeonatos.Grupo>(_grupoBO, new Entities.Campeonatos.Grupo(jogo.NomeGrupo));
-
-            #endregion
-
+            
             #region Campeonato Grupos
 
             StoreData<Entities.Campeonatos.CampeonatoGrupo>(_campeonatoGrupoBO,
@@ -405,6 +399,13 @@ namespace BolaoNet.Business.Facade.Campeonatos
 
             #endregion
 
+            #region Fases
+
+            StoreData<Entities.Campeonatos.CampeonatoFase>(_campeonatoFaseBO,
+                new Entities.Campeonatos.CampeonatoFase(jogo.NomeFase, campeonato.Nome));
+
+            #endregion
+
             #region Campeonato Grupos Times
 
 
@@ -416,12 +417,6 @@ namespace BolaoNet.Business.Facade.Campeonatos
 
             #endregion
 
-            #region Fases
-
-            StoreData<Entities.Campeonatos.Fase>(_faseBO,
-                new Entities.Campeonatos.Fase(jogo.NomeFase));
-
-            #endregion
 
             #region Campeonato Fases
 

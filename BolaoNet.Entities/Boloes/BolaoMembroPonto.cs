@@ -30,7 +30,6 @@ namespace BolaoNet.Entities.Boloes
         [Key, Column(Order = 5)]
         public int Rodada { get; set; }
 
-
         [ForeignKey("UserName, NomeBolao")]
         public virtual BolaoMembro BolaoMembro { get; set; }
 
@@ -39,6 +38,24 @@ namespace BolaoNet.Entities.Boloes
 
         [ForeignKey("NomeCampeonato, NomeFase")]
         public virtual Campeonatos.CampeonatoFase CampeonatoFase { get; set; }
+
+        #endregion
+
+        #region Constructors/Destructors
+
+        public BolaoMembroPonto(string userName, string nomeBolao, string nomeCampeonato, string nomeFase, string nomeGrupo, int rodada)
+        {
+            this.UserName = userName;
+            this.NomeBolao = nomeBolao;
+            this.NomeCampeonato = nomeCampeonato;
+            this.NomeFase = nomeFase;
+            this.NomeGrupo = nomeGrupo;
+            this.Rodada = rodada;
+        }
+        public BolaoMembroPonto()
+        {
+
+        }
 
         #endregion
     }

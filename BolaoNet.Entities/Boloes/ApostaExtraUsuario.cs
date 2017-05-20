@@ -43,6 +43,12 @@ namespace BolaoNet.Entities.Boloes
         {
 
         }
+        public ApostaExtraUsuario(int posicao, string nomeBolao, string userName )
+        {
+            this.Posicao = posicao;
+            this.NomeBolao = nomeBolao;
+            this.UserName = userName;
+        }
 
         #endregion
     }

@@ -85,8 +85,6 @@
     <Compile Include="Campeonatos\CampeonatoPosicaoIntegration.cs" />
     <Compile Include="Campeonatos\CampeonatoRecordIntegration.cs" />
     <Compile Include="Campeonatos\CampeonatoTimeIntegration.cs" />
-    <Compile Include="Campeonatos\FaseIntegration.cs" />
-    <Compile Include="Campeonatos\GrupoIntegration.cs" />
     <Compile Include="Campeonatos\HistoricoIntegration.cs" />
     <Compile Include="Campeonatos\JogoIntegration.cs" />
     <Compile Include="Campeonatos\PontuacaoIntegration.cs" />

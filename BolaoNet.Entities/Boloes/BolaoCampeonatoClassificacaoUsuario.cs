@@ -10,6 +10,7 @@ namespace BolaoNet.Entities.Boloes
 {
     public class BolaoCampeonatoClassificacaoUsuario : Base.AuditModel
     {
+        #region Properties
 
         [Key, Column(Order = 0)]        
         public string NomeCampeonato { get; set; }
@@ -55,11 +56,24 @@ namespace BolaoNet.Entities.Boloes
 
         public int? TotalPontos { get; set; }
 
-        
+        #endregion
 
+        #region Constructors/Destructors
 
-        
+        public BolaoCampeonatoClassificacaoUsuario()
+        {
 
-        
+        }
+        public BolaoCampeonatoClassificacaoUsuario(string nomeCampeonato, string nomeFase, string nomeGrupo, string nomeTime, string userName, string nomeBolao)
+        {
+            this.NomeCampeonato = nomeCampeonato;
+            this.NomeFase = nomeFase;
+            this.NomeGrupo = nomeGrupo;
+            this.NomeTime = nomeTime;
+            this.UserName = userName;
+            this.NomeBolao = nomeBolao;
+        }
+
+        #endregion
     }
 }

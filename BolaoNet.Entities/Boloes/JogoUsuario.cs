@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Entities.Boloes
 {
-    public class JogoUsuario : Entities.Campeonatos.Jogo, Interfaces.IPontosJogosUsuarioEntity
+    public class JogoUsuario : Base.AuditModel, Interfaces.IPontosJogosUsuarioEntity
     {
         #region Enumeration
         public enum TypeAposta
@@ -35,10 +35,19 @@ namespace BolaoNet.Entities.Boloes
 
         #region Properties
 
+        [Key, Column(Order = 0)]
+        public int JogoId { get; set; }
+
+        [ForeignKey("JogoId, NomeCampeonato")]
+        public virtual Campeonatos.Jogo Jogo { get; set; }
+
+        [Key, Column(Order = 1)]
+        public string NomeCampeonato { get; set; }
+        
+
         [Key, Column(Order = 2)]
         public string NomeBolao { get; set; }
-        [ForeignKey("NomeBolao")]
-        public virtual Bolao Bolao { get; set; }
+        
 
         [Key, Column(Order = 3)]
         public string UserName { get; set; }
@@ -57,12 +66,12 @@ namespace BolaoNet.Entities.Boloes
 
 
         public string NomeTimeResult1 { get; set; }
-        [ForeignKey("NomeTimeResult1")]
-        public virtual DadosBasicos.Time TimeResult1 { get; set; }
+        [ForeignKey("NomeCampeonato, NomeTimeResult1")]
+        public virtual Campeonatos.CampeonatoTime TimeResult1 { get; set; }
 
         public string NomeTimeResult2 { get; set; }
-        [ForeignKey("NomeTimeResult2")]
-        public virtual DadosBasicos.Time TimeResult2 { get; set; }
+        [ForeignKey("NomeCampeonato, NomeTimeResult2")]
+        public virtual Campeonatos.CampeonatoTime TimeResult2 { get; set; }
         
         public int Pontos {get;set;}
 
@@ -98,9 +107,11 @@ namespace BolaoNet.Entities.Boloes
 
         }
         public JogoUsuario(string userName, string nomeBolao, string nomeCampeonato, int jogoId)
-            : base(nomeCampeonato, jogoId)
         {
-
+            this.UserName = userName;
+            this.NomeBolao = nomeBolao;
+            this.NomeCampeonato = nomeCampeonato;
+            this.JogoId = jogoId;
         }
 
         #endregion

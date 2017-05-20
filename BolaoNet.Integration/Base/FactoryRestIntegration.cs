@@ -240,15 +240,6 @@ namespace BolaoNet.Integration.Base
             throw new NotImplementedException();
         }
 
-        public Business.Interfaces.Campeonatos.IFaseBO CreateFaseBO()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Business.Interfaces.Campeonatos.IGrupoBO CreateGrupoBO()
-        {
-            throw new NotImplementedException();
-        }
 
         public Business.Interfaces.Campeonatos.IHistoricoBO CreateHistoricoBO()
         {

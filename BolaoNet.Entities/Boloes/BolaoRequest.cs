@@ -30,7 +30,12 @@ namespace BolaoNet.Entities.Boloes
         public string Descricao { get; set; }
         public DateTime AnsweredDate { get; set; }
         public string AnsweredBy { get; set; }
-        public Status StatusRequestID { get; set; }
+        //public Status StatusRequestID { get; set; }
+
+        public int StatusRequestID { get; set; }
+        [ForeignKey("StatusRequestID")]
+        public virtual BolaoRequestStatus BolaoRequestStatus { get; set; }
+
         public string Owner { get; set; }
         public DateTime RequestedDate { get; set; }
         public string RequestedBy { get; set; }
@@ -47,6 +52,11 @@ namespace BolaoNet.Entities.Boloes
 
         #region Constructors/Destructors
 
+        public BolaoRequest(int requestID, string nomeBolao)
+        {
+            this.RequestID = requestID;
+            this.NomeBolao = nomeBolao;
+        }
         public BolaoRequest()
         {
 
