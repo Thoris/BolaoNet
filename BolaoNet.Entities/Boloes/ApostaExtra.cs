@@ -13,12 +13,15 @@ namespace BolaoNet.Entities.Boloes
         #region Properties
 
         [Key, Column(Order = 1)]
-        public int Posicao { get; set; }
-        
-        [Key, Column(Order = 2)]
         public string NomeBolao { get; set; }
         [ForeignKey("NomeBolao")]
         public virtual Bolao Bolao { get; set; }
+
+
+        [Key, Column(Order = 2)]
+        public int Posicao { get; set; }
+        
+
 
         public string Titulo { get; set; }
         public string Descricao { get; set; }
@@ -26,6 +29,7 @@ namespace BolaoNet.Entities.Boloes
         public bool ? IsValido { get; set; }
         public DateTime ? DataValidacao { get; set; }
         public string ValidadoBy { get; set; }
+
         public string NomeTimeValidado { get; set; }
         [ForeignKey("NomeTimeValidado")]
         public virtual DadosBasicos.Time TimeValidado { get; set; }

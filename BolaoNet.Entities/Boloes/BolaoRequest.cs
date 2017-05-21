@@ -40,13 +40,15 @@ namespace BolaoNet.Entities.Boloes
         public DateTime RequestedDate { get; set; }
         public string RequestedBy { get; set; }
 
-        [Key, Column(Order=0)]
-        public int RequestID { get; set; }
-
+        
         [Key, Column(Order=1)]
         public string NomeBolao { get; set; }
         [ForeignKey("NomeBolao")]
         public virtual Bolao Bolao { get; set; }
+
+        [Key, Column(Order = 2)]
+        public int RequestID { get; set; }
+
 
         #endregion
 

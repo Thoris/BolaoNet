@@ -37,10 +37,10 @@ namespace BolaoNet.Business.Facade
         {
             InsertList<Entities.Users.User>((Base.IGenericBusiness<Entities.Users.User>)_userBO, GetMainUsers());
             InsertList<Entities.Users.Role>((Base.IGenericBusiness<Entities.Users.Role>)_roleBO, GetRoles());
-            InsertList<Entities.Users.UserInRole>((Base.IGenericBusiness<Entities.Users.UserInRole>)_roleBO, GetUsersInRoles());
+            InsertList<Entities.Users.UserInRole>((Base.IGenericBusiness<Entities.Users.UserInRole>)_userInRoleBO, GetUsersInRoles());
 
-            InsertList<Entities.DadosBasicos.CriterioFixo>((Base.IGenericBusiness<Entities.DadosBasicos.CriterioFixo>)_userBO, GetCriteriosFixos());
-            InsertList<Entities.DadosBasicos.PagamentoTipo>((Base.IGenericBusiness<Entities.DadosBasicos.PagamentoTipo>)_userBO, GetPagamentoTipo());            
+            InsertList<Entities.DadosBasicos.CriterioFixo>((Base.IGenericBusiness<Entities.DadosBasicos.CriterioFixo>)_criterioFixoBO, GetCriteriosFixos());
+            InsertList<Entities.DadosBasicos.PagamentoTipo>((Base.IGenericBusiness<Entities.DadosBasicos.PagamentoTipo>)_pagamentoTipoBO, GetPagamentoTipo());            
 
 
             return true;

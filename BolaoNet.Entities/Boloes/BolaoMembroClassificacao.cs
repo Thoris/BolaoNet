@@ -12,13 +12,16 @@ namespace BolaoNet.Entities.Boloes
     {
         #region Properties
 
-        [Key, Column(Order = 0)]
-        public string UserName { get; set; }
+
         
         [Key, Column(Order = 1)]
         public string NomeBolao { get; set; }
-        [ForeignKey("UserName, NomeBolao")]
+        [ForeignKey("NomeBolao, UserName")]
         public virtual BolaoMembro BolaoMembro { get; set; }
+
+        [Key, Column(Order = 2)]
+        public string UserName { get; set; }
+
 
         public int ? Posicao {get;set;}
         public int ? LastPosicao{get;set;}

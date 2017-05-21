@@ -12,12 +12,12 @@ namespace BolaoNet.Entities.Boloes
     {
         #region Properties
 
-        [Key, Column(Order=0)]
+        [Key, Column(Order=1)]
         public string NomeBolao { get; set; }
         [ForeignKey("NomeBolao")]
         public virtual Bolao Bolao { get; set; }
 
-        [Key, Column(Order=1)]
+        [Key, Column(Order=2)]
         public string NomeTime { get; set; }
         [ForeignKey("NomeTime")]
         public virtual Entities.DadosBasicos.Time Time { get; set; }

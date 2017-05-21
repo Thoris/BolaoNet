@@ -13,17 +13,18 @@ namespace BolaoNet.Entities.Boloes
         #region Properties
 
         [Key, Column(Order = 1)]
-        public int Posicao { get; set; }
+        public string NomeBolao { get; set; }
+        [ForeignKey("NomeBolao, Posicao")]
+        public virtual ApostaExtra ApostaExtra { get; set; }
 
         [Key, Column(Order = 2)]
-        public string NomeBolao { get; set; }
-        [ForeignKey("Posicao, NomeBolao")]
-        public virtual ApostaExtra ApostaExtra { get; set; }
+        public int Posicao { get; set; }
 
         [Key, Column(Order = 3)]
         public string UserName { get; set; }
         [ForeignKey("UserName")]
         public virtual Users.User User { get; set; }
+
  
         public DateTime DataAposta { get; set; }
         public int ? Pontos { get; set; }

@@ -12,15 +12,29 @@ namespace BolaoNet.Entities.Users
     {
         #region Properties
 
-        [Key, Column(Order=0)]
-        public string RoleName { get; set; }
-        [ForeignKey ("RoleName")]
-        public virtual Role Role { get; set; }
-
         [Key, Column(Order = 1)]
         public string UserName { get; set; }
         [ForeignKey("UserName")]
         public virtual User User { get; set; }
+
+        [Key, Column(Order=2)]
+        public string RoleName { get; set; }
+        [ForeignKey ("RoleName")]
+        public virtual Role Role { get; set; }
+
+        #endregion
+
+        #region Constructors/Destructors
+
+        public UserInRole()
+        {
+
+        }
+        public UserInRole(string userName, string role)
+        {
+            this.UserName = userName;
+            this.RoleName = role;
+        }
 
         #endregion
     }

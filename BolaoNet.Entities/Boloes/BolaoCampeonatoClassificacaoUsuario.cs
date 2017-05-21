@@ -14,17 +14,17 @@ namespace BolaoNet.Entities.Boloes
 
         [Key, Column(Order = 0)]        
         public string NomeCampeonato { get; set; }
-        [ForeignKey("NomeCampeonato")]
-        public virtual Campeonatos.Campeonato Campeonato { get; set; }
+        //[ForeignKey("NomeCampeonato")]
+        //public virtual Campeonatos.Campeonato Campeonato { get; set; }
 
         [Key, Column(Order = 1)]
         public string NomeFase { get; set; }
-        //[ForeignKey ("NomeFase")]
+        [ForeignKey ("NomeCampeonato, NomeFase")]
         public virtual Campeonatos.CampeonatoFase CampeonatoFase { get; set; }
 
         [Key, Column(Order = 2)]
         public string NomeGrupo { get; set; }
-        //[ForeignKey("NomeGrupo")]
+        [ForeignKey("NomeCampeonato, NomeGrupo")]
         public virtual Campeonatos.CampeonatoGrupo CampeonatoGrupo { get; set; }
 
         [Key, Column(Order = 3)]
@@ -33,14 +33,17 @@ namespace BolaoNet.Entities.Boloes
         public virtual DadosBasicos.Time Time { get; set; }
 
         [Key, Column(Order = 4)]
+        public string NomeBolao { get; set; }
+        [ForeignKey("NomeBolao")]
+        public virtual Bolao Bolao { get; set; }
+
+
+        [Key, Column(Order = 5)]
         public string UserName { get; set; }
         [ForeignKey ("UserName")]
         public virtual Users.User User { get; set; }
 
-        [Key, Column(Order = 5)]
-        public string NomeBolao { get; set; }
-        [ForeignKey("NomeBolao")]
-        public virtual Bolao Bolao { get; set; }
+
 
         public int? Posicao { get; set; }
 

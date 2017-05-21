@@ -52,7 +52,7 @@ namespace BolaoNet.Entities.Users
         }
 
         //[StringLength(25)]
-        [Key]        
+        [Key, Column(Order=0)]        
         public string UserName { get; set; }
         public string Password{ get; set; }
         public int PasswordFormat{ get; set; }

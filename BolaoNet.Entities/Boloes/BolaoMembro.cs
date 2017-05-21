@@ -11,16 +11,18 @@ namespace BolaoNet.Entities.Boloes
     public class BolaoMembro : Base.AuditModel
     {
         #region Properties
-        
+
         [Key, Column(Order = 1)]
+        public string NomeBolao { get; set; }
+        [ForeignKey("NomeBolao")]
+        public virtual Entities.Boloes.Bolao Bolao { get; set; }
+
+        [Key, Column(Order = 2)]
         public string UserName{get;set;}
         [ForeignKey("UserName")]
         public virtual Users.User User { get; set; }
 
-        [Key, Column(Order=0)]
-        public string NomeBolao { get; set; }
-        [ForeignKey("NomeBolao")]
-        public virtual Entities.Boloes.Bolao Bolao{get;set;}
+
 
         public string FullName{get;set;}
 

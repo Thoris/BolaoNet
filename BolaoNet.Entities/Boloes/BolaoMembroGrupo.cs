@@ -12,15 +12,18 @@ namespace BolaoNet.Entities.Boloes
     {
         #region Properties
 
-        [Key, Column(Order = 0)]
-        public string UserName { get; set; }
-        [ForeignKey("UserName")]
-        public Users.User User { get; set; }
-
         [Key, Column(Order = 1)]
         public string NomeBolao { get; set; }
-        [ForeignKey("NomeBolao")]
-        public virtual Bolao Bolao { get; set; }
+        //[ForeignKey("NomeBolao")]
+        //public virtual Bolao Bolao { get; set; }
+
+        [Key, Column(Order = 2)]
+        public string UserName { get; set; }
+        //[ForeignKey("UserName")]
+        //public Users.User User { get; set; }
+        
+        [ForeignKey("NomeBolao, UserName")]
+        public virtual BolaoMembro BolaoMembro { get; set; }
 
         public string IncluidoBy { get; set; }
         [ForeignKey("IncluidoBy")]

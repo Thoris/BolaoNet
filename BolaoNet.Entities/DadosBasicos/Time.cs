@@ -13,7 +13,7 @@ namespace BolaoNet.Entities.DadosBasicos
     {
         #region Properties
 
-        [Key]
+        [Key, Column(Order = 0)]
         public string Nome { get; set; }
         public bool IsClube { get; set; }
         public DateTime ? Fundacao { get; set; }

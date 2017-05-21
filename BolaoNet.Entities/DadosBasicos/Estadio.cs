@@ -13,7 +13,7 @@ namespace BolaoNet.Entities.DadosBasicos
     {
         #region Properties
 
-        [Key]
+        [Key, Column(Order = 0)]
         public string Nome { get; set; }
         public string Pais { get; set; }
         public string Estado { get; set; }
@@ -24,7 +24,7 @@ namespace BolaoNet.Entities.DadosBasicos
         [NotMapped]
         public Image Foto { get; set; }
 
-        [ForeignKey("NomeTime"), Column(Order = 0)]
+        [ForeignKey("NomeTime")]
         public virtual DadosBasicos.Time Time { get; set; }
         public string NomeTime { get; set; }
 

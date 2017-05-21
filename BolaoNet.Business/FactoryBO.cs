@@ -376,7 +376,7 @@ namespace BolaoNet.Business
 
         public Interfaces.Facade.IUserFacadeBO CreateUserFacadeBO()
         {
-            return new Facade.UserFacadeBO(this);
+            return new Facade.UserFacadeBO(_userName, this);
         }
 
         #endregion

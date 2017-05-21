@@ -14,6 +14,7 @@ namespace BolaoNet.TestsVS.Business.Facade
         private BolaoNet.Business.Interfaces.Boloes.IBolaoBO _bolaoBO;
         private BolaoNet.Business.Interfaces.Boloes.IBolaoPremioBO _bolaoPremioBO;
         private BolaoNet.Business.Interfaces.Boloes.IBolaoCriterioPontosBO _bolaoCriterioPontosBO;
+        private BolaoNet.Business.Interfaces.Boloes.IBolaoCriterioPontosTimesBO _bolaoCriterioPontosTimesBO;
         private BolaoNet.Business.Interfaces.Boloes.IBolaoRegraBO _bolaoRegraBO;
         private BolaoNet.Business.Interfaces.Boloes.IBolaoPontuacaoBO _bolaoPontuacaoBO;
 
@@ -29,6 +30,7 @@ namespace BolaoNet.TestsVS.Business.Facade
             _bolaoCriterioPontosBO = factory.CreateBolaoCriterioPontosBO();
             _bolaoRegraBO = factory.CreateBolaoRegraBO ();
             _bolaoPontuacaoBO = factory.CreateBolaoPontuacaoBO();
+            _bolaoCriterioPontosTimesBO = factory.CreateBolaoCriterioPontosTimesBO();
         }
 
         #endregion
@@ -174,6 +176,13 @@ namespace BolaoNet.TestsVS.Business.Facade
 
             StoreData<Entities.Boloes.BolaoCriterioPontos>(_bolaoCriterioPontosBO,
                 new Entities.Boloes.BolaoCriterioPontos(bolao.Nome, (int)(Entities.Boloes.BolaoCriterioPontos.CriteriosID)17) { Pontos = 5 });
+
+            #endregion
+
+            #region Bolao criterio pontos times
+
+            StoreData<Entities.Boloes.BolaoCriterioPontosTimes>(_bolaoCriterioPontosTimesBO,
+                new Entities.Boloes.BolaoCriterioPontosTimes(bolao.Nome, "Brasil") { MultiploTime = 2, });
 
             #endregion
 

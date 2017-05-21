@@ -10,13 +10,14 @@ namespace BolaoNet.Entities.Campeonatos
 {
     public class CampeonatoHistorico : Base.AuditModel
     {
-        [Key, Column(Order = 0)]
-        public int Ano { get; set; }
-
-        [Key, Column(Order = 1)]       
+        [Key, Column(Order = 1)]
         public string NomeCampeonato { get; set; }
         [ForeignKey("NomeCampeonato")]
         public virtual Campeonato Campeonato { get; set; }
+
+        [Key, Column(Order = 2)]
+        public int Ano { get; set; }
+
 
         [StringLength(25)]
         public string Sede { get; set; }

@@ -101,7 +101,33 @@ namespace BolaoNet.TestsVS.Business.Facade
 
             Entities.Boloes.Bolao bolaoLoaded = _bolaoBO.Load(bolao);
 
-            _userFacadeBO.CreateUser(user);
+
+            Entities.Users.Role[] roles = {
+                                              new Entities.Users.Role("Apostador"),
+                                              new Entities.Users.Role("Convidado"),
+                                              new Entities.Users.Role("Visitante de Bolão"),
+                                              new Entities.Users.Role("Visitante de Campeonato"),
+                                           };
+//"Administrador"
+//"Apostador"
+//"Convidado"
+//"Gerenciador de Avisos"
+//"Gerenciador de Bolão"
+//"Gerenciador de Campeonatos"
+//"Gerenciador de Critérios"
+//"Gerenciador de Dados Básicos"
+//"Gerenciador de Enquetes"
+//"Gerenciador de Mensagens"
+//"Gerenciador de Pagamentos"
+//"Gerenciador de Pontuação"
+//"Gerenciador de Publicidade"
+//"Gerenciador de Resultados"
+//"Visitante de Bolão"
+//"Visitante de Campeonato"
+
+
+
+            _userFacadeBO.CreateUser(user, roles);
             _userFacadeBO.SendActivationCode(user);
 
             Entities.Users.User loadedUser = _userBO.Load(user);
@@ -134,8 +160,11 @@ namespace BolaoNet.TestsVS.Business.Facade
         }
         public Entities.Users.User CreateUserApostasThoris(Entities.Boloes.Bolao bolao)
         {
-           
-            Entities.Users.User user = new Entities.Users.User("Thoris");
+
+            Entities.Users.User user = new Entities.Users.User("Thoris")
+            {
+                Email = "thoris@thoris.com"
+            };
 
             Entities.Boloes.Bolao bolaoLoaded = _bolaoBO.Load(bolao);
             Entities.Campeonatos.Campeonato campeonato = _campeonatoBO.Load (new Entities.Campeonatos.Campeonato(bolaoLoaded.NomeCampeonato));
@@ -224,9 +253,12 @@ namespace BolaoNet.TestsVS.Business.Facade
 
             return user;
         }
-        public Entities.Users.User CreateUserApostasFixo (Entities.Boloes.Bolao bolao, string userName, int time1, int time2)
+        public Entities.Users.User CreateUserApostasFixo (Entities.Boloes.Bolao bolao, string userName, string email, int time1, int time2)
         {
-            Entities.Users.User user = new Entities.Users.User(userName);
+            Entities.Users.User user = new Entities.Users.User(userName)
+            {
+                Email = email
+            };
 
             Entities.Boloes.Bolao bolaoLoaded = _bolaoBO.Load(bolao);
             Entities.Campeonatos.Campeonato campeonato = _campeonatoBO.Load(new Entities.Campeonatos.Campeonato(bolaoLoaded.NomeCampeonato));
@@ -242,9 +274,12 @@ namespace BolaoNet.TestsVS.Business.Facade
 
             return user;
         }
-        public Entities.Users.User CreateUserApostasRandom(Entities.Boloes.Bolao bolao, string userName, int maxTime1, int maxTime2)
+        public Entities.Users.User CreateUserApostasRandom(Entities.Boloes.Bolao bolao, string userName, string email, int maxTime1, int maxTime2)
         {
-            Entities.Users.User user = new Entities.Users.User(userName);
+            Entities.Users.User user = new Entities.Users.User(userName)
+            {
+                Email = email
+            };
 
             Entities.Boloes.Bolao bolaoLoaded = _bolaoBO.Load(bolao);
             Entities.Campeonatos.Campeonato campeonato = _campeonatoBO.Load(new Entities.Campeonatos.Campeonato(bolaoLoaded.NomeCampeonato));
@@ -278,16 +313,16 @@ namespace BolaoNet.TestsVS.Business.Facade
             Entities.Boloes.Bolao bolao = bolaoBO.CreateBolao(campeonato);
 
             CreateUserApostasThoris(bolao);
-            CreateUserApostasFixo(bolao, "Usuario1", 1, 0);
-            CreateUserApostasFixo(bolao, "Usuario2", 0, 1);
-            CreateUserApostasFixo(bolao, "Usuario3", 1, 1);
-            CreateUserApostasRandom(bolao, "Usuario4", 3, 3);
-            CreateUserApostasRandom(bolao, "Usuario5", 3, 3);
-            CreateUserApostasRandom(bolao, "Usuario6", 3, 3);
-            CreateUserApostasRandom(bolao, "Usuario7", 3, 3);
-            CreateUserApostasRandom(bolao, "Usuario8", 3, 3);
-            CreateUserApostasRandom(bolao, "Usuario9", 3, 3);
-            CreateUserApostasRandom(bolao, "Usuario10", 3, 3);
+            CreateUserApostasFixo(bolao, "Usuario1", "email1@email.com", 1, 0);
+            CreateUserApostasFixo(bolao, "Usuario2", "email2@email.com", 0, 1);
+            CreateUserApostasFixo(bolao, "Usuario3", "email3@email.com", 1, 1);
+            CreateUserApostasRandom(bolao, "Usuario4", "email4@email.com", 3, 3);
+            CreateUserApostasRandom(bolao, "Usuario5", "email5@email.com", 3, 3);
+            CreateUserApostasRandom(bolao, "Usuario6", "email6@email.com", 3, 3);
+            CreateUserApostasRandom(bolao, "Usuario7", "email7@email.com", 3, 3);
+            CreateUserApostasRandom(bolao, "Usuario8", "email8@email.com", 3, 3);
+            CreateUserApostasRandom(bolao, "Usuario9", "email9@email.com", 3, 3);
+            CreateUserApostasRandom(bolao, "Usuario10", "email10@email.com", 3, 3);
 
             bolaoBO.StartBolao(bolao);
 

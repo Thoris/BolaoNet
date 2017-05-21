@@ -24,9 +24,7 @@ namespace BolaoNet.Entities.Boloes
 
         #region Properties
 
-        [Key, Column(Order = 0)]
-        public DateTime DataPagamento { get; set; }
-
+        
         [Key, Column(Order = 1)]
         public string NomeBolao { get; set; }
         [ForeignKey("NomeBolao")]
@@ -37,6 +35,8 @@ namespace BolaoNet.Entities.Boloes
         [ForeignKey("UserName")]
         public virtual Users.User User { get; set; }
 
+        [Key, Column(Order = 3)]
+        public DateTime DataPagamento { get; set; }
 
         public int PagamentoTipoID { get; set; }
         [ForeignKey("PagamentoTipoID")]

@@ -12,13 +12,15 @@ namespace BolaoNet.Entities.Campeonatos
     {
         #region Properties
 
-        [Key, Column(Order = 0)]
-        public string Nome { get; set; }
-
+        
         [Key, Column(Order = 1)]
         public string NomeCampeonato { get; set; }
         [ForeignKey("NomeCampeonato")]
         public virtual Campeonato Campeonato { get; set; }
+
+        [Key, Column(Order = 2)]
+        public string Nome { get; set; }
+
 
         public string Descricao { get; set; }
 

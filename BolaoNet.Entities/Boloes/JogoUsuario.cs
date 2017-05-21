@@ -35,21 +35,23 @@ namespace BolaoNet.Entities.Boloes
 
         #region Properties
 
-        [Key, Column(Order = 0)]
-        public int JogoId { get; set; }
-
-        [ForeignKey("JogoId, NomeCampeonato")]
-        public virtual Campeonatos.Jogo Jogo { get; set; }
-
         [Key, Column(Order = 1)]
         public string NomeCampeonato { get; set; }
         
-
+        
         [Key, Column(Order = 2)]
-        public string NomeBolao { get; set; }
+        public int JogoId { get; set; }
+
+        [ForeignKey("NomeCampeonato, JogoId")]
+        public virtual Campeonatos.Jogo Jogo { get; set; }
+
         
 
         [Key, Column(Order = 3)]
+        public string NomeBolao { get; set; }
+        
+
+        [Key, Column(Order = 4)]
         public string UserName { get; set; }
         [ForeignKey("UserName")]
         public virtual Users.User User { get; set; }

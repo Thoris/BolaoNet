@@ -12,25 +12,26 @@ namespace BolaoNet.Entities.Boloes
     {
         #region Properties
 
-        [Key, Column(Order = 0)]
-        public string UserName { get; set; }
-        
         [Key, Column(Order = 1)]
-        public string NomeBolao { get; set; }
-        
-        [Key, Column (Order = 2)]
         public string NomeCampeonato { get; set; }
 
-        [Key, Column(Order = 3)]
+        [Key, Column(Order = 2)]
         public string NomeFase { get; set; }
-
-        [Key, Column(Order = 4)]
+        
+        [Key, Column(Order = 3)]
         public string NomeGrupo { get; set; }
 
+        [Key, Column(Order = 4)]
+        public string NomeBolao { get; set; }
+        
+        
         [Key, Column(Order = 5)]
+        public string UserName { get; set; }
+                      
+        [Key, Column(Order = 6)]
         public int Rodada { get; set; }
 
-        [ForeignKey("UserName, NomeBolao")]
+        [ForeignKey("NomeBolao, UserName")]
         public virtual BolaoMembro BolaoMembro { get; set; }
 
         [ForeignKey("NomeCampeonato, NomeGrupo")]

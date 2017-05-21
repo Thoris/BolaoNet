@@ -8,8 +8,11 @@ namespace BolaoNet.Business.Interfaces.Facade
 {
     public interface IUserFacadeBO
     {
-        bool CreateUser(Entities.Users.User user);
+        string GenerateActivationCode(Entities.Users.User user);
+        bool CreateUser(Entities.Users.User user, params Entities.Users.Role [] roles);
         bool SendActivationCode(Entities.Users.User user);
         bool ActivateUser(Entities.Users.User user, string activationCode);
+        bool SendRequestUserBolao(Entities.Users.User user, Entities.Boloes.Bolao bolao);
+        bool ApproveRequestUserBolao(Entities.Boloes.BolaoRequest request);
     }
 }

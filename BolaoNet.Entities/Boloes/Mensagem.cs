@@ -12,12 +12,12 @@ namespace BolaoNet.Entities.Boloes
     {
         #region Properties
 
-        [Key, Column(Order = 0)]
+        [Key, Column(Order = 1)]
         public string NomeBolao { get; set; }
         [ForeignKey("NomeBolao")]
         public Entities.Boloes.Bolao Bolao { get; set; }
 
-        [Key, Column(Order = 1)]
+        [Key, Column(Order = 2)]
         public long MessageID { get; set; }
 
         public string FromFullName { get; set; }
