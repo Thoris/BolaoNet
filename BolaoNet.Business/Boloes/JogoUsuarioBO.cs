@@ -10,6 +10,12 @@ namespace BolaoNet.Business.Boloes
         Base.BaseGenericBusinessBO<Entities.Boloes.JogoUsuario>,
         Interfaces.Boloes.IJogoUsuarioBO
     {
+        #region Variables
+
+        
+
+        #endregion
+
         #region Constructors/Destructors
 
         public JogoUsuarioBO(string userName, Dao.Boloes.IJogoUsuarioDao dao)

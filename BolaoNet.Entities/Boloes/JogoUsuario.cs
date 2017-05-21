@@ -98,7 +98,7 @@ namespace BolaoNet.Entities.Boloes
         public int MultiploTime{get;set;} 
 
         public int Ganhador{get;set;} 
-        public DateTime DataFacebook{get;set;}
+        public DateTime ? DataFacebook{get;set;}
 
         #endregion
         
