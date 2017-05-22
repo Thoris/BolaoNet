@@ -111,4 +111,10 @@
     <Build Include="build\0059.Insert_Table_UsersInRoles.sql" />
     <Build Include="build\0060.Insert_Table_BoloesRequestsStatus.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="build\0100.Create_StoredProcedure_sp_JogosUsuarios_Calcule_Grupo.sql" />
+    <None Include="build\0101.Create_StoredProcedure_sp_JogosUsuarios_Calcule_Time.sql" />
+    <None Include="build\0102.Create_StoreProcedure_sp_JogosUsuarios_Calcule_Dependencia.sql" />
+    <None Include="build\0103.Create_StoredProcedure_sp_JogosUsuarios_Calcule_Final.sql" />
+  </ItemGroup>
 </Project>

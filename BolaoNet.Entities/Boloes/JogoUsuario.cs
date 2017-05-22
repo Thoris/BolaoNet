@@ -57,7 +57,8 @@ namespace BolaoNet.Entities.Boloes
         public virtual Users.User User { get; set; }
 
         public DateTime DataAposta {get;set;}
-        public bool Automatico{get;set;}
+
+        public int ? Automatico{get;set;}
 
         public int ApostaTime1{get;set;}
         public int ApostaTime2{get;set;}

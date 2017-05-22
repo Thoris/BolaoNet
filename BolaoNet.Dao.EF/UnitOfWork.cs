@@ -115,6 +115,61 @@ namespace BolaoNet.Dao.EF
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 
 
+
+
+            //modelBuilder.Entity<Entities.Modalidade().ToTable("Modalidades");
+
+
+            modelBuilder.Entity<Entities.Users.User>().ToTable("Usuarios");
+        
+            modelBuilder.Entity<Entities.DadosBasicos.Time>().ToTable("Times");
+            modelBuilder.Entity<Entities.DadosBasicos.Estadio>().ToTable("Estadios");
+            modelBuilder.Entity<Entities.DadosBasicos.PagamentoTipo>().ToTable("PagamentosTipo");
+            modelBuilder.Entity<Entities.DadosBasicos.CriterioFixo>().ToTable("CriteriosFixos");
+
+            modelBuilder.Entity<Entities.Campeonatos.Campeonato>().ToTable("Campeonatos");
+            modelBuilder.Entity<Entities.Campeonatos.CampeonatoTime>().ToTable("CampeonatosTimes");
+            modelBuilder.Entity<Entities.Campeonatos.CampeonatoFase>().ToTable("CampeonatosFases");
+            modelBuilder.Entity<Entities.Campeonatos.CampeonatoGrupo>().ToTable("CampeonatosGrupos");
+            modelBuilder.Entity<Entities.Campeonatos.CampeonatoGrupoTime>().ToTable("CampeonatosGruposTimes");        
+            modelBuilder.Entity<Entities.Campeonatos.CampeonatoClassificacao>().ToTable("CampeonatosClassificacao");
+            modelBuilder.Entity<Entities.Campeonatos.CampeonatoPosicao>().ToTable("CampeonatosPosicoes");
+            modelBuilder.Entity<Entities.Campeonatos.CampeonatoHistorico>().ToTable("CampeonatosHistorico");
+            modelBuilder.Entity<Entities.Campeonatos.Jogo>().ToTable("Jogos");
+        
+            modelBuilder.Entity<Entities.Boloes.Bolao>().ToTable("Boloes");
+            modelBuilder.Entity<Entities.Boloes.BolaoMembro>().ToTable("BoloesMembros");
+            modelBuilder.Entity<Entities.Boloes.BolaoMembroClassificacao>().ToTable("BoloesMembrosClassificacao");
+            modelBuilder.Entity<Entities.Boloes.BolaoMembroGrupo>().ToTable("BoloesMembrosGrupos");
+            modelBuilder.Entity<Entities.Boloes.BolaoMembroPonto>().ToTable("BoloesMembrosPontos");
+        
+            modelBuilder.Entity<Entities.Boloes.BolaoCriterioPontos>().ToTable("BoloesCriteriosPontos");
+            modelBuilder.Entity<Entities.Boloes.BolaoCriterioPontosTimes>().ToTable("BoloesCriteriosPontosTimes");
+            modelBuilder.Entity<Entities.Boloes.BolaoPremio>().ToTable("BoloesPremios");
+            modelBuilder.Entity<Entities.Boloes.BolaoRegra>().ToTable("BoloesRegras");
+            modelBuilder.Entity<Entities.Boloes.BolaoRequest>().ToTable("BoloesRequests");
+            modelBuilder.Entity<Entities.Boloes.BolaoRequestStatus>().ToTable("BoloesRequestsStatus");
+
+            modelBuilder.Entity<Entities.Boloes.BolaoPontuacao>().ToTable("BoloesPontuacao");
+            modelBuilder.Entity<Entities.Boloes.BolaoPontoRodada>().ToTable("BoloesPontosRodadas");
+            modelBuilder.Entity<Entities.Boloes.BolaoPontoRodadaUsuario>().ToTable("BoloesPontosRodadasUsuarios");
+
+            modelBuilder.Entity<Entities.Boloes.ApostaExtra>().ToTable("ApostasExtras");
+            modelBuilder.Entity<Entities.Boloes.ApostaExtraUsuario>().ToTable("ApostasExtrasUsuarios");
+        
+            modelBuilder.Entity<Entities.Boloes.BolaoCampeonatoClassificacaoUsuario>().ToTable("BoloesCampeonatosClassificacaoUsuarios");        
+         
+            modelBuilder.Entity<Entities.Boloes.JogoUsuario>().ToTable("JogosUsuarios");
+            modelBuilder.Entity<Entities.Boloes.Mensagem>().ToTable("Mensagens");
+            modelBuilder.Entity<Entities.Boloes.Pagamento>().ToTable("Pagamentos");
+        
+            //modelBuilder.Entity<Entities.Boloes.Profiles>().ToTable(" Profiles");
+            modelBuilder.Entity<Entities.Users.Role>().ToTable("Roles");
+            modelBuilder.Entity<Entities.Users.UserInRole>().ToTable("UserInRole");
+
+
+
+
             //modelBuilder.Entity<Entities.Modalidade>().ToTable("Modalidades");
 
 
