@@ -31,6 +31,11 @@ namespace BolaoNet.Entities.Boloes
         [Key, Column(Order = 6)]
         public int Rodada { get; set; }
 
+
+        public int? Posicao { get; set; }
+        public int? LastPosicao { get; set; }
+        public bool IsMultiploTime { get; set; }
+
         [ForeignKey("NomeBolao, UserName")]
         public virtual BolaoMembro BolaoMembro { get; set; }
 

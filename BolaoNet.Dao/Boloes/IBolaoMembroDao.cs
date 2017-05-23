@@ -8,5 +8,11 @@ namespace BolaoNet.Dao.Boloes
 {
     public interface IBolaoMembroDao
     {
+
+        bool OrganizePontosRodada(string currentUserName, DateTime currentDateTime, Entities.Campeonatos.CampeonatoFase fase, 
+            Entities.Campeonatos.CampeonatoGrupo grupo, Entities.Boloes.Bolao bolao, int rodada);
+
+
+
     }
 }
