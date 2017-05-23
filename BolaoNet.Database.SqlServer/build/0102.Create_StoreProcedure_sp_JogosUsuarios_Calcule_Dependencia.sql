@@ -6,6 +6,7 @@ GO
 CREATE PROCEDURE [dbo].[sp_JogosUsuarios_Calcule_Dependencia] 
 (
     @CurrentLogin						varchar(25),
+	@CurrentDateTime					datetime = null,
 	@NomeCampeonato						varchar(50),
 	@IDJogo								bigint,
 	@NomeBolao							varchar(30),	
@@ -22,6 +23,15 @@ CREATE PROCEDURE [dbo].[sp_JogosUsuarios_Calcule_Dependencia]
 )
 AS
 BEGIN
+
+
+	IF (@CurrentDateTime = NULL)
+		SET @CurrentDateTime = GetDate()
+
+	SET @ErrorNumber = 0
+	SET @ErrorDescription = NULL
+	
+
 
 	DECLARE @PendNomeGanhador		varchar(30)
 	DECLARE @PendNomePerdedor		varchar(30)
@@ -133,7 +143,7 @@ BEGIN
 			INSERT JogosUsuarios 
 				  (JogoID, NomeCampeonato, UserName, NomeBolao, NomeTimeResult1, NomeTimeResult2, Automatico, CreatedBy, CreatedDate, ModifiedBy, ModifiedDate) 
 			VALUES
-				  (@Pend1IDJogo, @NomeCampeonato, @UserName, @NomeBolao, @NomeTimeToApply, NULL, 1, @CurrentLogin, GetDate(), @CurrentLogin, GetDate())
+				  (@Pend1IDJogo, @NomeCampeonato, @UserName, @NomeBolao, @NomeTimeToApply, NULL, 1, @CurrentLogin, @CurrentDateTime, @CurrentLogin, @CurrentDateTime)
 		
 		END
 		ELSE
@@ -217,7 +227,7 @@ BEGIN
 			INSERT JogosUsuarios 
 				  (JogoID, NomeCampeonato, UserName, NomeBolao, NomeTimeResult1, NomeTimeResult2, Automatico, CreatedBy, CreatedDate, ModifiedBy, ModifiedDate) 
 			VALUES
-				  (@Pend2IDJogo, @NomeCampeonato, @UserName, @NomeBolao, NULL, @NomeTimeToApply, 1, @CurrentLogin, GetDate(), @CurrentLogin, GetDate())
+				  (@Pend2IDJogo, @NomeCampeonato, @UserName, @NomeBolao, NULL, @NomeTimeToApply, 1, @CurrentLogin, @CurrentDateTime, @CurrentLogin, @CurrentDateTime)
 		
 		END
 		ELSE

@@ -6,6 +6,7 @@ GO
 CREATE PROCEDURE [dbo].[sp_JogosUsuarios_Calcule_Grupo]
 (
     @CurrentLogin						varchar(25),
+	@CurrentDateTime					datetime = null,
 	@NomeCampeonato						varchar(50),
 	@NomeBolao							varchar(30),	
 	@UserName							varchar(25),			
@@ -18,6 +19,9 @@ AS
 BEGIN
 	
 	
+	
+	IF (@CurrentDateTime = NULL)
+		SET @CurrentDateTime = GetDate()
 
 	SET @ErrorNumber = 0
 	SET @ErrorDescription = NULL
@@ -88,7 +92,7 @@ BEGIN
 		--- TIME 1
 		------------------------------------------------------
 		-- Buscando o jogo que possui dependencia do time 1
-	   SELECT @IDJogo1 = IDJogo
+	   SELECT @IDJogo1 = JogoID
 		 FROM Jogos
 		WHERE NomeCampeonato			= @NomeCampeonato
 		  AND PendenteTime1NomeGrupo	= @NomeGrupo
@@ -105,7 +109,7 @@ BEGIN
 			IF (NOT EXISTS (SELECT * 
 						  FROM JogosUsuarios
 						 WHERE NomeCampeonato		= @NomeCampeonato
-						   AND IDJogo				= @IDJogo1
+						   AND JogoID				= @IDJogo1
 						   AND NomeBolao			= @NomeBolao
 						   AND UserName				= @UserName
 						)
@@ -115,9 +119,9 @@ BEGIN
 				PRINT 'Inserindo o registro automático: ' + CONVERT(VARCHAR, @IDJogo1) + ' Para o time 1'
 				
 				INSERT JogosUsuarios 
-					  (IDJogo, NomeCampeonato, UserName, NomeBolao, NomeTimeResult1, NomeTimeResult2, Automatico, CreatedBy, CreatedDate, ModifiedBy, ModifiedDate) 
+					  (JogoID, NomeCampeonato, UserName, NomeBolao, NomeTimeResult1, NomeTimeResult2, Automatico, CreatedBy, CreatedDate, ModifiedBy, ModifiedDate) 
 				VALUES
-					  (@IDJogo1, @NomeCampeonato, @UserName, @NomeBolao, @NomeTime, NULL, 1, @CurrentLogin, GetDate(), @CurrentLogin, GetDate())
+					  (@IDJogo1, @NomeCampeonato, @UserName, @NomeBolao, @NomeTime, NULL, 1, @CurrentLogin, @CurrentDateTime, @CurrentLogin, @CurrentDateTime)
 					  
 			
 			END
@@ -130,7 +134,7 @@ BEGIN
 				UPDATE JogosUsuarios
 				   SET NomeTimeResult1	= @NomeTime				   
 				 WHERE NomeCampeonato		= @NomeCampeonato
-				   AND IDJogo				= @IDJogo1
+				   AND JogoID				= @IDJogo1
 				   AND UserName				= @UserName
 				   AND NomeBolao			= @NomeBolao
 				
@@ -149,7 +153,7 @@ BEGIN
 		--- TIME 2
 		------------------------------------------------------
 		-- Buscando o jogo que possui dependencia do time 1
-	   SELECT @IDJogo2 = IDJogo
+	   SELECT @IDJogo2 = JogoID
 		 FROM Jogos
 		WHERE NomeCampeonato			= @NomeCampeonato
 		  AND PendenteTime2NomeGrupo	= @NomeGrupo
@@ -166,7 +170,7 @@ BEGIN
 			IF (NOT EXISTS (SELECT * 
 						  FROM JogosUsuarios
 						 WHERE NomeCampeonato		= @NomeCampeonato
-						   AND IDJogo				= @IDJogo2
+						   AND JogoID				= @IDJogo2
 						   AND NomeBolao			= @NomeBolao
 						   AND UserName				= @UserName
 						)
@@ -176,9 +180,9 @@ BEGIN
 				PRINT 'Inserindo o registro automático: ' + CONVERT(VARCHAR, @IDJogo2) + ' Para o time 2'
 				
 				INSERT JogosUsuarios 
-					  (IDJogo, NomeCampeonato, UserName, NomeBolao, NomeTimeResult1, NomeTimeResult2, CreatedBy, CreatedDate, ModifiedBy, ModifiedDate) 
+					  (JogoID, NomeCampeonato, UserName, NomeBolao, NomeTimeResult1, NomeTimeResult2, CreatedBy, CreatedDate, ModifiedBy, ModifiedDate) 
 				VALUES
-					  (@IDJogo2, @NomeCampeonato, @UserName, @NomeBolao, NULL, @NomeTime, @CurrentLogin, GetDate(), @CurrentLogin, GetDate())
+					  (@IDJogo2, @NomeCampeonato, @UserName, @NomeBolao, NULL, @NomeTime, @CurrentLogin, @CurrentDateTime, @CurrentLogin, @CurrentDateTime)
 					  
 			
 			END
@@ -191,7 +195,7 @@ BEGIN
 				UPDATE JogosUsuarios
 				   SET NomeTimeResult2		= @NomeTime
 				 WHERE NomeCampeonato		= @NomeCampeonato
-				   AND IDJogo				= @IDJogo2
+				   AND JogoID				= @IDJogo2
 				   AND UserName				= @UserName
 				   AND NomeBolao			= @NomeBolao
 				

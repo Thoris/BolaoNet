@@ -6,6 +6,7 @@ GO
 CREATE PROCEDURE [dbo].[sp_JogosUsuarios_Calcule_Final] 
 (
     @CurrentLogin						varchar(25),
+	@CurrentDateTime					datetime = null,
 	@NomeCampeonato						varchar(50),
 	@IDJogo								bigint,
 	@NomeBolao							varchar(30),	
@@ -22,6 +23,14 @@ CREATE PROCEDURE [dbo].[sp_JogosUsuarios_Calcule_Final]
 )
 AS
 BEGIN
+
+
+	IF (@CurrentDateTime = NULL)
+		SET @CurrentDateTime = GetDate()
+
+	SET @ErrorNumber = 0
+	SET @ErrorDescription = NULL
+
 
 	IF (@NomeFase <> 'Final')
 	BEGIN
@@ -106,7 +115,7 @@ BEGIN
 			
 				INSERT INTO ApostasExtrasUsuarios (NomeBolao, Posicao, UserName, NomeTime, IsApostaValida, Pontos, DataAposta, Automatico, 
 													CreatedBy, CreatedDate, ModifiedBy, ModifiedDate, ActiveFlag)
-				 VALUES	(@NomeBolao, 3, @UserName, @NomeTimeGanhador, 0, 0, GETDATE(), 1, @CurrentLogin, GetDate(), @CurrentLogin, GETDATE(), 0)			
+				 VALUES	(@NomeBolao, 3, @UserName, @NomeTimeGanhador, 0, 0, @CurrentDateTime, 1, @CurrentLogin, @CurrentDateTime, @CurrentLogin, @CurrentDateTime, 0)			
 			
 			END
 			--Se o usuário já fez a sua aposta
@@ -116,8 +125,8 @@ BEGIN
 				UPDATE ApostasExtrasUsuarios 
 				   SET  NomeTime		= @NomeTimeGanhador,
 						ModifiedBy		= @CurrentLogin,
-						ModifiedDate	= GetDate(),
-						DataAposta		= GETDATE(),
+						ModifiedDate	= @CurrentDateTime,
+						DataAposta		= @CurrentDateTime,
 						Automatico		= 1
 				 WHERE NomeBolao		= @NomeBolao
 				   AND UserName			= @UserName
@@ -147,7 +156,7 @@ BEGIN
 			
 				INSERT INTO ApostasExtrasUsuarios (NomeBolao, Posicao, UserName, NomeTime, IsApostaValida, Pontos, DataAposta, Automatico,
 													CreatedBy, CreatedDate, ModifiedBy, ModifiedDate, ActiveFlag)
-				 VALUES	(@NomeBolao, 4, @UserName, @NomeTimePerdedor, 0, 0, GETDATE(), 1,  @CurrentLogin, GetDate(), @CurrentLogin, GETDATE(), 0)			
+				 VALUES	(@NomeBolao, 4, @UserName, @NomeTimePerdedor, 0, 0, @CurrentDateTime, 1,  @CurrentLogin, @CurrentDateTime, @CurrentLogin, @CurrentDateTime, 0)			
 			
 			END
 			--Se o usuário já fez a sua aposta
@@ -157,8 +166,8 @@ BEGIN
 				UPDATE ApostasExtrasUsuarios 
 				   SET  NomeTime		= @NomeTimePerdedor,
 						ModifiedBy		= @CurrentLogin,
-						ModifiedDate	= GetDate(),
-						DataAposta		= GETDATE(),
+						ModifiedDate	= @CurrentDateTime,
+						DataAposta		= @CurrentDateTime,
 						Automatico      = 1
 				 WHERE NomeBolao		= @NomeBolao
 				   AND UserName			= @UserName
@@ -198,7 +207,7 @@ BEGIN
 			
 				INSERT INTO ApostasExtrasUsuarios (NomeBolao, Posicao, UserName, NomeTime, IsApostaValida, Pontos, DataAposta, Automatico,
 													CreatedBy, CreatedDate, ModifiedBy, ModifiedDate, ActiveFlag)
-				 VALUES	(@NomeBolao, 1, @UserName, @NomeTimeGanhador, 0, 0, GETDATE(), 1, @CurrentLogin, GetDate(), @CurrentLogin, GETDATE(), 0)			
+				 VALUES	(@NomeBolao, 1, @UserName, @NomeTimeGanhador, 0, 0, @CurrentDateTime, 1, @CurrentLogin, @CurrentDateTime, @CurrentLogin, @CurrentDateTime, 0)			
 			
 			END
 			--Se o usuário já fez a sua aposta
@@ -208,8 +217,8 @@ BEGIN
 				UPDATE ApostasExtrasUsuarios 
 				   SET  NomeTime		= @NomeTimeGanhador,
 						ModifiedBy		= @CurrentLogin,
-						ModifiedDate	= GetDate(),
-						DataAposta		= GETDATE(),
+						ModifiedDate	= @CurrentDateTime,
+						DataAposta		= @CurrentDateTime,
 						Automatico      = 1
 				 WHERE NomeBolao		= @NomeBolao
 				   AND UserName			= @UserName
@@ -237,7 +246,7 @@ BEGIN
 			
 				INSERT INTO ApostasExtrasUsuarios (NomeBolao, Posicao, UserName, NomeTime, IsApostaValida, Pontos, DataAposta, Automatico,
 													CreatedBy, CreatedDate, ModifiedBy, ModifiedDate, ActiveFlag)
-				 VALUES	(@NomeBolao, 2, @UserName, @NomeTimePerdedor, 0, 0, GETDATE(), 1, @CurrentLogin, GetDate(), @CurrentLogin, GETDATE(), 0)			
+				 VALUES	(@NomeBolao, 2, @UserName, @NomeTimePerdedor, 0, 0, @CurrentDateTime, 1, @CurrentLogin, @CurrentDateTime, @CurrentLogin,@CurrentDateTime, 0)			
 			
 			END
 			--Se o usuário já fez a sua aposta
@@ -247,8 +256,8 @@ BEGIN
 				UPDATE ApostasExtrasUsuarios 
 				   SET  NomeTime		= @NomeTimePerdedor,
 						ModifiedBy		= @CurrentLogin,
-						ModifiedDate	= GetDate(),
-						DataAposta		= GETDATE(),
+						ModifiedDate	= @CurrentDateTime,
+						DataAposta		= @CurrentDateTime,
 						Automatico      = 1
 				 WHERE NomeBolao		= @NomeBolao
 				   AND UserName			= @UserName

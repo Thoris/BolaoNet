@@ -6,8 +6,8 @@ GO
 CREATE PROCEDURE [dbo].[sp_JogosUsuarios_Calcule_Time]
 (
     @CurrentLogin						varchar(25),
+	@CurrentDateTime					datetime = null,
 	@NomeCampeonato						varchar(50),
-	@IDJogo								bigint,
 	@NomeBolao							varchar(30),	
 	@UserName							varchar(25),			
 	@NomeTime							varchar(30),
@@ -20,6 +20,8 @@ AS
 BEGIN
 	
 	
+	IF (@CurrentDateTime = NULL)
+		SET @CurrentDateTime = GetDate()
 
 	SET @ErrorNumber = 0
 	SET @ErrorDescription = NULL
@@ -77,7 +79,7 @@ BEGIN
 				) 
 				+
 			SUM(CASE WHEN (JogosUsuarios.ApostaTime1 = JogosUsuarios.ApostaTime2) THEN 1 ELSE 0 END) as Pontos,				
-		   @CurrentLogin, GetDate(), @CurrentLogin, GetDate(), 1
+		   @CurrentLogin, @CurrentDateTime, @CurrentLogin, @CurrentDateTime, 1
 	  FROM Jogos
 	 INNER JOIN JogosUsuarios
 		ON Jogos.JogoID			= JogosUsuarios.JogoID
@@ -123,6 +125,7 @@ BEGIN
 		PRINT 'Terminou os jogos do grupo ' + @NomeGrupo
 		
 		EXEC sp_JogosUsuarios_Calcule_Grupo		@CurrentLogin,
+												@CurrentDateTime,
 												@NomeCampeonato,
 												@NomeBolao,
 												@UserName,
@@ -130,10 +133,12 @@ BEGIN
 												@NomeGrupo,
 												@ErrorNumber,
 												@ErrorDescription								
-			
-		
-		
-	
+					
+		SELECT 1
+	END
+	ELSE
+	BEGIN
+		SELECT 0	
 	END --endif terminou os jogos do grupo
 
 
