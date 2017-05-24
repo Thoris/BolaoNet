@@ -227,6 +227,9 @@ namespace BolaoNet.TestsVS.Business.Facade
 
             #endregion
 
+
+            //TODO: AVALIAR
+
             #region Boloes Pontuação
 
             StoreData<Entities.Boloes.BolaoPontuacao>(_bolaoPontuacaoBO, new Entities.Boloes.BolaoPontuacao(bolao.Nome, 0) 
@@ -254,9 +257,10 @@ namespace BolaoNet.TestsVS.Business.Facade
 
             return bolao;
         }
-        public bool StartBolao(Entities.Boloes.Bolao bolao)
+        public bool StartBolao(Entities.Users.User iniciadoBy, Entities.Boloes.Bolao bolao)
         {
-            return true;
+            return _bolaoBO.Iniciar(iniciadoBy, bolao);
+            
         }
 
         public bool StoreData<T>(BolaoNet.Business.Base.IGenericBusiness<T> bo, T data)

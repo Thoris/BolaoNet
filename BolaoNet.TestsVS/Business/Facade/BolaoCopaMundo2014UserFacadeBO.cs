@@ -70,7 +70,7 @@ namespace BolaoNet.TestsVS.Business.Facade
             {
                 Entities.Campeonatos.Jogo jogo = new Entities.Campeonatos.Jogo(campeonato.Nome, jogoLabel[c]);
 
-                _bolaoFacadeBO.InsertJogoUsuario(user, bolao, jogo, time1[c], time2[c], penaltis1[c], penaltis2[c]);
+                _bolaoFacadeBO.InsertJogoUsuario(user, bolao, jogo, 1, time1[c], time2[c], penaltis1[c], penaltis2[c]);
 
             }//end for c
 
@@ -126,23 +126,29 @@ namespace BolaoNet.TestsVS.Business.Facade
 //"Visitante de Campeonato"
 
 
+            if (_userBO.Load(user) == null)
+            {
+                _userFacadeBO.CreateUser(user, roles);
+                _userFacadeBO.SendActivationCode(user);
 
-            _userFacadeBO.CreateUser(user, roles);
-            _userFacadeBO.SendActivationCode(user);
+                Entities.Users.User loadedUser = _userBO.Load(user);
+                activationCode = loadedUser.ActivateKey;
 
-            Entities.Users.User loadedUser = _userBO.Load(user);
-            activationCode = loadedUser.ActivateKey;
-
-            _userFacadeBO.ActivateUser(user, activationCode);
+                _userFacadeBO.ActivateUser(user, activationCode);
+            }
 
             Entities.Boloes.BolaoMembro membro = new Entities.Boloes.BolaoMembro(user.UserName, bolao.Nome) { FullName = user.FullName };
-            _bolaoMembroBO.Insert(membro);
+
+            if (_bolaoMembroBO.Load(membro) == null)
+            {
+                _bolaoMembroBO.Insert(membro);
+            }
 
             for (int c = 0; c < jogos.Count; c++ )
             {
                 Entities.Campeonatos.Jogo jogo = new Entities.Campeonatos.Jogo(bolaoLoaded.NomeCampeonato, jogos[c].JogoId);
 
-                _bolaoFacadeBO.InsertJogoUsuario(user, bolao, jogo, jogos[c].ApostaTime1, jogos[c].ApostaTime2, 
+                _bolaoFacadeBO.InsertJogoUsuario(user, bolao, jogo, 1, (int)jogos[c].ApostaTime1, (int)jogos[c].ApostaTime2, 
                     jogos[c].ApostaPenaltis1, jogos[c].ApostaPenaltis2);
             }
 
@@ -313,18 +319,18 @@ namespace BolaoNet.TestsVS.Business.Facade
             Entities.Boloes.Bolao bolao = bolaoBO.CreateBolao(campeonato);
 
             CreateUserApostasThoris(bolao);
-            CreateUserApostasFixo(bolao, "Usuario1", "email1@email.com", 1, 0);
-            CreateUserApostasFixo(bolao, "Usuario2", "email2@email.com", 0, 1);
-            CreateUserApostasFixo(bolao, "Usuario3", "email3@email.com", 1, 1);
-            CreateUserApostasRandom(bolao, "Usuario4", "email4@email.com", 3, 3);
-            CreateUserApostasRandom(bolao, "Usuario5", "email5@email.com", 3, 3);
-            CreateUserApostasRandom(bolao, "Usuario6", "email6@email.com", 3, 3);
-            CreateUserApostasRandom(bolao, "Usuario7", "email7@email.com", 3, 3);
-            CreateUserApostasRandom(bolao, "Usuario8", "email8@email.com", 3, 3);
-            CreateUserApostasRandom(bolao, "Usuario9", "email9@email.com", 3, 3);
+            //CreateUserApostasFixo(bolao, "Usuario1", "email1@email.com", 1, 0);
+            //CreateUserApostasFixo(bolao, "Usuario2", "email2@email.com", 0, 1);
+            //CreateUserApostasFixo(bolao, "Usuario3", "email3@email.com", 1, 1);
+            //CreateUserApostasRandom(bolao, "Usuario4", "email4@email.com", 3, 3);
+            //CreateUserApostasRandom(bolao, "Usuario5", "email5@email.com", 3, 3);
+            //CreateUserApostasRandom(bolao, "Usuario6", "email6@email.com", 3, 3);
+            //CreateUserApostasRandom(bolao, "Usuario7", "email7@email.com", 3, 3);
+            //CreateUserApostasRandom(bolao, "Usuario8", "email8@email.com", 3, 3);
+            //CreateUserApostasRandom(bolao, "Usuario9", "email9@email.com", 3, 3);
             CreateUserApostasRandom(bolao, "Usuario10", "email10@email.com", 3, 3);
 
-            bolaoBO.StartBolao(bolao);
+            bolaoBO.StartBolao(new Entities.Users.User ("Thoris"), bolao);
 
             campeonatoBO.InsertResults(campeonato);
 

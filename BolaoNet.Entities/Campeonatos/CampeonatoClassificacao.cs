@@ -30,7 +30,7 @@ namespace BolaoNet.Entities.Campeonatos
 
         [Key, Column(Order = 2)]
         public string NomeGrupo { get; set; }
-        [ForeignKey("NomeCampeonato, NomeTime, NomeGrupo")]
+        [ForeignKey("NomeCampeonato, NomeGrupo, NomeTime")]
         public virtual Campeonatos.CampeonatoGrupoTime Grupo { get; set; }
 
 

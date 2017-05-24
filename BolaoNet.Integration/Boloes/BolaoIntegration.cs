@@ -32,5 +32,15 @@ namespace BolaoNet.Integration.Boloes
         }
 
         #endregion    
+    
+        public bool Iniciar(Entities.Users.User iniciadoBy, Entities.Boloes.Bolao bolao)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Aguardar(Entities.Boloes.Bolao bolao)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

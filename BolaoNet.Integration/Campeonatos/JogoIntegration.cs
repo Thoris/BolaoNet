@@ -32,5 +32,10 @@ namespace BolaoNet.Integration.Campeonatos
         }
 
         #endregion
+
+        public bool InsertResult(Entities.Campeonatos.Jogo jogo, int gols1, int? penaltis1, int gols2, int? penaltis2, bool setCurrentData, Entities.Users.User validadoBy)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

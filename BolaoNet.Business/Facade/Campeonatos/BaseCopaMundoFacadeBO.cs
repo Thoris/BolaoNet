@@ -464,14 +464,19 @@ namespace BolaoNet.Business.Facade.Campeonatos
             return false;
         }
 
-        public bool InsertResult(Entities.Campeonatos.Campeonato campeonato, int jogoID, int golsTime1, int golsTime2, int ? penaltis1, int ? penaltis2)
+        public bool InsertResult(Entities.Campeonatos.Campeonato campeonato, int jogoID, bool setCurrentData, Entities.Users.User validadoBy, int golsTime1, int golsTime2, int ? penaltis1, int ? penaltis2)
         {
             Entities.Campeonatos.Jogo jogo = new Entities.Campeonatos.Jogo(campeonato.Nome, jogoID);
             jogo.GolsTime1 = golsTime1;
             jogo.GolsTime2 = golsTime2;
             jogo.PenaltisTime1 = penaltis1;
             jogo.PenaltisTime2 = penaltis2;
-            _campeonatoFacadeBO.InsertJogo(jogo);
+
+
+            _jogoBO.InsertResult(jogo, golsTime1, penaltis1, golsTime2, penaltis2, setCurrentData, validadoBy);
+            //_campeonatoFacadeBO.InsertJogo(jogo);
+
+            
             return true;
         }
 

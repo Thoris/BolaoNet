@@ -126,5 +126,7 @@
     <None Include="build\0112.Create_StoredProcedure_sp_CampeonatosClassificacao_Organize.sql" />
     <None Include="build\0111.Create_StoredProcedure_sp_CampeonatosClassificacao_LoadRodada.sql" />
     <None Include="build\0114.Create_StoredProcedure_sp_Jogos_ResultInsert.sql" />
+    <None Include="build\0115.Create_StoredProcedure_sp_Boloes_Iniciar.sql" />
+    <None Include="build\0116.Create_StoredProcedure_sp_Boloes_Aguardar.sql" />
   </ItemGroup>
 </Project>

@@ -36,7 +36,6 @@ namespace BolaoNet.Dao.Boloes
             Entities.DadosBasicos.Time time1, Entities.DadosBasicos.Time time2, int gols1, int gols2, int? penaltis1, int? penaltis2,
             Entities.Users.User validadoBy);
 
-
         Entities.Interfaces.IPontosJogosUsuarioEntity CalculePontos(string currentUserName, DateTime currentDateTime, int gols1, int gols2, int aposta1, int aposta2,
             int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1, int pontosTime2,
             int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, int pontosPerdedorFora, int pontosPerdedorDentro,

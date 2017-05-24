@@ -58,6 +58,8 @@ BEGIN
 			Automatico,
 			ApostaTime1,
 			ApostaTime2,
+			ApostaPenaltis1,
+			ApostaPenaltis2,
 			Ganhador,
 			CreatedBy,
 			CreatedDate,
@@ -75,6 +77,8 @@ BEGIN
 			@Automatico,
 			@ApostaTime1,
 			@ApostaTime2,
+			@Penaltis1,
+			@Penaltis2,
 			@Ganhador,
 			@CurrentLogin,
 			@CurrentDateTime,
@@ -93,6 +97,8 @@ BEGIN
 				Automatico			= @Automatico,
 				ApostaTime1			= @ApostaTime1,
 				ApostaTime2			= @ApostaTime2,
+				ApostaPenaltis1		= @Penaltis1,
+				ApostaPenaltis2		= @Penaltis2,
 				Ganhador			= @Ganhador,
 				ModifiedBy			= @CurrentLogin,
 				ModifiedDate		= @CurrentDateTime
@@ -104,7 +110,7 @@ BEGIN
 				
 	END
 	
-	SET @RowCOunt =  @@RowCount  	
+	SET @RowCount =  @@RowCount  	
 	
 
 	-- Declarando as variaveis para buscar os dados

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -154,9 +156,9 @@ namespace BolaoNet.Dao.EF.Campeonatos
                                                         new SqlParameter("IdJogo", jogo.JogoId),
                                                         new SqlParameter("NomeCampeonato", jogo.NomeCampeonato),
                                                         new SqlParameter("Gols1", gols1),
-                                                        new SqlParameter("Penaltis1", penaltis1),
+                                                        new SqlParameter("Penaltis1", penaltis1 ?? SqlInt32.Null),
                                                         new SqlParameter("Gols2", gols2),
-                                                        new SqlParameter("Penaltis2", penaltis2),
+                                                        new SqlParameter("Penaltis2", penaltis2 ?? SqlInt32.Null),
                                                         new SqlParameter("SetCurrentData", setCurrentData),
                                                         new SqlParameter("ValidadoBy", validadoBy.UserName),
                                                         errorNumber,

@@ -92,8 +92,8 @@ namespace BolaoNet.Tests.Debug
             //    new Entities.Campeonatos.CampeonatoGrupo("A", "Copa do Mundo 2014"));
 
             Dao.Campeonatos.IJogoDao test5 = factoryDao.CreateJogoDao();
-            test5.InsertResult("teste", DateTime.Now, new Entities.Campeonatos.Jogo("Copa do Mundo 2014", 1), 
-                1, 0, 2, 0, true, new Entities.Users.User("thoris"));
+            //test5.InsertResult("teste", DateTime.Now, new Entities.Campeonatos.Jogo("Copa do Mundo 2014", 1), 
+            //   1, 0, 2, 0, true, new Entities.Users.User("thoris"));
 
 
             //BO

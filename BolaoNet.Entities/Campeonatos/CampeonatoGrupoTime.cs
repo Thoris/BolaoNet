@@ -17,17 +17,16 @@ namespace BolaoNet.Entities.Campeonatos
         //[ForeignKey("NomeCampeonato")]
         //public virtual Campeonato Campeonato { get; set; }
 
-
         [Key, Column(Order = 2)]
-        public string NomeTime { get; set; }
-        [ForeignKey("NomeCampeonato, NomeTime")]
-        public virtual CampeonatoTime Time { get; set; }
-
-
-        [Key, Column(Order = 3)]
         public string NomeGrupo { get; set; }
         [ForeignKey("NomeCampeonato, NomeGrupo")]
         public virtual CampeonatoGrupo CampeonatoGrupo { get; set; }
+
+
+        [Key, Column(Order = 3)]
+        public string NomeTime { get; set; }
+        [ForeignKey("NomeCampeonato, NomeTime")]
+        public virtual CampeonatoTime Time { get; set; }
 
         #endregion
 

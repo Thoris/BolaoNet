@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -407,13 +408,14 @@ namespace BolaoNet.Dao.EF.Boloes
             {
                 if (apostaTime1 == apostaTime2)
                 {
-                    if (penaltis1 != null && penaltis2 != null)
-                    {
-                        if ((int)penaltis1 > (int)penaltis2)
-                            ganhador = 0;
-                        else if ((int)penaltis1 < (int)penaltis2)
-                            ganhador = 1;
-                    }
+                    ganhador = 2;
+                    //if (penaltis1 != null && penaltis2 != null)
+                    //{
+                    //    if ((int)penaltis1 > (int)penaltis2)
+                    //        ganhador = 0;
+                    //    else if ((int)penaltis1 < (int)penaltis2)
+                    //        ganhador = 1;
+                    //}
                 }
                 else if (apostaTime1 > apostaTime2)
                 {
@@ -436,9 +438,9 @@ namespace BolaoNet.Dao.EF.Boloes
                                                         new SqlParameter("Automatico", automatico),
                                                         new SqlParameter("ApostaTime1", apostaTime1),
                                                         new SqlParameter("ApostaTime2", apostaTime2),
-                                                        new SqlParameter("Penaltis1", penaltis1),
-                                                        new SqlParameter("Penaltis2", penaltis2),
-                                                        new SqlParameter("Ganhador", ganhador),
+                                                        new SqlParameter("Penaltis1", penaltis1 ?? SqlInt32.Null),
+                                                        new SqlParameter("Penaltis2", penaltis2 ?? SqlInt32.Null),
+                                                        new SqlParameter("Ganhador", ganhador ?? SqlInt32.Null),
                                                         errorNumber,
                                                         errorDescription
                                                     ).ToList();

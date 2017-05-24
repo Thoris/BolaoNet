@@ -8,6 +8,7 @@ namespace BolaoNet.Business.Interfaces.Campeonatos
 {
     public interface IJogoBO : Base.IGenericBusiness<Entities.Campeonatos.Jogo>
     {
-        
+        bool InsertResult(Entities.Campeonatos.Jogo jogo, int gols1, int? penaltis1, int gols2, int? penaltis2, 
+            bool setCurrentData, Entities.Users.User validadoBy);
     }
 }

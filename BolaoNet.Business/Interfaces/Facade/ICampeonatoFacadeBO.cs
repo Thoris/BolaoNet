@@ -8,6 +8,6 @@ namespace BolaoNet.Business.Interfaces.Facade
 {
     public interface ICampeonatoFacadeBO
     {
-        IList<Entities.Campeonatos.Jogo> InsertJogo(Entities.Campeonatos.Jogo jogo); 
+        //IList<Entities.Campeonatos.Jogo> InsertJogo(Entities.Campeonatos.Jogo jogo); 
     }
 }

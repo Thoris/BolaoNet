@@ -35,6 +35,10 @@ namespace BolaoNet.Business.Base
         {
             get { return _currentUserName; }
         }
+        protected Dao.Base.IGenericDao<T> BaseDao
+        {
+            get { return _dao; }
+        }
 
         #endregion
 
