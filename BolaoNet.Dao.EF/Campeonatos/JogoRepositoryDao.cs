@@ -115,8 +115,74 @@ namespace BolaoNet.Dao.EF.Campeonatos
             else
                 return false;
         }
+        public bool InsertResult(string currentUserName, DateTime currentDateTime, Entities.Campeonatos.Jogo jogo, int gols1, int? penaltis1, int gols2, int? penaltis2, bool setCurrentData, Entities.Users.User validadoBy)
+        {
+            string command = "exec sp_Jogos_ResultInsert " +
+               "  @CurrentLogin " +
+               ", @CurrentDateTime" +
+               ", @IdJogo" +
+               ", @NomeCampeonato" +
+               ", @Gols1" +
+               ", @Penaltis1" +
+               ", @Gols2" +
+               ", @Penaltis2" +
+               ", @SetCurrentData" +
+               ", @ValidadoBy" +
+               ", @ErrorNumber out" +
+               ", @ErrorDescription out";
 
+
+
+            var errorNumber = new SqlParameter
+            {
+                ParameterName = "@ErrorNumber",
+                SqlDbType = System.Data.SqlDbType.Int,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var errorDescription = new SqlParameter
+            {
+                ParameterName = "@ErrorDescription",
+                SqlDbType = System.Data.SqlDbType.VarChar,
+                Size = 255,
+                Direction = System.Data.ParameterDirection.Output
+            };
+
+            IList<object> res = base.DataContext.Database.SqlQuery<object>(command,
+                                                        new SqlParameter("CurrentLogin", currentUserName),
+                                                        new SqlParameter("CurrentDateTime", currentDateTime),
+                                                        new SqlParameter("IdJogo", jogo.JogoId),
+                                                        new SqlParameter("NomeCampeonato", jogo.NomeCampeonato),
+                                                        new SqlParameter("Gols1", gols1),
+                                                        new SqlParameter("Penaltis1", penaltis1),
+                                                        new SqlParameter("Gols2", gols2),
+                                                        new SqlParameter("Penaltis2", penaltis2),
+                                                        new SqlParameter("SetCurrentData", setCurrentData),
+                                                        new SqlParameter("ValidadoBy", validadoBy.UserName),
+                                                        errorNumber,
+                                                        errorDescription
+                                                    ).ToList();
+
+         
+            int error = 0;
+            try
+            {
+                error = (int)errorNumber.Value;
+            }
+            catch
+            {
+
+            }
+
+            if (error == 0)
+                return true;
+            else
+                return false;
+        }
 
         #endregion
+
+
+
     }
 }

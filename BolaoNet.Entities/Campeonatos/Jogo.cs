@@ -67,6 +67,7 @@ namespace BolaoNet.Entities.Campeonatos
         [ForeignKey("NomeCampeonato, NomeGrupo")]
         public virtual Campeonatos.CampeonatoGrupo Grupo { get; set; }
 
+        public bool IsValido { get; set; }
         public string ValidadoBy { get; set; }
         public string Titulo { get; set; }
         

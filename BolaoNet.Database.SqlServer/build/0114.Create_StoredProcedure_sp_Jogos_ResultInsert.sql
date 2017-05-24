@@ -99,7 +99,7 @@ BEGIN
 				@JogoIsAlreadyValid	= IsValido
 		  FROM Jogos
 		 WHERE NomeCampeonato		= @NomeCampeonato
-		   AND IDJogo				= @IDJogo
+		   AND JogoID				= @IDJogo
 		   
 		-- Se não conseguiu encontrar o jogo
 		IF (@@ROWCOUNT <> 1)
@@ -145,16 +145,16 @@ BEGIN
 		
 		-- Atualizando dados do jogo
 		UPDATE Jogos SET		
-			Gols1						= @Gols1,
-			Penaltis1					= @Penaltis1,
-			Gols2						= @Gols2,
-			Penaltis2					= @Penaltis2,
+			GolsTime1					= @Gols1,
+			PenaltisTime1				= @Penaltis1,
+			GolsTime2					= @Gols2,
+			PenaltisTime2				= @Penaltis2,
 			IsValido					= 1,
 			DataValidacao				= @CurrentDateTime,
 			ValidadoBy					= @ValidadoBy		
 		 WHERE 
 				NomeCampeonato			= @NomeCampeonato
-		   AND	IDJogo					= @IDJogo
+		   AND	JogoID					= @IDJogo
 		   
 		 SET @RowCountAffected = @@RowCount
 		   
@@ -395,7 +395,7 @@ BEGIN
 		
 		EXEC sp_JogosUsuariosValidacao
 			@CurrentLogin,
-			@ApplicationName, 
+			@CurrentDateTime, 
 			@IDJogo,
 			@NomeCampeonato,
 			@CurrentGrupo,
@@ -424,7 +424,7 @@ BEGIN
 			
 			EXECUTE [sp_CampeonatosClassificacao_Organize] 
 			   @CurrentLogin
-			  ,@ApplicationName
+			  ,@CurrentDateTime
 			  ,@CurrentRodada
 			  ,@CurrentFase
 			  ,@NomeCampeonato
@@ -449,7 +449,7 @@ BEGIN
 			
 			
 				EXEC sp_Jogos_Calcule_Grupo		@CurrentLogin,
-												@ApplicationName,
+												@CurrentDateTime,
 												@NomeCampeonato,
 												@CurrentFase,
 												@CurrentGrupo,
@@ -466,7 +466,7 @@ BEGIN
 		PRINT 'Calculando a Dependência do jogo'
 		
 		EXEC sp_Jogos_Calcule_Dependencia		@CurrentLogin,
-												@ApplicationName,
+												@CurrentDateTime,
 												@NomeCampeonato,
 												@IDJogo,
 												@CurrentFase,

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,14 +11,15 @@ namespace BolaoNet.Entities.Campeonatos
     {
         #region Properties
 
-        public int TotalVitorias { get; set; }
-        public int TotalDerrotas { get; set; }
-        public int TotalEmpates { get; set; }
-        public int TotalGolsContra { get; set; }
-        public int TotalGolsPro { get; set; }
-        public int TotalPontos { get; set; }
-        public int Jogos { get; set; }
-        public int Saldo { get; set; }
+        public int? TotalVitorias { get; set; }
+        public int? TotalDerrotas { get; set; }
+        public int? TotalEmpates { get; set; }
+        public int? TotalGolsContra { get; set; }
+        public int? TotalGolsPro { get; set; }
+        public int? TotalPontos { get; set; }
+        public int? Jogos { get; set; }
+        public int? Saldo { get; set; }
+        [NotMapped]
         public double Aproveitamento
         {
             get
@@ -26,7 +28,7 @@ namespace BolaoNet.Entities.Campeonatos
                     return 0;
                 else
                 {
-                    int totalPontos = Jogos * 3;
+                    int totalPontos = (Jogos != null ? (int)Jogos : 0) * 3;
 
                     double result = ((double)TotalPontos / (double)totalPontos) * (double)100;
 

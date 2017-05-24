@@ -13,6 +13,13 @@ namespace BolaoNet.Dao.Campeonatos
             Entities.Campeonatos.CampeonatoFase fase, Entities.Campeonatos.CampeonatoGrupo grupo);
 
 
+        bool InsertResult (string currentUserName, DateTime currentDateTime, Entities.Campeonatos.Jogo jogo,
+            int gols1, int ? penaltis1, int gols2, int ? penaltis2, bool setCurrentData, 
+            Entities.Users.User validadoBy);
+
+
+
+
         //bool InsertResult(string currentUserName, int gols1, int gols2, int ? penaltis1, int ? penaltis2, Entities.Campeonatos.Jogo entry);
         //bool RemoveResult(string currentUserName, Entities.Campeonatos.Jogo entry);
 

@@ -60,10 +60,10 @@ namespace BolaoNet.Tests.Debug
             //    0, 1, 1, 2, 1, null);
 
 
-            test.Validacao("teste", DateTime.Now, new Entities.Campeonatos.Jogo("Copa do Mundo 2014", 1),
-                new Entities.Campeonatos.CampeonatoFase("Classificatória", "Copa do Mundo 2014"),
-                new Entities.Campeonatos.CampeonatoGrupo("A", "Copa do Mundo 2014"), 1, new Entities.DadosBasicos.Time("Brasil"),
-                new Entities.DadosBasicos.Time("Croácia"), 1, 2, 0, 0, new Entities.Users.User("thoris"));
+            //test.Validacao("teste", DateTime.Now, new Entities.Campeonatos.Jogo("Copa do Mundo 2014", 1),
+            //    new Entities.Campeonatos.CampeonatoFase("Classificatória", "Copa do Mundo 2014"),
+            //    new Entities.Campeonatos.CampeonatoGrupo("A", "Copa do Mundo 2014"), 1, new Entities.DadosBasicos.Time("Brasil"),
+            //    new Entities.DadosBasicos.Time("Croácia"), 1, 2, 0, 0, new Entities.Users.User("thoris"));
 
 
             Dao.Boloes.IBolaoMembroDao test2 = factoryDao.CreateBolaoMembroDao();
@@ -83,13 +83,18 @@ namespace BolaoNet.Tests.Debug
             //    out pontosPerdedorDentro, out pontosEmpateGols, out pontosGolsTime1, out pontosGolsTime2, out pontosCheio);
 
             Dao.Campeonatos.ICampeonatoClassificacaoDao test4 = factoryDao.CreateCampeonatoClassificacaoDao();
-            test4.LoadRodada("teste", DateTime.Now, 1, new Entities.Campeonatos.Campeonato("Copa do Mundo 2014"),
-                new Entities.Campeonatos.CampeonatoFase("Classificatória", "Copa do Mundo 2014"),
-                new Entities.Campeonatos.CampeonatoGrupo("A", "Copa do Mundo 2014"));
+            //test4.LoadRodada("teste", DateTime.Now, 1, new Entities.Campeonatos.Campeonato("Copa do Mundo 2014"),
+            //    new Entities.Campeonatos.CampeonatoFase("Classificatória", "Copa do Mundo 2014"),
+            //    new Entities.Campeonatos.CampeonatoGrupo("A", "Copa do Mundo 2014"));
 
-            test4.Organize("teste", DateTime.Now, 1, new Entities.Campeonatos.Campeonato("Copa do Mundo 2014"),
-                new Entities.Campeonatos.CampeonatoFase("Classificatória", "Copa do Mundo 2014"),
-                new Entities.Campeonatos.CampeonatoGrupo("A", "Copa do Mundo 2014"));
+            //test4.Organize("teste", DateTime.Now, 1, new Entities.Campeonatos.Campeonato("Copa do Mundo 2014"),
+            //    new Entities.Campeonatos.CampeonatoFase("Classificatória", "Copa do Mundo 2014"),
+            //    new Entities.Campeonatos.CampeonatoGrupo("A", "Copa do Mundo 2014"));
+
+            Dao.Campeonatos.IJogoDao test5 = factoryDao.CreateJogoDao();
+            test5.InsertResult("teste", DateTime.Now, new Entities.Campeonatos.Jogo("Copa do Mundo 2014", 1), 
+                1, 0, 2, 0, true, new Entities.Users.User("thoris"));
+
 
             //BO
             BolaoNet.Business.Interfaces.IFactoryBO factoryBo = new BolaoNet.Business.FactoryBO("usuario", factoryDao);
