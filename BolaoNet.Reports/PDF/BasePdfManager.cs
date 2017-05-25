@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Reports.PDF
 {
-    class BasePdfManager
+    public class BasePdfManager
     {
     }
 }
