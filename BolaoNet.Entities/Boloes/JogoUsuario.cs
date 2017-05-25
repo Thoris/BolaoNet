@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Entities.Boloes
 {
-    public class JogoUsuario : Base.AuditModel, Interfaces.IPontosJogosUsuarioEntity
+    public class JogoUsuario : Base.AuditModel //, Interfaces.IPontosJogosUsuarioEntity
     {
         #region Enumeration
         public enum TypeAposta

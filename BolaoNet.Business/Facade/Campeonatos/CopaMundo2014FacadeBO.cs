@@ -43,6 +43,17 @@ namespace BolaoNet.Business.Facade.Campeonatos
                 base.InsertAllJogoInformation(campeonato.IsClube, campeonato, list[c]);
             }
 
+            string nomeFase = "Classificatória";
+            IList<Entities.Campeonatos.CampeonatoPosicao> listPosicao = base.GetCampeonatoPosicoes(campeonato, nomeFase);
+
+            for (int c= 0; c < listPosicao.Count; c++)
+            {
+                StoreData<Entities.Campeonatos.CampeonatoPosicao>(_campeonatoPosicaoBO, listPosicao[c]);
+            }
+
+
+
+
             return campeonato;
         }
         public IList<Entities.Campeonatos.Jogo> GetJogosGrupo(Entities.Campeonatos.Campeonato campeonato)
@@ -374,7 +385,8 @@ namespace BolaoNet.Business.Facade.Campeonatos
             jogoLabels.Add(51); time1.Add(2); time2.Add(1); penaltis1.Add(null); penaltis2.Add(null);
             jogoLabels.Add(52); time1.Add(1); time2.Add(1); penaltis1.Add(4); penaltis2.Add(3);
             jogoLabels.Add(53); time1.Add(2); time2.Add(0); penaltis1.Add(null); penaltis2.Add(null);
-            jogoLabels.Add(54); time1.Add(0); time2.Add(0); penaltis1.Add(2); penaltis2.Add(1);
+            jogoLabels.Add(54); time1.Add(0); time2.Add(0); penaltis1.Add(2); penaltis2.Add(1)
+                ;
             jogoLabels.Add(55); time1.Add(0); time2.Add(0); penaltis1.Add(1); penaltis2.Add(0);
             jogoLabels.Add(56); time1.Add(0); time2.Add(0); penaltis1.Add(2); penaltis2.Add(1);
 

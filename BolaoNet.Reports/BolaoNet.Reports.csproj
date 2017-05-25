@@ -42,10 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityApostasExtras.cs" />
+    <Compile Include="EntityJogoUsuario.cs" />
     <Compile Include="Excel\BaseExcelManager.cs" />
     <Compile Include="IApostasUserReport.cs" />
     <Compile Include="PDF\BasePdfManager.cs" />
-    <Compile Include="PDF\PdfApostasUserReport.cs" />
+    <Compile Include="PDF\PdfCopaMundoApostasUserReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Text\BaseTextManager.cs" />
   </ItemGroup>

@@ -8,7 +8,8 @@ namespace BolaoNet.Reports
 {
     public interface IApostasUserReport
     {
-        void GenerateApostas(Entities.Boloes.Bolao bolao, Entities.Campeonatos.Campeonato campeonato, Entities.Users.User user, 
-            IList<Entities.Campeonatos.Jogo> jogos, IList<Entities.Boloes.Bolao> jogosUsuarios);
+        void CreatePageUserApostas(Entities.Boloes.Bolao bolao, Entities.Campeonatos.Campeonato campeonato, Entities.Users.User user, 
+            IList<Entities.Campeonatos.Jogo> jogos, IList<Entities.Boloes.JogoUsuario> jogosUsuarios, 
+            IList<Entities.Boloes.ApostaExtra> apostasExtras, IList<Entities.Boloes.ApostaExtraUsuario> apostasUsuarios);
     }
 }

@@ -76,7 +76,7 @@ namespace BolaoNet.Dao.EF
 
             //Database.SetInitializer<UnitOfWork>(new CreateDatabaseIfNotExists<UnitOfWork>());           
             //Database.SetInitializer<UnitOfWork>(new DropCreateDatabaseAlways<UnitOfWork>());           
-            
+            //Database.SetInitializer<UnitOfWork>(new Initializers.SqlDataContextInitializer());
 #else
             Database.SetInitializer<UnitOfWork>(new CreateDatabaseIfNotExists<UnitOfWork>());           
 

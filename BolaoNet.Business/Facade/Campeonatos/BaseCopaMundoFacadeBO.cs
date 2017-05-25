@@ -18,6 +18,7 @@ namespace BolaoNet.Business.Facade.Campeonatos
         protected Interfaces.Campeonatos.ICampeonatoGrupoTimeBO _campeonatoGrupoTimeBO;
         protected Interfaces.DadosBasicos.IEstadioBO _estadioBO;
         protected Interfaces.Campeonatos.IJogoBO _jogoBO;
+        protected Interfaces.Campeonatos.ICampeonatoPosicaoBO _campeonatoPosicaoBO;
         
         protected Interfaces.Facade.ICampeonatoFacadeBO _campeonatoFacadeBO;
         
@@ -35,6 +36,7 @@ namespace BolaoNet.Business.Facade.Campeonatos
             _campeonatoGrupoTimeBO = factory.CreateCampeonatoGrupoTimeBO();
             _estadioBO = factory.CreateEstadioBO();
             _jogoBO = factory.CreateJogoBO();
+            _campeonatoPosicaoBO = factory.CreateCampeonatoPosicaoBO();
             
         }
 
@@ -479,6 +481,50 @@ namespace BolaoNet.Business.Facade.Campeonatos
             
             return true;
         }
+
+        public IList<Entities.Campeonatos.CampeonatoPosicao> GetCampeonatoPosicoes(Entities.Campeonatos.Campeonato campeonato, string nomeFase)
+        {
+            IList<Entities.Campeonatos.CampeonatoPosicao> list = new List<Entities.Campeonatos.CampeonatoPosicao>();
+
+            list = Merge(list, CreateCampeonatoPosicao(campeonato, nomeFase, "A"));
+            list = Merge(list, CreateCampeonatoPosicao(campeonato, nomeFase, "B"));
+            list = Merge(list, CreateCampeonatoPosicao(campeonato, nomeFase, "C"));
+            list = Merge(list, CreateCampeonatoPosicao(campeonato, nomeFase, "D"));
+            list = Merge(list, CreateCampeonatoPosicao(campeonato, nomeFase, "E"));
+            list = Merge(list, CreateCampeonatoPosicao(campeonato, nomeFase, "F"));
+            list = Merge(list, CreateCampeonatoPosicao(campeonato, nomeFase, "G"));
+            list = Merge(list, CreateCampeonatoPosicao(campeonato, nomeFase, "H"));
+
+            return list;
+        }
+        private IList<Entities.Campeonatos.CampeonatoPosicao> CreateCampeonatoPosicao(Entities.Campeonatos.Campeonato campeonato, string nomeFase, string nomeGrupo)
+        {
+            IList<Entities.Campeonatos.CampeonatoPosicao> list = new List<Entities.Campeonatos.CampeonatoPosicao>();
+
+
+            list.Add(new Entities.Campeonatos.CampeonatoPosicao(campeonato.Nome, nomeFase, nomeGrupo, 1)
+            {
+                ForeColorName = "White",
+                BackColorName = "Green"
+            });
+            list.Add(new Entities.Campeonatos.CampeonatoPosicao(campeonato.Nome, nomeFase, nomeGrupo, 2)
+            {
+                ForeColorName = "White",
+                BackColorName = "Green"
+            });
+
+            return list;
+        }
+        private IList<Entities.Campeonatos.CampeonatoPosicao> Merge(IList<Entities.Campeonatos.CampeonatoPosicao> source, IList<Entities.Campeonatos.CampeonatoPosicao> list)
+        {
+            for (int c=0; c < list.Count; c++)
+            {
+                source.Add(list[c]);
+            }
+
+            return source;
+        }
+        
 
         #endregion
     }

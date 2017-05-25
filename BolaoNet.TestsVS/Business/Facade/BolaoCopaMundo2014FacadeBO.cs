@@ -234,23 +234,23 @@ namespace BolaoNet.TestsVS.Business.Facade
 
             StoreData<Entities.Boloes.BolaoPontuacao>(_bolaoPontuacaoBO, new Entities.Boloes.BolaoPontuacao(bolao.Nome, 0) 
                 { Titulo = "Erro", ForeColorName = "White", BackColorName = "Red" });
-            StoreData<Entities.Boloes.BolaoPontuacao>(_bolaoPontuacaoBO, new Entities.Boloes.BolaoPontuacao(bolao.Nome, 0) 
+            StoreData<Entities.Boloes.BolaoPontuacao>(_bolaoPontuacaoBO, new Entities.Boloes.BolaoPontuacao(bolao.Nome, 1) 
                 { Titulo = "Gols", ForeColorName = "Black", BackColorName = "Cyan" });
-            StoreData<Entities.Boloes.BolaoPontuacao>(_bolaoPontuacaoBO, new Entities.Boloes.BolaoPontuacao(bolao.Nome, 0) 
+            StoreData<Entities.Boloes.BolaoPontuacao>(_bolaoPontuacaoBO, new Entities.Boloes.BolaoPontuacao(bolao.Nome, 2) 
                 { Titulo = "Gols - Brasil", ForeColorName = "Black", BackColorName = "Cyan" });
-            StoreData<Entities.Boloes.BolaoPontuacao>(_bolaoPontuacaoBO, new Entities.Boloes.BolaoPontuacao(bolao.Nome, 0) 
+            StoreData<Entities.Boloes.BolaoPontuacao>(_bolaoPontuacaoBO, new Entities.Boloes.BolaoPontuacao(bolao.Nome, 3) 
                 { Titulo = "Vencedor", ForeColorName = "Gray", BackColorName = "Cyan" });
-            StoreData<Entities.Boloes.BolaoPontuacao>(_bolaoPontuacaoBO, new Entities.Boloes.BolaoPontuacao(bolao.Nome, 0)
+            StoreData<Entities.Boloes.BolaoPontuacao>(_bolaoPontuacaoBO, new Entities.Boloes.BolaoPontuacao(bolao.Nome, 4)
                 { Titulo = "Vencedor + Gols", ForeColorName = "Blue", BackColorName = "Blue" });
-            StoreData<Entities.Boloes.BolaoPontuacao>(_bolaoPontuacaoBO, new Entities.Boloes.BolaoPontuacao(bolao.Nome, 0) 
+            StoreData<Entities.Boloes.BolaoPontuacao>(_bolaoPontuacaoBO, new Entities.Boloes.BolaoPontuacao(bolao.Nome, 5) 
                 { Titulo = "Empate", ForeColorName = "Black", BackColorName = "Yellow" });
-            StoreData<Entities.Boloes.BolaoPontuacao>(_bolaoPontuacaoBO, new Entities.Boloes.BolaoPontuacao(bolao.Nome, 0)
+            StoreData<Entities.Boloes.BolaoPontuacao>(_bolaoPontuacaoBO, new Entities.Boloes.BolaoPontuacao(bolao.Nome, 6)
                 { Titulo = "Vencedor - Brasil", ForeColorName = "Black", BackColorName = "Gray" });
-            StoreData<Entities.Boloes.BolaoPontuacao>(_bolaoPontuacaoBO, new Entities.Boloes.BolaoPontuacao(bolao.Nome, 0) 
+            StoreData<Entities.Boloes.BolaoPontuacao>(_bolaoPontuacaoBO, new Entities.Boloes.BolaoPontuacao(bolao.Nome, 8) 
                 { Titulo = "Venc+Gols+Br", ForeColorName = "Black", BackColorName = "Blue" });
-            StoreData<Entities.Boloes.BolaoPontuacao>(_bolaoPontuacaoBO, new Entities.Boloes.BolaoPontuacao(bolao.Nome, 0) 
+            StoreData<Entities.Boloes.BolaoPontuacao>(_bolaoPontuacaoBO, new Entities.Boloes.BolaoPontuacao(bolao.Nome, 10) 
                 { Titulo = "Cheio", ForeColorName = "Green", BackColorName = "Green" });
-            StoreData<Entities.Boloes.BolaoPontuacao>(_bolaoPontuacaoBO, new Entities.Boloes.BolaoPontuacao(bolao.Nome, 0) 
+            StoreData<Entities.Boloes.BolaoPontuacao>(_bolaoPontuacaoBO, new Entities.Boloes.BolaoPontuacao(bolao.Nome, 20) 
                 { Titulo = "Cheio - Brasil", ForeColorName = "White", BackColorName = "Green" });
             
             #endregion

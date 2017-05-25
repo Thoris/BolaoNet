@@ -99,11 +99,15 @@ namespace BolaoNet.Tests.Debug
             //BO
             BolaoNet.Business.Interfaces.IFactoryBO factoryBo = new BolaoNet.Business.FactoryBO("usuario", factoryDao);
 
-            BolaoNet.Business.Facade.InitializationFacadeBO initializationFacadeBO = new Business.Facade.InitializationFacadeBO(factoryBo);
-            initializationFacadeBO.InitAll();
+            //BolaoNet.Business.Facade.InitializationFacadeBO initializationFacadeBO = new Business.Facade.InitializationFacadeBO(factoryBo);
+            //initializationFacadeBO.InitAll();
             
-            TestsVS.Business.Facade.BolaoCopaMundo2014UserFacadeBO bo = new TestsVS.Business.Facade.BolaoCopaMundo2014UserFacadeBO(factoryBo);
-            bo.CreateAllData();
+            //TestsVS.Business.Facade.BolaoCopaMundo2014UserFacadeBO bo = new TestsVS.Business.Facade.BolaoCopaMundo2014UserFacadeBO(factoryBo);
+            //bo.CreateAllData();
+
+
+
+
 
         }
     }
