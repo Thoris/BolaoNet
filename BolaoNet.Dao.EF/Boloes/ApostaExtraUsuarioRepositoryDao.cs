@@ -21,17 +21,16 @@ namespace BolaoNet.Dao.EF.Boloes
         #endregion
 
         #region IApostaExtraUsuarioDao members
-
-        public IList<Entities.Boloes.ApostaExtraUsuario> SelectByUser(string currentUserName, Entities.Boloes.Bolao bolao, string userName, string condition)
+      
+        public IList<Entities.Boloes.ApostaExtraUsuario> GetApostasUser(string currentUserName, Entities.Boloes.Bolao bolao, Entities.Users.User user)
         {
-            throw new NotImplementedException();
-        }
-
-        public IList<Entities.Boloes.ApostaExtraUsuario> SelectByPosicao(string currentUserName, Entities.Boloes.Bolao bolao, int posicao, string condition)
-        {
-            throw new NotImplementedException();
+            return base.GetList ( x => 
+                string.Compare (x.NomeBolao, bolao.Nome, true) == 0 && 
+                string.Compare (x.UserName, user.UserName, true) == 0).ToList<Entities.Boloes.ApostaExtraUsuario>();
         }
 
         #endregion
+
+
     }
 }

@@ -8,7 +8,8 @@ namespace BolaoNet.Dao.Boloes
 {
     public interface IJogoUsuarioDao
     {
-        
+        IList<Entities.Boloes.JogoUsuario> GetJogosByUser(string currentUserName, Entities.Boloes.Bolao bolao, Entities.Users.User user);
+
         bool ProcessAposta(string currentUserName, DateTime currentDateTime, Entities.Boloes.Bolao bolao, 
             Entities.Users.User user, Entities.Campeonatos.Jogo jogo, int automatico, int apostaTime1, int apostaTime2, 
             int? penaltis1, int? penaltis2, int? ganhador);

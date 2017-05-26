@@ -48,7 +48,19 @@ namespace BolaoNet.Business.Campeonatos
 
             return Dao.InsertResult(base.CurrentUserName, DateTime.Now, jogo, gols1, penaltis1, gols2, penaltis2, setCurrentData, validadoBy);
         }
+        public IList<Entities.Campeonatos.Jogo> GetJogosByCampeonato(Entities.Campeonatos.Campeonato campeonato)
+        {
+            if (campeonato == null)
+                throw new ArgumentException("campeonato");
+            if (string.IsNullOrEmpty(campeonato.Nome))
+                throw new ArgumentException("campeonato.Nome");
+
+            return Dao.GetJogosByCampeonato(this.CurrentUserName, campeonato);
+        }
 
         #endregion
+
+
+
     }
 }

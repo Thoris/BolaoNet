@@ -22,11 +22,14 @@ namespace BolaoNet.Dao.EF.Boloes
 
         #region IApostaExtraDao members
 
-        public bool InsertResult(string currentUserName, Entities.Boloes.ApostaExtra entry)
+        public IList<Entities.Boloes.ApostaExtra> GetApostasBolao(string currentUserName, Entities.Boloes.Bolao bolao)
         {
-            throw new NotImplementedException();
+            return base.GetList(x =>
+                string.Compare(x.NomeBolao, bolao.Nome, true) == 0).ToList<Entities.Boloes.ApostaExtra>();
         }
 
         #endregion
+
+
     }
 }

@@ -30,6 +30,8 @@ namespace BolaoNet.Dao.Campeonatos
         //IList<Entities.Campeonatos.Jogo> LoadFinishedJogos(string currentUser, Entities.Campeonatos.Campeonato campeonato, int totalJogos);
 
         //int NextJogo(string currentUser, Entities.Campeonatos.Campeonato campeonato);
-    
+
+        IList<Entities.Campeonatos.Jogo> GetJogosByCampeonato(string currentUserName, Entities.Campeonatos.Campeonato campeonato);
+        
     }
 }

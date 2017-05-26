@@ -797,8 +797,15 @@ namespace BolaoNet.Dao.EF.Boloes
             else
                 return false;
         }
- 
+
+        public IList<Entities.Boloes.JogoUsuario> GetJogosByUser(string currentUserName, Entities.Boloes.Bolao bolao, Entities.Users.User user)
+        {
+            return base.GetList(x =>
+                string.Compare(x.NomeBolao, bolao.Nome, true) == 0 &&
+                string.Compare(x.UserName, user.UserName, true) == 0).ToList<Entities.Boloes.JogoUsuario>();
+        }
 
         #endregion
+
     }
 }

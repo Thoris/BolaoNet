@@ -295,9 +295,25 @@ namespace BolaoNet.Business.Boloes
             return this.Dao.ProcessAposta(base.CurrentUserName, DateTime.Now, bolao, user, jogo, 
                 automatico, apostaTime1, apostaTime2, penaltis1, penaltis2, ganhador);
         }
+        public IList<Entities.Boloes.JogoUsuario> GetJogosByUser(Entities.Boloes.Bolao bolao, Entities.Users.User user)
+        {
+            if (bolao == null)
+                throw new ArgumentException("bolao");
+            if (string.IsNullOrEmpty(bolao.Nome))
+                throw new ArgumentException("bolao.Nome");
+            if (user == null)
+                throw new ArgumentException("user");
+            if (string.IsNullOrEmpty(user.UserName))
+                throw new ArgumentException("user.UserName");
 
+
+            return this.Dao.GetJogosByUser(this.CurrentUserName, bolao, user);
+        }
 
         #endregion
+
+
+
 
 
     }

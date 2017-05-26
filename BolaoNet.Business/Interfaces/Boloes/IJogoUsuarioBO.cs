@@ -32,5 +32,8 @@ namespace BolaoNet.Business.Interfaces.Boloes
         bool ProcessAposta(Entities.Boloes.Bolao bolao, Entities.Users.User user, Entities.Campeonatos.Jogo jogo, 
             int automatico, int apostaTime1, int apostaTime2, int? penaltis1, int? penaltis2, int? ganhador);
 
+        IList<Entities.Boloes.JogoUsuario> GetJogosByUser(Entities.Boloes.Bolao bolao, Entities.Users.User user);
+        
+    
     }
 }
