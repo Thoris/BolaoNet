@@ -106,6 +106,15 @@ namespace BolaoNet.Tests.Debug
             //bo.CreateAllData();
 
 
+            Integration.FactoryIntegration factoryIntegration = new Integration.FactoryIntegration("http://localhost:43817/");
+            Reports.Base.FactoryReport factoryReport = new Reports.Base.FactoryReport(
+                "thoris", Reports.Base.ReportType.Pdf, ".\\", ".\\", "jpg", "file.pdf");
+
+            Reports.DataReports.CopaMundoApostasUserReport report = 
+                new Reports.DataReports.CopaMundoApostasUserReport(factoryIntegration, factoryReport);
+
+
+            report.GenerateApostasUser(new Entities.Boloes.Bolao("Copa do Mundo 2014"), new Entities.Users.User("thoris"));
 
 
 

@@ -104,6 +104,10 @@
       <Project>{c4b74485-3872-4bf9-ae0e-c62e91a8f983}</Project>
       <Name>BolaoNet.Portal</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Reports\BolaoNet.Reports.csproj">
+      <Project>{2977e641-629a-4640-9e94-502ba267987b}</Project>
+      <Name>BolaoNet.Reports</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BolaoNet.Resources\BolaoNet.Resources.csproj">
       <Project>{97d09f0a-d65d-42ea-aa49-ea15e74b10c2}</Project>
       <Name>BolaoNet.Resources</Name>

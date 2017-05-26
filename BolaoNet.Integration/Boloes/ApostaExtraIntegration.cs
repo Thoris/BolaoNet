@@ -32,5 +32,10 @@ namespace BolaoNet.Integration.Boloes
         }
 
         #endregion
+
+        public IList<Entities.Boloes.ApostaExtra> GetApostasBolao(Entities.Boloes.Bolao bolao)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -40,14 +40,12 @@ namespace BolaoNet.Integration.Boloes
             throw new NotImplementedException();
         }
 
+        public IList<Entities.Boloes.JogoUsuario> GetJogosByUser(Entities.Boloes.Bolao bolao, Entities.Users.User user)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
-
-
-
-
-
-
-
 
 
     }

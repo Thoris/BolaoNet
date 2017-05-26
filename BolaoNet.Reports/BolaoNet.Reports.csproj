@@ -34,6 +34,7 @@
       <HintPath>..\ReferencedComponents\iTextsharp\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -59,6 +60,10 @@
     <Compile Include="DataReports\Text\FactoryTextReport.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BolaoNet.Business\BolaoNet.Business.csproj">
+      <Project>{de4229ed-648b-4ca0-9631-db7013d419ca}</Project>
+      <Name>BolaoNet.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BolaoNet.Entities\BolaoNet.Entities.csproj">
       <Project>{544d4741-4ade-49b0-bd91-a6c26fc0087e}</Project>
       <Name>BolaoNet.Entities</Name>

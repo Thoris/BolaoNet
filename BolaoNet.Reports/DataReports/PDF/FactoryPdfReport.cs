@@ -20,10 +20,10 @@ namespace BolaoNet.Reports.DataReports.PDF
 
         #region Methods
 
-
         public Interfaces.IApostasUserReport CreateApostasUserReport()
         {
-            return new PdfCopaMundoApostasUserReport(_imageTimesFolder, _imageUsersFolder, _outputFile, _imageExtension);
+            return new PdfCopaMundoApostasUserReport(
+                base.ImageTimesFolder, base.ImageUsersFolder, base.OutputFile, base.ImageExtension);
         }
 
         #endregion

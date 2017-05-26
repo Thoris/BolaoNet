@@ -10,10 +10,10 @@ namespace BolaoNet.Reports.Base
     {
         #region Variables
 
-        protected string _imageTimesFolder;
-        protected string _imageUsersFolder;
-        protected string _imageExtension;
-        protected string _outputFile;
+        protected string ImageTimesFolder {get; set;}
+        protected string ImageUsersFolder { get; set; }
+        protected string ImageExtension { get; set; }
+        protected string OutputFile { get; set; }
 
         #endregion
 
@@ -21,10 +21,10 @@ namespace BolaoNet.Reports.Base
 
         public BaseFactoryReport(string imageTimesFolder, string imageUsersFolder, string imageExtension, string outputFile)
         {
-            _imageExtension = imageExtension;
-            _imageTimesFolder = imageTimesFolder;
-            _imageUsersFolder = imageUsersFolder;
-            _outputFile = outputFile;
+            this.ImageExtension = imageExtension;
+            this.ImageTimesFolder = imageTimesFolder;
+            this.ImageUsersFolder = imageUsersFolder;
+            this.OutputFile = outputFile;
         }
 
         #endregion

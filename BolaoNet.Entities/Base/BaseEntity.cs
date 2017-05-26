@@ -100,7 +100,21 @@ namespace BolaoNet.Entities.Base
 
             return null;
         }
+        public string GetIdentifyName()
+        {
+            PropertyInfo[] properties = this.GetType().GetProperties();
 
+            foreach (PropertyInfo property in properties)
+            {
+
+                if (property.PropertyType.IsLayoutSequential)
+                {
+                    return property.Name;
+                }
+            }
+
+            return null;
+        }
         #endregion
     }
 }

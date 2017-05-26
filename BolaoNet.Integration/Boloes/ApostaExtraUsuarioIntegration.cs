@@ -32,5 +32,10 @@ namespace BolaoNet.Integration.Boloes
         }
 
         #endregion
+
+        public IList<Entities.Boloes.ApostaExtraUsuario> GetApostasUser(Entities.Boloes.Bolao bolao, Entities.Users.User user)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
