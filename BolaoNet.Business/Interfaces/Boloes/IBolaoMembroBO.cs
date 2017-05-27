@@ -8,5 +8,7 @@ namespace BolaoNet.Business.Interfaces.Boloes
 {
     public interface IBolaoMembroBO : Base.IGenericBusiness<Entities.Boloes.BolaoMembro>
     {
+
+        IList<Entities.Boloes.BolaoMembro> GetListUsersInBolao(Entities.Boloes.Bolao bolao);
     }
 }

@@ -12,12 +12,13 @@ namespace BolaoNet.Reports.DataReports
     {
         #region Variables
 
-        private Integration.Campeonatos.JogoIntegration _jogoBO;
-        private Integration.Boloes.ApostaExtraIntegration _apostaExtraBO;
-        private Integration.Boloes.ApostaExtraUsuarioIntegration _apostaExtraUsuarioBO;
-        private Integration.Boloes.JogoUsuarioIntegration _jogoUsuarioBO;
-        private Integration.Users.UserIntegration _userBO;
-        private Integration.Boloes.BolaoIntegration _bolaoBO;
+        private Business.Interfaces.Campeonatos.IJogoBO _jogoBO;
+        private Business.Interfaces.Boloes.IApostaExtraBO _apostaExtraBO;
+        private Business.Interfaces.Boloes.IApostaExtraUsuarioBO _apostaExtraUsuarioBO;
+        private Business.Interfaces.Boloes.IJogoUsuarioBO _jogoUsuarioBO;
+        private Business.Interfaces.Users.IUserBO _userBO;
+        private Business.Interfaces.Boloes.IBolaoBO _bolaoBO;
+        private Business.Interfaces.Boloes.IBolaoMembroBO _bolaoMembroBO;
         private IApostasUserReport _apostaUserReport;
 
         #endregion
@@ -26,12 +27,13 @@ namespace BolaoNet.Reports.DataReports
 
         public CopaMundoApostasUserReport(Integration.FactoryIntegration factory, FactoryReport factoryReport)
         {
-            _jogoBO = (Integration.Campeonatos.JogoIntegration)factory.CreateJogoBO();
-            _apostaExtraBO = (Integration.Boloes.ApostaExtraIntegration)factory.CreateApostaExtraBO();
-            _apostaExtraUsuarioBO = (Integration.Boloes.ApostaExtraUsuarioIntegration)factory.CreateApostaExtraUsuarioBO();
-            _jogoUsuarioBO = (Integration.Boloes.JogoUsuarioIntegration)factory.CreateJogoUsuarioBO();
-            _userBO = (Integration.Users.UserIntegration)factory.CreateUserBO();
-            _bolaoBO = (Integration.Boloes.BolaoIntegration)factory.CreateBolaoBO();
+            _jogoBO = factory.CreateJogoBO();
+            _apostaExtraBO = factory.CreateApostaExtraBO();
+            _apostaExtraUsuarioBO = factory.CreateApostaExtraUsuarioBO();
+            _jogoUsuarioBO = factory.CreateJogoUsuarioBO();
+            _userBO = factory.CreateUserBO();
+            _bolaoBO = factory.CreateBolaoBO();
+            _bolaoMembroBO = factory.CreateBolaoMembroBO();
 
             
             _apostaUserReport = factoryReport.GetFactoryBase ().CreateApostasUserReport();
@@ -41,6 +43,42 @@ namespace BolaoNet.Reports.DataReports
 
         #region Methods
 
+        public void GenerateApostasUsers(Entities.Boloes.Bolao bolao)
+        {
+            if (bolao == null)
+                throw new ArgumentException("bolao");
+            if (string.IsNullOrEmpty(bolao.Nome))
+                throw new ArgumentException("bolao.Nome");
+
+
+            IList<Entities.Boloes.BolaoMembro> users = _bolaoMembroBO.GetListUsersInBolao(bolao);
+
+            
+            Entities.Boloes.Bolao bolaoLoaded = _bolaoBO.Load (bolao);
+            
+            Entities.Campeonatos.Campeonato campeonato = new Entities.Campeonatos.Campeonato(bolaoLoaded.NomeCampeonato);
+
+            IList<Entities.Campeonatos.Jogo> jogosList = _jogoBO.GetJogosByCampeonato(campeonato);
+            IList<Entities.Boloes.ApostaExtra> apostasExtrasList = _apostaExtraBO.GetApostasBolao(bolao);
+            
+
+
+            for (int c=0; c < users.Count; c++)
+            {
+                Entities.Users.User userLoaded = _userBO.Load (new Entities.Users.User( users[c].UserName));
+                IList<Entities.Boloes.JogoUsuario> jogosUsuariosList = _jogoUsuarioBO.GetJogosByUser(bolao, userLoaded);
+
+                IList<Entities.Boloes.ApostaExtraUsuario> apostasExtrasUsuariosList = 
+                    _apostaExtraUsuarioBO.GetApostasUser(bolao, userLoaded);
+
+                
+                _apostaUserReport.CreatePageUserApostas(bolaoLoaded, campeonato, userLoaded,
+                    jogosList.ToList (), jogosUsuariosList, apostasExtrasList.ToList (), apostasExtrasUsuariosList);
+            }
+
+            _apostaUserReport.Close();
+
+        }
         public void GenerateApostasUser(Entities.Boloes.Bolao bolao, Entities.Users.User user)
         {
             if (bolao == null)
@@ -55,16 +93,18 @@ namespace BolaoNet.Reports.DataReports
             Entities.Boloes.Bolao bolaoLoaded = _bolaoBO.Load (bolao);
             Entities.Users.User userLoaded = _userBO.Load (user);
 
-            Entities.Campeonatos.Campeonato campeonato =new Entities.Campeonatos.Campeonato(bolao.NomeCampeonato);
+            Entities.Campeonatos.Campeonato campeonato = new Entities.Campeonatos.Campeonato(bolaoLoaded.NomeCampeonato);
 
             IList<Entities.Campeonatos.Jogo> jogosList = _jogoBO.GetJogosByCampeonato(campeonato);
-            IList<Entities.Boloes.JogoUsuario> jogosUsuariosList = _jogoUsuarioBO.GetJogosByUser(bolao, user);
+            IList<Entities.Boloes.JogoUsuario> jogosUsuariosList = _jogoUsuarioBO.GetJogosByUser(bolao, userLoaded);
             IList<Entities.Boloes.ApostaExtra> apostasExtrasList = _apostaExtraBO.GetApostasBolao(bolao);
-            IList<Entities.Boloes.ApostaExtraUsuario> apostasExtrasUsuariosList = _apostaExtraUsuarioBO.GetApostasUser(bolao, user);
+            IList<Entities.Boloes.ApostaExtraUsuario> apostasExtrasUsuariosList = _apostaExtraUsuarioBO.GetApostasUser(bolao, userLoaded);
 
 
             _apostaUserReport.CreatePageUserApostas(bolaoLoaded, campeonato, userLoaded,
                 jogosList, jogosUsuariosList, apostasExtrasList, apostasExtrasUsuariosList);
+
+            _apostaUserReport.Close();
         }
 
         #endregion

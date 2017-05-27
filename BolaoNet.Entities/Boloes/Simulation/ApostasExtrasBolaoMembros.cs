@@ -35,7 +35,7 @@ namespace BolaoNet.Entities.Boloes.Simulation
             }
         }
         public int LastPontos { get; set; }
-        public new int LastPosicao { get; set; }
+        public int LastPosicao { get; set; }
         public IList<Entities.Boloes.ApostaExtraUsuario> ListApostasExtras
         {
             get { return _listApostasExtras; }

@@ -11,11 +11,15 @@ namespace BolaoNet.Entities.Users
     public class User : Base.AuditModel
     {
         #region Properties
+
         [NotMapped]
         public string FirstName
         {
             get
             {
+                if (string.IsNullOrEmpty(this.FullName))
+                    return null;
+
                 string[] name = this.FullName.Split(' ');
 
                 return name[0];
@@ -26,6 +30,10 @@ namespace BolaoNet.Entities.Users
         {
             get
             {
+                if (string.IsNullOrEmpty(this.FullName))
+                    return null;
+
+
                 string[] name = this.FullName.Split(' ');
 
                 string result = "";
@@ -41,6 +49,9 @@ namespace BolaoNet.Entities.Users
         {
             get
             {
+                if (string.IsNullOrEmpty(this.FullName))
+                    return null;
+
                 string[] name = this.FullName.Split(' ');
 
                 if (name.Length - 1 > 0)

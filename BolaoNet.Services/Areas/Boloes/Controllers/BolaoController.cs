@@ -6,7 +6,8 @@ using System.Web;
 
 namespace BolaoNet.Services.Areas.Boloes.Controllers
 {
-    public class BolaoController : GenericApiController<Entities.Boloes.Bolao>
+    public class BolaoController :
+        GenericApiController<Entities.Boloes.Bolao>, Business.Interfaces.Boloes.IBolaoBO 
     {
         #region Properties
 
@@ -34,5 +35,15 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
 
         #endregion
+
+        public bool Iniciar(Entities.Users.User iniciadoBy, Entities.Boloes.Bolao bolao)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Aguardar(Entities.Boloes.Bolao bolao)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

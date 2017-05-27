@@ -41,7 +41,12 @@ namespace BolaoNet.Integration.Campeonatos
         }
         public IList<Entities.Campeonatos.Jogo> GetJogosByCampeonato(Entities.Campeonatos.Campeonato campeonato)
         {
-            throw new NotImplementedException();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters.Add("nomeCampeonato", campeonato.Nome);
+
+
+            return base.HttpGetApi<ICollection<Entities.Campeonatos.Jogo>>(
+                parameters, "GetJogosByCampeonato").ToList();
         }
 
         #endregion

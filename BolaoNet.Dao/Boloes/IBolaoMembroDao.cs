@@ -13,6 +13,7 @@ namespace BolaoNet.Dao.Boloes
             Entities.Campeonatos.CampeonatoGrupo grupo, Entities.Boloes.Bolao bolao, int rodada);
 
 
+        IList<Entities.Boloes.BolaoMembro> GetListUsersInBolao(string currentUserName, Entities.Boloes.Bolao bolao);
 
     }
 }

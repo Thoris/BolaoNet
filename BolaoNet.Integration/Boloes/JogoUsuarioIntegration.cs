@@ -42,7 +42,13 @@ namespace BolaoNet.Integration.Boloes
 
         public IList<Entities.Boloes.JogoUsuario> GetJogosByUser(Entities.Boloes.Bolao bolao, Entities.Users.User user)
         {
-            throw new NotImplementedException();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+
+            parameters.Add("nomebolao", bolao.Nome);
+            parameters.Add("userName", user.UserName);
+
+            return base.HttpGetApi<ICollection<Entities.Boloes.JogoUsuario>>(
+                parameters, "GetJogosByUser").ToList();
         }
 
         #endregion

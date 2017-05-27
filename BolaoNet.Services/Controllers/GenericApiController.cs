@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Web;
 using System.Web.Http;
 
@@ -111,6 +112,11 @@ namespace BolaoNet.Services.Controllers
         {
             return _bo.GetAll();
         }
+        [HttpGet]
+        public ICollection<T> GetList(Expression<Func<T, bool>> where)
+        {
+            return _bo.GetList(where);
+        }
         /// <summary>
         /// Método que carrega todos as entidades armazenadas na base de dados.
         /// </summary>
@@ -129,6 +135,12 @@ namespace BolaoNet.Services.Controllers
         {
             return _bo.Count();
         }
+        [HttpGet]
+        public long Count(Expression<Func<T, bool>> where)
+        {
+            return _bo.Count(where);
+        }
+
 
         #endregion
     }

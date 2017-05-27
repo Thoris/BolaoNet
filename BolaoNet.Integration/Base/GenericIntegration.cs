@@ -13,7 +13,6 @@ namespace BolaoNet.Integration.Base
     /// </summary>
     public class GenericIntegration<T> : Base.JsonManagement, IGenericIntegration<T> where T : class
     {
-
         #region Constructors/Destructors
 
         /// <summary>
@@ -35,7 +34,7 @@ namespace BolaoNet.Integration.Base
         /// <typeparam name="T">Tipo de objeto analisado.</typeparam>
         /// <param name="data">Dados do objeto.</param>
         /// <returns>Lista de objetos do tipo especificado.</returns>
-        private IDictionary<string, string> GetParameters<T>(T data)
+        private IDictionary<string, string> GetParameters<L>(L data)
         {
             return new Dictionary<string, string>();
         }
@@ -204,8 +203,5 @@ namespace BolaoNet.Integration.Base
         }
 
         #endregion
-
-
-
     }
 }

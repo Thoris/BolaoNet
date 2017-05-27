@@ -99,14 +99,14 @@ namespace BolaoNet.Tests.Debug
             //BO
             BolaoNet.Business.Interfaces.IFactoryBO factoryBo = new BolaoNet.Business.FactoryBO("usuario", factoryDao);
 
-            //BolaoNet.Business.Facade.InitializationFacadeBO initializationFacadeBO = new Business.Facade.InitializationFacadeBO(factoryBo);
+            BolaoNet.Business.Facade.InitializationFacadeBO initializationFacadeBO = new Business.Facade.InitializationFacadeBO(factoryBo);
             //initializationFacadeBO.InitAll();
             
-            //TestsVS.Business.Facade.BolaoCopaMundo2014UserFacadeBO bo = new TestsVS.Business.Facade.BolaoCopaMundo2014UserFacadeBO(factoryBo);
+            TestsVS.Business.Facade.BolaoCopaMundo2014UserFacadeBO bo = new TestsVS.Business.Facade.BolaoCopaMundo2014UserFacadeBO(factoryBo);
             //bo.CreateAllData();
 
 
-            Integration.FactoryIntegration factoryIntegration = new Integration.FactoryIntegration("http://localhost:43817/");
+            Integration.FactoryIntegration factoryIntegration = new Integration.FactoryIntegration("thoris", "http://localhost:43817/");
             Reports.Base.FactoryReport factoryReport = new Reports.Base.FactoryReport(
                 "thoris", Reports.Base.ReportType.Pdf, ".\\", ".\\", "jpg", "file.pdf");
 
@@ -114,9 +114,10 @@ namespace BolaoNet.Tests.Debug
                 new Reports.DataReports.CopaMundoApostasUserReport(factoryIntegration, factoryReport);
 
 
-            report.GenerateApostasUser(new Entities.Boloes.Bolao("Copa do Mundo 2014"), new Entities.Users.User("thoris"));
+            //report.GenerateApostasUser(new Entities.Boloes.Bolao("Copa do Mundo 2014"), new Entities.Users.User("thoris"));
 
 
+            report.GenerateApostasUsers(new Entities.Boloes.Bolao("Copa do Mundo 2014"));
 
         }
     }

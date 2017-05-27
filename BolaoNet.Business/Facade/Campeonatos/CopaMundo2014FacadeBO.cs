@@ -192,7 +192,7 @@ namespace BolaoNet.Business.Facade.Campeonatos
         }
         public IList<Entities.Campeonatos.Jogo> GetSemiFinal(Entities.Campeonatos.Campeonato campeonato)
         {
-            string nomeFase = "Semi Final";
+            string nomeFase = "semi finais";
             IList<DateTime> datas = new List<DateTime>();
             IList<int> ids = new List<int>();
             IList<int> idsGanhadores = new List<int>();
