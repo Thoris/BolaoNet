@@ -8,5 +8,8 @@ namespace BolaoNet.Dao.Campeonatos
 {
     public interface ICampeonatoDao : IGenericDao<Entities.Campeonatos.Campeonato>
     {
+        
+
+
     }
 }

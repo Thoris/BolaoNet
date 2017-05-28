@@ -57,5 +57,21 @@ namespace BolaoNet.Services.Areas.Campeonatos.Controllers
         }
         
         #endregion
+
+
+        public IList<Entities.Campeonatos.Jogo> LoadJogos(int rodada, DateTime dataInicial, DateTime dataFinal, Entities.Campeonatos.CampeonatoFase fase, Entities.Campeonatos.Campeonato campeonato, Entities.Campeonatos.CampeonatoGrupo grupo, string condition)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<Entities.Campeonatos.Jogo> LoadFinishedJogos(Entities.Campeonatos.Campeonato campeonato, int totalJogos)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<Entities.Campeonatos.Jogo> LoadNextJogos(Entities.Campeonatos.Campeonato campeonato, int totalJogos)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

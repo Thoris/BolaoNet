@@ -147,5 +147,127 @@ namespace BolaoNet.Dao.EF.Campeonatos
         }
 
         #endregion
+
+
+        public IList<Entities.Campeonatos.Jogo> LoadJogos(string currentUserName, DateTime currentDateTime, int rodada, DateTime dataInicial, DateTime dataFinal, Entities.Campeonatos.CampeonatoFase fase, Entities.Campeonatos.Campeonato campeonato, Entities.Campeonatos.CampeonatoGrupo grupo, string condition)
+        {
+            string command = "exec sp_Jogos_LoadJogos " +
+               "  @CurrentLogin " +
+               ", @CurrentDateTime" +
+               ", @Rodada" +
+               ", @DataInicial" +
+               ", @DataFinal" +
+	           ", @NomeFase" + 
+	           ", @NomeCampeonato" +
+	           ", @NomeGrupo" +
+	           ", @Condition" + 
+               ", @ErrorNumber out" +
+               ", @ErrorDescription out";
+
+            var errorNumber = new SqlParameter
+            {
+                ParameterName = "@ErrorNumber",
+                SqlDbType = System.Data.SqlDbType.Int,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var errorDescription = new SqlParameter
+            {
+                ParameterName = "@ErrorDescription",
+                SqlDbType = System.Data.SqlDbType.VarChar,
+                Size = 255,
+                Direction = System.Data.ParameterDirection.Output
+            };
+
+            IList<Entities.Campeonatos.Jogo> res = base.DataContext.Database.SqlQuery<Entities.Campeonatos.Jogo>(command,
+                                                        new SqlParameter("CurrentLogin", currentUserName),
+                                                        new SqlParameter("CurrentDateTime", currentDateTime),
+                                                        new SqlParameter("Rodada", rodada),
+                                                        new SqlParameter("DataInicial", dataInicial),
+                                                        new SqlParameter("DataFinal", dataFinal),
+                                                        new SqlParameter("NomeFase", fase.Nome),
+                                                        new SqlParameter("NomeCampeoanto", campeonato.Nome),
+                                                        new SqlParameter("NomeGrupo", grupo.Nome),
+                                                        new SqlParameter("Condition", condition),
+                                                        errorNumber,
+                                                        errorDescription
+                                                    ).ToList();
+
+            return res;
+        }
+
+        public IList<Entities.Campeonatos.Jogo> LoadFinishedJogos(string currentUserName, DateTime currentDateTime, Entities.Campeonatos.Campeonato campeonato, int totalJogos)
+        {
+            string command = "exec sp_Jogos_LoadLastFinishedJogos " +
+              "  @CurrentLogin " +
+              ", @CurrentDateTime" +
+              ", @NomeCampeonato" +
+              ", @TotalJogos" +
+              ", @ErrorNumber out" +
+              ", @ErrorDescription out";
+
+            var errorNumber = new SqlParameter
+            {
+                ParameterName = "@ErrorNumber",
+                SqlDbType = System.Data.SqlDbType.Int,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var errorDescription = new SqlParameter
+            {
+                ParameterName = "@ErrorDescription",
+                SqlDbType = System.Data.SqlDbType.VarChar,
+                Size = 255,
+                Direction = System.Data.ParameterDirection.Output
+            };
+
+            IList<Entities.Campeonatos.Jogo> res = base.DataContext.Database.SqlQuery<Entities.Campeonatos.Jogo>(command,
+                                                        new SqlParameter("CurrentLogin", currentUserName),
+                                                        new SqlParameter("CurrentDateTime", currentDateTime),
+                                                        new SqlParameter("NomeCampeoanto", campeonato.Nome),
+                                                        new SqlParameter("TotalJogos", totalJogos),
+                                                        errorNumber,
+                                                        errorDescription
+                                                    ).ToList();
+
+            return res;
+        }
+
+        public IList<Entities.Campeonatos.Jogo> LoadNextJogos(string currentUserName, DateTime currentDateTime, Entities.Campeonatos.Campeonato campeonato, int totalJogos)
+        {
+            string command = "exec sp_Jogos_LoadNextJogos " +
+             "  @CurrentLogin " +
+             ", @CurrentDateTime" +
+             ", @NomeCampeonato" +
+             ", @TotalJogos" +
+             ", @ErrorNumber out" +
+             ", @ErrorDescription out";
+
+            var errorNumber = new SqlParameter
+            {
+                ParameterName = "@ErrorNumber",
+                SqlDbType = System.Data.SqlDbType.Int,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var errorDescription = new SqlParameter
+            {
+                ParameterName = "@ErrorDescription",
+                SqlDbType = System.Data.SqlDbType.VarChar,
+                Size = 255,
+                Direction = System.Data.ParameterDirection.Output
+            };
+
+            IList<Entities.Campeonatos.Jogo> res = base.DataContext.Database.SqlQuery<Entities.Campeonatos.Jogo>(command,
+                                                        new SqlParameter("CurrentLogin", currentUserName),
+                                                        new SqlParameter("CurrentDateTime", currentDateTime),
+                                                        new SqlParameter("NomeCampeoanto", campeonato.Nome),
+                                                        new SqlParameter("TotalJogos", totalJogos),
+                                                        errorNumber,
+                                                        errorDescription
+                                                    ).ToList();
+
+            return res;
+        }
     }
 }

@@ -32,6 +32,15 @@ namespace BolaoNet.Dao.Campeonatos
         //int NextJogo(string currentUser, Entities.Campeonatos.Campeonato campeonato);
 
         IList<Entities.Campeonatos.Jogo> GetJogosByCampeonato(string currentUserName, Entities.Campeonatos.Campeonato campeonato);
-        
+
+        IList<Entities.Campeonatos.Jogo> LoadJogos(string currentUserName, DateTime currentDateTime, int rodada,
+            DateTime dataInicial, DateTime dataFinal, Entities.Campeonatos.CampeonatoFase fase,
+            Entities.Campeonatos.Campeonato campeonato, Entities.Campeonatos.CampeonatoGrupo grupo, string condition);
+
+        IList<Entities.Campeonatos.Jogo> LoadFinishedJogos(string currentUserName, DateTime currentDateTime,
+            Entities.Campeonatos.Campeonato campeonato, int totalJogos);
+
+        IList<Entities.Campeonatos.Jogo> LoadNextJogos(string currentUserName, DateTime currentDateTime,
+            Entities.Campeonatos.Campeonato campeonato, int totalJogos);
     }
 }

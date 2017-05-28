@@ -128,5 +128,9 @@
     <None Include="build\0114.Create_StoredProcedure_sp_Jogos_ResultInsert.sql" />
     <None Include="build\0115.Create_StoredProcedure_sp_Boloes_Iniciar.sql" />
     <None Include="build\0116.Create_StoredProcedure_sp_Boloes_Aguardar.sql" />
+    <None Include="build\0117.Create_StoredProcedure_sp_ApostasExtras_InsertResult.sql" />
+    <None Include="build\0118.Create_StoredProcedure_sp_Jogos_LoadJogos.sql" />
+    <None Include="build\0119.Create_StoredProcedure_sp_Jogos_LoadLastFinishedJogos.sql" />
+    <None Include="build\0120.Create_StoredProcedure_sp_Jogos_LoadNextJogos.sql" />
   </ItemGroup>
 </Project>

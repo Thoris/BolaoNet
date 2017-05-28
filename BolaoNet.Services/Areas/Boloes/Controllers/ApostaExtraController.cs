@@ -42,5 +42,10 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
         }
 
 
+
+        public bool InsertResult(Entities.Boloes.Bolao bolao, Entities.DadosBasicos.Time time, int posicao, Entities.Users.User validadoBy)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

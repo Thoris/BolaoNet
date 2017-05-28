@@ -226,10 +226,7 @@ namespace BolaoNet.TestsVS.Business.Facade
 
 
             #endregion
-
-
-            //TODO: AVALIAR
-
+            
             #region Boloes Pontuação
 
             StoreData<Entities.Boloes.BolaoPontuacao>(_bolaoPontuacaoBO, new Entities.Boloes.BolaoPontuacao(bolao.Nome, 0) 
@@ -256,6 +253,18 @@ namespace BolaoNet.TestsVS.Business.Facade
             #endregion
 
             return bolao;
+        }
+        public bool InsertFinalResult()
+        {
+            Entities.Boloes.Bolao bolao = new Entities.Boloes.Bolao("Copa do Mundo 2014");
+
+            _apostaExtraBO.InsertResult(bolao, new Entities.DadosBasicos.Time("Alemanha"), 1, new Entities.Users.User("thoris"));
+            _apostaExtraBO.InsertResult(bolao, new Entities.DadosBasicos.Time("Argentina"), 2, new Entities.Users.User("thoris"));
+            _apostaExtraBO.InsertResult(bolao, new Entities.DadosBasicos.Time("Holanda"), 3, new Entities.Users.User("thoris"));
+            _apostaExtraBO.InsertResult(bolao, new Entities.DadosBasicos.Time("Brasil"), 4, new Entities.Users.User("thoris"));
+
+
+            return true;
         }
         public bool StartBolao(Entities.Users.User iniciadoBy, Entities.Boloes.Bolao bolao)
         {

@@ -236,92 +236,7 @@ namespace BolaoNet.Business.Facade.Campeonatos
             IList<int ?> penaltis1 = new List<int ?>();
             IList<int ?> penaltis2 = new List<int ?>();
 
-            ////A
-            //jogoLabels.Add(1); time1.Add(3); time2.Add(1); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(2); time1.Add(1); time2.Add(0); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(17); time1.Add(0); time2.Add(0); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(18); time1.Add(0); time2.Add(4); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(33); time1.Add(1); time2.Add(4); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(34); time1.Add(1); time2.Add(3); penaltis1.Add(null); penaltis2.Add(null);
-            ////B
-            //jogoLabels.Add(3); time1.Add(1); time2.Add(5); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(4); time1.Add(3); time2.Add(1); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(18); time1.Add(2); time2.Add(3); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(19); time1.Add(0); time2.Add(2); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(35); time1.Add(0); time2.Add(3); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(36); time1.Add(2); time2.Add(0); penaltis1.Add(null); penaltis2.Add(null);
-            ////C
-            //jogoLabels.Add(5); time1.Add(3); time2.Add(0); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(6); time1.Add(2); time2.Add(1); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(20); time1.Add(2); time2.Add(1); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(21); time1.Add(0); time2.Add(0); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(37); time1.Add(1); time2.Add(4); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(38); time1.Add(2); time2.Add(1); penaltis1.Add(null); penaltis2.Add(null);
-            ////D
-            //jogoLabels.Add(7); time1.Add(1); time2.Add(3); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(8); time1.Add(1); time2.Add(2); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(22); time1.Add(2); time2.Add(1); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(23); time1.Add(0); time2.Add(1); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(39); time1.Add(0); time2.Add(1); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(40); time1.Add(0); time2.Add(0); penaltis1.Add(null); penaltis2.Add(null);
-            ////E
-            //jogoLabels.Add(9); time1.Add(2); time2.Add(1); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(10); time1.Add(3); time2.Add(0); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(24); time1.Add(2); time2.Add(5); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(25); time1.Add(1); time2.Add(2); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(41); time1.Add(0); time2.Add(3); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(42); time1.Add(0); time2.Add(0); penaltis1.Add(null); penaltis2.Add(null);
-            ////F
-            //jogoLabels.Add(11); time1.Add(2); time2.Add(1); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(12); time1.Add(0); time2.Add(0); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(26); time1.Add(1); time2.Add(0); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(27); time1.Add(1); time2.Add(0); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(43); time1.Add(2); time2.Add(3); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(44); time1.Add(3); time2.Add(1); penaltis1.Add(null); penaltis2.Add(null);
-            ////G
-            //jogoLabels.Add(13); time1.Add(4); time2.Add(0); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(14); time1.Add(1); time2.Add(2); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(28); time1.Add(2); time2.Add(2); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(29); time1.Add(2); time2.Add(2); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(45); time1.Add(0); time2.Add(1); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(46); time1.Add(2); time2.Add(1); penaltis1.Add(null); penaltis2.Add(null);
-            ////H
-            //jogoLabels.Add(14); time1.Add(2); time2.Add(1); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(15); time1.Add(1); time2.Add(1); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(30); time1.Add(1); time2.Add(0); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(31); time1.Add(2); time2.Add(4); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(47); time1.Add(0); time2.Add(1); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(48); time1.Add(1); time2.Add(1); penaltis1.Add(null); penaltis2.Add(null);           
-            ////Oitavas
-            //jogoLabels.Add(49); time1.Add(1); time2.Add(1); penaltis1.Add(3); penaltis2.Add(2);
-            //jogoLabels.Add(50); time1.Add(2); time2.Add(0); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(51); time1.Add(2); time2.Add(1); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(52); time1.Add(1); time2.Add(1); penaltis1.Add(4); penaltis2.Add(3);
-            //jogoLabels.Add(53); time1.Add(2); time2.Add(0); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(54); time1.Add(0); time2.Add(0); penaltis1.Add(2); penaltis2.Add(1);
-            //jogoLabels.Add(55); time1.Add(0); time2.Add(0); penaltis1.Add(1); penaltis2.Add(0);
-            //jogoLabels.Add(56); time1.Add(0); time2.Add(0); penaltis1.Add(2); penaltis2.Add(1);
-            ////Quartas
-            //jogoLabels.Add(57); time1.Add(2); time2.Add(1); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(58); time1.Add(0); time2.Add(1); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(59); time1.Add(0); time2.Add(0); penaltis1.Add(3); penaltis2.Add(2);
-            //jogoLabels.Add(60); time1.Add(1); time2.Add(0); penaltis1.Add(null); penaltis2.Add(null);
-            ////Semi
-            //jogoLabels.Add(61); time1.Add(1); time2.Add(7); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(62); time1.Add(0); time2.Add(0); penaltis1.Add(2); penaltis2.Add(4);
-            ////Final
-            //jogoLabels.Add(63); time1.Add(3); time2.Add(0); penaltis1.Add(null); penaltis2.Add(null);
-            //jogoLabels.Add(64); time1.Add(0); time2.Add(0); penaltis1.Add(null); penaltis2.Add(null);
-
-
-
-
-
-
-
-
-
-
+            #region Resultados dos Jogos
 
             //Rodada 1
             jogoLabels.Add(1); time1.Add(3); time2.Add(1); penaltis1.Add(null); penaltis2.Add(null);
@@ -406,15 +321,13 @@ namespace BolaoNet.Business.Facade.Campeonatos
 
 
 
-
-
-
-
-
             for (int c = 0; c < jogoLabels.Count; c++ )
             {
-                base.InsertResult(campeonato, jogoLabels[c], true, new Entities.Users.User("thoris"), time1[c], time2[c], penaltis1[c], penaltis2[c]);   
+                base.InsertResult(campeonato, jogoLabels[c], true, new Entities.Users.User("thoris"), time1[c], time2[c], penaltis1[c], penaltis2[c]);
             }
+
+            #endregion
+
 
             return true;
         }
