@@ -12,6 +12,13 @@ namespace BolaoNet.Business.Interfaces.Campeonatos
             bool setCurrentData, Entities.Users.User validadoBy);
 
         IList<Entities.Campeonatos.Jogo> GetJogosByCampeonato(Entities.Campeonatos.Campeonato campeonato);
-        
+
+        IList<Entities.Campeonatos.Jogo> LoadJogos(int rodada, DateTime dataInicial, DateTime dataFinal, 
+            Entities.Campeonatos.CampeonatoFase fase,  Entities.Campeonatos.Campeonato campeonato, 
+            Entities.Campeonatos.CampeonatoGrupo grupo, string condition);
+
+        IList<Entities.Campeonatos.Jogo> LoadFinishedJogos(Entities.Campeonatos.Campeonato campeonato, int totalJogos);
+
+        IList<Entities.Campeonatos.Jogo> LoadNextJogos(Entities.Campeonatos.Campeonato campeonato, int totalJogos);
     }
 }

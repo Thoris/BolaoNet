@@ -62,5 +62,51 @@ namespace BolaoNet.Business.Campeonatos
 
 
 
+
+
+        public IList<Entities.Campeonatos.Jogo> LoadJogos(int rodada, DateTime dataInicial, DateTime dataFinal, Entities.Campeonatos.CampeonatoFase fase, Entities.Campeonatos.Campeonato campeonato, Entities.Campeonatos.CampeonatoGrupo grupo, string condition)
+        {
+            if (campeonato == null)
+                throw new ArgumentException("campeonato");
+            if (string.IsNullOrEmpty(campeonato.Nome))
+                throw new ArgumentException("campeonato.Nome");
+            if (fase == null)
+                throw new ArgumentException("fase");
+            if (string.IsNullOrEmpty(fase.Nome))
+                throw new ArgumentException("fase.Nome");
+            if (grupo == null)
+                throw new ArgumentException("grupo");
+            if (string.IsNullOrEmpty(grupo.Nome))
+                throw new ArgumentException("grupo.Nome");
+
+
+            return Dao.LoadJogos(base.CurrentUserName, DateTime.Now, rodada, dataInicial, dataFinal,
+                fase, campeonato, grupo, condition);
+        }
+
+        public IList<Entities.Campeonatos.Jogo> LoadFinishedJogos(Entities.Campeonatos.Campeonato campeonato, int totalJogos)
+        {
+            if (campeonato == null)
+                throw new ArgumentException("campeonato");
+            if (string.IsNullOrEmpty(campeonato.Nome))
+                throw new ArgumentException("campeonato.Nome");
+            if (totalJogos == 0)
+                throw new ArgumentException("totalJogos");
+
+            return Dao.LoadFinishedJogos(base.CurrentUserName, DateTime.Now, campeonato, totalJogos);
+
+        }
+
+        public IList<Entities.Campeonatos.Jogo> LoadNextJogos(Entities.Campeonatos.Campeonato campeonato, int totalJogos)
+        {
+            if (campeonato == null)
+                throw new ArgumentException("campeonato");
+            if (string.IsNullOrEmpty(campeonato.Nome))
+                throw new ArgumentException("campeonato.Nome");
+            if (totalJogos == 0)
+                throw new ArgumentException("totalJogos");
+
+            return Dao.LoadNextJogos(base.CurrentUserName, DateTime.Now, campeonato, totalJogos);
+        }
     }
 }

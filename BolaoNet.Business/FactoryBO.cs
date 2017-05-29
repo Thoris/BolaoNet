@@ -36,11 +36,11 @@ namespace BolaoNet.Business
         /// <summary>
         /// Variável que armazena a fábrica de conexão com banco de dados.
         /// </summary>
-        private static Dao.IFactoryDao _factoryDao;
+        private Dao.IFactoryDao _factoryDao;
         /// <summary>
         /// Variável que possui o tipo de conexão para gerenciamento da base de dados.
         /// </summary>
-        private static DaoType _daoType;
+        private DaoType _daoType;
         /// <summary>
         /// Nome do usuário que está manipulando os dados.
         /// </summary>
@@ -56,6 +56,14 @@ namespace BolaoNet.Business
         public FactoryBO()
         {
             _daoType = DaoType.EntityFramework;
+            _factoryDao = GetFactoryDao();
+        }
+        public FactoryBO(string userName)
+        {
+            _userName = userName;
+            _daoType = DaoType.EntityFramework;
+
+            _factoryDao = GetFactoryDao();
         }
         /// <summary>
         /// Inicializa nova instância da classe <see cref="FactoryBO" />.
@@ -79,7 +87,7 @@ namespace BolaoNet.Business
         /// Método que retorna o tipo de conexão que deve ser realizado para acesso à base de dados.
         /// </summary>
         /// <returns>Tipo de acesso à dados configurado. Caso não encontre, utiliza-se o padrão EntityFramework</returns>
-        private static DaoType GetDaoType()
+        private DaoType GetDaoType()
         {
             //Buscando a configuração do tipo de acesso à dados
             string daoType = System.Configuration.ConfigurationManager.AppSettings["FactoryDaoType"];
@@ -114,7 +122,7 @@ namespace BolaoNet.Business
         /// Método que retorna o objeto de fábrica de objetos para acesso à banco de dados.
         /// </summary>
         /// <returns>Objeto que possui a fábrica de objetos de conexão com o banco de dados.</returns>
-        private static Dao.IFactoryDao GetFactoryDao()
+        private Dao.IFactoryDao GetFactoryDao()
         {
             //Se o objeto de conexão ainda não foi criado
             if (_factoryDao == null)

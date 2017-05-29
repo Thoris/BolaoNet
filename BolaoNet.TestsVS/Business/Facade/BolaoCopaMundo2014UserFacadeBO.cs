@@ -18,6 +18,7 @@ namespace BolaoNet.TestsVS.Business.Facade
         private BolaoNet.Business.Interfaces.Campeonatos.ICampeonatoBO _campeonatoBO;
         private BolaoNet.Business.Interfaces.Facade.IBolaoFacadeBO _bolaoFacadeBO;
         private BolaoNet.Business.Interfaces.Facade.IUserFacadeBO _userFacadeBO;
+        private BolaoNet.Business.Interfaces.Boloes.IApostaExtraBO _apostaExtraBO;
 
         private BolaoNet.Business.Interfaces.IFactoryBO _factory;
 
@@ -36,6 +37,7 @@ namespace BolaoNet.TestsVS.Business.Facade
             _campeonatoBO = factory.CreateCampeonatoBO();
             _bolaoFacadeBO = factory.CreateBolaoFacadeBO();
             _userFacadeBO = factory.CreateUserFacadeBO();
+            _apostaExtraBO = factory.CreateApostaExtraBO();
 
         }
 
@@ -333,6 +335,8 @@ namespace BolaoNet.TestsVS.Business.Facade
             bolaoBO.StartBolao(new Entities.Users.User ("Thoris"), bolao);
 
             campeonatoBO.InsertResults(campeonato);
+
+            bolaoBO.InsertFinalResult();
 
         }
         

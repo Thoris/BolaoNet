@@ -12,9 +12,9 @@ namespace BolaoNet.TestsVS.IntegrationTests
 
         public void TestFlowBolao()
         {
-            BolaoNet.Business.Interfaces.Facade.IUserFacadeBO userFacade;
-            BolaoNet.Business.Interfaces.Facade.ICampeonatoFacadeBO campeonatoFacade;
-            BolaoNet.Business.Interfaces.Facade.IBolaoFacadeBO bolaoFacade;
+            //BolaoNet.Business.Interfaces.Facade.IUserFacadeBO userFacade;
+            //BolaoNet.Business.Interfaces.Facade.ICampeonatoFacadeBO campeonatoFacade;
+            //BolaoNet.Business.Interfaces.Facade.IBolaoFacadeBO bolaoFacade;
 
 
 

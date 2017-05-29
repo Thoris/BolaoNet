@@ -8,28 +8,28 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Entities.Boloes
 {
-    public class JogoUsuario : Base.AuditModel //, Interfaces.IPontosJogosUsuarioEntity
+    public class JogoUsuario : Base.AuditModel 
     {
         #region Enumeration
-        public enum TypeAposta
-        {
-            Todos = 0,
-            Nao_Apostados = 1,
-            Apostados = 2,
-        }
+        //public enum TypeAposta
+        //{
+        //    Todos = 0,
+        //    Nao_Apostados = 1,
+        //    Apostados = 2,
+        //}
 
-        public enum TypeAutomatico
-        {
-            Todos = 0,
-            Automatico = 1,
-            Manual = 2,
-        }
+        //public enum TypeAutomatico
+        //{
+        //    Todos = 0,
+        //    Automatico = 1,
+        //    Manual = 2,
+        //}
         #endregion
 
         #region Variables
 
-        private DadosBasicos.Time _timeResult1;
-        private DadosBasicos.Time _timeResult2;
+        //private DadosBasicos.Time _timeResult1;
+        //private DadosBasicos.Time _timeResult2;
 
         #endregion
 

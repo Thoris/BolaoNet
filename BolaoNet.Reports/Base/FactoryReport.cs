@@ -27,6 +27,7 @@ namespace BolaoNet.Reports.Base
         public FactoryReport(string userName, ReportType type, string imageTimesFolder, string imageUsersFolder, string imageExtension, string outputFile)
         {
             _reportType = type;
+            _userName = userName;
 
             _imageExtension = imageExtension;
             _imageTimesFolder = imageTimesFolder;

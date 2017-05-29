@@ -41,9 +41,30 @@ namespace BolaoNet.Integration.Campeonatos
         }
         public IList<Entities.Campeonatos.Jogo> GetJogosByCampeonato(Entities.Campeonatos.Campeonato campeonato)
         {
-            throw new NotImplementedException();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters.Add("nomeCampeonato", campeonato.Nome);
+
+
+            return base.HttpGetApi<ICollection<Entities.Campeonatos.Jogo>>(
+                parameters, "GetJogosByCampeonato").ToList();
         }
 
         #endregion
+
+
+        public IList<Entities.Campeonatos.Jogo> LoadJogos(int rodada, DateTime dataInicial, DateTime dataFinal, Entities.Campeonatos.CampeonatoFase fase, Entities.Campeonatos.Campeonato campeonato, Entities.Campeonatos.CampeonatoGrupo grupo, string condition)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<Entities.Campeonatos.Jogo> LoadFinishedJogos(Entities.Campeonatos.Campeonato campeonato, int totalJogos)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<Entities.Campeonatos.Jogo> LoadNextJogos(Entities.Campeonatos.Campeonato campeonato, int totalJogos)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

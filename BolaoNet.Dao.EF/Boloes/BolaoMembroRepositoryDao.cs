@@ -83,6 +83,13 @@ namespace BolaoNet.Dao.EF.Boloes
                 return false;
         }
 
+
+
+        public IList<Entities.Boloes.BolaoMembro> GetListUsersInBolao(string currentUserName, Entities.Boloes.Bolao bolao)
+        {
+            return base.GetList(x => string.Compare(x.NomeBolao, bolao.Nome, true) == 0).ToList();
+        }
+
         #endregion
     }
 }

@@ -32,6 +32,14 @@ namespace BolaoNet.Integration.Boloes
         }
 
         #endregion
-    
+
+        #region IBolaoMembroBO members
+        
+        public IList<Entities.Boloes.BolaoMembro> GetListUsersInBolao(Entities.Boloes.Bolao bolao)
+        {
+            return null;
+        }
+
+        #endregion
     }
 }

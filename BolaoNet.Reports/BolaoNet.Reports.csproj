@@ -36,6 +36,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Base\BaseFactoryReport.cs" />
     <Compile Include="DataReports\CopaMundoApostasUserReport.cs" />
+    <Compile Include="DataReports\PDF\BasePdfCopaMundoReport.cs" />
     <Compile Include="Entidades\EntityApostasExtras.cs" />
     <Compile Include="Entidades\EntityJogoUsuario.cs" />
     <Compile Include="DataReports\Excel\BaseExcelManager.cs" />
