@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReferencedComponents", "ReferencedComponents", "{0DD79E73-9DDE-475A-A7AC-DDE941D14543}"
 EndProject
@@ -100,6 +100,18 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Reports", "Reports", "{52A2FC5F-A0CC-4596-99D3-E8D31AD5EA2A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BolaoNet.Reports", "BolaoNet.Reports\BolaoNet.Reports.csproj", "{2977E641-629A-4640-9E94-502BA267987B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Queries", "Queries", "{9FC10BCB-A350-4CF1-9DC9-851EAADB13D5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Layout", "Layout", "{07703A85-D5FF-4A29-B417-EF463B9A7250}"
+	ProjectSection(SolutionItems) = preProject
+		Info\Layout\1-dashboard.png = Info\Layout\1-dashboard.png
+		Info\Layout\2-match.png = Info\Layout\2-match.png
+		Info\Layout\3-guesses.png = Info\Layout\3-guesses.png
+		Info\Layout\4-profile.png = Info\Layout\4-profile.png
+		Info\Layout\5-responsive.jpg = Info\Layout\5-responsive.jpg
+		Info\Layout\5-responsive_2.jpg = Info\Layout\5-responsive_2.jpg
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -201,5 +213,7 @@ Global
 		{7FD690E3-939A-46BF-ABA7-CDCD1B873523} = {0DD79E73-9DDE-475A-A7AC-DDE941D14543}
 		{5AC619EE-AE22-42DC-893B-A648B63D8D3D} = {278BD254-22F2-4DA5-A514-D0B001F292B1}
 		{2977E641-629A-4640-9E94-502BA267987B} = {52A2FC5F-A0CC-4596-99D3-E8D31AD5EA2A}
+		{9FC10BCB-A350-4CF1-9DC9-851EAADB13D5} = {41DA505B-A32F-4850-A054-09B1E5743B0C}
+		{07703A85-D5FF-4A29-B417-EF463B9A7250} = {41DA505B-A32F-4850-A054-09B1E5743B0C}
 	EndGlobalSection
 EndGlobal
