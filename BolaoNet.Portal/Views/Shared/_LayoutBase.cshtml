@@ -7,8 +7,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>SB Admin 2 - Bootstrap Admin Theme</title>
+
+
+
     <!-- Bootstrap Core CSS -->
-    <link href="../Content/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    @Styles.Render("~/Content/bootstrap")
+    @*<link href="../Content/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">*@
     <!-- MetisMenu CSS -->
     <link href="../Content/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -38,7 +42,7 @@
                 <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
             </div>
                         
-            @Html.Partial("_NavigationHeader")                        
+            @Html.Partial("_NavigationHeaderBase")                        
             @Html.Partial("_Menu")
                                     
         </nav>

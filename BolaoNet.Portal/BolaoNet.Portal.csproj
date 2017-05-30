@@ -194,6 +194,8 @@
     <Content Include="Content\vendor\bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\vendor\bootstrap\js\bootstrap.js" />
     <Content Include="Content\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\vendor\bootstrap\js\respond.js" />
+    <Content Include="Content\vendor\bootstrap\js\respond.min.js" />
     <Content Include="Content\vendor\datatables-plugins\dataTables.bootstrap.css" />
     <Content Include="Content\vendor\datatables-plugins\dataTables.bootstrap.js" />
     <Content Include="Content\vendor\datatables-plugins\dataTables.bootstrap.min.js" />
@@ -266,12 +268,21 @@
     <Content Include="Content\vendor\font-awesome\css\font-awesome.min.css" />
     <Content Include="Content\vendor\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\vendor\font-awesome\HELP-US-OUT.txt" />
+    <None Include="Content\vendor\jquery\jquery-1.10.2.intellisense.js" />
+    <Content Include="Content\vendor\jquery\jquery-1.10.2.js" />
+    <Content Include="Content\vendor\jquery\jquery-1.10.2.min.js" />
     <Content Include="Content\vendor\jquery\jquery.js" />
     <Content Include="Content\vendor\jquery\jquery.min.js" />
+    <None Include="Content\vendor\jquery\jquery.validate-vsdoc.js" />
+    <Content Include="Content\vendor\jquery\jquery.validate.js" />
+    <Content Include="Content\vendor\jquery\jquery.validate.min.js" />
+    <Content Include="Content\vendor\jquery\jquery.validate.unobtrusive.js" />
+    <Content Include="Content\vendor\jquery\jquery.validate.unobtrusive.min.js" />
     <Content Include="Content\vendor\metisMenu\metisMenu.css" />
     <Content Include="Content\vendor\metisMenu\metisMenu.js" />
     <Content Include="Content\vendor\metisMenu\metisMenu.min.css" />
     <Content Include="Content\vendor\metisMenu\metisMenu.min.js" />
+    <Content Include="Content\vendor\modernizr\modernizr-2.6.2.js" />
     <Content Include="Content\vendor\morrisjs\morris.css" />
     <Content Include="Content\vendor\morrisjs\morris.js" />
     <Content Include="Content\vendor\morrisjs\morris.min.js" />
@@ -322,14 +333,15 @@
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_GoogleAnalytics.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
-    <Content Include="Views\Shared\_NavigationHeader.cshtml" />
-    <Content Include="Views\Shared\_Profile.cshtml" />
-    <Content Include="Views\Shared\_Notification.cshtml" />
-    <Content Include="Views\Shared\_Messages.cshtml" />
+    <Content Include="Views\Shared\_NavigationHeaderBase.cshtml" />
+    <Content Include="Views\Shared\Navigation\_NavigationMessages.cshtml" />
     <Content Include="Views\Shared\_Menu.cshtml" />
     <Content Include="Views\Shared\_LayoutBase.cshtml" />
     <Content Include="Views\Shared\_LayoutSystem.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Navigation\_NavigationTasks.cshtml" />
+    <Content Include="Views\Shared\Navigation\_NavigationAlerts.cshtml" />
+    <Content Include="Views\Shared\Navigation\_NavigationUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -368,6 +380,7 @@
     <Folder Include="Areas\Visitante\Views\Shared\" />
     <Folder Include="Content\img\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Shared\Menu\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
@@ -420,6 +433,7 @@
     <Content Include="Content\vendor\font-awesome\scss\_spinning.scss" />
     <Content Include="Content\vendor\font-awesome\scss\_stacked.scss" />
     <Content Include="Content\vendor\font-awesome\scss\_variables.scss" />
+    <Content Include="Content\vendor\jquery\jquery-1.10.2.min.map" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <PropertyGroup>
