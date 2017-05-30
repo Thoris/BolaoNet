@@ -158,6 +158,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Apostas\ApostasAreaRegistration.cs" />
+    <Compile Include="Areas\Apostas\Controllers\ApostasExtrasController.cs" />
+    <Compile Include="Areas\Apostas\Controllers\ApostasJogosController.cs" />
+    <Compile Include="Areas\Apostas\Controllers\AutomaticasController.cs" />
+    <Compile Include="Areas\Apostas\Controllers\HomeController.cs" />
     <Compile Include="Areas\Boloes\BoloesAreaRegistration.cs" />
     <Compile Include="Areas\Campeonatos\CampeonatosAreaRegistration.cs" />
     <Compile Include="Areas\Criterios\CriteriosAreaRegistration.cs" />
@@ -167,6 +171,7 @@
     <Compile Include="Areas\Regras\RegrasAreaRegistration.cs" />
     <Compile Include="Areas\Resultados\ResultadosAreaRegistration.cs" />
     <Compile Include="Areas\Users\UsersAreaRegistration.cs" />
+    <Compile Include="Areas\Visitante\Controllers\UserController.cs" />
     <Compile Include="Areas\Visitante\VisitanteAreaRegistration.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\AuthorizationController.cs" />
@@ -188,6 +193,7 @@
     <Content Include="Content\data\morris-data.js" />
     <Content Include="Content\js\sb-admin-2.js" />
     <Content Include="Content\js\sb-admin-2.min.js" />
+    <Content Include="Content\Site.css" />
     <Content Include="Content\vendor\bootstrap-social\bootstrap-social.css" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap.css" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap.min.css" />
@@ -268,6 +274,16 @@
     <Content Include="Content\vendor\font-awesome\css\font-awesome.min.css" />
     <Content Include="Content\vendor\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\vendor\font-awesome\HELP-US-OUT.txt" />
+    <Content Include="Areas\Visitante\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Visitante\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Visitante\Views\User\Login.cshtml" />
+    <Content Include="Areas\Visitante\Views\User\RegistrationForm.cshtml" />
+    <Content Include="Areas\Visitante\Views\User\ActivateCode.cshtml" />
+    <Content Include="Areas\Visitante\Views\User\RecoverPassword.cshtml" />
+    <Content Include="Areas\Apostas\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Apostas\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Apostas\Views\ApostasJogos\Grupo.cshtml" />
+    <Content Include="Areas\Apostas\Views\ApostasJogos\Fase.cshtml" />
     <None Include="Content\vendor\jquery\jquery-1.10.2.intellisense.js" />
     <Content Include="Content\vendor\jquery\jquery-1.10.2.js" />
     <Content Include="Content\vendor\jquery\jquery-1.10.2.min.js" />
@@ -337,17 +353,19 @@
     <Content Include="Views\Shared\Navigation\_NavigationMessages.cshtml" />
     <Content Include="Views\Shared\_Menu.cshtml" />
     <Content Include="Views\Shared\_LayoutBase.cshtml" />
-    <Content Include="Views\Shared\_LayoutSystem.cshtml" />
+    <Content Include="Views\Shared\_LayoutMenuBase.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Navigation\_NavigationTasks.cshtml" />
     <Content Include="Views\Shared\Navigation\_NavigationAlerts.cshtml" />
     <Content Include="Views\Shared\Navigation\_NavigationUser.cshtml" />
+    <Content Include="Views\Shared\_LayoutSystemBase.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Apostas\Controllers\" />
     <Folder Include="Areas\Apostas\Models\" />
-    <Folder Include="Areas\Apostas\Views\Shared\" />
+    <Folder Include="Areas\Apostas\Views\ApostasExtras\" />
+    <Folder Include="Areas\Apostas\Views\Automaticas\" />
+    <Folder Include="Areas\Apostas\Views\Home\" />
     <Folder Include="Areas\Boloes\Controllers\" />
     <Folder Include="Areas\Boloes\Models\" />
     <Folder Include="Areas\Boloes\Views\Shared\" />
@@ -375,9 +393,7 @@
     <Folder Include="Areas\Users\Controllers\" />
     <Folder Include="Areas\Users\Models\" />
     <Folder Include="Areas\Users\Views\Shared\" />
-    <Folder Include="Areas\Visitante\Controllers\" />
     <Folder Include="Areas\Visitante\Models\" />
-    <Folder Include="Areas\Visitante\Views\Shared\" />
     <Folder Include="Content\img\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Shared\Menu\" />
