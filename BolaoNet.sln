@@ -113,6 +113,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Layout", "Layout", "{07703A
 		Info\Layout\5-responsive_2.jpg = Info\Layout\5-responsive_2.jpg
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BolaoNet.Portal.ViewModel", "BolaoNet.Portal.ViewModel\BolaoNet.Portal.ViewModel.csproj", "{124F2F6F-7DDA-4677-B5C3-FC5CEE903C74}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -179,6 +181,10 @@ Global
 		{2977E641-629A-4640-9E94-502BA267987B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2977E641-629A-4640-9E94-502BA267987B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2977E641-629A-4640-9E94-502BA267987B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{124F2F6F-7DDA-4677-B5C3-FC5CEE903C74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{124F2F6F-7DDA-4677-B5C3-FC5CEE903C74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{124F2F6F-7DDA-4677-B5C3-FC5CEE903C74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{124F2F6F-7DDA-4677-B5C3-FC5CEE903C74}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -215,5 +221,6 @@ Global
 		{2977E641-629A-4640-9E94-502BA267987B} = {52A2FC5F-A0CC-4596-99D3-E8D31AD5EA2A}
 		{9FC10BCB-A350-4CF1-9DC9-851EAADB13D5} = {41DA505B-A32F-4850-A054-09B1E5743B0C}
 		{07703A85-D5FF-4A29-B417-EF463B9A7250} = {41DA505B-A32F-4850-A054-09B1E5743B0C}
+		{124F2F6F-7DDA-4677-B5C3-FC5CEE903C74} = {8AAFE6AA-8135-40E6-8B08-9C9601999572}
 	EndGlobalSection
 EndGlobal
