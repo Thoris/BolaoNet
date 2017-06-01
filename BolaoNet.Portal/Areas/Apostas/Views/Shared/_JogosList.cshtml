@@ -1,0 +1,81 @@
+﻿@model BolaoNet.Portal.ViewModel.Apostas.ApostasJogosListVO
+
+
+@{
+    string currentGrupo = "";
+}
+
+<table class="table table-hover">
+    <tbody>
+        
+        @for (int c = 0; c < Model.Apostas.Count; c++)
+        {
+            if (string.Compare(Model.Apostas[c].Grupo, currentGrupo, true) != 0)
+            {                                
+                if (!string.IsNullOrEmpty(Model.Apostas[c].Grupo.Trim()) && !string.IsNullOrEmpty(currentGrupo))
+                {                
+                    <tr>
+                        <th scope="rowgroup" colspan="13">Grupo @(Model.Apostas[c].Grupo)</th>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <th scope="rowgroup" colspan="13"></th>
+                    </tr>
+                }
+                currentGrupo = Model.Apostas[c].Grupo;
+            }
+            <tr class="active">
+                <th scope="row">@(Model.Apostas[c].JogoId)</th>
+                <td>@(Model.Apostas[c].DataJogo)</td>
+                <td>@(Model.Apostas[c].Estadio)</td>
+                <td>@(Model.Apostas[c].Time1)</td>
+                <td><img src="@(Model.Apostas[c].ImageTime1)" /></td>
+
+                @if (Model.Apostas[c].IsLocked)
+                {
+                    if (Model.Apostas[c].GolsTime1 != null)
+                    { 
+                        <td>@(Model.Apostas[c].GolsTime1)</td>
+                    }
+                    else
+                    {
+                        <td>-</td>
+                    }
+                }
+                else
+                {
+                    <td>
+                        <input type="text" class="form-control input-sm" maxlength="2" style="width: 40px"
+                               value="@(Model.Apostas[c].GolsTime1)" />
+                    </td>
+                }                               
+                <td>x</td>                
+                @if (Model.Apostas[c].IsLocked)
+                {
+                    if (Model.Apostas[c].GolsTime2 != null)
+                    {
+                        <td>@(Model.Apostas[c].GolsTime2)</td>
+                    }
+                    else
+                    {
+                        <td>-</td>
+                    }
+                }
+                else
+                {
+                    <td>
+                        <input type="text" class="form-control input-sm" maxlength="2" style="width: 40px"
+                               value="@(Model.Apostas[c].GolsTime1)" />
+                    </td>
+                }                 
+                <td><img src="@(Model.Apostas[c].ImageTime2)" /></td>
+                <td>@(Model.Apostas[c].Time2)</td>
+                <td>@(Model.Apostas[c].Rodada)</td>
+                <td>@(Model.Apostas[c].Automatico == true ? "auto" : "")</td>
+                <td>@(Model.Apostas[c].DataAposta)</td>
+            </tr>
+        }      
+    </tbody>
+</table>

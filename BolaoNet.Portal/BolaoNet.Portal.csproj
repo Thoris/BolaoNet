@@ -192,6 +192,7 @@
     <Content Include="Content\css_old\bootstrap.min.css" />
     <Content Include="Content\data\flot-data.js" />
     <Content Include="Content\data\morris-data.js" />
+    <Content Include="Content\img\database\times\Argentina.gif" />
     <Content Include="Content\img\database\times\Brasil.gif" />
     <Content Include="Content\js\sb-admin-2.js" />
     <Content Include="Content\js\sb-admin-2.min.js" />
@@ -288,6 +289,9 @@
     <Content Include="Areas\Users\Views\Access\ForgotPassword.cshtml" />
     <Content Include="Areas\Users\Views\Access\RegistrationForm.cshtml" />
     <Content Include="Areas\Users\Views\Access\ActivateCode.cshtml" />
+    <Content Include="Areas\Apostas\Views\Shared\_JogosList.cshtml" />
+    <Content Include="Areas\Apostas\Views\Shared\_FiltroJogos.cshtml" />
+    <Content Include="Areas\Apostas\Views\Shared\_ApostasJogosList.cshtml" />
     <None Include="Content\vendor\jquery\jquery-1.10.2.intellisense.js" />
     <Content Include="Content\vendor\jquery\jquery-1.10.2.js" />
     <Content Include="Content\vendor\jquery\jquery-1.10.2.min.js" />
