@@ -1,7 +1,301 @@
 ﻿
-@{
-    ViewBag.Title = "Grupo";
-}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
 
-<h2>Grupo</h2>
+            <table class="table table-hover">
+                @*<thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>*@
+                <tbody>
+                    <tr>
+                        <th scope="rowgroup" colspan="13">Grupo A</th>
+                    </tr>
+                    <tr class="active">
+                        <th scope="row">1</th>
+                        <td>2014/06/20 17:30</td>
+                        <td>São Paulo</td>
+                        <td>Brasil</td>
+                        <td><img src="~/Content/img/database/times/Brasil.gif" /></td>
+                        <td><input type="text" class="form-control input-sm" maxlength="2" style="width: 40px"/></td>
+                        <td>x</td>
+                        <td><input type="text" class="form-control input-sm" maxlength="2" style="width: 40px" /></td>
+                        <td><img src="~/Content/img/database/times/Brasil.gif" /></td>
+                        <td>Brasil</td>
+                        <td>1</td>
+                        <td>auto</td>
+                        <td>2017/05/31 18:41</td>
+                    </tr>
+                    <tr class="active">
+                        <th scope="row">2</th>
+                        <td>2014/06/20 17:30</td>
+                        <td>São Paulo</td>
+                        <td>Brasil</td>
+                        <td><img src="~/Content/img/database/times/Brasil.gif" /></td>
+                        <td><input type="text" class="form-control input-sm" maxlength="2" style="width: 40px" /></td>
+                        <td>x</td>
+                        <td><input type="text" class="form-control input-sm" maxlength="2" style="width: 40px" /></td>
+                        <td><img src="~/Content/img/database/times/Brasil.gif" /></td>
+                        <td>Brasil</td>
+                        <td>1</td>
+                        <td>auto</td>
+                        <td>2017/05/31 18:41</td>
+                    </tr>
+                    <tr>
+                        <th scope="colgroup" colspan="13">Grupo B</th>
+                    </tr>
+                    <tr class="active">
+                        <th scope="row">3</th>
+                        <td>2014/06/20 17:30</td>
+                        <td>São Paulo</td>
+                        <td>Brasil</td>
+                        <td><img src="~/Content/img/database/times/Brasil.gif" /></td>
+                        <td><input type="text" class="form-control input-sm" maxlength="2" style="width: 40px" /></td>
+                        <td>x</td>
+                        <td><input type="text" class="form-control input-sm" maxlength="2" style="width: 40px" /></td>
+                        <td><img src="~/Content/img/database/times/Brasil.gif" /></td>
+                        <td>Brasil</td>
+                        <td>1</td>
+                        <td>auto</td>
+                        <td>2017/05/31 18:41</td>
+                    </tr>
+                    <tr class="active">
+                        <th scope="row">4</th>
+                        <td>2014/06/20 17:30</td>
+                        <td>São Paulo</td>
+                        <td>Brasil</td>
+                        <td><img src="~/Content/img/database/times/Brasil.gif" /></td>
+                        <td><input type="text" class="form-control input-sm" maxlength="2" style="width: 40px" /></td>
+                        <td>x</td>
+                        <td><input type="text" class="form-control input-sm" maxlength="2" style="width: 40px" /></td>
+                        <td><img src="~/Content/img/database/times/Brasil.gif" /></td>
+                        <td>Brasil</td>
+                        <td>1</td>
+                        <td>auto</td>
+                        <td>2017/05/31 18:41</td>
+                    </tr>
+                    <tr>
+                        <th scope="rowgroup" colspan="13">Grupo C</th>
+                    </tr>
+                    <tr class="info">
+                        <th scope="row">3</th>
+                        <td>2014/06/20 17:30</td>
+                        <td>São Paulo</td>
+                        <td>Brasil</td>
+                        <td><img src="~/Content/img/database/times/Brasil.gif" /></td>
+                        <td><input type="text" class="form-control input-sm" maxlength="2" style="width: 40px" /></td>
+                        <td>x</td>
+                        <td><input type="text" class="form-control input-sm" maxlength="2" style="width: 40px" /></td>
+                        <td><img src="~/Content/img/database/times/Brasil.gif" /></td>
+                        <td>Brasil</td>
+                        <td>1</td>
+                        <td>auto</td>
+                        <td>2017/05/31 18:41</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>2014/06/20 17:30</td>
+                        <td>São Paulo</td>
+                        <td>Brasil</td>
+                        <td><img src="~/Content/img/database/times/Brasil.gif" /></td>
+                        <td><input type="text" class="form-control input-sm" maxlength="2" style="width: 40px" /></td>
+                        <td>x</td>
+                        <td><input type="text" class="form-control input-sm" maxlength="2" style="width: 40px" /></td>
+                        <td><img src="~/Content/img/database/times/Brasil.gif" /></td>
+                        <td>Brasil</td>
+                        <td>1</td>
+                        <td>auto</td>
+                        <td>2017/05/31 18:41</td>
+                    </tr>
+                    <tr>
+                        <th scope="rowgroup" colspan="13">Grupo B</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>2014/06/20 17:30</td>
+                        <td>São Paulo</td>
+                        <td>Brasil</td>
+                        <td><img src="~/Content/img/database/times/Brasil.gif" /></td>
+                        <td><input type="text" class="form-control input-sm" maxlength="2" style="width: 40px" /></td>
+                        <td>x</td>
+                        <td><input type="text" class="form-control input-sm" maxlength="2" style="width: 40px" /></td>
+                        <td><img src="~/Content/img/database/times/Brasil.gif" /></td>
+                        <td>Brasil</td>
+                        <td>1</td>
+                        <td>auto</td>
+                        <td>2017/05/31 18:41</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>2014/06/20 17:30</td>
+                        <td>São Paulo</td>
+                        <td>Brasil</td>
+                        <td><img src="~/Content/img/database/times/Brasil.gif" /></td>
+                        <td><input type="text" class="form-control input-sm" maxlength="2" style="width: 40px" /></td>
+                        <td>x</td>
+                        <td><input type="text" class="form-control input-sm" maxlength="2" style="width: 40px" /></td>
+                        <td><img src="~/Content/img/database/times/Brasil.gif" /></td>
+                        <td>Brasil</td>
+                        <td>1</td>
+                        <td>auto</td>
+                        <td>2017/05/31 18:41</td>
+                    </tr>
+                    <tr>
+                        <th scope="rowgroup" colspan="13">Grupo B</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>2014/06/20 17:30</td>
+                        <td>São Paulo</td>
+                        <td>Brasil</td>
+                        <td><img src="~/Content/img/database/times/Brasil.gif" /></td>
+                        <td><input type="text" class="form-control input-sm" maxlength="2" style="width: 40px" /></td>
+                        <td>x</td>
+                        <td><input type="text" class="form-control input-sm" maxlength="2" style="width: 40px" /></td>
+                        <td><img src="~/Content/img/database/times/Brasil.gif" /></td>
+                        <td>Brasil</td>
+                        <td>1</td>
+                        <td>auto</td>
+                        <td>2017/05/31 18:41</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>2014/06/20 17:30</td>
+                        <td>São Paulo</td>
+                        <td>Brasil</td>
+                        <td><img src="~/Content/img/database/times/Brasil.gif" /></td>
+                        <td><input type="text" class="form-control input-sm" maxlength="2" style="width: 40px" /></td>
+                        <td>x</td>
+                        <td><input type="text" class="form-control input-sm" maxlength="2" style="width: 40px" /></td>
+                        <td><img src="~/Content/img/database/times/Brasil.gif" /></td>
+                        <td>Brasil</td>
+                        <td>1</td>
+                        <td>auto</td>
+                        <td>2017/05/31 18:41</td>
+                    </tr>
+                    <tr>
+                        <th scope="rowgroup" colspan="13">Grupo B</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>2014/06/20 17:30</td>
+                        <td>São Paulo</td>
+                        <td>Brasil</td>
+                        <td><img src="~/Content/img/database/times/Brasil.gif" /></td>
+                        <td><input type="text" class="form-control input-sm" maxlength="2" style="width: 40px" /></td>
+                        <td>x</td>
+                        <td><input type="text" class="form-control input-sm" maxlength="2" style="width: 40px" /></td>
+                        <td><img src="~/Content/img/database/times/Brasil.gif" /></td>
+                        <td>Brasil</td>
+                        <td>1</td>
+                        <td>auto</td>
+                        <td>2017/05/31 18:41</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>2014/06/20 17:30</td>
+                        <td>São Paulo</td>
+                        <td>Brasil</td>
+                        <td><img src="~/Content/img/database/times/Brasil.gif" /></td>
+                        <td><input type="text" class="form-control input-sm" maxlength="2" style="width: 40px" /></td>
+                        <td>x</td>
+                        <td><input type="text" class="form-control input-sm" maxlength="2" style="width: 40px" /></td>
+                        <td><img src="~/Content/img/database/times/Brasil.gif" /></td>
+                        <td>Brasil</td>
+                        <td>1</td>
+                        <td>auto</td>
+                        <td>2017/05/31 18:41</td>
+                    </tr>
+                    <tr>
+                        <th scope="rowgroup" colspan="13">Grupo B</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>2014/06/20 17:30</td>
+                        <td>São Paulo</td>
+                        <td>Brasil</td>
+                        <td><img src="~/Content/img/database/times/Brasil.gif" /></td>
+                        <td><input type="text" class="form-control input-sm" maxlength="2" style="width: 40px" /></td>
+                        <td>x</td>
+                        <td><input type="text" class="form-control input-sm" maxlength="2" style="width: 40px" /></td>
+                        <td><img src="~/Content/img/database/times/Brasil.gif" /></td>
+                        <td>Brasil</td>
+                        <td>1</td>
+                        <td>auto</td>
+                        <td>2017/05/31 18:41</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>2014/06/20 17:30</td>
+                        <td>São Paulo</td>
+                        <td>Brasil</td>
+                        <td><img src="~/Content/img/database/times/Brasil.gif" /></td>
+                        <td><input type="text" class="form-control input-sm" maxlength="2" style="width: 40px" /></td>
+                        <td>x</td>
+                        <td><input type="text" class="form-control input-sm" maxlength="2" style="width: 40px" /></td>
+                        <td><img src="~/Content/img/database/times/Brasil.gif" /></td>
+                        <td>Brasil</td>
+                        <td>1</td>
+                        <td>auto</td>
+                        <td>2017/05/31 18:41</td>
+                    </tr>
+                    <tr>
+                        <th scope="rowgroup" colspan="13">Grupo B</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>2014/06/20 17:30</td>
+                        <td>São Paulo</td>
+                        <td>Brasil</td>
+                        <td><img src="~/Content/img/database/times/Brasil.gif" /></td>
+                        <td><input type="text" class="form-control input-sm" maxlength="2" style="width: 40px" /></td>
+                        <td>x</td>
+                        <td><input type="text" class="form-control input-sm" maxlength="2" style="width: 40px" /></td>
+                        <td><img src="~/Content/img/database/times/Brasil.gif" /></td>
+                        <td>Brasil</td>
+                        <td>1</td>
+                        <td>auto</td>
+                        <td>2017/05/31 18:41</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>2014/06/20 17:30</td>
+                        <td>São Paulo</td>
+                        <td>Brasil</td>
+                        <td><img src="~/Content/img/database/times/Brasil.gif" /></td>
+                        <td><input type="text" class="form-control input-sm" maxlength="2" style="width: 40px" /></td>
+                        <td>x</td>
+                        <td><input type="text" class="form-control input-sm" maxlength="2" style="width: 40px" /></td>
+                        <td><img src="~/Content/img/database/times/Brasil.gif" /></td>
+                        <td>Brasil</td>
+                        <td>1</td>
+                        <td>auto</td>
+                        <td>2017/05/31 18:41</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-4">
+
+                    <a href="index.html" class="btn btn-lg btn-success btn-block">Salvar Apostas</a>
+                </div><!-- /.col-lg-4 -->
+            </div><!-- /.row -->
+        </div>
+    </div>
+</div>
 

@@ -192,6 +192,7 @@
     <Content Include="Content\css_old\bootstrap.min.css" />
     <Content Include="Content\data\flot-data.js" />
     <Content Include="Content\data\morris-data.js" />
+    <Content Include="Content\img\database\times\Brasil.gif" />
     <Content Include="Content\js\sb-admin-2.js" />
     <Content Include="Content\js\sb-admin-2.min.js" />
     <Content Include="Content\Site.css" />
@@ -396,7 +397,6 @@
     <Folder Include="Areas\Users\Models\" />
     <Folder Include="Areas\Visitante\Models\" />
     <Folder Include="Areas\Visitante\Views\User\" />
-    <Folder Include="Content\img\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Shared\Menu\" />
   </ItemGroup>
@@ -453,6 +453,12 @@
     <Content Include="Content\vendor\font-awesome\scss\_variables.scss" />
     <Content Include="Content\vendor\jquery\jquery-1.10.2.min.map" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BolaoNet.Portal.ViewModel\BolaoNet.Portal.ViewModel.csproj">
+      <Project>{124f2f6f-7dda-4677-b5c3-fc5cee903c74}</Project>
+      <Name>BolaoNet.Portal.ViewModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
