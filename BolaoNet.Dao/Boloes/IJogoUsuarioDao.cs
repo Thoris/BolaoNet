@@ -43,5 +43,11 @@ namespace BolaoNet.Dao.Boloes
             int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, bool isMultiploTime, int multiploTime,
             Entities.Interfaces.IPontosJogosUsuarioEntity pontosEntity);
 
+
+        int InsertApostasAuto(string currentUser, DateTime currentDateTime, Entities.Boloes.Bolao bolao, Entities.Users.User user,
+            int typeAposta, int typeAutomatico,
+            DateTime? dataInicial, DateTime? dataFinal, int? rodada, bool random, int? time1, int? time2,
+            int? randomInicial, int? randomFinal, Entities.DadosBasicos.Time time);
+
     }
 }

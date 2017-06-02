@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace BolaoNet.Portal.Areas.Users.Controllers
 {
-    public class AccessController : Controller
+    public class AccessController : BaseUserController
     {
         #region Actions
 

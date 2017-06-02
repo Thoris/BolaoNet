@@ -1,0 +1,20 @@
+1. Criar registro do usuário
+	1.1 - Verificar a existência do login no banco de dados
+	1.2 - Atualizar dados no banco de dados
+	1.3 - Enviar email para o usuário com o código de ativação
+	
+2. Entrar com o código de ativação
+	2.1 - Validar o código de ativação no banco de dados
+	2.2 - Ativar o usuário para login
+	2.3 - Prover acesso à regras de acesso ao login
+	2.4 - Dar permissão ao usuário para acesso ao bolão.
+
+3. Efetuar login do usuário.
+	3.1 - Validar usuário e senha no banco de dados.
+	3.2 - Apresentar dados e estatísticas do bolão ao usuário.
+
+4. Incluir apostas automáticas.
+	4.1 - Incluir dados de resultados automatizados
+
+5. Incluir apostas manuais.
+	5.1 - Incluir apostas manuais.
