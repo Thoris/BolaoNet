@@ -132,5 +132,6 @@
     <None Include="build\0118.Create_StoredProcedure_sp_Jogos_LoadJogos.sql" />
     <None Include="build\0119.Create_StoredProcedure_sp_Jogos_LoadLastFinishedJogos.sql" />
     <None Include="build\0120.Create_StoredProcedure_sp_Jogos_LoadNextJogos.sql" />
+    <None Include="build\0121.Create_StoredProcedure_sp_JogosUsuarios_ApostasAutomatica.sql" />
   </ItemGroup>
 </Project>

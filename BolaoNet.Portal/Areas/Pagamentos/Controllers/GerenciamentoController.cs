@@ -4,28 +4,29 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace BolaoNet.Portal.Areas.Users.Controllers
+namespace BolaoNet.Portal.Areas.Pagamentos.Controllers
 {
-    public class AccessController : BaseUserController
+    public class GerenciamentoController : Controller
     {
         #region Actions
 
-        public ActionResult Login()
+        public ActionResult Index()
         {
             return View();
         }
-        public ActionResult ForgotPassword()
+        public ActionResult Incluir()
         {
             return View();
         }
-        public ActionResult RegistrationForm()
+        public ActionResult Excluir()
         {
             return View();
         }
-        public ActionResult ActivateCode()
+        public ActionResult Atualizar()
         {
             return View();
         }
+
         #endregion
     }
 }

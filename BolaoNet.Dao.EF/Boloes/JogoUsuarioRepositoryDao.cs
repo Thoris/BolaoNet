@@ -807,5 +807,11 @@ namespace BolaoNet.Dao.EF.Boloes
 
         #endregion
 
+
+
+        public int InsertApostasAuto(string currentUser, DateTime currentDateTime, Entities.Boloes.Bolao bolao, Entities.Users.User user, int typeAposta, int typeAutomatico, DateTime? dataInicial, DateTime? dataFinal, int? rodada, bool random, int? time1, int? time2, int? randomInicial, int? randomFinal, Entities.DadosBasicos.Time time)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

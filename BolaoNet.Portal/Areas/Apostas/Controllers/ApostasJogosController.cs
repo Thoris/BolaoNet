@@ -10,11 +10,7 @@ namespace BolaoNet.Portal.Areas.Apostas.Controllers
     {
         #region Actions
 
-        public ActionResult Grupo()
-        {
-            return View();
-        }
-        public ActionResult Fase()
+        public ActionResult Jogos()
         {
             Portal.ViewModel.Apostas.ApostasJogosListVO vo = new ViewModel.Apostas.ApostasJogosListVO();
 
@@ -125,6 +121,186 @@ namespace BolaoNet.Portal.Areas.Apostas.Controllers
                 Time1 = "Argentina",
                 Time2 = "Argentina",
             });
+
+
+            vo.Apostas.Add(new ViewModel.Apostas.ApostaJogoEntryVO()
+            {
+                Automatico = null,
+                DataJogo = DateTime.Now,
+                Estadio = "São Paulo",
+                Fase = "Oitavas de Final",
+                GolsTime1 = null,
+                GolsTime2 = null,
+                Grupo = " ",
+                ImageTime1 = "/Content/img/database/times/Argentina.gif",
+                ImageTime2 = "/Content/img/database/times/Argentina.gif",
+                IsLocked = false,
+                JogoId = 4,
+                Rodada = 2,
+                Time1 = "Argentina",
+                Time2 = "Argentina",                
+            });
+            vo.Apostas.Add(new ViewModel.Apostas.ApostaJogoEntryVO()
+            {
+                Automatico = null,
+                DataJogo = DateTime.Now,
+                Estadio = "São Paulo",
+                Fase = "Oitavas de Final",
+                GolsTime1 = null,
+                GolsTime2 = null,
+                Grupo = " ",
+                ImageTime1 = "/Content/img/database/times/Argentina.gif",
+                ImageTime2 = "/Content/img/database/times/Argentina.gif",
+                IsLocked = false,
+                JogoId = 4,
+                Rodada = 2,
+                Time1 = "Argentina",
+                Time2 = "Argentina",
+            });
+            vo.Apostas.Add(new ViewModel.Apostas.ApostaJogoEntryVO()
+            {
+                Automatico = null,
+                DataJogo = DateTime.Now,
+                Estadio = "São Paulo",
+                Fase = "Oitavas de Final",
+                GolsTime1 = null,
+                GolsTime2 = null,
+                Grupo = " ",
+                ImageTime1 = "/Content/img/database/times/Argentina.gif",
+                ImageTime2 = "/Content/img/database/times/Argentina.gif",
+                IsLocked = false,
+                JogoId = 4,
+                Rodada = 2,
+                Time1 = "Argentina",
+                Time2 = "Argentina",
+            });
+            vo.Apostas.Add(new ViewModel.Apostas.ApostaJogoEntryVO()
+            {
+                Automatico = null,
+                DataJogo = DateTime.Now,
+                Estadio = "São Paulo",
+                Fase = "Oitavas de Final",
+                GolsTime1 = null,
+                GolsTime2 = null,
+                Grupo = " ",
+                ImageTime1 = "/Content/img/database/times/Argentina.gif",
+                ImageTime2 = "/Content/img/database/times/Argentina.gif",
+                IsLocked = false,
+                JogoId = 4,
+                Rodada = 2,
+                Time1 = "Argentina",
+                Time2 = "Argentina",
+            });
+
+
+            vo.Apostas.Add(new ViewModel.Apostas.ApostaJogoEntryVO()
+            {
+                Automatico = null,
+                DataJogo = DateTime.Now,
+                Estadio = "São Paulo",
+                Fase = "Quartas de Final",
+                GolsTime1 = null,
+                GolsTime2 = null,
+                Grupo = " ",
+                ImageTime1 = "/Content/img/database/times/Argentina.gif",
+                ImageTime2 = "/Content/img/database/times/Argentina.gif",
+                IsLocked = false,
+                JogoId = 4,
+                Rodada = 3,
+                Time1 = "Argentina",
+                Time2 = "Argentina",
+            });
+            vo.Apostas.Add(new ViewModel.Apostas.ApostaJogoEntryVO()
+            {
+                Automatico = null,
+                DataJogo = DateTime.Now,
+                Estadio = "São Paulo",
+                Fase = "Quartas de Final",
+                GolsTime1 = null,
+                GolsTime2 = null,
+                Grupo = " ",
+                ImageTime1 = "/Content/img/database/times/Argentina.gif",
+                ImageTime2 = "/Content/img/database/times/Argentina.gif",
+                IsLocked = false,
+                JogoId = 4,
+                Rodada = 3,
+                Time1 = "Argentina",
+                Time2 = "Argentina",
+            });
+
+
+            vo.Apostas.Add(new ViewModel.Apostas.ApostaJogoEntryVO()
+            {
+                Automatico = null,
+                DataJogo = DateTime.Now,
+                Estadio = "São Paulo",
+                Fase = "Semi Final",
+                GolsTime1 = null,
+                GolsTime2 = null,
+                Grupo = " ",
+                ImageTime1 = "/Content/img/database/times/Argentina.gif",
+                ImageTime2 = "/Content/img/database/times/Argentina.gif",
+                IsLocked = false,
+                JogoId = 4,
+                Rodada = 4,
+                Time1 = "Argentina",
+                Time2 = "Argentina",
+            });
+            vo.Apostas.Add(new ViewModel.Apostas.ApostaJogoEntryVO()
+            {
+                Automatico = null,
+                DataJogo = DateTime.Now,
+                Estadio = "São Paulo",
+                Fase = "Semi Final",
+                GolsTime1 = null,
+                GolsTime2 = null,
+                Grupo = " ",
+                ImageTime1 = "/Content/img/database/times/Argentina.gif",
+                ImageTime2 = "/Content/img/database/times/Argentina.gif",
+                IsLocked = false,
+                JogoId = 4,
+                Rodada = 4,
+                Time1 = "Argentina",
+                Time2 = "Argentina",
+            });
+
+
+
+            vo.Apostas.Add(new ViewModel.Apostas.ApostaJogoEntryVO()
+            {
+                Automatico = null,
+                DataJogo = DateTime.Now,
+                Estadio = "São Paulo",
+                Fase = "Final",
+                GolsTime1 = null,
+                GolsTime2 = null,
+                Grupo = " ",
+                ImageTime1 = "/Content/img/database/times/Argentina.gif",
+                ImageTime2 = "/Content/img/database/times/Argentina.gif",
+                IsLocked = false,
+                JogoId = 4,
+                Rodada = 5,
+                Time1 = "Argentina",
+                Time2 = "Argentina",
+            }); vo.Apostas.Add(new ViewModel.Apostas.ApostaJogoEntryVO()
+            {
+                Automatico = null,
+                DataJogo = DateTime.Now,
+                Estadio = "São Paulo",
+                Fase = "Final",
+                GolsTime1 = null,
+                GolsTime2 = null,
+                Grupo = " ",
+                ImageTime1 = "/Content/img/database/times/Argentina.gif",
+                ImageTime2 = "/Content/img/database/times/Argentina.gif",
+                IsLocked = false,
+                JogoId = 4,
+                Rodada = 5,
+                Time1 = "Argentina",
+                Time2 = "Argentina",
+            });
+
+
             return View(vo);
         }
 

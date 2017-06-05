@@ -166,11 +166,13 @@
     <Compile Include="Areas\Campeonatos\CampeonatosAreaRegistration.cs" />
     <Compile Include="Areas\Criterios\CriteriosAreaRegistration.cs" />
     <Compile Include="Areas\Mensagens\MensagensAreaRegistration.cs" />
+    <Compile Include="Areas\Pagamentos\Controllers\GerenciamentoController.cs" />
     <Compile Include="Areas\Pagamentos\PagamentosAreaRegistration.cs" />
     <Compile Include="Areas\Pontuacao\PontuacaoAreaRegistration.cs" />
     <Compile Include="Areas\Regras\RegrasAreaRegistration.cs" />
     <Compile Include="Areas\Resultados\ResultadosAreaRegistration.cs" />
     <Compile Include="Areas\Users\Controllers\AccessController.cs" />
+    <Compile Include="Areas\Users\Controllers\BaseUserController.cs" />
     <Compile Include="Areas\Users\UsersAreaRegistration.cs" />
     <Compile Include="Areas\Visitante\Controllers\UserController.cs" />
     <Compile Include="Areas\Visitante\VisitanteAreaRegistration.cs" />
@@ -281,8 +283,6 @@
     <Content Include="Areas\Visitante\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Apostas\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Apostas\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Apostas\Views\ApostasJogos\Grupo.cshtml" />
-    <Content Include="Areas\Apostas\Views\ApostasJogos\Fase.cshtml" />
     <Content Include="Areas\Users\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Users\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Users\Views\Access\Login.cshtml" />
@@ -292,6 +292,13 @@
     <Content Include="Areas\Apostas\Views\Shared\_JogosList.cshtml" />
     <Content Include="Areas\Apostas\Views\Shared\_FiltroJogos.cshtml" />
     <Content Include="Areas\Apostas\Views\Shared\_ApostasJogosList.cshtml" />
+    <Content Include="Areas\Apostas\Views\Automaticas\Index.cshtml" />
+    <Content Include="Areas\Apostas\Views\Automaticas\Resultados.cshtml" />
+    <Content Include="Areas\Apostas\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Apostas\Views\ApostasJogos\Jogos.cshtml" />
+    <Content Include="Areas\Pagamentos\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Pagamentos\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Pagamentos\Views\Gerenciamento\Index.cshtml" />
     <None Include="Content\vendor\jquery\jquery-1.10.2.intellisense.js" />
     <Content Include="Content\vendor\jquery\jquery-1.10.2.js" />
     <Content Include="Content\vendor\jquery\jquery-1.10.2.min.js" />
@@ -372,8 +379,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Apostas\Models\" />
     <Folder Include="Areas\Apostas\Views\ApostasExtras\" />
-    <Folder Include="Areas\Apostas\Views\Automaticas\" />
-    <Folder Include="Areas\Apostas\Views\Home\" />
     <Folder Include="Areas\Boloes\Controllers\" />
     <Folder Include="Areas\Boloes\Models\" />
     <Folder Include="Areas\Boloes\Views\Shared\" />
@@ -386,9 +391,7 @@
     <Folder Include="Areas\Mensagens\Controllers\" />
     <Folder Include="Areas\Mensagens\Models\" />
     <Folder Include="Areas\Mensagens\Views\Shared\" />
-    <Folder Include="Areas\Pagamentos\Controllers\" />
     <Folder Include="Areas\Pagamentos\Models\" />
-    <Folder Include="Areas\Pagamentos\Views\Shared\" />
     <Folder Include="Areas\Pontuacao\Controllers\" />
     <Folder Include="Areas\Pontuacao\Models\" />
     <Folder Include="Areas\Pontuacao\Views\Shared\" />
