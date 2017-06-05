@@ -144,10 +144,6 @@
     <Compile Include="Users\UserBO.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BolaoNet.Dao.Collection\BolaoNet.Dao.Collection.csproj">
-      <Project>{170a0f00-0f81-42a0-bfb6-36e9c81bd2b2}</Project>
-      <Name>BolaoNet.Dao.Collection</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BolaoNet.Dao.EF\BolaoNet.Dao.EF.csproj">
       <Project>{4cbdd9ad-59ee-4905-b9de-2e040f743fe8}</Project>
       <Name>BolaoNet.Dao.EF</Name>

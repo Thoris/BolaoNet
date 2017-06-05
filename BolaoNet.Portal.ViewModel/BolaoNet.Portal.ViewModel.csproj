@@ -41,7 +41,6 @@
   <ItemGroup>
     <Compile Include="Apostas\ApostaJogoEntryVO.cs" />
     <Compile Include="Apostas\ApostasJogosListVO.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

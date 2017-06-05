@@ -140,7 +140,7 @@ namespace BolaoNet.Business
 
                     case DaoType.ListCollection:
 
-                        _factoryDao = new Dao.Collection.FactoryCollection();
+                        //_factoryDao = new Dao.Collection.FactoryCollection();
 
                         break;
 
