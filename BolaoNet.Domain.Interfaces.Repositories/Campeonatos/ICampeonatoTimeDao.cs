@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Domain.Interfaces.Repositories.Campeonatos
 {
-    public interface ICampeonatoTimeDao : IGenericDao<Entities.Campeonatos.CampeonatoTime>
+    public interface ICampeonatoTimeDao : Base.IGenericDao<Entities.Campeonatos.CampeonatoTime>
     {
     }
 }

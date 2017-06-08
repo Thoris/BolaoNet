@@ -81,7 +81,6 @@
     <Compile Include="DadosBasicos\IPagamentoTipoDao.cs" />
     <Compile Include="DadosBasicos\ITimeDao.cs" />
     <Compile Include="IFactoryDao.cs" />
-    <Compile Include="IGenericDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Users\IRoleDao.cs" />
     <Compile Include="Users\IUserDao.cs" />

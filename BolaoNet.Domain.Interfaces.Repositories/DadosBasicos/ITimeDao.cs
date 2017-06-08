@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Domain.Interfaces.Repositories.DadosBasicos
 {
-    public interface ITimeDao : IGenericDao<Entities.DadosBasicos.Time>
+    public interface ITimeDao : Base.IGenericDao<Entities.DadosBasicos.Time>
     {
     }
 }

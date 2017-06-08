@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Domain.Interfaces.Repositories.Boloes
 {
-    public interface IApostaExtraUsuarioDao : IGenericDao<Entities.Boloes.ApostaExtraUsuario>
+    public interface IApostaExtraUsuarioDao : Base.IGenericDao<Entities.Boloes.ApostaExtraUsuario>
     {
         //IList<Entities.Boloes.ApostaExtraUsuario> SelectByUser(string currentUserName, Entities.Boloes.Bolao bolao, string userName, string condition);
         //IList<Entities.Boloes.ApostaExtraUsuario> SelectByPosicao(string currentUserName, Entities.Boloes.Bolao bolao, int posicao, string condition);

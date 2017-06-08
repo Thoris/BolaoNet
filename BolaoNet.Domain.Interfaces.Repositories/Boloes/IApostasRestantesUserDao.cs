@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Domain.Interfaces.Repositories.Boloes
 {
-    public interface IApostasRestantesUserDao : IGenericDao<Entities.Boloes.ApostasRestantesUser>
+    public interface IApostasRestantesUserDao : Base.IGenericDao<Entities.Boloes.ApostasRestantesUser>
     {
     }
 }

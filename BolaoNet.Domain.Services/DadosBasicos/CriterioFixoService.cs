@@ -13,7 +13,7 @@ namespace BolaoNet.Domain.Services.DadosBasicos
         #region Constructors/Destructors
 
         public CriterioFixoService(string userName, Interfaces.Repositories.DadosBasicos.ICriterioFixoDao dao)
-            : base(userName, (Interfaces.Repositories.IGenericDao<Entities.DadosBasicos.CriterioFixo>)dao)            
+            : base(userName, (Interfaces.Repositories.Base.IGenericDao<Entities.DadosBasicos.CriterioFixo>)dao)            
         {
 
         }

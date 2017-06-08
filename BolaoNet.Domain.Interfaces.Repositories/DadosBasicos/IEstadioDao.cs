@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Domain.Interfaces.Repositories.DadosBasicos
 {
-    public interface IEstadioDao : IGenericDao<Entities.DadosBasicos.Estadio>
+    public interface IEstadioDao : Base.IGenericDao<Entities.DadosBasicos.Estadio>
     {
     }
 }

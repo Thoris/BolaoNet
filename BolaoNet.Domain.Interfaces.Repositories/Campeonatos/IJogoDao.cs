@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Domain.Interfaces.Repositories.Campeonatos
 {
-    public interface IJogoDao : IGenericDao<Entities.Campeonatos.Jogo>
+    public interface IJogoDao : Base.IGenericDao<Entities.Campeonatos.Jogo>
     {
 
         bool CalculeGrupo(string currentUserName, DateTime currentDateTime, Entities.Campeonatos.Jogo jogo,

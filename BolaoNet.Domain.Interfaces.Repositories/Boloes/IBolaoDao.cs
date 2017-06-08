@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Domain.Interfaces.Repositories.Boloes
 {
-    public interface IBolaoDao : IGenericDao<Entities.Boloes.Bolao>
+    public interface IBolaoDao : Base.IGenericDao<Entities.Boloes.Bolao>
     {
 
         bool Iniciar(string currentUserName, DateTime currentDateTime, Entities.Users.User iniciadoBy, Entities.Boloes.Bolao bolao);

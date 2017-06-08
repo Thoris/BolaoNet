@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Domain.Interfaces.Repositories.Users
 {
-    public interface IUserDao : IGenericDao<Entities.Users.User>
+    public interface IUserDao : Base.IGenericDao<Entities.Users.User>
     {
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Domain.Interfaces.Repositories.DadosBasicos
 {
-    public interface IPagamentoTipoDao : IGenericDao<Entities.DadosBasicos.PagamentoTipo>
+    public interface IPagamentoTipoDao : Base.IGenericDao<Entities.DadosBasicos.PagamentoTipo>
     {
     }
 }
