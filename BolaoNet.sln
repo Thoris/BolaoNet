@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReferencedComponents", "ReferencedComponents", "{0DD79E73-9DDE-475A-A7AC-DDE941D14543}"
 EndProject
@@ -159,7 +159,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.2 - Contractors", "3.2 - 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.1 - Entities", "3.1 - Entities", "{FCF55233-BD04-425E-8ED9-0AD6FD9573A2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.3 - Services", "3.3 - Services", "{6C685A2E-D14E-4113-90B4-8F050C177DB0}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.3 - Services Implementation", "3.3 - Services Implementation", "{6C685A2E-D14E-4113-90B4-8F050C177DB0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DDD", "DDD", "{08B5FF99-04D9-440F-A0D8-D2A22F6BE9AA}"
+	ProjectSection(SolutionItems) = preProject
+		Info\DDD\DDD.png = Info\DDD\DDD.png
+		Info\DDD\gHL5h.png = Info\DDD\gHL5h.png
+		Info\DDD\Model.txt = Info\DDD\Model.txt
+		Info\DDD\site.txt = Info\DDD\site.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -339,5 +347,6 @@ Global
 		{177298B7-8C8B-4817-9649-0CD174C4F663} = {2D4C735D-BE54-4356-B067-137EDD3471C3}
 		{FCF55233-BD04-425E-8ED9-0AD6FD9573A2} = {2D4C735D-BE54-4356-B067-137EDD3471C3}
 		{6C685A2E-D14E-4113-90B4-8F050C177DB0} = {2D4C735D-BE54-4356-B067-137EDD3471C3}
+		{08B5FF99-04D9-440F-A0D8-D2A22F6BE9AA} = {41DA505B-A32F-4850-A054-09B1E5743B0C}
 	EndGlobalSection
 EndGlobal

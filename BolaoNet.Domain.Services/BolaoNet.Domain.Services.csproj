@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -39,7 +40,76 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\BaseAuditService.cs" />
+    <Compile Include="Base\BaseGenericService.cs" />
+    <Compile Include="Boloes\ApostaExtraService.cs" />
+    <Compile Include="Boloes\ApostaExtraUsuarioService.cs" />
+    <Compile Include="Boloes\ApostaPontosService.cs" />
+    <Compile Include="Boloes\ApostasRestantesService.cs" />
+    <Compile Include="Boloes\BolaoService.cs" />
+    <Compile Include="Boloes\BolaoCampeonatoClassificacaoUsuarioService.cs" />
+    <Compile Include="Boloes\BolaoCriterioPontosService.cs" />
+    <Compile Include="Boloes\BolaoCriterioPontosTimesService.cs" />
+    <Compile Include="Boloes\BolaoMembroService.cs" />
+    <Compile Include="Boloes\BolaoMembroClassificacaoService.cs" />
+    <Compile Include="Boloes\BolaoMembroGrupoService.cs" />
+    <Compile Include="Boloes\BolaoPontoRodadaService.cs" />
+    <Compile Include="Boloes\BolaoPontoRodadaUsuarioService.cs" />
+    <Compile Include="Boloes\BolaoPontuacaoService.cs" />
+    <Compile Include="Boloes\BolaoPremioService.cs" />
+    <Compile Include="Boloes\BolaoRegraService.cs" />
+    <Compile Include="Boloes\BolaoRequestService.cs" />
+    <Compile Include="Boloes\BolaoRequestStatusService.cs" />
+    <Compile Include="Boloes\CriterioService.cs" />
+    <Compile Include="Boloes\JogoUsuarioService.cs" />
+    <Compile Include="Boloes\MensagemService.cs" />
+    <Compile Include="Boloes\PagamentoService.cs" />
+    <Compile Include="Boloes\PontuacaoService.cs" />
+    <Compile Include="Campeonatos\CampeonatoService.cs" />
+    <Compile Include="Campeonatos\CampeonatoClassificacaoService.cs" />
+    <Compile Include="Campeonatos\CampeonatoFaseService.cs" />
+    <Compile Include="Campeonatos\CampeonatoGrupoService.cs" />
+    <Compile Include="Campeonatos\CampeonatoGrupoTimeService.cs" />
+    <Compile Include="Campeonatos\CampeonatoHistoricoService.cs" />
+    <Compile Include="Campeonatos\CampeonatoPosicaoService.cs" />
+    <Compile Include="Campeonatos\CampeonatoRecordService.cs" />
+    <Compile Include="Campeonatos\CampeonatoTimeService.cs" />
+    <Compile Include="Campeonatos\HistoricoService.cs" />
+    <Compile Include="Campeonatos\JogoService.cs" />
+    <Compile Include="Campeonatos\PontuacaoService.cs" />
+    <Compile Include="DadosBasicos\CriterioFixoService.cs" />
+    <Compile Include="DadosBasicos\EstadioService.cs" />
+    <Compile Include="DadosBasicos\PagamentoTipoService.cs" />
+    <Compile Include="DadosBasicos\TimeService.cs" />
+    <Compile Include="Facade\BolaoFacadeService.cs" />
+    <Compile Include="Facade\CampeonatoFacadeService.cs" />
+    <Compile Include="Facade\Campeonatos\BaseCopaMundoFacadeService.cs" />
+    <Compile Include="Facade\Campeonatos\CopaMundo2014FacadeService.cs" />
+    <Compile Include="Facade\InitializationFacadeService.cs" />
+    <Compile Include="Facade\UserFacadeService.cs" />
+    <Compile Include="FactoryService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Users\RoleService.cs" />
+    <Compile Include="Users\UserService.cs" />
+    <Compile Include="Users\UserInRoleService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BolaoNet.Domain.Entities\BolaoNet.Domain.Entities.csproj">
+      <Project>{862efb06-ac74-4b8d-b338-37d52c90410a}</Project>
+      <Name>BolaoNet.Domain.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Domain.Interfaces.Repositories\BolaoNet.Domain.Interfaces.Repositories.csproj">
+      <Project>{87e9d03a-e8fc-48f6-8f44-c66d569d4fe8}</Project>
+      <Name>BolaoNet.Domain.Interfaces.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Domain.Interfaces.Services\BolaoNet.Domain.Interfaces.Services.csproj">
+      <Project>{c5c21c55-243a-4eae-927a-a10b3b4b7ff4}</Project>
+      <Name>BolaoNet.Domain.Interfaces.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Infra.Data.EF\BolaoNet.Infra.Data.EF.csproj">
+      <Project>{d0a5e0bf-24a1-40a3-ab36-603db298ceb3}</Project>
+      <Name>BolaoNet.Infra.Data.EF</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

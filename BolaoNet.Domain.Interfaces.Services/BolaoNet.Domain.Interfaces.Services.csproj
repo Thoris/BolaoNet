@@ -39,7 +39,64 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\IGenericService.cs" />
+    <Compile Include="Boloes\IApostaExtraService.cs" />
+    <Compile Include="Boloes\IApostaExtraUsuarioService.cs" />
+    <Compile Include="Boloes\IApostaPontosService.cs" />
+    <Compile Include="Boloes\IApostasRestantesService.cs" />
+    <Compile Include="Boloes\IBolaoService.cs" />
+    <Compile Include="Boloes\IBolaoCampeonatoClassificacaoUsuarioService.cs" />
+    <Compile Include="Boloes\IBolaoCriterioPontosService.cs" />
+    <Compile Include="Boloes\IBolaoCriterioPontosTimesService.cs" />
+    <Compile Include="Boloes\IBolaoMembroService.cs" />
+    <Compile Include="Boloes\IBolaoMembroClassificacaoService.cs" />
+    <Compile Include="Boloes\IBolaoMembroGrupoService.cs" />
+    <Compile Include="Boloes\IBolaoPontoRodadaService.cs" />
+    <Compile Include="Boloes\IBolaoPontoRodadaUsuarioService.cs" />
+    <Compile Include="Boloes\IBolaoPontuacaoService.cs" />
+    <Compile Include="Boloes\IBolaoPremioService.cs" />
+    <Compile Include="Boloes\IBolaoRegraService.cs" />
+    <Compile Include="Boloes\IBolaoRequestService.cs" />
+    <Compile Include="Boloes\IBolaoRequestStatusService.cs" />
+    <Compile Include="Boloes\ICriterioService.cs" />
+    <Compile Include="Boloes\IJogoUsuarioService.cs" />
+    <Compile Include="Boloes\IMensagemService.cs" />
+    <Compile Include="Boloes\IPagamentoService.cs" />
+    <Compile Include="Boloes\IPontuacaoService.cs" />
+    <Compile Include="Campeonatos\ICampeonatoService.cs" />
+    <Compile Include="Campeonatos\ICampeonatoClassificacaoService.cs" />
+    <Compile Include="Campeonatos\ICampeonatoFaseService.cs" />
+    <Compile Include="Campeonatos\ICampeonatoGrupoService.cs" />
+    <Compile Include="Campeonatos\ICampeonatoGrupoTimeService.cs" />
+    <Compile Include="Campeonatos\ICampeonatoHistoricoService.cs" />
+    <Compile Include="Campeonatos\ICampeonatoPosicaoService.cs" />
+    <Compile Include="Campeonatos\ICampeonatoRecordService.cs" />
+    <Compile Include="Campeonatos\ICampeonatoTimeService.cs" />
+    <Compile Include="Campeonatos\IHistoricoService.cs" />
+    <Compile Include="Campeonatos\IJogoService.cs" />
+    <Compile Include="Campeonatos\IPontuacaoService.cs" />
+    <Compile Include="DadosBasicos\ICriterioFixoService.cs" />
+    <Compile Include="DadosBasicos\IEstadioService.cs" />
+    <Compile Include="DadosBasicos\IPagamentoTipoService.cs" />
+    <Compile Include="DadosBasicos\ITimeService.cs" />
+    <Compile Include="Facade\Campeonatos\ICopaMundoFacadeService.cs" />
+    <Compile Include="Facade\IBolaoFacadeService.cs" />
+    <Compile Include="Facade\ICampeonatoFacadeService.cs" />
+    <Compile Include="Facade\IInitializationFacadeService.cs" />
+    <Compile Include="Facade\IUserFacadeService.cs" />
+    <Compile Include="IBolaoRegraService.cs" />
+    <Compile Include="IFactoryService.cs" />
+    <Compile Include="Logging\ILogging.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Users\IRoleService.cs" />
+    <Compile Include="Users\IUserService.cs" />
+    <Compile Include="Users\IUserInRoleService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BolaoNet.Domain.Entities\BolaoNet.Domain.Entities.csproj">
+      <Project>{862efb06-ac74-4b8d-b338-37d52c90410a}</Project>
+      <Name>BolaoNet.Domain.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
