@@ -39,7 +39,66 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\GenericApp.cs" />
+    <Compile Include="Base\IGenericApp.cs" />
+    <Compile Include="Boloes\ApostaExtraApp.cs" />
+    <Compile Include="Boloes\ApostaExtraUsuarioApp.cs" />
+    <Compile Include="Boloes\ApostaPontosApp.cs" />
+    <Compile Include="Boloes\ApostasRestantesApp.cs" />
+    <Compile Include="Boloes\BolaoCampeonatoClassificacaoUsuarioApp.cs" />
+    <Compile Include="Boloes\BolaoCriterioPontosApp.cs" />
+    <Compile Include="Boloes\BolaoCriterioPontosTimesApp.cs" />
+    <Compile Include="Boloes\BolaoApp.cs" />
+    <Compile Include="Boloes\BolaoMembroClassificacaoApp.cs" />
+    <Compile Include="Boloes\BolaoMembroGrupoApp.cs" />
+    <Compile Include="Boloes\BolaoMembroApp.cs" />
+    <Compile Include="Boloes\BolaoPontoRodadaApp.cs" />
+    <Compile Include="Boloes\BolaoPontoRodadaUsuarioApp.cs" />
+    <Compile Include="Boloes\BolaoPontuacaoApp.cs" />
+    <Compile Include="Boloes\BolaoPremioApp.cs" />
+    <Compile Include="Boloes\BolaoRegraApp.cs" />
+    <Compile Include="Boloes\BolaoRequestApp.cs" />
+    <Compile Include="Boloes\BolaoRequestStatusApp.cs" />
+    <Compile Include="Boloes\CriterioApp.cs" />
+    <Compile Include="Boloes\JogoUsuarioApp.cs" />
+    <Compile Include="Boloes\MensagemApp.cs" />
+    <Compile Include="Boloes\PagamentoApp.cs" />
+    <Compile Include="Boloes\PontuacaoApp.cs" />
+    <Compile Include="Campeonatos\CampeonatoClassificacaoApp.cs" />
+    <Compile Include="Campeonatos\CampeonatoFaseApp.cs" />
+    <Compile Include="Campeonatos\CampeonatoGrupoApp.cs" />
+    <Compile Include="Campeonatos\CampeonatoGrupoTimeApp.cs" />
+    <Compile Include="Campeonatos\CampeonatoHistoricoApp.cs" />
+    <Compile Include="Campeonatos\CampeonatoApp.cs" />
+    <Compile Include="Campeonatos\CampeonatoPosicaoApp.cs" />
+    <Compile Include="Campeonatos\CampeonatoRecordApp.cs" />
+    <Compile Include="Campeonatos\CampeonatoTimeApp.cs" />
+    <Compile Include="Campeonatos\HistoricoApp.cs" />
+    <Compile Include="Campeonatos\JogoApp.cs" />
+    <Compile Include="Campeonatos\PontuacaoApp.cs" />
+    <Compile Include="DadosBasicos\CriterioFixoApp.cs" />
+    <Compile Include="DadosBasicos\EstadioApp.cs" />
+    <Compile Include="DadosBasicos\PagamentoTipoApp.cs" />
+    <Compile Include="DadosBasicos\TimeApp.cs" />
+    <Compile Include="FactoryApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Users\RoleApp.cs" />
+    <Compile Include="Users\UserInRoleApp.cs" />
+    <Compile Include="Users\UserApp.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BolaoNet.Domain.Entities\BolaoNet.Domain.Entities.csproj">
+      <Project>{862efb06-ac74-4b8d-b338-37d52c90410a}</Project>
+      <Name>BolaoNet.Domain.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Domain.Interfaces.Services\BolaoNet.Domain.Interfaces.Services.csproj">
+      <Project>{c5c21c55-243a-4eae-927a-a10b3b4b7ff4}</Project>
+      <Name>BolaoNet.Domain.Interfaces.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Domain.Services\BolaoNet.Domain.Services.csproj">
+      <Project>{a75056e8-0a9d-47aa-a4ed-a521329610bf}</Project>
+      <Name>BolaoNet.Domain.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

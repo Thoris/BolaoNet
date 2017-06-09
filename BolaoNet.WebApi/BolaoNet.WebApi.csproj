@@ -115,6 +115,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Boloes\Models\" />
+    <Folder Include="Areas\Boloes\Views\Shared\" />
+    <Folder Include="Areas\Campeonatos\Models\" />
+    <Folder Include="Areas\Campeonatos\Views\Shared\" />
+    <Folder Include="Areas\DadosBasicos\Models\" />
+    <Folder Include="Areas\DadosBasicos\Views\Shared\" />
+    <Folder Include="Areas\Users\Models\" />
+    <Folder Include="Areas\Users\Views\Shared\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -122,6 +130,47 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Boloes\BoloesAreaRegistration.cs" />
+    <Compile Include="Areas\Boloes\Controllers\ApostaExtraController.cs" />
+    <Compile Include="Areas\Boloes\Controllers\ApostaExtraUsuarioController.cs" />
+    <Compile Include="Areas\Boloes\Controllers\ApostaPontosController.cs" />
+    <Compile Include="Areas\Boloes\Controllers\ApostasRestantesController.cs" />
+    <Compile Include="Areas\Boloes\Controllers\BolaoCampeonatoClassificacaoUsuarioController.cs" />
+    <Compile Include="Areas\Boloes\Controllers\BolaoController.cs" />
+    <Compile Include="Areas\Boloes\Controllers\BolaoCriterioPontosController.cs" />
+    <Compile Include="Areas\Boloes\Controllers\BolaoCriterioPontosTimesController.cs" />
+    <Compile Include="Areas\Boloes\Controllers\BolaoMembroClassificacaoController.cs" />
+    <Compile Include="Areas\Boloes\Controllers\BolaoMembroController.cs" />
+    <Compile Include="Areas\Boloes\Controllers\BolaoMembroGrupoController.cs" />
+    <Compile Include="Areas\Boloes\Controllers\BolaoPontoRodadaController.cs" />
+    <Compile Include="Areas\Boloes\Controllers\BolaoPontoRodadaUsuarioController.cs" />
+    <Compile Include="Areas\Boloes\Controllers\BolaoPontuacaoController.cs" />
+    <Compile Include="Areas\Boloes\Controllers\BolaoPremioController.cs" />
+    <Compile Include="Areas\Boloes\Controllers\BolaoRegraController.cs" />
+    <Compile Include="Areas\Boloes\Controllers\BolaoRequestController.cs" />
+    <Compile Include="Areas\Boloes\Controllers\BolaoRequestStatusController.cs" />
+    <Compile Include="Areas\Boloes\Controllers\CriterioController.cs" />
+    <Compile Include="Areas\Boloes\Controllers\JogoUsuarioController.cs" />
+    <Compile Include="Areas\Boloes\Controllers\MensagemController.cs" />
+    <Compile Include="Areas\Boloes\Controllers\PagamentoController.cs" />
+    <Compile Include="Areas\Boloes\Controllers\PontuacaoController.cs" />
+    <Compile Include="Areas\Campeonatos\CampeonatosAreaRegistration.cs" />
+    <Compile Include="Areas\Campeonatos\Controllers\CampeonatoClassificacaoController.cs" />
+    <Compile Include="Areas\Campeonatos\Controllers\CampeonatoController.cs" />
+    <Compile Include="Areas\Campeonatos\Controllers\CampeonatoFaseController.cs" />
+    <Compile Include="Areas\Campeonatos\Controllers\CampeonatoGrupoController.cs" />
+    <Compile Include="Areas\Campeonatos\Controllers\CampeonatoGrupoTimeController.cs" />
+    <Compile Include="Areas\Campeonatos\Controllers\CampeonatoHistoricoController.cs" />
+    <Compile Include="Areas\Campeonatos\Controllers\CampeonatoPosicaoController.cs" />
+    <Compile Include="Areas\Campeonatos\Controllers\CampeonatoRecordController.cs" />
+    <Compile Include="Areas\Campeonatos\Controllers\CampeonatoTimeController.cs" />
+    <Compile Include="Areas\Campeonatos\Controllers\JogoController.cs" />
+    <Compile Include="Areas\Campeonatos\Controllers\PontuacaoController.cs" />
+    <Compile Include="Areas\DadosBasicos\Controllers\CriterioFixoController.cs" />
+    <Compile Include="Areas\DadosBasicos\Controllers\EstadioController.cs" />
+    <Compile Include="Areas\DadosBasicos\Controllers\PagamentoTipoController.cs" />
+    <Compile Include="Areas\DadosBasicos\Controllers\TimeController.cs" />
+    <Compile Include="Areas\DadosBasicos\DadosBasicosAreaRegistration.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
     <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
@@ -150,6 +199,14 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Areas\Users\Controllers\RoleController.cs" />
+    <Compile Include="Areas\Users\Controllers\UserController.cs" />
+    <Compile Include="Areas\Users\Controllers\UserInRoleController.cs" />
+    <Compile Include="Areas\Users\UsersAreaRegistration.cs" />
+    <Compile Include="Controllers\AuthenticationController.cs" />
+    <Compile Include="Controllers\AuthorizationController.cs" />
+    <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\GenericApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -187,6 +244,10 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Areas\Boloes\Views\web.config" />
+    <Content Include="Areas\Campeonatos\Views\web.config" />
+    <Content Include="Areas\DadosBasicos\Views\web.config" />
+    <Content Include="Areas\Users\Views\web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -210,12 +271,24 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\BolaoNet.Domain.Entities\BolaoNet.Domain.Entities.csproj">
+      <Project>{862efb06-ac74-4b8d-b338-37d52c90410a}</Project>
+      <Name>BolaoNet.Domain.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Domain.Interfaces.Services\BolaoNet.Domain.Interfaces.Services.csproj">
+      <Project>{c5c21c55-243a-4eae-927a-a10b3b4b7ff4}</Project>
+      <Name>BolaoNet.Domain.Interfaces.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Domain.Services\BolaoNet.Domain.Services.csproj">
+      <Project>{a75056e8-0a9d-47aa-a4ed-a521329610bf}</Project>
+      <Name>BolaoNet.Domain.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <PropertyGroup>

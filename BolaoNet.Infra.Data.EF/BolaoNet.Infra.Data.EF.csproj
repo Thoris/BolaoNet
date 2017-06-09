@@ -30,7 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -39,8 +46,54 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\BaseRepositoryDao.cs" />
+    <Compile Include="Base\IUnitOfWork.cs" />
+    <Compile Include="Boloes\ApostaExtraRepositoryDao.cs" />
+    <Compile Include="Boloes\ApostaExtraUsuarioRepositoryDao.cs" />
+    <Compile Include="Boloes\ApostaPontosRepositoryDao.cs" />
+    <Compile Include="Boloes\ApostasRestantesUserRepositoryDao.cs" />
+    <Compile Include="Boloes\BolaoCampeonatoClassificacaoUsuarioRepositoryDao.cs" />
+    <Compile Include="Boloes\BolaoCriterioPontosRepositoryDao.cs" />
+    <Compile Include="Boloes\BolaoCriterioPontosTimesRepositoryDao.cs" />
+    <Compile Include="Boloes\BolaoMembroClassificacaoRepositoryDao.cs" />
+    <Compile Include="Boloes\BolaoMembroGrupoRepositoryDao.cs" />
+    <Compile Include="Boloes\BolaoMembroRepositoryDao.cs" />
+    <Compile Include="Boloes\BolaoPontoRodadaRepositoryDao.cs" />
+    <Compile Include="Boloes\BolaoPontoRodadaUsuarioRepositoryDao.cs" />
+    <Compile Include="Boloes\BolaoPontuacaoRepositoryDao.cs" />
+    <Compile Include="Boloes\BolaoPremioRepositoryDao.cs" />
+    <Compile Include="Boloes\BolaoRegraRepositoryDao.cs" />
+    <Compile Include="Boloes\BolaoRepositoryDao.cs" />
+    <Compile Include="Boloes\BolaoRequestRepositoryDao.cs" />
+    <Compile Include="Boloes\BolaoRequestStatusRepositoryDao.cs" />
+    <Compile Include="Boloes\CriterioRepositoryDao.cs" />
+    <Compile Include="Boloes\JogoUsuarioRepositoryDao.cs" />
+    <Compile Include="Boloes\MensagemRepositoryDao.cs" />
+    <Compile Include="Boloes\PagamentoRepositoryDao.cs" />
+    <Compile Include="Boloes\PontuacaoRepositoryDao.cs" />
+    <Compile Include="Campeonatos\CampeonatoClassificacaoRepositoryDao.cs" />
+    <Compile Include="Campeonatos\CampeonatoFaseRepositoryDao.cs" />
+    <Compile Include="Campeonatos\CampeonatoGrupoRepositoryDao.cs" />
+    <Compile Include="Campeonatos\CampeonatoGrupoTimeRepositoryDao.cs" />
+    <Compile Include="Campeonatos\CampeonatoHistoricoRepositoryDao.cs" />
+    <Compile Include="Campeonatos\CampeonatoPosicaoRepositoryDao.cs" />
+    <Compile Include="Campeonatos\CampeonatoRecordRepositoryDao.cs" />
+    <Compile Include="Campeonatos\CampeonatoRepositoryDao.cs" />
+    <Compile Include="Campeonatos\CampeonatoTimeRepositoryDao.cs" />
+    <Compile Include="Campeonatos\HistoricoRepositoryDao.cs" />
+    <Compile Include="Campeonatos\JogoRepositoryDao.cs" />
+    <Compile Include="Campeonatos\PontuacaoRepositoryDao.cs" />
+    <Compile Include="DadosBasicos\CriterioFixoRepositoryDao.cs" />
+    <Compile Include="DadosBasicos\EstadioRepositoryDao.cs" />
+    <Compile Include="DadosBasicos\PagamentoTipoRepositoryDao.cs" />
+    <Compile Include="DadosBasicos\TimeRepositoryDao.cs" />
     <Compile Include="FactoryDaoEF.cs" />
+    <Compile Include="Initializers\SqlDataContextInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitOfWork.cs" />
+    <Compile Include="Users\RoleRepositoryDao.cs" />
+    <Compile Include="Users\UserInRoleRepositoryDao.cs" />
+    <Compile Include="Users\UserRepositoryDao.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BolaoNet.Domain.Entities\BolaoNet.Domain.Entities.csproj">
@@ -51,6 +104,10 @@
       <Project>{87e9d03a-e8fc-48f6-8f44-c66d569d4fe8}</Project>
       <Name>BolaoNet.Domain.Interfaces.Repositories</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

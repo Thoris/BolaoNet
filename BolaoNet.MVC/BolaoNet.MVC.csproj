@@ -169,6 +169,16 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BolaoNet.MVC.Resources\BolaoNet.MVC.Resources.csproj">
+      <Project>{7060ccc5-a067-4bf6-846b-a89aeab80811}</Project>
+      <Name>BolaoNet.MVC.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.MVC.ViewModels\BolaoNet.MVC.ViewModels.csproj">
+      <Project>{26fa094c-849d-4172-93f8-2bca38749b2a}</Project>
+      <Name>BolaoNet.MVC.ViewModels</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
