@@ -10,6 +10,14 @@ namespace BolaoNet.Tests.Debug
     {
         static void Main(string[] args)
         {
+            Domain.Interfaces.Services.Boloes.IBolaoService b =
+                 new BolaoNet.Application.FactoryApp("thoris", "http://localhost:9586/").CreateBolaoService();
+
+            b.Load(new Domain.Entities.Boloes.Bolao("Copa do Mundio 2014"));
+            b.Iniciar(new Domain.Entities.Users.User("thoris"), new Domain.Entities.Boloes.Bolao("Copa do Mundo 2014"));
+
+
+
             //Dao.EF.UnitOfWork uow = new Dao.EF.UnitOfWork();
 
             //Dao.EF.Campeonatos.CampeonatoRepositoryDao dao = new Dao.EF.Campeonatos.CampeonatoRepositoryDao(uow);

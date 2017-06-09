@@ -10,12 +10,12 @@ namespace BolaoNet.Application.DadosBasicos
         Base.GenericApp<Domain.Entities.DadosBasicos.PagamentoTipo>, 
         Domain.Interfaces.Services.DadosBasicos.IPagamentoTipoService
     {
-        #region Constants
+        #region Properties
 
-        /// <summary>
-        /// Nome do módulo usado para realizar a requisição.
-        /// </summary>
-        private const string ModuleName = "PagamentoTipo";
+        private Domain.Interfaces.Services.DadosBasicos.IPagamentoTipoService Service
+        {
+            get { return (Domain.Interfaces.Services.DadosBasicos.IPagamentoTipoService)base._service; }
+        }
 
         #endregion
 
@@ -24,9 +24,8 @@ namespace BolaoNet.Application.DadosBasicos
         /// <summary>
         /// Inicializa nova instância da classe <see cref="PagamentoTipoApp" />.
         /// </summary>
-        /// <param name="url">Url para chamada dos métodos de integração.</param>
-        public PagamentoTipoApp(string url)
-            : base (url, ModuleName)
+        public PagamentoTipoApp(Domain.Interfaces.Services.DadosBasicos.IPagamentoTipoService service)
+            : base (service)
         {
 
         }

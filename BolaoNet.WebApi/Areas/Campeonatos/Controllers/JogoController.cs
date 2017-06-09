@@ -40,7 +40,6 @@ namespace BolaoNet.Services.Areas.Campeonatos.Controllers
             return Dao.InsertResult(jogo, gols1, penaltis1, gols2, penaltis2, setCurrentData, validadoBy);
         }
 
-        [HttpPost]
         public bool InsertResult(string nomeCampeonato, int jogoId, int gols1, int? penaltis1, int gols2, int? penaltis2, bool setCurrentData, string validadoBy)
         {
             return this.InsertResult(new Domain.Entities.Campeonatos.Jogo(nomeCampeonato, jogoId),
@@ -51,14 +50,11 @@ namespace BolaoNet.Services.Areas.Campeonatos.Controllers
         {
             return Dao.GetJogosByCampeonato(campeonato);
         }
-        [HttpGet]
+        
         public IList<Domain.Entities.Campeonatos.Jogo> GetJogosByCampeonato(string nomeCampeonato)
         {
             return this.GetJogosByCampeonato(new Domain.Entities.Campeonatos.Campeonato(nomeCampeonato));
         }
-        
-        #endregion
-
 
         public IList<Domain.Entities.Campeonatos.Jogo> LoadJogos(int rodada, DateTime dataInicial, DateTime dataFinal, Domain.Entities.Campeonatos.CampeonatoFase fase, Domain.Entities.Campeonatos.Campeonato campeonato, Domain.Entities.Campeonatos.CampeonatoGrupo grupo, string condition)
         {
@@ -74,5 +70,7 @@ namespace BolaoNet.Services.Areas.Campeonatos.Controllers
         {
             throw new NotImplementedException();
         }
+
+        #endregion
     }
 }

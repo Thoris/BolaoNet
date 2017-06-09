@@ -37,6 +37,8 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
         #endregion
 
+        #region IBolaoCriterioPontosService members
+
         public int[] GetCriteriosPontos(Domain.Entities.Boloes.Bolao bolao)
         {
             throw new NotImplementedException();
@@ -46,5 +48,7 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
         {
             throw new NotImplementedException();
         }
+
+        #endregion
     }
 }

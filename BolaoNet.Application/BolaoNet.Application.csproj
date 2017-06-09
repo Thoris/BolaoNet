@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -82,6 +83,7 @@
     <Compile Include="DadosBasicos\TimeApp.cs" />
     <Compile Include="FactoryApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceType.cs" />
     <Compile Include="Users\RoleApp.cs" />
     <Compile Include="Users\UserInRoleApp.cs" />
     <Compile Include="Users\UserApp.cs" />
@@ -98,6 +100,10 @@
     <ProjectReference Include="..\BolaoNet.Domain.Services\BolaoNet.Domain.Services.csproj">
       <Project>{a75056e8-0a9d-47aa-a4ed-a521329610bf}</Project>
       <Name>BolaoNet.Domain.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.WebApi.Integration\BolaoNet.WebApi.Integration.csproj">
+      <Project>{2af5e54a-613c-4a7a-896c-9f946593c8f5}</Project>
+      <Name>BolaoNet.WebApi.Integration</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

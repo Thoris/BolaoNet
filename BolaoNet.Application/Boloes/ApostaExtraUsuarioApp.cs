@@ -10,12 +10,12 @@ namespace BolaoNet.Application.Boloes
         Base.GenericApp<Domain.Entities.Boloes.ApostaExtraUsuario>,
         Domain.Interfaces.Services.Boloes.IApostaExtraUsuarioService
     {
-        #region Constants
+        #region Properties
 
-        /// <summary>
-        /// Nome do módulo usado para realizar a requisição.
-        /// </summary>
-        private const string ModuleName = "ApostaExtraUsuario";
+        private Domain.Interfaces.Services.Boloes.IApostaExtraUsuarioService Service
+        {
+            get { return (Domain.Interfaces.Services.Boloes.IApostaExtraUsuarioService)base._service; }
+        }
 
         #endregion
 
@@ -24,18 +24,21 @@ namespace BolaoNet.Application.Boloes
         /// <summary>
         /// Inicializa nova instância da classe <see cref="ApostaExtraUsuarioApp" />.
         /// </summary>
-        /// <param name="url">Url para chamada dos métodos de integração.</param>
-        public ApostaExtraUsuarioApp(string url)
-            : base (url, ModuleName)
+        public ApostaExtraUsuarioApp(Domain.Interfaces.Services.Boloes.IApostaExtraUsuarioService service)
+            : base (service)
         {
 
         }
 
         #endregion
 
+        #region IApostaExtraUsuarioService members
+
         public IList<Domain.Entities.Boloes.ApostaExtraUsuario> GetApostasUser(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
         {
-            throw new NotImplementedException();
+            return Service.GetApostasUser(bolao, user);
         }
+
+        #endregion
     }
 }

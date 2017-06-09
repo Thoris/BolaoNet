@@ -11,7 +11,7 @@ namespace BolaoNet.Services.Controllers
     /// Classe genérica que possui as implementações de gerenciamento das entidades.
     /// </summary>
     /// <typeparam name="T">Entidade a ser gerenciada.</typeparam>
-    public class GenericApiController<T> : AuthorizationController where T : class
+    public abstract class GenericApiController<T> : AuthorizationController where T : class
     {
         #region Variables
 

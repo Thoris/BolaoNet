@@ -10,12 +10,12 @@ namespace BolaoNet.Application.Boloes
         Base.GenericApp<Domain.Entities.Boloes.BolaoMembroGrupo>,
         Domain.Interfaces.Services.Boloes.IBolaoMembroGrupoService
     {
-        #region Constants
+        #region Properties
 
-        /// <summary>
-        /// Nome do módulo usado para realizar a requisição.
-        /// </summary>
-        private const string ModuleName = "BolaoMembroGrupo";
+        private Domain.Interfaces.Services.Boloes.IBolaoMembroGrupoService Service
+        {
+            get { return (Domain.Interfaces.Services.Boloes.IBolaoMembroGrupoService)base._service; }
+        }
 
         #endregion
 
@@ -24,9 +24,8 @@ namespace BolaoNet.Application.Boloes
         /// <summary>
         /// Inicializa nova instância da classe <see cref="BolaoMembroGrupoApp" />.
         /// </summary>
-        /// <param name="url">Url para chamada dos métodos de integração.</param>
-        public BolaoMembroGrupoApp(string url)
-            : base (url, ModuleName)
+        public BolaoMembroGrupoApp(Domain.Interfaces.Services.Boloes.IBolaoMembroGrupoService service)
+            : base (service)
         {
 
         }

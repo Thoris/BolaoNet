@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 
 namespace BolaoNet.Services.Areas.Boloes.Controllers
 {
@@ -32,7 +33,7 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
         #endregion
 
-        #region IBolaoMembroBO
+        #region IBolaoMembroBO members
 
         public IList<Domain.Entities.Boloes.BolaoMembro> GetListUsersInBolao(Domain.Entities.Boloes.Bolao bolao)
         {

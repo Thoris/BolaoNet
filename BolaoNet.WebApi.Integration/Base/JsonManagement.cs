@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -110,6 +111,28 @@ namespace BolaoNet.WebApi.Integration.Base
             string message = null;
 
             bool sucess = HttpPostApi(parameters, data, method, out message);
+
+            if (sucess == false)
+            {
+                throw new Exceptions.CommunicationException(message.ToString());
+            }
+
+            try
+            {
+                L result = JsonConvert.DeserializeObject<L>(message);
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exceptions.SerializationException("Error serializating object.", message, typeof(L), ex);
+            }
+        }
+        protected L HttpPostApi<L>(IDictionary<string, object> parameters, string method)
+        {
+            string message = null;
+
+            bool sucess = HttpPostApi(parameters, method, out message);
 
             if (sucess == false)
             {

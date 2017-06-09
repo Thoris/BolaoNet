@@ -10,12 +10,12 @@ namespace BolaoNet.Application.Users
         Base.GenericApp<Domain.Entities.Users.User>, 
         Domain.Interfaces.Services.Users.IUserService
     {
-        #region Constants
+        #region Properties
 
-        /// <summary>
-        /// Nome do módulo usado para realizar a requisição.
-        /// </summary>
-        private const string ModuleName = "User";
+        private Domain.Interfaces.Services.Users.IUserService Service
+        {
+            get { return (Domain.Interfaces.Services.Users.IUserService)base._service; }
+        }
 
         #endregion
 
@@ -24,9 +24,8 @@ namespace BolaoNet.Application.Users
         /// <summary>
         /// Inicializa nova instância da classe <see cref="UserApp" />.
         /// </summary>
-        /// <param name="url">Url para chamada dos métodos de integração.</param>
-        public UserApp(string url)
-            : base (url, ModuleName)
+        public UserApp(Domain.Interfaces.Services.Users.IUserService service)
+            : base (service)
         {
 
         }

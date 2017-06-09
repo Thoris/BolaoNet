@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 
 namespace BolaoNet.Services.Areas.Boloes.Controllers
 {
@@ -37,9 +38,14 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
         #endregion
 
+        #region IBolaoCriterioPontosTimesService members
+
+
         public IList<Domain.Entities.Boloes.BolaoCriterioPontosTimes> GetCriterioPontosBolao(Domain.Entities.Boloes.Bolao bolao)
         {
             throw new NotImplementedException();
         }
+
+        #endregion
     }
 }

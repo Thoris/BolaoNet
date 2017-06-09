@@ -10,12 +10,12 @@ namespace BolaoNet.Application.DadosBasicos
         Base.GenericApp<Domain.Entities.DadosBasicos.Estadio>, 
         Domain.Interfaces.Services.DadosBasicos.IEstadioService
     {
-        #region Constants
+        #region Properties
 
-        /// <summary>
-        /// Nome do módulo usado para realizar a requisição.
-        /// </summary>
-        private const string ModuleName = "Estadio";
+        private Domain.Interfaces.Services.DadosBasicos.IEstadioService Service
+        {
+            get { return (Domain.Interfaces.Services.DadosBasicos.IEstadioService)base._service; }
+        }
 
         #endregion
 
@@ -24,9 +24,8 @@ namespace BolaoNet.Application.DadosBasicos
         /// <summary>
         /// Inicializa nova instância da classe <see cref="EstadioApp" />.
         /// </summary>
-        /// <param name="url">Url para chamada dos métodos de integração.</param>
-        public EstadioApp(string url)
-            : base (url, ModuleName)
+        public EstadioApp(Domain.Interfaces.Services.DadosBasicos.IEstadioService service)
+            : base (service)
         {
 
         }

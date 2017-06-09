@@ -3,11 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 
 namespace BolaoNet.Services.Areas.Boloes.Controllers
 {
     public class ApostaExtraController : 
-        GenericApiController<Domain.Entities.Boloes.ApostaExtra>, Domain.Interfaces.Services.Boloes.IApostaExtraService
+        GenericApiController<Domain.Entities.Boloes.ApostaExtra>, 
+        Domain.Interfaces.Services.Boloes.IApostaExtraService
     {
         #region Properties
 
@@ -36,16 +38,18 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
         #endregion
 
+        #region IApostaExtraService members
+
         public IList<Domain.Entities.Boloes.ApostaExtra> GetApostasBolao(Domain.Entities.Boloes.Bolao bolao)
         {
             throw new NotImplementedException();
-        }
-
-
+        }        
 
         public bool InsertResult(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.DadosBasicos.Time time, int posicao, Domain.Entities.Users.User validadoBy)
         {
             throw new NotImplementedException();
         }
+
+        #endregion
     }
 }

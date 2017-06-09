@@ -10,12 +10,12 @@ namespace BolaoNet.Application.DadosBasicos
         Base.GenericApp<Domain.Entities.DadosBasicos.Time>,
         Domain.Interfaces.Services.DadosBasicos.ITimeService
     {
-        #region Constants
+        #region Properties
 
-        /// <summary>
-        /// Nome do módulo usado para realizar a requisição.
-        /// </summary>
-        private const string ModuleName = "Time";
+        private Domain.Interfaces.Services.DadosBasicos.ITimeService Service
+        {
+            get { return (Domain.Interfaces.Services.DadosBasicos.ITimeService)base._service; }
+        }
 
         #endregion
 
@@ -24,9 +24,8 @@ namespace BolaoNet.Application.DadosBasicos
         /// <summary>
         /// Inicializa nova instância da classe <see cref="TimeApp" />.
         /// </summary>
-        /// <param name="url">Url para chamada dos métodos de integração.</param>
-        public TimeApp(string url)
-            : base (url, ModuleName)
+        public TimeApp(Domain.Interfaces.Services.DadosBasicos.ITimeService service)
+            : base (service)
         {
 
         }

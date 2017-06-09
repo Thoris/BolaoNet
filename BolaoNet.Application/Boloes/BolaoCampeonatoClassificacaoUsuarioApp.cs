@@ -10,12 +10,12 @@ namespace BolaoNet.Application.Boloes
         Base.GenericApp<Domain.Entities.Boloes.BolaoCampeonatoClassificacaoUsuario>,
         Domain.Interfaces.Services.Boloes.IBolaoCampeonatoClassificacaoUsuarioService
     {
-        #region Constants
+        #region Properties
 
-        /// <summary>
-        /// Nome do módulo usado para realizar a requisição.
-        /// </summary>
-        private const string ModuleName = "BolaoCampeonatoClassificacaoUsuario";
+        private Domain.Interfaces.Services.Boloes.IBolaoCampeonatoClassificacaoUsuarioService Service
+        {
+            get { return (Domain.Interfaces.Services.Boloes.IBolaoCampeonatoClassificacaoUsuarioService)base._service; }
+        }
 
         #endregion
 
@@ -24,9 +24,8 @@ namespace BolaoNet.Application.Boloes
         /// <summary>
         /// Inicializa nova instância da classe <see cref="BolaoCampeonatoClassificacaoUsuarioApp" />.
         /// </summary>
-        /// <param name="url">Url para chamada dos métodos de integração.</param>
-        public BolaoCampeonatoClassificacaoUsuarioApp(string url)
-            : base (url, ModuleName)
+        public BolaoCampeonatoClassificacaoUsuarioApp(Domain.Interfaces.Services.Boloes.IBolaoCampeonatoClassificacaoUsuarioService service)
+            : base (service)
         {
 
         }

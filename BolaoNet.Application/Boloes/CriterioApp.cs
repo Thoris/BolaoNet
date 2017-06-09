@@ -10,12 +10,12 @@ namespace BolaoNet.Application.Boloes
         Base.GenericApp<Domain.Entities.Boloes.Criterio>,
         Domain.Interfaces.Services.Boloes.ICriterioService
     {
-        #region Constants
+        #region Properties
 
-        /// <summary>
-        /// Nome do módulo usado para realizar a requisição.
-        /// </summary>
-        private const string ModuleName = "Criterio";
+        private Domain.Interfaces.Services.Boloes.ICriterioService Service
+        {
+            get { return (Domain.Interfaces.Services.Boloes.ICriterioService)base._service; }
+        }
 
         #endregion
 
@@ -24,9 +24,8 @@ namespace BolaoNet.Application.Boloes
         /// <summary>
         /// Inicializa nova instância da classe <see cref="CriterioApp" />.
         /// </summary>
-        /// <param name="url">Url para chamada dos métodos de integração.</param>
-        public CriterioApp(string url)
-            : base (url, ModuleName)
+        public CriterioApp(Domain.Interfaces.Services.Boloes.ICriterioService service)
+            : base (service)
         {
 
         }

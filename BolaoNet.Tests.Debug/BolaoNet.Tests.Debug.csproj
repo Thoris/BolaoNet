@@ -72,6 +72,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BolaoNet.Application\BolaoNet.Application.csproj">
+      <Project>{ed9e722a-a4f1-4774-9325-7057c17284ef}</Project>
+      <Name>BolaoNet.Application</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BolaoNet.Business\BolaoNet.Business.csproj">
       <Project>{de4229ed-648b-4ca0-9631-db7013d419ca}</Project>
       <Name>BolaoNet.Business</Name>
@@ -84,9 +88,45 @@
       <Project>{d451000e-0bf8-44ca-88c7-ea59941ce625}</Project>
       <Name>BolaoNet.Dao</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Domain.Entities\BolaoNet.Domain.Entities.csproj">
+      <Project>{862efb06-ac74-4b8d-b338-37d52c90410a}</Project>
+      <Name>BolaoNet.Domain.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Domain.Interfaces.Repositories\BolaoNet.Domain.Interfaces.Repositories.csproj">
+      <Project>{87e9d03a-e8fc-48f6-8f44-c66d569d4fe8}</Project>
+      <Name>BolaoNet.Domain.Interfaces.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Domain.Interfaces.Services\BolaoNet.Domain.Interfaces.Services.csproj">
+      <Project>{c5c21c55-243a-4eae-927a-a10b3b4b7ff4}</Project>
+      <Name>BolaoNet.Domain.Interfaces.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Domain.Services\BolaoNet.Domain.Services.csproj">
+      <Project>{a75056e8-0a9d-47aa-a4ed-a521329610bf}</Project>
+      <Name>BolaoNet.Domain.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BolaoNet.Entities\BolaoNet.Entities.csproj">
       <Project>{544d4741-4ade-49b0-bd91-a6c26fc0087e}</Project>
       <Name>BolaoNet.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Infra.CrossCutting.Caching\BolaoNet.Infra.CrossCutting.Caching.csproj">
+      <Project>{a4bbdac0-8fa4-49e0-93a8-b225f6a34cf4}</Project>
+      <Name>BolaoNet.Infra.CrossCutting.Caching</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Infra.CrossCutting.IoC\BolaoNet.Infra.CrossCutting.IoC.csproj">
+      <Project>{1bbac3a3-b5eb-49eb-8200-574a99c5b060}</Project>
+      <Name>BolaoNet.Infra.CrossCutting.IoC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Infra.CrossCutting.Logging\BolaoNet.Infra.CrossCutting.Logging.csproj">
+      <Project>{d5662387-a5aa-46a5-bcc2-ef728c777edf}</Project>
+      <Name>BolaoNet.Infra.CrossCutting.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Infra.Data.EF.Mapping\BolaoNet.Infra.Data.EF.Mapping.csproj">
+      <Project>{ff32f8b8-0bbd-48ae-ac10-e23d989ce562}</Project>
+      <Name>BolaoNet.Infra.Data.EF.Mapping</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Infra.Data.EF\BolaoNet.Infra.Data.EF.csproj">
+      <Project>{d0a5e0bf-24a1-40a3-ab36-603db298ceb3}</Project>
+      <Name>BolaoNet.Infra.Data.EF</Name>
     </ProjectReference>
     <ProjectReference Include="..\BolaoNet.Integration\BolaoNet.Integration.csproj">
       <Project>{e15411d7-17c7-402e-93dd-24eddcbc73d7}</Project>
@@ -95,6 +135,18 @@
     <ProjectReference Include="..\BolaoNet.LogManager\BolaoNet.LogManager.csproj">
       <Project>{a72efe92-42a8-44cb-b411-bae3d821b3f4}</Project>
       <Name>BolaoNet.LogManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.MVC.Resources\BolaoNet.MVC.Resources.csproj">
+      <Project>{7060ccc5-a067-4bf6-846b-a89aeab80811}</Project>
+      <Name>BolaoNet.MVC.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.MVC.ViewModels\BolaoNet.MVC.ViewModels.csproj">
+      <Project>{26fa094c-849d-4172-93f8-2bca38749b2a}</Project>
+      <Name>BolaoNet.MVC.ViewModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.MVC\BolaoNet.MVC.csproj">
+      <Project>{a024a3ce-4926-47b0-8ea5-c1dd49df8907}</Project>
+      <Name>BolaoNet.MVC</Name>
     </ProjectReference>
     <ProjectReference Include="..\BolaoNet.Portal\BolaoNet.Portal.csproj">
       <Project>{c4b74485-3872-4bf9-ae0e-c62e91a8f983}</Project>
@@ -111,6 +163,14 @@
     <ProjectReference Include="..\BolaoNet.TestsVS\BolaoNet.TestsVS.csproj">
       <Project>{e7c33d6c-be25-48b8-8af4-b77a98e4a283}</Project>
       <Name>BolaoNet.TestsVS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.WebApi.Integration\BolaoNet.WebApi.Integration.csproj">
+      <Project>{2af5e54a-613c-4a7a-896c-9f946593c8f5}</Project>
+      <Name>BolaoNet.WebApi.Integration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.WebApi\BolaoNet.WebApi.csproj">
+      <Project>{660c66ef-6adc-4f74-bac3-c05e12f5008f}</Project>
+      <Name>BolaoNet.WebApi</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

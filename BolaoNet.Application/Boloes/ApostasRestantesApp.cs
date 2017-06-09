@@ -10,12 +10,12 @@ namespace BolaoNet.Application.Boloes
         Base.GenericApp<Domain.Entities.Boloes.ApostasRestantesUser>,
         Domain.Interfaces.Services.Boloes.IApostasRestantesService
     {
-        #region Constants
+        #region Properties
 
-        /// <summary>
-        /// Nome do módulo usado para realizar a requisição.
-        /// </summary>
-        private const string ModuleName = "ApostasRestantes";
+        private Domain.Interfaces.Services.Boloes.IApostasRestantesService Service
+        {
+            get { return (Domain.Interfaces.Services.Boloes.IApostasRestantesService)base._service; }
+        }
 
         #endregion
 
@@ -24,9 +24,8 @@ namespace BolaoNet.Application.Boloes
         /// <summary>
         /// Inicializa nova instância da classe <see cref="ApostasRestantesApp" />.
         /// </summary>
-        /// <param name="url">Url para chamada dos métodos de integração.</param>
-        public ApostasRestantesApp(string url)
-            : base (url, ModuleName)
+        public ApostasRestantesApp(Domain.Interfaces.Services.Boloes.IApostasRestantesService service)
+            : base (service)
         {
 
         }

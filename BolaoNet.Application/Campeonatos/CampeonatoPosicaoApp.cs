@@ -10,12 +10,12 @@ namespace BolaoNet.Application.Campeonatos
         Base.GenericApp<Domain.Entities.Campeonatos.CampeonatoPosicao>,
         Domain.Interfaces.Services.Campeonatos.ICampeonatoPosicaoService
     {
-        #region Constants
+        #region Properties
 
-        /// <summary>
-        /// Nome do módulo usado para realizar a requisição.
-        /// </summary>
-        private const string ModuleName = "CampeonatoPosicao";
+        private Domain.Interfaces.Services.Campeonatos.ICampeonatoPosicaoService Service
+        {
+            get { return (Domain.Interfaces.Services.Campeonatos.ICampeonatoPosicaoService)base._service; }
+        }
 
         #endregion
 
@@ -24,9 +24,8 @@ namespace BolaoNet.Application.Campeonatos
         /// <summary>
         /// Inicializa nova instância da classe <see cref="CampeonatoPosicaoApp" />.
         /// </summary>
-        /// <param name="url">Url para chamada dos métodos de integração.</param>
-        public CampeonatoPosicaoApp(string url)
-            : base (url, ModuleName)
+        public CampeonatoPosicaoApp(Domain.Interfaces.Services.Campeonatos.ICampeonatoPosicaoService service)
+            : base (service)
         {
 
         }

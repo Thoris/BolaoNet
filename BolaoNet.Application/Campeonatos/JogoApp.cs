@@ -10,12 +10,12 @@ namespace BolaoNet.Application.Campeonatos
         Base.GenericApp<Domain.Entities.Campeonatos.Jogo>,
         Domain.Interfaces.Services.Campeonatos.IJogoService
     {
-        #region Constants
+        #region Properties
 
-        /// <summary>
-        /// Nome do módulo usado para realizar a requisição.
-        /// </summary>
-        private const string ModuleName = "Jogo";
+        private Domain.Interfaces.Services.Campeonatos.IJogoService Service
+        {
+            get { return (Domain.Interfaces.Services.Campeonatos.IJogoService)base._service; }
+        }
 
         #endregion
 
@@ -24,9 +24,8 @@ namespace BolaoNet.Application.Campeonatos
         /// <summary>
         /// Inicializa nova instância da classe <see cref="JogoApp" />.
         /// </summary>
-        /// <param name="url">Url para chamada dos métodos de integração.</param>
-        public JogoApp(string url)
-            : base (url, ModuleName)
+        public JogoApp(Domain.Interfaces.Services.Campeonatos.IJogoService service)
+            : base (service)
         {
 
         }
@@ -37,34 +36,28 @@ namespace BolaoNet.Application.Campeonatos
 
         public bool InsertResult(Domain.Entities.Campeonatos.Jogo jogo, int gols1, int? penaltis1, int gols2, int? penaltis2, bool setCurrentData, Domain.Entities.Users.User validadoBy)
         {
-            throw new NotImplementedException();
+            return Service.InsertResult(jogo, gols1, penaltis1, gols2, penaltis2, setCurrentData, validadoBy);
         }
         public IList<Domain.Entities.Campeonatos.Jogo> GetJogosByCampeonato(Domain.Entities.Campeonatos.Campeonato campeonato)
         {
-            Dictionary<string, string> parameters = new Dictionary<string, string>();
-            parameters.Add("nomeCampeonato", campeonato.Nome);
-
-
-            return base.HttpGetApi<ICollection<Domain.Entities.Campeonatos.Jogo>>(
-                parameters, "GetJogosByCampeonato").ToList();
+            return Service.GetJogosByCampeonato(campeonato);
         }
-
-        #endregion
-
 
         public IList<Domain.Entities.Campeonatos.Jogo> LoadJogos(int rodada, DateTime dataInicial, DateTime dataFinal, Domain.Entities.Campeonatos.CampeonatoFase fase, Domain.Entities.Campeonatos.Campeonato campeonato, Domain.Entities.Campeonatos.CampeonatoGrupo grupo, string condition)
         {
-            throw new NotImplementedException();
+            return Service.LoadJogos(rodada, dataInicial, dataFinal, fase, campeonato, grupo, condition);
         }
 
         public IList<Domain.Entities.Campeonatos.Jogo> LoadFinishedJogos(Domain.Entities.Campeonatos.Campeonato campeonato, int totalJogos)
         {
-            throw new NotImplementedException();
+            return Service.LoadFinishedJogos(campeonato, totalJogos);
         }
 
         public IList<Domain.Entities.Campeonatos.Jogo> LoadNextJogos(Domain.Entities.Campeonatos.Campeonato campeonato, int totalJogos)
         {
-            throw new NotImplementedException();
+            return Service.LoadNextJogos(campeonato, totalJogos);
         }
+
+        #endregion
     }
 }

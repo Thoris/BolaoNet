@@ -10,12 +10,12 @@ namespace BolaoNet.Application.DadosBasicos
         Base.GenericApp<Domain.Entities.DadosBasicos.CriterioFixo>,
         Domain.Interfaces.Services.DadosBasicos.ICriterioFixoService
     {
-        #region Constants
+        #region Properties
 
-        /// <summary>
-        /// Nome do módulo usado para realizar a requisição.
-        /// </summary>
-        private const string ModuleName = "CriterioFixo";
+        private Domain.Interfaces.Services.DadosBasicos.ICriterioFixoService Service
+        {
+            get { return (Domain.Interfaces.Services.DadosBasicos.ICriterioFixoService)base._service; }
+        }
 
         #endregion
 
@@ -24,9 +24,8 @@ namespace BolaoNet.Application.DadosBasicos
         /// <summary>
         /// Inicializa nova instância da classe <see cref="CriterioFixoApp" />.
         /// </summary>
-        /// <param name="url">Url para chamada dos métodos de integração.</param>
-        public CriterioFixoApp(string url)
-            : base (url, ModuleName)
+        public CriterioFixoApp(Domain.Interfaces.Services.DadosBasicos.ICriterioFixoService service)
+            : base (service)
         {
 
         }

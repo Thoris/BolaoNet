@@ -11,17 +11,17 @@ namespace BolaoNet.Application.Base
     /// <summary>
     /// Classe que trabalha com funcionalidades genéricas para gerenciamento das entidades de integração.
     /// </summary>
-    public class GenericApp<T> : IGenericApp<T> where T : class
+    public abstract class GenericApp<T> : IGenericApp<T> where T : class
     {
         #region Variables
 
-        private Domain.Interfaces.Services.Base.IGenericService<T> _service;
+        protected Domain.Interfaces.Services.Base.IGenericService<T> _service;
 
         #endregion
 
         #region Constructors/Destructors
 
-        public GenericApp(IGenericApp<T> service)
+        public GenericApp(Domain.Interfaces.Services.Base.IGenericService<T> service)
         {
             _service = service;
         }

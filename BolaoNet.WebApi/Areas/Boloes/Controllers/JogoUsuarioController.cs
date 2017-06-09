@@ -45,7 +45,6 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
             return Dao.GetJogosByUser(bolao, user);
         }
 
-        [HttpGet]
         public IList<Domain.Entities.Boloes.JogoUsuario> GetJogosByUser(string nomeBolao, string userName)
         {
             return this.GetJogosByUser(new Domain.Entities.Boloes.Bolao(nomeBolao), new Domain.Entities.Users.User(userName));

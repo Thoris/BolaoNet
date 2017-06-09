@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -206,7 +208,6 @@ namespace BolaoNet.WebApi.Integration.Base
                 return false;
             }
         }
-
         /// <summary>
         /// Método que efetua operação de POST no método especificado.
         /// </summary>
@@ -240,7 +241,7 @@ namespace BolaoNet.WebApi.Integration.Base
             var dataSerialized = JsonConvert.SerializeObject(data);
             StringContent content = new StringContent(dataSerialized, Encoding.UTF8, "application/json");
 
-
+            
             //Requesting the post
             //HttpResponseMessage response = client.PostAsync(new Uri(this.UrlCommand) + method + "?" + queryString, content).Result;
 
@@ -265,7 +266,57 @@ namespace BolaoNet.WebApi.Integration.Base
                 return false;
             }
         }
+        protected bool HttpPostApi(IDictionary<string, object> data, string method, out string message)
+        {           
+            //Creating the request
+            HttpClient client = GetClient();
 
+
+            ArrayList paramList = new ArrayList();
+            //JArray paramList = new JArray();
+
+            JObject j = new JObject();
+            
+
+            ////MultipartFormDataContent multiContent = new MultipartFormDataContent();
+
+            foreach (var item in data)
+            {
+                // j.Add(new JProperty(item.Key, JsonConvert.SerializeObject(item.Value)));    
+            ////    //paramList.Add(JsonConvert.SerializeObject(item.Value));
+
+                paramList.Add(item.Value);
+                
+            //////    var dataSerialized = JsonConvert.SerializeObject(item.Value);
+            //////    StringContent content = new StringContent(dataSerialized, Encoding.UTF8, "application/json");
+            //////    multiContent.Add(content, item.Key);
+            }
+            //var requestbody = new StringContent(paramList.ToString(), Encoding.UTF8, "application/json");
+
+            var dataSerialized = JsonConvert.SerializeObject(paramList);
+            StringContent content = new StringContent(dataSerialized, Encoding.UTF8, "application/json");
+
+
+            //HttpResponseMessage response = client.PostAsync(new Uri(this.UrlCommand) + method + "?id=0", content).Result;
+            HttpResponseMessage response = client.PostAsync(new Uri(this.UrlCommand) + method + "", content).Result;
+
+            //If could process the request sucessfully
+            if (response.IsSuccessStatusCode)
+            {
+                //Getting the string processed
+                var jsonString = response.Content.ReadAsStringAsync();
+
+                message = jsonString.Result;
+
+                return true;
+            }
+            else
+            {
+                message = response.ToString();
+
+                return false;
+            }
+        }
         /// <summary>
         /// Método que efetua operação de Delete do método especificado.
         /// </summary>
@@ -316,8 +367,7 @@ namespace BolaoNet.WebApi.Integration.Base
 
                 return false;
             }
-        }
-
+        }        
         /// <summary>
         /// Método que efetua operação de PUT no método especificado.
         /// </summary>

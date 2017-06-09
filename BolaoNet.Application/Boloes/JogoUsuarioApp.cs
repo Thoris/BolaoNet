@@ -10,12 +10,12 @@ namespace BolaoNet.Application.Boloes
         Base.GenericApp<Domain.Entities.Boloes.JogoUsuario>,
         Domain.Interfaces.Services.Boloes.IJogoUsuarioService
     {
-        #region Constants
+        #region Properties
 
-        /// <summary>
-        /// Nome do módulo usado para realizar a requisição.
-        /// </summary>
-        private const string ModuleName = "JogoUsuario";
+        private Domain.Interfaces.Services.Boloes.IJogoUsuarioService Service
+        {
+            get { return (Domain.Interfaces.Services.Boloes.IJogoUsuarioService)base._service; }
+        }
 
         #endregion
 
@@ -24,9 +24,8 @@ namespace BolaoNet.Application.Boloes
         /// <summary>
         /// Inicializa nova instância da classe <see cref="JogoUsuarioApp" />.
         /// </summary>
-        /// <param name="url">Url para chamada dos métodos de integração.</param>
-        public JogoUsuarioApp(string url)
-            : base (url, ModuleName)
+        public JogoUsuarioApp(Domain.Interfaces.Services.Boloes.IJogoUsuarioService service)
+            : base (service)
         {
 
         }
@@ -37,18 +36,12 @@ namespace BolaoNet.Application.Boloes
 
         public bool ProcessAposta(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user, Domain.Entities.Campeonatos.Jogo jogo, int automatico, int apostaTime1, int apostaTime2, int? penaltis1, int? penaltis2, int? ganhador)
         {
-            throw new NotImplementedException();
+            return Service.ProcessAposta(bolao, user, jogo, automatico, apostaTime1, apostaTime2, penaltis1, penaltis2, ganhador);
         }
 
         public IList<Domain.Entities.Boloes.JogoUsuario> GetJogosByUser(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
         {
-            Dictionary<string, string> parameters = new Dictionary<string, string>();
-
-            parameters.Add("nomebolao", bolao.Nome);
-            parameters.Add("userName", user.UserName);
-
-            return base.HttpGetApi<ICollection<Domain.Entities.Boloes.JogoUsuario>>(
-                parameters, "GetJogosByUser").ToList();
+            return Service.GetJogosByUser(bolao, user);
         }
 
         #endregion

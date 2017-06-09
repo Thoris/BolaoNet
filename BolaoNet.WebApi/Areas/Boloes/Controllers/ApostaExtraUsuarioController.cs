@@ -3,11 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 
 namespace BolaoNet.Services.Areas.Boloes.Controllers
 {
     public class ApostaExtraUsuarioController :
-        GenericApiController<Domain.Entities.Boloes.ApostaExtraUsuario>, Domain.Interfaces.Services.Boloes.IApostaExtraUsuarioService
+        GenericApiController<Domain.Entities.Boloes.ApostaExtraUsuario>,
+        Domain.Interfaces.Services.Boloes.IApostaExtraUsuarioService
     {
         #region Properties
 
@@ -36,11 +38,13 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
         #endregion
 
+        #region IApostaExtraUsuarioService members
+
         public IList<Domain.Entities.Boloes.ApostaExtraUsuario> GetApostasUser(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
         {
             throw new NotImplementedException();
         }
 
-
+        #endregion
     }
 }

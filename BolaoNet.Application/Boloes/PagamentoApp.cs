@@ -10,12 +10,12 @@ namespace BolaoNet.Application.Boloes
         Base.GenericApp<Domain.Entities.Boloes.Pagamento>,
         Domain.Interfaces.Services.Boloes.IPagamentoService
     {
-        #region Constants
+        #region Properties
 
-        /// <summary>
-        /// Nome do módulo usado para realizar a requisição.
-        /// </summary>
-        private const string ModuleName = "Pagamento";
+        private Domain.Interfaces.Services.Boloes.IPagamentoService Service
+        {
+            get { return (Domain.Interfaces.Services.Boloes.IPagamentoService)base._service; }
+        }
 
         #endregion
 
@@ -24,9 +24,8 @@ namespace BolaoNet.Application.Boloes
         /// <summary>
         /// Inicializa nova instância da classe <see cref="PagamentoApp" />.
         /// </summary>
-        /// <param name="url">Url para chamada dos métodos de integração.</param>
-        public PagamentoApp(string url)
-            : base (url, ModuleName)
+        public PagamentoApp(Domain.Interfaces.Services.Boloes.IPagamentoService service)
+            : base (service)
         {
 
         }

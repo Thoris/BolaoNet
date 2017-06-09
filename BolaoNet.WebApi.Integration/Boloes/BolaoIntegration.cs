@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,14 +35,23 @@ namespace BolaoNet.WebApi.Integration.Boloes
 
         #endregion    
     
+        #region IBolaoService members
+
         public bool Iniciar(Domain.Entities.Users.User iniciadoBy, Domain.Entities.Boloes.Bolao bolao)
         {
-            throw new NotImplementedException();
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("iniciadoBy", iniciadoBy);
+            parameters.Add("bolao", bolao);
+
+            return base.HttpPostApi<bool>(parameters, "Iniciar");            
         }
 
         public bool Aguardar(Domain.Entities.Boloes.Bolao bolao)
         {
             throw new NotImplementedException();
         }
+
+        #endregion
     }
 }

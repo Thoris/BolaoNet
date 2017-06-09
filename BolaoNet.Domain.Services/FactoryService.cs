@@ -135,6 +135,7 @@ namespace BolaoNet.Domain.Services
                     case DaoType.EntityFramework:
 
                         //_factoryDao = new Domain.EF.FactoryDaoEF();
+                        _factoryDao = new Infra.Data.EF.FactoryDaoEF();
 
                         break;
 

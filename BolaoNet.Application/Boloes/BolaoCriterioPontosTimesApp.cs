@@ -10,12 +10,12 @@ namespace BolaoNet.Application.Boloes
         Base.GenericApp<Domain.Entities.Boloes.BolaoCriterioPontosTimes>,
         Domain.Interfaces.Services.Boloes.IBolaoCriterioPontosTimesService
     {
-        #region Constants
+        #region Properties
 
-        /// <summary>
-        /// Nome do módulo usado para realizar a requisição.
-        /// </summary>
-        private const string ModuleName = "BolaoCriterioPontosTimes";
+        private Domain.Interfaces.Services.Boloes.IBolaoCriterioPontosTimesService Service
+        {
+            get { return (Domain.Interfaces.Services.Boloes.IBolaoCriterioPontosTimesService)base._service; }
+        }
 
         #endregion
 
@@ -24,18 +24,21 @@ namespace BolaoNet.Application.Boloes
         /// <summary>
         /// Inicializa nova instância da classe <see cref="BolaoCriterioPontosTimesApp" />.
         /// </summary>
-        /// <param name="url">Url para chamada dos métodos de integração.</param>
-        public BolaoCriterioPontosTimesApp(string url)
-            : base (url, ModuleName)
+        public BolaoCriterioPontosTimesApp(Domain.Interfaces.Services.Boloes.IBolaoCriterioPontosTimesService service)
+            : base (service)
         {
 
         }
 
         #endregion 
-    
+
+        #region IBolaoCriterioPontosTimesService members
+
         public IList<Domain.Entities.Boloes.BolaoCriterioPontosTimes> GetCriterioPontosBolao(Domain.Entities.Boloes.Bolao bolao)
         {
-            throw new NotImplementedException();
+            return Service.GetCriterioPontosBolao(bolao);
         }
+
+        #endregion
     }
 }

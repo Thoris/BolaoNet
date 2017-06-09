@@ -7,7 +7,8 @@ using System.Web;
 namespace BolaoNet.Services.Areas.Boloes.Controllers
 {
     public class ApostasRestantesController:
-        GenericApiController<Domain.Entities.Boloes.ApostasRestantesUser>, Domain.Interfaces.Services.Boloes.IApostasRestantesService
+        GenericApiController<Domain.Entities.Boloes.ApostasRestantesUser>,
+        Domain.Interfaces.Services.Boloes.IApostasRestantesService
     {
         #region Properties
 

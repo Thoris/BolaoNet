@@ -7,7 +7,8 @@ using System.Web;
 namespace BolaoNet.Services.Areas.Boloes.Controllers
 {
     public class ApostaPontosController:
-        GenericApiController<Domain.Entities.Boloes.ApostaPontos>, Domain.Interfaces.Services.Boloes.IApostaPontosService
+        GenericApiController<Domain.Entities.Boloes.ApostaPontos>, 
+        Domain.Interfaces.Services.Boloes.IApostaPontosService
     {
         #region Properties
 
@@ -35,7 +36,5 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
 
         #endregion
-
-
     }
 }
