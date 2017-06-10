@@ -104,6 +104,10 @@
       <Project>{87e9d03a-e8fc-48f6-8f44-c66d569d4fe8}</Project>
       <Name>BolaoNet.Domain.Interfaces.Repositories</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Infra.Data.EF.Mapping\BolaoNet.Infra.Data.EF.Mapping.csproj">
+      <Project>{ff32f8b8-0bbd-48ae-ac10-e23d989ce562}</Project>
+      <Name>BolaoNet.Infra.Data.EF.Mapping</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

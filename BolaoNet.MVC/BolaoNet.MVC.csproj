@@ -113,6 +113,17 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Apostas\ApostasAreaRegistration.cs" />
+    <Compile Include="Areas\Boloes\BoloesAreaRegistration.cs" />
+    <Compile Include="Areas\Campeonatos\CampeonatosAreaRegistration.cs" />
+    <Compile Include="Areas\Criterios\CriteriosAreaRegistration.cs" />
+    <Compile Include="Areas\Mensagens\MensagensAreaRegistration.cs" />
+    <Compile Include="Areas\Pagamentos\PagamentosAreaRegistration.cs" />
+    <Compile Include="Areas\Pontuacao\PontuacaoAreaRegistration.cs" />
+    <Compile Include="Areas\Regras\RegrasAreaRegistration.cs" />
+    <Compile Include="Areas\Resultados\ResultadosAreaRegistration.cs" />
+    <Compile Include="Areas\Users\UsersAreaRegistration.cs" />
+    <Compile Include="Areas\Visitante\VisitanteAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -130,6 +141,17 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Apostas\Views\web.config" />
+    <Content Include="Areas\Boloes\Views\web.config" />
+    <Content Include="Areas\Campeonatos\Views\web.config" />
+    <Content Include="Areas\Criterios\Views\web.config" />
+    <Content Include="Areas\Mensagens\Views\web.config" />
+    <Content Include="Areas\Pagamentos\Views\web.config" />
+    <Content Include="Areas\Pontuacao\Views\web.config" />
+    <Content Include="Areas\Regras\Views\web.config" />
+    <Content Include="Areas\Resultados\Views\web.config" />
+    <Content Include="Areas\Users\Views\web.config" />
+    <Content Include="Areas\Visitante\Views\web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -160,6 +182,39 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Apostas\Controllers\" />
+    <Folder Include="Areas\Apostas\Models\" />
+    <Folder Include="Areas\Apostas\Views\Shared\" />
+    <Folder Include="Areas\Boloes\Controllers\" />
+    <Folder Include="Areas\Boloes\Models\" />
+    <Folder Include="Areas\Boloes\Views\Shared\" />
+    <Folder Include="Areas\Campeonatos\Controllers\" />
+    <Folder Include="Areas\Campeonatos\Models\" />
+    <Folder Include="Areas\Campeonatos\Views\Shared\" />
+    <Folder Include="Areas\Criterios\Controllers\" />
+    <Folder Include="Areas\Criterios\Models\" />
+    <Folder Include="Areas\Criterios\Views\Shared\" />
+    <Folder Include="Areas\Mensagens\Controllers\" />
+    <Folder Include="Areas\Mensagens\Models\" />
+    <Folder Include="Areas\Mensagens\Views\Shared\" />
+    <Folder Include="Areas\Pagamentos\Controllers\" />
+    <Folder Include="Areas\Pagamentos\Models\" />
+    <Folder Include="Areas\Pagamentos\Views\Shared\" />
+    <Folder Include="Areas\Pontuacao\Controllers\" />
+    <Folder Include="Areas\Pontuacao\Models\" />
+    <Folder Include="Areas\Pontuacao\Views\Shared\" />
+    <Folder Include="Areas\Regras\Controllers\" />
+    <Folder Include="Areas\Regras\Models\" />
+    <Folder Include="Areas\Regras\Views\Shared\" />
+    <Folder Include="Areas\Resultados\Controllers\" />
+    <Folder Include="Areas\Resultados\Models\" />
+    <Folder Include="Areas\Resultados\Views\Shared\" />
+    <Folder Include="Areas\Users\Controllers\" />
+    <Folder Include="Areas\Users\Models\" />
+    <Folder Include="Areas\Users\Views\Shared\" />
+    <Folder Include="Areas\Visitante\Controllers\" />
+    <Folder Include="Areas\Visitante\Models\" />
+    <Folder Include="Areas\Visitante\Views\Shared\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

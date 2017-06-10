@@ -30,7 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -39,7 +46,60 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\BaseConfiguration.cs" />
+    <Compile Include="Boloes\ApostaExtraConfiguration.cs" />
+    <Compile Include="Boloes\ApostaExtraUsuarioConfiguration.cs" />
+    <Compile Include="Boloes\ApostaPontosConfiguration.cs" />
+    <Compile Include="Boloes\ApostasRestantesConfiguration.cs" />
+    <Compile Include="Boloes\BolaoCampeonatoClassificacaoUsuarioConfiguration.cs" />
+    <Compile Include="Boloes\BolaoCriterioPontosConfiguration.cs" />
+    <Compile Include="Boloes\BolaoCriterioPontosTimesConfiguration.cs" />
+    <Compile Include="Boloes\BolaoMembroClassificacaoConfiguration.cs" />
+    <Compile Include="Boloes\BolaoMembroGrupoConfiguration.cs" />
+    <Compile Include="Boloes\BolaoMembroConfiguration.cs" />
+    <Compile Include="Boloes\BolaoPontoRodadaConfiguration.cs" />
+    <Compile Include="Boloes\BolaoPontoRodadaUsuarioConfiguration.cs" />
+    <Compile Include="Boloes\BolaoPontuacaoConfiguration.cs" />
+    <Compile Include="Boloes\BolaoPremioConfiguration.cs" />
+    <Compile Include="Boloes\BolaoRegraConfiguration.cs" />
+    <Compile Include="Boloes\BolaoConfiguration.cs" />
+    <Compile Include="Boloes\BolaoRequestConfiguration.cs" />
+    <Compile Include="Boloes\BolaoRequestStatusConfiguration.cs" />
+    <Compile Include="Boloes\CriterioConfiguration.cs" />
+    <Compile Include="Boloes\JogoUsuarioConfiguration.cs" />
+    <Compile Include="Boloes\MensagemConfiguration.cs" />
+    <Compile Include="Boloes\PagamentoConfiguration.cs" />
+    <Compile Include="Boloes\PontuacaoConfiguration.cs" />
+    <Compile Include="Campeonatos\CampeonatoClassificacaoConfiguration.cs" />
+    <Compile Include="Campeonatos\CampeonatoFaseConfiguration.cs" />
+    <Compile Include="Campeonatos\CampeonatoGrupoConfiguration.cs" />
+    <Compile Include="Campeonatos\CampeonatoGrupoTimeConfiguration.cs" />
+    <Compile Include="Campeonatos\CampeonatoHistoricoConfiguration.cs" />
+    <Compile Include="Campeonatos\CampeonatoPosicaoConfiguration.cs" />
+    <Compile Include="Campeonatos\CampeonatoRecordConfiguration.cs" />
+    <Compile Include="Campeonatos\CampeonatoConfiguration.cs" />
+    <Compile Include="Campeonatos\CampeonatoTimeConfiguration.cs" />
+    <Compile Include="Campeonatos\HistoricoConfiguration.cs" />
+    <Compile Include="Campeonatos\JogoConfiguration.cs" />
+    <Compile Include="Campeonatos\PontuacaoConfiguration.cs" />
+    <Compile Include="DadosBasicos\CriterioFixoConfiguration.cs" />
+    <Compile Include="DadosBasicos\EstadioConfiguration.cs" />
+    <Compile Include="DadosBasicos\PagamentoTipoConfiguration.cs" />
+    <Compile Include="DadosBasicos\TimeConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Users\RoleConfiguration.cs" />
+    <Compile Include="Users\UserInRoleConfiguration.cs" />
+    <Compile Include="Users\UserConfiguration.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BolaoNet.Domain.Entities\BolaoNet.Domain.Entities.csproj">
+      <Project>{862efb06-ac74-4b8d-b338-37d52c90410a}</Project>
+      <Name>BolaoNet.Domain.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
