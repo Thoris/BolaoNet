@@ -15,7 +15,7 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
         /// <summary>
         /// Propriedade que retorna o objeto que possui regras de negócio do gerenciamento da entidade.
         /// </summary>
-        private Domain.Interfaces.Services.Boloes.IBolaoCriterioPontosService Dao
+        private Domain.Interfaces.Services.Boloes.IBolaoCriterioPontosService Service
         {
             get { return (Domain.Interfaces.Services.Boloes.IBolaoCriterioPontosService)base.BaseBo; }
         }
@@ -41,12 +41,12 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
         public int[] GetCriteriosPontos(Domain.Entities.Boloes.Bolao bolao)
         {
-            throw new NotImplementedException();
+            return Service.GetCriteriosPontos(bolao);
         }
 
         public IList<Domain.Entities.Boloes.BolaoCriterioPontos> GetCriterioPontosBolao(Domain.Entities.Boloes.Bolao bolao)
         {
-            throw new NotImplementedException();
+            return Service.GetCriterioPontosBolao(bolao);
         }
 
         #endregion

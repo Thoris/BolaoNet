@@ -50,8 +50,8 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
         //http://www.dotnettricks.com/learn/webapi/passing-multiple-complex-type-parameters-to-aspnet-web-api
 
         [HttpPost]
-        //public bool Iniciar(int id, ArrayList data)
-        public bool Iniciar(ArrayList data)
+        public bool Iniciar(int id, ArrayList data)
+        //public bool Iniciar(ArrayList data)
         {
             //Domain.Entities.Users.User iniciadoBy = parameters["iniciadoBy"].ToObject<Domain.Entities.Users.User>();
             //Domain.Entities.Boloes.Bolao bolao = parameters["bolao"].ToObject<Domain.Entities.Boloes.Bolao>();
@@ -60,9 +60,9 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
             Domain.Entities.Users.User iniciadoBy = null;
             Domain.Entities.Boloes.Bolao bolao = null;
 
-
-            //iniciadoBy = (Domain.Entities.Users.User)data[0];
-            //bolao = (Domain.Entities.Boloes.Bolao) data[1];
+            iniciadoBy = JsonConvert.DeserializeObject<Domain.Entities.Users.User>(data[0].ToString ());
+            bolao = JsonConvert.DeserializeObject<Domain.Entities.Boloes.Bolao>(data[1].ToString());
+            
 
             //iniciadoBy = (Domain.Entities.Users.User)data[0];
             //bolao = (Domain.Entities.Boloes.Bolao)data[1];

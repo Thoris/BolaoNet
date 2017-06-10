@@ -33,9 +33,14 @@ namespace BolaoNet.WebApi.Integration.Boloes
 
         #endregion 
     
+        #region IBolaoCriterioPontosTimesService members
+
         public IList<Domain.Entities.Boloes.BolaoCriterioPontosTimes> GetCriterioPontosBolao(Domain.Entities.Boloes.Bolao bolao)
         {
-            throw new NotImplementedException();
+            return base.HttpPostApi<ICollection<Domain.Entities.Boloes.BolaoCriterioPontosTimes>>(
+                new Dictionary<string, string>(), bolao, "GetCriterioPontosBolao").ToList<Domain.Entities.Boloes.BolaoCriterioPontosTimes>();
         }
+
+        #endregion
     }
 }

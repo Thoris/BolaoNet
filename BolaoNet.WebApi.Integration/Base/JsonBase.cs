@@ -297,8 +297,8 @@ namespace BolaoNet.WebApi.Integration.Base
             StringContent content = new StringContent(dataSerialized, Encoding.UTF8, "application/json");
 
 
-            //HttpResponseMessage response = client.PostAsync(new Uri(this.UrlCommand) + method + "?id=0", content).Result;
-            HttpResponseMessage response = client.PostAsync(new Uri(this.UrlCommand) + method + "", content).Result;
+            HttpResponseMessage response = client.PostAsync(new Uri(this.UrlCommand) + method + "?id=0", content).Result;
+            //HttpResponseMessage response = client.PostAsync(new Uri(this.UrlCommand) + method + "", content).Result;
 
             //If could process the request sucessfully
             if (response.IsSuccessStatusCode)

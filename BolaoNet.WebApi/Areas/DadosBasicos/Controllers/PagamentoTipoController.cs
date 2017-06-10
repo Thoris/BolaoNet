@@ -14,7 +14,7 @@ namespace BolaoNet.Services.Areas.DadosBasicos.Controllers
         /// <summary>
         /// Propriedade que retorna o objeto que possui regras de negócio do gerenciamento da entidade.
         /// </summary>
-        private Domain.Interfaces.Services.DadosBasicos.IPagamentoTipoService Dao
+        private Domain.Interfaces.Services.DadosBasicos.IPagamentoTipoService Service
         {
             get { return (Domain.Interfaces.Services.DadosBasicos.IPagamentoTipoService)base.BaseBo; }
         }

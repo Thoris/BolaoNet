@@ -16,7 +16,7 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
         /// <summary>
         /// Propriedade que retorna o objeto que possui regras de negócio do gerenciamento da entidade.
         /// </summary>
-        private Domain.Interfaces.Services.Boloes.IApostaExtraUsuarioService Dao
+        private Domain.Interfaces.Services.Boloes.IApostaExtraUsuarioService Service
         {
             get { return (Domain.Interfaces.Services.Boloes.IApostaExtraUsuarioService)base.BaseBo; }
         }
@@ -42,7 +42,7 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
         public IList<Domain.Entities.Boloes.ApostaExtraUsuario> GetApostasUser(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
         {
-            throw new NotImplementedException();
+            return Service.GetApostasUser(bolao, user);
         }
 
         #endregion

@@ -15,7 +15,7 @@ namespace BolaoNet.Services.Areas.Users.Controllers
         /// <summary>
         /// Propriedade que retorna o objeto que possui regras de negócio do gerenciamento da entidade.
         /// </summary>
-        private Domain.Interfaces.Services.Users.IUserInRoleService Dao
+        private Domain.Interfaces.Services.Users.IUserInRoleService Service
         {
             get { return (Domain.Interfaces.Services.Users.IUserInRoleService)base.BaseBo; }
         }

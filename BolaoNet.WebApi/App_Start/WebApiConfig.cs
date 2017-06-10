@@ -34,10 +34,10 @@ namespace BolaoNet.WebApi
 
 
 
-            config.Routes.MapHttpRoute(
-                name: "WithActionApiTest",
-                routeTemplate: "api/{controller}/{action}/{data}"    
-            );
+            //config.Routes.MapHttpRoute(
+            //    name: "WithActionApiTest",
+            //    routeTemplate: "api/{controller}/{action}/{data}"    
+            //);
 
 
 

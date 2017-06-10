@@ -33,14 +33,26 @@ namespace BolaoNet.WebApi.Integration.Boloes
 
         #endregion
 
+        #region IApostaExtraService members
+
         public IList<Domain.Entities.Boloes.ApostaExtra> GetApostasBolao(Domain.Entities.Boloes.Bolao bolao)
         {
-            throw new NotImplementedException();
+            return base.HttpPostApi<ICollection<Domain.Entities.Boloes.ApostaExtra>>
+                (new Dictionary<string, string>(), bolao, "GetApostasBolao").ToList<Domain.Entities.Boloes.ApostaExtra>();
         }
 
         public bool InsertResult(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.DadosBasicos.Time time, int posicao, Domain.Entities.Users.User validadoBy)
         {
-            throw new NotImplementedException();
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("bolao", bolao);
+            parameters.Add("time", time);
+            parameters.Add("posicao", posicao);
+            parameters.Add("validadoBy", validadoBy);
+
+            return base.HttpPostApi<bool>(parameters, "InsertResult");
         }
+
+        #endregion
     }
 }

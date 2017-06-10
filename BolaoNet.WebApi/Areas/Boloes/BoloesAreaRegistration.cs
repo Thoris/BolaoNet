@@ -18,8 +18,7 @@ namespace BolaoNet.WebApi.Areas.Boloes
                 "Boloes_default",
                 "Boloes/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
-            );
-            
+            );            
         }
     }
 }

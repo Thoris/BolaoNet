@@ -37,34 +37,65 @@ namespace BolaoNet.WebApi.Integration.Campeonatos
 
         public bool InsertResult(Domain.Entities.Campeonatos.Jogo jogo, int gols1, int? penaltis1, int gols2, int? penaltis2, bool setCurrentData, Domain.Entities.Users.User validadoBy)
         {
-            throw new NotImplementedException();
+            Dictionary<string, object> parameters = new Dictionary<string,object>();
+
+            parameters.Add ("jogo", jogo);
+            parameters.Add ("gols1", gols1);
+            parameters.Add ("penaltis1", penaltis1);
+            parameters.Add ("gols2", gols2);
+            parameters.Add ("penaltis2", penaltis2);
+            parameters.Add ("setCurrentData", setCurrentData);
+            parameters.Add ("validadoBy", validadoBy);
+
+
+            return base.HttpPostApi<bool>(parameters, "InsertResult");
         }
         public IList<Domain.Entities.Campeonatos.Jogo> GetJogosByCampeonato(Domain.Entities.Campeonatos.Campeonato campeonato)
         {
-            Dictionary<string, string> parameters = new Dictionary<string, string>();
-            parameters.Add("nomeCampeonato", campeonato.Nome);
-
-
-            return base.HttpGetApi<ICollection<Domain.Entities.Campeonatos.Jogo>>(
-                parameters, "GetJogosByCampeonato").ToList();
+            return base.HttpPostApi<ICollection<Domain.Entities.Campeonatos.Jogo>>(
+                new Dictionary<string, string>(), campeonato, "GetJogosByCampeonato").ToList<Domain.Entities.Campeonatos.Jogo>();
         }
-
-        #endregion
-
 
         public IList<Domain.Entities.Campeonatos.Jogo> LoadJogos(int rodada, DateTime dataInicial, DateTime dataFinal, Domain.Entities.Campeonatos.CampeonatoFase fase, Domain.Entities.Campeonatos.Campeonato campeonato, Domain.Entities.Campeonatos.CampeonatoGrupo grupo, string condition)
         {
-            throw new NotImplementedException();
+
+            Dictionary<string, object> parameters = new Dictionary<string,object>();
+
+            parameters.Add ("rodada", rodada);
+            parameters.Add ("dataInicial", dataInicial);
+            parameters.Add ("dataFinal", dataFinal);
+            parameters.Add ("fase", fase);
+            parameters.Add ("campeonato", campeonato);
+            parameters.Add ("grupo", grupo);
+            parameters.Add ("condition", condition);
+
+            return HttpPostApi<ICollection<Domain.Entities.Campeonatos.Jogo>>(parameters, "LoadJogos").ToList<Domain.Entities.Campeonatos.Jogo>();
+
         }
 
         public IList<Domain.Entities.Campeonatos.Jogo> LoadFinishedJogos(Domain.Entities.Campeonatos.Campeonato campeonato, int totalJogos)
         {
-            throw new NotImplementedException();
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("campeonato", campeonato);
+            parameters.Add("totalJogos", totalJogos);
+
+            return HttpPostApi<ICollection<Domain.Entities.Campeonatos.Jogo>>(parameters, "LoadFinishedJogos").ToList<Domain.Entities.Campeonatos.Jogo>();
+
+
         }
 
         public IList<Domain.Entities.Campeonatos.Jogo> LoadNextJogos(Domain.Entities.Campeonatos.Campeonato campeonato, int totalJogos)
         {
-            throw new NotImplementedException();
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("campeonato", campeonato);
+            parameters.Add("totalJogos", totalJogos);
+
+            return HttpPostApi<ICollection<Domain.Entities.Campeonatos.Jogo>>(parameters, "LoadNextJogos").ToList<Domain.Entities.Campeonatos.Jogo>();
+
         }
+
+        #endregion
     }
 }

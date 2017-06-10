@@ -37,12 +37,13 @@ namespace BolaoNet.WebApi.Integration.Boloes
 
         public int[] GetCriteriosPontos(Domain.Entities.Boloes.Bolao bolao)
         {
-            throw new NotImplementedException();
+            return base.HttpPostApi<int[]>(new Dictionary<string, string>(), bolao, "GetCriteriosPontos");
         }
 
         public IList<Domain.Entities.Boloes.BolaoCriterioPontos> GetCriterioPontosBolao(Domain.Entities.Boloes.Bolao bolao)
         {
-            throw new NotImplementedException();
+            return base.HttpPostApi<ICollection<Domain.Entities.Boloes.BolaoCriterioPontos>>(
+                new Dictionary<string, string>(), bolao, "GetCriterioPontosBolao").ToList<Domain.Entities.Boloes.BolaoCriterioPontos>();
         }
 
         #endregion

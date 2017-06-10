@@ -15,7 +15,7 @@ namespace BolaoNet.Services.Areas.Campeonatos.Controllers
         /// <summary>
         /// Propriedade que retorna o objeto que possui regras de negócio do gerenciamento da entidade.
         /// </summary>
-        private Domain.Interfaces.Services.Campeonatos.ICampeonatoTimeService Dao
+        private Domain.Interfaces.Services.Campeonatos.ICampeonatoTimeService Service
         {
             get { return (Domain.Interfaces.Services.Campeonatos.ICampeonatoTimeService)base.BaseBo; }
         }

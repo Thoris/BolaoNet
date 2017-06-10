@@ -37,18 +37,31 @@ namespace BolaoNet.WebApi.Integration.Boloes
 
         public bool ProcessAposta(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user, Domain.Entities.Campeonatos.Jogo jogo, int automatico, int apostaTime1, int apostaTime2, int? penaltis1, int? penaltis2, int? ganhador)
         {
-            throw new NotImplementedException();
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add ("bolao", bolao);
+            parameters.Add ("user", user);
+            parameters.Add ("jogo", jogo);
+            parameters.Add ("automatico", automatico);
+            parameters.Add ("apostaTime1", apostaTime1);
+            parameters.Add ("apostaTime2", apostaTime2);
+            parameters.Add ("penaltis1", penaltis1);
+            parameters.Add ("penaltis2", penaltis2);
+            parameters.Add ("ganhador", ganhador);
+
+            return base.HttpPostApi<bool>(parameters, "ProcessAposta");
         }
 
         public IList<Domain.Entities.Boloes.JogoUsuario> GetJogosByUser(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
         {
-            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
 
-            parameters.Add("nomebolao", bolao.Nome);
-            parameters.Add("userName", user.UserName);
+            parameters.Add("nomebolao", bolao);
+            parameters.Add("userName", user);
 
-            return base.HttpGetApi<ICollection<Domain.Entities.Boloes.JogoUsuario>>(
-                parameters, "GetJogosByUser").ToList();
+            return HttpPostApi<ICollection<Domain.Entities.Boloes.JogoUsuario>>(
+                parameters, "GetJogosByUser").ToList<Domain.Entities.Boloes.JogoUsuario>();
+
         }
 
         #endregion

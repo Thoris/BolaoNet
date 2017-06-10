@@ -15,7 +15,7 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
         /// <summary>
         /// Propriedade que retorna o objeto que possui regras de negócio do gerenciamento da entidade.
         /// </summary>
-        private Domain.Interfaces.Services.Boloes.IApostasRestantesService Dao
+        private Domain.Interfaces.Services.Boloes.IApostasRestantesService Service
         {
             get { return (Domain.Interfaces.Services.Boloes.IApostasRestantesService)base.BaseBo; }
         }

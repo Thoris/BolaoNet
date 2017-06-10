@@ -49,7 +49,7 @@ namespace BolaoNet.WebApi.Integration.Boloes
 
         public bool Aguardar(Domain.Entities.Boloes.Bolao bolao)
         {
-            throw new NotImplementedException();
+            return base.HttpPostApi<bool>(new Dictionary<string, string>(), bolao, "Aguardar");
         }
 
         #endregion
