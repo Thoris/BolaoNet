@@ -82,6 +82,48 @@
     <Compile Include="DadosBasicos\PagamentoTipoApp.cs" />
     <Compile Include="DadosBasicos\TimeApp.cs" />
     <Compile Include="FactoryApp.cs" />
+    <Compile Include="Interfaces\Boloes\IApostaExtraApp.cs" />
+    <Compile Include="Interfaces\Boloes\IApostaExtraUsuarioApp.cs" />
+    <Compile Include="Interfaces\Boloes\IApostaPontosApp.cs" />
+    <Compile Include="Interfaces\Boloes\IApostasRestantesApp.cs" />
+    <Compile Include="Interfaces\Boloes\IBolaoCampeonatoClassificacaoUsuarioApp.cs" />
+    <Compile Include="Interfaces\Boloes\IBolaoCriterioPontosApp.cs" />
+    <Compile Include="Interfaces\Boloes\IBolaoCriterioPontosTimesApp.cs" />
+    <Compile Include="Interfaces\Boloes\IBolaoMembroClassificacaoApp.cs" />
+    <Compile Include="Interfaces\Boloes\IBolaoMembroGrupoApp.cs" />
+    <Compile Include="Interfaces\Boloes\IBolaoMembroApp.cs" />
+    <Compile Include="Interfaces\Boloes\IBolaoPontoRodadaApp.cs" />
+    <Compile Include="Interfaces\Boloes\IBolaoPontoRodadaUsuarioApp.cs" />
+    <Compile Include="Interfaces\Boloes\IBolaoPontuacaoApp.cs" />
+    <Compile Include="Interfaces\Boloes\IBolaoPremioApp.cs" />
+    <Compile Include="Interfaces\Boloes\IBolaoRegraApp.cs" />
+    <Compile Include="Interfaces\Boloes\IBolaoRequestApp.cs" />
+    <Compile Include="Interfaces\Boloes\IBolaoRequestStatusApp.cs" />
+    <Compile Include="Interfaces\Boloes\IBolaoApp.cs" />
+    <Compile Include="Interfaces\Boloes\ICriterioApp.cs" />
+    <Compile Include="Interfaces\Boloes\IJogoUsuarioApp.cs" />
+    <Compile Include="Interfaces\Boloes\IMensagemApp.cs" />
+    <Compile Include="Interfaces\Boloes\IPagamentoApp.cs" />
+    <Compile Include="Interfaces\Boloes\IPontuacaoApp.cs" />
+    <Compile Include="Interfaces\Campeonatos\ICampeonatoClassificacaoApp.cs" />
+    <Compile Include="Interfaces\Campeonatos\ICampeonatoFaseApp.cs" />
+    <Compile Include="Interfaces\Campeonatos\ICampeonatoGrupoApp.cs" />
+    <Compile Include="Interfaces\Campeonatos\ICampeonatoGrupoTimeApp.cs" />
+    <Compile Include="Interfaces\Campeonatos\ICampeonatoHistoricoApp.cs" />
+    <Compile Include="Interfaces\Campeonatos\ICampeonatoPosicaoApp.cs" />
+    <Compile Include="Interfaces\Campeonatos\ICampeonatoRecordApp.cs" />
+    <Compile Include="Interfaces\Campeonatos\ICampeonatoApp.cs" />
+    <Compile Include="Interfaces\Campeonatos\ICampeonatoTimeApp.cs" />
+    <Compile Include="Interfaces\Campeonatos\IHistoricoApp.cs" />
+    <Compile Include="Interfaces\Campeonatos\IJogoApp.cs" />
+    <Compile Include="Interfaces\Campeonatos\IPontuacaoApp.cs" />
+    <Compile Include="Interfaces\DadosBasicos\ICriterioFixoApp.cs" />
+    <Compile Include="Interfaces\DadosBasicos\IEstadioApp.cs" />
+    <Compile Include="Interfaces\DadosBasicos\IPagamentoTipoApp.cs" />
+    <Compile Include="Interfaces\DadosBasicos\ITimeApp.cs" />
+    <Compile Include="Interfaces\Users\IRoleApp.cs" />
+    <Compile Include="Interfaces\Users\IUserInRoleApp.cs" />
+    <Compile Include="Interfaces\Users\IUserApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceType.cs" />
     <Compile Include="Users\RoleApp.cs" />
@@ -105,6 +147,9 @@
       <Project>{2af5e54a-613c-4a7a-896c-9f946593c8f5}</Project>
       <Name>BolaoNet.WebApi.Integration</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\Base\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

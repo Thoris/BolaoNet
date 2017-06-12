@@ -32,6 +32,7 @@
   <ItemGroup>
     <Compile Include="Base\AuditModel.cs" />
     <Compile Include="Base\BaseEntity.cs" />
+    <Compile Include="Base\BaseSelfValidationEntity.cs" />
     <Compile Include="Boloes\ApostaExtra.cs" />
     <Compile Include="Boloes\ApostaExtraUsuario.cs" />
     <Compile Include="Boloes\ApostaPontos.cs" />
@@ -68,11 +69,22 @@
     <Compile Include="Campeonatos\Historico.cs" />
     <Compile Include="Campeonatos\Jogo.cs" />
     <Compile Include="Campeonatos\Pontuacao.cs" />
+    <Compile Include="Base\Common\Interfaces\Validation\ISelfValidation.cs" />
+    <Compile Include="Base\Common\Interfaces\Validation\IValidation.cs" />
+    <Compile Include="Base\Common\Specification\ISpecification.cs" />
+    <Compile Include="Base\Common\Validation\Validation.cs" />
+    <Compile Include="Base\Common\Validation\ValidationError.cs" />
+    <Compile Include="Base\Common\Validation\ValidationResult.cs" />
+    <Compile Include="Base\Common\Validation\ValidationRule.cs" />
+    <Compile Include="Campeonatos\Specifications\CampeonatoSpecs\CampeonatoNomeIsRequiredSpecs.cs" />
+    <Compile Include="Campeonatos\Specifications\CampeonatoSpecs\CampeonatoNomeLengthMustBeLowerThan150Spec.cs" />
+    <Compile Include="Campeonatos\Validations\CampeonatoIsValidValidation.cs" />
     <Compile Include="DadosBasicos\CriterioFixo.cs" />
     <Compile Include="DadosBasicos\Estadio.cs" />
     <Compile Include="DadosBasicos\HighLightItem.cs" />
     <Compile Include="DadosBasicos\PagamentoTipo.cs" />
     <Compile Include="DadosBasicos\Time.cs" />
+    <Compile Include="Base\Common\Interfaces\Validation\IValidationRule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Users\Role.cs" />
     <Compile Include="Users\User.cs" />
@@ -84,6 +96,14 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Boloes\Specifications\" />
+    <Folder Include="Boloes\Validations\" />
+    <Folder Include="DadosBasicos\Specifications\" />
+    <Folder Include="DadosBasicos\Validations\" />
+    <Folder Include="Users\Specifications\" />
+    <Folder Include="Users\Validations\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

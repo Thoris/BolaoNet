@@ -8,7 +8,7 @@ namespace BolaoNet.Application.Boloes
 {
     public class ApostasRestantesApp :
         Base.GenericApp<Domain.Entities.Boloes.ApostasRestantesUser>,
-        Domain.Interfaces.Services.Boloes.IApostasRestantesService
+        Application.Interfaces.Boloes.IApostasRestantesApp
     {
         #region Properties
 

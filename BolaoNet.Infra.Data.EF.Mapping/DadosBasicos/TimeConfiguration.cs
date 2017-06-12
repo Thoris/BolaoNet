@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace BolaoNet.Infra.Data.EF.Mapping.DadosBasicos
 {
     public class TimeConfiguration : 
-        Base.BaseConfiguration<Domain.Entities.DadosBasicos.Time>
+        Base.BaseConfiguration<BolaoNet.Domain.Entities.DadosBasicos.Time>
     {
         
         #region Constructors/Destructors

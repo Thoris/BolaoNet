@@ -8,7 +8,7 @@ namespace BolaoNet.Application.DadosBasicos
 {
     public class TimeApp :
         Base.GenericApp<Domain.Entities.DadosBasicos.Time>,
-        Domain.Interfaces.Services.DadosBasicos.ITimeService
+        Application.Interfaces.DadosBasicos.ITimeApp
     {
         #region Properties
 

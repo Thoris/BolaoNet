@@ -8,7 +8,7 @@ namespace BolaoNet.Application.Boloes
 {
     public class MensagemApp :
         Base.GenericApp<Domain.Entities.Boloes.Mensagem>,
-        Domain.Interfaces.Services.Boloes.IMensagemService
+        Application.Interfaces.Boloes.IMensagemApp
     {
         #region Properties
 

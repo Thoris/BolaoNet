@@ -8,7 +8,7 @@ namespace BolaoNet.Application.Boloes
 {
     public class PagamentoApp :
         Base.GenericApp<Domain.Entities.Boloes.Pagamento>,
-        Domain.Interfaces.Services.Boloes.IPagamentoService
+        Application.Interfaces.Boloes.IPagamentoApp
     {
         #region Properties
 

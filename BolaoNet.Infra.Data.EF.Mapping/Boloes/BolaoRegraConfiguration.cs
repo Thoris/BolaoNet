@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace BolaoNet.Infra.Data.EF.Mapping.Boloes
 {
     public class BolaoRegraConfiguration :
-        Base.BaseConfiguration<Domain.Entities.Boloes.BolaoRegra>
+        Base.BaseConfiguration<BolaoNet.Domain.Entities.Boloes.BolaoRegra>
     {
         
         #region Constructors/Destructors

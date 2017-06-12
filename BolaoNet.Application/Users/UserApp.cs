@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 namespace BolaoNet.Application.Users
 {
     public class UserApp :
-        Base.GenericApp<Domain.Entities.Users.User>, 
-        Domain.Interfaces.Services.Users.IUserService
+        Base.GenericApp<Domain.Entities.Users.User>,
+        Application.Interfaces.Users.IUserApp
     {
         #region Properties
 

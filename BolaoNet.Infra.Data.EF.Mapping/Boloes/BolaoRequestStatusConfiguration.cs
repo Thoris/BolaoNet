@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace BolaoNet.Infra.Data.EF.Mapping.Boloes
 {
     public class BolaoRequestStatusConfiguration :
-        Base.BaseConfiguration<Domain.Entities.Boloes.BolaoRequestStatus>
+        Base.BaseConfiguration<BolaoNet.Domain.Entities.Boloes.BolaoRequestStatus>
     {
         
         #region Constructors/Destructors

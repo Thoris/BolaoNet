@@ -1,4 +1,6 @@
-﻿using BolaoNet.Domain.Interfaces.Services.Base;
+﻿using BolaoNet.Domain.Entities.Base.Common.Interfaces.Validation;
+using BolaoNet.Domain.Entities.Base.Common.Validation;
+using BolaoNet.Domain.Interfaces.Services.Base;
 using BolaoNet.Domain.Interfaces.Services.Logging;
 using System;
 using System.Collections.Generic;
@@ -30,6 +32,8 @@ namespace BolaoNet.Domain.Services.Base
         /// </summary>
         private ILogging _logging;
 
+        private readonly ValidationResult _validationResult;
+
         #endregion
 
         #region Properties
@@ -53,6 +57,11 @@ namespace BolaoNet.Domain.Services.Base
         protected ILogging Logging
         {
             get { return _logging; }
+        }
+
+        protected ValidationResult ValidationResult
+        {
+            get { return _validationResult; }
         }
 
         #endregion
@@ -121,9 +130,18 @@ namespace BolaoNet.Domain.Services.Base
         /// <param name="entity">Entidade a ser inserida</param>
         /// <returns>Identificador do registo, ou quantidade de registros afetados quando o tipo é diferente de numérico.</returns>
         public long Insert(T entity)
+        //public ValidationResult Insert(T entity)
         {
             if (entity == null)
                 throw new ArgumentException("entity");
+
+            //if (!ValidationResult.IsValid)
+            //    return ValidationResult;
+
+            //var selfValidationEntity = entity as ISelfValidation;
+            //if (selfValidationEntity != null && !selfValidationEntity.IsValid())
+            //    return selfValidationEntity.ValidationResult;
+
 
             if (IsSaveLog)
             {
@@ -155,6 +173,9 @@ namespace BolaoNet.Domain.Services.Base
             //return result >= 1 ? true : false;
             return result;
 
+
+            //return _validationResult;
+
         }
         /// <summary>
         /// Método que exclui uma entidade da base de dados.
@@ -162,7 +183,13 @@ namespace BolaoNet.Domain.Services.Base
         /// <param name="entity">Entidade a ser excluída.</param>
         /// <returns>Se conseguiu excluir mais de 1 item, returna true, senão, false</returns>
         public bool Delete(T entity)
+        //public ValidationResult Delete(T entity)
         {
+
+            //if (!ValidationResult.IsValid)
+            //    return ValidationResult;
+
+
             if (entity == null)
                 throw new ArgumentException("entity");
 
@@ -184,7 +211,7 @@ namespace BolaoNet.Domain.Services.Base
 
             return result >= 1 ? true : false;
 
-            //return true;
+            //return _validationResult;
 
         }
         /// <summary>
@@ -194,9 +221,18 @@ namespace BolaoNet.Domain.Services.Base
         /// <param name="entity">Dados da nova entidade.</param>
         /// <returns>true se conseguiu atualizar pelo menos um registro, senão, false.</returns>
         public bool Update(T entity)
+        //public ValidationResult Update(T entity)
         {
             if (entity == null)
                 throw new ArgumentException("entity");
+
+            //if (!ValidationResult.IsValid)
+            //    return ValidationResult;
+
+            //var selfValidationEntity = entity as ISelfValidation;
+            //if (selfValidationEntity != null && !selfValidationEntity.IsValid())
+            //    return selfValidationEntity.ValidationResult;
+
 
             if (IsSaveLog)
             {
@@ -225,6 +261,9 @@ namespace BolaoNet.Domain.Services.Base
 
 
             return result >= 1 ? true : false;
+
+
+            //return _validationResult;
 
         }
         /// <summary>

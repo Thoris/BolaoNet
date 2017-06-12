@@ -8,7 +8,7 @@ namespace BolaoNet.Application.Campeonatos
 {
     public class CampeonatoPosicaoApp :
         Base.GenericApp<Domain.Entities.Campeonatos.CampeonatoPosicao>,
-        Domain.Interfaces.Services.Campeonatos.ICampeonatoPosicaoService
+        Application.Interfaces.Campeonatos.ICampeonatoPosicaoApp
     {
         #region Properties
 

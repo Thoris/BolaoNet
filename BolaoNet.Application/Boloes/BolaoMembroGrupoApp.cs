@@ -8,7 +8,7 @@ namespace BolaoNet.Application.Boloes
 {
     public class BolaoMembroGrupoApp :
         Base.GenericApp<Domain.Entities.Boloes.BolaoMembroGrupo>,
-        Domain.Interfaces.Services.Boloes.IBolaoMembroGrupoService
+        Application.Interfaces.Boloes.IBolaoMembroGrupoApp
     {
         #region Properties
 

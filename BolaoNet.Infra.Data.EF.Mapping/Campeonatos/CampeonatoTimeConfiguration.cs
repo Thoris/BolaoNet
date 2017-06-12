@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace BolaoNet.Infra.Data.EF.Mapping.Campeonatos
 {
     public class CampeonatoTimeConfiguration : 
-        Base.BaseConfiguration<Domain.Entities.Campeonatos.CampeonatoTime>
+        Base.BaseConfiguration<BolaoNet.Domain.Entities.Campeonatos.CampeonatoTime>
     {
         
         #region Constructors/Destructors

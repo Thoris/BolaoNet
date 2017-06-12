@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 namespace BolaoNet.Application.DadosBasicos
 {
     public class EstadioApp :
-        Base.GenericApp<Domain.Entities.DadosBasicos.Estadio>, 
-        Domain.Interfaces.Services.DadosBasicos.IEstadioService
+        Base.GenericApp<Domain.Entities.DadosBasicos.Estadio>,
+        Application.Interfaces.DadosBasicos.IEstadioApp
     {
         #region Properties
 

@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 namespace BolaoNet.Application.DadosBasicos
 {
     public class PagamentoTipoApp :
-        Base.GenericApp<Domain.Entities.DadosBasicos.PagamentoTipo>, 
-        Domain.Interfaces.Services.DadosBasicos.IPagamentoTipoService
+        Base.GenericApp<Domain.Entities.DadosBasicos.PagamentoTipo>,
+        Application.Interfaces.DadosBasicos.IPagamentoTipoApp
     {
         #region Properties
 

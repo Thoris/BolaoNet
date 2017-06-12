@@ -8,7 +8,7 @@ namespace BolaoNet.Application.Boloes
 {
     public class BolaoRequestApp :
         Base.GenericApp<Domain.Entities.Boloes.BolaoRequest>,
-        Domain.Interfaces.Services.Boloes.IBolaoRequestService
+        Application.Interfaces.Boloes.IBolaoRequestApp
     {
         #region Properties
 

@@ -8,7 +8,7 @@ namespace BolaoNet.Application.DadosBasicos
 {
     public class CriterioFixoApp :
         Base.GenericApp<Domain.Entities.DadosBasicos.CriterioFixo>,
-        Domain.Interfaces.Services.DadosBasicos.ICriterioFixoService
+        Application.Interfaces.DadosBasicos.ICriterioFixoApp
     {
         #region Properties
 

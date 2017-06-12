@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BolaoNet.Domain.Entities.Base.Common.Interfaces.Validation;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Domain.Entities.Campeonatos
 {
-    public class Campeonato : Base.AuditModel
+    public class Campeonato : Base.BaseSelfValidationEntity, ISelfValidation
     {
         #region Properties
 
@@ -36,6 +37,15 @@ namespace BolaoNet.Domain.Entities.Campeonatos
         public Campeonato(string nome)
         {
             this.Nome = nome;
+        }
+
+        #endregion
+
+        #region Methods
+
+        public bool IsValid()
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

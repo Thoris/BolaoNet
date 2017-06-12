@@ -8,6 +8,8 @@ namespace BolaoNet.Domain.Interfaces.Services.Logging
 {
     public interface ILogging
     {
+        void Verbose(object sourceObject, string message, params string[] args);
+        void Trace(object sourceObject, string message, params string[] args);
         void Info(object sourceObject, string message, params string[] args);
         void Debug(object sourceObject, string message, params string[] args);
         void Warn(object sourceObject, string message, params string[] args);

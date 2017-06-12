@@ -8,7 +8,7 @@ namespace BolaoNet.Application.Boloes
 {
     public class CriterioApp :
         Base.GenericApp<Domain.Entities.Boloes.Criterio>,
-        Domain.Interfaces.Services.Boloes.ICriterioService
+        Application.Interfaces.Boloes.ICriterioApp
     {
         #region Properties
 

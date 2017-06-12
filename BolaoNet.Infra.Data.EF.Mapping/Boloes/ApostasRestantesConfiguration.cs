@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace BolaoNet.Infra.Data.EF.Mapping.Boloes
 {
     public class ApostasRestantesConfiguration : 
-        Base.BaseConfiguration<Domain.Entities.Boloes.ApostasRestantesUser>
+        Base.BaseConfiguration<BolaoNet.Domain.Entities.Boloes.ApostasRestantesUser>
     {
         
         #region Constructors/Destructors

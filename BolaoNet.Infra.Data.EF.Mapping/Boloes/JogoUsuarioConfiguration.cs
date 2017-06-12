@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace BolaoNet.Infra.Data.EF.Mapping.Boloes
 {
     public class JogoUsuarioConfiguration :
-        Base.BaseConfiguration<Domain.Entities.Boloes.JogoUsuario>
+        Base.BaseConfiguration<BolaoNet.Domain.Entities.Boloes.JogoUsuario>
     {
         
         #region Constructors/Destructors

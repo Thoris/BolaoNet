@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 namespace BolaoNet.Application.Users
 {
     public class RoleApp :
-        Base.GenericApp<Domain.Entities.Users.Role>, 
-        Domain.Interfaces.Services.Users.IRoleService
+        Base.GenericApp<Domain.Entities.Users.Role>,
+        Application.Interfaces.Users.IRoleApp
     {
         #region Properties
 

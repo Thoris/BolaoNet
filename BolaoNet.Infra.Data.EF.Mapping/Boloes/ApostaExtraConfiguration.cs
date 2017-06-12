@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace BolaoNet.Infra.Data.EF.Mapping.Boloes
 {
     public class ApostaExtraConfiguration :
-        Base.BaseConfiguration<Domain.Entities.Boloes.ApostaExtra>        
+        Base.BaseConfiguration<BolaoNet.Domain.Entities.Boloes.ApostaExtra>        
     {
 
         #region Constructors/Destructors

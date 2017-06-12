@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace BolaoNet.Infra.Data.EF.Mapping.Users
 {
     public class RoleConfiguration : 
-        Base.BaseConfiguration<Domain.Entities.Users.Role>
+        Base.BaseConfiguration<BolaoNet.Domain.Entities.Users.Role>
     {
         
         #region Constructors/Destructors

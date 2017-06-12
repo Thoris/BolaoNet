@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace BolaoNet.Infra.Data.EF.Mapping.Campeonatos
 {
     public class JogoConfiguration : 
-        Base.BaseConfiguration<Domain.Entities.Campeonatos.Jogo>
+        Base.BaseConfiguration<BolaoNet.Domain.Entities.Campeonatos.Jogo>
     {
         
         #region Constructors/Destructors

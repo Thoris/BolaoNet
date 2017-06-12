@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace BolaoNet.Infra.Data.EF.Mapping.DadosBasicos
 {
     public class EstadioConfiguration : 
-        Base.BaseConfiguration<Domain.Entities.DadosBasicos.Estadio>
+        Base.BaseConfiguration<BolaoNet.Domain.Entities.DadosBasicos.Estadio>
     {
         
         #region Constructors/Destructors

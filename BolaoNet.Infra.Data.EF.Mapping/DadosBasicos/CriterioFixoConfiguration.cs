@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace BolaoNet.Infra.Data.EF.Mapping.DadosBasicos
 {
     public class CriterioFixoConfiguration : 
-        Base.BaseConfiguration<Domain.Entities.DadosBasicos.CriterioFixo>
+        Base.BaseConfiguration<BolaoNet.Domain.Entities.DadosBasicos.CriterioFixo>
     {
         
         #region Constructors/Destructors

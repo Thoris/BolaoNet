@@ -42,6 +42,18 @@ namespace BolaoNet.Infra.CrossCutting.Logging
         {
             return log4net.LogManager.GetLogger(objectSource.GetType().FullName);
         }
+
+
+        public void Verbose(object sourceObject, string message, params string[] args)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Trace(object sourceObject, string message, params string[] args)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Add an information message to log4net regarding the source object
         /// </summary>
@@ -102,5 +114,6 @@ namespace BolaoNet.Infra.CrossCutting.Logging
             GetLogger(sourceObject).Fatal(sourceObject, ex);
         }
         #endregion
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BolaoNet.Domain.Entities.Base.Common.Validation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -25,12 +26,14 @@ namespace BolaoNet.Domain.Interfaces.Services.Base
         /// <param name="entity">Dados do registro a ser inserido.</param>
         /// <returns>Identificador do registro inserido, ou quantidade de registros afetados.</returns>
         long Insert(T entity);
+        //ValidationResult Insert(T entity);
         /// <summary>
         /// Método que apaga um registro da entidade.
         /// </summary>
         /// <param name="entity">Dados do registro a ser excluído.</param>
         /// <returns>true se conseguiu excluir o registro, senão, falso.</returns>
         bool Delete(T entity);
+        //ValidationResult Delete(T entity);
         /// <summary>
         /// Método que atualiza dados do registro na entidade.
         /// </summary>
@@ -39,6 +42,7 @@ namespace BolaoNet.Domain.Interfaces.Services.Base
         /// true se conseguiu atualizar os dados do registro, senão, false.
         /// </returns>
         bool Update(T entity);
+        //ValidationResult Update(T entity);
         /// <summary>
         /// Método que retorna a lista de registro de uma entidade.
         /// </summary>

@@ -8,7 +8,7 @@ namespace BolaoNet.Application.Boloes
 {
     public class BolaoPontoRodadaUsuarioApp :
         Base.GenericApp<Domain.Entities.Boloes.BolaoPontoRodadaUsuario>,
-        Domain.Interfaces.Services.Boloes.IBolaoPontoRodadaUsuarioService
+        Application.Interfaces.Boloes.IBolaoPontoRodadaUsuarioApp
     {
         #region Properties
 
