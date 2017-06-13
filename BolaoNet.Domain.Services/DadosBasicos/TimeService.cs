@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BolaoNet.Domain.Interfaces.Services.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,8 +14,8 @@ namespace BolaoNet.Domain.Services.DadosBasicos
         
         #region Constructors/Destructors
 
-        public TimeService(string userName, Interfaces.Repositories.DadosBasicos.ITimeDao dao)
-            : base (userName, (Interfaces.Repositories.Base.IGenericDao<Entities.DadosBasicos.Time>)dao)
+        public TimeService(string userName, Interfaces.Repositories.DadosBasicos.ITimeDao dao, ILogging logging)
+            : base (userName, (Interfaces.Repositories.Base.IGenericDao<Entities.DadosBasicos.Time>)dao, logging)
         {
 
         }

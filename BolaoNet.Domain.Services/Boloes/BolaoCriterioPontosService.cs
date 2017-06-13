@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BolaoNet.Domain.Interfaces.Services.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,8 +14,8 @@ namespace BolaoNet.Domain.Services.Boloes
         
         #region Constructors/Destructors
 
-        public BolaoCriterioPontosService(string userName, Interfaces.Repositories.Boloes.IBolaoCriterioPontosDao dao)
-            : base(userName, (Interfaces.Repositories.Base.IGenericDao<Entities.Boloes.BolaoCriterioPontos>)dao)
+        public BolaoCriterioPontosService(string userName, Interfaces.Repositories.Boloes.IBolaoCriterioPontosDao dao, ILogging logging)
+            : base(userName, (Interfaces.Repositories.Base.IGenericDao<Entities.Boloes.BolaoCriterioPontos>)dao, logging)
         {
 
         }

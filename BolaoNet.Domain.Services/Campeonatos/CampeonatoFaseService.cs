@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BolaoNet.Domain.Interfaces.Services.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,8 @@ namespace BolaoNet.Domain.Services.Campeonatos
     {
         #region Constructors/Destructors
 
-        public CampeonatoFaseService(string userName, Interfaces.Repositories.Campeonatos.ICampeonatoFaseDao dao)
-            : base(userName, (Interfaces.Repositories.Base.IGenericDao<Entities.Campeonatos.CampeonatoFase>)dao)
+        public CampeonatoFaseService(string userName, Interfaces.Repositories.Campeonatos.ICampeonatoFaseDao dao, ILogging logging)
+            : base(userName, (Interfaces.Repositories.Base.IGenericDao<Entities.Campeonatos.CampeonatoFase>)dao, logging)
         {
 
         }

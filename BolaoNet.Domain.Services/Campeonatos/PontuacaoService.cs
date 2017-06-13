@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BolaoNet.Domain.Interfaces.Services.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,8 @@ namespace BolaoNet.Domain.Services.Campeonatos
     {
         #region Constructors/Destructors
 
-        public PontuacaoService(string userName, Interfaces.Repositories.Campeonatos.IPontuacaoDao dao)
-            : base(userName, (Interfaces.Repositories.Base.IGenericDao<Entities.Campeonatos.Pontuacao>)dao)
+        public PontuacaoService(string userName, Interfaces.Repositories.Campeonatos.IPontuacaoDao dao, ILogging logging)
+            : base(userName, (Interfaces.Repositories.Base.IGenericDao<Entities.Campeonatos.Pontuacao>)dao, logging)
         {
 
         }

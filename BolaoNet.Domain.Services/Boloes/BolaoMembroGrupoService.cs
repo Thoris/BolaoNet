@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BolaoNet.Domain.Interfaces.Services.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,8 @@ namespace BolaoNet.Domain.Services.Boloes
     {
         #region Constructors/Destructors
 
-        public BolaoMembroGrupoService(string userName, Interfaces.Repositories.Boloes.IBolaoMembroGrupoDao dao)
-            : base(userName, (Interfaces.Repositories.Base.IGenericDao<Entities.Boloes.BolaoMembroGrupo>)dao)
+        public BolaoMembroGrupoService(string userName, Interfaces.Repositories.Boloes.IBolaoMembroGrupoDao dao, ILogging logging)
+            : base(userName, (Interfaces.Repositories.Base.IGenericDao<Entities.Boloes.BolaoMembroGrupo>)dao, logging)
         {
 
         }

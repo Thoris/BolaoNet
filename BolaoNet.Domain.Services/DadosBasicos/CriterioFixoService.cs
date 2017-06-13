@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BolaoNet.Domain.Interfaces.Services.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,8 @@ namespace BolaoNet.Domain.Services.DadosBasicos
     {
         #region Constructors/Destructors
 
-        public CriterioFixoService(string userName, Interfaces.Repositories.DadosBasicos.ICriterioFixoDao dao)
-            : base(userName, (Interfaces.Repositories.Base.IGenericDao<Entities.DadosBasicos.CriterioFixo>)dao)            
+        public CriterioFixoService(string userName, Interfaces.Repositories.DadosBasicos.ICriterioFixoDao dao, ILogging logging)
+            : base(userName, (Interfaces.Repositories.Base.IGenericDao<Entities.DadosBasicos.CriterioFixo>)dao, logging)            
         {
 
         }

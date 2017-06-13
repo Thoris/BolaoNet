@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BolaoNet.Domain.Interfaces.Services.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,8 @@ namespace BolaoNet.Domain.Services.DadosBasicos
     {
         #region Constructors/Destructors
 
-        public PagamentoTipoService(string userName, Interfaces.Repositories.DadosBasicos.IPagamentoTipoDao dao)
-            : base(userName, (Interfaces.Repositories.Base.IGenericDao<Entities.DadosBasicos.PagamentoTipo>)dao)
+        public PagamentoTipoService(string userName, Interfaces.Repositories.DadosBasicos.IPagamentoTipoDao dao, ILogging logging)
+            : base(userName, (Interfaces.Repositories.Base.IGenericDao<Entities.DadosBasicos.PagamentoTipo>)dao, logging)
         {
 
         }

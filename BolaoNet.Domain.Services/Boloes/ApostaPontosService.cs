@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BolaoNet.Domain.Interfaces.Services.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,8 @@ namespace BolaoNet.Domain.Services.Boloes
     {
         #region Constructors/Destructors
 
-        public ApostaPontosService(string userName, Interfaces.Repositories.Boloes.IApostaPontosDao dao)
-            : base(userName, (Interfaces.Repositories.Base.IGenericDao<Entities.Boloes.ApostaPontos>)dao)
+        public ApostaPontosService(string userName, Interfaces.Repositories.Boloes.IApostaPontosDao dao, ILogging logging)
+            : base(userName, (Interfaces.Repositories.Base.IGenericDao<Entities.Boloes.ApostaPontos>)dao, logging)
         {
 
         }

@@ -73,13 +73,14 @@ namespace BolaoNet.Domain.Services.Base
         /// </summary>
         /// <param name="currentUserName">Usuário que está fazendo a execução.</param>
         /// <param name="dao">Objeto de acesso à dados</param>
-        public BaseGenericService(string currentUserName, Interfaces.Repositories.Base.IGenericDao<T> dao)
+        public BaseGenericService(string currentUserName, Interfaces.Repositories.Base.IGenericDao<T> dao, ILogging logging)
         {
             if (dao == null)
                 throw new ArgumentException("dao");
 
             _dao = dao;
             _currentUserName = currentUserName;
+            _logging = logging;
         }
 
         #endregion
@@ -135,13 +136,19 @@ namespace BolaoNet.Domain.Services.Base
             if (entity == null)
                 throw new ArgumentException("entity");
 
-            //if (!ValidationResult.IsValid)
-            //    return ValidationResult;
+            if (!ValidationResult.IsValid)
+            {
+                return -1;
+                //return ValidationResult;
+            }
 
-            //var selfValidationEntity = entity as ISelfValidation;
-            //if (selfValidationEntity != null && !selfValidationEntity.IsValid())
-            //    return selfValidationEntity.ValidationResult;
 
+            var selfValidationEntity = entity as ISelfValidation;
+            if (selfValidationEntity != null && !selfValidationEntity.IsValid())
+            {
+                return -1;
+                //return selfValidationEntity.ValidationResult;
+            }
 
             if (IsSaveLog)
             {
@@ -186,9 +193,11 @@ namespace BolaoNet.Domain.Services.Base
         //public ValidationResult Delete(T entity)
         {
 
-            //if (!ValidationResult.IsValid)
-            //    return ValidationResult;
-
+            if (!ValidationResult.IsValid)
+            {
+                return false;
+                //return ValidationResult;
+            }
 
             if (entity == null)
                 throw new ArgumentException("entity");
@@ -226,13 +235,17 @@ namespace BolaoNet.Domain.Services.Base
             if (entity == null)
                 throw new ArgumentException("entity");
 
-            //if (!ValidationResult.IsValid)
-            //    return ValidationResult;
-
-            //var selfValidationEntity = entity as ISelfValidation;
-            //if (selfValidationEntity != null && !selfValidationEntity.IsValid())
-            //    return selfValidationEntity.ValidationResult;
-
+            if (!ValidationResult.IsValid)
+            {
+                return false;
+                //return ValidationResult;
+            }
+            var selfValidationEntity = entity as ISelfValidation;
+            if (selfValidationEntity != null && !selfValidationEntity.IsValid())
+            {
+                return false;
+                //return selfValidationEntity.ValidationResult;
+            }
 
             if (IsSaveLog)
             {
