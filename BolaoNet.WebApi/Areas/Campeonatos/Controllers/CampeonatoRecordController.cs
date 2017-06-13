@@ -25,7 +25,7 @@ namespace BolaoNet.Services.Areas.Campeonatos.Controllers
         #region Constructors/Destructors
 
         public CampeonatoRecordController()
-            : base(new Domain.Services.FactoryService().CreateCampeonatoRecordService())
+            : base(new Domain.Services.FactoryService(null).CreateCampeonatoRecordService())
         {
 
         }

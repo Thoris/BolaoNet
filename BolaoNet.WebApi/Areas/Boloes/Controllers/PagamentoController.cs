@@ -24,7 +24,7 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
         #region Constructors/Destructors
 
         public PagamentoController()
-            : base(new Domain.Services.FactoryService().CreatePagamentoService())
+            : base(new Domain.Services.FactoryService(null).CreatePagamentoService())
         {
 
         }

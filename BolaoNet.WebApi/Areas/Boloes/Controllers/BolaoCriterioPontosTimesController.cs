@@ -26,7 +26,7 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
         #region Constructors/Destructors
 
         public BolaoCriterioPontosTimesController()
-            : base(new Domain.Services.FactoryService().CreateBolaoCriterioPontosTimesService())
+            : base(new Domain.Services.FactoryService(null).CreateBolaoCriterioPontosTimesService())
         {
 
         }

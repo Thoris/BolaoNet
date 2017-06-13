@@ -25,7 +25,7 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
         #region Constructors/Destructors
 
         public BolaoRegraController()
-            : base(new Domain.Services.FactoryService().CreateBolaoRegraService())
+            : base(new Domain.Services.FactoryService(null).CreateBolaoRegraService())
         {
 
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BolaoNet.Domain.Interfaces.Services.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,8 +23,8 @@ namespace BolaoNet.Domain.Services.Campeonatos
 
         #region Constructors/Destructors
 
-        public JogoService(string userName, Interfaces.Repositories.Campeonatos.IJogoDao dao)
-            : base(userName, (Interfaces.Repositories.Base.IGenericDao<Entities.Campeonatos.Jogo>)dao)
+        public JogoService(string userName, Interfaces.Repositories.Campeonatos.IJogoDao dao, ILogging logging)
+            : base(userName, (Interfaces.Repositories.Base.IGenericDao<Entities.Campeonatos.Jogo>)dao, logging)
         {
             if (dao == null)
                 throw new ArgumentException("dao");

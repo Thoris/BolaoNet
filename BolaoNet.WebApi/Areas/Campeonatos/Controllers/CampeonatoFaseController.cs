@@ -25,7 +25,7 @@ namespace BolaoNet.Services.Areas.Campeonatos.Controllers
         #region Constructors/Destructors
 
         public CampeonatoFaseController()
-            : base(new Domain.Services.FactoryService().CreateCampeonatoFaseService())
+            : base(new Domain.Services.FactoryService(null).CreateCampeonatoFaseService())
         {
 
         }

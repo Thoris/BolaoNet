@@ -24,7 +24,7 @@ namespace BolaoNet.Services.Areas.DadosBasicos.Controllers
         #region Constructors/Destructors
 
         public CriterioFixoController()
-            : base(new Domain.Services.FactoryService().CreateCriterioFixoService())
+            : base(new Domain.Services.FactoryService(null).CreateCriterioFixoService())
         {
 
         }

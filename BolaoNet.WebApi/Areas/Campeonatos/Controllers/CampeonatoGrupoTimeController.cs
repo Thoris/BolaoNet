@@ -25,7 +25,7 @@ namespace BolaoNet.Services.Areas.Campeonatos.Controllers
         #region Constructors/Destructors
 
         public CampeonatoGrupoTimeController()
-            : base(new Domain.Services.FactoryService().CreateCampeonatoGrupoTimeService())
+            : base(new Domain.Services.FactoryService(null).CreateCampeonatoGrupoTimeService())
         {
 
         }

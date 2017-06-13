@@ -24,7 +24,7 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
         #region Constructors/Destructors
 
         public PontuacaoController()
-            : base(new Domain.Services.FactoryService().CreatePontuacaoService())
+            : base(new Domain.Services.FactoryService(null).CreatePontuacaoService())
         {
 
         }

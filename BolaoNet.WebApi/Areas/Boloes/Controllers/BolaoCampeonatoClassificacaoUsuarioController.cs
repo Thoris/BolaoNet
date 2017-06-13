@@ -25,7 +25,7 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
         #region Constructors/Destructors
 
         public BolaoCampeonatoClassificacaoUsuarioController()
-            : base(new Domain.Services.FactoryService().CreateBolaoCampeonatoClassificacaoUsuarioService())
+            : base(new Domain.Services.FactoryService(null).CreateBolaoCampeonatoClassificacaoUsuarioService())
         {
 
         }

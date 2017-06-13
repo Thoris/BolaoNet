@@ -24,7 +24,7 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
         #region Constructors/Destructors
 
         public MensagemController()
-            : base(new Domain.Services.FactoryService().CreateMensagemService())
+            : base(new Domain.Services.FactoryService(null).CreateMensagemService())
         {
 
         }

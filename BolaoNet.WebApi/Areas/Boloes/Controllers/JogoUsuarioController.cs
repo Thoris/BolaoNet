@@ -28,7 +28,7 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
         #region Constructors/Destructors
 
         public JogoUsuarioController()
-            : base(new Domain.Services.FactoryService().CreateJogoUsuarioService())
+            : base(new Domain.Services.FactoryService(null).CreateJogoUsuarioService())
         {
 
         }

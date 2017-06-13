@@ -32,7 +32,7 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
         #region Constructors/Destructors
 
         public BolaoController()
-            : base(new Domain.Services.FactoryService().CreateBolaoService())
+            : base(new Domain.Services.FactoryService(null).CreateBolaoService())
         {
 
         }

@@ -24,7 +24,7 @@ namespace BolaoNet.Services.Areas.Users.Controllers
         #region Constructors/Destructors
 
         public UserController()
-            : base(new Domain.Services.FactoryService().CreateUserService())
+            : base(new Domain.Services.FactoryService(null).CreateUserService())
         {
 
         }

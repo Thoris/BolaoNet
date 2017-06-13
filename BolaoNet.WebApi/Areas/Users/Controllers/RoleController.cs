@@ -24,7 +24,7 @@ namespace BolaoNet.Services.Areas.Users.Controllers
         #region Constructors/Destructors
 
         public RoleController()
-            : base(new Domain.Services.FactoryService().CreateRoleService())
+            : base(new Domain.Services.FactoryService(null).CreateRoleService())
         {
 
         }

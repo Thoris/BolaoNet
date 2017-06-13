@@ -25,7 +25,7 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
         #region Constructors/Destructors
 
         public BolaoMembroGrupoController()
-            : base(new Domain.Services.FactoryService().CreateBolaoMembroGrupoService())
+            : base(new Domain.Services.FactoryService(null).CreateBolaoMembroGrupoService())
         {
 
         }

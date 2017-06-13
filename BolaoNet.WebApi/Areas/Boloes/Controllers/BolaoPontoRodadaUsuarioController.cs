@@ -25,7 +25,7 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
         #region Constructors/Destructors
 
         public BolaoPontoRodadaUsuarioController()
-            : base(new Domain.Services.FactoryService().CreateBolaoPontoRodadaUsuarioService())
+            : base(new Domain.Services.FactoryService(null).CreateBolaoPontoRodadaUsuarioService())
         {
 
         }

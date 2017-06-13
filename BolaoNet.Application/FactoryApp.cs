@@ -81,7 +81,7 @@ namespace BolaoNet.Application
                 {
                     case ServiceType.Directly:
 
-                        _factorySevice = new Domain.Services.FactoryService();
+                        _factorySevice = new Domain.Services.FactoryService(null);
 
                         break;
 

@@ -24,7 +24,7 @@ namespace BolaoNet.Services.Areas.DadosBasicos.Controllers
         #region Constructors/Destructors
 
         public TimeController()
-            : base(new Domain.Services.FactoryService().CreateTimeService())
+            : base(new Domain.Services.FactoryService(null).CreateTimeService())
         {
 
         }

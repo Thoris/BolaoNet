@@ -24,7 +24,7 @@ namespace BolaoNet.Services.Areas.DadosBasicos.Controllers
         #region Constructors/Destructors
 
         public EstadioController()
-            : base(new Domain.Services.FactoryService().CreateEstadioService())
+            : base(new Domain.Services.FactoryService(null).CreateEstadioService())
         {
 
         }

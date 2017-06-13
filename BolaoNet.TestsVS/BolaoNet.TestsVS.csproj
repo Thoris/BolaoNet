@@ -77,10 +77,6 @@
       <Project>{e15411d7-17c7-402e-93dd-24eddcbc73d7}</Project>
       <Name>BolaoNet.Integration</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BolaoNet.LogManager\BolaoNet.LogManager.csproj">
-      <Project>{a72efe92-42a8-44cb-b411-bae3d821b3f4}</Project>
-      <Name>BolaoNet.LogManager</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BolaoNet.Portal\BolaoNet.Portal.csproj">
       <Project>{c4b74485-3872-4bf9-ae0e-c62e91a8f983}</Project>
       <Name>BolaoNet.Portal</Name>

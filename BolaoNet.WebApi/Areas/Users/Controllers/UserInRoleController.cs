@@ -25,7 +25,7 @@ namespace BolaoNet.Services.Areas.Users.Controllers
         #region Constructors/Destructors
 
         public UserInRoleController()
-            : base(new Domain.Services.FactoryService().CreateUserInRoleService())
+            : base(new Domain.Services.FactoryService(null).CreateUserInRoleService())
         {
 
         }

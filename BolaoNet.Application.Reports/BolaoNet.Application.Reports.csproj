@@ -30,8 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp">
+      <HintPath>..\ReferencedComponents\iTextsharp\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -39,8 +43,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataManager\MergeApostasApostasUsuario.cs" />
+    <Compile Include="DataManager\MergeJogoJogoUsuario.cs" />
+    <Compile Include="Entities\EntityApostasExtras.cs" />
+    <Compile Include="Entities\EntityJogoUsuario.cs" />
+    <Compile Include="FormatReports\Base\BaseFileReport.cs" />
+    <Compile Include="FormatReports\IApostasUserReport.cs" />
+    <Compile Include="FormatReports\PDF\ApostaUserReportPdf.cs" />
+    <Compile Include="FormatReports\PDF\Base\BasePdfCopaMundoReport.cs" />
+    <Compile Include="Managers\CopaMundoApostasUserReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BolaoNet.Application\BolaoNet.Application.csproj">
+      <Project>{ed9e722a-a4f1-4774-9325-7057c17284ef}</Project>
+      <Name>BolaoNet.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Domain.Entities\BolaoNet.Domain.Entities.csproj">
+      <Project>{862efb06-ac74-4b8d-b338-37d52c90410a}</Project>
+      <Name>BolaoNet.Domain.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Domain.Interfaces.Services\BolaoNet.Domain.Interfaces.Services.csproj">
+      <Project>{c5c21c55-243a-4eae-927a-a10b3b4b7ff4}</Project>
+      <Name>BolaoNet.Domain.Interfaces.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

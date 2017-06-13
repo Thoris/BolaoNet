@@ -25,7 +25,7 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
         #region Constructors/Destructors
 
         public CriterioController()
-            : base(new Domain.Services.FactoryService().CreateCriterioService())
+            : base(new Domain.Services.FactoryService(null).CreateCriterioService())
         {
 
         }
