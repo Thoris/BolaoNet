@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace BolaoNet.Application.Interfaces.Campeonatos
 {
     public interface ICampeonatoFaseApp
-        : Domain.Interfaces.Services.Campeonatos.ICampeonatoFaseService
+        : Domain.Interfaces.Services.Campeonatos.ICampeonatoFaseService,
+        Base.IGenericApp<Domain.Entities.Campeonatos.CampeonatoFase>
     {
     }
 }

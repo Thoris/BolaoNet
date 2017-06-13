@@ -10,11 +10,14 @@ namespace BolaoNet.Tests.Debug
     {
         static void Main(string[] args)
         {
-            Domain.Interfaces.Services.Boloes.IBolaoService b =
-                 new BolaoNet.Application.FactoryApp("thoris", "http://localhost:9586/").CreateBolaoService();
+            new Tests.AllTests().Execute();
 
-            b.Load(new Domain.Entities.Boloes.Bolao("Copa do Mundio 2014"));
-            b.Iniciar(new Domain.Entities.Users.User("thoris"), new Domain.Entities.Boloes.Bolao("Copa do Mundo 2014"));
+
+            //Domain.Interfaces.Services.Boloes.IBolaoService b =
+            //     new BolaoNet.Application.FactoryApp("thoris", "http://localhost:9586/").CreateBolaoService();
+
+            //b.Load(new Domain.Entities.Boloes.Bolao("Copa do Mundio 2014"));
+            //b.Iniciar(new Domain.Entities.Users.User("thoris"), new Domain.Entities.Boloes.Bolao("Copa do Mundo 2014"));
 
 
 
@@ -24,10 +27,10 @@ namespace BolaoNet.Tests.Debug
             //dao.Load(new Entities.Campeonatos.Campeonato());
 
             //DAO
-            BolaoNet.Dao.IFactoryDao factoryDao = new BolaoNet.Dao.EF.FactoryDaoEF();
+            //BolaoNet.Dao.IFactoryDao factoryDao = new BolaoNet.Dao.EF.FactoryDaoEF();
 
 
-            Dao.Boloes.IJogoUsuarioDao test = factoryDao.CreateJogoUsuarioDao();
+            //Dao.Boloes.IJogoUsuarioDao test = factoryDao.CreateJogoUsuarioDao();
             //test.CalculeTime("teste", DateTime.Now,
             //    new Entities.Boloes.Bolao("Copa do Mundo 2014"),
             //    new Entities.Users.User("thoris"),
@@ -74,7 +77,7 @@ namespace BolaoNet.Tests.Debug
             //    new Entities.DadosBasicos.Time("Croácia"), 1, 2, 0, 0, new Entities.Users.User("thoris"));
 
 
-            Dao.Boloes.IBolaoMembroDao test2 = factoryDao.CreateBolaoMembroDao();
+            //Dao.Boloes.IBolaoMembroDao test2 = factoryDao.CreateBolaoMembroDao();
             //test2.OrganizePontosRodada("teste", DateTime.Now,
             //    new Entities.Campeonatos.CampeonatoFase("Classificatória", "Copa do Mundo 2014"),
             //    new Entities.Campeonatos.CampeonatoGrupo("A", "Copa do Mundo 2014"), new Entities.Boloes.Bolao("Copa do Mundo 2014"), 1);
@@ -90,7 +93,7 @@ namespace BolaoNet.Tests.Debug
             //    out pontosVDE, out pontosErro, out pontosGanhadorFora, out pontosGanhadorDentro, out pontosPerdedorFora,
             //    out pontosPerdedorDentro, out pontosEmpateGols, out pontosGolsTime1, out pontosGolsTime2, out pontosCheio);
 
-            Dao.Campeonatos.ICampeonatoClassificacaoDao test4 = factoryDao.CreateCampeonatoClassificacaoDao();
+            //Dao.Campeonatos.ICampeonatoClassificacaoDao test4 = factoryDao.CreateCampeonatoClassificacaoDao();
             //test4.LoadRodada("teste", DateTime.Now, 1, new Entities.Campeonatos.Campeonato("Copa do Mundo 2014"),
             //    new Entities.Campeonatos.CampeonatoFase("Classificatória", "Copa do Mundo 2014"),
             //    new Entities.Campeonatos.CampeonatoGrupo("A", "Copa do Mundo 2014"));
@@ -99,33 +102,33 @@ namespace BolaoNet.Tests.Debug
             //    new Entities.Campeonatos.CampeonatoFase("Classificatória", "Copa do Mundo 2014"),
             //    new Entities.Campeonatos.CampeonatoGrupo("A", "Copa do Mundo 2014"));
 
-            Dao.Campeonatos.IJogoDao test5 = factoryDao.CreateJogoDao();
+            //Dao.Campeonatos.IJogoDao test5 = factoryDao.CreateJogoDao();
             //test5.InsertResult("teste", DateTime.Now, new Entities.Campeonatos.Jogo("Copa do Mundo 2014", 1), 
             //   1, 0, 2, 0, true, new Entities.Users.User("thoris"));
 
 
-            //BO
-            BolaoNet.Business.Interfaces.IFactoryBO factoryBo = new BolaoNet.Business.FactoryBO("usuario", factoryDao);
+            ////BO
+            //BolaoNet.Business.Interfaces.IFactoryBO factoryBo = new BolaoNet.Business.FactoryBO("usuario", factoryDao);
 
-            BolaoNet.Business.Facade.InitializationFacadeBO initializationFacadeBO = new Business.Facade.InitializationFacadeBO(factoryBo);
-            initializationFacadeBO.InitAll();
+            //BolaoNet.Business.Facade.InitializationFacadeBO initializationFacadeBO = new Business.Facade.InitializationFacadeBO(factoryBo);
+            //initializationFacadeBO.InitAll();
             
-            TestsVS.Business.Facade.BolaoCopaMundo2014UserFacadeBO bo = new TestsVS.Business.Facade.BolaoCopaMundo2014UserFacadeBO(factoryBo);
-            bo.CreateAllData();
+            //TestsVS.Business.Facade.BolaoCopaMundo2014UserFacadeBO bo = new TestsVS.Business.Facade.BolaoCopaMundo2014UserFacadeBO(factoryBo);
+            //bo.CreateAllData();
 
 
-            Integration.FactoryIntegration factoryIntegration = new Integration.FactoryIntegration("thoris", "http://localhost:43817/");
-            Reports.Base.FactoryReport factoryReport = new Reports.Base.FactoryReport(
-                "thoris", Reports.Base.ReportType.Pdf, ".\\", ".\\", "jpg", "file.pdf");
+            //Integration.FactoryIntegration factoryIntegration = new Integration.FactoryIntegration("thoris", "http://localhost:43817/");
+            //Reports.Base.FactoryReport factoryReport = new Reports.Base.FactoryReport(
+            //    "thoris", Reports.Base.ReportType.Pdf, ".\\", ".\\", "jpg", "file.pdf");
 
-            Reports.DataReports.CopaMundoApostasUserReport report = 
-                new Reports.DataReports.CopaMundoApostasUserReport(factoryIntegration, factoryReport);
-
-
-            //report.GenerateApostasUser(new Entities.Boloes.Bolao("Copa do Mundo 2014"), new Entities.Users.User("thoris"));
+            //Reports.DataReports.CopaMundoApostasUserReport report = 
+            //    new Reports.DataReports.CopaMundoApostasUserReport(factoryIntegration, factoryReport);
 
 
-            report.GenerateApostasUsers(new Entities.Boloes.Bolao("Copa do Mundo 2014"));
+            ////report.GenerateApostasUser(new Entities.Boloes.Bolao("Copa do Mundo 2014"), new Entities.Users.User("thoris"));
+
+
+            //report.GenerateApostasUsers(new Entities.Boloes.Bolao("Copa do Mundo 2014"));
 
         }
     }

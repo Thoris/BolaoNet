@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace BolaoNet.Application.Interfaces.DadosBasicos
 {
     public interface IEstadioApp
-        : Domain.Interfaces.Services.DadosBasicos.IEstadioService
+        : Domain.Interfaces.Services.DadosBasicos.IEstadioService,
+        Base.IGenericApp<Domain.Entities.DadosBasicos.Estadio>
     {
     }
 }

@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace BolaoNet.Application.Interfaces.DadosBasicos
 {
     public interface ITimeApp
-        : Domain.Interfaces.Services.DadosBasicos.ITimeService
+        : Domain.Interfaces.Services.DadosBasicos.ITimeService,
+        Base.IGenericApp<Domain.Entities.DadosBasicos.Time>
     {
     }
 }

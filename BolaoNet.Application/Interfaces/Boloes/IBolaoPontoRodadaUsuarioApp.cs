@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace BolaoNet.Application.Interfaces.Boloes
 {
     public interface IBolaoPontoRodadaUsuarioApp
-        : Domain.Interfaces.Services.Boloes.IBolaoPontoRodadaUsuarioService
+        : Domain.Interfaces.Services.Boloes.IBolaoPontoRodadaUsuarioService,
+        Base.IGenericApp<Domain.Entities.Boloes.BolaoPontoRodadaUsuario>
     {
     }
 }

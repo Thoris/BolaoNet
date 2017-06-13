@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BolaoNet.Domain.Entities.Base.Common.Specification
+namespace BolaoNet.Domain.Entities.Base.Common.Interfaces.Specification
 {
     public interface ISpecification<in T>
     {

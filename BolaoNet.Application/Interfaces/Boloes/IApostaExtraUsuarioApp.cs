@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace BolaoNet.Application.Interfaces.Boloes
 {
     public interface IApostaExtraUsuarioApp
-        : Domain.Interfaces.Services.Boloes.IApostaExtraUsuarioService
+        : Domain.Interfaces.Services.Boloes.IApostaExtraUsuarioService,
+        Base.IGenericApp<Domain.Entities.Boloes.ApostaExtraUsuario>
     {
         
     }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BolaoNet.Application.Base
+namespace BolaoNet.Application.Interfaces.Base
 {
     /// <summary>
     /// Interface que possui as funcionalidades básicas de gerenciamento da entidade.

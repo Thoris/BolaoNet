@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace BolaoNet.Application.Interfaces.Boloes
 {
     public interface IBolaoRequestStatusApp
-        : Domain.Interfaces.Services.Boloes.IBolaoRequestStatusService
+        : Domain.Interfaces.Services.Boloes.IBolaoRequestStatusService,
+        Base.IGenericApp<Domain.Entities.Boloes.BolaoRequestStatus>
     {
     }
 }

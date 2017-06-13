@@ -71,7 +71,7 @@
     <Compile Include="Campeonatos\Pontuacao.cs" />
     <Compile Include="Base\Common\Interfaces\Validation\ISelfValidation.cs" />
     <Compile Include="Base\Common\Interfaces\Validation\IValidation.cs" />
-    <Compile Include="Base\Common\Specification\ISpecification.cs" />
+    <Compile Include="Base\Common\Interfaces\Specification\ISpecification.cs" />
     <Compile Include="Base\Common\Validation\Validation.cs" />
     <Compile Include="Base\Common\Validation\ValidationError.cs" />
     <Compile Include="Base\Common\Validation\ValidationResult.cs" />

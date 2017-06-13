@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace BolaoNet.Application.Interfaces.Users
 {
     public interface IUserInRoleApp
-        : Domain.Interfaces.Services.Users.IUserInRoleService
+        : Domain.Interfaces.Services.Users.IUserInRoleService,
+        Base.IGenericApp<Domain.Entities.Users.UserInRole>
     {
     }
 }

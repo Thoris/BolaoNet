@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace BolaoNet.Application.Interfaces.Boloes
 {
     public interface ICriterioApp
-        : Domain.Interfaces.Services.Boloes.ICriterioService
+        : Domain.Interfaces.Services.Boloes.ICriterioService,
+        Base.IGenericApp<Domain.Entities.Boloes.Criterio>
     {
     }
 }

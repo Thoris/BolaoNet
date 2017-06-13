@@ -390,7 +390,6 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
 
             #endregion
 
-
             #region CampeonatosTimes
 
 
@@ -418,7 +417,6 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             }
 
             #endregion
-
 
             #region Campeonato Fases
 

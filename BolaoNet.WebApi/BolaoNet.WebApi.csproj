@@ -127,6 +127,9 @@
     <Folder Include="Areas\Campeonatos\Views\Shared\" />
     <Folder Include="Areas\DadosBasicos\Models\" />
     <Folder Include="Areas\DadosBasicos\Views\Shared\" />
+    <Folder Include="Areas\Facade\Models\" />
+    <Folder Include="Areas\Facade\Views\Shared\" />
+    <Folder Include="Areas\Facade\Views\UserFacade\" />
     <Folder Include="Areas\Users\Models\" />
     <Folder Include="Areas\Users\Views\Shared\" />
     <Folder Include="Models\" />
@@ -177,6 +180,8 @@
     <Compile Include="Areas\DadosBasicos\Controllers\PagamentoTipoController.cs" />
     <Compile Include="Areas\DadosBasicos\Controllers\TimeController.cs" />
     <Compile Include="Areas\DadosBasicos\DadosBasicosAreaRegistration.cs" />
+    <Compile Include="Areas\Facade\Controllers\UserFacadeController.cs" />
+    <Compile Include="Areas\Facade\FacadeAreaRegistration.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
     <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
@@ -256,6 +261,7 @@
     <Content Include="Areas\DadosBasicos\Views\web.config" />
     <Content Include="Areas\Users\Views\web.config" />
     <Content Include="packages.config" />
+    <Content Include="Areas\Facade\Views\web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

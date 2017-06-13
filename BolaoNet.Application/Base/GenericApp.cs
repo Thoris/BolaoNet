@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BolaoNet.Application.Interfaces.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;

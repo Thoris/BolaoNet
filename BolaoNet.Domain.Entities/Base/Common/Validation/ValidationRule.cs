@@ -1,5 +1,5 @@
 ﻿using BolaoNet.Domain.Entities.Base.Common.Interfaces.Validation;
-using BolaoNet.Domain.Entities.Base.Common.Specification;
+using BolaoNet.Domain.Entities.Base.Common.Interfaces.Specification;
 using System;
 using System.Collections.Generic;
 using System.Linq;

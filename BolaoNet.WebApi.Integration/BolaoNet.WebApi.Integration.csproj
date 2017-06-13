@@ -89,6 +89,7 @@
     <Compile Include="Exceptions\CommunicationException.cs" />
     <Compile Include="Exceptions\IntegrationBaseException.cs" />
     <Compile Include="Exceptions\SerializationException.cs" />
+    <Compile Include="Facade\UserFacadeIntegration.cs" />
     <Compile Include="FactoryIntegration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SerializationUtil.cs" />
