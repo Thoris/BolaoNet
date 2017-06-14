@@ -79,7 +79,9 @@
     <Compile Include="DadosBasicos\IEstadioService.cs" />
     <Compile Include="DadosBasicos\IPagamentoTipoService.cs" />
     <Compile Include="DadosBasicos\ITimeService.cs" />
+    <Compile Include="Facade\Campeonatos\ICopaMundo2014DataFacadeService.cs" />
     <Compile Include="Facade\Campeonatos\ICopaMundoFacadeService.cs" />
+    <Compile Include="Facade\Campeonatos\IStructureCopaMundoFacadeService.cs" />
     <Compile Include="Facade\IBolaoFacadeService.cs" />
     <Compile Include="Facade\ICampeonatoFacadeService.cs" />
     <Compile Include="Facade\IInitializationFacadeService.cs" />

@@ -8,7 +8,7 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
 {
     public class BolaoCopaMundo2014UserApostasAppTests
     {
-         #region Variables
+        #region Variables
 
         private Application.Interfaces.Users.IUserApp _userApp;
         private Application.Interfaces.Boloes.IJogoUsuarioApp _jogoUsuarioApp;
@@ -16,7 +16,6 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
         private Application.Interfaces.Boloes.IBolaoApp _bolaoApp;
         private Application.Interfaces.Boloes.IBolaoMembroApp _bolaoMembroApp;
         private Application.Interfaces.Campeonatos.ICampeonatoApp _campeonatoApp;
-        //private Application.Interfaces.Facade.IBolaoFacadeApp _bolaoFacadeApp;
         private Application.Interfaces.Facade.IUserFacadeApp _userFacadeApp;
         private Application.Interfaces.Boloes.IApostaExtraApp _apostaExtraApp;
 
@@ -41,9 +40,25 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
 
         //}
 
-        public BolaoCopaMundo2014UserApostasAppTests()
+        public BolaoCopaMundo2014UserApostasAppTests(
+             Application.Interfaces.Users.IUserApp userApp,
+            Application.Interfaces.Boloes.IJogoUsuarioApp jogoUsuarioApp,
+            Application.Interfaces.Campeonatos.IJogoApp jogoApp,
+            Application.Interfaces.Boloes.IBolaoApp bolaoApp,
+            Application.Interfaces.Boloes.IBolaoMembroApp bolaoMembroApp,
+            Application.Interfaces.Campeonatos.ICampeonatoApp campeonatoApp,
+            Application.Interfaces.Facade.IUserFacadeApp userFacadeApp,
+            Application.Interfaces.Boloes.IApostaExtraApp apostaExtraApp
+            )
         {
-
+            _userApp = userApp;
+            _jogoUsuarioApp = jogoUsuarioApp;
+            _jogoApp = jogoApp;
+            _bolaoApp = bolaoApp;
+            _bolaoMembroApp = bolaoMembroApp;
+            _campeonatoApp = campeonatoApp;
+            _userFacadeApp = userFacadeApp;
+            _apostaExtraApp = apostaExtraApp;
         }
 
         #endregion

@@ -10,35 +10,67 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
     {
         #region Variables
 
-        protected Interfaces.Services.DadosBasicos.ITimeService _timeBO;
-        protected Interfaces.Services.Campeonatos.ICampeonatoService _campeonatoBO;
-        protected Interfaces.Services.Campeonatos.ICampeonatoTimeService _campeonatoTimeBO;
-        protected Interfaces.Services.Campeonatos.ICampeonatoFaseService _campeonatoFaseBO;
-        protected Interfaces.Services.Campeonatos.ICampeonatoGrupoService _campeonatoGrupoBO;
-        protected Interfaces.Services.Campeonatos.ICampeonatoGrupoTimeService _campeonatoGrupoTimeBO;
-        protected Interfaces.Services.DadosBasicos.IEstadioService _estadioBO;
-        protected Interfaces.Services.Campeonatos.IJogoService _jogoBO;
-        protected Interfaces.Services.Campeonatos.ICampeonatoPosicaoService _campeonatoPosicaoBO;
+        protected Interfaces.Services.DadosBasicos.ITimeService _timeService;
+        protected Interfaces.Services.Campeonatos.ICampeonatoService _campeonatoService;
+        protected Interfaces.Services.Campeonatos.ICampeonatoTimeService _campeonatoTimeService;
+        protected Interfaces.Services.Campeonatos.ICampeonatoFaseService _campeonatoFaseService;
+        protected Interfaces.Services.Campeonatos.ICampeonatoGrupoService _campeonatoGrupoService;
+        protected Interfaces.Services.Campeonatos.ICampeonatoGrupoTimeService _campeonatoGrupoTimeService;
+        protected Interfaces.Services.DadosBasicos.IEstadioService _estadioService;
+        protected Interfaces.Services.Campeonatos.IJogoService _jogoService;
+        protected Interfaces.Services.Campeonatos.ICampeonatoPosicaoService _campeonatoPosicaoService;
+
+        private Domain.Entities.Campeonatos.Campeonato _campeonato;
         
-        protected Interfaces.Services.Facade.ICampeonatoFacadeService _campeonatoFacadeBO;
-        
+        #endregion
+
+        #region Properties
+
+        public Domain.Entities.Campeonatos.Campeonato Campeonato 
+        {
+            get { return _campeonato; }
+            protected set { _campeonato = value; }
+        }
+
         #endregion
 
         #region Constructors/Destructors
 
-        public BaseCopaMundoFacadeService(Interfaces.Services.IFactoryService factory)
-        {            
-            //_timeService = factory.CreateTimeService();
-            //_campeonatoService = factory.CreateCampeonatoService();
-            //_campeonatoTimeService = factory.CreateCampeonatoTimeService();
-            //_campeonatoFaseService = factory.CreateCampeonatoFaseService();
-            //_campeonatoGrupoService = factory.CreateCampeonatoGrupoService();
-            //_campeonatoGrupoTimeService = factory.CreateCampeonatoGrupoTimeService();
-            //_estadioService = factory.CreateEstadioService();
-            //_jogoService = factory.CreateJogoService();
-            //_campeonatoPosicaoService = factory.CreateCampeonatoPosicaoService();
-            
+        public BaseCopaMundoFacadeService(
+            Interfaces.Services.DadosBasicos.ITimeService timeService,
+            Interfaces.Services.Campeonatos.ICampeonatoService campeonatoService,
+            Interfaces.Services.Campeonatos.ICampeonatoTimeService campeonatoTimeService,
+            Interfaces.Services.Campeonatos.ICampeonatoFaseService campeonatoFaseService,
+            Interfaces.Services.Campeonatos.ICampeonatoGrupoService campeonatoGrupoService,
+            Interfaces.Services.Campeonatos.ICampeonatoGrupoTimeService campeonatoGrupoTimeService,
+            Interfaces.Services.DadosBasicos.IEstadioService estadioService,
+            Interfaces.Services.Campeonatos.IJogoService jogoService,
+            Interfaces.Services.Campeonatos.ICampeonatoPosicaoService campeonatoPosicaoService
+            )
+        {
+            _timeService = timeService;
+            _campeonatoService = campeonatoService;
+            _campeonatoTimeService = campeonatoTimeService;
+            _campeonatoFaseService = campeonatoFaseService;
+            _campeonatoGrupoService = campeonatoGrupoService;
+            _campeonatoGrupoTimeService = campeonatoGrupoTimeService;
+            _estadioService = estadioService;
+            _jogoService = jogoService;
+            _campeonatoPosicaoService = campeonatoPosicaoService;
         }
+        //public BaseCopaMundoFacadeService(Interfaces.Services.IFactoryService factory)
+        //{            
+        //    //_timeService = factory.CreateTimeService();
+        //    //_campeonatoService = factory.CreateCampeonatoService();
+        //    //_campeonatoTimeService = factory.CreateCampeonatoTimeService();
+        //    //_campeonatoFaseService = factory.CreateCampeonatoFaseService();
+        //    //_campeonatoGrupoService = factory.CreateCampeonatoGrupoService();
+        //    //_campeonatoGrupoTimeService = factory.CreateCampeonatoGrupoTimeService();
+        //    //_estadioService = factory.CreateEstadioService();
+        //    //_jogoService = factory.CreateJogoService();
+        //    //_campeonatoPosicaoService = factory.CreateCampeonatoPosicaoService();
+            
+        //}
 
         #endregion
 
@@ -322,6 +354,7 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
 
             return list;
         }
+        
         public IList<Entities.Campeonatos.Jogo> Merge(IList<Entities.Campeonatos.Jogo> baseList, IList<Entities.Campeonatos.Jogo> mergeList)
         {
             if (baseList == null)
@@ -358,14 +391,14 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
 
             #region Estadio
 
-            StoreData<Entities.DadosBasicos.Estadio>(_estadioBO,
+            StoreData<Entities.DadosBasicos.Estadio>(_estadioService,
                 new Entities.DadosBasicos.Estadio(jogo.NomeEstadio));
 
             #endregion
             
             #region Campeonato Grupos
 
-            StoreData<Entities.Campeonatos.CampeonatoGrupo>(_campeonatoGrupoBO,
+            StoreData<Entities.Campeonatos.CampeonatoGrupo>(_campeonatoGrupoService,
                 new Entities.Campeonatos.CampeonatoGrupo(jogo.NomeGrupo, campeonato.Nome));
 
             #endregion
@@ -378,14 +411,14 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
                 {
                     IsClube = isClube
                 };
-                StoreData<Entities.DadosBasicos.Time>(_timeBO, time1);
+                StoreData<Entities.DadosBasicos.Time>(_timeService, time1);
 
 
                 Entities.DadosBasicos.Time time2 = new Entities.DadosBasicos.Time(jogo.NomeTime2)
                 {
                     IsClube = isClube
                 };
-                StoreData<Entities.DadosBasicos.Time>(_timeBO, time2);
+                StoreData<Entities.DadosBasicos.Time>(_timeService, time2);
 
 
             #endregion
@@ -393,16 +426,16 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             #region CampeonatosTimes
 
 
-                StoreData<Entities.Campeonatos.CampeonatoTime>(_campeonatoTimeBO,
+                StoreData<Entities.Campeonatos.CampeonatoTime>(_campeonatoTimeService,
                     new Entities.Campeonatos.CampeonatoTime(time1.Nome, campeonato.Nome));
-                StoreData<Entities.Campeonatos.CampeonatoTime>(_campeonatoTimeBO,
+                StoreData<Entities.Campeonatos.CampeonatoTime>(_campeonatoTimeService,
                     new Entities.Campeonatos.CampeonatoTime(time2.Nome, campeonato.Nome));
 
             #endregion
 
             #region Fases
 
-            StoreData<Entities.Campeonatos.CampeonatoFase>(_campeonatoFaseBO,
+            StoreData<Entities.Campeonatos.CampeonatoFase>(_campeonatoFaseService,
                 new Entities.Campeonatos.CampeonatoFase(jogo.NomeFase, campeonato.Nome));
 
             #endregion
@@ -410,9 +443,9 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             #region Campeonato Grupos Times
 
 
-                StoreData<Entities.Campeonatos.CampeonatoGrupoTime>(_campeonatoGrupoTimeBO,
+                StoreData<Entities.Campeonatos.CampeonatoGrupoTime>(_campeonatoGrupoTimeService,
                     new Entities.Campeonatos.CampeonatoGrupoTime(time1.Nome, jogo.NomeGrupo, campeonato.Nome));
-                StoreData<Entities.Campeonatos.CampeonatoGrupoTime>(_campeonatoGrupoTimeBO,
+                StoreData<Entities.Campeonatos.CampeonatoGrupoTime>(_campeonatoGrupoTimeService,
                     new Entities.Campeonatos.CampeonatoGrupoTime(time2.Nome, jogo.NomeGrupo, campeonato.Nome));
             }
 
@@ -420,7 +453,7 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
 
             #region Campeonato Fases
 
-            StoreData<Entities.Campeonatos.CampeonatoFase>(_campeonatoFaseBO,
+            StoreData<Entities.Campeonatos.CampeonatoFase>(_campeonatoFaseService,
                new Entities.Campeonatos.CampeonatoFase(jogo.NomeFase, campeonato.Nome));
 
             #endregion
@@ -429,7 +462,7 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
 
             if (!IsAlreadyStored(jogo))
             {
-                long total = _jogoBO.Insert(jogo);
+                long total = _jogoService.Insert(jogo);
             }
 
             #endregion
@@ -439,7 +472,7 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
         }
         public bool IsAlreadyStored(Entities.Campeonatos.Jogo jogo)
         {
-            Entities.Campeonatos.Jogo jogoLoaded = _jogoBO.Load(jogo);
+            Entities.Campeonatos.Jogo jogoLoaded = _jogoService.Load(jogo);
 
             if (jogoLoaded == null)
                 return false;
@@ -473,14 +506,12 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             jogo.PenaltisTime2 = penaltis2;
 
 
-            _jogoBO.InsertResult(jogo, golsTime1, penaltis1, golsTime2, penaltis2, setCurrentData, validadoBy);
-            //_campeonatoFacadeBO.InsertJogo(jogo);
-
+            _jogoService.InsertResult(jogo, golsTime1, penaltis1, golsTime2, penaltis2, setCurrentData, validadoBy);
             
             return true;
         }
 
-        public IList<Entities.Campeonatos.CampeonatoPosicao> GetCampeonatoPosicoes(Entities.Campeonatos.Campeonato campeonato, string nomeFase)
+        public virtual IList<Entities.Campeonatos.CampeonatoPosicao> GetCampeonatoPosicoes(Entities.Campeonatos.Campeonato campeonato, string nomeFase)
         {
             IList<Entities.Campeonatos.CampeonatoPosicao> list = new List<Entities.Campeonatos.CampeonatoPosicao>();
 
