@@ -191,51 +191,51 @@ namespace BolaoNet.Infra.Data.EF
 
 
 
-            modelBuilder.Configurations.Add(new Mapping.Boloes.ApostaExtraConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.Boloes.ApostaExtraUsuarioConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.Boloes.ApostaPontosConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.Boloes.ApostasRestantesConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.Boloes.BolaoCampeonatoClassificacaoUsuarioConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.Boloes.BolaoConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.Boloes.BolaoCriterioPontosConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.Boloes.BolaoCriterioPontosTimesConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.Boloes.BolaoMembroClassificacaoConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.Boloes.BolaoMembroConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.Boloes.BolaoMembroGrupoConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.Boloes.BolaoPontoRodadaConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.Boloes.BolaoPontoRodadaUsuarioConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.Boloes.BolaoPontuacaoConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.Boloes.BolaoPremioConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.Boloes.BolaoRegraConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.Boloes.BolaoRequestConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.Boloes.BolaoRequestStatusConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.Boloes.CriterioConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.Boloes.JogoUsuarioConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.Boloes.MensagemConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.Boloes.PagamentoConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.Boloes.PontuacaoConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.Boloes.ApostaExtraConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.Boloes.ApostaExtraUsuarioConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.Boloes.ApostaPontosConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.Boloes.ApostasRestantesConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.Boloes.BolaoCampeonatoClassificacaoUsuarioConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.Boloes.BolaoConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.Boloes.BolaoCriterioPontosConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.Boloes.BolaoCriterioPontosTimesConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.Boloes.BolaoMembroClassificacaoConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.Boloes.BolaoMembroConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.Boloes.BolaoMembroGrupoConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.Boloes.BolaoPontoRodadaConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.Boloes.BolaoPontoRodadaUsuarioConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.Boloes.BolaoPontuacaoConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.Boloes.BolaoPremioConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.Boloes.BolaoRegraConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.Boloes.BolaoRequestConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.Boloes.BolaoRequestStatusConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.Boloes.CriterioConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.Boloes.JogoUsuarioConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.Boloes.MensagemConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.Boloes.PagamentoConfiguration());
+            ////modelBuilder.Configurations.Add(new Mapping.Boloes.PontuacaoConfiguration());
 
-            modelBuilder.Configurations.Add(new Mapping.Campeonatos.CampeonatoClassificacaoConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.Campeonatos.CampeonatoConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.Campeonatos.CampeonatoFaseConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.Campeonatos.CampeonatoGrupoConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.Campeonatos.CampeonatoGrupoTimeConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.Campeonatos.CampeonatoHistoricoConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.Campeonatos.CampeonatoPosicaoConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.Campeonatos.CampeonatoRecordConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.Campeonatos.CampeonatoTimeConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.Campeonatos.HistoricoConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.Campeonatos.JogoConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.Campeonatos.PontuacaoConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.Campeonatos.CampeonatoClassificacaoConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.Campeonatos.CampeonatoConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.Campeonatos.CampeonatoFaseConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.Campeonatos.CampeonatoGrupoConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.Campeonatos.CampeonatoGrupoTimeConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.Campeonatos.CampeonatoHistoricoConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.Campeonatos.CampeonatoPosicaoConfiguration());
+            ////modelBuilder.Configurations.Add(new Mapping.Campeonatos.CampeonatoRecordConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.Campeonatos.CampeonatoTimeConfiguration());
+            ////modelBuilder.Configurations.Add(new Mapping.Campeonatos.HistoricoConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.Campeonatos.JogoConfiguration());
+            ////modelBuilder.Configurations.Add(new Mapping.Campeonatos.PontuacaoConfiguration());
 
-            modelBuilder.Configurations.Add(new Mapping.DadosBasicos.CriterioFixoConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.DadosBasicos.EstadioConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.DadosBasicos.PagamentoTipoConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.DadosBasicos.TimeConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.DadosBasicos.CriterioFixoConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.DadosBasicos.EstadioConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.DadosBasicos.PagamentoTipoConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.DadosBasicos.TimeConfiguration());
 
-            modelBuilder.Configurations.Add(new Mapping.Users.RoleConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.Users.UserConfiguration());
-            modelBuilder.Configurations.Add(new Mapping.Users.UserInRoleConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.Users.RoleConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.Users.UserConfiguration());
+            //modelBuilder.Configurations.Add(new Mapping.Users.UserInRoleConfiguration());
 
 
             base.OnModelCreating(modelBuilder);
