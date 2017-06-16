@@ -18,37 +18,23 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
         private Application.Interfaces.Campeonatos.ICampeonatoApp _campeonatoApp;
         private Application.Interfaces.Facade.IUserFacadeApp _userFacadeApp;
         private Application.Interfaces.Boloes.IApostaExtraApp _apostaExtraApp;
-
+        private Application.Interfaces.Facade.Campeonatos.ICopaMundo2014FacadeApp _copaMundo2014FacadeApp;
         //private Application.Interfaces.IFactoryBO _factory;
 
         #endregion
 
         #region Constructors/Destructors
-
-        //public BolaoCopaMundo2014UserApostasAppTests(BolaoNet.Business.Interfaces.IFactoryBO factory)
-        //{
-        //    _factory = factory;
-        //    _userBO = factory.CreateUserBO();
-        //    _jogoUsuarioBO = factory.CreateJogoUsuarioBO();
-        //    _jogoBO = factory.CreateJogoBO();
-        //    _bolaoBO = factory.CreateBolaoBO();
-        //    _bolaoMembroBO = factory.CreateBolaoMembroBO();
-        //    _campeonatoBO = factory.CreateCampeonatoBO();
-        //    _bolaoFacadeBO = factory.CreateBolaoFacadeBO();
-        //    _userFacadeBO = factory.CreateUserFacadeBO();
-        //    _apostaExtraBO = factory.CreateApostaExtraBO();
-
-        //}
-
+      
         public BolaoCopaMundo2014UserApostasAppTests(
-             Application.Interfaces.Users.IUserApp userApp,
+            Application.Interfaces.Users.IUserApp userApp,
             Application.Interfaces.Boloes.IJogoUsuarioApp jogoUsuarioApp,
             Application.Interfaces.Campeonatos.IJogoApp jogoApp,
             Application.Interfaces.Boloes.IBolaoApp bolaoApp,
             Application.Interfaces.Boloes.IBolaoMembroApp bolaoMembroApp,
             Application.Interfaces.Campeonatos.ICampeonatoApp campeonatoApp,
             Application.Interfaces.Facade.IUserFacadeApp userFacadeApp,
-            Application.Interfaces.Boloes.IApostaExtraApp apostaExtraApp
+            Application.Interfaces.Boloes.IApostaExtraApp apostaExtraApp,
+            Application.Interfaces.Facade.Campeonatos.ICopaMundo2014FacadeApp copaMundo2014FacadeApp
             )
         {
             _userApp = userApp;
@@ -59,6 +45,7 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
             _campeonatoApp = campeonatoApp;
             _userFacadeApp = userFacadeApp;
             _apostaExtraApp = apostaExtraApp;
+            _copaMundo2014FacadeApp = copaMundo2014FacadeApp;
         }
 
         #endregion
@@ -363,6 +350,20 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
 
         //}
         
+        #endregion
+
+        #region Tests
+
+        public void TestCreateBolaoCopaDoMundo2014()
+        {
+            Domain.Entities.Campeonatos.Campeonato campeonato =
+                _copaMundo2014FacadeApp.CreateCampeonato("Copa do Mundo 2014", false);
+
+
+            _copaMundo2014FacadeApp.InsertResults(new Domain.Entities.Users.User("thoris"));
+
+        }
+
         #endregion
     }
 }

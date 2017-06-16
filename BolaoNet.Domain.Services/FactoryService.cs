@@ -392,7 +392,8 @@ namespace BolaoNet.Domain.Services
 
         public Interfaces.Services.Facade.IUserFacadeService CreateUserFacadeService()
         {
-            return new Facade.UserFacadeService(_userName, this);
+            //return new Facade.UserFacadeService(_userName, this);
+            return null;
         }
 
         #endregion

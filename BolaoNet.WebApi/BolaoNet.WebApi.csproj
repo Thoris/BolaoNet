@@ -129,6 +129,7 @@
     <Folder Include="Areas\DadosBasicos\Views\Shared\" />
     <Folder Include="Areas\Facade\Models\" />
     <Folder Include="Areas\Facade\Views\Shared\" />
+    <Folder Include="Areas\Facade\Views\StructureCopaMundoFacade\" />
     <Folder Include="Areas\Facade\Views\UserFacade\" />
     <Folder Include="Areas\Users\Models\" />
     <Folder Include="Areas\Users\Views\Shared\" />
@@ -180,6 +181,8 @@
     <Compile Include="Areas\DadosBasicos\Controllers\PagamentoTipoController.cs" />
     <Compile Include="Areas\DadosBasicos\Controllers\TimeController.cs" />
     <Compile Include="Areas\DadosBasicos\DadosBasicosAreaRegistration.cs" />
+    <Compile Include="Areas\Facade\Controllers\CopaMundo2014FacadeController.cs" />
+    <Compile Include="Areas\Facade\Controllers\StructureCopaMundoFacadeController.cs" />
     <Compile Include="Areas\Facade\Controllers\UserFacadeController.cs" />
     <Compile Include="Areas\Facade\FacadeAreaRegistration.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />

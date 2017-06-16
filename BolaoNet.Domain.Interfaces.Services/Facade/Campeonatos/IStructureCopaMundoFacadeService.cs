@@ -8,7 +8,6 @@ namespace BolaoNet.Domain.Interfaces.Services.Facade.Campeonatos
 {
     public interface IStructureCopaMundoFacadeService
     {
-        Entities.Campeonatos.Campeonato Campeonato { get; }
 
         Entities.Campeonatos.Campeonato CreateCampeonato(string nomeCampeonato, bool isTime);
 

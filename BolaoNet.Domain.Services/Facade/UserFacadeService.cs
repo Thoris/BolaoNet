@@ -13,21 +13,24 @@ namespace BolaoNet.Domain.Services.Facade
 
 
         private string _currentUserName;
-        private Interfaces.Services.Users.IUserService _userBO;
-        private Interfaces.Services.Users.IUserInRoleService _userInRoleBO;
-        private Interfaces.Services.Boloes.IBolaoRequestService _bolaoRequestBO;
+        private Interfaces.Services.Users.IUserService _userService;
+        private Interfaces.Services.Users.IUserInRoleService _userInRoleService;
+        private Interfaces.Services.Boloes.IBolaoRequestService _bolaoRequestService;
 
         #endregion
 
         #region Constructors/Destructors
 
-        public UserFacadeService(string currentUserName, Interfaces.Services.IFactoryService factory)
+        public UserFacadeService(string userName, 
+            Interfaces.Services.Users.IUserService userService, 
+            Interfaces.Services.Users.IUserInRoleService userInRoleService, 
+            Interfaces.Services.Boloes.IBolaoRequestService bolaoRequestService)
         {
-            _userBO = factory.CreateUserService();
-            _userInRoleBO = factory.CreateUserInRoleService();
-            _bolaoRequestBO = factory.CreateBolaoRequestService();
+            _userService = userService;
+            _userInRoleService = userInRoleService;
+            _bolaoRequestService = bolaoRequestService;
 
-            _currentUserName = currentUserName;
+            _currentUserName = userName;
         }
 
         #endregion
@@ -45,13 +48,13 @@ namespace BolaoNet.Domain.Services.Facade
 
             user.ActivateKey = GenerateActivationCode(user);
 
-            long res = _userBO.Insert(user);
+            long res = _userService.Insert(user);
 
             if (roles != null)
             {
                 for (int c=0; c < roles.Length; c++)
                 {
-                    _userInRoleBO.Insert(new Entities.Users.UserInRole(user.UserName, roles[c].RoleName));
+                    _userInRoleService.Insert(new Entities.Users.UserInRole(user.UserName, roles[c].RoleName));
                 }
             }
 
@@ -78,7 +81,7 @@ namespace BolaoNet.Domain.Services.Facade
 
         public bool ActivateUser(Entities.Users.User user, string activationCode)
         {
-            Entities.Users.User userLoaded = _userBO.Load(user);
+            Entities.Users.User userLoaded = _userService.Load(user);
 
             if (string.Compare(userLoaded.ActivateKey, activationCode, true) != 0)
                 throw new Exception("Activation Code is not valid");
@@ -88,7 +91,7 @@ namespace BolaoNet.Domain.Services.Facade
             userLoaded.ApprovedDate = DateTime.Now;
             userLoaded.ApprovedBy = _currentUserName;
 
-            return _userBO.Update(userLoaded);
+            return _userService.Update(userLoaded);
 
         }
         public bool SendRequestUserBolao(Entities.Users.User user, Entities.Boloes.Bolao bolao)

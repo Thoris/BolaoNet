@@ -86,6 +86,7 @@
     <Compile Include="Facade\Campeonatos\BaseCopaMundoFacadeService.cs" />
     <Compile Include="Facade\Campeonatos\BaseStructureCopaMundoFacadeService.cs" />
     <Compile Include="Facade\Campeonatos\CopaMundo2014DataFacadeService.cs" />
+    <Compile Include="Facade\Campeonatos\CopaMundo2014FacadeService.cs" />
     <Compile Include="Facade\Campeonatos\StructureCopaMundoFacadeService.cs" />
     <Compile Include="Facade\InitializationFacadeService.cs" />
     <Compile Include="Facade\UserFacadeService.cs" />

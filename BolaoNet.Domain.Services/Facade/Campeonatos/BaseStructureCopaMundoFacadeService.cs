@@ -15,6 +15,12 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
         private const string SecondPlaceForeColorName = "White";
         private const string SecondPlaceBackColorName = "Green";
 
+        protected const string FaseClassificatoria = "Classificatória";
+        protected const string FaseOitavasFinal = "Oitavas de Final";
+        protected const string FaseQuartasFinal = "Quartas de Final";
+        protected const string FaseSemiFinal = "Semi finais";
+        protected const string FaseFinal = "Final";
+
         #endregion
 
         #region Variables

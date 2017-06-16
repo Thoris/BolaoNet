@@ -13,7 +13,8 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
 
         public override void Load()
         {
-
+            Bind<Infra.Data.EF.Base.IUnitOfWork>().To<Infra.Data.EF.UnitOfWork>();
+            
 
             Bind(typeof(Domain.Interfaces.Repositories.Base.IGenericDao<>)).To(typeof(Infra.Data.EF.Base.BaseRepositoryDao<>));
 

@@ -30,6 +30,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ReferencedComponents\EntityFramework\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\ReferencedComponents\EntityFramework\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\ReferencedComponents\log4net\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
@@ -47,6 +57,8 @@
     <Compile Include="Modules\InfrastructureNinjectModule.cs" />
     <Compile Include="Modules\RepositoryNinjectModule.cs" />
     <Compile Include="Modules\ServiceNinjectModule.cs" />
+    <Compile Include="Modules\WebApiIntegrationNinjectModule.cs" />
+    <Compile Include="Modules\WebApiNinjectModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -73,9 +85,25 @@
       <Project>{a75056e8-0a9d-47aa-a4ed-a521329610bf}</Project>
       <Name>BolaoNet.Domain.Services</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Infra.CrossCutting.Logging\BolaoNet.Infra.CrossCutting.Logging.csproj">
+      <Project>{d5662387-a5aa-46a5-bcc2-ef728c777edf}</Project>
+      <Name>BolaoNet.Infra.CrossCutting.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Infra.Data.EF.Mapping\BolaoNet.Infra.Data.EF.Mapping.csproj">
+      <Project>{ff32f8b8-0bbd-48ae-ac10-e23d989ce562}</Project>
+      <Name>BolaoNet.Infra.Data.EF.Mapping</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BolaoNet.Infra.Data.EF\BolaoNet.Infra.Data.EF.csproj">
       <Project>{d0a5e0bf-24a1-40a3-ab36-603db298ceb3}</Project>
       <Name>BolaoNet.Infra.Data.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.WebApi.Integration\BolaoNet.WebApi.Integration.csproj">
+      <Project>{2af5e54a-613c-4a7a-896c-9f946593c8f5}</Project>
+      <Name>BolaoNet.WebApi.Integration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.WebApi\BolaoNet.WebApi.csproj">
+      <Project>{660c66ef-6adc-4f74-bac3-c05e12f5008f}</Project>
+      <Name>BolaoNet.WebApi</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

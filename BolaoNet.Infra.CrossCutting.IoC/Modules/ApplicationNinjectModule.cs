@@ -58,6 +58,11 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
             Bind<Application.Interfaces.Users.IRoleApp>().To<Application.Users.RoleApp>();
             Bind<Application.Interfaces.Users.IUserApp>().To<Application.Users.UserApp>();
             Bind<Application.Interfaces.Users.IUserInRoleApp>().To<Application.Users.UserInRoleApp>();
+
+
+            Bind<Application.Interfaces.Facade.IUserFacadeApp>().To<Application.Facade.UserFacadeApp>();
+            Bind<Application.Interfaces.Facade.Campeonatos.ICopaMundo2014FacadeApp>().To<Application.Facade.Campeonatos.CopaMundo2014FacadeApp>();
+            Bind<Application.Interfaces.Facade.Campeonatos.IStructureCopaMundoFacadeApp>().To<Application.Facade.Campeonatos.StructureCopaMundoFacadeApp>();
             
         }
 

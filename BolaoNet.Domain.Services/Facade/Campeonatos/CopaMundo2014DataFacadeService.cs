@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace BolaoNet.Domain.Services.Facade.Campeonatos
 {
     public class CopaMundo2014DataFacadeService 
-        : BaseCopaMundoFacadeService, Interfaces.Services.Facade.Campeonatos.ICopaMundoFacadeService
+        : BaseCopaMundoFacadeService
     {
         #region Constructors/Destructors
 

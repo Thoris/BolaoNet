@@ -58,37 +58,30 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
 
             return campeonato;
         }
-
         public IList<Entities.Campeonatos.CampeonatoPosicao> GetCampeonatoPosicoes(string nomeFase)
         {
             return base.GetCampeonatoPosicoes(base.Campeonato, nomeFase);
         }
-
         public IList<Entities.Campeonatos.Jogo> GetJogosOitavas(int rodada, string nomeGrupo, string nomeFase, IList<DateTime> datas, IList<string> estadios, IList<int> ids)
         {
             return base.GetJogosOitavas(base.Campeonato, rodada, nomeGrupo, nomeFase, datas, estadios, ids);
         }
-
         public IList<Entities.Campeonatos.Jogo> GetJogosQuartas(int rodada, string nomeGrupo, string nomeFase, IList<DateTime> datas, IList<string> estadios, IList<int> ids, IList<int> idsGanhadores)
         {
             return base.GetJogosQuartas(base.Campeonato, rodada, nomeGrupo, nomeFase, datas, estadios, ids, idsGanhadores);
         }
-
         public IList<Entities.Campeonatos.Jogo> GetJogosSemi(int rodada, string nomeGrupo, string nomeFase, IList<DateTime> datas, IList<string> estadios, IList<int> ids, IList<int> idsGanhadores)
         {
             return base.GetJogosSemi(base.Campeonato, rodada, nomeGrupo, nomeFase, datas, estadios, ids, idsGanhadores);
         }
-
         public IList<Entities.Campeonatos.Jogo> GetJogosFinal(int rodada, string nomeGrupo, string nomeFase, IList<DateTime> datas, IList<string> estadios, IList<int> ids, IList<int> idsGanhadores)
         {
             return base.GetJogosFinal(base.Campeonato, rodada, nomeGrupo, nomeFase, datas, estadios, ids, idsGanhadores);
         }
-
         public IList<Entities.Campeonatos.Jogo> GetJogosGrupo(string nomeGrupo, string nomeFase, IList<string> times, IList<DateTime> datas, IList<string> estadios, IList<int> ids)
         {
             return base.GetJogosGrupo(base.Campeonato, nomeGrupo, nomeFase, times, datas, estadios, ids);
         }
-
         public bool InsertResult(int jogoID, bool setCurrentData, Entities.Users.User validadoBy, int golsTime1, int golsTime2, int? penaltis1, int? penaltis2)
         {
             return base.InsertResult(base.Campeonato, jogoID, setCurrentData, validadoBy, golsTime1, golsTime2, penaltis1, penaltis2);

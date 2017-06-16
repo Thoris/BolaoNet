@@ -1,4 +1,5 @@
-﻿using Ninject;
+﻿using BolaoNet.Infra.CrossCutting.IoC.Modules;
+using Ninject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,6 @@ namespace BolaoNet.Infra.CrossCutting.IoC
 
         #endregion
 
-
         #region Constructors/Destructors
 
         public IoC()
@@ -30,13 +30,12 @@ namespace BolaoNet.Infra.CrossCutting.IoC
 
         public StandardKernel GetNinjectModules()
         {
-            //return new StandardKernel(
-            //    new ServiceNinjectModule(),
-            //    new InfrastructureNinjectModule(),
-            //    new RepositoryNinjectModule(),
-            //    new ApplicationNinjectModule());
+            return new StandardKernel(
+                new ServiceNinjectModule(),
+                new InfrastructureNinjectModule(),
+                new RepositoryNinjectModule(),
+                new ApplicationNinjectModule());
 
-            return null;
         }
 
         #endregion
