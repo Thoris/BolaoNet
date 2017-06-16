@@ -7,7 +7,8 @@ using System.Web;
 namespace BolaoNet.Services.Areas.DadosBasicos.Controllers
 {
     public class TimeController:
-        GenericApiController<Domain.Entities.DadosBasicos.Time>, Domain.Interfaces.Services.DadosBasicos.ITimeService
+        GenericApiController<Domain.Entities.DadosBasicos.Time>,
+        Domain.Interfaces.Services.DadosBasicos.ITimeService
     {
         #region Properties
 
@@ -23,8 +24,13 @@ namespace BolaoNet.Services.Areas.DadosBasicos.Controllers
 
         #region Constructors/Destructors
 
-        public TimeController()
-            : base(new Domain.Services.FactoryService(null).CreateTimeService())
+        //public TimeController()
+        //    : base(new Domain.Services.FactoryService(null).CreateTimeService())
+        //{
+
+        //}
+        public TimeController(Domain.Interfaces.Services.DadosBasicos.ITimeService service)
+            : base(service)
         {
 
         }

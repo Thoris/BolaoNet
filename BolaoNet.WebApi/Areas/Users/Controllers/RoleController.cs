@@ -7,7 +7,8 @@ using System.Web;
 namespace BolaoNet.Services.Areas.Users.Controllers
 {
     public class RoleController :
-        GenericApiController<Domain.Entities.Users.Role>, Domain.Interfaces.Services.Users.IRoleService 
+        GenericApiController<Domain.Entities.Users.Role>, 
+        Domain.Interfaces.Services.Users.IRoleService 
     {
         #region Properties
 
@@ -23,11 +24,17 @@ namespace BolaoNet.Services.Areas.Users.Controllers
 
         #region Constructors/Destructors
 
-        public RoleController()
-            : base(new Domain.Services.FactoryService(null).CreateRoleService())
+        //public RoleController()
+        //    : base(new Domain.Services.FactoryService(null).CreateRoleService())
+        //{
+
+        //}
+        public RoleController(Domain.Interfaces.Services.Users.IRoleService service)
+            : base(service)
         {
 
         }
+
 
         #endregion
 

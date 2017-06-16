@@ -24,8 +24,13 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
         #region Constructors/Destructors
 
-        public ApostasRestantesController()
-            : base(new Domain.Services.FactoryService(null).CreateApostasRestantesService())
+        //public ApostasRestantesController()
+        //    : base(new Domain.Services.FactoryService(null).CreateApostasRestantesService())
+        //{
+
+        //}
+        public ApostasRestantesController(Domain.Interfaces.Services.Boloes.IApostasRestantesService service)
+            : base(service)
         {
 
         }

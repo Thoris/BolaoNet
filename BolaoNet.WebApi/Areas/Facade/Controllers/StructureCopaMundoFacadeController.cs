@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BolaoNet.Services.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,8 +7,20 @@ using System.Web.Mvc;
 
 namespace BolaoNet.WebApi.Areas.Facade.Controllers
 {
-    public class StructureCopaMundoFacadeController : Domain.Interfaces.Services.Facade.Campeonatos.IStructureCopaMundoFacadeService
+    public class StructureCopaMundoFacadeController : AuthorizationController,
+        Domain.Interfaces.Services.Facade.Campeonatos.IStructureCopaMundoFacadeService
     {
+
+        #region Constructors/Destructors
+
+        public StructureCopaMundoFacadeController()
+        {
+
+        }
+
+        #endregion
+
+        #region IStructureCopaMundoFacadeService members
 
         public Domain.Entities.Campeonatos.Campeonato CreateCampeonato(string nomeCampeonato, bool isTime)
         {
@@ -48,5 +61,7 @@ namespace BolaoNet.WebApi.Areas.Facade.Controllers
         {
             throw new NotImplementedException();
         }
+
+        #endregion
     }
 }

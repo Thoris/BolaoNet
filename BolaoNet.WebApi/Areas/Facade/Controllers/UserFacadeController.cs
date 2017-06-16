@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using BolaoNet.Services.Controllers;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,9 +9,9 @@ using System.Web.Mvc;
 
 namespace BolaoNet.WebApi.Areas.Facade.Controllers
 {
-    public class UserFacadeController : Domain.Interfaces.Services.Facade.IUserFacadeService
+    public class UserFacadeController : AuthorizationController,
+        Domain.Interfaces.Services.Facade.IUserFacadeService
     {
-
         #region Variables
         
         private Domain.Interfaces.Services.Facade.IUserFacadeService _service;
@@ -19,14 +20,18 @@ namespace BolaoNet.WebApi.Areas.Facade.Controllers
 
         #region Constructors/Destructors
 
-        public UserFacadeController()
-            //: base(new Domain.Services.FactoryService(null).cre())
+        //public UserFacadeController()
+        //    //: base(new Domain.Services.FactoryService(null).cre())
+        //{
+        //    _service = new Domain.Services.FactoryService(null).CreateUserFacadeService();
+        //}
+
+        public UserFacadeController(Domain.Interfaces.Services.Facade.IUserFacadeService service)        
         {
-            _service = new Domain.Services.FactoryService(null).CreateUserFacadeService();
+            _service = service;
         }
 
         #endregion
-
 
         #region IUserFacadeService members
 

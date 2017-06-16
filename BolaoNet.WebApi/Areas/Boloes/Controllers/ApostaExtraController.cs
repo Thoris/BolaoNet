@@ -27,8 +27,13 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
         #region Constructors/Destructors
 
-        public ApostaExtraController()
-            : base(new Domain.Services.FactoryService(null).CreateApostaExtraService())
+        //public ApostaExtraController()
+        //    : base(new Domain.Services.FactoryService(null).CreateApostaExtraService())
+        //{
+
+        //}
+        public ApostaExtraController(Domain.Interfaces.Services.Boloes.IApostaExtraService service)
+            : base(service)
         {
 
         }

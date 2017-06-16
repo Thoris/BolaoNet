@@ -7,7 +7,8 @@ using System.Web;
 namespace BolaoNet.Services.Areas.DadosBasicos.Controllers
 {
     public class CriterioFixoController :
-        GenericApiController<Domain.Entities.DadosBasicos.CriterioFixo>, Domain.Interfaces.Services.DadosBasicos.ICriterioFixoService 
+        GenericApiController<Domain.Entities.DadosBasicos.CriterioFixo>, 
+        Domain.Interfaces.Services.DadosBasicos.ICriterioFixoService 
     {
         #region Properties
 
@@ -23,8 +24,13 @@ namespace BolaoNet.Services.Areas.DadosBasicos.Controllers
 
         #region Constructors/Destructors
 
-        public CriterioFixoController()
-            : base(new Domain.Services.FactoryService(null).CreateCriterioFixoService())
+        //public CriterioFixoController()
+        //    : base(new Domain.Services.FactoryService(null).CreateCriterioFixoService())
+        //{
+
+        //}
+        public CriterioFixoController(Domain.Interfaces.Services.DadosBasicos.ICriterioFixoService service)
+            : base(service)
         {
 
         }

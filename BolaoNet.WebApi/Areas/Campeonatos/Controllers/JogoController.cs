@@ -27,8 +27,13 @@ namespace BolaoNet.Services.Areas.Campeonatos.Controllers
 
         #region Constructors/Destructors
 
-        public JogoController()
-            : base(new Domain.Services.FactoryService(null).CreateJogoService())
+        //public JogoController()
+        //    : base(new Domain.Services.FactoryService(null).CreateJogoService())
+        //{
+
+        //}
+        public JogoController(Domain.Interfaces.Services.Campeonatos.IJogoService service)
+            : base(service)
         {
 
         }

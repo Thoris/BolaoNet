@@ -7,7 +7,8 @@ using System.Web;
 namespace BolaoNet.Services.Areas.Boloes.Controllers
 {
     public class MensagemController:
-        GenericApiController<Domain.Entities.Boloes.Mensagem>, Domain.Interfaces.Services.Boloes.IMensagemService
+        GenericApiController<Domain.Entities.Boloes.Mensagem>, 
+        Domain.Interfaces.Services.Boloes.IMensagemService
     {
         #region Properties
 
@@ -23,8 +24,13 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
         #region Constructors/Destructors
 
-        public MensagemController()
-            : base(new Domain.Services.FactoryService(null).CreateMensagemService())
+        //public MensagemController()
+        //    : base(new Domain.Services.FactoryService(null).CreateMensagemService())
+        //{
+
+        //}
+        public MensagemController(Domain.Interfaces.Services.Boloes.IMensagemService service)
+            : base(service)
         {
 
         }

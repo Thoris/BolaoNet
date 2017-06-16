@@ -45,6 +45,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -100,10 +101,6 @@
     <ProjectReference Include="..\BolaoNet.WebApi.Integration\BolaoNet.WebApi.Integration.csproj">
       <Project>{2af5e54a-613c-4a7a-896c-9f946593c8f5}</Project>
       <Name>BolaoNet.WebApi.Integration</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BolaoNet.WebApi\BolaoNet.WebApi.csproj">
-      <Project>{660c66ef-6adc-4f74-bac3-c05e12f5008f}</Project>
-      <Name>BolaoNet.WebApi</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -24,8 +24,13 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
         #region Constructors/Destructors
 
-        public BolaoPontuacaoController()
-            : base(new Domain.Services.FactoryService(null).CreateBolaoPontuacaoService())
+        //public BolaoPontuacaoController()
+        //    : base(new Domain.Services.FactoryService(null).CreateBolaoPontuacaoService())
+        //{
+
+        //}
+        public BolaoPontuacaoController(Domain.Interfaces.Services.Boloes.IBolaoPontuacaoService service)
+            : base(service)
         {
 
         }

@@ -7,7 +7,8 @@ using System.Web;
 namespace BolaoNet.Services.Areas.Boloes.Controllers
 {
     public class PontuacaoController:
-        GenericApiController<Domain.Entities.Boloes.Pontuacao>, Domain.Interfaces.Services.Boloes.IPontuacaoService
+        GenericApiController<Domain.Entities.Boloes.Pontuacao>, 
+        Domain.Interfaces.Services.Boloes.IPontuacaoService
     {
         #region Properties
 
@@ -23,8 +24,13 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
         #region Constructors/Destructors
 
-        public PontuacaoController()
-            : base(new Domain.Services.FactoryService(null).CreatePontuacaoService())
+        //public PontuacaoController()
+        //    : base(new Domain.Services.FactoryService(null).CreatePontuacaoService())
+        //{
+
+        //}
+        public PontuacaoController(Domain.Interfaces.Services.Boloes.IPontuacaoService service)
+            : base(service)
         {
 
         }

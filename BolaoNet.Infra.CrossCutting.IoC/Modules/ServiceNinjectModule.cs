@@ -14,7 +14,6 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
         public override void Load()
         {
             string userName = "";
-            string url = "http://localhost:9586/";
 
             Bind<Domain.Interfaces.Services.Logging.ILogging>().To<Infra.CrossCutting.Logging.Logger>();
 
@@ -62,7 +61,7 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
             Bind<Domain.Interfaces.Services.DadosBasicos.IPagamentoTipoService>().To<Domain.Services.DadosBasicos.PagamentoTipoService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.DadosBasicos.ITimeService>().To<Domain.Services.DadosBasicos.TimeService>().WithConstructorArgument("userName", userName);
 
-            //Bind<Domain.Interfaces.Services.Users.IUserService>().To<Domain.Services.Users.UserService>().WithConstructorArgument("userName", userName);
+            Bind<Domain.Interfaces.Services.Users.IUserService>().To<Domain.Services.Users.UserService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Users.IRoleService>().To<Domain.Services.Users.RoleService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Users.IUserInRoleService>().To<Domain.Services.Users.UserInRoleService>().WithConstructorArgument("userName", userName);
 
@@ -70,18 +69,6 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
             Bind<Domain.Interfaces.Services.Facade.IUserFacadeService>().To<Domain.Services.Facade.UserFacadeService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Facade.Campeonatos.IStructureCopaMundoFacadeService>().To<Domain.Services.Facade.Campeonatos.StructureCopaMundoFacadeService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Facade.Campeonatos.ICopaMundo2014FacadeService>().To<Domain.Services.Facade.Campeonatos.CopaMundo2014FacadeService>().WithConstructorArgument("userName", userName);
-
-
-
-
-            Bind<Domain.Interfaces.Services.Users.IUserService>().To<WebApi.Integration.Users.UserIntegration>()
-                .When(request => request.Target.Type.Namespace.StartsWith("BolaoNet.Application"))
-                .WithConstructorArgument("url", url);
-
-            //Bind<Domain.Interfaces.Services.Users.IUserService>().To<Domain.Services.Users.UserService>()
-            //    .When(request => request.Target.Type.Namespace.StartsWith("BolaoNet.WebApi"))
-            //    .WithConstructorArgument("userName", userName);
-                
 
 
         }

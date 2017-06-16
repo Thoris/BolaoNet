@@ -24,8 +24,13 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
         #region Constructors/Destructors
 
-        public BolaoRequestStatusController()
-            : base(new Domain.Services.FactoryService(null).CreateBolaoRequestStatusService())
+        //public BolaoRequestStatusController()
+        //    : base(new Domain.Services.FactoryService(null).CreateBolaoRequestStatusService())
+        //{
+
+        //}
+        public BolaoRequestStatusController(Domain.Interfaces.Services.Boloes.IBolaoRequestStatusService service)
+            : base(service)
         {
 
         }

@@ -24,8 +24,13 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
         #region Constructors/Destructors
 
-        public BolaoPremioController()
-            : base(new Domain.Services.FactoryService(null).CreateBolaoPremioService())
+        //public BolaoPremioController()
+        //    : base(new Domain.Services.FactoryService(null).CreateBolaoPremioService())
+        //{
+
+        //}
+        public BolaoPremioController(Domain.Interfaces.Services.Boloes.IBolaoPremioService service)
+            : base(service)
         {
 
         }

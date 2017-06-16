@@ -31,11 +31,17 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
         #region Constructors/Destructors
 
-        public BolaoController()
-            : base(new Domain.Services.FactoryService(null).CreateBolaoService())
+        //public BolaoController()
+        //    : base(new Domain.Services.FactoryService(null).CreateBolaoService())
+        //{
+
+        //}
+        public BolaoController(Domain.Interfaces.Services.Boloes.IBolaoService service)
+            : base(service)
         {
 
         }
+
 
         #endregion
 

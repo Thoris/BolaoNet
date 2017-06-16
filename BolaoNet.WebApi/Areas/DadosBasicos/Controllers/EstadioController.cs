@@ -7,7 +7,8 @@ using System.Web;
 namespace BolaoNet.Services.Areas.DadosBasicos.Controllers
 {
     public class EstadioController:
-        GenericApiController<Domain.Entities.DadosBasicos.Estadio>, Domain.Interfaces.Services.DadosBasicos.IEstadioService
+        GenericApiController<Domain.Entities.DadosBasicos.Estadio>, 
+        Domain.Interfaces.Services.DadosBasicos.IEstadioService
     {
         #region Properties
 
@@ -23,11 +24,17 @@ namespace BolaoNet.Services.Areas.DadosBasicos.Controllers
 
         #region Constructors/Destructors
 
-        public EstadioController()
-            : base(new Domain.Services.FactoryService(null).CreateEstadioService())
+        //public EstadioController()
+        //    : base(new Domain.Services.FactoryService(null).CreateEstadioService())
+        //{
+
+        //}
+        public EstadioController(Domain.Interfaces.Services.DadosBasicos.IEstadioService service)
+            : base(service)
         {
 
         }
+
 
         #endregion
 

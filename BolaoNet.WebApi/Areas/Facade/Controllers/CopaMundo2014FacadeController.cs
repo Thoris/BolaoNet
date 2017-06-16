@@ -18,7 +18,6 @@ namespace BolaoNet.WebApi.Areas.Facade.Controllers
 
         #endregion
 
-
         #region Constructors/Destructors
 
         public CopaMundo2014FacadeController(Domain.Interfaces.Services.Facade.Campeonatos.ICopaMundo2014FacadeService service)
@@ -33,8 +32,8 @@ namespace BolaoNet.WebApi.Areas.Facade.Controllers
         [HttpPost]
         public Domain.Entities.Campeonatos.Campeonato CreateCampeonato(int id, ArrayList data)
         {
-            string nomeCampeonato = JsonConvert.DeserializeObject<string>(data[0].ToString());
-            bool isClube = JsonConvert.DeserializeObject<bool>(data[1].ToString());
+            string nomeCampeonato = data[0].ToString();
+            bool isClube = bool.Parse (data[1].ToString());
 
             return this.CreateCampeonato(nomeCampeonato, isClube);
         }

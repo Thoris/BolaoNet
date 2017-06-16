@@ -29,6 +29,11 @@ namespace BolaoNet.Services.Areas.Campeonatos.Controllers
         {
 
         }
+        public CampeonatoController(Domain.Interfaces.Services.Campeonatos.ICampeonatoService service)
+            : base(service)
+        {
+
+        }
 
         #endregion
 

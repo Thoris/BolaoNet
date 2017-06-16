@@ -7,7 +7,8 @@ using System.Web;
 namespace BolaoNet.Services.Areas.Boloes.Controllers
 {
     public class PagamentoController:
-        GenericApiController<Domain.Entities.Boloes.Pagamento>, Domain.Interfaces.Services.Boloes.IPagamentoService
+        GenericApiController<Domain.Entities.Boloes.Pagamento>, 
+        Domain.Interfaces.Services.Boloes.IPagamentoService
     {
         #region Properties
 
@@ -23,8 +24,13 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
         #region Constructors/Destructors
 
-        public PagamentoController()
-            : base(new Domain.Services.FactoryService(null).CreatePagamentoService())
+        //public PagamentoController()
+        //    : base(new Domain.Services.FactoryService(null).CreatePagamentoService())
+        //{
+
+        //}
+        public PagamentoController(Domain.Interfaces.Services.Boloes.IPagamentoService service)
+            : base(service)
         {
 
         }

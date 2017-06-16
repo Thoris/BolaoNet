@@ -3,6 +3,9 @@ using BolaoNet.Application.Interfaces.Campeonatos;
 using BolaoNet.Application.Interfaces.Facade;
 using BolaoNet.Application.Interfaces.Facade.Campeonatos;
 using BolaoNet.Application.Interfaces.Users;
+using BolaoNet.Domain.Interfaces.Repositories.Users;
+using BolaoNet.Domain.Interfaces.Services.Facade.Campeonatos;
+using BolaoNet.Domain.Interfaces.Services.Users;
 using Ninject;
 using System;
 using System.Collections.Generic;
@@ -25,7 +28,12 @@ namespace BolaoNet.Tests
             CopaDoMundoTests.CopaDoMundo2014Tests.BolaoCopaMundo2014UserApostasAppTests test;
 
 
+            ICopaMundo2014FacadeService copaFacadeService = kernel.Get<ICopaMundo2014FacadeService>();
+
+            IUserDao userDao = kernel.Get<IUserDao>();
+            IUserService userService = kernel.Get<IUserService>();
             IUserApp userApp = kernel.Get<IUserApp>();
+            
 
 
             test = new CopaDoMundoTests.CopaDoMundo2014Tests.BolaoCopaMundo2014UserApostasAppTests(

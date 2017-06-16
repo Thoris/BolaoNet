@@ -24,8 +24,13 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
         #region Constructors/Destructors
 
-        public ApostaPontosController()
-            : base(new Domain.Services.FactoryService(null).CreateApostaPontosService())
+        //public ApostaPontosController()
+        //    : base(new Domain.Services.FactoryService(null).CreateApostaPontosService())
+        //{
+
+        //}
+        public ApostaPontosController( Domain.Interfaces.Services.Boloes.IApostaPontosService service)
+            : base(service)
         {
 
         }

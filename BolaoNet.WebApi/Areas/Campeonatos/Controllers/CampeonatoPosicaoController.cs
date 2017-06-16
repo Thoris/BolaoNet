@@ -24,8 +24,13 @@ namespace BolaoNet.Services.Areas.Campeonatos.Controllers
 
         #region Constructors/Destructors
 
-        public CampeonatoPosicaoController()
-            : base(new Domain.Services.FactoryService(null).CreateCampeonatoPosicaoService())
+        //public CampeonatoPosicaoController()
+        //    : base(new Domain.Services.FactoryService(null).CreateCampeonatoPosicaoService())
+        //{
+
+        //}
+        public CampeonatoPosicaoController(Domain.Interfaces.Services.Campeonatos.ICampeonatoPosicaoService service)
+            : base(service)
         {
 
         }

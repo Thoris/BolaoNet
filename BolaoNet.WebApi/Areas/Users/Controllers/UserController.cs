@@ -7,7 +7,8 @@ using System.Web;
 namespace BolaoNet.Services.Areas.Users.Controllers
 {
     public class UserController:
-        GenericApiController<Domain.Entities.Users.User>, Domain.Interfaces.Services.Users.IUserService 
+        GenericApiController<Domain.Entities.Users.User>, 
+        Domain.Interfaces.Services.Users.IUserService 
     {
         #region Properties
 
@@ -23,8 +24,13 @@ namespace BolaoNet.Services.Areas.Users.Controllers
 
         #region Constructors/Destructors
 
-        public UserController()
-            : base(new Domain.Services.FactoryService(null).CreateUserService())
+        //public UserController()
+        //    : base(new Domain.Services.FactoryService(null).CreateUserService())
+        //{
+
+        //}
+        public UserController(Domain.Interfaces.Services.Users.IUserService service)
+            : base(service)
         {
 
         }
