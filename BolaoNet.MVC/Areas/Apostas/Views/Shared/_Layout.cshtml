@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutBase.cshtml";
+}
+
+@section header
+{
+    @RenderSection("header", required: false)
+}
+
+
+@RenderBody()
+
+@section scripts
+{
+    @RenderSection("scripts", required: false)
+}

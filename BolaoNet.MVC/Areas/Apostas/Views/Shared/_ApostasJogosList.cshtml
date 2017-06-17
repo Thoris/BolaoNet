@@ -1,0 +1,16 @@
+﻿@model BolaoNet.MVC.ViewModels.Apostas.ApostasJogosListVO
+
+<div class="container">
+    <div class="row">
+        
+        @Html.Partial("_FiltroJogos", Model)
+
+    </div>
+    <div class="row">
+        <div class="col-ld-12">
+
+            @Html.Partial("_JogosList", Model)
+
+        </div>
+    </div>
+</div>
