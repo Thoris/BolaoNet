@@ -137,6 +137,8 @@
     <Compile Include="Areas\Pontuacao\PontuacaoAreaRegistration.cs" />
     <Compile Include="Areas\Regras\RegrasAreaRegistration.cs" />
     <Compile Include="Areas\Resultados\ResultadosAreaRegistration.cs" />
+    <Compile Include="Areas\Users\Controllers\AccessController.cs" />
+    <Compile Include="Areas\Users\Controllers\BaseUserController.cs" />
     <Compile Include="Areas\Users\UsersAreaRegistration.cs" />
     <Compile Include="Areas\Visitante\VisitanteAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -167,6 +169,12 @@
     <Content Include="Areas\Apostas\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Apostas\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Apostas\Views\ApostasJogos\Jogos.cshtml" />
+    <Content Include="Areas\Users\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Users\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Users\Views\Access\Login.cshtml" />
+    <Content Include="Areas\Users\Views\Access\ForgotPassword.cshtml" />
+    <Content Include="Areas\Users\Views\Access\RegistrationForm.cshtml" />
+    <Content Include="Areas\Users\Views\Access\ActivateCode.cshtml" />
     <None Include="Content\js_old\jquery-1.10.2.intellisense.js" />
     <Content Include="Content\js_old\jquery-1.10.2.js" />
     <Content Include="Content\js_old\jquery-1.10.2.min.js" />
@@ -411,9 +419,7 @@
     <Folder Include="Areas\Resultados\Controllers\" />
     <Folder Include="Areas\Resultados\Models\" />
     <Folder Include="Areas\Resultados\Views\Shared\" />
-    <Folder Include="Areas\Users\Controllers\" />
     <Folder Include="Areas\Users\Models\" />
-    <Folder Include="Areas\Users\Views\Shared\" />
     <Folder Include="Areas\Visitante\Controllers\" />
     <Folder Include="Areas\Visitante\Models\" />
     <Folder Include="Areas\Visitante\Views\Shared\" />

@@ -17,10 +17,10 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
 
         public ActionResult Jogos()
         {
-            MVC.ViewModels.Apostas.ApostasJogosListVO vo = new ViewModels.Apostas.ApostasJogosListVO();
+            MVC.ViewModels.Apostas.ApostasJogosListViewModel vo = new ViewModels.Apostas.ApostasJogosListViewModel();
 
 
-            vo.Apostas.Add(new ViewModels.Apostas.ApostaJogoEntryVO()
+            vo.Apostas.Add(new ViewModels.Apostas.ApostaJogoEntryViewModel()
             {
                 Automatico = true,
                 DataAposta = DateTime.Now,
@@ -38,7 +38,7 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
                 Time1 = "Argentina",
                 Time2 = "Argentina",
             });
-            vo.Apostas.Add(new ViewModels.Apostas.ApostaJogoEntryVO()
+            vo.Apostas.Add(new ViewModels.Apostas.ApostaJogoEntryViewModel()
             {
                 Automatico = null,
                 DataAposta = DateTime.Now,
@@ -56,7 +56,7 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
                 Time1 = "Argentina",
                 Time2 = "Argentina",
             });
-            vo.Apostas.Add(new ViewModels.Apostas.ApostaJogoEntryVO()
+            vo.Apostas.Add(new ViewModels.Apostas.ApostaJogoEntryViewModel()
             {
                 Automatico = null,
                 DataAposta = DateTime.Now,
@@ -74,7 +74,7 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
                 Time1 = "Argentina",
                 Time2 = "Argentina",
             });
-            vo.Apostas.Add(new ViewModels.Apostas.ApostaJogoEntryVO()
+            vo.Apostas.Add(new ViewModels.Apostas.ApostaJogoEntryViewModel()
             {
                 Automatico = null,
                 DataAposta = DateTime.Now,
@@ -92,7 +92,7 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
                 Time1 = "Argentina",
                 Time2 = "Argentina",
             });
-            vo.Apostas.Add(new ViewModels.Apostas.ApostaJogoEntryVO()
+            vo.Apostas.Add(new ViewModels.Apostas.ApostaJogoEntryViewModel()
             {
                 Automatico = null,
                 DataJogo = DateTime.Now,
@@ -109,7 +109,7 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
                 Time1 = "Argentina",
                 Time2 = "Argentina",
             });
-            vo.Apostas.Add(new ViewModels.Apostas.ApostaJogoEntryVO()
+            vo.Apostas.Add(new ViewModels.Apostas.ApostaJogoEntryViewModel()
             {
                 Automatico = null,
                 DataJogo = DateTime.Now,
@@ -128,7 +128,7 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
             });
 
 
-            vo.Apostas.Add(new ViewModels.Apostas.ApostaJogoEntryVO()
+            vo.Apostas.Add(new ViewModels.Apostas.ApostaJogoEntryViewModel()
             {
                 Automatico = null,
                 DataJogo = DateTime.Now,
@@ -145,7 +145,7 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
                 Time1 = "Argentina",
                 Time2 = "Argentina",
             });
-            vo.Apostas.Add(new ViewModels.Apostas.ApostaJogoEntryVO()
+            vo.Apostas.Add(new ViewModels.Apostas.ApostaJogoEntryViewModel()
             {
                 Automatico = null,
                 DataJogo = DateTime.Now,
@@ -162,7 +162,7 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
                 Time1 = "Argentina",
                 Time2 = "Argentina",
             });
-            vo.Apostas.Add(new ViewModels.Apostas.ApostaJogoEntryVO()
+            vo.Apostas.Add(new ViewModels.Apostas.ApostaJogoEntryViewModel()
             {
                 Automatico = null,
                 DataJogo = DateTime.Now,
@@ -179,7 +179,7 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
                 Time1 = "Argentina",
                 Time2 = "Argentina",
             });
-            vo.Apostas.Add(new ViewModels.Apostas.ApostaJogoEntryVO()
+            vo.Apostas.Add(new ViewModels.Apostas.ApostaJogoEntryViewModel()
             {
                 Automatico = null,
                 DataJogo = DateTime.Now,
@@ -198,7 +198,7 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
             });
 
 
-            vo.Apostas.Add(new ViewModels.Apostas.ApostaJogoEntryVO()
+            vo.Apostas.Add(new ViewModels.Apostas.ApostaJogoEntryViewModel()
             {
                 Automatico = null,
                 DataJogo = DateTime.Now,
@@ -215,7 +215,7 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
                 Time1 = "Argentina",
                 Time2 = "Argentina",
             });
-            vo.Apostas.Add(new ViewModels.Apostas.ApostaJogoEntryVO()
+            vo.Apostas.Add(new ViewModels.Apostas.ApostaJogoEntryViewModel()
             {
                 Automatico = null,
                 DataJogo = DateTime.Now,
@@ -234,7 +234,7 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
             });
 
 
-            vo.Apostas.Add(new ViewModels.Apostas.ApostaJogoEntryVO()
+            vo.Apostas.Add(new ViewModels.Apostas.ApostaJogoEntryViewModel()
             {
                 Automatico = null,
                 DataJogo = DateTime.Now,
@@ -251,7 +251,7 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
                 Time1 = "Argentina",
                 Time2 = "Argentina",
             });
-            vo.Apostas.Add(new ViewModels.Apostas.ApostaJogoEntryVO()
+            vo.Apostas.Add(new ViewModels.Apostas.ApostaJogoEntryViewModel()
             {
                 Automatico = null,
                 DataJogo = DateTime.Now,
@@ -271,7 +271,7 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
 
 
 
-            vo.Apostas.Add(new ViewModels.Apostas.ApostaJogoEntryVO()
+            vo.Apostas.Add(new ViewModels.Apostas.ApostaJogoEntryViewModel()
             {
                 Automatico = null,
                 DataJogo = DateTime.Now,
@@ -287,7 +287,7 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
                 Rodada = 5,
                 Time1 = "Argentina",
                 Time2 = "Argentina",
-            }); vo.Apostas.Add(new ViewModels.Apostas.ApostaJogoEntryVO()
+            }); vo.Apostas.Add(new ViewModels.Apostas.ApostaJogoEntryViewModel()
             {
                 Automatico = null,
                 DataJogo = DateTime.Now,
