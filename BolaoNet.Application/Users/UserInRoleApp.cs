@@ -32,5 +32,14 @@ namespace BolaoNet.Application.Users
         }
 
         #endregion
+
+        #region IUserInRoleApp members
+
+        public IList<Domain.Entities.Users.Role> GetRolesInUser(Domain.Entities.Users.User user)
+        {
+            return Service.GetRolesInUser(user);
+        }
+
+        #endregion
     }
 }

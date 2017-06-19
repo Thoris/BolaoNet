@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BolaoNet.MVC.ViewModels.Users
+namespace BolaoNet.MVC.ViewModels.Account
 {
     public class ActivationCodeViewModel
     {

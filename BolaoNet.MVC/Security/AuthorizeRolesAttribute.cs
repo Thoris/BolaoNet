@@ -41,15 +41,15 @@ namespace BolaoNet.MVC.Security
 
         #region Methods
 
-        private IList<PermissionLevel> GetApprovedUserPermissionlevels()
-        {
-            IList<PermissionLevel> theApprovedRoles = new List<PermissionLevel>();
+        //private IList<PermissionLevel> GetApprovedUserPermissionlevels()
+        //{
+        //    IList<PermissionLevel> theApprovedRoles = new List<PermissionLevel>();
 
-            // theApprovedRoles.Add(UserPermissionLevelEnum.SuperAdmin);
-            //  theApprovedRoles.Add(UserPermissionLevelEnum.Admin);
+        //    // theApprovedRoles.Add(UserPermissionLevelEnum.SuperAdmin);
+        //    //  theApprovedRoles.Add(UserPermissionLevelEnum.Admin);
 
-            return theApprovedRoles;
-        }
+        //    return theApprovedRoles;
+        //}
 
         #endregion
 
@@ -112,16 +112,16 @@ namespace BolaoNet.MVC.Security
             if (!httpContext.User.Identity.IsAuthenticated)
                 return false;
 
-            IList<PermissionLevel> theApprovedPermissionLevelList = GetApprovedUserPermissionlevels();
+            //IList<PermissionLevel> theApprovedPermissionLevelList = GetApprovedUserPermissionlevels();
 
-            foreach (PermissionLevel permissionLevel in allowedPermissionLevels)
-            {
-                if (theApprovedPermissionLevelList.Any(a => a == permissionLevel) == true)
-                {
-                    //authorize = true;
-                    return true;
-                }
-            }
+            //foreach (PermissionLevel permissionLevel in allowedPermissionLevels)
+            //{
+            //    if (theApprovedPermissionLevelList.Any(a => a == permissionLevel) == true)
+            //    {
+            //        //authorize = true;
+            //        return true;
+            //    }
+            //}
 
             return authorize;
         }
@@ -141,7 +141,6 @@ namespace BolaoNet.MVC.Security
 
 
         #endregion
-
 
     }
 

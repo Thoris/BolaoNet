@@ -35,13 +35,13 @@ namespace BolaoNet.Domain.Services.Users
             Entities.Users.User userLoaded = this.Load(new Entities.Users.User(userName));
 
             if (userLoaded == null)            
-                return new Entities.Base.Common.Validation.ValidationResult().Add("User is not found.");
+                return new Entities.Base.Common.Validation.ValidationResult().Add("Usuário não encontrado.");
 
             if (userLoaded.IsLockedOut)
-                return new Entities.Base.Common.Validation.ValidationResult().Add("User is locked.");
+                return new Entities.Base.Common.Validation.ValidationResult().Add("Usuário bloqueado.");
 
             if (!userLoaded.IsApproved)
-                return new Entities.Base.Common.Validation.ValidationResult().Add("User is not approved.");
+                return new Entities.Base.Common.Validation.ValidationResult().Add("Usuário ainda não ativado.");
 
             if (string.Compare(password, userLoaded.Password) != 0)
             {
@@ -50,7 +50,7 @@ namespace BolaoNet.Domain.Services.Users
 
                 this.Update(userLoaded);
 
-                return new Entities.Base.Common.Validation.ValidationResult().Add("Password is incorrect.");
+                return new Entities.Base.Common.Validation.ValidationResult().Add("Senha incorreta.");
             }
             else
             {
@@ -76,7 +76,7 @@ namespace BolaoNet.Domain.Services.Users
             Entities.Users.User userLoaded = this.Load(user);
 
             if (userLoaded != null)
-                return new Entities.Base.Common.Validation.ValidationResult().Add("User is already in database.");
+                return new Entities.Base.Common.Validation.ValidationResult().Add("Usuário já existente.");
 
 
             long total = this.Insert(user);
@@ -103,16 +103,16 @@ namespace BolaoNet.Domain.Services.Users
                 throw new ArgumentException("confirmPassord");
 
             if (string.Compare(newPassword, confirmPassword) != 0)
-                return new Entities.Base.Common.Validation.ValidationResult().Add("Password confirmation is not valid");
+                return new Entities.Base.Common.Validation.ValidationResult().Add("Confirmação de senha inválida.");
 
 
             Entities.Users.User userLoaded = this.Load(new Entities.Users.User(userName));
 
             if (userLoaded == null)
-                return new Entities.Base.Common.Validation.ValidationResult().Add("User is not found");
+                return new Entities.Base.Common.Validation.ValidationResult().Add("Usuário não encontrado.");
 
             if (string.Compare(userLoaded.Password, oldPassword) != 0)
-                return new Entities.Base.Common.Validation.ValidationResult().Add("Old password is not the same");
+                return new Entities.Base.Common.Validation.ValidationResult().Add("Senha antiga não confere.");
 
 
             bool updatedResult = this.Update(userLoaded);
@@ -134,7 +134,7 @@ namespace BolaoNet.Domain.Services.Users
             Entities.Users.User userLoaded = this.Load(user);
 
             if (userLoaded == null)
-                throw new Exception("User " + user.UserName + " is not found");
+                throw new Exception("Usuário " + user.UserName + " não encontrado.");
 
             string activationKey = "teste";
 
@@ -159,10 +159,10 @@ namespace BolaoNet.Domain.Services.Users
             Entities.Users.User userLoaded = this.Load(user);
 
             if (userLoaded == null)
-                return new Entities.Base.Common.Validation.ValidationResult().Add("User is not found");
+                return new Entities.Base.Common.Validation.ValidationResult().Add("Usuário não encontrado.");
 
             if (string.Compare(userLoaded.ActivateKey, activationCode) != 0)
-                return new Entities.Base.Common.Validation.ValidationResult().Add("Activation code is not valid");
+                return new Entities.Base.Common.Validation.ValidationResult().Add("Código de ativação inválido.");
 
             if (!userLoaded.IsApproved)
             {

@@ -16,14 +16,16 @@ namespace BolaoNet.MVC.Controllers
         #region Variables
 
         private Application.Users.UserApp _userApp;
+        private Application.Users.UserInRoleApp _userInRoleApp;
 
         #endregion
 
         #region Constructors/Destructors
 
-        public AccountController(Application.Users.UserApp userApp)
+        public AccountController(Application.Users.UserApp userApp, Application.Users.UserInRoleApp userInRoleApp)
         {
             _userApp = userApp;
+            _userInRoleApp = userInRoleApp;
         }
 
         #endregion
@@ -31,16 +33,14 @@ namespace BolaoNet.MVC.Controllers
         #region Actions
 
         [HttpGet]
-        [AllowAnonymous]
         public ActionResult Login()
         {         
             return View();
         }
 
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(ViewModels.Users.LoginViewModel model)
+        public ActionResult Login(ViewModels.Account.LoginViewModel model, string returnUrl)
         {
             if (!ModelState.IsValid)
             {
@@ -56,12 +56,26 @@ namespace BolaoNet.MVC.Controllers
             }
 
 
+            Domain.Entities.Users.User user = _userApp.Load(new Domain.Entities.Users.User(model.UserName));
+
+            IList<Domain.Entities.Users.Role> roles = _userInRoleApp.GetRolesInUser(user);
+
+            string[] roleStrings = null;
+            if (roles.Count > 0)
+            {
+                roleStrings = new string[roles.Count];
+                for (int c=0; c < roles.Count; c++)
+                {
+                    roleStrings[c] = roles[c].RoleName;
+                }
+            }
+
             Security.UserModelState userModel = new Security.UserModelState()
             {
                 UserName = model.UserName,
-                FirstName = "First Name",
-                LastName = "last Name",
-                Roles = new string[] { "Admin" }
+                FirstName = user.FullName,
+                LastName = "",
+                Roles = roleStrings
             };
             
             Security.AuthenticationManagement.SaveAuthentication(Response, userModel, model.RememberMe);
@@ -69,9 +83,27 @@ namespace BolaoNet.MVC.Controllers
             //FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
             //return RedirectToAction("Index", "Home");
 
-            return new RedirectToRouteResult(new
-                            RouteValueDictionary(new { controller = "Home", action = "Index" }));
+            if (string.IsNullOrEmpty(returnUrl))
+            {
+                return new RedirectToRouteResult(new
+                   RouteValueDictionary(new { controller = "Home", action = "Index" }));
+            }
+            else
+            {
+                return RedirectToLocal(returnUrl);
+            }
+        }
 
+        private ActionResult RedirectToLocal(string returnUrl)
+        {
+            if (Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         public ActionResult Logout()
@@ -80,10 +112,17 @@ namespace BolaoNet.MVC.Controllers
             return RedirectToAction("Index", "Home");
         }
         
+        [HttpGet]
         public ActionResult ForgotPassword()
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult ForgotPassword(ViewModels.Account.ForgotPasswordViewModel model)
+        {
+            return View();
+        }
+
         
         [HttpGet]
         public ActionResult RegistrationForm()
@@ -92,21 +131,28 @@ namespace BolaoNet.MVC.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult RegistrationForm(ViewModels.Users.RegistrationUserViewModel model)
+        public ActionResult RegistrationForm(ViewModels.Account.RegistrationUserViewModel model)
         {
             if (!ModelState.IsValid)
             {
                 return View();
             }
 
-            Domain.Entities.Users.User data = Mapper.Map<ViewModels.Users.RegistrationUserViewModel, Domain.Entities.Users.User>(model);
+            Domain.Entities.Users.User data = Mapper.Map<ViewModels.Account.RegistrationUserViewModel, Domain.Entities.Users.User>(model);
 
             //_userApp.RegisterUser()
 
             return View();
         }
 
+        [HttpGet]        
         public ActionResult ActivateCode()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ActivateCode(ViewModels.Account.ActivationCodeViewModel model)
         {
             return View();
         }

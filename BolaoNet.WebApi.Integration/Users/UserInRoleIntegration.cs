@@ -32,5 +32,14 @@ namespace BolaoNet.WebApi.Integration.Users
         }
 
         #endregion
+
+        #region IUserInRoleService members
+
+        public IList<Domain.Entities.Users.Role> GetRolesInUser(Domain.Entities.Users.User user)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

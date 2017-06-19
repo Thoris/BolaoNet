@@ -179,33 +179,38 @@ namespace BolaoNet.Infra.Data.EF.Base
         {
             try
             {
-                var entry = _context.Entry<T>(entity);
-
-                if (entry.State == EntityState.Detached)
-                {
-                    var set = _context.Set<T>();
-
-                    Domain.Entities.Base.BaseEntity data = entity as Domain.Entities.Base.BaseEntity;
-
-                    T attachedEntity = set.Find(data.GetKeys());
-
-                    if (attachedEntity != null)
-                    {
-                        var attachedEntry = _context.Entry(attachedEntity);
-                        attachedEntry.CurrentValues.SetValues(entity);
-                    }
-                    else
-                    {
-                        entry.State = EntityState.Modified; // This should attach entity
-                    }
-                }
-
+                _context.Entry<T>(entity).State = EntityState.Modified;
                 int result = _context.Save();
 
-                if (result == 0)
-                    return 1;
-
                 return result;
+
+                //var entry = _context.Entry<T>(entity);
+
+                //if (entry.State == EntityState.Detached)
+                //{
+                //    var set = _context.Set<T>();
+
+                //    Domain.Entities.Base.BaseEntity data = entity as Domain.Entities.Base.BaseEntity;
+
+                //    T attachedEntity = set.Find(data.GetKeys());
+
+                //    if (attachedEntity != null)
+                //    {
+                //        var attachedEntry = _context.Entry(attachedEntity);
+                //        attachedEntry.CurrentValues.SetValues(entity);
+                //    }
+                //    else
+                //    {
+                //        entry.State = EntityState.Modified; // This should attach entity
+                //    }
+                //}
+
+                //int result = _context.Save();
+
+                //if (result == 0)
+                //    return 1;
+
+                //return result;
 
                 #region Comments
                 //_entities.Entry(entity).State = System.Data.EntityState.Modified;

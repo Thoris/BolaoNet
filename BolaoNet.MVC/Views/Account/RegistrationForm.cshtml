@@ -1,4 +1,8 @@
-﻿@model BolaoNet.MVC.ViewModels.Users.RegistrationUserViewModel
+﻿@model BolaoNet.MVC.ViewModels.Account.RegistrationUserViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutBase.cshtml";
+}
 
 @*<div class="panel panel-primary" style="margin:20px;">*@
 <div class="panel" style="margin:20px;">
@@ -6,7 +10,7 @@
         <h3 class="panel-title">Formulário de Cadastro</h3>
     </div>
     <div class="panel-body">
-        @using(Html.BeginForm("RegistrationForm", "Access", FormMethod.Post, new {}))
+        @using(Html.BeginForm("RegistrationForm", "Account", FormMethod.Post, new {}))
         {
         @*<form>*@
             <div class="col-md-12 col-sm-12">
@@ -51,7 +55,7 @@
                     @*<label for="email">Email*</label>
                     <input type="email" class="form-control input-sm" id="email" placeholder="Email">*@
                     @Html.LabelFor(a => a.Email)
-                    @Html.TextBoxFor(a => a.Email, new { @class = "form-control input-sm", @placeholder = "Email" })
+                    @Html.EditorFor(a => a.Email, new { @class = "form-control input-sm", @placeholder = "Email" })
                 </div>
                 <div class="form-group col-md-6 col-sm-6">
                     @*<label for="emailConfirm">Confirmação Email*</label>
