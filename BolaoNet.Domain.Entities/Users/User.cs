@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BolaoNet.Domain.Entities.Base.Common.Interfaces.Validation;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Domain.Entities.Users
 {
-    public class User : Base.AuditModel
+    public class User : Base.BaseSelfValidationEntity, ISelfValidation
     {
         #region Properties
 
@@ -123,6 +124,15 @@ namespace BolaoNet.Domain.Entities.Users
         public User(string userName)
         {
             this.UserName = userName;
+        }
+
+        #endregion
+
+        #region ISelfValidation members
+        
+        public bool IsValid()
+        {
+            return true;
         }
 
         #endregion

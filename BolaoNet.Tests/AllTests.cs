@@ -28,11 +28,11 @@ namespace BolaoNet.Tests
             CopaDoMundoTests.CopaDoMundo2014Tests.BolaoCopaMundo2014UserApostasAppTests test;
 
 
-            ICopaMundo2014FacadeService copaFacadeService = kernel.Get<ICopaMundo2014FacadeService>();
+            //ICopaMundo2014FacadeService copaFacadeService = kernel.Get<ICopaMundo2014FacadeService>();
 
-            IUserDao userDao = kernel.Get<IUserDao>();
-            IUserService userService = kernel.Get<IUserService>();
-            IUserApp userApp = kernel.Get<IUserApp>();
+            //IUserDao userDao = kernel.Get<IUserDao>();
+            //IUserService userService = kernel.Get<IUserService>();
+            //IUserApp userApp = kernel.Get<IUserApp>();
             
 
 
@@ -47,10 +47,10 @@ namespace BolaoNet.Tests
                 kernel.Get<IApostaExtraApp>(),
                 kernel.Get<ICopaMundo2014FacadeApp>()
                 );
-            
 
-                
-            test.TestCreateBolaoCopaDoMundo2014();
+
+            test.TestUserManagement();
+            //test.TestCreateBolaoCopaDoMundo2014();
         }
 
         #endregion

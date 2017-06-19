@@ -40,6 +40,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
@@ -141,6 +144,9 @@
     <Compile Include="Areas\Users\Controllers\BaseUserController.cs" />
     <Compile Include="Areas\Users\UsersAreaRegistration.cs" />
     <Compile Include="Areas\Visitante\VisitanteAreaRegistration.cs" />
+    <Compile Include="AutoMapper\AutoMapperConfig.cs" />
+    <Compile Include="AutoMapper\DomainToViewModelMappingProfile.cs" />
+    <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -437,6 +443,18 @@
     <ProjectReference Include="..\BolaoNet.Application\BolaoNet.Application.csproj">
       <Project>{ed9e722a-a4f1-4774-9325-7057c17284ef}</Project>
       <Name>BolaoNet.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Domain.Entities\BolaoNet.Domain.Entities.csproj">
+      <Project>{862efb06-ac74-4b8d-b338-37d52c90410a}</Project>
+      <Name>BolaoNet.Domain.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Domain.Interfaces.Services\BolaoNet.Domain.Interfaces.Services.csproj">
+      <Project>{c5c21c55-243a-4eae-927a-a10b3b4b7ff4}</Project>
+      <Name>BolaoNet.Domain.Interfaces.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Domain.Services\BolaoNet.Domain.Services.csproj">
+      <Project>{a75056e8-0a9d-47aa-a4ed-a521329610bf}</Project>
+      <Name>BolaoNet.Domain.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\BolaoNet.Infra.CrossCutting.IoC\BolaoNet.Infra.CrossCutting.IoC.csproj">
       <Project>{1bbac3a3-b5eb-49eb-8200-574a99c5b060}</Project>

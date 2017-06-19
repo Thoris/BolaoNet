@@ -1,19 +1,27 @@
-﻿@*<div class="panel panel-primary" style="margin:20px;">*@
+﻿@model BolaoNet.MVC.ViewModels.Users.RegistrationUserViewModel
+
+@*<div class="panel panel-primary" style="margin:20px;">*@
 <div class="panel" style="margin:20px;">
     <div class="panel-heading">
         <h3 class="panel-title">Formulário de Cadastro</h3>
     </div>
     <div class="panel-body">
-        <form>
+        @using(Html.BeginForm("RegistrationForm", "Access", FormMethod.Post, new {}))
+        {
+        @*<form>*@
             <div class="col-md-12 col-sm-12">
 
                 <div class="form-group col-md-4 col-sm-4">
-                    <label for="login">Login*</label>
-                    <input type="text" class="form-control input-sm" id="login" placeholder="Login">
+                    @*<label for="login">Login*</label>
+                    <input type="text" class="form-control input-sm" id="login" placeholder="Login">*@
+                    @Html.LabelFor(a => a.Login)
+                    @Html.TextBoxFor(a => a.Login, new { @class = "form-control input-sm", @placeholder = "Login" })
                 </div>
                 <div class="form-group col-md-8 col-sm-8">
-                    <label for="fullname">Nome Completo* </label>
-                    <input type="text" class="form-control input-sm" id="fullname" placeholder="Nome completo">
+                    @*<label for="fullname">Nome Completo* </label>
+                    <input type="text" class="form-control input-sm" id="fullname" placeholder="Nome completo">*@
+                    @Html.LabelFor(a => a.NomeCompleto)
+                    @Html.TextBoxFor(a => a.NomeCompleto, new { @class = "form-control input-sm", @placeholder = "Nome Completo" })
                 </div>
 
 
@@ -26,33 +34,45 @@
                     </select>
                 </div>
                 <div class="form-group col-md-4 col-sm-4">
-                    <label for="birthday">Data Nascimento</label>
-                    <input type="text" class="form-control input-sm" id="birthday" placeholder="Nascimento">
+                    @*<label for="birthday">Data Nascimento</label>
+                    <input type="text" class="form-control input-sm" id="birthday" placeholder="Nascimento">*@
+                    @Html.LabelFor(a => a.DataNascimento)
+                    @Html.TextBoxFor(a => a.DataNascimento, new { @class = "form-control input-sm", @placeholder = "Nascimento" })
                 </div>
                 <div class="form-group col-md-4 col-sm-4">
-                    <label for="mobile">Telefone*</label>
-                    <input type="text" class="form-control input-sm" id="mobile" placeholder="Telefone">
+                    @*<label for="mobile">Telefone*</label>
+                    <input type="text" class="form-control input-sm" id="mobile" placeholder="Telefone">*@
+                    @Html.LabelFor(a => a.Telefone)
+                    @Html.TextBoxFor(a => a.Telefone, new { @class = "form-control input-sm", @placeholder = "Telefone" })
                 </div>
 
 
                 <div class="form-group col-md-6 col-sm-6">
-                    <label for="email">Email*</label>
-                    <input type="email" class="form-control input-sm" id="email" placeholder="Email">
+                    @*<label for="email">Email*</label>
+                    <input type="email" class="form-control input-sm" id="email" placeholder="Email">*@
+                    @Html.LabelFor(a => a.Email)
+                    @Html.TextBoxFor(a => a.Email, new { @class = "form-control input-sm", @placeholder = "Email" })
                 </div>
                 <div class="form-group col-md-6 col-sm-6">
-                    <label for="emailConfirm">Confirmação Email*</label>
-                    <input type="email" class="form-control input-sm" id="emailConfirm" placeholder="Confirmação do Email">
+                    @*<label for="emailConfirm">Confirmação Email*</label>
+                    <input type="email" class="form-control input-sm" id="emailConfirm" placeholder="Confirmação do Email">*@
+                    @Html.LabelFor(a => a.ConfirmacaoEmail)
+                    @Html.TextBoxFor(a => a.ConfirmacaoEmail, new { @class = "form-control input-sm", @placeholder = "Confirmação do Email" })
                 </div>
 
 
                 <div class="form-group col-md-6 col-sm-6">
-                    <label for="password">Senha*</label>
-                    <input type="password" class="form-control input-sm" id="password" placeholder="Senha">
+                    @*<label for="password">Senha*</label>
+                    <input type="password" class="form-control input-sm" id="password" placeholder="Senha">*@
+                    @Html.LabelFor(a => a.Password)
+                    @Html.PasswordFor(a => a.Password, new { @class = "form-control input-sm", @placeholder = "Senha" })
                 </div>
                 <div class="form-group col-md-6 col-sm-6">
-                    <label for="passwordConfirm">Confirmação da Senha*</label>
-                    <input type="password" class="form-control input-sm" id="passwordConfirm" placeholder="Confirmação da Senha">
-                </div>
+                    @*<label for="passwordConfirm">Confirmação da Senha*</label>
+                    <input type="password" class="form-control input-sm" id="passwordConfirm" placeholder="Confirmação da Senha">*@
+                    @Html.LabelFor(a => a.ConfirmPassword)
+                    @Html.PasswordFor(a => a.ConfirmPassword, new { @class = "form-control input-sm", @placeholder = "Confirmação da Senha" })                
+                 </div>
 
 
                 @*<div class="form-group col-md-6 col-sm-6">
@@ -76,14 +96,16 @@
                 <p class="help-block">Para ativar este serviço, leia atentamente as regras de uso.</p>
 
                 <div class="form-group col-md-6 col-sm-6">
-                    <label for="name">Concordo com os termos</label>
-                    <input type="checkbox" data-toggle="toggle">
+                    @*<label for="name">Concordo com os termos</label>
+                    <input type="checkbox" data-toggle="toggle">*@
+                    @Html.CheckBoxFor(a => a.ConcordoTermos, new { }) Concordo com os termos 
                 </div>
 
                 <div class="form-group col-md-6 col-sm-6">
-                    <label for="name">Quero receber notificações</label>
-                    <input type="checkbox" checked data-toggle="toggle">
+                    @*<label for="name">Quero receber notificações</label>
+                    <input type="checkbox" checked data-toggle="toggle">*@
                     @*<p class="help-block"></p>*@
+                    @Html.CheckBoxFor(a => a.QueroReceberEmail, new {}) Quero receber notificações
                 </div>
 
 
@@ -107,6 +129,7 @@
                         </div>
                     </div>
                 </div>*@
-        </form>
+        @*</form>*@
+        }
     </div>
 </div>

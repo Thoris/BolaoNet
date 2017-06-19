@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BolaoNet.Domain.Entities.Base.Common.Validation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -358,11 +359,48 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
         {
             Domain.Entities.Campeonatos.Campeonato campeonato =
                 _copaMundo2014FacadeApp.CreateCampeonato("Copa do Mundo 2014", false);
-
-
-            _copaMundo2014FacadeApp.InsertResults(new Domain.Entities.Users.User("thoris"));
-
         }
+        public void TestInsertResultsCopaDoMundo2014()
+        {
+            _copaMundo2014FacadeApp.InsertResults(new Domain.Entities.Users.User("thoris"));
+        }
+        public void TestUserManagement()
+        {
+            Domain.Entities.Users.User user = new Domain.Entities.Users.User("testeUser");
+            user.Email = "thorisangelo@hotmail.com";
+            user.FullName = "Thoris Angelo Pivetta";
+            user.Password = "senha01";
+
+            ValidationResult resultRegistrationUser = _userApp.RegisterUser(user);
+
+            if (!resultRegistrationUser.IsValid)
+                return;
+
+
+            string activationCode = _userApp.GenerateActivationCode(user);
+
+            ValidationResult resultActivationCode = _userApp.ApproveUser(user, activationCode);
+
+            if (!resultActivationCode.IsValid)
+                return;
+
+            ValidationResult resultLogin1 = _userApp.Login(user.UserName, user.Password);
+
+            if (!resultLogin1.IsValid)
+                return;
+
+            string newPassword = "senha002";
+            ValidationResult resultChangePassword = _userApp.ChangePassword(user.UserName, user.Password, newPassword, newPassword);
+
+            if (!resultChangePassword.IsValid)
+                return;
+
+            ValidationResult resultLogin2 = _userApp.Login(user.UserName, newPassword);
+
+            if (!resultLogin2.IsValid)
+                return;
+        }
+       
 
         #endregion
     }

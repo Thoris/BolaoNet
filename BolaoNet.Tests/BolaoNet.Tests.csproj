@@ -116,7 +116,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ApplicationTests\" />
+    <Folder Include="EntitiesTests\" />
+    <Folder Include="InfraCrossCutting\CachingTests\" />
+    <Folder Include="InfraCrossCutting\IoCTests\" />
+    <Folder Include="InfraCrossCutting\LoggingTests\" />
     <Folder Include="IntegrationTests\" />
+    <Folder Include="MvcTests\" />
+    <Folder Include="WebApiIntegrationTests\" />
+    <Folder Include="WebApiTests\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

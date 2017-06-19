@@ -32,7 +32,7 @@ namespace BolaoNet.Infra.CrossCutting.IoC
         {
             return new StandardKernel(
                 new ServiceNinjectModule(),
-                new WebApiIntegrationNinjectModule(),
+                //new WebApiIntegrationNinjectModule(),
                 new InfrastructureNinjectModule(),
                 new RepositoryNinjectModule(),
                 new ApplicationNinjectModule());

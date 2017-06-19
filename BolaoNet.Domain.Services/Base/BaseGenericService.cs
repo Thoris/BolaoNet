@@ -81,6 +81,8 @@ namespace BolaoNet.Domain.Services.Base
             _dao = dao;
             _currentUserName = currentUserName;
             _logging = logging;
+
+            _validationResult = new ValidationResult();
         }
 
         #endregion
