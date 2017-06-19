@@ -11,7 +11,9 @@ namespace BolaoNet.MVC.ViewModels.Account
         #region Properties
 
         public string UserName { get; set; }
-        public string ActivationCode { get; set; }
+
+
+        public string ActivateKey { get; set; }
 
         #endregion
     }

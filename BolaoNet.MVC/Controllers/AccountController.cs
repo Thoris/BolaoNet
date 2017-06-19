@@ -120,6 +120,19 @@ namespace BolaoNet.MVC.Controllers
         [HttpPost]
         public ActionResult ForgotPassword(ViewModels.Account.ForgotPasswordViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            //ValidationResult result = _userApp.For(data);
+
+            //if (!result.IsValid)
+            //{
+            //    ModelState.AddModelError("", result.Errors.FirstOrDefault().Message);
+            //    return View();
+            //}
+
             return View();
         }
 
@@ -138,9 +151,38 @@ namespace BolaoNet.MVC.Controllers
                 return View();
             }
 
+            if (string.Compare (model.Email, model.ConfirmacaoEmail) != 0)
+            {
+                ModelState.AddModelError("", "Confirmação de email inválida.");
+                return View();
+            }
+            if (string.Compare (model.Password, model.ConfirmPassword) != 0)
+            {
+                ModelState.AddModelError("", "Confirmação de senha inválida.");
+                return View();
+            }
+            if (!model.ConcordoTermos)
+            {
+                ModelState.AddModelError("", "É necessário concordar com os termos para prosseguir.");
+                return View();
+            }
+
+
             Domain.Entities.Users.User data = Mapper.Map<ViewModels.Account.RegistrationUserViewModel, Domain.Entities.Users.User>(model);
 
-            //_userApp.RegisterUser()
+            ValidationResult result = _userApp.RegisterUser(data);
+
+            if (!result.IsValid)
+            {
+                ModelState.AddModelError("", result.Errors.FirstOrDefault().Message);
+                return View();
+            }
+
+            string codeGenerated = _userApp.GenerateActivationCode(data);
+
+
+            //TODO: Send email to user
+
 
             return View();
         }
@@ -154,6 +196,21 @@ namespace BolaoNet.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ActivateCode(ViewModels.Account.ActivationCodeViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            ValidationResult result = _userApp.ApproveUser(
+                new Domain.Entities.Users.User(model.UserName), model.ActivateKey);
+
+
+            if (!result.IsValid)
+            {
+                ModelState.AddModelError("", result.Errors.FirstOrDefault().Message);
+                return View();
+            }
+
             return View();
         }
 

@@ -12,20 +12,21 @@
     <div class="panel-body">
         @using(Html.BeginForm("RegistrationForm", "Account", FormMethod.Post, new {}))
         {
+            @Html.AntiForgeryToken()
         @*<form>*@
             <div class="col-md-12 col-sm-12">
 
                 <div class="form-group col-md-4 col-sm-4">
                     @*<label for="login">Login*</label>
                     <input type="text" class="form-control input-sm" id="login" placeholder="Login">*@
-                    @Html.LabelFor(a => a.Login)
-                    @Html.TextBoxFor(a => a.Login, new { @class = "form-control input-sm", @placeholder = "Login" })
+                    @Html.LabelFor(a => a.UserName)
+                    @Html.TextBoxFor(a => a.UserName, new { @class = "form-control input-sm", @placeholder = "Login" })
                 </div>
                 <div class="form-group col-md-8 col-sm-8">
                     @*<label for="fullname">Nome Completo* </label>
                     <input type="text" class="form-control input-sm" id="fullname" placeholder="Nome completo">*@
-                    @Html.LabelFor(a => a.NomeCompleto)
-                    @Html.TextBoxFor(a => a.NomeCompleto, new { @class = "form-control input-sm", @placeholder = "Nome Completo" })
+                    @Html.LabelFor(a => a.FullName)
+                    @Html.TextBoxFor(a => a.FullName, new { @class = "form-control input-sm", @placeholder = "Nome Completo" })
                 </div>
 
 
@@ -40,14 +41,14 @@
                 <div class="form-group col-md-4 col-sm-4">
                     @*<label for="birthday">Data Nascimento</label>
                     <input type="text" class="form-control input-sm" id="birthday" placeholder="Nascimento">*@
-                    @Html.LabelFor(a => a.DataNascimento)
-                    @Html.TextBoxFor(a => a.DataNascimento, new { @class = "form-control input-sm", @placeholder = "Nascimento" })
+                    @Html.LabelFor(a => a.BirthDate)
+                    @Html.EditorFor(a => a.BirthDate, new { @class = "form-control input-sm", @placeholder = "Nascimento" })
                 </div>
                 <div class="form-group col-md-4 col-sm-4">
                     @*<label for="mobile">Telefone*</label>
                     <input type="text" class="form-control input-sm" id="mobile" placeholder="Telefone">*@
-                    @Html.LabelFor(a => a.Telefone)
-                    @Html.TextBoxFor(a => a.Telefone, new { @class = "form-control input-sm", @placeholder = "Telefone" })
+                    @Html.LabelFor(a => a.PhoneNumber)
+                    @Html.TextBoxFor(a => a.PhoneNumber, new { @class = "form-control input-sm", @placeholder = "Telefone" })
                 </div>
 
 
@@ -55,7 +56,7 @@
                     @*<label for="email">Email*</label>
                     <input type="email" class="form-control input-sm" id="email" placeholder="Email">*@
                     @Html.LabelFor(a => a.Email)
-                    @Html.EditorFor(a => a.Email, new { @class = "form-control input-sm", @placeholder = "Email" })
+                    @Html.TextBoxFor(a => a.Email, new { @class = "form-control input-sm", @placeholder = "Email" })
                 </div>
                 <div class="form-group col-md-6 col-sm-6">
                     @*<label for="emailConfirm">Confirmação Email*</label>
@@ -109,7 +110,7 @@
                     @*<label for="name">Quero receber notificações</label>
                     <input type="checkbox" checked data-toggle="toggle">*@
                     @*<p class="help-block"></p>*@
-                    @Html.CheckBoxFor(a => a.QueroReceberEmail, new {}) Quero receber notificações
+                    @Html.CheckBoxFor(a => a.ReceiveEmails, new {}) Quero receber notificações
                 </div>
 
 
@@ -119,6 +120,8 @@
                         <input type="submit" class="btn btn-primary" value="Submit" />
                     </div>
                 </div>*@
+
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
 
             <div class="col-md-12 col-sm-12">
                 <div class="col-md-3 col-sm-3 centered-text">

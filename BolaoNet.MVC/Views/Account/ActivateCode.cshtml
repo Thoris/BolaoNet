@@ -1,4 +1,6 @@
-﻿@{
+﻿@model BolaoNet.MVC.ViewModels.Account.ActivationCodeViewModel
+
+@{
     Layout = "~/Views/Shared/_LayoutBase.cshtml";
 }
 
@@ -15,13 +17,20 @@
                             <p>Entre com o email e código para ativação do usuário.</p>
                             <div class="panel-body">
 
-                                <form class="form">
+                            @using(Html.BeginForm("ActivateCode", "Account", FormMethod.Post, new {}))
+                            {
+                                @Html.AntiForgeryToken()
+
+                                @*<form class="form">*@
                                     <fieldset>
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user color-blue"></i></span>
 
-                                                <input id="userNamelInput" placeholder="usuário" class="form-control" type="text" required="">
+                                                @Html.TextBoxFor(a => a.UserName, new { @class = "form-control", @placeholder = "Usuário" })
+
+
+                                                @*<input id="userNamelInput" placeholder="usuário" class="form-control" type="text" required="">*@
                                             </div>
                                         </div>
 
@@ -29,7 +38,8 @@
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="glyphicon glyphicon-credit-card color-blue"></i></span>
 
-                                                <input id="codeInput" placeholder="código de ativação" class="form-control" type="email" required="">
+                                                @Html.TextBoxFor(a => a.ActivateKey, new { @class = "form-control", @placeholder = "Código de ativação" })
+                                                @*<input id="codeInput" placeholder="código de ativação" class="form-control" type="email" required="">*@
                                             </div>
                                         </div>
 
@@ -37,8 +47,8 @@
                                             <input class="btn btn-lg btn-primary btn-block" value="Ativar código" type="submit">
                                         </div>
                                     </fieldset>
-                                </form>
-
+                                @*</form>*@
+                            }
                             </div>
                         </div>
                     </div>
