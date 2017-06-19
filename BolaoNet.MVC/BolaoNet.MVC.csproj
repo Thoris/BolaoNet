@@ -140,19 +140,28 @@
     <Compile Include="Areas\Pontuacao\PontuacaoAreaRegistration.cs" />
     <Compile Include="Areas\Regras\RegrasAreaRegistration.cs" />
     <Compile Include="Areas\Resultados\ResultadosAreaRegistration.cs" />
-    <Compile Include="Areas\Users\Controllers\AccessController.cs" />
     <Compile Include="Areas\Users\Controllers\BaseUserController.cs" />
     <Compile Include="Areas\Users\UsersAreaRegistration.cs" />
     <Compile Include="Areas\Visitante\VisitanteAreaRegistration.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Security\AuthorizeRolesAttribute.cs" />
+    <Compile Include="Security\CustomUserPrincipal.cs" />
     <Compile Include="AutoMapper\AutoMapperConfig.cs" />
     <Compile Include="AutoMapper\DomainToViewModelMappingProfile.cs" />
     <Compile Include="AutoMapper\ViewModelToDomainMappingProfile.cs" />
+    <Compile Include="Controllers\AuthenticationController.cs" />
+    <Compile Include="Controllers\AuthorizationController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\VersionApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\PermissionLevel.cs" />
+    <Compile Include="Security\AuthenticationManagement.cs" />
+    <Compile Include="Security\UserModelState.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\sb-admin-2.css" />
@@ -177,10 +186,10 @@
     <Content Include="Areas\Apostas\Views\ApostasJogos\Jogos.cshtml" />
     <Content Include="Areas\Users\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Users\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Users\Views\Access\Login.cshtml" />
-    <Content Include="Areas\Users\Views\Access\ForgotPassword.cshtml" />
-    <Content Include="Areas\Users\Views\Access\RegistrationForm.cshtml" />
-    <Content Include="Areas\Users\Views\Access\ActivateCode.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\RegistrationForm.cshtml" />
+    <Content Include="Views\Account\ActivateCode.cshtml" />
     <None Include="Content\js_old\jquery-1.10.2.intellisense.js" />
     <Content Include="Content\js_old\jquery-1.10.2.js" />
     <Content Include="Content\js_old\jquery-1.10.2.min.js" />
@@ -294,11 +303,8 @@
     <Content Include="Content\vendor\raphael\raphael.js" />
     <Content Include="Content\vendor\raphael\raphael.min.js" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Apostas\Views\web.config" />
     <Content Include="Areas\Boloes\Views\web.config" />
     <Content Include="Areas\Campeonatos\Views\web.config" />
@@ -361,18 +367,6 @@
     <Content Include="Content\vendor\font-awesome\scss\_stacked.scss" />
     <Content Include="Content\vendor\font-awesome\scss\_variables.scss" />
     <Content Include="Content\vendor\jquery\jquery-1.10.2.min.map" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\respond.js" />
-    <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -381,7 +375,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\Fragments\Navigation\_NavigationAlerts.cshtml" />
@@ -397,6 +390,7 @@
     <Content Include="Views\Shared\Fragments\_Menu.cshtml" />
     <Content Include="Views\Shared\Fragments\_NavigationHeaderBase.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Error\AccessDenied.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -429,13 +423,9 @@
     <Folder Include="Areas\Visitante\Controllers\" />
     <Folder Include="Areas\Visitante\Models\" />
     <Folder Include="Areas\Visitante\Views\Shared\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\Shared\Fragments\Menus\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>

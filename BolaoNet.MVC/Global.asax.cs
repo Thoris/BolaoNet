@@ -1,4 +1,5 @@
 ﻿using BolaoNet.MVC.AutoMapper;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Web.Security;
 
 namespace BolaoNet.MVC
 {
@@ -19,6 +21,12 @@ namespace BolaoNet.MVC
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             AutoMapperConfig.RegisterMappings();
+        }
+
+        protected void Application_PostAuthenticateRequest(Object sender, EventArgs e)
+        {
+            Security.AuthenticationManagement.SetContextAuthentication(Request);
+
         }
     }
 }
