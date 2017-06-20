@@ -23,7 +23,7 @@ namespace BolaoNet.Infra.Data.EF.Users
 
         #region IUserInRoleDao members
 
-        public IList<Domain.Entities.Users.Role> GetRolesInUser(Domain.Entities.Users.User user)
+        public IList<Domain.Entities.Users.Role> GetRolesInUser(string currentUserName, Domain.Entities.Users.User user)
         {
             var x =
             from r in base.DataContext.Roles

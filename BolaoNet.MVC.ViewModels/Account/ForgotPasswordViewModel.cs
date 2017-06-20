@@ -10,6 +10,7 @@ namespace BolaoNet.MVC.ViewModels.Account
     {
         #region Properties
 
+        public string UserName { get; set; }
         public string Email { get; set; }
 
         #endregion

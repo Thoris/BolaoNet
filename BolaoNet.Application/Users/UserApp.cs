@@ -58,7 +58,14 @@ namespace BolaoNet.Application.Users
         {
             return Service.ApproveUser(user, activationCode);
         }
+        public IList<Domain.Entities.Users.User> SearchByUserNameEmail(string userName, string email)
+        {
+            return Service.SearchByUserNameEmail(userName, email);
+        }
 
         #endregion
+
+
+
     }
 }

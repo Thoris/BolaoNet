@@ -104,6 +104,14 @@ namespace BolaoNet.Services.Areas.Users.Controllers
             return Service.ApproveUser(user, activationCode);
         }
 
+        [HttpPost]
+        public IList<Domain.Entities.Users.User> SearchByUserNameEmail(string userName, string email)
+        {
+            return Service.SearchByUserNameEmail(userName, email);
+        }
+
         #endregion
+
+
     }
 }

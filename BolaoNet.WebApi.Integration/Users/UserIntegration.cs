@@ -78,7 +78,18 @@ namespace BolaoNet.WebApi.Integration.Users
 
             return base.HttpPostApi<Domain.Entities.Base.Common.Validation.ValidationResult>(parameters, "ApproveUser");
         }
+        public IList<Domain.Entities.Users.User> SearchByUserNameEmail(string userName, string email)
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
 
+            parameters.Add("userName", userName);
+            parameters.Add("email", email);
+
+            return base.HttpPostApi<IList<Domain.Entities.Users.User>>(parameters, "SearchByUserNameEmail"); 
+        }
         #endregion
+
+
+
     }
 }

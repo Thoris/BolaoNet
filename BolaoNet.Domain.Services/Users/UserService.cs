@@ -11,6 +11,14 @@ namespace BolaoNet.Domain.Services.Users
         Base.BaseGenericService<Entities.Users.User>,
         Interfaces.Services.Users.IUserService
     {
+        #region Properties
+
+        private Interfaces.Repositories.Users.IUserDao BaseDao
+        {
+            get { return (Interfaces.Repositories.Users.IUserDao)base.BaseDao; }
+        }
+        #endregion
+
         #region Constructors/Destructors
 
         public UserService(string userName, Interfaces.Repositories.Users.IUserDao dao, ILogging logging)
@@ -177,6 +185,16 @@ namespace BolaoNet.Domain.Services.Users
                 return new Entities.Base.Common.Validation.ValidationResult();
             }
 
+        }
+
+        public IList<Entities.Users.User> SearchByUserNameEmail(string userName, string email)
+        {
+            if (string.IsNullOrEmpty(userName))
+                throw new ArgumentException("userName");
+            if (string.IsNullOrEmpty(email))
+                throw new ArgumentException("email");
+
+            return BaseDao.SearchByUserNameEmail(base.CurrentUserName, userName, email);
         }
 
         #endregion

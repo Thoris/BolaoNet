@@ -118,12 +118,24 @@ namespace BolaoNet.MVC.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult ForgotPassword(ViewModels.Account.ForgotPasswordViewModel model)
         {
             if (!ModelState.IsValid)
             {
                 return View();
             }
+
+            IList<Domain.Entities.Users.User> users = _userApp.SearchByUserNameEmail(model.UserName, model.Email);
+
+            if (users == null || users.Count == 0)
+            {
+                ModelState.AddModelError("", "Usuário com o email de requisição não encontrado.");
+                return View();
+            }
+
+            //TODO: Enviar email
+
 
             //ValidationResult result = _userApp.For(data);
 
@@ -144,6 +156,7 @@ namespace BolaoNet.MVC.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult RegistrationForm(ViewModels.Account.RegistrationUserViewModel model)
         {
             if (!ModelState.IsValid)

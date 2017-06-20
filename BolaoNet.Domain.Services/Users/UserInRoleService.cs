@@ -39,7 +39,7 @@ namespace BolaoNet.Domain.Services.Users
             if (string.IsNullOrEmpty(user.UserName))
                 throw new ArgumentException("user.UserName");
             
-            return Dao.GetRolesInUser(user);
+            return Dao.GetRolesInUser(base.CurrentUserName, user);
         }
 
         #endregion

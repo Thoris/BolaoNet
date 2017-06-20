@@ -15,5 +15,8 @@ namespace BolaoNet.Domain.Interfaces.Services.Users
         ValidationResult ChangePassword(string userName, string oldPassword, string newPassword, string confirmPassord);
         string GenerateActivationCode(Entities.Users.User user);
         ValidationResult ApproveUser(Entities.Users.User user, string activationCode);
+
+
+        IList<Entities.Users.User> SearchByUserNameEmail(string userName, string email);
     }
 }
