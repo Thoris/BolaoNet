@@ -5,9 +5,7 @@ using System.Linq;
 using System.Web;
 
 namespace BolaoNet.MVC.Controllers
-{
-
-    
+{ 
     //[AuthorizeRoles(PermissionLevel.Admin, PermissionLevel.User)]
     public class AuthorizationController : AuthenticationController
     {

@@ -44,8 +44,12 @@ namespace BolaoNet.Application.Boloes
             return Service.GetJogosByUser(bolao, user);
         }
 
-        #endregion
+        public IList<Domain.Entities.ValueObjects.JogoUsuarioVO> GetJogosUser(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
+        {
+            return Service.GetJogosUser(bolao, user);
+        }
 
+        #endregion
 
     }
 }

@@ -98,6 +98,10 @@
       <Project>{d0a5e0bf-24a1-40a3-ab36-603db298ceb3}</Project>
       <Name>BolaoNet.Infra.Data.EF</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Infra.Notification.Mail\BolaoNet.Infra.Notification.Mail.csproj">
+      <Project>{634e95f1-4f38-4bdb-ad16-8dfcd6c73ab5}</Project>
+      <Name>BolaoNet.Infra.Notification.Mail</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BolaoNet.WebApi.Integration\BolaoNet.WebApi.Integration.csproj">
       <Project>{2af5e54a-613c-4a7a-896c-9f946593c8f5}</Project>
       <Name>BolaoNet.WebApi.Integration</Name>

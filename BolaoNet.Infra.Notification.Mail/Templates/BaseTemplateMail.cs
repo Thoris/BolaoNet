@@ -10,10 +10,10 @@ namespace BolaoNet.Infra.Notification.Mail.Templates
     {
         #region Properties
 
-        protected string CurrentUserName { get; internal set; }
-        protected string Folder { get; internal set; }
+        protected string CurrentUserName { get; set; }
+        protected string Folder { get; set; }
         protected IList<TagValue> Tags { get; set; }
-        protected string TemplateHtmlFile { get; internal set; }
+        protected string TemplateHtmlFile { get; set; }
         protected string Title { get; set; }
 
         #endregion

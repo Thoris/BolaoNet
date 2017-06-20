@@ -8,12 +8,15 @@ namespace BolaoNet.MVC.Controllers
 {
     public class ErrorController : Controller
     {
-        // GET: Error
+        #region Actions
+
         public ActionResult AccessDenied()
         {
             //Security.AuthenticationManagement.ClearContext();
 
             return View();
         }
+
+        #endregion
     }
 }

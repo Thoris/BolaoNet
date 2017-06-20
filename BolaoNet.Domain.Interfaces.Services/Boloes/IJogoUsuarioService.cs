@@ -34,7 +34,8 @@ namespace BolaoNet.Domain.Interfaces.Services.Boloes
             int automatico, int apostaTime1, int apostaTime2, int? penaltis1, int? penaltis2, int? ganhador);
 
         IList<Entities.Boloes.JogoUsuario> GetJogosByUser(Entities.Boloes.Bolao bolao, Entities.Users.User user);
-        
+
+        IList<Entities.ValueObjects.JogoUsuarioVO> GetJogosUser(Entities.Boloes.Bolao bolao, Entities.Users.User user);
     
     }
 }

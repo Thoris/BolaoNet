@@ -10,19 +10,20 @@ namespace BolaoNet.MVC.Controllers
     [AuthorizeRoles]
     public class HomeController : AuthorizationController
     {
+        #region Actions
+        
         //[AuthorizeRoles(PermissionLevel.User)]
-        //[AuthorizeRoles]
-        [AllowAnonymous]
         public ActionResult Index()
         {
 
-            if (User.FirstName == "")
-            {
+            //if (User.FirstName == "")
+            //{
 
-            }
+            //}
 
             return View();
         }
- 
+
+        #endregion
     }
 }

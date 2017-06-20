@@ -43,5 +43,8 @@ namespace BolaoNet.Domain.Interfaces.Repositories.Boloes
         //    int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, bool isMultiploTime, int multiploTime,
         //    Entities.Interfaces.IPontosJogosUsuarioEntity pontosEntity);
 
+
+        IList<Entities.ValueObjects.JogoUsuarioVO> GetJogosUser(string currentUserName, Entities.Boloes.Bolao bolao, Entities.Users.User user);
+
     }
 }

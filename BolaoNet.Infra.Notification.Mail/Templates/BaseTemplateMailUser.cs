@@ -10,7 +10,7 @@ namespace BolaoNet.Infra.Notification.Mail.Templates
     {
         #region Properties
 
-        protected Domain.Entities.Users.User User { get; internal set; }
+        protected Domain.Entities.Users.User User { get; set; }
 
         #endregion
 

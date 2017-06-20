@@ -221,7 +221,6 @@ namespace BolaoNet.MVC.Controllers
             return View();
         }
 
-
         private ActionResult RedirectToLocal(string returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))

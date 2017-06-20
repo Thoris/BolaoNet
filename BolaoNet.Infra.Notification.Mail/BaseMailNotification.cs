@@ -18,7 +18,7 @@ namespace BolaoNet.Infra.Notification.Mail
 
         #region Properties
 
-        protected string CurrentUserName { get; internal set; }
+        protected string CurrentUserName { get; set; }
 
         #endregion
 

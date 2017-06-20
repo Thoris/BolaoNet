@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 namespace BolaoNet.Infra.Data.EF.Boloes
 {
     public class JogoUsuarioRepositoryDao :
-        Base.BaseRepositoryDao<Domain.Entities.Boloes.JogoUsuario>, Domain.Interfaces.Repositories.Boloes.IJogoUsuarioDao
+        Base.BaseRepositoryDao<Domain.Entities.Boloes.JogoUsuario>,
+        Domain.Interfaces.Repositories.Boloes.IJogoUsuarioDao
     {
         
         #region Constructors/Destructors
@@ -805,13 +806,50 @@ namespace BolaoNet.Infra.Data.EF.Boloes
                 string.Compare(x.UserName, user.UserName, true) == 0).ToList<Domain.Entities.Boloes.JogoUsuario>();
         }
 
-        #endregion
-
-
-
         public int InsertApostasAuto(string currentUser, DateTime currentDateTime, Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user, int typeAposta, int typeAutomatico, DateTime? dataInicial, DateTime? dataFinal, int? rodada, bool random, int? time1, int? time2, int? randomInicial, int? randomFinal, Domain.Entities.DadosBasicos.Time time)
         {
             throw new NotImplementedException();
         }
+
+        public IList<Domain.Entities.ValueObjects.JogoUsuarioVO> GetJogosUser(string currentUserName, Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
+        {
+
+            var q =
+                from j in base.DataContext.Jogos
+                join u in base.DataContext.JogosUsuarios
+                        on new { c1 = j.NomeCampeonato, c2 = j.JogoId }
+                    equals new { c1 = u.NomeCampeonato, c2 = u.JogoId }
+                into ju
+                from p in ju.DefaultIfEmpty()
+                where string.Compare(p.NomeBolao, bolao.Nome, true) == 0 &&
+                    string.Compare(p.UserName, user.UserName, true) == 0 &&
+                    string.Compare(j.NomeCampeonato, bolao.NomeCampeonato, true) == 0
+                select new Domain.Entities.ValueObjects.JogoUsuarioVO()
+                {
+                    JogoId = p.JogoId,
+                    UserName = p.UserName
+                };
+
+
+
+            //var q =
+            //    from j in base.DataContext.Jogos
+            //    join u in base.DataContext.JogosUsuarios
+            //            on new { c1 = j.NomeCampeonato, c2 = j.JogoId } 
+            //        equals new { c1 = u.NomeCampeonato, c2 = u.JogoId }
+            //    into ju
+            //    from p in ju.DefaultIfEmpty()
+            //    where string.Compare (p.NomeBolao, bolao.Nome, true) == 0 &&
+            //        string.Compare (p.UserName, user.UserName, true) == 0
+            //    select new Domain.Entities.ValueObjects.JogoUsuarioVO() 
+            //    { 
+            //        JogoId = p.JogoId,
+            //        UserName = p.UserName
+            //    };
+
+            return q.ToList<Domain.Entities.ValueObjects.JogoUsuarioVO>();
+        }
+
+        #endregion
     }
 }

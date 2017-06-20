@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Infra.Notification.Mail.Templates
 {
-    class ApostasBolaoTemplateMail: BaseTemplateMailUser, ITemplateMail
+    class ApostasBolaoTemplateMail : BaseTemplateMailUser, ITemplateMail
     {
         #region Constants
 
@@ -22,8 +22,9 @@ namespace BolaoNet.Infra.Notification.Mail.Templates
         {
             base.Tags.Add(new TagValue("NOME", user.FirstName));
             base.Tags.Add(new TagValue("PASSWORD", user.Password));
-            base.Tags.Add(new TagValue("URL", ""));            
+            base.Tags.Add(new TagValue("URL", ""));
         }
 
         #endregion
+    }
 }

@@ -310,12 +310,21 @@ namespace BolaoNet.Domain.Services.Boloes
 
             return this.Dao.GetJogosByUser(this.CurrentUserName, bolao, user);
         }
+        public IList<Entities.ValueObjects.JogoUsuarioVO> GetJogosUser(Entities.Boloes.Bolao bolao, Entities.Users.User user)
+        {
+            if (bolao == null)
+                throw new ArgumentException("bolao");
+            if (string.IsNullOrEmpty(bolao.Nome))
+                throw new ArgumentException("bolao.Nome");
+            if (user == null)
+                throw new ArgumentException("user");
+            if (string.IsNullOrEmpty(user.UserName))
+                throw new ArgumentException("user.UserName");
 
+            return this.Dao.GetJogosUser(this.CurrentUserName, bolao, user);
+        }
+ 
         #endregion
-
-
-
-
 
     }
 }

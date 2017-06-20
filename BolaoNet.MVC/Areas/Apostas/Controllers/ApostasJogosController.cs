@@ -8,18 +8,29 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
 {
     public class ApostasJogosController : BaseApostasController
     {
+        #region Variables
+
+        private Application.Interfaces.Boloes.IJogoUsuarioApp _jogoUsuarioApp;
+
+        #endregion
+
         #region Constructors/Destructors
 
+        public ApostasJogosController(Application.Interfaces.Boloes.IJogoUsuarioApp jogoUsuarioApp)
+        {
+            _jogoUsuarioApp = jogoUsuarioApp;
+        }
 
         #endregion
 
         #region Actions
 
+        [HttpGet]
         public ActionResult Jogos()
         {
             MVC.ViewModels.Apostas.ApostasJogosListViewModel vo = new ViewModels.Apostas.ApostasJogosListViewModel();
 
-
+            #region Emulate Data
             vo.Apostas.Add(new ViewModels.Apostas.ApostaJogoEntryViewModel()
             {
                 Automatico = true,
@@ -305,9 +316,19 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
                 Time2 = "Argentina",
             });
 
+            #endregion
+
+
+            IList<Domain.Entities.ValueObjects.JogoUsuarioVO> list =
+                _jogoUsuarioApp.GetJogosUser(
+                new Domain.Entities.Boloes.Bolao("Copa do Mundo 2014"), 
+                new Domain.Entities.Users.User("123"));
+
 
             return View(vo);
         }
+
+        
 
         #endregion
     }
