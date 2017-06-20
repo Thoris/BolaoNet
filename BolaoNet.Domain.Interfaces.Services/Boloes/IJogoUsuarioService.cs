@@ -35,7 +35,8 @@ namespace BolaoNet.Domain.Interfaces.Services.Boloes
 
         IList<Entities.Boloes.JogoUsuario> GetJogosByUser(Entities.Boloes.Bolao bolao, Entities.Users.User user);
 
-        IList<Entities.ValueObjects.JogoUsuarioVO> GetJogosUser(Entities.Boloes.Bolao bolao, Entities.Users.User user);
+        IList<Entities.ValueObjects.JogoUsuarioVO> GetJogosUser(Entities.Boloes.Bolao bolao, Entities.Users.User user, 
+            DateTime ? dataInicial, DateTime ? dataFim, int ? rodada, string nomeTime, string nomeGrupo, string nomeFase);
     
     }
 }

@@ -54,6 +54,12 @@
     <Compile Include="Account\ProfileViewModel.cs" />
     <Compile Include="Account\RegistrationUserViewModel.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BolaoNet.Domain.Entities\BolaoNet.Domain.Entities.csproj">
+      <Project>{862efb06-ac74-4b8d-b338-37d52c90410a}</Project>
+      <Name>BolaoNet.Domain.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -13,37 +13,37 @@
         @for (int c = 0; c < Model.Apostas.Count; c++)
         {
             isGrouped = false;
-            if (string.Compare(Model.Apostas[c].Grupo, currentGrupo, true) != 0)
+            if (string.Compare(Model.Apostas[c].NomeGrupo, currentGrupo, true) != 0)
             {                                
-                if (!string.IsNullOrEmpty(Model.Apostas[c].Grupo.Trim()))
+                if (!string.IsNullOrEmpty(Model.Apostas[c].NomeGrupo.Trim()))
                 {                
                     <tr>
-                        <th scope="rowgroup" colspan="12">Grupo @(Model.Apostas[c].Grupo)</th>
+                        <th scope="rowgroup" colspan="12">Grupo @(Model.Apostas[c].NomeGrupo)</th>
                     </tr>
                     isGrouped = true;
                 }
-                currentGrupo = Model.Apostas[c].Grupo;
+                currentGrupo = Model.Apostas[c].NomeGrupo;
             }
-            if (!isGrouped && string.IsNullOrEmpty(Model.Apostas[c].Grupo.Trim()) &&
-                string.Compare(Model.Apostas[c].Fase, currentFase, true) != 0)
+            if (!isGrouped && string.IsNullOrEmpty(Model.Apostas[c].NomeGrupo.Trim()) &&
+                string.Compare(Model.Apostas[c].NomeFase, currentFase, true) != 0)
             {                
                 <tr>
-                    <th scope="rowgroup" colspan="12">Fase @(Model.Apostas[c].Fase)</th>
+                    <th scope="rowgroup" colspan="12">Fase @(Model.Apostas[c].NomeFase)</th>
                 </tr>
-                currentFase = Model.Apostas[c].Fase;
+                currentFase = Model.Apostas[c].NomeFase;
             }
             <tr class="active">
                 <th scope="row">@(Model.Apostas[c].JogoId)</th>
                 <td>@(Model.Apostas[c].DataJogo)</td>
-                <td>@(Model.Apostas[c].Estadio)</td>
-                <td>@(Model.Apostas[c].Time1)</td>
+                <td>@(Model.Apostas[c].NomeEstadio)</td>
+                <td>@(Model.Apostas[c].NomeTime1)</td>
                 <td><img src="@(Model.Apostas[c].ImageTime1)" /></td>
 
                 @if (Model.Apostas[c].IsLocked)
                 {
-                    if (Model.Apostas[c].GolsTime1 != null)
+                    if (Model.Apostas[c].ApostaTime1 != null)
                     { 
-                        <td>@(Model.Apostas[c].GolsTime1)</td>
+                        <td>@(Model.Apostas[c].ApostaTime1)</td>
                     }
                     else
                     {
@@ -54,15 +54,15 @@
                 {
                     <td>
                         <input type="text" class="form-control input-sm" maxlength="2" style="width: 40px"
-                               value="@(Model.Apostas[c].GolsTime1)" />
+                               value="@(Model.Apostas[c].ApostaTime1)" />
                     </td>
                 }                               
                 <td>x</td>                
                 @if (Model.Apostas[c].IsLocked)
                 {
-                    if (Model.Apostas[c].GolsTime2 != null)
+                    if (Model.Apostas[c].ApostaTime2 != null)
                     {
-                        <td>@(Model.Apostas[c].GolsTime2)</td>
+                        <td>@(Model.Apostas[c].ApostaTime2)</td>
                     }
                     else
                     {
@@ -73,14 +73,14 @@
                 {
                     <td>
                         <input type="text" class="form-control input-sm" maxlength="2" style="width: 40px"
-                               value="@(Model.Apostas[c].GolsTime1)" />
+                               value="@(Model.Apostas[c].ApostaTime2)" />
                     </td>
                 }                 
 
                 <td><img src="@(Model.Apostas[c].ImageTime2)" /></td>
-                <td>@(Model.Apostas[c].Time2)</td>
+                <td>@(Model.Apostas[c].NomeTime2)</td>
                 <td>
-                    @if (Model.Apostas[c].Automatico == true)
+                    @if (Model.Apostas[c].Automatico == 1)
                     {
                         <span class="glyphicon glyphicon-flash" />
                     }

@@ -19,6 +19,7 @@ namespace BolaoNet.MVC.AutoMapper
         protected override void Configure()
         {
             Mapper.CreateMap<Domain.Entities.Users.User, ViewModels.Account.RegistrationUserViewModel>();
+            Mapper.CreateMap<Domain.Entities.ValueObjects.JogoUsuarioVO, ViewModels.Apostas.ApostaJogoEntryViewModel>();
 
         }
     }

@@ -64,18 +64,20 @@ namespace BolaoNet.WebApi.Integration.Boloes
 
         }
 
-        public IList<Domain.Entities.ValueObjects.JogoUsuarioVO> GetJogosUser(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
+        public IList<Domain.Entities.ValueObjects.JogoUsuarioVO> GetJogosUser(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user, DateTime ? dataInicial, DateTime ? dataFim, int ? rodada, string nomeTime, string nomeGrupo, string nomeFase)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>();
 
-            parameters.Add("nomebolao", bolao);
-            parameters.Add("userName", user);
+            //parameters.Add("nomebolao", bolao);
+            //parameters.Add("userName", user);
 
             return HttpPostApi<ICollection<Domain.Entities.ValueObjects.JogoUsuarioVO>>(
                 parameters, "GetJogosUser").ToList<Domain.Entities.ValueObjects.JogoUsuarioVO>();
         }
 
         #endregion
+
+
 
 
 

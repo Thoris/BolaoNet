@@ -811,41 +811,100 @@ namespace BolaoNet.Infra.Data.EF.Boloes
             throw new NotImplementedException();
         }
 
-        public IList<Domain.Entities.ValueObjects.JogoUsuarioVO> GetJogosUser(string currentUserName, Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
+        public IList<Domain.Entities.ValueObjects.JogoUsuarioVO> GetJogosUser(string currentUserName, Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user, DateTime ? dataInicial, DateTime ? dataFim, int ? rodada, string nomeTime, string nomeGrupo, string nomeFase)
         {
+            DateTime dataInicioFilter = DateTime.MinValue;
+            DateTime dataFimFilter = DateTime.MaxValue;
+            int rodadaFilter = 0;
+
+            if (dataInicial != null)
+                dataInicioFilter = (DateTime)dataInicial;
+
+            if (dataFim != null)
+                dataFimFilter = (DateTime)dataFim;
+
+            if (rodada != null)
+                rodadaFilter = (int)rodada;
+
 
             var q =
                 from j in base.DataContext.Jogos
                 join u in base.DataContext.JogosUsuarios
-                        on new { c1 = j.NomeCampeonato, c2 = j.JogoId }
-                    equals new { c1 = u.NomeCampeonato, c2 = u.JogoId }
+                        on new { c1 = j.NomeCampeonato, c2 = j.JogoId, c3 = user.UserName, c4 = bolao.Nome }
+                    equals new { c1 = u.NomeCampeonato, c2 = u.JogoId, c3 = u.UserName, c4 = u.NomeBolao }
                 into ju
                 from p in ju.DefaultIfEmpty()
-                where string.Compare(p.NomeBolao, bolao.Nome, true) == 0 &&
-                    string.Compare(p.UserName, user.UserName, true) == 0 &&
-                    string.Compare(j.NomeCampeonato, bolao.NomeCampeonato, true) == 0
+                where string.Compare(j.NomeCampeonato, bolao.NomeCampeonato, true) == 0 &&
+                (DateTime.Compare(j.DataJogo, dataInicioFilter) >= 0 || dataInicial == null) &&
+                (DateTime.Compare(j.DataJogo, dataFimFilter) <= 0 || dataFim == null) &&
+                (j.Rodada == rodadaFilter || rodada == null) &&
+                (string.Compare (j.NomeTime1, nomeTime, true) == 0 || string.Compare (j.NomeTime2, nomeTime, true) == 0 || nomeTime == null ) &&
+                (string.Compare (j.NomeGrupo, nomeGrupo, true) == 0 || nomeGrupo == null) &&
+                (string.Compare (j.NomeFase, nomeFase, true) == 0 || nomeFase == null)
                 select new Domain.Entities.ValueObjects.JogoUsuarioVO()
                 {
-                    JogoId = p.JogoId,
-                    UserName = p.UserName
+                    NomeCampeonato = j.NomeCampeonato,
+                    JogoId = j.JogoId,
+                    NomeTime1 = j.NomeTime1,
+                    GolsTime1 = j.GolsTime1, 
+                    PenaltisTime1 = j.PenaltisTime1,     
+                    NomeTime2 = j.NomeTime2,
+                    GolsTime2 = j.GolsTime2,
+                    PenaltisTime2 = j.PenaltisTime2,
+                    NomeEstadio = j.NomeEstadio,
+                    DataJogo = j.DataJogo,
+                    Rodada = j.Rodada,
+                    PartidaValida = j.PartidaValida,
+                    DataValidacao = j.DataValidacao,
+                    NomeFase = j.NomeFase,
+                    NomeGrupo = j.NomeGrupo,
+                    IsValido = j.IsValido,
+                    ValidadoBy = j.ValidadoBy,
+
+                    UserName = p.UserName,
+
+                    DataAposta = p.DataAposta,
+
+                    Automatico = p.Automatico,
+
+                    ApostaTime1 = p.ApostaTime1,
+                    ApostaTime2 = p.ApostaTime2,
+                    ApostaPenaltis1 = p.ApostaPenaltis1,
+                    ApostaPenaltis2 = p.ApostaPenaltis2,
+
+                    Valido = p.Valido,
+
+                    NomeTimeResult1 = p.NomeTimeResult1,
+                    NomeTimeResult2 = p.NomeTimeResult2,
+
+                    Pontos = p.Pontos,
+
+                    IsEmpate = p.IsEmpate,
+                    IsDerrota = p.IsDerrota,
+                    IsVitoria = p.IsVitoria ,
+                    IsGolsGanhador = p.IsGolsGanhador,
+                    IsGolsPerdedor = p.IsGolsPerdedor,
+                    IsResultTime1 = p.IsResultTime1,
+                    IsResultTime2 = p.IsResultTime2,
+                    IsVDE = p.IsVDE,
+                    IsErro = p.IsErro,
+                    IsGolsGanhadorFora = p.IsGolsGanhadorFora,
+                    IsGolsGanhadorDentro = p.IsGolsGanhadorDentro,
+                    IsGolsPerdedorFora = p.IsGolsPerdedorFora,
+                    IsGolsPerdedorDentro = p.IsGolsPerdedorDentro,
+                    IsGolsEmpate = p.IsGolsEmpate,
+                    IsGolsTime1 = p.IsGolsTime1,
+                    IsGolsTime2 = p.IsGolsTime2,
+                    IsPlacarCheio = p.IsPlacarCheio,
+                    IsMultiploTime = p.IsMultiploTime,
+                    MultiploTime = p.MultiploTime,
+
+                    Ganhador = p.Ganhador, 
+
+
                 };
 
 
-
-            //var q =
-            //    from j in base.DataContext.Jogos
-            //    join u in base.DataContext.JogosUsuarios
-            //            on new { c1 = j.NomeCampeonato, c2 = j.JogoId } 
-            //        equals new { c1 = u.NomeCampeonato, c2 = u.JogoId }
-            //    into ju
-            //    from p in ju.DefaultIfEmpty()
-            //    where string.Compare (p.NomeBolao, bolao.Nome, true) == 0 &&
-            //        string.Compare (p.UserName, user.UserName, true) == 0
-            //    select new Domain.Entities.ValueObjects.JogoUsuarioVO() 
-            //    { 
-            //        JogoId = p.JogoId,
-            //        UserName = p.UserName
-            //    };
 
             return q.ToList<Domain.Entities.ValueObjects.JogoUsuarioVO>();
         }
