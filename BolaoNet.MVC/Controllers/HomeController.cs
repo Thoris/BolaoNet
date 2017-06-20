@@ -16,7 +16,7 @@ namespace BolaoNet.MVC.Controllers
         public ActionResult Index()
         {
 
-            if (base.User.FirstName == "")
+            if (User.FirstName == "")
             {
 
             }

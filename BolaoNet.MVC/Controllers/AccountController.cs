@@ -15,17 +15,19 @@ namespace BolaoNet.MVC.Controllers
     {
         #region Variables
 
-        private Application.Users.UserApp _userApp;
-        private Application.Users.UserInRoleApp _userInRoleApp;
+        private Application.Interfaces.Users.IUserApp _userApp;
+        private Application.Interfaces.Users.IUserInRoleApp _userInRoleApp;
+        private Application.Interfaces.Notification.INotificationApp _notificationApp;
 
         #endregion
 
         #region Constructors/Destructors
 
-        public AccountController(Application.Users.UserApp userApp, Application.Users.UserInRoleApp userInRoleApp)
+        public AccountController(Application.Interfaces.Users.IUserApp userApp, Application.Interfaces.Users.IUserInRoleApp userInRoleApp, Application.Interfaces.Notification.INotificationApp notificationApp)
         {
             _userApp = userApp;
             _userInRoleApp = userInRoleApp;
+            _notificationApp = notificationApp;
         }
 
         #endregion
@@ -37,7 +39,6 @@ namespace BolaoNet.MVC.Controllers
         {         
             return View();
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Login(ViewModels.Account.LoginViewModel model, string returnUrl)
@@ -93,25 +94,7 @@ namespace BolaoNet.MVC.Controllers
                 return RedirectToLocal(returnUrl);
             }
         }
-
-        private ActionResult RedirectToLocal(string returnUrl)
-        {
-            if (Url.IsLocalUrl(returnUrl))
-            {
-                return Redirect(returnUrl);
-            }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
-        }
-
-        public ActionResult Logout()
-        {
-            FormsAuthentication.SignOut();
-            return RedirectToAction("Index", "Home");
-        }
-        
+ 
         [HttpGet]
         public ActionResult ForgotPassword()
         {
@@ -134,25 +117,19 @@ namespace BolaoNet.MVC.Controllers
                 return View();
             }
 
-            //TODO: Enviar email
+            _notificationApp.NotifySendPassword(users[0]);
 
 
-            //ValidationResult result = _userApp.For(data);
-
-            //if (!result.IsValid)
-            //{
-            //    ModelState.AddModelError("", result.Errors.FirstOrDefault().Message);
-            //    return View();
-            //}
-
+            return RedirectToAction("ForgotPasswordSent", model);
+        }
+        public ActionResult ForgotPasswordSent(ViewModels.Account.ForgotPasswordViewModel model)
+        {
             return View();
         }
-
         
         [HttpGet]
         public ActionResult RegistrationForm()
-        {
-
+        {           
             return View();
         }
         [HttpPost]
@@ -192,12 +169,17 @@ namespace BolaoNet.MVC.Controllers
             }
 
             string codeGenerated = _userApp.GenerateActivationCode(data);
+            data.ActivateKey = codeGenerated;
 
 
-            //TODO: Send email to user
+            _notificationApp.NotifyActivationCode(data);
 
 
-            return View();
+            return RedirectToAction("RegistrationFormSent", model);
+        }
+        public ActionResult RegistrationFormSent(ViewModels.Account.RegistrationUserViewModel model)
+        {
+            return View(model);
         }
 
         [HttpGet]        
@@ -214,8 +196,10 @@ namespace BolaoNet.MVC.Controllers
                 return View();
             }
 
-            ValidationResult result = _userApp.ApproveUser(
-                new Domain.Entities.Users.User(model.UserName), model.ActivateKey);
+            Domain.Entities.Users.User data = Mapper.Map<ViewModels.Account.ActivationCodeViewModel, Domain.Entities.Users.User>(model);
+
+
+            ValidationResult result = _userApp.ApproveUser(data, model.ActivateKey);
 
 
             if (!result.IsValid)
@@ -224,7 +208,30 @@ namespace BolaoNet.MVC.Controllers
                 return View();
             }
 
+            Domain.Entities.Users.User user = _userApp.Load (data);
+
+
+            _notificationApp.NotifyWelcome(user);
+
+            
+            return RedirectToAction("ActivateCodeSucessful", model);
+        }
+        public ActionResult ActivateCodeSucessful(ViewModels.Account.ActivationCodeViewModel model)
+        {
             return View();
+        }
+
+
+        private ActionResult RedirectToLocal(string returnUrl)
+        {
+            if (Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         #endregion

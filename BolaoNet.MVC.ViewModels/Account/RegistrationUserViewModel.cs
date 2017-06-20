@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace BolaoNet.MVC.ViewModels.Account
 {
@@ -19,13 +20,13 @@ namespace BolaoNet.MVC.ViewModels.Account
         public string FullName { get; set; }
 
         [DisplayName("Sexo")]        
-        public int Gender { get; set; }
+        public bool ? Male { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [DisplayName("Data de Nascimento")]
         public Nullable<DateTime> BirthDate { get; set; }
-
+        
         [DisplayName("Telefone")]        
         public string PhoneNumber { get; set; }
 
@@ -48,5 +49,6 @@ namespace BolaoNet.MVC.ViewModels.Account
         public bool ReceiveEmails { get; set; }
 
         #endregion
+
     }
 }

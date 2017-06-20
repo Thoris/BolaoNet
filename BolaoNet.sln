@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReferencedComponents", "ReferencedComponents", "{0DD79E73-9DDE-475A-A7AC-DDE941D14543}"
 EndProject
@@ -143,6 +143,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BolaoNet.Application.Report
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BolaoNet.Tests", "BolaoNet.Tests\BolaoNet.Tests.csproj", "{9ABE0F07-4A14-4364-95F8-5154275400DB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.4 - Mail", "4.4 - Mail", "{6409FF15-ABAE-41F4-AB64-B03FC1D19390}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BolaoNet.Infra.Notification.Mail", "BolaoNet.Infra.Notification.Mail\BolaoNet.Infra.Notification.Mail.csproj", "{634E95F1-4F38-4BDB-AD16-8DFCD6C73AB5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -225,6 +229,10 @@ Global
 		{9ABE0F07-4A14-4364-95F8-5154275400DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9ABE0F07-4A14-4364-95F8-5154275400DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9ABE0F07-4A14-4364-95F8-5154275400DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{634E95F1-4F38-4BDB-AD16-8DFCD6C73AB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{634E95F1-4F38-4BDB-AD16-8DFCD6C73AB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{634E95F1-4F38-4BDB-AD16-8DFCD6C73AB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{634E95F1-4F38-4BDB-AD16-8DFCD6C73AB5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -277,5 +285,7 @@ Global
 		{8E9DE538-DED5-4B14-9405-501A2F6FC2C0} = {38671E94-5B6B-4572-BD61-F4D3F44DF5D9}
 		{05909801-2C3E-4770-B41F-ABB42EBD9193} = {8E9DE538-DED5-4B14-9405-501A2F6FC2C0}
 		{9ABE0F07-4A14-4364-95F8-5154275400DB} = {80B65053-B40D-49BF-8881-F4CF52F0DE15}
+		{6409FF15-ABAE-41F4-AB64-B03FC1D19390} = {684FCDA3-B961-401C-B192-6CD6D471693E}
+		{634E95F1-4F38-4BDB-AD16-8DFCD6C73AB5} = {6409FF15-ABAE-41F4-AB64-B03FC1D19390}
 	EndGlobalSection
 EndGlobal

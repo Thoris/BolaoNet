@@ -127,6 +127,7 @@
     <Compile Include="Interfaces\Facade\Campeonatos\ICopaMundo2014FacadeApp.cs" />
     <Compile Include="Interfaces\Facade\Campeonatos\IStructureCopaMundoFacadeApp.cs" />
     <Compile Include="Interfaces\Facade\IUserFacadeApp.cs" />
+    <Compile Include="Interfaces\Notification\INotificationApp.cs" />
     <Compile Include="Interfaces\Users\IRoleApp.cs" />
     <Compile Include="Interfaces\Users\IUserInRoleApp.cs" />
     <Compile Include="Interfaces\Users\IUserApp.cs" />
@@ -154,7 +155,9 @@
       <Name>BolaoNet.WebApi.Integration</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Notification\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

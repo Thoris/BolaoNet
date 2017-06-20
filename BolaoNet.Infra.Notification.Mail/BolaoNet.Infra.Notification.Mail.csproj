@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{634E95F1-4F38-4BDB-AD16-8DFCD6C73AB5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BolaoNet.Infra.Notification.Mail</RootNamespace>
+    <AssemblyName>BolaoNet.Infra.Notification.Mail</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseMailNotification.cs" />
+    <Compile Include="ITemplateMail.cs" />
+    <Compile Include="MailNotification.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TagValue.cs" />
+    <Compile Include="Templates\ActivationTemplateMail.cs" />
+    <Compile Include="Templates\ApostasBolaoTemplateMail.cs" />
+    <Compile Include="Templates\ApostasRestantesTemplateMail.cs" />
+    <Compile Include="Templates\BaseTemplateMail.cs" />
+    <Compile Include="Templates\BaseTemplateMailUser.cs" />
+    <Compile Include="Templates\PagamentosRestantesTemplateMail.cs" />
+    <Compile Include="Templates\ResetPasswordTemplateMail.cs" />
+    <Compile Include="Templates\WelcomeTemplateMail.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BolaoNet.Domain.Entities\BolaoNet.Domain.Entities.csproj">
+      <Project>{862efb06-ac74-4b8d-b338-37d52c90410a}</Project>
+      <Name>BolaoNet.Domain.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Domain.Interfaces.Services\BolaoNet.Domain.Interfaces.Services.csproj">
+      <Project>{c5c21c55-243a-4eae-927a-a10b3b4b7ff4}</Project>
+      <Name>BolaoNet.Domain.Interfaces.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TemplatesHtml\Activation.htm" />
+    <Content Include="TemplatesHtml\ApostasBolao.htm" />
+    <Content Include="TemplatesHtml\ApostasRestantes.htm" />
+    <Content Include="TemplatesHtml\PagamentosRestantes.htm" />
+    <Content Include="TemplatesHtml\ResetPassword.htm" />
+    <Content Include="TemplatesHtml\Welcome.htm" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

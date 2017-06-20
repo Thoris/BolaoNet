@@ -391,6 +391,9 @@
     <Content Include="Views\Shared\Fragments\_NavigationHeaderBase.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Error\AccessDenied.cshtml" />
+    <Content Include="Views\Account\RegistrationFormSent.cshtml" />
+    <Content Include="Views\Account\ActivateCodeSucessful.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordSent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

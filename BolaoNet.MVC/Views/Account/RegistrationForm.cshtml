@@ -31,18 +31,27 @@
 
 
                 <div class="form-group col-md-4 col-sm-4">
-                    <label for="gender">Sexo</label>
-                    <select class="form-control input-sm" id="gender">
+                    @Html.LabelFor(a => a.Male)
+                    @*<label for="gender">Sexo</label>*@
+                    @*<select class="form-control input-sm" id="gender">
                         <option>-- Selecione --</option>
                         <option>Masculino</option>
                         <option>Feminino</option>
-                    </select>
+                    </select>*@
+                    @*@Html.DropDownListFor(m => m.Sexo, (IEnumerable<SelectListItem>)ViewBag["Gender"], "- Selecione -", new { @class = "form-control input-sm" })*@
+
+                    @Html.DropDownListFor(model => model.Male, new SelectList(
+                          new List<Object>{
+                               new { value = true , text = "Masculino"  },
+                               new { value = false , text = "Feminino" }
+                            }, "value", "text", 0), "- Selecione -", new { @class = "form-control input-sm" } )
+
                 </div>
                 <div class="form-group col-md-4 col-sm-4">
                     @*<label for="birthday">Data Nascimento</label>
                     <input type="text" class="form-control input-sm" id="birthday" placeholder="Nascimento">*@
                     @Html.LabelFor(a => a.BirthDate)
-                    @Html.EditorFor(a => a.BirthDate, new { @class = "form-control input-sm", @placeholder = "Nascimento" })
+                    @Html.TextBoxFor(a => a.BirthDate, new { @class = "form-control input-sm", @placeholder = "Nascimento" })
                 </div>
                 <div class="form-group col-md-4 col-sm-4">
                     @*<label for="mobile">Telefone*</label>
