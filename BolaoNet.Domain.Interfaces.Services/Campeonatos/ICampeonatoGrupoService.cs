@@ -9,5 +9,6 @@ namespace BolaoNet.Domain.Interfaces.Services.Campeonatos
     public interface ICampeonatoGrupoService
         : Base.IGenericService<Entities.Campeonatos.CampeonatoGrupo>
     {
+        IList<Entities.Campeonatos.CampeonatoGrupo> GetGruposCampeonato(Entities.Campeonatos.Campeonato campeonato);
     }
 }

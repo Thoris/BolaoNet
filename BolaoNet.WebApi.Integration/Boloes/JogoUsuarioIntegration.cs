@@ -64,7 +64,7 @@ namespace BolaoNet.WebApi.Integration.Boloes
 
         }
 
-        public IList<Domain.Entities.ValueObjects.JogoUsuarioVO> GetJogosUser(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user, DateTime ? dataInicial, DateTime ? dataFim, int ? rodada, string nomeTime, string nomeGrupo, string nomeFase)
+        public IList<Domain.Entities.ValueObjects.JogoUsuarioVO> GetJogosUser(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user, Domain.Entities.ValueObjects.FilterJogosVO filter)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>();
 
@@ -76,12 +76,6 @@ namespace BolaoNet.WebApi.Integration.Boloes
         }
 
         #endregion
-
-
-
-
-
-
-
+        
     }
 }

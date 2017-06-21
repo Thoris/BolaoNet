@@ -27,12 +27,9 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
         #region Actions
 
         [HttpGet]
-        public ActionResult Jogos(MVC.ViewModels.Apostas.ApostasJogosListViewModel model)
+        public ActionResult Jogos()
         {
-            if (model == null)
-                model = new ViewModels.Apostas.ApostasJogosListViewModel();
-
-            //MVC.ViewModels.Apostas.ApostasJogosListViewModel vo = new ViewModels.Apostas.ApostasJogosListViewModel();
+            ViewModels.Apostas.ApostasJogosListViewModel model= new ViewModels.Apostas.ApostasJogosListViewModel();
 
             #region Emulate Data
             //vo.Apostas.Add(new ViewModels.Apostas.ApostaJogoEntryViewModel()
@@ -322,6 +319,10 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
 
             #endregion
 
+            ViewModels.Apostas.FilterJogosViewModel filterViewModel = new ViewModels.Apostas.FilterJogosViewModel();
+
+            Domain.Entities.ValueObjects.FilterJogosVO filterVO = new Domain.Entities.ValueObjects.FilterJogosVO();
+
 
             IList<Domain.Entities.ValueObjects.JogoUsuarioVO> list =
                 _jogoUsuarioApp.GetJogosUser(
@@ -329,18 +330,15 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
                 {
                     NomeCampeonato = "Copa do Mundo 2014"
                 },
-                new Domain.Entities.Users.User("123"), 
-                null,
-                null,
-                2,
-                null,
-                null,
-                null);
+                new Domain.Entities.Users.User("thoris"),
+                filterVO);
 
 
             IList<ViewModels.Apostas.ApostaJogoEntryViewModel> data =
                 Mapper.Map<IList<Domain.Entities.ValueObjects.JogoUsuarioVO>,
-                IList<ViewModels.Apostas.ApostaJogoEntryViewModel>>(list);
+                IList<ViewModels.Apostas.ApostaJogoEntryViewModel>>
+                (list);
+
 
             model.Apostas = data;
 
@@ -351,15 +349,42 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SaveJogos(MVC.ViewModels.Apostas.ApostasJogosListViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("Jogos", model);
+            }
 
-            IList<Domain.Entities.ValueObjects.JogoUsuarioVO> data =
-                Mapper.Map<IList<ViewModels.Apostas.ApostaJogoEntryViewModel>,
-                IList<Domain.Entities.ValueObjects.JogoUsuarioVO>>(model.Apostas);
+
+            IList<ViewModels.Apostas.ApostaJogoEntryViewModel> list = (from p in model.Apostas
+                                                                       where p.IsChanged == true
+                                                                       select p).ToList();
+
+
+            for (int c = 0; c < list.Count; c++ )
+            {
+
+                Domain.Entities.Campeonatos.Jogo jogo =
+                    Mapper.Map<ViewModels.Apostas.ApostaJogoEntryViewModel, Domain.Entities.Campeonatos.Jogo>
+                    (list[c]);
+
+
+                bool res =_jogoUsuarioApp.ProcessAposta(
+                    new Domain.Entities.Boloes.Bolao("Copa do Mundo 2014"),
+                    new Domain.Entities.Users.User("thoris"), 
+                    jogo, 
+                    0,
+                    (int)list[c].SalvarApostaTime1,
+                    (int)list[c].SalvarApostaTime2,
+                    null,
+                    null,
+                    null);
+            }
+
 
             return View();
         }
 
-        
+
 
         #endregion
     }

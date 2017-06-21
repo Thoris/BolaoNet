@@ -11,12 +11,36 @@ namespace BolaoNet.Domain.Services.Campeonatos
         Base.BaseGenericService<Entities.Campeonatos.CampeonatoGrupo>,
         Interfaces.Services.Campeonatos.ICampeonatoGrupoService
     {
+        #region Properties
+
+        private Interfaces.Repositories.Campeonatos.ICampeonatoGrupoDao BaseDao
+        {
+            get { return (Interfaces.Repositories.Campeonatos.ICampeonatoGrupoDao)base.BaseDao; }
+        }
+
+        #endregion
+
         #region Constructors/Destructors
 
         public CampeonatoGrupoService(string userName, Interfaces.Repositories.Campeonatos.ICampeonatoGrupoDao dao, ILogging logging)
             : base(userName, (Interfaces.Repositories.Base.IGenericDao<Entities.Campeonatos.CampeonatoGrupo>)dao, logging)
         {
 
+        }
+
+        #endregion
+
+
+        #region ICampeonatoGrupoService members
+
+        public IList<Entities.Campeonatos.CampeonatoGrupo> GetGruposCampeonato(Entities.Campeonatos.Campeonato campeonato)
+        {
+            if (campeonato == null)
+                throw new ArgumentException("campeonato");
+            if (string.IsNullOrEmpty(campeonato.Nome))
+                throw new ArgumentException("campeonato.Nome");
+
+            return BaseDao.GetGruposCampeonato(base.CurrentUserName, campeonato);
         }
 
         #endregion

@@ -22,6 +22,23 @@ namespace BolaoNet.MVC.Controllers
         {
             get { return HttpContext.User as CustomUserPrincipal; }
         }
+        protected virtual Domain.Entities.Users.User UserLogged
+        {
+            get
+            {
+                if (this.User != null)
+                {
+                    return new Domain.Entities.Users.User(this.User.UserName)
+                    {
+                        FullName = this.User.FullName
+                    };
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
 
         #endregion
 

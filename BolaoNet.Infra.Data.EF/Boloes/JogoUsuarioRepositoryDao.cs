@@ -811,20 +811,20 @@ namespace BolaoNet.Infra.Data.EF.Boloes
             throw new NotImplementedException();
         }
 
-        public IList<Domain.Entities.ValueObjects.JogoUsuarioVO> GetJogosUser(string currentUserName, Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user, DateTime ? dataInicial, DateTime ? dataFim, int ? rodada, string nomeTime, string nomeGrupo, string nomeFase)
-        {
-            DateTime dataInicioFilter = DateTime.MinValue;
+        public IList<Domain.Entities.ValueObjects.JogoUsuarioVO> GetJogosUser(string currentUserName, Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user, Domain.Entities.ValueObjects.FilterJogosVO filter)
+        {            
+            DateTime dataInicioFilter = new DateTime(1900, 1, 1);
             DateTime dataFimFilter = DateTime.MaxValue;
             int rodadaFilter = 0;
 
-            if (dataInicial != null)
-                dataInicioFilter = (DateTime)dataInicial;
+            if (filter.DataInicial != null)
+                dataInicioFilter = (DateTime)filter.DataInicial;
 
-            if (dataFim != null)
-                dataFimFilter = (DateTime)dataFim;
+            if (filter.DataFinal != null)
+                dataFimFilter = (DateTime)filter.DataFinal;
 
-            if (rodada != null)
-                rodadaFilter = (int)rodada;
+            if (filter.Rodada != null)
+                rodadaFilter = (int)filter.Rodada;
 
 
             var q =
@@ -835,12 +835,13 @@ namespace BolaoNet.Infra.Data.EF.Boloes
                 into ju
                 from p in ju.DefaultIfEmpty()
                 where string.Compare(j.NomeCampeonato, bolao.NomeCampeonato, true) == 0 &&
-                (DateTime.Compare(j.DataJogo, dataInicioFilter) >= 0 || dataInicial == null) &&
-                (DateTime.Compare(j.DataJogo, dataFimFilter) <= 0 || dataFim == null) &&
-                (j.Rodada == rodadaFilter || rodada == null) &&
-                (string.Compare (j.NomeTime1, nomeTime, true) == 0 || string.Compare (j.NomeTime2, nomeTime, true) == 0 || nomeTime == null ) &&
-                (string.Compare (j.NomeGrupo, nomeGrupo, true) == 0 || nomeGrupo == null) &&
-                (string.Compare (j.NomeFase, nomeFase, true) == 0 || nomeFase == null)
+                (DateTime.Compare(j.DataJogo, dataInicioFilter) >= 0 || filter.DataInicial == null) &&
+                (DateTime.Compare(j.DataJogo, dataFimFilter) <= 0 || filter.DataFinal == null) &&
+                (j.Rodada == rodadaFilter || filter.Rodada == null) &&
+                (string.Compare (j.NomeTime1, filter.NomeTime, true) == 0 || string.Compare (j.NomeTime2, filter.NomeTime, true) == 0 || filter.NomeTime == null ) &&
+                (string.Compare (j.NomeGrupo, filter.NomeGrupo, true) == 0 || filter.NomeGrupo == null) &&
+                (string.Compare (j.NomeFase, filter.NomeFase, true) == 0 || filter.NomeFase == null)
+                orderby j.NomeGrupo, j.Rodada
                 select new Domain.Entities.ValueObjects.JogoUsuarioVO()
                 {
                     NomeCampeonato = j.NomeCampeonato,

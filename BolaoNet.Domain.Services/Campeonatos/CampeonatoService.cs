@@ -11,6 +11,14 @@ namespace BolaoNet.Domain.Services.Campeonatos
         Base.BaseGenericService<Entities.Campeonatos.Campeonato>,
         Interfaces.Services.Campeonatos.ICampeonatoService
     {
+        #region Properties
+
+        private Interfaces.Repositories.Campeonatos.ICampeonatoDao BaseDao
+        {
+            get { return (Interfaces.Repositories.Campeonatos.ICampeonatoDao)base.BaseDao; }
+        }
+
+        #endregion
 
         #region Constructors/Destructors
 
@@ -18,6 +26,20 @@ namespace BolaoNet.Domain.Services.Campeonatos
             : base(userName, (Interfaces.Repositories.Base.IGenericDao<Entities.Campeonatos.Campeonato>)dao, logging)
         {
 
+        }
+
+        #endregion
+
+        #region ICampeonatoService members
+
+        public IList<int> GetRodadasCampeonato(Entities.Campeonatos.Campeonato campeonato)
+        {
+            if (campeonato == null)
+                throw new ArgumentException("campeonato");
+            if (string.IsNullOrEmpty(campeonato.Nome))
+                throw new ArgumentException("campeonato.Nome");
+
+            return BaseDao.GetRodadasCampeonato(base.CurrentUserName, campeonato);
         }
 
         #endregion

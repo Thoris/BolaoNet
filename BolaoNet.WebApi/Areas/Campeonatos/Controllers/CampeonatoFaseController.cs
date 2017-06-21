@@ -41,5 +41,14 @@ namespace BolaoNet.Services.Areas.Campeonatos.Controllers
 
 
         #endregion
+
+        #region ICampeonatoFaseService members
+
+        public IList<Domain.Entities.Campeonatos.CampeonatoFase> GetFaseCampeonato(Domain.Entities.Campeonatos.Campeonato campeonato)
+        {
+            return Service.GetFaseCampeonato(campeonato);
+        }
+
+        #endregion
     }
 }

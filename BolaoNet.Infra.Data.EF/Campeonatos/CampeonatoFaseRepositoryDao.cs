@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace BolaoNet.Infra.Data.EF.Campeonatos
 {
     public class CampeonatoFaseRepositoryDao : 
-        Base.BaseRepositoryDao<Domain.Entities.Campeonatos.CampeonatoFase>, Domain.Interfaces.Repositories.Campeonatos.ICampeonatoFaseDao
+        Base.BaseRepositoryDao<Domain.Entities.Campeonatos.CampeonatoFase>,
+        Domain.Interfaces.Repositories.Campeonatos.ICampeonatoFaseDao
     {
         
         #region Constructors/Destructors
@@ -16,6 +17,15 @@ namespace BolaoNet.Infra.Data.EF.Campeonatos
             : base(unitOfWork)
         {
 
+        }
+
+        #endregion
+
+        #region ICampeonatoFaseDao members
+
+        public IList<Domain.Entities.Campeonatos.CampeonatoFase> GetFasesCampeonato(string currentUserName, Domain.Entities.Campeonatos.Campeonato campeonato)
+        {
+            return GetList(x => string.Compare(x.NomeCampeonato, campeonato.Nome, true) == 0).ToList();
         }
 
         #endregion

@@ -32,5 +32,14 @@ namespace BolaoNet.WebApi.Integration.Campeonatos
         }
 
         #endregion
+
+        #region ICampeonatoGrupoService members
+
+        public IList<Domain.Entities.Campeonatos.CampeonatoGrupo> GetGruposCampeonato(Domain.Entities.Campeonatos.Campeonato campeonato)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

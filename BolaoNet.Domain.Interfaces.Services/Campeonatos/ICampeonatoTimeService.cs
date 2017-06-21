@@ -9,5 +9,6 @@ namespace BolaoNet.Domain.Interfaces.Services.Campeonatos
     public interface ICampeonatoTimeService
         : Base.IGenericService<Entities.Campeonatos.CampeonatoTime>
     {
+        IList<Entities.Campeonatos.CampeonatoTime> GetTimesCampeonato(Entities.Campeonatos.Campeonato campeonato);
     }
 }

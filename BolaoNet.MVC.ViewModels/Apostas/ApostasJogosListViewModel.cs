@@ -10,6 +10,7 @@ namespace BolaoNet.MVC.ViewModels.Apostas
     {
         #region Properties
 
+        public FilterJogosViewModel Filtros { get; set; }
         public IList<ApostaJogoEntryViewModel> Apostas { get; set; }
 
         #endregion
@@ -18,6 +19,7 @@ namespace BolaoNet.MVC.ViewModels.Apostas
 
         public ApostasJogosListViewModel()
         {
+            this.Filtros = new FilterJogosViewModel();
             this.Apostas = new List<ApostaJogoEntryViewModel>();
         }
 

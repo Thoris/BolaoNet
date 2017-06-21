@@ -310,7 +310,7 @@ namespace BolaoNet.Domain.Services.Boloes
 
             return this.Dao.GetJogosByUser(this.CurrentUserName, bolao, user);
         }
-        public IList<Entities.ValueObjects.JogoUsuarioVO> GetJogosUser(Entities.Boloes.Bolao bolao, Entities.Users.User user, DateTime ? dataInicial, DateTime ? dataFim, int ? rodada, string nomeTime, string nomeGrupo, string nomeFase)
+        public IList<Entities.ValueObjects.JogoUsuarioVO> GetJogosUser(Entities.Boloes.Bolao bolao, Entities.Users.User user, Entities.ValueObjects.FilterJogosVO filter)
         {
             if (bolao == null)
                 throw new ArgumentException("bolao");
@@ -324,8 +324,7 @@ namespace BolaoNet.Domain.Services.Boloes
                 throw new ArgumentException("bolao.NomeCampeonato");
 
 
-            return this.Dao.GetJogosUser(this.CurrentUserName, bolao, user, 
-                dataInicial, dataFim, rodada, nomeTime, nomeGrupo, nomeFase);
+            return this.Dao.GetJogosUser(this.CurrentUserName, bolao, user, filter);
         }
  
         #endregion

@@ -12,11 +12,14 @@
         
         @for (int c = 0; c < Model.Apostas.Count; c++)
         {
+            @Html.HiddenFor(x => x.Apostas[c].NomeCampeonato)
+            @Html.HiddenFor(x => x.Apostas[c].JogoId)
+
             isGrouped = false;
             if (string.Compare(Model.Apostas[c].NomeGrupo, currentGrupo, true) != 0)
-            {                                
+            {
                 if (!string.IsNullOrEmpty(Model.Apostas[c].NomeGrupo.Trim()))
-                {                
+                {
                     <tr>
                         <th scope="rowgroup" colspan="12">Grupo @(Model.Apostas[c].NomeGrupo)</th>
                     </tr>
@@ -53,11 +56,13 @@
                 else
                 {
                     <td>
-                        <input type="text" class="form-control input-sm" maxlength="2" style="width: 40px"
-                               value="@(Model.Apostas[c].ApostaTime1)" />
+                        @Html.TextBoxFor(x => x.Apostas[c].SalvarApostaTime1, 
+                            new { @maxlenght = "2", style = "width: 40px", @class = "form-control input-sm" })
                     </td>
-                }                               
+                }                 
+                @Html.HiddenFor(x => x.Apostas[c].ApostaTime1)
                 <td>x</td>                
+                @Html.HiddenFor(x => x.Apostas[c].ApostaTime2)
                 @if (Model.Apostas[c].IsLocked)
                 {
                     if (Model.Apostas[c].ApostaTime2 != null)
@@ -72,8 +77,8 @@
                 else
                 {
                     <td>
-                        <input type="text" class="form-control input-sm" maxlength="2" style="width: 40px"
-                               value="@(Model.Apostas[c].ApostaTime2)" />
+                        @Html.TextBoxFor(x => x.Apostas[c].SalvarApostaTime2, 
+                            new { @maxlenght = "2", style = "width: 40px", @class = "form-control input-sm" })
                     </td>
                 }                 
 

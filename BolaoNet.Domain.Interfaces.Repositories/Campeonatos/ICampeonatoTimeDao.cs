@@ -8,5 +8,6 @@ namespace BolaoNet.Domain.Interfaces.Repositories.Campeonatos
 {
     public interface ICampeonatoTimeDao : Base.IGenericDao<Entities.Campeonatos.CampeonatoTime>
     {
+        IList<Entities.Campeonatos.CampeonatoTime> GetTimesCampeonato(string currentUserName, Entities.Campeonatos.Campeonato campeonato);
     }
 }

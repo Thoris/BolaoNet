@@ -41,5 +41,15 @@ namespace BolaoNet.Services.Areas.Campeonatos.Controllers
 
 
         #endregion
+
+
+        #region ICampeonatoGrupoService members
+
+        public IList<Domain.Entities.Campeonatos.CampeonatoGrupo> GetGruposCampeonato(Domain.Entities.Campeonatos.Campeonato campeonato)
+        {
+            return Service.GetGruposCampeonato(campeonato);
+        }
+
+        #endregion
     }
 }

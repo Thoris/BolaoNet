@@ -31,5 +31,14 @@ namespace BolaoNet.Application.Campeonatos
         }
 
         #endregion
+
+        #region ICampeonatoTimeApp members
+
+        public IList<Domain.Entities.Campeonatos.CampeonatoTime> GetTimesCampeonato(Domain.Entities.Campeonatos.Campeonato campeonato)
+        {
+            return Service.GetTimesCampeonato(campeonato);
+        }
+
+        #endregion
     }
 }

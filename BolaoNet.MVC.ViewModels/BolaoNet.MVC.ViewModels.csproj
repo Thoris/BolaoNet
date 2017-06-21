@@ -46,6 +46,8 @@
   <ItemGroup>
     <Compile Include="Apostas\ApostaJogoEntryViewModel.cs" />
     <Compile Include="Apostas\ApostasJogosListViewModel.cs" />
+    <Compile Include="Apostas\FilterJogosViewModel.cs" />
+    <Compile Include="Base\CampeonatoDataVO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Account\ActivationCodeViewModel.cs" />
     <Compile Include="Account\ChangePasswordViewModel.cs" />

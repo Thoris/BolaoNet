@@ -31,5 +31,14 @@ namespace BolaoNet.Application.Campeonatos
         }
 
         #endregion
+
+        #region ICampeonatoFaseApp members
+
+        public IList<Domain.Entities.Campeonatos.CampeonatoFase> GetFaseCampeonato(Domain.Entities.Campeonatos.Campeonato campeonato)
+        {
+            return Service.GetFaseCampeonato(campeonato);
+        }
+
+        #endregion
     }
 }
