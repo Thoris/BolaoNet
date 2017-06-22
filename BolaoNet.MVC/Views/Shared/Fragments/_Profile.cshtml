@@ -1,0 +1,26 @@
+﻿@using Res = BolaoNet.MVC.Resources.Views.Shared.Fragments.Profile
+@{
+    var homeController = ViewContext.Controller as BolaoNet.MVC.Controllers.AuthenticationController;
+}
+<li class="nav-header">
+    <div class="dropdown profile-element">
+        <span>
+            <img alt="image" class="img-circle" src="~/Content/img/profile_small.jpg" />
+        </span>
+        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+            <span class="clear">
+                <span class="block m-t-xs">
+                    @*<strong class="font-bold">@homeController.LoginCorrente</strong>*@
+                    <strong class="font-bold">USUARIO XXXX</strong>
+                </span><span class="text-muted text-xs block">@Res.MyProfile<b class="caret"></b></span>
+            </span>
+        </a>
+        <ul class="dropdown-menu animated fadeInRight m-t-xs">
+            <li class="divider"></li>
+            <li><a href="/account/logoff">@Res.Exit</a></li>
+        </ul>
+    </div>
+    <div class="logo-element">
+        @Res.LogoElement
+    </div>
+</li>

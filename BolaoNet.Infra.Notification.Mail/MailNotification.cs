@@ -12,8 +12,8 @@ namespace BolaoNet.Infra.Notification.Mail
     {
         #region Constructors/Destructors
 
-        public MailNotification(string currentUserName)
-            : base(currentUserName)            
+        public MailNotification(string userName)
+            : base(userName)            
         {
         }
 

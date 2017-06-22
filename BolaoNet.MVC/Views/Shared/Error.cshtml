@@ -1,9 +1,22 @@
 ﻿@model System.Web.Mvc.HandleErrorInfo
-
+@using Res = BolaoNet.MVC.Resources.Views.Shared.Error
 @{
-    ViewBag.Title = "Error";
+    ViewBag.EsconderHeader = true;
+    Layout = "~/Views/Shared/_LayoutMenu.cshtml";
 }
 
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
-
+<div class="row">
+    <div class="col-lg-12">
+        <div class="text-center m-t-lg">
+            <h1 class="text-danger"><i class="fa fa-times-circle fa-2x"></i></h1>
+            <h1 class="text-danger">@Res.ErrorInfo</h1>
+            <h2 class="text-danger">@Res.ErrorDescription</h2>
+            <h3>@Res.Details</h3>
+            <p>@Res.Controller: @Model.ControllerName</p>
+            <p>@Res.Action: @Model.ActionName</p>
+            <h4 class="text-danger">@Res.Message: @Model.Exception.Message</h4>
+            <p>@Res.StackTrace:</p>
+            <pre>@Model.Exception.StackTrace</pre>
+        </div>
+    </div>
+</div>

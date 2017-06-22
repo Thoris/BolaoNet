@@ -1,24 +1,47 @@
-﻿@{
+﻿@using Res = BolaoNet.MVC.Resources.Views.Shared.LayoutMenu
+
+@{
     Layout = "~/Views/Shared/_LayoutSystemBase.cshtml";
 }
-
 @section header
 {
+    <script src="~/Content/js/jquery-1.11.3.min.js" type="text/javascript"></script>
     @RenderSection("header", required: false)
 }
 
-@section menu
-{
-    @Html.Partial("Fragments/_NavigationHeaderBase")
-    @Html.Partial("Fragments/_Menu")
-}
 
-@RenderBody()
+<div id="wrapper">
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav metismenu" id="side-menu">
+                @Html.Partial("Fragments/_Profile")
+                @Html.Partial("Fragments/_Menu")
+            </ul>
 
+        </div>
+    </nav>
+
+    <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top white-bg
+                 " role="navigation" style="margin-bottom: 0">
+                @Html.Partial("Fragments/_Navigation")
+            </nav>
+        </div>
+        
+        @Html.Partial("Fragments/_Header")
+        
+        <div class="wrapper wrapper-content animated fadeInRight">
+            @RenderBody()
+        </div>
+        @Html.Partial("Fragments/_Footer")
+    </div>
+</div>
 
 @section scripts
 {
+    @Scripts.Render("~/bundles/metismenu")
+    @Scripts.Render("~/bundles/slimscroll")
+    @Scripts.Render("~/bundles/custom")
     @RenderSection("scripts", required: false)
 }
-
-

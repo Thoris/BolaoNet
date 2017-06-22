@@ -1,0 +1,49 @@
+﻿@using Res = BolaoNet.MVC.Resources.Views.Shared.Fragments.Navigation
+@{
+    string controllerName = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString();
+    string controllerAction = HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString();
+
+    string lang = "";
+    if (System.Threading.Thread.CurrentThread.CurrentUICulture != null)
+    {
+        lang = System.Threading.Thread.CurrentThread.CurrentUICulture.ToString();
+    }
+
+
+}
+
+
+<div class="row border-bottom">
+    <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+        </div>
+        <ul class="nav navbar-top-links navbar-right">
+            <li class="logo-nav">
+                <img src="~/Content/img/logo.png" width="125" height="33" alt="Logo">
+            </li>
+            <li class="ajuda">
+                <a href="javascript:ajuda()">
+                    <i class="fa fa-question-circle"></i> Ajuda
+                </a>
+            </li>
+            <li class="sair">
+                <a href="/Account/Logoff">
+                    <i class="fa fa-sign-out"></i> Sair
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+
+
+
+<script type="text/javascript">
+    function ajuda() {
+        var left = ($(window).width() / 2) - (900 / 2),
+            top = ($(window).height() / 2) - (600 / 2),
+            popup = window.open("@Url.Action("Ajuda", new { controllerName = controllerName, controllerAction = controllerAction, lang=lang })", "popup", "scrollbars=yes,width=900, height=600, top=" + top + ", left=" + left);
+    }
+</script>
+

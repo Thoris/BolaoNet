@@ -24,10 +24,18 @@ namespace BolaoNet.MVC.Controllers
         #region Constructors/Destructors
 
         public AccountController(Application.Interfaces.Users.IUserApp userApp, Application.Interfaces.Users.IUserInRoleApp userInRoleApp, Application.Interfaces.Notification.INotificationApp notificationApp)
+        //public AccountController(Application.Interfaces.Users.IUserApp userApp, Application.Interfaces.Users.IUserInRoleApp userInRoleApp)
         {
             _userApp = userApp;
             _userInRoleApp = userInRoleApp;
             _notificationApp = notificationApp;
+
+
+            
+
+            // _notificationApp = new Infra.Notification.Mail.MailNotification("");
+
+            
         }
 
         #endregion

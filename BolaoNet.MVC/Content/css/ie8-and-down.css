@@ -1,0 +1,114 @@
+@charset "utf-8";
+/* CSS exclusivo para IE8 e abaixo */
+body* HTML {overflow-x: hidden;}
+#wrapper { width: 100%; overflow-x: hidden;}
+body* .footer-blueline{
+    background: #00b8ee none repeat scroll 0 0;
+    bottom: 0;
+    left: 0;
+	padding: 10px 0 0 0;
+    position: absolute;
+    right: 0;
+	border: none;
+}
+/* Ajuste de colunas */
+	body* .wrapper-content .row { min-width: 100%; overflow: none;}
+	body* .first { padding: 0 15px 0 0;}
+	body* .last { padding: 0 0 0 15px;}
+	.col-lg-4, .col-lg-8 { float: left;}
+	.first.col-lg-8 { width: 63.66%;}
+	.col-lg-8 { width: 61.66%;}
+	.col-lg-4 { width: 30.33%; padding: 0 10px;}
+
+
+/* Pagina de Login */
+.login.gray-bg {max-height: 93.5%; min-height: 400px;}
+.middle-box H1 { font-size: 90px;}
+body* .form-control { height: 24px; width: 95%; }
+
+/* Estrutura da pagina */
+	/* Menu Lateral */
+	.navbar-default {
+   		background-color: transparent;
+    	border-color: #2f4050;
+    	width: 220px;
+    	z-index: 2001;
+		top: 0;
+		left: 0;
+	}
+	.sidebar-collapse { position: absolute; width:220px;}
+	#side-menu { margin: auto;}
+	.nav-header { padding: 20px 25px;}
+	.mini-navbar .sidebar-collapse { width: 70px;}
+		/* Submenu */
+		.metismenu > li.active .collapse {display: inline-block; margin: 0;}
+
+	/* Area Central */
+	#page-wrapper {
+    	margin: 0 0 0 220px;
+    	position: inherit;
+		min-height: 100%;
+	}
+		/* Menu Topo */
+		.page-heading { background: #ffffff; height: 90px;}
+		.navbar .border-bottom {
+    	border-bottom: 1px solid #e7eaec;
+    	background: #fff;
+		margin: 0;
+		}
+		.white-bg .navbar-static-top {min-height: 70px;}
+		.navbar-header {float: left;}
+		.navbar-right {float: right; height:55px; position: absolute; right: 15px;}
+		body* .navbar-top-links li { display: inline; zoom: 1;}
+		body* .logo-nav img {position: relative; top: -50px;}
+		.minimalize-styl-2.btn.btn-primary.ie7 {display: none;}
+		#top-search { }
+		/* Breadcrumb IE7 Exclusiva */
+		body* .ie7.breadcrumb { margin: 0;}
+		body* .ie7.breadcrumb > LI { display: inline; padding:0 25px 0 15px; background:url(../img/breadcrumb-divider.jpg) no-repeat right 5px;}
+		body* .ie7.breadcrumb > LI A {color: #676a6c;}
+		body* .ie7.breadcrumb > LI.first-item { padding: 0 25px 0 0px;}
+		body* .ie7.breadcrumb > LI.active { padding:0 25px 0 15px; background:none;}
+		
+		/* Caixas de Conteúdo */
+		body* .ibox-title { min-height: 30px;}
+		.col-lg-3 {float: left; width: 25%;}
+			
+		/* Botões */
+		.btn.btn-w-m {white-space:normal; margin: 5px 10px 5px 0;}
+		INPUT[type=radio] {display: none;}
+		body* #datapicker { width: 100%;}
+		body* #datapicker .form-control { width: 60%;}
+		body* #datapicker .input-group-addon { position: absolute; padding: 12px 12px 5px; width: 15px;}
+		body* .pdf, .fechar { height: 23px; margin: 0px 3px 0 0px;}
+		
+		/* Caixa de Busca */
+		.busca.ibox-title .col-md-8 { float: left; max-width: 50%;}
+		.busca.ibox-title .col-md-4 { float: right; max-width: 50%;}
+		.ibox-title.busca .col-md-4 > p {
+			font-weight: 500;
+			height: 20px;
+			margin: 25px 0;
+			visibility: visible;
+			width: 80px;
+			position: relative;
+			text-align: right;
+		}
+		.ibox-title.busca .fa-question-circle{ font-size: 18px;} 			
+		.ibox-title.busca .navbar-form-custom .form-control {
+			background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+			border: 1px solid #ff6100;
+			font-size: 14px;
+			height: 20px;
+			margin: 0;
+			max-width: 50%;
+			position: absolute;
+			right: 20px;
+			top: 15px;
+			z-index: 2000;
+		}
+		@media (max-width: 768px) {
+			.ibox-title.busca .fa-question-circle{ font-size: 0;} 
+		}
+
+		

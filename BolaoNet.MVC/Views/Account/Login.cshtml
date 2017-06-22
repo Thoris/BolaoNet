@@ -1,59 +1,54 @@
 ﻿@model BolaoNet.MVC.ViewModels.Account.LoginViewModel
-
+@using Res = BolaoNet.MVC.Resources.Views.Account.Login
 @{
-    Layout = "~/Views/Shared/_LayoutBase.cshtml";
+    ViewBag.Title = @Res.Title;
 }
 
-@*<div class="container">*@
-    <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-            <div class="login-panel panel panel-default">
-
-                @*<h3><i class="fa fa-user fa-4x"></i></h3>*@
-
-                <div class="panel-heading">
-                    <h3 class="panel-title">Por favor, entre com as credenciais</h3>
+<div class="gray-bg login">
+    <div id="wrapper">
+        <div class="middle-box text-center loginscreen animated fadeInDown">
+            <div>
+                <div>
+                    <h1 class="logo-name"><img src="~/Content/img/logo.png" alt="BolaoNet"></h1>
                 </div>
-                <div class="panel-body">
-                    @using(Html.BeginForm("Login", "Account", FormMethod.Post, new {}))
-                    {
-                        @Html.AntiForgeryToken()
-                        <fieldset>
-                            <div class="form-group">
-                                @Html.TextBoxFor(a => a.UserName, new { @class="form-control", @placeholder="Usuário"})
-                                @*@Html.ValidationMessageFor(a => a.UserName)*@                                
-                            </div>
-                            <div class="form-group">
-                                @Html.PasswordFor(a => a.Password, new { @class = "form-control", @placeholder = "Senha" })
-                                @*@Html.ValidationMessageFor(a => a.Password)*@                       
-                            </div>
-                            <div class="checkbox">
-                                <label>                                    
-                                    @Html.CheckBoxFor(a => a.RememberMe, new {}) Lembrar-me                                    
-                                </label>
-                            </div>        
-                            
-                            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
-                                                                                                     
-                            <input type="submit" value="Login" class="btn btn-lg btn-success btn-block" />
+                <h3>@Res.Welcome</h3>
+                <p>
+                    @Res.FillData
+                    <!-- Espaço com ampliamento automático -->
+                </p>
+                <p>@Res.Access</p>
 
-                            <div class="row omb_row-sm-offset-12">
-                                <div class="col-xs-12 col-sm-6">
-                                    <p class="pull-left">
-                                        @Html.ActionLink("Esqueceu a senha?", "ForgotPassword")
-                                    </p>
-                                </div>
-                                <div class="col-xs-12 col-sm-6">
-                                    <p class="pull-right">
-                                        @Html.ActionLink("Registrar usuário", "RegistrationForm")
-                                    </p>
-                                </div>
-                            </div>
-                        </fieldset>
-                    }
-                </div>
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "m-t", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="login-erro">
+                        @Html.ValidationSummary(true)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = @Res.User_PlaceHolder })
+                        @Html.ValidationMessageFor(m => m.UserName)
+                    </div>
+                    <div class="form-group">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = @Res.Password_PlaceHolder })
+                        @Html.ValidationMessageFor(m => m.Password)
+                    </div>
+                    <button type="submit" class="btn btn-primary block full-width m-b">@Res.LoginAccess</button>
+
+                    @Html.CheckBoxFor(m => m.RememberMe)@Html.Raw(" ")
+                        @Html.Label(@Res.RememberMe)
+
+                }
+                <p class="m-t"> <small>@Res.CopyRight</small> </p>
             </div>
         </div>
     </div>
-@*</div>*@
+</div>
+
+
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
 

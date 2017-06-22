@@ -131,6 +131,7 @@
     <Compile Include="Interfaces\Users\IRoleApp.cs" />
     <Compile Include="Interfaces\Users\IUserInRoleApp.cs" />
     <Compile Include="Interfaces\Users\IUserApp.cs" />
+    <Compile Include="Notification\NotificationApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceType.cs" />
     <Compile Include="Users\RoleApp.cs" />
@@ -155,9 +156,7 @@
       <Name>BolaoNet.WebApi.Integration</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Notification\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

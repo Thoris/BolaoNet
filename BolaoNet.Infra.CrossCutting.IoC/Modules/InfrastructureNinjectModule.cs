@@ -13,7 +13,11 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
 
         public override void Load()
         {
-            Bind<Domain.Interfaces.Services.Notification.INotificationService>().To<Infra.Notification.Mail.MailNotification>();
+            string userName = "";
+
+
+            Bind<Domain.Interfaces.Services.Notification.INotificationService>().To<Infra.Notification.Mail.MailNotification>().WithConstructorArgument("userName", userName);
+            
 
             //Bind<IGenreAppService>().To<GenreAppService>();
             //Bind<IArtistAppService>().To<ArtistAppService>();
