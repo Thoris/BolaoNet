@@ -130,6 +130,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Apostas\ApostasAreaRegistration.cs" />
+    <Compile Include="Areas\Apostas\Controllers\ApostasAutomaticasController.cs" />
     <Compile Include="Areas\Apostas\Controllers\ApostasJogosController.cs" />
     <Compile Include="Areas\Apostas\Controllers\BaseApostasController.cs" />
     <Compile Include="Areas\Boloes\BoloesAreaRegistration.cs" />
@@ -231,6 +232,7 @@
     <Content Include="Content\js\html5shiv-printshiv.js" />
     <Content Include="Content\js\html5shiv.min.js" />
     <Content Include="Content\js\inspinia.js" />
+    <Content Include="Areas\Apostas\Views\ApostasAutomaticas\Index.cshtml" />
     <None Include="Content\js\jquery-1.10.2.intellisense.js" />
     <Content Include="Content\js\jquery-1.10.2.js" />
     <Content Include="Content\js\jquery-1.10.2.min.js" />
