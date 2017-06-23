@@ -144,6 +144,7 @@
     <Compile Include="Areas\Users\UsersAreaRegistration.cs" />
     <Compile Include="Areas\Visitante\VisitanteAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Helpers\CampeonatoDataLoader.cs" />
     <Compile Include="Security\AuthorizeRolesAttribute.cs" />
     <Compile Include="Security\CustomUserPrincipal.cs" />
     <Compile Include="AutoMapper\AutoMapperConfig.cs" />

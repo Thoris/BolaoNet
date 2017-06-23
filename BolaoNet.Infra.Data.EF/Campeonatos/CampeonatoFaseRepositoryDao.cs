@@ -25,7 +25,8 @@ namespace BolaoNet.Infra.Data.EF.Campeonatos
 
         public IList<Domain.Entities.Campeonatos.CampeonatoFase> GetFasesCampeonato(string currentUserName, Domain.Entities.Campeonatos.Campeonato campeonato)
         {
-            return GetList(x => string.Compare(x.NomeCampeonato, campeonato.Nome, true) == 0).ToList();
+            return GetList(x => string.Compare(x.NomeCampeonato, campeonato.Nome, true) == 0)
+                .OrderBy(x => x.Ordem).ToList();
         }
 
         #endregion

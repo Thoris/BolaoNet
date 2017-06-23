@@ -35,63 +35,79 @@
                 </tr>
                 currentFase = Model.Apostas[c].NomeFase;
             }
-            <tr class="active">
-                <th scope="row">@(Model.Apostas[c].JogoId)</th>
-                <td>@(Model.Apostas[c].DataJogo)</td>
-                <td>@(Model.Apostas[c].NomeEstadio)</td>
-                <td>@(Model.Apostas[c].NomeTime1)</td>
-                <td><img src="@(Model.Apostas[c].ImageTime1)" /></td>
-
+            @*<tr class="active">*@
+            <tr
                 @if (Model.Apostas[c].IsLocked)
                 {
-                    if (Model.Apostas[c].ApostaTime1 != null)
-                    { 
-                        <td>@(Model.Apostas[c].ApostaTime1)</td>
-                    }
-                    else
-                    {
-                        <td>-</td>
-                    }
+                    @Html.Raw("class=\"info\"");
                 }
+                else if (Model.Apostas[c].SalvarApostaTime1 == null || Model.Apostas[c].SalvarApostaTime2 == null)
+                {
+                     @Html.Raw("class=\"warning\"");
+                }                
                 else
                 {
-                    <td>
-                        @Html.TextBoxFor(x => x.Apostas[c].SalvarApostaTime1, 
-                            new { @maxlenght = "2", style = "width: 40px", @class = "form-control input-sm" })
-                    </td>
-                }                 
-                @Html.HiddenFor(x => x.Apostas[c].ApostaTime1)
-                <td>x</td>                
-                @Html.HiddenFor(x => x.Apostas[c].ApostaTime2)
-                @if (Model.Apostas[c].IsLocked)
-                {
-                    if (Model.Apostas[c].ApostaTime2 != null)
-                    {
-                        <td>@(Model.Apostas[c].ApostaTime2)</td>
-                    }
-                    else
-                    {
-                        <td>-</td>
-                    }
-                }
-                else
-                {
-                    <td>
-                        @Html.TextBoxFor(x => x.Apostas[c].SalvarApostaTime2, 
-                            new { @maxlenght = "2", style = "width: 40px", @class = "form-control input-sm" })
-                    </td>
-                }                 
+                    @*@Html.Raw("class=\"success\"");*@
+                    @Html.Raw("class=\"active\"");
+                }    
+            >
 
-                <td><img src="@(Model.Apostas[c].ImageTime2)" /></td>
-                <td>@(Model.Apostas[c].NomeTime2)</td>
-                <td>
-                    @if (Model.Apostas[c].Automatico == 1)
-                    {
-                        <span class="glyphicon glyphicon-flash" />
-                    }
-                </td>
-                <td>@(Model.Apostas[c].DataAposta)</td>
-            </tr>
+        <th scope="row">@(Model.Apostas[c].JogoId)</th>
+        <td>@(Model.Apostas[c].DataJogo)</td>
+        <td>@(Model.Apostas[c].NomeEstadio)</td>
+        <td class="text-right">@(Model.Apostas[c].NomeTime1)</td>
+        <td><img src="@(Model.Apostas[c].ImageTime1)" /></td>
+
+        @if (Model.Apostas[c].IsLocked)
+        {
+            if (Model.Apostas[c].ApostaTime1 != null)
+            {
+                <td>@(Model.Apostas[c].ApostaTime1)</td>
+            }
+            else
+            {
+                <td>-</td>
+            }
+        }
+        else
+        {
+            <td>
+                @Html.TextBoxFor(x => x.Apostas[c].SalvarApostaTime1,
+                            new { @maxlenght = "2", style = "width: 40px", @class = "form-control input-sm" })
+            </td>
+        }
+        @Html.HiddenFor(x => x.Apostas[c].ApostaTime1)
+        <td>x</td>
+        @Html.HiddenFor(x => x.Apostas[c].ApostaTime2)
+        @if (Model.Apostas[c].IsLocked)
+        {
+            if (Model.Apostas[c].ApostaTime2 != null)
+            {
+                <td>@(Model.Apostas[c].ApostaTime2)</td>
+            }
+            else
+            {
+                <td>-</td>
+            }
+        }
+        else
+        {
+            <td>
+                @Html.TextBoxFor(x => x.Apostas[c].SalvarApostaTime2,
+                            new { @maxlenght = "2", style = "width: 40px", @class = "form-control input-sm" })
+            </td>
+        }
+
+        <td><img src="@(Model.Apostas[c].ImageTime2)" /></td>
+        <td class="text-left">@(Model.Apostas[c].NomeTime2)</td>
+        <td>
+            @if (Model.Apostas[c].Automatico == 1)
+            {
+                <span class="glyphicon glyphicon-flash" />
+            }
+        </td>
+        <td>@(Model.Apostas[c].DataAposta)</td>
+    </tr>
         }      
     </tbody>
 </table>

@@ -829,6 +829,11 @@ namespace BolaoNet.Infra.Data.EF.Boloes
 
             var q =
                 from j in base.DataContext.Jogos
+                
+                join f in base.DataContext.CampeonatosFases
+                  on new { c1 = j.NomeCampeonato, c2 = j.NomeFase }
+                  equals new { c1 = f.NomeCampeonato, c2 = f.Nome}
+
                 join u in base.DataContext.JogosUsuarios
                         on new { c1 = j.NomeCampeonato, c2 = j.JogoId, c3 = user.UserName, c4 = bolao.Nome }
                     equals new { c1 = u.NomeCampeonato, c2 = u.JogoId, c3 = u.UserName, c4 = u.NomeBolao }
@@ -841,7 +846,7 @@ namespace BolaoNet.Infra.Data.EF.Boloes
                 (string.Compare (j.NomeTime1, filter.NomeTime, true) == 0 || string.Compare (j.NomeTime2, filter.NomeTime, true) == 0 || filter.NomeTime == null ) &&
                 (string.Compare (j.NomeGrupo, filter.NomeGrupo, true) == 0 || filter.NomeGrupo == null) &&
                 (string.Compare (j.NomeFase, filter.NomeFase, true) == 0 || filter.NomeFase == null)
-                orderby j.NomeGrupo, j.Rodada
+                orderby f.Ordem, j.NomeGrupo, j.Rodada
                 select new Domain.Entities.ValueObjects.JogoUsuarioVO()
                 {
                     NomeCampeonato = j.NomeCampeonato,

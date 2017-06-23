@@ -29,7 +29,10 @@ namespace BolaoNet.Infra.Data.EF.Campeonatos
             //    .Where(g => g.Count() == 1)
             //    .Select(g => g.First());
 
-            return null;
+            var results = base.DataContext.Jogos.Select( p => p.Rodada ).Distinct();
+
+            return results.ToList<int>();
+
         }
 
         #endregion

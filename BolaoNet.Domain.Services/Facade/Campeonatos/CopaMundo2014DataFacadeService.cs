@@ -76,7 +76,7 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
         {
             IList<Entities.Campeonatos.Jogo> list = new List<Entities.Campeonatos.Jogo>();
 
-            string nomeFase = "Classificatória";
+            string nomeFase = Entities.Campeonatos.CampeonatoFase.FaseClassificatoria;
 
             IList<DateTime> datas = new List<DateTime>();
             IList<string> estadios = new List<string>();
@@ -164,7 +164,7 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
         }
         public IList<Entities.Campeonatos.Jogo> GetOitavasFinal()
         {            
-            string nomeFase = "Oitavas de Final";
+            string nomeFase = Entities.Campeonatos.CampeonatoFase.FaseOitavasFinal;
             IList<DateTime> datas = new List<DateTime>();
             IList<int> ids = new List<int>();
             IList<string> estadios = new List<string>();
@@ -185,7 +185,7 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
         }
         public IList<Entities.Campeonatos.Jogo> GetQuartasFinal()
         {
-            string nomeFase = "Quartas de Final";
+            string nomeFase = Entities.Campeonatos.CampeonatoFase.FaseQuartasFinal;
             IList<DateTime> datas = new List<DateTime>();
             IList<int> ids = new List<int>();
             IList<int> idsGanhadores = new List<int>();
@@ -208,7 +208,7 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
         }
         public IList<Entities.Campeonatos.Jogo> GetSemiFinal()
         {
-            string nomeFase = "semi finais";
+            string nomeFase = Entities.Campeonatos.CampeonatoFase.FaseSemiFinal;
             IList<DateTime> datas = new List<DateTime>();
             IList<int> ids = new List<int>();
             IList<int> idsGanhadores = new List<int>();
@@ -227,7 +227,7 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
         }
         public IList<Entities.Campeonatos.Jogo> GetFinal()
         {
-            string nomeFase = "Final";
+            string nomeFase = Entities.Campeonatos.CampeonatoFase.FaseFinal;
             IList<DateTime> datas = new List<DateTime>();
             IList<int> ids = new List<int>();
             IList<int> idsGanhadores = new List<int>();

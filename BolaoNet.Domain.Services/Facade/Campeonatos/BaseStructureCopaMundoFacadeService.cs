@@ -78,7 +78,7 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
 
         #region Methods
 
-        public Entities.Campeonatos.Jogo CreateJogo(string nomeCampeonato, DateTime dataJogo, string nomeEstadio, string nomeFase, string nomeGrupo, int rodada, int id, string pendenteTime1NomeGrupo, int pendenteTime1PosGrupo, string pendenteTime2NomeGrupo, int pendenteTime2PosGrupo)
+        public Entities.Campeonatos.Jogo CreateJogo(string nomeCampeonato, DateTime dataJogo, string nomeEstadio, string nomeFase, string nomeGrupo, int rodada, int id, string pendenteTime1NomeGrupo, int pendenteTime1PosGrupo, string pendenteTime2NomeGrupo, int pendenteTime2PosGrupo, bool isDesempate)
         {
             return new Entities.Campeonatos.Jogo(nomeCampeonato, id)
             {
@@ -96,7 +96,7 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
                 DescricaoTime2 = pendenteTime2PosGrupo + pendenteTime2NomeGrupo
             };
         }
-        public Entities.Campeonatos.Jogo CreateJogo(string nomeCampeonato, DateTime dataJogo, string nomeEstadio, string nomeFase, string nomeGrupo, int rodada, int id, int pendenteTime1, bool ganhadorTime1, int pendenteTime2, bool ganhadorTime2)
+        public Entities.Campeonatos.Jogo CreateJogo(string nomeCampeonato, DateTime dataJogo, string nomeEstadio, string nomeFase, string nomeGrupo, int rodada, int id, int pendenteTime1, bool ganhadorTime1, int pendenteTime2, bool ganhadorTime2, bool isDesempate)
         {
             string descricaoTime1 = "";
             if (ganhadorTime1)
@@ -128,7 +128,7 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
 
             };
         }
-        public Entities.Campeonatos.Jogo CreateJogo(string nomeCampeonato, DateTime dataJogo, string nomeEstadio, string nomeFase, string nomeGrupo, string nomeTime1, string nomeTime2, int rodada, int id)
+        public Entities.Campeonatos.Jogo CreateJogo(string nomeCampeonato, DateTime dataJogo, string nomeEstadio, string nomeFase, string nomeGrupo, string nomeTime1, string nomeTime2, int rodada, int id, bool isDesempate)
         {
             return new Entities.Campeonatos.Jogo(nomeCampeonato, id)
             {
@@ -169,21 +169,21 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             IList<Entities.Campeonatos.Jogo> list = new List<Entities.Campeonatos.Jogo>();
 
             int c = 0;
-            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], "A", 1, "B", 2));
+            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], "A", 1, "B", 2, true));
             c++;
-            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], "C", 1, "D", 2));
+            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], "C", 1, "D", 2, true));
             c++;
-            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], "B", 1, "A", 2));
+            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], "B", 1, "A", 2, true));
             c++;
-            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], "D", 1, "C", 2));
+            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], "D", 1, "C", 2, true));
             c++;
-            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], "E", 1, "F", 2));
+            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], "E", 1, "F", 2, true));
             c++;
-            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], "G", 1, "H", 2));
+            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], "G", 1, "H", 2, true));
             c++;
-            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], "F", 1, "E", 2));
+            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], "F", 1, "E", 2, true));
             c++;
-            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], "H", 1, "G", 2));
+            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], "H", 1, "G", 2, true));
 
             return list;
 
@@ -219,13 +219,13 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
 
             int c = 0;
             int l = 0;
-            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], idsGanhadores[l++], true, idsGanhadores[l++], true));
+            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], idsGanhadores[l++], true, idsGanhadores[l++], true, true));
             c++;
-            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], idsGanhadores[l++], true, idsGanhadores[l++], true));
+            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], idsGanhadores[l++], true, idsGanhadores[l++], true, true));
             c++;
-            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], idsGanhadores[l++], true, idsGanhadores[l++], true));
+            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], idsGanhadores[l++], true, idsGanhadores[l++], true, true));
             c++;
-            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], idsGanhadores[l++], true, idsGanhadores[l++], true));
+            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], idsGanhadores[l++], true, idsGanhadores[l++], true, true));
 
             return list;
 
@@ -261,9 +261,9 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
 
             int c = 0;
             int l = 0;
-            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], idsGanhadores[l++], true, idsGanhadores[l++], true));
+            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], idsGanhadores[l++], true, idsGanhadores[l++], true, true));
             c++;
-            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], idsGanhadores[l++], true, idsGanhadores[l++], true));
+            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], idsGanhadores[l++], true, idsGanhadores[l++], true, true));
 
             return list;
 
@@ -299,9 +299,9 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
 
             int c = 0;
             int l = 0;
-            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], idsGanhadores[l++], false, idsGanhadores[l++], false));
+            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], idsGanhadores[l++], false, idsGanhadores[l++], false, true));
             c++;
-            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], idsGanhadores[l++], true, idsGanhadores[l++], true));
+            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], idsGanhadores[l++], true, idsGanhadores[l++], true, true));
 
             return list;
 
@@ -340,19 +340,19 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             int c = 0;
             int rodada = 1;
 
-            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, times[0], times[1], rodada, ids[0]));
+            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, times[0], times[1], rodada, ids[0], false));
             c++;
-            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, times[2], times[3], rodada, ids[1]));
-            c++;
-            rodada++;
-            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, times[0], times[2], rodada, ids[2]));
-            c++;
-            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, times[3], times[1], rodada, ids[3]));
+            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, times[2], times[3], rodada, ids[1], false));
             c++;
             rodada++;
-            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, times[3], times[0], rodada, ids[4]));
+            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, times[0], times[2], rodada, ids[2], false));
             c++;
-            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, times[1], times[2], rodada, ids[5]));
+            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, times[3], times[1], rodada, ids[3], false));
+            c++;
+            rodada++;
+            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, times[3], times[0], rodada, ids[4], false));
+            c++;
+            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, times[1], times[2], rodada, ids[5], false));
 
             return list;
         }

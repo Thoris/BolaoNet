@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,12 +36,14 @@ namespace BolaoNet.MVC.ViewModels.Apostas
         public string NomeTime { get; set; }
         public int ? Rodada { get; set; }
 
-        public IList<int> Rodadas { get; set; }
-        public IList<string> NomeTimes { get; set; }
-        public IList<string> NomeFases { get; set; }
-        public IList<string> NomeGrupos { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]        
+        public DateTime ? DataInicial { get; set; }
 
-
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]        
+        public DateTime ? DataFinal { get; set; }
+        
         #endregion
        
     }

@@ -21,8 +21,8 @@ namespace BolaoNet.Domain.Entities.Campeonatos
         [Key, Column(Order = 2)]
         public string Nome { get; set; }
 
-
         public string Descricao { get; set; }
+        public int? Ordem { get; set; }
 
         #endregion
 

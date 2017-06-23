@@ -10,6 +10,17 @@ namespace BolaoNet.Domain.Entities.Campeonatos
 {
     public class CampeonatoFase : Base.AuditModel
     {
+        #region Contants
+
+        public const string FaseClassificatoria = "Classificatória";
+        public const string FaseOitavasFinal = "Oitavas de Final";
+        public const string FaseQuartasFinal = "Quartas de Final";
+        public const string FaseSemiFinal = "Semi Final";
+        public const string FaseFinal = "Final";
+
+
+        #endregion
+
         #region Properties
 
         [Key, Column(Order = 1)]
@@ -19,9 +30,9 @@ namespace BolaoNet.Domain.Entities.Campeonatos
         
         [Key, Column(Order = 2)]
         public string Nome { get; set; }
-
-        
+       
         public string Descricao { get; set; }
+        public int? Ordem { get; set; }
 
         #endregion
 
