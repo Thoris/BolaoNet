@@ -16,7 +16,8 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
             string userName = "";
 
 
-            Bind<Domain.Interfaces.Services.Notification.INotificationService>().To<Infra.Notification.Mail.MailNotification>().WithConstructorArgument("userName", userName);
+            //Bind<Domain.Interfaces.Services.Notification.INotificationService>().To<Infra.Notification.Mail.MailNotification>().WithConstructorArgument("userName", userName);
+            Bind<Domain.Interfaces.Services.Notification.INotificationService>().To<Infra.Notification.Mail.Mock.MailNotificationMock>();
             
 
             //Bind<IGenreAppService>().To<GenreAppService>();

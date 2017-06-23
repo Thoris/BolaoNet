@@ -43,18 +43,13 @@
         </div>
         <div class="col-xs-5">
             <div class="form-group">                    
-                <div class="input-group">
-
-                    <select class="form-control input-sm" id="gender">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                    </select>
+                <div class="input-group" id="filtroRodadas">
+                    @Html.DropDownListFor(x => x.Filtros.Rodada, (SelectList)ViewBag.Rodadas, new { @class = "form-control input-sm" })
                     <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                </div>
+
+                <div class="input-group" id="filtroFases">
+                    
                 </div>
             </div>
         </div>

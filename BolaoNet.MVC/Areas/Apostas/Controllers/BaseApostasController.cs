@@ -12,6 +12,8 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
         #region Properties
 
         protected ViewModels.Base.CampeonatoDataVO CampeonatoData { get; set; }
+        protected string UserName { get; set; }
+        protected string NomeBolao { get; set; }
 
         #endregion
 
@@ -19,6 +21,10 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
 
         public BaseApostasController()
         {
+            this.UserName = "thoris";
+            this.NomeBolao = "Copa do Mundo 2014";
+
+
             CampeonatoData = new ViewModels.Base.CampeonatoDataVO();
             CampeonatoData.NomeCampeonato = "Copa do Mundo 2014";
             CampeonatoData.NomeFases = new List<string>();

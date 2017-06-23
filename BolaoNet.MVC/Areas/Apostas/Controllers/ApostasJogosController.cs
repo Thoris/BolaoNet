@@ -24,6 +24,18 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
 
         #endregion
 
+        #region Methods
+
+        private void SetFilterViewBags()
+        {
+            ViewBag.Rodadas = new SelectList(base.CampeonatoData.Rodadas);
+            ViewBag.NomeFases = new SelectList(base.CampeonatoData.NomeFases);
+            ViewBag.NomeGrupos = new SelectList(base.CampeonatoData.NomeGrupos);
+            ViewBag.NomeTimes = new SelectList(base.CampeonatoData.NomeTimes);
+        }
+
+        #endregion
+
         #region Actions
 
         [HttpGet]
@@ -320,17 +332,19 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
             #endregion
 
             ViewModels.Apostas.FilterJogosViewModel filterViewModel = new ViewModels.Apostas.FilterJogosViewModel();
+            SetFilterViewBags();
+
 
             Domain.Entities.ValueObjects.FilterJogosVO filterVO = new Domain.Entities.ValueObjects.FilterJogosVO();
 
 
             IList<Domain.Entities.ValueObjects.JogoUsuarioVO> list =
                 _jogoUsuarioApp.GetJogosUser(
-                new Domain.Entities.Boloes.Bolao("Copa do Mundo 2014")
+                new Domain.Entities.Boloes.Bolao(base.NomeBolao)
                 {
-                    NomeCampeonato = "Copa do Mundo 2014"
+                    NomeCampeonato = base.CampeonatoData.NomeCampeonato
                 },
-                new Domain.Entities.Users.User("thoris"),
+                new Domain.Entities.Users.User(base.UserName),
                 filterVO);
 
 
@@ -369,8 +383,8 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
 
 
                 bool res =_jogoUsuarioApp.ProcessAposta(
-                    new Domain.Entities.Boloes.Bolao("Copa do Mundo 2014"),
-                    new Domain.Entities.Users.User("thoris"), 
+                    new Domain.Entities.Boloes.Bolao(base.NomeBolao),
+                    new Domain.Entities.Users.User(base.UserName), 
                     jogo, 
                     0,
                     (int)list[c].SalvarApostaTime1,

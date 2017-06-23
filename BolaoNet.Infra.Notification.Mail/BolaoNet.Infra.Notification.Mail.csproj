@@ -44,6 +44,7 @@
     <Compile Include="BaseMailNotification.cs" />
     <Compile Include="ITemplateMail.cs" />
     <Compile Include="MailNotification.cs" />
+    <Compile Include="Mock\MailNotificationMock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TagValue.cs" />
     <Compile Include="Templates\ActivationTemplateMail.cs" />

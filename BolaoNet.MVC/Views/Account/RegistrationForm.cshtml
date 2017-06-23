@@ -1,151 +1,147 @@
 ﻿@model BolaoNet.MVC.ViewModels.Account.RegistrationUserViewModel
 
-@{
-    Layout = "~/Views/Shared/_LayoutBase.cshtml";
-}
 
-@*<div class="panel panel-primary" style="margin:20px;">*@
-<div class="panel" style="margin:20px;">
+
+@*<div class="panel" style="margin:20px;">
     <div class="panel-heading">
         <h3 class="panel-title">Formulário de Cadastro</h3>
     </div>
-    <div class="panel-body">
-        @using(Html.BeginForm("RegistrationForm", "Account", FormMethod.Post, new {}))
-        {
-            @Html.AntiForgeryToken()
-        @*<form>*@
-            <div class="col-md-12 col-sm-12">
+    <div class="panel-body">*@
 
-                <div class="form-group col-md-4 col-sm-4">
-                    @*<label for="login">Login*</label>
-                    <input type="text" class="form-control input-sm" id="login" placeholder="Login">*@
-                    @Html.LabelFor(a => a.UserName)
-                    @Html.TextBoxFor(a => a.UserName, new { @class = "form-control input-sm", @placeholder = "Login" })
-                </div>
-                <div class="form-group col-md-8 col-sm-8">
-                    @*<label for="fullname">Nome Completo* </label>
-                    <input type="text" class="form-control input-sm" id="fullname" placeholder="Nome completo">*@
-                    @Html.LabelFor(a => a.FullName)
-                    @Html.TextBoxFor(a => a.FullName, new { @class = "form-control input-sm", @placeholder = "Nome Completo" })
+<div class="gray-bg login">
+    <div id="wrapper">
+        <div class="panel-body">
+            <div>
+                <div class="panel-heading">
+                    <h3 class="panel-title">Formulário de Cadastro</h3>
                 </div>
 
+                @using (Html.BeginForm("RegistrationForm", "Account", FormMethod.Post, new { }))
+                {
+                    @Html.AntiForgeryToken()
 
-                <div class="form-group col-md-4 col-sm-4">
-                    @Html.LabelFor(a => a.Male)
-                    @*<label for="gender">Sexo</label>*@
-                    @*<select class="form-control input-sm" id="gender">
-                        <option>-- Selecione --</option>
-                        <option>Masculino</option>
-                        <option>Feminino</option>
-                    </select>*@
-                    @*@Html.DropDownListFor(m => m.Sexo, (IEnumerable<SelectListItem>)ViewBag["Gender"], "- Selecione -", new { @class = "form-control input-sm" })*@
+                    <div class="col-md-12 col-sm-12">
 
-                    @Html.DropDownListFor(model => model.Male, new SelectList(
+                        <div class="form-group col-md-4 col-sm-4">
+                            @Html.LabelFor(a => a.UserName)
+                            @Html.TextBoxFor(a => a.UserName, new { @class = "form-control input-sm", @placeholder = "Login" })
+                            @Html.ValidationMessageFor(m => m.UserName)
+                        </div>
+                        <div class="form-group col-md-8 col-sm-8">
+                            @Html.LabelFor(a => a.FullName)
+                            @Html.TextBoxFor(a => a.FullName, new { @class = "form-control input-sm", @placeholder = "Nome Completo" })
+                            @Html.ValidationMessageFor(m => m.FullName)
+                        </div>
+
+
+                        <div class="form-group col-md-4 col-sm-4">
+                            @Html.LabelFor(a => a.Male)
+                            @Html.DropDownListFor(model => model.Male, new SelectList(
                           new List<Object>{
                                new { value = true , text = "Masculino"  },
                                new { value = false , text = "Feminino" }
-                            }, "value", "text", 0), "- Selecione -", new { @class = "form-control input-sm" } )
-
-                </div>
-                <div class="form-group col-md-4 col-sm-4">
-                    @*<label for="birthday">Data Nascimento</label>
-                    <input type="text" class="form-control input-sm" id="birthday" placeholder="Nascimento">*@
-                    @Html.LabelFor(a => a.BirthDate)
-                    @Html.TextBoxFor(a => a.BirthDate, new { @class = "form-control input-sm", @placeholder = "Nascimento" })
-                </div>
-                <div class="form-group col-md-4 col-sm-4">
-                    @*<label for="mobile">Telefone*</label>
-                    <input type="text" class="form-control input-sm" id="mobile" placeholder="Telefone">*@
-                    @Html.LabelFor(a => a.PhoneNumber)
-                    @Html.TextBoxFor(a => a.PhoneNumber, new { @class = "form-control input-sm", @placeholder = "Telefone" })
-                </div>
+                            }, "value", "text", 0), "- Selecione -", new { @class = "form-control input-sm" })
+                            @Html.ValidationMessageFor(m => m.Male)
+                        </div>
+                        <div class="form-group col-md-4 col-sm-4">
+                            @Html.LabelFor(a => a.BirthDate)
+                            @Html.TextBoxFor(a => a.BirthDate, new { @class = "form-control input-sm", @placeholder = "Nascimento" })
+                            @Html.ValidationMessageFor(m => m.BirthDate)
+                        </div>
+                        <div class="form-group col-md-4 col-sm-4">
+                            @Html.LabelFor(a => a.PhoneNumber)
+                            @Html.TextBoxFor(a => a.PhoneNumber, new { @class = "form-control input-sm", @placeholder = "Telefone" })
+                            @Html.ValidationMessageFor(m => m.PhoneNumber)
+                        </div>
 
 
-                <div class="form-group col-md-6 col-sm-6">
-                    @*<label for="email">Email*</label>
-                    <input type="email" class="form-control input-sm" id="email" placeholder="Email">*@
-                    @Html.LabelFor(a => a.Email)
-                    @Html.TextBoxFor(a => a.Email, new { @class = "form-control input-sm", @placeholder = "Email" })
-                </div>
-                <div class="form-group col-md-6 col-sm-6">
-                    @*<label for="emailConfirm">Confirmação Email*</label>
-                    <input type="email" class="form-control input-sm" id="emailConfirm" placeholder="Confirmação do Email">*@
-                    @Html.LabelFor(a => a.ConfirmacaoEmail)
-                    @Html.TextBoxFor(a => a.ConfirmacaoEmail, new { @class = "form-control input-sm", @placeholder = "Confirmação do Email" })
-                </div>
+                        <div class="form-group col-md-6 col-sm-6">
+                            @Html.LabelFor(a => a.Email)
+                            @Html.TextBoxFor(a => a.Email, new { @class = "form-control input-sm", @placeholder = "Email" })
+                            @Html.ValidationMessageFor(m => m.Email)
+
+                        </div>
+                        <div class="form-group col-md-6 col-sm-6">
+                            @Html.LabelFor(a => a.ConfirmacaoEmail)
+                            @Html.TextBoxFor(a => a.ConfirmacaoEmail, new { @class = "form-control input-sm", @placeholder = "Confirmação do Email" })
+                            @Html.ValidationMessageFor(m => m.ConfirmacaoEmail)
+                        </div>
 
 
-                <div class="form-group col-md-6 col-sm-6">
-                    @*<label for="password">Senha*</label>
-                    <input type="password" class="form-control input-sm" id="password" placeholder="Senha">*@
-                    @Html.LabelFor(a => a.Password)
-                    @Html.PasswordFor(a => a.Password, new { @class = "form-control input-sm", @placeholder = "Senha" })
-                </div>
-                <div class="form-group col-md-6 col-sm-6">
-                    @*<label for="passwordConfirm">Confirmação da Senha*</label>
-                    <input type="password" class="form-control input-sm" id="passwordConfirm" placeholder="Confirmação da Senha">*@
-                    @Html.LabelFor(a => a.ConfirmPassword)
-                    @Html.PasswordFor(a => a.ConfirmPassword, new { @class = "form-control input-sm", @placeholder = "Confirmação da Senha" })                
-                 </div>
+                        <div class="form-group col-md-6 col-sm-6">
+                            @Html.LabelFor(a => a.Password)
+                            @Html.PasswordFor(a => a.Password, new { @class = "form-control input-sm", @placeholder = "Senha" })
+                            @Html.ValidationMessageFor(m => m.Password)
+                        </div>
+                        <div class="form-group col-md-6 col-sm-6">
+                            @Html.LabelFor(a => a.ConfirmPassword)
+                            @Html.PasswordFor(a => a.ConfirmPassword, new { @class = "form-control input-sm", @placeholder = "Confirmação da Senha" })
+                            @Html.ValidationMessageFor(m => m.ConfirmPassword)
+                        </div>
 
 
-                @*<div class="form-group col-md-6 col-sm-6">
-                        <label for="question">Pergunta Secreta*</label>
-                        <input type="text" class="form-control input-sm" id="question" placeholder="Pergunta secreta">
+                        @*<div class="form-group col-md-6 col-sm-6">
+                            <label for="question">Pergunta Secreta*</label>
+                            <input type="text" class="form-control input-sm" id="question" placeholder="Pergunta secreta">
+                        </div>
+                        <div class="form-group col-md-6 col-sm-6">
+                            <label for="answer">Resposta*</label>
+                            <input type="text" class="form-control input-sm" id="answer" placeholder="Resposta">
+                        </div>*@
+
+
+                        @*<div class="form-group col-md-6 col-sm-6">
+                            <label for="photo">Photo</label>
+                            <input type="file" id="photo">
+                            <p class="help-block"></p>
+                        </div>*@
                     </div>
-                    <div class="form-group col-md-6 col-sm-6">
-                        <label for="answer">Resposta*</label>
-                        <input type="text" class="form-control input-sm" id="answer" placeholder="Resposta">
+                    <div class="col-md-12 col-sm-12" id="deceased">
+
+                        <p class="help-block">Para ativar este serviço, leia atentamente as regras de uso.</p>
+
+                        <div class="form-group col-md-6 col-sm-6">
+                            @Html.CheckBoxFor(a => a.ConcordoTermos, new { }) Concordo com os termos
+                            @Html.ValidationMessageFor(m => m.ConcordoTermos)
+                        </div>
+
+                        <div class="form-group col-md-6 col-sm-6">
+                            @*<label for="name">Quero receber notificações</label>
+                            <input type="checkbox" checked data-toggle="toggle">*@
+                            @*<p class="help-block"></p>*@
+                            @Html.CheckBoxFor(a => a.ReceiveEmails, new { }) Quero receber notificações
+                            @Html.ValidationMessageFor(m => m.ReceiveEmails)
+                        </div>
+
+
+                    </div>
+                    @*<div class="col-md-12 col-sm-12">
+                        <div class="form-group col-md-3 col-sm-3 pull-right">
+                            <input type="submit" class="btn btn-primary" value="Submit" />
+                        </div>
                     </div>*@
 
+                    @*@Html.ValidationSummary(false, "", new { @class = "text-danger" })*@
 
-                <div class="form-group col-md-6 col-sm-6">
-                    <label for="photo">Photo</label>
-                    <input type="file" id="photo">
-                    <p class="help-block"></p>
-                </div>
-            </div>
-            <div class="col-md-12 col-sm-12" id="deceased">
-
-                <p class="help-block">Para ativar este serviço, leia atentamente as regras de uso.</p>
-
-                <div class="form-group col-md-6 col-sm-6">
-                    @*<label for="name">Concordo com os termos</label>
-                    <input type="checkbox" data-toggle="toggle">*@
-                    @Html.CheckBoxFor(a => a.ConcordoTermos, new { }) Concordo com os termos 
-                </div>
-
-                <div class="form-group col-md-6 col-sm-6">
-                    @*<label for="name">Quero receber notificações</label>
-                    <input type="checkbox" checked data-toggle="toggle">*@
-                    @*<p class="help-block"></p>*@
-                    @Html.CheckBoxFor(a => a.ReceiveEmails, new {}) Quero receber notificações
-                </div>
-
-
-            </div>
-            @*<div class="col-md-12 col-sm-12">
-                    <div class="form-group col-md-3 col-sm-3 pull-right">
-                        <input type="submit" class="btn btn-primary" value="Submit" />
-                    </div>
-                </div>*@
-
-            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
-
-            <div class="col-md-12 col-sm-12">
-                <div class="col-md-3 col-sm-3 centered-text">
-                    <input type="submit" class="btn btn-lg btn-success btn-block" value="Submit" />
-                </div>
-            </div>
-
-            @*<div class="form-group col-md-12 col-sm-12">
-                    <div class="row">
-                        <div class="col-sm-6 col-sm-offset-3">
-                            <input type="submit" name="register-submit" id="register-submit" class="btn btn-primary" value="Registrar-se">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="login-erro">
+                            @Html.ValidationSummary(true)
+                        </div>
+                        <div class="col-md-3 col-sm-3 centered-text">
+                            <input type="submit" class="btn btn-lg btn-success btn-block" value="Salvar" />
                         </div>
                     </div>
+
+
+                }
+                @*</div>
                 </div>*@
-        @*</form>*@
-        }
+
+            </div>
+        </div>
     </div>
 </div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
