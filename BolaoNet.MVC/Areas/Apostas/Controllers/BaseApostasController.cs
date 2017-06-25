@@ -8,36 +8,11 @@ using System.Web.Mvc;
 
 namespace BolaoNet.MVC.Areas.Apostas.Controllers
 {
-    public class BaseApostasController : AuthorizationController
+    public class BaseApostasController : BaseBolaoController
     {
-        #region Variables
 
-        private Application.Interfaces.Campeonatos.ICampeonatoApp _campeonatoApp;
-        private Application.Interfaces.Campeonatos.ICampeonatoFaseApp _campeonatoFaseApp;
-        private Application.Interfaces.Campeonatos.ICampeonatoGrupoApp _campeonatoGrupoApp;
-        private Application.Interfaces.Campeonatos.ICampeonatoTimeApp _campeonatoTimeApp;
-
-        #endregion
 
         #region Properties
-
-        protected ViewModels.Base.CampeonatoDataVO CampeonatoData { get; set; }
-        protected string UserName { get; set; }
-        protected string NomeBolao { get; set; }
-        protected Domain.Entities.Users.User UserData
-        {
-            get
-            {
-                return new Domain.Entities.Users.User(this.UserName);
-            }
-        }
-        protected Domain.Entities.Boloes.Bolao BolaoData
-        {
-            get
-            {
-                return new Domain.Entities.Boloes.Bolao(this.NomeBolao);
-            }
-        }
 
         #endregion
         
@@ -49,22 +24,18 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
             Application.Interfaces.Campeonatos.ICampeonatoGrupoApp campeonatoGrupoApp,
             Application.Interfaces.Campeonatos.ICampeonatoTimeApp campeonatoTimeApp
             )
+            : base
+            (
+                campeonatoApp, campeonatoFaseApp, campeonatoGrupoApp, campeonatoTimeApp
+            )
         {
-            _campeonatoApp = campeonatoApp;
-            _campeonatoFaseApp = campeonatoFaseApp;
-            _campeonatoGrupoApp = campeonatoGrupoApp;
-            _campeonatoTimeApp = campeonatoTimeApp;
 
 
-            this.UserName = "thoris123";
-            this.NomeBolao = "Copa do Mundo 2014";
 
-            if (CampeonatoData == null)
-            {
-                this.CampeonatoData = new Helpers.CampeonatoDataLoader(
-                    campeonatoApp, campeonatoFaseApp, campeonatoGrupoApp, campeonatoTimeApp
-                    ).LoadCampeonatoData(new Domain.Entities.Campeonatos.Campeonato("Copa do Mundo 2014"));
-            }
+            //this.UserName = "thoris123";
+            //this.NomeBolao = "Copa do Mundo 2014";
+
+
             
             //Application.Interfaces.Campeonatos.ICampeonatoApp campeonatoApp = new Application.Campeonatos.CampeonatoApp()
             //Application.Interfaces.Campeonatos.ICampeonatoFaseApp campeonatoFaseApp

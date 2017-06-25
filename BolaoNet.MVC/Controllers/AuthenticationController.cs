@@ -9,7 +9,7 @@ using System.Web.Security;
 
 namespace BolaoNet.MVC.Controllers
 {
-    public class AuthenticationController : BaseController
+    public abstract class AuthenticationController : BaseController
     {
         #region Properties
 
@@ -38,6 +38,15 @@ namespace BolaoNet.MVC.Controllers
                     return null;
                 }
             }
+        }
+
+        #endregion
+
+        #region Constructors/Destructors
+
+        public AuthenticationController()
+        {
+
         }
 
         #endregion

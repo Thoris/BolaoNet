@@ -128,11 +128,8 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
         {
             IList<Domain.Entities.ValueObjects.JogoUsuarioVO> list =
                _jogoUsuarioApp.GetJogosUser(
-               new Domain.Entities.Boloes.Bolao(base.NomeBolao)
-               {
-                   NomeCampeonato = base.CampeonatoData.NomeCampeonato
-               },
-               new Domain.Entities.Users.User(base.UserName),
+               base.SelectedBolao,
+               base.UserLogged,
                filter);
 
             return list;
@@ -325,8 +322,8 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
 
 
                 bool res =_jogoUsuarioApp.ProcessAposta(
-                    new Domain.Entities.Boloes.Bolao(base.NomeBolao),
-                    new Domain.Entities.Users.User(base.UserName), 
+                    base.SelectedBolao,
+                    base.UserLogged, 
                     jogo, 
                     0,
                     (int)list[c].SalvarApostaTime1,

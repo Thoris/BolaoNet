@@ -154,7 +154,7 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
                 Domain.Entities.ValueObjects.ApostasAutomaticasFilterVO>(model);
 
 
-            _jogoUsuarioApp.InsertApostasAutomaticas(base.BolaoData, base.UserData, data);
+            _jogoUsuarioApp.InsertApostasAutomaticas(base.SelectedBolao, base.UserLogged, data);
 
             return RedirectToAction("ViewJogos");
         }

@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace BolaoNet.MVC.Controllers
 {
-    public class BaseController : Controller
+    public abstract class BaseController : Controller
     {
     }
 }

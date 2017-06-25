@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace BolaoNet.MVC.Controllers
 {
-    public class ErrorController : Controller
+    public class ErrorController : BaseController
     {
         #region Actions
 
