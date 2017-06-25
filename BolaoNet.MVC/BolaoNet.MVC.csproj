@@ -131,6 +131,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Apostas\ApostasAreaRegistration.cs" />
     <Compile Include="Areas\Apostas\Controllers\ApostasAutomaticasController.cs" />
+    <Compile Include="Areas\Apostas\Controllers\ApostasExtrasController.cs" />
     <Compile Include="Areas\Apostas\Controllers\ApostasJogosController.cs" />
     <Compile Include="Areas\Apostas\Controllers\BaseApostasController.cs" />
     <Compile Include="Areas\Boloes\BoloesAreaRegistration.cs" />
@@ -141,6 +142,7 @@
     <Compile Include="Areas\Pontuacao\PontuacaoAreaRegistration.cs" />
     <Compile Include="Areas\Regras\RegrasAreaRegistration.cs" />
     <Compile Include="Areas\Resultados\ResultadosAreaRegistration.cs" />
+    <Compile Include="Areas\Users\Controllers\AccountController.cs" />
     <Compile Include="Areas\Users\Controllers\BaseUserController.cs" />
     <Compile Include="Areas\Users\UsersAreaRegistration.cs" />
     <Compile Include="Areas\Visitante\VisitanteAreaRegistration.cs" />
@@ -233,6 +235,10 @@
     <Content Include="Content\js\html5shiv.min.js" />
     <Content Include="Content\js\inspinia.js" />
     <Content Include="Areas\Apostas\Views\ApostasAutomaticas\Index.cshtml" />
+    <Content Include="Areas\Apostas\Views\ApostasAutomaticas\ViewJogos.cshtml" />
+    <Content Include="Areas\Users\Views\Account\Profile.cshtml" />
+    <Content Include="Areas\Apostas\Views\ApostasExtras\Index.cshtml" />
+    <Content Include="Areas\Users\Views\Account\ChangePassword.cshtml" />
     <None Include="Content\js\jquery-1.10.2.intellisense.js" />
     <Content Include="Content\js\jquery-1.10.2.js" />
     <Content Include="Content\js\jquery-1.10.2.min.js" />

@@ -49,8 +49,14 @@ namespace BolaoNet.Application.Boloes
             return Service.GetJogosUser(bolao, user, filter);
        
         }
+        public void InsertApostasAutomaticas(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user, Domain.Entities.ValueObjects.ApostasAutomaticasFilterVO filter)
+        {
+            Service.InsertApostasAutomaticas(bolao, user, filter);
+        }
 
         #endregion
+
+
 
     }
 }

@@ -75,7 +75,13 @@ namespace BolaoNet.WebApi.Integration.Boloes
                 parameters, "GetJogosUser").ToList<Domain.Entities.ValueObjects.JogoUsuarioVO>();
         }
 
+        public void InsertApostasAutomaticas(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user, Domain.Entities.ValueObjects.ApostasAutomaticasFilterVO filter)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
-        
+
+
+
     }
 }

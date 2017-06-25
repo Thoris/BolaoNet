@@ -37,6 +37,8 @@ namespace BolaoNet.Domain.Interfaces.Services.Boloes
 
         IList<Entities.ValueObjects.JogoUsuarioVO> GetJogosUser(Entities.Boloes.Bolao bolao, Entities.Users.User user,
             Entities.ValueObjects.FilterJogosVO filter);
+
+        void InsertApostasAutomaticas(Entities.Boloes.Bolao bolao, Entities.Users.User user, Entities.ValueObjects.ApostasAutomaticasFilterVO filter);
     
     }
 }

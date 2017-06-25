@@ -805,12 +805,7 @@ namespace BolaoNet.Infra.Data.EF.Boloes
                 string.Compare(x.NomeBolao, bolao.Nome, true) == 0 &&
                 string.Compare(x.UserName, user.UserName, true) == 0).ToList<Domain.Entities.Boloes.JogoUsuario>();
         }
-
-        public int InsertApostasAuto(string currentUser, DateTime currentDateTime, Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user, int typeAposta, int typeAutomatico, DateTime? dataInicial, DateTime? dataFinal, int? rodada, bool random, int? time1, int? time2, int? randomInicial, int? randomFinal, Domain.Entities.DadosBasicos.Time time)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public IList<Domain.Entities.ValueObjects.JogoUsuarioVO> GetJogosUser(string currentUserName, Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user, Domain.Entities.ValueObjects.FilterJogosVO filter)
         {            
             DateTime dataInicioFilter = new DateTime(1900, 1, 1);
@@ -915,6 +910,77 @@ namespace BolaoNet.Infra.Data.EF.Boloes
             return q.ToList<Domain.Entities.ValueObjects.JogoUsuarioVO>();
         }
 
+        public void InsertApostasAutomaticas(string currentUserName, DateTime currentDateTime, Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user, Domain.Entities.ValueObjects.ApostasAutomaticasFilterVO filter)
+        {
+
+            string command = "exec sp_JogosUsuarios_CalculaPontos " +
+                          "  @CurrentLogin " +
+                          ", @CurrentDateTime" +
+                          ", @NomeBolao" +
+                          ", @TipoAutomatico" +
+                          ", @TipoAposta" +
+                          ", @Rodada" +
+                          ", @DataInicial" +
+                          ", @DataFinal" +
+                          ", @NomeTime" +
+                          ", @UserName" +
+                          ", @GolsTime1" +
+                          ", @GolsTime2" +
+                          ", @RandomInicial" +
+                          ", @RandomFinal" +
+                          ", @Randomizado" +
+
+                          ", @ErrorNumber out" +
+                          ", @ErrorDescription out";
+
+            var errorNumber = new SqlParameter
+            {
+                ParameterName = "@ErrorNumber",
+                SqlDbType = System.Data.SqlDbType.Int,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var errorDescription = new SqlParameter
+            {
+                ParameterName = "@ErrorDescription",
+                SqlDbType = System.Data.SqlDbType.VarChar,
+                Size = 255,
+                Direction = System.Data.ParameterDirection.Output
+            };
+
+            base.DataContext.Database.SqlQuery<object>(command,
+                                                        new SqlParameter("CurrentLogin", currentUserName),
+                                                        new SqlParameter("CurrentDateTime", currentDateTime),
+                                                        new SqlParameter("NomeBolao", bolao.Nome),
+                                                        new SqlParameter("TipoAutomatico", filter.TipoAutomatico),
+                                                        new SqlParameter("TipoAposta", filter.TipoAposta),
+                                                        new SqlParameter("Rodada", filter.Rodada ?? SqlInt32.Null),
+                                                        new SqlParameter("DataInicial", filter.DataInicial ?? SqlDateTime.Null),
+                                                        new SqlParameter("DataFinal", filter.DataFinal ?? SqlDateTime.Null),
+                                                        new SqlParameter("NomeTime", filter.NomeTime),
+                                                        new SqlParameter("UserName", user.UserName),
+                                                        new SqlParameter("GolsTime1", filter.ApostaTimeCasa ?? SqlInt32.Null),
+                                                        new SqlParameter("GolsTime2", filter.ApostaTimeFora ?? SqlInt32.Null),
+                                                        new SqlParameter("RandomInicial", filter.ValorInicial ?? SqlInt32.Null),
+                                                        new SqlParameter("RandomFinal", filter.ValorFinal ?? SqlInt32.Null),
+                                                        new SqlParameter("Randomizado", !filter.ValoresFixos),
+                                                        errorNumber,
+                                                        errorDescription
+                                                    );
+
+            int error = 0;
+            try
+            {
+                error = (int)errorNumber.Value;
+            }
+            catch
+            {
+
+            }
+             
+        }
+
         #endregion
+
     }
 }

@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Apostas\ApostaJogoEntryViewModel.cs" />
     <Compile Include="Apostas\ApostasAutomaticasViewModel.cs" />
+    <Compile Include="Apostas\ApostasExtrasListViewModel.cs" />
     <Compile Include="Apostas\ApostasJogosListViewModel.cs" />
     <Compile Include="Apostas\FilterJogosViewModel.cs" />
     <Compile Include="Base\CampeonatoDataVO.cs" />

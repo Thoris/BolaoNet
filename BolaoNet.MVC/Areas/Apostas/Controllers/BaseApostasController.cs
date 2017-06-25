@@ -24,6 +24,20 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
         protected ViewModels.Base.CampeonatoDataVO CampeonatoData { get; set; }
         protected string UserName { get; set; }
         protected string NomeBolao { get; set; }
+        protected Domain.Entities.Users.User UserData
+        {
+            get
+            {
+                return new Domain.Entities.Users.User(this.UserName);
+            }
+        }
+        protected Domain.Entities.Boloes.Bolao BolaoData
+        {
+            get
+            {
+                return new Domain.Entities.Boloes.Bolao(this.NomeBolao);
+            }
+        }
 
         #endregion
         

@@ -91,6 +91,7 @@
     <Compile Include="Users\UserBoloes.cs" />
     <Compile Include="Users\UserInRole.cs" />
     <Compile Include="Users\UserPagamentos.cs" />
+    <Compile Include="ValueObjects\ApostasAutomaticasFilterVO.cs" />
     <Compile Include="ValueObjects\FilterJogosVO.cs" />
     <Compile Include="ValueObjects\JogoUsuarioVO.cs" />
   </ItemGroup>

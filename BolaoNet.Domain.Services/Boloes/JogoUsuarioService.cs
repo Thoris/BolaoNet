@@ -326,8 +326,26 @@ namespace BolaoNet.Domain.Services.Boloes
 
             return this.Dao.GetJogosUser(this.CurrentUserName, bolao, user, filter);
         }
- 
+        public void InsertApostasAutomaticas(Entities.Boloes.Bolao bolao, Entities.Users.User user, Entities.ValueObjects.ApostasAutomaticasFilterVO filter)
+        {
+            if (bolao == null)
+                throw new ArgumentException("bolao");
+            if (string.IsNullOrEmpty(bolao.Nome))
+                throw new ArgumentException("bolao.Nome");
+            if (user == null)
+                throw new ArgumentException("user");
+            if (string.IsNullOrEmpty(user.UserName))
+                throw new ArgumentException("user.UserName");
+            if (filter == null)
+                throw new ArgumentException("filter");
+
+            this.Dao.InsertApostasAutomaticas(base.CurrentUserName, DateTime.Now, bolao, user, filter);
+
+        }
+
         #endregion
+
+
 
     }
 }

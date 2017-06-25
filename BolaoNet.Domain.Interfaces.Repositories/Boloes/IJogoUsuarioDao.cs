@@ -47,5 +47,9 @@ namespace BolaoNet.Domain.Interfaces.Repositories.Boloes
         IList<Entities.ValueObjects.JogoUsuarioVO> GetJogosUser(string currentUserName, Entities.Boloes.Bolao bolao, Entities.Users.User user,
             Entities.ValueObjects.FilterJogosVO filter);
 
+
+        void InsertApostasAutomaticas(string currentUserName, DateTime currentDateTime, Entities.Boloes.Bolao bolao, Entities.Users.User user, 
+            Entities.ValueObjects.ApostasAutomaticasFilterVO filter);
+
     }
 }

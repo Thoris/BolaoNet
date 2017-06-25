@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,26 +35,37 @@ namespace BolaoNet.MVC.ViewModels.Apostas
 
         #region Properties
 
-        // public TipoApostaEnum TipoAposta { get; set; }
+        
+        [DisplayName("Tipo de Aposta")]
         public int TipoAposta { get; set; }
 
         //Periodo
-        public DateTime ? DataInicial { get; set; }
-        public DateTime ? DataFinal { get; set; }
+        [DisplayName("Data Inicial")]
+        public DateTime? DataInicial { get; set; }
+        [DisplayName("Data Final")]
+        public DateTime? DataFinal { get; set; }
 
         //Rodada
+        [DisplayName("Rodada")]        
         public int ? Rodada { get; set; }
-        
+
+        [DisplayName("Tipo aposta de gols")]        
         public bool ValoresFixos { get; set; }
 
+        [DisplayName("Gols de time 1")]        
         public int? ApostaTimeCasa { get; set; }
+        [DisplayName("Gols de time 2")]
         public int? ApostaTimeFora { get; set; }
 
+        [DisplayName("Valor Inicial")]                
         public int? ValorInicial { get; set; }
+        [DisplayName("Valor Final")]
         public int? ValorFinal { get; set; }
 
+        [DisplayName("Substituição de apostas")]                
         public SubstituicaoApostaEnum SubstituicaoAposta { get; set; }
-        public ApostasAutomaticasEnum ApostasAutomaticas { get; set; }
+        [DisplayName("Tipos de apostas a serem substituídas")]
+        public ApostasAutomaticasEnum? ApostasAutomaticas { get; set; }
 
         #endregion
     }
