@@ -9,13 +9,16 @@ namespace BolaoNet.MVC.Controllers
     public abstract class AuthorizationController : AuthenticationController
     {
 
-
-
         #region Constructors/Destructors
 
         public AuthorizationController()
         {
         }
+
+        #endregion
+
+        #region Methods
+
 
         #endregion
     }
