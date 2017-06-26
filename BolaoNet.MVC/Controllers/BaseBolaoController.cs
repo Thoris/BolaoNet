@@ -9,7 +9,17 @@ namespace BolaoNet.MVC.Controllers
     {
         #region Properties
 
-        protected string SelectedNomeBolao { get; set; }
+        protected string SelectedNomeBolao
+        {
+            get
+            {
+                return base.Persist.Get<string>("SelectedBolao");
+            }
+            set
+            {
+                base.Persist.Put<string>("SelectedBolao", value);
+            }
+        }
         protected Domain.Entities.Boloes.Bolao SelectedBolao
         {
             get
@@ -22,7 +32,6 @@ namespace BolaoNet.MVC.Controllers
         }
 
         #endregion
-
 
         #region Constructors/Destructors
 

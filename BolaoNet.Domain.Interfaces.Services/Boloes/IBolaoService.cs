@@ -12,5 +12,8 @@ namespace BolaoNet.Domain.Interfaces.Services.Boloes
         bool Iniciar(Entities.Users.User iniciadoBy, Entities.Boloes.Bolao bolao);
         bool Aguardar(Entities.Boloes.Bolao bolao);
 
+        IList<Entities.Boloes.Bolao> GetBoloesDisponiveis();
+
+
     }
 }

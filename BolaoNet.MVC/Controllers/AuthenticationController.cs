@@ -9,9 +9,13 @@ using System.Web.Security;
 
 namespace BolaoNet.MVC.Controllers
 {
+
+    [AuthorizeRoles]
     public abstract class AuthenticationController : BaseController
     {
         #region Properties
+        
+        protected Helpers.PersistenceProviders.PersistenceProvider Persist { get; set; }
 
         /// <summary>
         /// we inherit all controllers from this basecontroller.
@@ -47,6 +51,7 @@ namespace BolaoNet.MVC.Controllers
         public AuthenticationController()
         {
 
+            this.Persist = new Helpers.PersistenceProviders.PersistenceProvider(this);
         }
 
         #endregion
@@ -54,12 +59,25 @@ namespace BolaoNet.MVC.Controllers
         #region Actions
 
         public ActionResult Logout()
-        {
+        {           
             FormsAuthentication.SignOut();
-            return RedirectToAction("Login", "Account");
-        }
-       
 
+            this.Persist.Clear();
+
+            return RedirectToLocal("/Account/Login");
+        }
+
+        private ActionResult RedirectToLocal(string returnUrl)
+        {
+            if (Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
         #endregion
     }
 }

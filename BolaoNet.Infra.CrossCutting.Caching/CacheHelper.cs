@@ -9,13 +9,23 @@ namespace BolaoNet.Infra.CrossCutting.Caching
 {
     public class CacheHelper : ICacheProvider
     {
+        #region Variables
+
         private readonly double secondsIn60Days = 60 * 24 * 60 * 60.0;
         private readonly ObjectCache _cache;
 
+        #endregion
+
+        #region Constructors/Destructors
+        
         public CacheHelper()
         {
             _cache = MemoryCache.Default;
         }
+
+        #endregion
+
+        #region ICacheProvider members
 
         public void Put<T>(string cacheItemName, T objectToCache)
         {
@@ -45,5 +55,15 @@ namespace BolaoNet.Infra.CrossCutting.Caching
         {
             _cache.Remove(cacheItemName);
         }
+
+        public void Clear()
+        {
+            
+        }
+
+        #endregion
+
+
+
     }
 }

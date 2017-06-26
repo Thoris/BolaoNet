@@ -43,7 +43,13 @@ namespace BolaoNet.Application.Boloes
         {
             return Service.Aguardar(bolao);
         }
+        public IList<Domain.Entities.Boloes.Bolao> GetBoloesDisponiveis()
+        {
+            return Service.GetBoloesDisponiveis();
+        }
 
         #endregion
+
+
     }
 }

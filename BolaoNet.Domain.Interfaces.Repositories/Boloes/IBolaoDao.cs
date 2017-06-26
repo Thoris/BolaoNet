@@ -12,5 +12,7 @@ namespace BolaoNet.Domain.Interfaces.Repositories.Boloes
         bool Iniciar(string currentUserName, DateTime currentDateTime, Entities.Users.User iniciadoBy, Entities.Boloes.Bolao bolao);
         bool Aguardar(string currentUserName, DateTime currentDateTime, Entities.Boloes.Bolao bolao);
 
+        IList<Entities.Boloes.Bolao> GetBoloesDisponiveis(string currentUserName, DateTime currentDateTime);
+
     }
 }

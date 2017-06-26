@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Security.Policy;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -40,6 +41,7 @@ namespace BolaoNet.MVC.Security
         #endregion
 
         #region Methods
+
 
         //private IList<PermissionLevel> GetApprovedUserPermissionlevels()
         //{
@@ -95,11 +97,11 @@ namespace BolaoNet.MVC.Security
                     }
                 }
             }
-            //else
-            //{
-            //    filterContext.Result = new RedirectToRouteResult(new
-            //                RouteValueDictionary(new { controller = "Error", action = "AccessDenied" }));
-            //}
+            else
+            {
+                filterContext.Result = new RedirectToRouteResult(new
+                            RouteValueDictionary(new { controller = "Account", action = "Login" }));
+            }
         }
 
         protected override bool AuthorizeCore(HttpContextBase httpContext)

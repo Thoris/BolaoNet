@@ -11,6 +11,7 @@ namespace BolaoNet.MVC.Helpers.PersistenceProviders
         #region Variables
 
         private Controller _current;
+        private Infra.CrossCutting.Caching.ICacheProvider _caching;
 
         #endregion
 
@@ -19,35 +20,46 @@ namespace BolaoNet.MVC.Helpers.PersistenceProviders
         public PersistenceProvider(Controller current)
         {
             _current = current;
+            _caching = new Infra.CrossCutting.Caching.CacheHelper();
         }
 
         #endregion
 
         public void Put<T>(string itemName, T objectToPersist)
         {
-            _current.TempData[itemName] = objectToPersist;
+            //_current.TempData[itemName] = objectToPersist;
+            //_current.TempData.Keep(itemName);
+            _caching.Put<T>(itemName, objectToPersist);
         }
 
         public void Put<T>(string itemName, T objectToPersist, double expirationSeconds)
         {
-            _current.TempData[itemName] = objectToPersist;
+            //_current.TempData[itemName] = objectToPersist;
 
-            if (expirationSeconds == 0)
-                _current.TempData.Keep(itemName);
+            //if (expirationSeconds == 0)
+            //    _current.TempData.Keep(itemName);
+
+            _caching.Put<T>(itemName, objectToPersist);
         }
 
         public T Get<T>(string itemName)
         {
-            T result;
+            //T result;
 
-            result = (T)_current.TempData[itemName];
+            //result = (T)_current.TempData[itemName];
 
-            return result;
+            //return result;
+            return _caching.Get<T>(itemName);
         }
 
         public void Remove<T>(string itemName)
         {
-            _current.TempData.Remove(itemName);
+            //_current.TempData.Remove(itemName);
+            _caching.Remove<T>(itemName);
+        }
+        public void Clear()
+        {
+            _caching.Clear();
         }
     }
 }

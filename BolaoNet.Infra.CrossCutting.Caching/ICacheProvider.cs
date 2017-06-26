@@ -12,5 +12,6 @@ namespace BolaoNet.Infra.CrossCutting.Caching
         void Put<T>(string cacheItemName, T objectToCache, double expirationSeconds);
         T Get<T>(string cacheItemName);
         void Remove<T>(string cacheItemName);
+        void Clear();
     }
 }

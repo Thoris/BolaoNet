@@ -116,7 +116,13 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
         {
             return Service.Aguardar(bolao);
         }
-
+        [HttpPost]
+        public IList<Domain.Entities.Boloes.Bolao> GetBoloesDisponiveis()
+        {
+            return Service.GetBoloesDisponiveis();
+        }
         #endregion
+
+
     }
 }

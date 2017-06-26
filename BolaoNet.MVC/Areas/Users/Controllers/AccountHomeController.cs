@@ -11,7 +11,7 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
 
         #region Actions
 
-        public ActionResult Profile()
+        public new ActionResult Profile()
         {
             return View();
         }
@@ -20,17 +20,12 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
             return View();
         }
 
-        private ActionResult RedirectToLocal(string returnUrl)
+        public ActionResult Logoff()
         {
-            if (Url.IsLocalUrl(returnUrl))
-            {
-                return Redirect(returnUrl);
-            }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
+             return base.Logout();            
         }
+
+
         #endregion
     }
 }

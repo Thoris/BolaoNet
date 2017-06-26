@@ -57,6 +57,7 @@
     <Compile Include="Account\LoginViewModel.cs" />
     <Compile Include="Account\ProfileViewModel.cs" />
     <Compile Include="Account\RegistrationUserViewModel.cs" />
+    <Compile Include="Users\UserBoloesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BolaoNet.Domain.Entities\BolaoNet.Domain.Entities.csproj">

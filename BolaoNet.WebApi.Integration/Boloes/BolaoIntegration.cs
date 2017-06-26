@@ -51,7 +51,15 @@ namespace BolaoNet.WebApi.Integration.Boloes
         {
             return base.HttpPostApi<bool>(new Dictionary<string, string>(), bolao, "Aguardar");
         }
+        public IList<Domain.Entities.Boloes.Bolao> GetBoloesDisponiveis()
+        {
+            //return base.HttpPostApi<IList<Domain.Entities.Boloes.Bolao>>(
+            //    new Dictionary<string, string>(), "GetBoloesDisponiveis");
+            return null;
+        }
 
         #endregion
+
+
     }
 }

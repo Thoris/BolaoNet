@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 namespace BolaoNet.Infra.Data.EF.Boloes
 {
     public class BolaoRepositoryDao : 
-        Base.BaseRepositoryDao<Domain.Entities.Boloes.Bolao>, Domain.Interfaces.Repositories.Boloes.IBolaoDao
+        Base.BaseRepositoryDao<Domain.Entities.Boloes.Bolao>,
+        Domain.Interfaces.Repositories.Boloes.IBolaoDao
     {
         
         #region Constructors/Destructors
@@ -120,6 +121,14 @@ namespace BolaoNet.Infra.Data.EF.Boloes
             else
                 return false;
         }
+
+        public IList<Domain.Entities.Boloes.Bolao> GetBoloesDisponiveis(string currentUserName, DateTime currentDateTime)
+        {
+            return GetAll().ToList<Domain.Entities.Boloes.Bolao>();
+        }
+
         #endregion
+
+
     }
 }

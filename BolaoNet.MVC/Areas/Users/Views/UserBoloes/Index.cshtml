@@ -1,0 +1,64 @@
+﻿@model BolaoNet.MVC.ViewModels.Users.UserBoloesViewModel
+
+@using (Html.BeginForm("Selecionar", "UserBoloes", FormMethod.Post, new { }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content" style="display: block;">
+                        <h2 class="font-bold">Bolão Selecionado</h2>
+                        @*<p>Você está em Gerenciamento Energético, Tipos de Grupos de Medição. Para saber mais detalhes dos grupos clique seus respectivos botões:</p>*@
+
+                        @if(!string.IsNullOrEmpty (Model.BolaoSelecionado))
+                        {
+                            <div>
+                                <img src="yourImageSource" style="vertical-align: middle; width: 30px;"> 
+                                @Model.BolaoSelecionado
+                            </div>
+                        }
+                    
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Bolões Disponíveis </h5>
+                    </div>
+                    <div class="ibox-content" style="display: block;">
+                        <p>
+                            Selecione abaixo o bolão:
+                        </p>
+                        <p>
+                            @for (int c = 0; c < Model.BoloesList.Count; c++ )
+                            { 
+                                <div>
+                                    <a href="@Url.Action("Selecionar", "UserBoloes", new { nomeBolao = @Model.BoloesList[c] })">
+                                         <img src="yourImageSource"  style="vertical-align: middle; width: 30px;"> @Model.BoloesList[c]
+                                    </a> 
+                                </div>
+                            }
+                            @*<a href="grupos-medicao.html"><button class="btn btn-w-m btn-grupomedicao" type="button">ANEEL</button></a>
+                            <a href="grupos-medicao.html"><button class="btn btn-w-m btn-grupomedicao" type="button">CHIP GERAL</button></a>
+                            <a href="grupos-medicao.html"><button class="btn btn-w-m btn-grupomedicao" type="button">CLIENTES GERAÇÃO</button></a>
+                            <a href="grupos-medicao.html"><button class="btn btn-w-m btn-grupomedicao" type="button">COELCE</button></a>
+                            <a href="grupos-medicao.html"><button class="btn btn-w-m btn-grupomedicao" type="button">COELCE TOTAL</button></a>
+                            <a href="grupos-medicao.html"><button class="btn btn-w-m btn-grupomedicao" type="button">MEDIÇÃO ALIMENTADORES</button></a>
+                            <a href="grupos-medicao.html"><button class="btn btn-w-m btn-grupomedicao" type="button">NOVOS PONTOS</button></a>
+                            <a href="grupos-medicao.html"><button class="btn btn-w-m btn-grupomedicao" type="button">PADRÃO</button></a>
+                            <a href="grupos-medicao.html"><button class="btn btn-w-m btn-grupomedicao" type="button">PERDAS</button></a>
+                            <a href="grupos-medicao.html"><button class="btn btn-w-m btn-grupomedicao" type="button">PETROBRAS LINHA A</button></a>
+                            <a href="grupos-medicao.html"><button class="btn btn-w-m btn-grupomedicao" type="button">PIM</button></a>
+                            <a href="grupos-medicao.html"><button class="btn btn-w-m btn-grupomedicao" type="button">PROGRAMAÇÕES</button></a>
+                            <a href="grupos-medicao.html"><button class="btn btn-w-m btn-grupomedicao" type="button">RECUPERAR</button></a>
+                            <a href="grupos-medicao.html"><button class="btn btn-w-m btn-grupomedicao" type="button">SYNTERGRA</button></a>*@
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

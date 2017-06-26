@@ -55,7 +55,13 @@ namespace BolaoNet.Domain.Services.Boloes
 
             return Dao.Aguardar(base.CurrentUserName, DateTime.Now,  bolao);
         }
+        public IList<Entities.Boloes.Bolao> GetBoloesDisponiveis()
+        {
+            return Dao.GetBoloesDisponiveis(base.CurrentUserName, DateTime.Now);
+        }
 
         #endregion
+
+
     }
 }

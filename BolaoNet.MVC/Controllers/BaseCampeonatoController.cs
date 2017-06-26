@@ -18,12 +18,22 @@ namespace BolaoNet.MVC.Controllers
 
         #region Properties
 
-        protected string SelectedNomeCampeonato { get; set; }
+        protected string SelectedNomeCampeonato 
+        {
+            get
+            {
+                return base.Persist.Get<string>("SelectedCampeonato");
+            }
+            set
+            {
+                base.Persist.Put<string>("SelectedCampeonato", value);
+            }
+        }
         protected Domain.Entities.Campeonatos.Campeonato SelectedCampeonato
         {
             get
             {
-                if (string.IsNullOrEmpty(SelectedNomeCampeonato))
+                if (string.IsNullOrEmpty(this.SelectedNomeCampeonato))
                     return null;
                 else
                 {

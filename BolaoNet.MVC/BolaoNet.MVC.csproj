@@ -243,6 +243,7 @@
     <Content Include="Areas\Users\Views\AccountHome\Profile.cshtml" />
     <Content Include="Areas\Apostas\Views\ApostasExtras\Index.cshtml" />
     <Content Include="Areas\Users\Views\AccountHome\ChangePassword.cshtml" />
+    <Content Include="Areas\Users\Views\UserBoloes\Index.cshtml" />
     <None Include="Content\js\jquery-1.10.2.intellisense.js" />
     <Content Include="Content\js\jquery-1.10.2.js" />
     <Content Include="Content\js\jquery-1.10.2.min.js" />
@@ -1009,6 +1010,10 @@
     <ProjectReference Include="..\BolaoNet.Domain.Services\BolaoNet.Domain.Services.csproj">
       <Project>{a75056e8-0a9d-47aa-a4ed-a521329610bf}</Project>
       <Name>BolaoNet.Domain.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Infra.CrossCutting.Caching\BolaoNet.Infra.CrossCutting.Caching.csproj">
+      <Project>{a4bbdac0-8fa4-49e0-93a8-b225f6a34cf4}</Project>
+      <Name>BolaoNet.Infra.CrossCutting.Caching</Name>
     </ProjectReference>
     <ProjectReference Include="..\BolaoNet.Infra.CrossCutting.IoC\BolaoNet.Infra.CrossCutting.IoC.csproj">
       <Project>{1bbac3a3-b5eb-49eb-8200-574a99c5b060}</Project>
