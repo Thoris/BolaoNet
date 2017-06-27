@@ -106,7 +106,6 @@ namespace BolaoNet.MVC.ViewModels.Apostas
             }
         }
         
-
         #endregion
     }
 }

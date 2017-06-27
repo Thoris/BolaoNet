@@ -32,7 +32,7 @@ namespace BolaoNet.Domain.Services.Boloes
 
         #region IApostaExtraUsuariosBO members
 
-        public IList<Entities.Boloes.ApostaExtraUsuario> GetApostasUser(Entities.Boloes.Bolao bolao, Entities.Users.User user)
+        public IList<Domain.Entities.ValueObjects.ApostaExtraUsuarioVO> GetApostasUser(Entities.Boloes.Bolao bolao, Entities.Users.User user)
         {
             if (bolao == null)
                 throw new ArgumentException("bolao");
@@ -44,7 +44,7 @@ namespace BolaoNet.Domain.Services.Boloes
                 throw new ArgumentException("user.UserName");
 
 
-            return Dao.GetApostasUser(this.CurrentUserName, bolao, user);
+            return Dao.GetApostasUser(this.CurrentUserName, DateTime.Now, bolao, user);
         }
 
         #endregion

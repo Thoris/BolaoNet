@@ -44,9 +44,12 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
         {
             return Service.GetListUsersInBolao(bolao);
         }
+        public IList<Domain.Entities.Boloes.BolaoMembro> GetListBolaoInUsers(Domain.Entities.Users.User user)
+        {
+            return Service.GetListBolaoInUsers(user);
+        }
 
         #endregion
-
 
     }
 }

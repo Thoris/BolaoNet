@@ -40,9 +40,20 @@ namespace BolaoNet.Domain.Services.Boloes
             if (string.IsNullOrEmpty(bolao.Nome))
                 throw new ArgumentException("bolao.Nome");
 
-            return Dao.GetListUsersInBolao(this.CurrentUserName, bolao);
+            return Dao.GetListUsersInBolao(this.CurrentUserName, DateTime.Now, bolao);
+        }
+        public IList<Entities.Boloes.BolaoMembro> GetListBolaoInUsers(Entities.Users.User user)
+        {
+            if (user == null)
+                throw new ArgumentException("user");
+            if (string.IsNullOrEmpty(user.UserName))
+                throw new ArgumentException("user.Nome");
+
+            return Dao.GetListBolaoInUsers(this.CurrentUserName, DateTime.Now, user);
         }
 
         #endregion
+
+
     }
 }

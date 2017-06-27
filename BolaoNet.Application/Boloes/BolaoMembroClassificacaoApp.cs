@@ -31,5 +31,14 @@ namespace BolaoNet.Application.Boloes
         }
 
         #endregion
+
+        #region IBolaoMembroClassificacaoApp members
+
+        public IList<Domain.Entities.ValueObjects.BolaoClassificacaoVO> LoadClassificacao(Domain.Entities.Boloes.Bolao bolao, int? rodada)
+        {
+            return Service.LoadClassificacao(bolao, rodada);
+        }
+
+        #endregion
     }
 }

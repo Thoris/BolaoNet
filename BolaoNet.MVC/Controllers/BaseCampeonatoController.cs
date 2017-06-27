@@ -7,6 +7,12 @@ namespace BolaoNet.MVC.Controllers
 {
     public abstract class BaseCampeonatoController : AuthorizationController
     {
+        #region Constants
+
+        public const string PersistNomeCampeonatoSelected = "NomeCampeonatoSelected";
+
+        #endregion
+
         #region Variables
 
         private Application.Interfaces.Campeonatos.ICampeonatoApp _campeonatoApp;
@@ -18,29 +24,6 @@ namespace BolaoNet.MVC.Controllers
 
         #region Properties
 
-        protected string SelectedNomeCampeonato 
-        {
-            get
-            {
-                return base.Persist.Get<string>("SelectedCampeonato");
-            }
-            set
-            {
-                base.Persist.Put<string>("SelectedCampeonato", value);
-            }
-        }
-        protected Domain.Entities.Campeonatos.Campeonato SelectedCampeonato
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(this.SelectedNomeCampeonato))
-                    return null;
-                else
-                {
-                    return new Domain.Entities.Campeonatos.Campeonato(this.SelectedNomeCampeonato);
-                }
-            }
-        }
         protected ViewModels.Base.CampeonatoDataVO CampeonatoData { get; set; }
         protected Application.Interfaces.Campeonatos.ICampeonatoApp CampeonatoApp 
         {
@@ -94,7 +77,11 @@ namespace BolaoNet.MVC.Controllers
         protected void LoadCampeonatoData()
         {
             if (string.IsNullOrEmpty(SelectedNomeCampeonato))
+            {
+                if (this.CampeonatoData == null)
+                    this.CampeonatoData = new ViewModels.Base.CampeonatoDataVO();
                 return;
+            }
 
             this.CampeonatoData = base.Persist.Get<ViewModels.Base.CampeonatoDataVO>("CampeonatoData");
 

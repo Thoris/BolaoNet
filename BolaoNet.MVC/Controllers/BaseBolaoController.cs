@@ -7,29 +7,15 @@ namespace BolaoNet.MVC.Controllers
 {
     public abstract class BaseBolaoController : BaseCampeonatoController
     {
+        #region Constants
+
+        public const string PersistNomeBolaoSelected = "NomeBolaoSelected";
+
+        #endregion
+
         #region Properties
 
-        protected string SelectedNomeBolao
-        {
-            get
-            {
-                return base.Persist.Get<string>("SelectedBolao");
-            }
-            set
-            {
-                base.Persist.Put<string>("SelectedBolao", value);
-            }
-        }
-        protected Domain.Entities.Boloes.Bolao SelectedBolao
-        {
-            get
-            {
-                return new Domain.Entities.Boloes.Bolao(this.SelectedNomeBolao)
-                {
-                    NomeCampeonato = base.SelectedNomeCampeonato
-                };
-            }
-        }
+
 
         #endregion
 

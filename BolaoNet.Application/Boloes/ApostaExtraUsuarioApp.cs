@@ -34,7 +34,7 @@ namespace BolaoNet.Application.Boloes
 
         #region IApostaExtraUsuarioService members
 
-        public IList<Domain.Entities.Boloes.ApostaExtraUsuario> GetApostasUser(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
+        public IList<Domain.Entities.ValueObjects.ApostaExtraUsuarioVO> GetApostasUser(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
         {
             return Service.GetApostasUser(bolao, user);
         }

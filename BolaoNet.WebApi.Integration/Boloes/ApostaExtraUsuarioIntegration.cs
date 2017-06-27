@@ -35,17 +35,18 @@ namespace BolaoNet.WebApi.Integration.Boloes
 
         #region IApostaExtraUsuarioService members
 
-        public IList<Domain.Entities.Boloes.ApostaExtraUsuario> GetApostasUser(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
+        public IList<Domain.Entities.ValueObjects.ApostaExtraUsuarioVO> GetApostasUser(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>();
 
             parameters.Add("bolao", bolao);
             parameters.Add("user", user);
 
-            return base.HttpPostApi<ICollection<Domain.Entities.Boloes.ApostaExtraUsuario>>(
-                parameters, "InsertResult").ToList<Domain.Entities.Boloes.ApostaExtraUsuario>();
+            return base.HttpPostApi<ICollection<Domain.Entities.ValueObjects.ApostaExtraUsuarioVO>>(
+                parameters, "InsertResult").ToList<Domain.Entities.ValueObjects.ApostaExtraUsuarioVO>();
         }
 
         #endregion
+
     }
 }

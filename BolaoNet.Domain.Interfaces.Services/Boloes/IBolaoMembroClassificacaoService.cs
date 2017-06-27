@@ -9,5 +9,6 @@ namespace BolaoNet.Domain.Interfaces.Services.Boloes
     public interface IBolaoMembroClassificacaoService
         : Base.IGenericService<Entities.Boloes.BolaoMembroClassificacao>
     {
+        IList<Entities.ValueObjects.BolaoClassificacaoVO> LoadClassificacao(Entities.Boloes.Bolao bolao, int? rodada);
     }
 }

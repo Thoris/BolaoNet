@@ -32,5 +32,14 @@ namespace BolaoNet.WebApi.Integration.Boloes
         }
 
         #endregion
+
+        #region IBolaoMembroClassificacaoService members
+
+        public IList<Domain.Entities.ValueObjects.BolaoClassificacaoVO> LoadClassificacao(Domain.Entities.Boloes.Bolao bolao, int? rodada)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

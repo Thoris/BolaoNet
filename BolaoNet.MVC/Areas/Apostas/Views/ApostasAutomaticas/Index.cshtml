@@ -7,233 +7,231 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="row">
-        <div class="col-ld-12">            
-            <div class="form-group" id="tipoAposta">                
-                <h3><label class="col-xs-3 control-label">@Html.LabelFor(a => a.TipoAposta)</label></h3>
-                <div class="col-xs-9">
-                    <div class="radio">
-                        <label>
-                            @Html.RadioButtonFor(model => model.TipoAposta, 
-                            (int)BolaoNet.MVC.ViewModels.Apostas.ApostasAutomaticasViewModel.TipoApostaEnum.TodosJogos) 
-                            Apostas padrão para todos os jogos
-                        </label>
-                    </div>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content" style="display: block;">
+                <div class="row">
+                    <div class="col-ld-12">
+                        <div class="form-group" id="tipoAposta">
+                            <h4><label class="col-xs-3 control-label">@Html.LabelFor(a => a.TipoAposta)</label></h4>
+                            <div class="col-xs-9">
+                                <div class="radio">
+                                    <label>
+                                        @Html.RadioButtonFor(model => model.TipoAposta,
+                                    (int)BolaoNet.MVC.ViewModels.Apostas.ApostasAutomaticasViewModel.TipoApostaEnum.TodosJogos)
+                                        Apostas padrão para todos os jogos
+                                    </label>
+                                </div>
 
-                    <div class="radio">
-                        <label>
-                            @Html.RadioButtonFor(model => model.TipoAposta,
-                            (int)BolaoNet.MVC.ViewModels.Apostas.ApostasAutomaticasViewModel.TipoApostaEnum.DurantePeriodo)
-                            Apostas padrão para jogos durante um período
-                        </label>
-                    </div>
+                                <div class="radio">
+                                    <label>
+                                        @Html.RadioButtonFor(model => model.TipoAposta,
+                                    (int)BolaoNet.MVC.ViewModels.Apostas.ApostasAutomaticasViewModel.TipoApostaEnum.DurantePeriodo)
+                                        Apostas padrão para jogos durante um período
+                                    </label>
+                                </div>
 
-                    <div class="radio">
-                        <label>
-                            @Html.RadioButtonFor(model => model.TipoAposta,
-                            (int)BolaoNet.MVC.ViewModels.Apostas.ApostasAutomaticasViewModel.TipoApostaEnum.Rodada)
-                             Apostas padrão para todos os jogos de uma rodada
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    
-    
-    <div class="row">
-        <div class="col-ld-12 ">
-            <div class="form-group" id="periodo"  
-                 @if (Model.TipoAposta != (int)BolaoNet.MVC.ViewModels.Apostas.FilterJogosViewModel.FilterJogoType.Periodo)
-                     {
-                          @Html.Raw("style=\"display: none;\""); 
-                     }  >
-                <h3><label class="col-xs-3 control-label">Período</label></h3>
-                <div class="col-xs-9">
-                    
-                    <div class="form-group col-md-4 col-sm-4">
-                        @Html.LabelFor(a => a.DataInicial)
-                        @Html.TextBoxFor(a => a.DataInicial, new { @class = "form-control input-sm", @placeholder = "Data Inicial" })
-                        @Html.ValidationMessageFor(m => m.DataInicial)
-                    </div>
-                    <div class="form-group col-md-4 col-sm-4">
-                        @Html.LabelFor(a => a.DataFinal)
-                        @Html.TextBoxFor(a => a.DataFinal, new { @class = "form-control input-sm", @placeholder = "Data Final" })
-                        @Html.ValidationMessageFor(m => m.DataFinal)
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-ld-12 ">
-            <div class="form-group" id="rodada" style="display: none;">
-                <h3><label class="col-xs-3 control-label">@Html.LabelFor(a => a.Rodada)</label></h3>
-                <div class="col-xs-9">
-                    <div class="form-group col-md-4 col-sm-4">
-                        @Html.DropDownListFor(x => x.Rodada, (SelectList)ViewBag.Rodadas, new { @class = "form-control input-sm" })
+                                <div class="radio">
+                                    <label>
+                                        @Html.RadioButtonFor(model => model.TipoAposta,
+                                    (int)BolaoNet.MVC.ViewModels.Apostas.ApostasAutomaticasViewModel.TipoApostaEnum.Rodada)
+                                        Apostas padrão para todos os jogos de uma rodada
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
 
 
-    <div class="row">
-        <div class="col-ld-12 ">
-            <div class="form-group" id="tipoValor" >
-                <h3><label class="col-xs-3 control-label">@Html.LabelFor(a => a.ValoresFixos)</label></h3>
-                <div class="col-xs-9">
-                    <div class="radio">
-                        <label>
-                            @Html.RadioButtonFor(model => model.ValoresFixos, true) Valores Fixos
-                        </label>
-                    </div>
 
-                    <div class="radio">
-                        <label>
-                            @Html.RadioButtonFor(model => model.ValoresFixos, false) Valores Aleatórios
-                        </label>
-                    </div>
+                <div class="row">
+                    <div class="col-ld-12 ">
+                        <div class="form-group" id="periodo"
+                             @if (Model.TipoAposta != (int)BolaoNet.MVC.ViewModels.Apostas.FilterJogosViewModel.FilterJogoType.Periodo) { @Html.Raw("style=\"display: none;\"") ;  }>
+                            <h4><label class="col-xs-3 control-label">Período</label></h4>
+                            <div class="col-xs-9">
 
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="row">
-        <div class="col-ld-12 ">
-            <div class="form-group" id="valorFixo"
-                     @if (!Model.ValoresFixos)
-                     {
-                          @Html.Raw("style=\"display: none;\""); 
-                     }  >
-                <h3><label class="col-xs-3 control-label">Resultados Fixos</label></h3>
-                <div class="col-xs-9">
+                                <div class="form-group col-md-4 col-sm-4">
+                                    @Html.LabelFor(a => a.DataInicial)
+                                    @Html.TextBoxFor(a => a.DataInicial, new { @class = "form-control input-sm", @placeholder = "Data Inicial" })
+                                    @Html.ValidationMessageFor(m => m.DataInicial)
+                                </div>
+                                <div class="form-group col-md-4 col-sm-4">
+                                    @Html.LabelFor(a => a.DataFinal)
+                                    @Html.TextBoxFor(a => a.DataFinal, new { @class = "form-control input-sm", @placeholder = "Data Final" })
+                                    @Html.ValidationMessageFor(m => m.DataFinal)
+                                </div>
 
-                    <div class="form-group col-md-4 col-sm-4">
-                        @Html.LabelFor(a => a.ApostaTimeCasa)
-                        @Html.TextBoxFor(a => a.ApostaTimeCasa, new { @class = "form-control input-sm" })
-                        @Html.ValidationMessageFor(m => m.ApostaTimeCasa)
-                    </div>
-                    <div class="form-group col-md-4 col-sm-4">
-                        @Html.LabelFor(a => a.ApostaTimeFora)
-                        @Html.TextBoxFor(a => a.ApostaTimeFora, new { @class = "form-control input-sm" })
-                        @Html.ValidationMessageFor(m => m.ApostaTimeFora)
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="row">
-        <div class="col-ld-12 ">
-            <div class="form-group" id="valorAleatorio" 
-                 @if (Model.ValoresFixos)
-                     {
-                          @Html.Raw("style=\"display: none;\""); 
-                     }  >
-                <h3><label class="col-xs-3 control-label">Resultados Aleatórios</label></h3>
-                <div class="col-xs-9">
-
-                    <div class="form-group col-md-4 col-sm-4">
-                        @Html.LabelFor(a => a.ValorInicial)
-                        @Html.TextBoxFor(a => a.ValorInicial, new { @class = "form-control input-sm" })
-                        @Html.ValidationMessageFor(m => m.ValorInicial)
-                    </div>
-                    <div class="form-group col-md-4 col-sm-4">
-                        @Html.LabelFor(a => a.ValorFinal)
-                        @Html.TextBoxFor(a => a.ValorFinal, new { @class = "form-control input-sm" })
-                        @Html.ValidationMessageFor(m => m.ValorFinal)
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-   
-
-    
-    <div class="row">
-        <div class="col-ld-12">
-            <div class="form-group" id="substituicao" >
-                <h3><label class="col-xs-3 control-label">@Html.LabelFor(a => a.SubstituicaoAposta)</label></h3>
-                <div class="col-xs-9">
-                    <div class="radio">
-                        <label>
-                            @Html.RadioButtonFor(model => model.SubstituicaoAposta,
-                            (int)BolaoNet.MVC.ViewModels.Apostas.ApostasAutomaticasViewModel.SubstituicaoApostaEnum.Todas, new { @checked = true })
-                            Aplicar a todas as apostas
-                        </label>
-                    </div>
-
-                    <div class="radio">
-                        <label>
-                            @Html.RadioButtonFor(model => model.SubstituicaoAposta,
-                            (int)BolaoNet.MVC.ViewModels.Apostas.ApostasAutomaticasViewModel.SubstituicaoApostaEnum.JogosNaoApostados)
-                            Aplicar a todos os jogos não apostados
-                        </label>
-                    </div>
-
-                    <div class="radio">
-                        <label>
-                            @Html.RadioButtonFor(model => model.SubstituicaoAposta,
-                            (int)BolaoNet.MVC.ViewModels.Apostas.ApostasAutomaticasViewModel.SubstituicaoApostaEnum.JogosJaApostados)
-                            Aplicar a todos os jogos já apostados
-                        </label>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="row">
-        <div class="col-ld-12">
-            <div class="form-group" id="tipoAtualizacao" style="display: none;">
-                <h3><label class="col-xs-3 control-label">@Html.LabelFor(a => a.ApostasAutomaticas)</label></h3>
-                <div class="col-xs-9">
-                    <div class="radio">
-                        <label>
-                            @Html.RadioButtonFor(model => model.ApostasAutomaticas,
-                            (int)BolaoNet.MVC.ViewModels.Apostas.ApostasAutomaticasViewModel.ApostasAutomaticasEnum.Todas)
-                            Todas as apostas
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            @Html.RadioButtonFor(model => model.ApostasAutomaticas,
-                            (int)BolaoNet.MVC.ViewModels.Apostas.ApostasAutomaticasViewModel.ApostasAutomaticasEnum.Manuais)
-                            Apostas Manuais
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            @Html.RadioButtonFor(model => model.ApostasAutomaticas,
-                            (int)BolaoNet.MVC.ViewModels.Apostas.ApostasAutomaticasViewModel.ApostasAutomaticasEnum.Automaticas)
-                            Apostas Automáticas
-                        </label>
+
+                <div class="row">
+                    <div class="col-ld-12 ">
+                        <div class="form-group" id="rodada" style="display: none;">
+                            <h4><label class="col-xs-3 control-label">@Html.LabelFor(a => a.Rodada)</label></h4>
+                            <div class="col-xs-9">
+                                <div class="form-group col-md-4 col-sm-4">
+                                    @Html.DropDownListFor(x => x.Rodada, (SelectList)ViewBag.Rodadas, new { @class = "form-control input-sm" })
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
+
+                <div class="row">
+                    <div class="col-ld-12 ">
+                        <div class="form-group" id="tipoValor">
+                            <h4><label class="col-xs-3 control-label">@Html.LabelFor(a => a.ValoresFixos)</label></h4>
+                            <div class="col-xs-9">
+                                <div class="radio">
+                                    <label>
+                                        @Html.RadioButtonFor(model => model.ValoresFixos, true) Valores Fixos
+                                    </label>
+                                </div>
+
+                                <div class="radio">
+                                    <label>
+                                        @Html.RadioButtonFor(model => model.ValoresFixos, false) Valores Aleatórios
+                                    </label>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-ld-12 ">
+                        <div class="form-group" id="valorFixo"
+                             @if (!Model.ValoresFixos) { @Html.Raw("style=\"display: none;\"") ;  }>
+                            <h4><label class="col-xs-3 control-label">Resultados Fixos</label></h4>
+                            <div class="col-xs-9">
+
+                                <div class="form-group col-md-4 col-sm-4">
+                                    @Html.LabelFor(a => a.ApostaTimeCasa)
+                                    @Html.TextBoxFor(a => a.ApostaTimeCasa, new { @class = "form-control input-sm" })
+                                    @Html.ValidationMessageFor(m => m.ApostaTimeCasa)
+                                </div>
+                                <div class="form-group col-md-4 col-sm-4">
+                                    @Html.LabelFor(a => a.ApostaTimeFora)
+                                    @Html.TextBoxFor(a => a.ApostaTimeFora, new { @class = "form-control input-sm" })
+                                    @Html.ValidationMessageFor(m => m.ApostaTimeFora)
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-ld-12 ">
+                        <div class="form-group" id="valorAleatorio"
+                             @if (Model.ValoresFixos) { @Html.Raw("style=\"display: none;\"") ;  }>
+                            <h4><label class="col-xs-3 control-label">Resultados Aleatórios</label></h4>
+                            <div class="col-xs-9">
+
+                                <div class="form-group col-md-4 col-sm-4">
+                                    @Html.LabelFor(a => a.ValorInicial)
+                                    @Html.TextBoxFor(a => a.ValorInicial, new { @class = "form-control input-sm" })
+                                    @Html.ValidationMessageFor(m => m.ValorInicial)
+                                </div>
+                                <div class="form-group col-md-4 col-sm-4">
+                                    @Html.LabelFor(a => a.ValorFinal)
+                                    @Html.TextBoxFor(a => a.ValorFinal, new { @class = "form-control input-sm" })
+                                    @Html.ValidationMessageFor(m => m.ValorFinal)
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="row">
+                    <div class="col-ld-12">
+                        <div class="form-group" id="substituicao">
+                            <h4><label class="col-xs-3 control-label">@Html.LabelFor(a => a.SubstituicaoAposta)</label></h4>
+                            <div class="col-xs-9">
+                                <div class="radio">
+                                    <label>
+                                        @Html.RadioButtonFor(model => model.SubstituicaoAposta,
+                                    (int)BolaoNet.MVC.ViewModels.Apostas.ApostasAutomaticasViewModel.SubstituicaoApostaEnum.Todas, new { @checked = true })
+                                        Aplicar a todas as apostas
+                                    </label>
+                                </div>
+
+                                <div class="radio">
+                                    <label>
+                                        @Html.RadioButtonFor(model => model.SubstituicaoAposta,
+                                    (int)BolaoNet.MVC.ViewModels.Apostas.ApostasAutomaticasViewModel.SubstituicaoApostaEnum.JogosNaoApostados)
+                                        Aplicar a todos os jogos não apostados
+                                    </label>
+                                </div>
+
+                                <div class="radio">
+                                    <label>
+                                        @Html.RadioButtonFor(model => model.SubstituicaoAposta,
+                                    (int)BolaoNet.MVC.ViewModels.Apostas.ApostasAutomaticasViewModel.SubstituicaoApostaEnum.JogosJaApostados)
+                                        Aplicar a todos os jogos já apostados
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-ld-12">
+                        <div class="form-group" id="tipoAtualizacao" style="display: none;">
+                            <h4><label class="col-xs-3 control-label">@Html.LabelFor(a => a.ApostasAutomaticas)</label></h4>
+                            <div class="col-xs-9">
+                                <div class="radio">
+                                    <label>
+                                        @Html.RadioButtonFor(model => model.ApostasAutomaticas,
+                                    (int)BolaoNet.MVC.ViewModels.Apostas.ApostasAutomaticasViewModel.ApostasAutomaticasEnum.Todas)
+                                        Todas as apostas
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        @Html.RadioButtonFor(model => model.ApostasAutomaticas,
+                                    (int)BolaoNet.MVC.ViewModels.Apostas.ApostasAutomaticasViewModel.ApostasAutomaticasEnum.Manuais)
+                                        Apostas Manuais
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        @Html.RadioButtonFor(model => model.ApostasAutomaticas,
+                                    (int)BolaoNet.MVC.ViewModels.Apostas.ApostasAutomaticasViewModel.ApostasAutomaticasEnum.Automaticas)
+                                        Apostas Automáticas
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="login-erro">
+                    @Html.ValidationSummary(true)
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-offset-5 col-sm-2 text-center">
+                        <input type="submit" class="btn btn-primary btn-md active center-block " value="Salvar" />
+                    </div>
+                </div>
+
+            </div>
         </div>
-    </div>
-    
-    <div class="login-erro">
-        @Html.ValidationSummary(true)
-    </div>
-    
-    <div class="row">
-        <div class="col-sm-offset-5 col-sm-2 text-center">
-            <input type="submit" class="btn btn-primary btn-md active center-block " value="Salvar" />            
-        </div>    
     </div>
 }
 
@@ -264,7 +262,7 @@
         $("input[name=ValoresFixos]").on("change", function () {
 
             var data = $(this).val();
-       
+
             if (data == "True") { //valores fixos
                 $("#valorFixo").show();
                 $("#valorAleatorio").hide();
@@ -284,7 +282,7 @@
             if (data == 2) {
                 $("#tipoAtualizacao").show();
             }
-            else{
+            else {
                 $("#tipoAtualizacao").hide();
             }
         });

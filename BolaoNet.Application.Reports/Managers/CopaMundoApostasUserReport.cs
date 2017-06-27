@@ -62,7 +62,7 @@ namespace BolaoNet.Application.Reports.Managers
             IList<Domain.Entities.Campeonatos.Jogo> jogosList = _jogoApp.GetJogosByCampeonato(campeonato);
             IList<Domain.Entities.Boloes.JogoUsuario> jogosUsuariosList = _jogoUsuarioApp.GetJogosByUser(bolao, userLoaded);
             IList<Domain.Entities.Boloes.ApostaExtra> apostasExtrasList = _apostaExtraApp.GetApostasBolao(bolao);
-            IList<Domain.Entities.Boloes.ApostaExtraUsuario> apostasExtrasUsuariosList = _apostaExtraUsuarioApp.GetApostasUser(bolao, userLoaded);
+            IList<Domain.Entities.ValueObjects.ApostaExtraUsuarioVO> apostasExtrasUsuariosList = _apostaExtraUsuarioApp.GetApostasUser(bolao, userLoaded);
 
 
             apostaUserReport.CreatePageUserApostas(bolaoLoaded, campeonato, userLoaded,

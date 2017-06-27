@@ -133,8 +133,10 @@
     <Compile Include="Areas\Apostas\Controllers\ApostasAutomaticasController.cs" />
     <Compile Include="Areas\Apostas\Controllers\ApostasExtrasController.cs" />
     <Compile Include="Areas\Apostas\Controllers\ApostasJogosController.cs" />
-    <Compile Include="Areas\Apostas\Controllers\BaseApostasController.cs" />
+    <Compile Include="Areas\Apostas\Controllers\BaseApostasAreaController.cs" />
     <Compile Include="Areas\Boloes\BoloesAreaRegistration.cs" />
+    <Compile Include="Areas\Boloes\Controllers\BaseBolaoAreaController.cs" />
+    <Compile Include="Areas\Boloes\Controllers\BolaoClassificacaoController.cs" />
     <Compile Include="Areas\Campeonatos\CampeonatosAreaRegistration.cs" />
     <Compile Include="Areas\Criterios\CriteriosAreaRegistration.cs" />
     <Compile Include="Areas\Mensagens\MensagensAreaRegistration.cs" />
@@ -244,6 +246,9 @@
     <Content Include="Areas\Apostas\Views\ApostasExtras\Index.cshtml" />
     <Content Include="Areas\Users\Views\AccountHome\ChangePassword.cshtml" />
     <Content Include="Areas\Users\Views\UserBoloes\Index.cshtml" />
+    <Content Include="Areas\Boloes\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Boloes\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Boloes\Views\BolaoClassificacao\Index.cshtml" />
     <None Include="Content\js\jquery-1.10.2.intellisense.js" />
     <Content Include="Content\js\jquery-1.10.2.js" />
     <Content Include="Content\js\jquery-1.10.2.min.js" />
@@ -682,6 +687,7 @@
     <Content Include="Content\js\respond.js" />
     <Content Include="Content\js\respond.min.js" />
     <Content Include="Content\js\respond.src.js" />
+    <Content Include="Content\Site.css" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\RegistrationForm.cshtml" />
@@ -960,9 +966,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Apostas\Models\" />
-    <Folder Include="Areas\Boloes\Controllers\" />
     <Folder Include="Areas\Boloes\Models\" />
-    <Folder Include="Areas\Boloes\Views\Shared\" />
     <Folder Include="Areas\Campeonatos\Controllers\" />
     <Folder Include="Areas\Campeonatos\Models\" />
     <Folder Include="Areas\Campeonatos\Views\Shared\" />

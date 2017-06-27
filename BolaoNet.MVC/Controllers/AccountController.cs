@@ -18,24 +18,20 @@ namespace BolaoNet.MVC.Controllers
         private Application.Interfaces.Users.IUserApp _userApp;
         private Application.Interfaces.Users.IUserInRoleApp _userInRoleApp;
         private Application.Interfaces.Notification.INotificationApp _notificationApp;
+        private Application.Interfaces.Boloes.IBolaoMembroApp _bolaoMembroApp;
+        private Application.Interfaces.Boloes.IBolaoApp _bolaoApp;
 
         #endregion
 
         #region Constructors/Destructors
 
-        public AccountController(Application.Interfaces.Users.IUserApp userApp, Application.Interfaces.Users.IUserInRoleApp userInRoleApp, Application.Interfaces.Notification.INotificationApp notificationApp)
-        //public AccountController(Application.Interfaces.Users.IUserApp userApp, Application.Interfaces.Users.IUserInRoleApp userInRoleApp)
+        public AccountController(Application.Interfaces.Users.IUserApp userApp, Application.Interfaces.Users.IUserInRoleApp userInRoleApp, Application.Interfaces.Boloes.IBolaoMembroApp bolaoMembroApp, Application.Interfaces.Boloes.IBolaoApp bolaoApp, Application.Interfaces.Notification.INotificationApp notificationApp)
         {
             _userApp = userApp;
             _userInRoleApp = userInRoleApp;
             _notificationApp = notificationApp;
-
-
-            
-
-            // _notificationApp = new Infra.Notification.Mail.MailNotification("");
-
-            
+            _bolaoMembroApp = bolaoMembroApp;
+            _bolaoApp = bolaoApp;
         }
 
         #endregion
@@ -88,6 +84,21 @@ namespace BolaoNet.MVC.Controllers
             };
             
             Security.AuthenticationManagement.SaveAuthentication(Response, userModel, model.RememberMe);
+
+
+            //Buscando a lista de bolões do usuário
+            IList<Domain.Entities.Boloes.BolaoMembro> list =
+                _bolaoMembroApp.GetListBolaoInUsers(new Domain.Entities.Users.User(model.UserName));
+
+            if (list.Count == 1)
+            {
+                Domain.Entities.Boloes.Bolao bolaoLoaded =
+                    _bolaoApp.Load(new Domain.Entities.Boloes.Bolao(list[0].NomeBolao));
+
+                Persist.Put<string>(BaseBolaoController.PersistNomeBolaoSelected, bolaoLoaded.Nome);
+                Persist.Put<string>(BaseBolaoController.PersistNomeCampeonatoSelected, bolaoLoaded.NomeCampeonato);
+            }
+
 
             //FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
             //return RedirectToAction("Index", "Home");

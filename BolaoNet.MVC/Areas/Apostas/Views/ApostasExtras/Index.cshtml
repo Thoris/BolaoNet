@@ -1,7 +1,61 @@
-﻿
+﻿@model IList<BolaoNet.MVC.ViewModels.Apostas.ApostaExtraViewModel>
 @{
     ViewBag.Title = "Apostas Extras";
 }
 
-<h2>Index</h2>
+@using (Html.BeginForm("Salvar", "ApostasExtras", FormMethod.Post, new { }))
+{
+    @Html.AntiForgeryToken()
 
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content" style="display: block;">
+                        <div class="text-center m-t-lg">
+
+                            <div class="row">
+                                <table class="table table-hover">
+                                    <tbody>
+                                        @for (int c = 0; c < Model.Count; c++)
+                                        {
+                                            @Html.HiddenFor(x => x[c].UserName)
+                                            @Html.HiddenFor(x => x[c].SalvarNomeTime)
+                                            @Html.HiddenFor(x => x[c].NomeBolao)
+                                            @Html.HiddenFor(x => x[c].Posicao)
+
+                                            <tr>
+                                                <td>@Model[c].Titulo</td>
+                                                <td>@Html.DropDownListFor(x => x[c].NomeTime, new SelectList(ViewBag.Times, Model[c].NomeTime), new { @class = "form-control input-sm", @id="Time" + c.ToString(), @name="Time" + c.ToString() })</td>
+                                                <td>@Model[c].DataAposta</td>
+                                                <td></td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-offset-5 col-sm-2 text-center">
+                                    <input type="submit" class="btn btn-primary btn-md active center-block " value="Salvar" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section scripts
+{
+    <script>
+
+    $(document).ready(function () {
+        $('#Time1').change(function () {
+
+           
+            alert("value: " + $(this).val());
+        });
+    })
+    </script>
+}

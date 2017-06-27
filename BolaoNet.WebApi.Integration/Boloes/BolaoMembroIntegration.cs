@@ -40,7 +40,14 @@ namespace BolaoNet.WebApi.Integration.Boloes
             return base.HttpPostApi<ICollection<Domain.Entities.Boloes.BolaoMembro>>(
                 new Dictionary<string, string>(), bolao, "GetListUsersInBolao").ToList<Domain.Entities.Boloes.BolaoMembro>();
         }
+        public IList<Domain.Entities.Boloes.BolaoMembro> GetListBolaoInUsers(Domain.Entities.Users.User user)
+        {
+            return base.HttpPostApi<ICollection<Domain.Entities.Boloes.BolaoMembro>>(
+                new Dictionary<string, string>(), user, "GetListBolaoInUsers").ToList<Domain.Entities.Boloes.BolaoMembro>();
+        }
 
         #endregion
+
+
     }
 }

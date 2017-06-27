@@ -14,9 +14,53 @@ namespace BolaoNet.MVC.Controllers
     public abstract class AuthenticationController : BaseController
     {
         #region Properties
-        
-        protected Helpers.PersistenceProviders.PersistenceProvider Persist { get; set; }
 
+        public string SelectedNomeBolao
+        {
+            get
+            {
+                return Persist.Get<string>(BaseBolaoController.PersistNomeBolaoSelected);
+            }
+            set
+            {
+                Persist.Put<string>(BaseBolaoController.PersistNomeBolaoSelected, value);
+            }
+        }
+        protected Domain.Entities.Boloes.Bolao SelectedBolao
+        {
+            get
+            {
+                return new Domain.Entities.Boloes.Bolao(this.SelectedNomeBolao)
+                {
+                    NomeCampeonato = SelectedNomeCampeonato
+                };
+            }
+        }
+
+        public string SelectedNomeCampeonato
+        {
+            get
+            {
+                return Persist.Get<string>(BaseCampeonatoController.PersistNomeCampeonatoSelected);
+            }
+            set
+            {
+                Persist.Put<string>(BaseCampeonatoController.PersistNomeCampeonatoSelected, value);
+            }
+        }
+        protected Domain.Entities.Campeonatos.Campeonato SelectedCampeonato
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(this.SelectedNomeCampeonato))
+                    return null;
+                else
+                {
+                    return new Domain.Entities.Campeonatos.Campeonato(this.SelectedNomeCampeonato);
+                }
+            }
+        }
+        
         /// <summary>
         /// we inherit all controllers from this basecontroller.
         /// basicly we access usercontext data from all controllers by user variable
@@ -51,7 +95,6 @@ namespace BolaoNet.MVC.Controllers
         public AuthenticationController()
         {
 
-            this.Persist = new Helpers.PersistenceProviders.PersistenceProvider(this);
         }
 
         #endregion

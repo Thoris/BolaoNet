@@ -12,6 +12,6 @@ namespace BolaoNet.Domain.Interfaces.Repositories.Boloes
         //IList<Entities.Boloes.ApostaExtraUsuario> SelectByPosicao(string currentUserName, Entities.Boloes.Bolao bolao, int posicao, string condition);
 
 
-        IList<Entities.Boloes.ApostaExtraUsuario> GetApostasUser(string currentUserName, Entities.Boloes.Bolao bolao, Entities.Users.User user);
+        IList<Domain.Entities.ValueObjects.ApostaExtraUsuarioVO> GetApostasUser(string currentUserName, DateTime currentDateTime, Entities.Boloes.Bolao bolao, Entities.Users.User user);
     }
 }

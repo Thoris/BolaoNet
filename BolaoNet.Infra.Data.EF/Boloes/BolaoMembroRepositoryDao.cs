@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 namespace BolaoNet.Infra.Data.EF.Boloes
 {
     public class BolaoMembroRepositoryDao :
-        Base.BaseRepositoryDao<Domain.Entities.Boloes.BolaoMembro>, Domain.Interfaces.Repositories.Boloes.IBolaoMembroDao
+        Base.BaseRepositoryDao<Domain.Entities.Boloes.BolaoMembro>,
+        Domain.Interfaces.Repositories.Boloes.IBolaoMembroDao
     {
         
         #region Constructors/Destructors
@@ -83,13 +84,16 @@ namespace BolaoNet.Infra.Data.EF.Boloes
                 return false;
         }
 
-
-
-        public IList<Domain.Entities.Boloes.BolaoMembro> GetListUsersInBolao(string currentUserName, Domain.Entities.Boloes.Bolao bolao)
+        public IList<Domain.Entities.Boloes.BolaoMembro> GetListUsersInBolao(string currentUserName, DateTime currentDateTime, Domain.Entities.Boloes.Bolao bolao)
         {
             return base.GetList(x => string.Compare(x.NomeBolao, bolao.Nome, true) == 0).ToList();
         }
 
+        public IList<Domain.Entities.Boloes.BolaoMembro> GetListBolaoInUsers(string currentUserName, DateTime currentDateTime, Domain.Entities.Users.User user)
+        {
+            return base.GetList(x => string.Compare(x.UserName, user.UserName, true) == 0).ToList();
+        }
+        
         #endregion
     }
 }

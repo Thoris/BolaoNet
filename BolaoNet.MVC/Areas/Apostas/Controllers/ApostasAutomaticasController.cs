@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace BolaoNet.MVC.Areas.Apostas.Controllers
 {
-    public class ApostasAutomaticasController : BaseApostasController
+    public class ApostasAutomaticasController : BaseApostasAreaController
     {
         #region Variables
 
