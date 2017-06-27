@@ -1,5 +1,7 @@
 ﻿@model BolaoNet.MVC.ViewModels.Apostas.ApostasJogosListViewModel
-
+@{
+    ViewBag.Title = "Apostas dos Jogos do Bolão ";
+}
 @using (Html.BeginForm("Filtrar", "ApostasJogos", FormMethod.Post, new { }))
 {
     @Html.AntiForgeryToken()

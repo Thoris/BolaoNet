@@ -1,5 +1,7 @@
 ﻿@model BolaoNet.MVC.ViewModels.Users.UserBoloesViewModel
-
+@{
+    ViewBag.Title = "Seleção de Bolão";
+}
 @using (Html.BeginForm("Selecionar", "UserBoloes", FormMethod.Post, new { }))
 {
     @Html.AntiForgeryToken()

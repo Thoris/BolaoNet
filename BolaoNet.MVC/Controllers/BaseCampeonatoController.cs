@@ -93,7 +93,13 @@ namespace BolaoNet.MVC.Controllers
 
         protected void LoadCampeonatoData()
         {
-            if (CampeonatoData == null)
+            if (string.IsNullOrEmpty(SelectedNomeCampeonato))
+                return;
+
+            this.CampeonatoData = base.Persist.Get<ViewModels.Base.CampeonatoDataVO>("CampeonatoData");
+
+
+            if (this.CampeonatoData == null || string.Compare (this.SelectedNomeCampeonato, this.CampeonatoData.NomeCampeonato, true) != 0)
             {
                 this.CampeonatoData = new Helpers.CampeonatoDataLoader(
                     _campeonatoApp,
@@ -101,6 +107,9 @@ namespace BolaoNet.MVC.Controllers
                     _campeonatoGrupoApp,
                     _campeonatoTimeApp
                     ).LoadCampeonatoData(this.SelectedCampeonato);
+
+
+                base.Persist.Put<ViewModels.Base.CampeonatoDataVO>("CampeonatoData", this.CampeonatoData);
             }
         }
 

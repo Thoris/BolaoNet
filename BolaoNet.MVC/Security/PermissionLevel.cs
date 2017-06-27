@@ -8,7 +8,20 @@ namespace BolaoNet.MVC.Security
     [Flags]
     public enum PermissionLevel
     {
-        Admin,
-        User,
+        Administrador,
+        Apostador,
+        Convidado,
+        GerenciadorAvisos,
+        GerenciadorBolao,
+        GerenciadorCriterios,
+        GerenciadorDadosBasicos,
+        GerenciadorEnquetes,
+        GerenciadorMensagens,
+        GerenciadorPagamentos,
+        GerenciadorPontuacao,
+        GerenciadorPublicidade,
+        GerenciadorResultados,
+        VisitanteBolao,
+        VisitanteCampeonato,
     }
 }

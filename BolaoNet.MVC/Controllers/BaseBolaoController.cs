@@ -46,7 +46,7 @@ namespace BolaoNet.MVC.Controllers
                 campeonatoApp, campeonatoFaseApp, campeonatoGrupoApp, campeonatoTimeApp
             )
         {
-
+            LoadCampeonatoData();
         }
 
         #endregion

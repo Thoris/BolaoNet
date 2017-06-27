@@ -1,8 +1,8 @@
 ﻿@using Res = BolaoNet.MVC.Resources.Views.Shared.Fragments.Menu
 @{
     var homeController = ViewContext.Controller as BolaoNet.MVC.Controllers.AuthorizationController;
-    //string controllerName = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString();
-    //string controllerAction = HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString();
+    string controllerName = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString();
+    string controllerAction = HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString();
 }
 
 <li class="active">
@@ -11,14 +11,18 @@
 <li>
     <a href="/GrupoPonto/Grupos"><i class="fa fa-database"></i> <span class="nav-label">Apostas</span> <span class="fa arrow"></span></a>
     <ul class="nav nav-second-level collapse">
+        <li @if (string.Compare(controllerAction, "Jogos", true) == 0 && string.Compare(controllerName, "ApostasJogos", true) == 0) {  @Html.Raw("class=\"active\"")    }>
+            <a href="/Apostas/ApostasJogos/Jogos">Inclusão de Apostas</a>
+        </li>
+
         <li>
-            <a href="/GrupoPonto/Grupos">Inclusão de Apostas</a>
+            <a href="/Apostas/ApostasAutomaticas/Index">Apostas Automáticas</a>
         </li>
         <li>
-            <a href="/GrupoPonto/Grupos">Apostas Automáticas</a>
+            <a href="/Apostas/ApostasExtras/Index">Apostas Extras</a>
         </li>
         <li>
-            <a href="/GrupoPonto/Grupos">Apostas Extras</a>
+            <a href="/Users/UserBoloes/Index">Selecionar Bolão</a>
         </li>
 
     </ul>
