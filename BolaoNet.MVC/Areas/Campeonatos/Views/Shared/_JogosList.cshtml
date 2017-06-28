@@ -1,0 +1,111 @@
+﻿@model BolaoNet.MVC.ViewModels.Campeonatos.CampeonatoJogosListViewModel
+
+
+@{
+    string currentGrupo = "";
+    string currentFase = "";
+    bool isGrouped = false;
+}
+
+<table class="table table-hover">
+    <tbody>
+        
+        @for (int c = 0; c < Model.Jogos.Count; c++)
+        {
+            @Html.HiddenFor(x => x.Jogos[c].NomeCampeonato)
+            @Html.HiddenFor(x => x.Jogos[c].JogoId)
+
+            isGrouped = false;
+            if (string.Compare(Model.Jogos[c].NomeGrupo, currentGrupo, true) != 0)
+            {
+                if (!string.IsNullOrEmpty(Model.Jogos[c].NomeGrupo.Trim()))
+                {
+                    <tr>
+                        <th scope="rowgroup" colspan="12">Grupo @(Model.Jogos[c].NomeGrupo)</th>
+                    </tr>
+                    isGrouped = true;
+                }
+                currentGrupo = Model.Jogos[c].NomeGrupo;
+            }
+            if (!isGrouped && string.IsNullOrEmpty(Model.Jogos[c].NomeGrupo.Trim()) &&
+                string.Compare(Model.Jogos[c].NomeFase, currentFase, true) != 0)
+            {                
+                <tr>
+                    <th scope="rowgroup" colspan="12">Fase @(Model.Jogos[c].NomeFase)</th>
+                </tr>
+                currentFase = Model.Jogos[c].NomeFase;
+            }
+            <tr
+                @if (Model.Jogos[c].IsLocked)
+                {
+                    @Html.Raw("class=\"info\"");
+                }
+                else if (Model.Jogos[c].GolsTime1 == null || Model.Jogos[c].GolsTime2 == null)
+                {
+                     @Html.Raw("class=\"warning\"");
+                }                
+                else
+                {
+                    @Html.Raw("class=\"active\"");
+                }    
+            >
+
+        <th scope="row">@(Model.Jogos[c].JogoId)</th>
+        <td>@(Model.Jogos[c].DataJogo)</td>
+        <td>@(Model.Jogos[c].NomeEstadio)</td>
+        <td class="text-right">@(Model.Jogos[c].NomeTime1)</td>
+        <td><img src="@(Model.Jogos[c].ImageTime1)" /></td>
+
+        @if (Model.Jogos[c].IsLocked)
+        {
+            if (Model.Jogos[c].GolsTime1 != null)
+            {
+                <td>@(Model.Jogos[c].GolsTime1)</td>
+            }
+            else
+            {
+                <td>-</td>
+            }
+        }
+        else
+        {
+            <td>
+                @Html.TextBoxFor(x => x.Jogos[c].GolsTime1,
+                            new { @maxlenght = "2", style = "width: 40px", @class = "form-control input-sm" })
+            </td>
+        }
+        @Html.HiddenFor(x => x.Jogos[c].GolsTime1)
+        <td>x</td>
+        @Html.HiddenFor(x => x.Jogos[c].GolsTime2)
+        @if (Model.Jogos[c].IsLocked)
+        {
+            if (Model.Jogos[c].GolsTime2 != null)
+            {
+                <td>@(Model.Jogos[c].GolsTime2)</td>
+            }
+            else
+            {
+                <td>-</td>
+            }
+        }
+        else
+        {
+            <td>
+                @Html.TextBoxFor(x => x.Jogos[c].GolsTime2,
+                            new { @maxlenght = "2", style = "width: 40px", @class = "form-control input-sm" })
+            </td>
+        }
+
+        <td><img src="@(Model.Jogos[c].ImageTime2)" /></td>
+        <td class="text-left">@(Model.Jogos[c].NomeTime2)</td>
+        @*<td>
+            @if (Model.Jogos[c].Automatico == 1)
+            {
+                <span class="glyphicon glyphicon-flash" />
+            }
+        </td>*@
+        <td>@(Model.Jogos[c].DataValidacao)</td>
+    </tr>
+        }      
+    </tbody>
+</table>

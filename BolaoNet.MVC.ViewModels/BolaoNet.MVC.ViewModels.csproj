@@ -51,6 +51,9 @@
     <Compile Include="Apostas\FilterJogosViewModel.cs" />
     <Compile Include="Base\CampeonatoDataVO.cs" />
     <Compile Include="Bolao\ClassificacaoViewModel.cs" />
+    <Compile Include="Campeonatos\CampeonatoJogoEntryViewModel.cs" />
+    <Compile Include="Campeonatos\CampeonatoJogosListViewModel.cs" />
+    <Compile Include="Campeonatos\FilterJogosViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Account\ActivationCodeViewModel.cs" />
     <Compile Include="Account\ChangePasswordViewModel.cs" />

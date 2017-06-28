@@ -58,13 +58,6 @@ namespace BolaoNet.Domain.Services.Campeonatos
 
             return Dao.GetJogosByCampeonato(this.CurrentUserName, campeonato);
         }
-
-        #endregion
-
-
-
-
-
         public IList<Entities.Campeonatos.Jogo> LoadJogos(int rodada, DateTime dataInicial, DateTime dataFinal, Entities.Campeonatos.CampeonatoFase fase, Entities.Campeonatos.Campeonato campeonato, Entities.Campeonatos.CampeonatoGrupo grupo, string condition)
         {
             if (campeonato == null)
@@ -84,7 +77,6 @@ namespace BolaoNet.Domain.Services.Campeonatos
             return Dao.LoadJogos(base.CurrentUserName, DateTime.Now, rodada, dataInicial, dataFinal,
                 fase, campeonato, grupo, condition);
         }
-
         public IList<Entities.Campeonatos.Jogo> LoadFinishedJogos(Entities.Campeonatos.Campeonato campeonato, int totalJogos)
         {
             if (campeonato == null)
@@ -97,7 +89,6 @@ namespace BolaoNet.Domain.Services.Campeonatos
             return Dao.LoadFinishedJogos(base.CurrentUserName, DateTime.Now, campeonato, totalJogos);
 
         }
-
         public IList<Entities.Campeonatos.Jogo> LoadNextJogos(Entities.Campeonatos.Campeonato campeonato, int totalJogos)
         {
             if (campeonato == null)
@@ -109,5 +100,19 @@ namespace BolaoNet.Domain.Services.Campeonatos
 
             return Dao.LoadNextJogos(base.CurrentUserName, DateTime.Now, campeonato, totalJogos);
         }
+        public IList<Entities.Campeonatos.Jogo> GetJogos(Entities.Campeonatos.Campeonato campeonato, Entities.ValueObjects.FilterJogosVO filter)
+        {
+            if (campeonato == null)
+                throw new ArgumentException("campeonato");
+            if (string.IsNullOrEmpty(campeonato.Nome))
+                throw new ArgumentException("campeonato.Nome");
+            if (filter == null)
+                throw new ArgumentException("filter");
+
+            return Dao.GetJogos(base.CurrentUserName, DateTime.Now, campeonato, filter);
+        }
+
+        #endregion
+
     }
 }

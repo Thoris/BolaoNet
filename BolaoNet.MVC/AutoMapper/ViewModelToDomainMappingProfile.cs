@@ -29,6 +29,8 @@ namespace BolaoNet.MVC.AutoMapper
 
             Mapper.CreateMap<Domain.Entities.ValueObjects.BolaoClassificacaoVO, ViewModels.Bolao.ClassificacaoViewModel>();
 
+            Mapper.CreateMap<Domain.Entities.Campeonatos.Jogo, ViewModels.Campeonatos.CampeonatoJogoEntryViewModel>();
+
         }
     }
 }

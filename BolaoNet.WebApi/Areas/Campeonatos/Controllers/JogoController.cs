@@ -58,13 +58,11 @@ namespace BolaoNet.Services.Areas.Campeonatos.Controllers
         public bool InsertResult(Domain.Entities.Campeonatos.Jogo jogo, int gols1, int? penaltis1, int gols2, int? penaltis2, bool setCurrentData, Domain.Entities.Users.User validadoBy)
         {
             return Service.InsertResult(jogo, gols1, penaltis1, gols2, penaltis2, setCurrentData, validadoBy);
-        }
-        
+        }        
         public IList<Domain.Entities.Campeonatos.Jogo> GetJogosByCampeonato(Domain.Entities.Campeonatos.Campeonato campeonato)
         {
             return Service.GetJogosByCampeonato(campeonato);
-        }
-        
+        }        
         public IList<Domain.Entities.Campeonatos.Jogo> LoadJogos(int id, ArrayList data)
         {
             int rodada = JsonConvert.DeserializeObject<int>(data[0].ToString());
@@ -82,7 +80,6 @@ namespace BolaoNet.Services.Areas.Campeonatos.Controllers
         {
             return Service.LoadJogos(rodada, dataInicial, dataFinal, fase, campeonato, grupo, condition);
         }
-
         public IList<Domain.Entities.Campeonatos.Jogo> LoadFinishedJogos(int id, ArrayList data)
         {
             Domain.Entities.Campeonatos.Campeonato campeonato = JsonConvert.DeserializeObject<Domain.Entities.Campeonatos.Campeonato>(data[0].ToString());
@@ -105,7 +102,12 @@ namespace BolaoNet.Services.Areas.Campeonatos.Controllers
         {
             return Service.LoadNextJogos(campeonato, totalJogos);
         }
+        public IList<Domain.Entities.Campeonatos.Jogo> GetJogos(Domain.Entities.Campeonatos.Campeonato campeonato, Domain.Entities.ValueObjects.FilterJogosVO filter)
+        {
+            return Service.GetJogos(campeonato, filter);
+        }
 
         #endregion
+
     }
 }

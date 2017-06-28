@@ -96,6 +96,18 @@ namespace BolaoNet.WebApi.Integration.Campeonatos
 
         }
 
+        public IList<Domain.Entities.Campeonatos.Jogo> GetJogos(Domain.Entities.Campeonatos.Campeonato campeonato, Domain.Entities.ValueObjects.FilterJogosVO filter)
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("campeonato", campeonato);
+            parameters.Add("filter", filter);
+
+            return HttpPostApi<ICollection<Domain.Entities.Campeonatos.Jogo>>(parameters, "GetJogos").ToList<Domain.Entities.Campeonatos.Jogo>();
+
+        }
+
         #endregion
+
     }
 }

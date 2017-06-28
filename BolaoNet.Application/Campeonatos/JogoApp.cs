@@ -42,22 +42,26 @@ namespace BolaoNet.Application.Campeonatos
         {
             return Service.GetJogosByCampeonato(campeonato);
         }
-
         public IList<Domain.Entities.Campeonatos.Jogo> LoadJogos(int rodada, DateTime dataInicial, DateTime dataFinal, Domain.Entities.Campeonatos.CampeonatoFase fase, Domain.Entities.Campeonatos.Campeonato campeonato, Domain.Entities.Campeonatos.CampeonatoGrupo grupo, string condition)
         {
             return Service.LoadJogos(rodada, dataInicial, dataFinal, fase, campeonato, grupo, condition);
         }
-
         public IList<Domain.Entities.Campeonatos.Jogo> LoadFinishedJogos(Domain.Entities.Campeonatos.Campeonato campeonato, int totalJogos)
         {
             return Service.LoadFinishedJogos(campeonato, totalJogos);
         }
-
         public IList<Domain.Entities.Campeonatos.Jogo> LoadNextJogos(Domain.Entities.Campeonatos.Campeonato campeonato, int totalJogos)
         {
             return Service.LoadNextJogos(campeonato, totalJogos);
         }
+        public IList<Domain.Entities.Campeonatos.Jogo> GetJogos(Domain.Entities.Campeonatos.Campeonato campeonato, Domain.Entities.ValueObjects.FilterJogosVO filter)
+        {
+            return Service.GetJogos(campeonato, filter);
+        }
 
         #endregion
+
+
+
     }
 }

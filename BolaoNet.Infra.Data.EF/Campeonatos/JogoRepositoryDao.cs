@@ -10,7 +10,8 @@ using System.Threading.Tasks;
 namespace BolaoNet.Infra.Data.EF.Campeonatos
 {
     public class JogoRepositoryDao : 
-        Base.BaseRepositoryDao<Domain.Entities.Campeonatos.Jogo>, Domain.Interfaces.Repositories.Campeonatos.IJogoDao
+        Base.BaseRepositoryDao<Domain.Entities.Campeonatos.Jogo>,
+        Domain.Interfaces.Repositories.Campeonatos.IJogoDao
     {
         
         #region Constructors/Destructors
@@ -145,10 +146,6 @@ namespace BolaoNet.Infra.Data.EF.Campeonatos
             return base.GetList(x => 
                 string.Compare(x.NomeCampeonato, campeonato.Nome, true) == 0).ToList<Domain.Entities.Campeonatos.Jogo>();
         }
-
-        #endregion
-
-
         public IList<Domain.Entities.Campeonatos.Jogo> LoadJogos(string currentUserName, DateTime currentDateTime, int rodada, DateTime dataInicial, DateTime dataFinal, Domain.Entities.Campeonatos.CampeonatoFase fase, Domain.Entities.Campeonatos.Campeonato campeonato, Domain.Entities.Campeonatos.CampeonatoGrupo grupo, string condition)
         {
             string command = "exec sp_Jogos_LoadJogos " +
@@ -195,7 +192,6 @@ namespace BolaoNet.Infra.Data.EF.Campeonatos
 
             return res;
         }
-
         public IList<Domain.Entities.Campeonatos.Jogo> LoadFinishedJogos(string currentUserName, DateTime currentDateTime, Domain.Entities.Campeonatos.Campeonato campeonato, int totalJogos)
         {
             string command = "exec sp_Jogos_LoadLastFinishedJogos " +
@@ -232,7 +228,6 @@ namespace BolaoNet.Infra.Data.EF.Campeonatos
 
             return res;
         }
-
         public IList<Domain.Entities.Campeonatos.Jogo> LoadNextJogos(string currentUserName, DateTime currentDateTime, Domain.Entities.Campeonatos.Campeonato campeonato, int totalJogos)
         {
             string command = "exec sp_Jogos_LoadNextJogos " +
@@ -269,5 +264,47 @@ namespace BolaoNet.Infra.Data.EF.Campeonatos
 
             return res;
         }
+        public IList<Domain.Entities.Campeonatos.Jogo> GetJogos(string currentUserName, DateTime currentDateTime, Domain.Entities.Campeonatos.Campeonato campeonato, Domain.Entities.ValueObjects.FilterJogosVO filter)
+        {
+            DateTime dataInicioFilter = new DateTime(1900, 1, 1);
+            DateTime dataFimFilter = DateTime.MaxValue;
+            int rodadaFilter = 0;
+
+            if (filter.DataInicial != null)
+                dataInicioFilter = (DateTime)filter.DataInicial;
+
+            if (filter.DataFinal != null)
+                dataFimFilter = (DateTime)filter.DataFinal;
+
+            if (filter.Rodada != null)
+                rodadaFilter = (int)filter.Rodada;
+
+
+            var q =
+                from j in base.DataContext.Jogos
+
+                join f in base.DataContext.CampeonatosFases
+                  on new { c1 = j.NomeCampeonato, c2 = j.NomeFase }
+                  equals new { c1 = f.NomeCampeonato, c2 = f.Nome }
+
+                where string.Compare(j.NomeCampeonato, campeonato.Nome, true) == 0 &&
+                    (DateTime.Compare(j.DataJogo, dataInicioFilter) >= 0 || filter.DataInicial == null) &&
+                    (DateTime.Compare(j.DataJogo, dataFimFilter) <= 0 || filter.DataFinal == null) &&
+                    (j.Rodada == rodadaFilter || filter.Rodada == null) &&
+                    (string.Compare(j.NomeTime1, filter.NomeTime, true) == 0 || string.Compare(j.NomeTime2, filter.NomeTime, true) == 0 || filter.NomeTime == null) &&
+                    (string.Compare(j.NomeGrupo, filter.NomeGrupo, true) == 0 || filter.NomeGrupo == null) &&
+                    (string.Compare(j.NomeFase, filter.NomeFase, true) == 0 || filter.NomeFase == null)
+                orderby f.Ordem, j.NomeGrupo, j.Rodada
+                select j;
+
+
+
+            return q.ToList();
+        }
+
+        #endregion
+
+
+
     }
 }

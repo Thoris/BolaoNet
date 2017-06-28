@@ -321,6 +321,7 @@
     <Content Include="Areas\Resultados\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Resultados\Views\ApostasExtrasResultado\Index.cshtml" />
     <Content Include="Areas\Resultados\Views\JogoResultado\Index.cshtml" />
+    <Content Include="Areas\Campeonatos\Views\Shared\_JogosList.cshtml" />
     <None Include="Content\js\jquery-1.10.2.intellisense.js" />
     <Content Include="Content\js\jquery-1.10.2.js" />
     <Content Include="Content\js\jquery-1.10.2.min.js" />
