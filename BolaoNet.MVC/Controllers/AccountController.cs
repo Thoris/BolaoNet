@@ -25,7 +25,13 @@ namespace BolaoNet.MVC.Controllers
 
         #region Constructors/Destructors
 
-        public AccountController(Application.Interfaces.Users.IUserApp userApp, Application.Interfaces.Users.IUserInRoleApp userInRoleApp, Application.Interfaces.Boloes.IBolaoMembroApp bolaoMembroApp, Application.Interfaces.Boloes.IBolaoApp bolaoApp, Application.Interfaces.Notification.INotificationApp notificationApp)
+        public AccountController(
+            Application.Interfaces.Users.IUserApp userApp, 
+            Application.Interfaces.Users.IUserInRoleApp userInRoleApp, 
+            Application.Interfaces.Boloes.IBolaoMembroApp bolaoMembroApp, 
+            Application.Interfaces.Boloes.IBolaoApp bolaoApp, 
+            Application.Interfaces.Notification.INotificationApp notificationApp
+            )
         {
             _userApp = userApp;
             _userInRoleApp = userInRoleApp;

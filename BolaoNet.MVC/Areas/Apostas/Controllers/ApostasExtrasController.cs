@@ -37,19 +37,16 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
 
         public ActionResult Index()
         {
-            //IList<Domain.Entities.ValueObjects.ApostaExtraUsuarioVO> list =
-            //    _apostaExtraUsuarioApp.GetApostasUser(base.SelectedBolao, base.UserLogged);
+            IList<Domain.Entities.ValueObjects.ApostaExtraUsuarioVO> list =
+                _apostaExtraUsuarioApp.GetApostasUser(base.SelectedBolao, base.UserLogged);
 
-            base.SelectedNomeBolao = "Copa do Mundo 2014";
-            base.SelectedNomeCampeonato = "Copa do Mundo 2014";
-            base.LoadCampeonatoData();
             ViewBag.Times = base.CampeonatoData.NomeTimes;
 
 
-            IList<Domain.Entities.ValueObjects.ApostaExtraUsuarioVO> list =
-                _apostaExtraUsuarioApp.GetApostasUser(
-                    new Domain.Entities.Boloes.Bolao("Copa do Mundo 2014"), 
-                    new Domain.Entities.Users.User("thoris"));
+            //IList<Domain.Entities.ValueObjects.ApostaExtraUsuarioVO> list =
+            //    _apostaExtraUsuarioApp.GetApostasUser(
+            //        new Domain.Entities.Boloes.Bolao("Copa do Mundo 2014"), 
+            //        new Domain.Entities.Users.User("thoris"));
 
 
             IList<ViewModels.Apostas.ApostaExtraViewModel> data =

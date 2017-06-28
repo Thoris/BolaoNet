@@ -45,15 +45,14 @@ namespace BolaoNet.MVC.Controllers
         {
             _bolaoApp = bolaoApp;
             _bolaoMembroApp = bolaoMembroApp;
-
-            LoadCampeonatoData();
+            
         }
 
         #endregion
 
         #region Methods
 
-        public bool CheckSelectedBolao()
+        public bool IsCheckSelectedBolao()
         {
             if (string.IsNullOrEmpty(base.SelectedNomeBolao))
             {
@@ -67,34 +66,40 @@ namespace BolaoNet.MVC.Controllers
                     Domain.Entities.Boloes.Bolao bolaoLoaded = _bolaoApp.Load(base.SelectedBolao);
 
                     this.SelectedNomeCampeonato = bolaoLoaded.NomeCampeonato;
-                    LoadCampeonatoData();
+                    //LoadCampeonatoData();
 
-                    return false;
+                    return true;
                 }
                 else
                 {
-                    return true;
+                    return false;
                 }
             }
 
-            return false;
+            return true;
         }
         protected override void OnActionExecuting(System.Web.Mvc.ActionExecutingContext filterContext)
         {
             base.OnActionExecuting(filterContext);
 
-            if (CheckSelectedBolao())
+            if (!IsCheckSelectedBolao())
             {
-                //SetDefaultCookies();
+                
+                //RouteValueDictionary route = new RouteValueDictionary(new
+                //{
+                //    Area = "Users",
+                //    Controller = "AccountHome",
+                //    Action = "Profile",
+                //});
 
-                RouteValueDictionary route = new RouteValueDictionary(new
-                {
-                    Area = "Users",
-                    Controller = "AccountHome",
-                    Action = "Profile",
-                });
+                //filterContext.Result = new RedirectToRouteResult(route);
 
-                filterContext.Result = new RedirectToRouteResult(route);
+                filterContext.Result = new BolaoNet.MVC.Areas.Users.Controllers.UserBoloesController
+                    (
+                     _bolaoMembroApp, _bolaoApp, CampeonatoApp, CampeonatoFaseApp, 
+                     CampeonatoGrupoApp, CampeonatoTimeApp
+                    ).Index();                
+
                 return;
             }
         }

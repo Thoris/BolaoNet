@@ -60,12 +60,7 @@ namespace BolaoNet.MVC.Controllers
                 }
             }
         }
-        
-        /// <summary>
-        /// we inherit all controllers from this basecontroller.
-        /// basicly we access usercontext data from all controllers by user variable
-        /// User.FirstName + " " + User.LastName
-        /// </summary>
+            
         protected virtual new CustomUserPrincipal User
         {
             get { return HttpContext.User as CustomUserPrincipal; }
@@ -104,6 +99,11 @@ namespace BolaoNet.MVC.Controllers
         public ActionResult Logout()
         {           
             FormsAuthentication.SignOut();
+
+            Persist.Remove<string>(BaseBolaoController.PersistNomeBolaoSelected);
+            Persist.Remove<string>(BaseBolaoController.PersistCampeonatoData);
+            Persist.Remove<string>(BaseBolaoController.PersistNomeCampeonatoSelected);
+            
 
             this.Persist.Clear();
 

@@ -10,6 +10,7 @@ namespace BolaoNet.MVC.Controllers
         #region Constants
 
         public const string PersistNomeCampeonatoSelected = "NomeCampeonatoSelected";
+        public const string PersistCampeonatoData = "CampeonatoData";
 
         #endregion
 
@@ -53,6 +54,7 @@ namespace BolaoNet.MVC.Controllers
                 return _campeonatoTimeApp; 
             } 
         }
+
         #endregion
 
         #region Constructors/Destructors
@@ -74,29 +76,37 @@ namespace BolaoNet.MVC.Controllers
 
         #region Methods
 
+        protected override void OnActionExecuting(System.Web.Mvc.ActionExecutingContext filterContext)
+        {
+            base.OnActionExecuting(filterContext);
+
+            LoadCampeonatoData();
+
+        }
         protected void LoadCampeonatoData()
         {
-            if (string.IsNullOrEmpty(SelectedNomeCampeonato))
-            {
-                if (this.CampeonatoData == null)
-                    this.CampeonatoData = new ViewModels.Base.CampeonatoDataVO();
+            if (string.IsNullOrEmpty(base.SelectedNomeCampeonato))
                 return;
-            }
 
-            this.CampeonatoData = base.Persist.Get<ViewModels.Base.CampeonatoDataVO>("CampeonatoData");
-
-
-            if (this.CampeonatoData == null || string.Compare (this.SelectedNomeCampeonato, this.CampeonatoData.NomeCampeonato, true) != 0)
+            if (this.CampeonatoData == null)
             {
-                this.CampeonatoData = new Helpers.CampeonatoDataLoader(
-                    _campeonatoApp,
-                    _campeonatoFaseApp,
-                    _campeonatoGrupoApp,
-                    _campeonatoTimeApp
-                    ).LoadCampeonatoData(this.SelectedCampeonato);
+                this.CampeonatoData = base.Persist.Get<ViewModels.Base.CampeonatoDataVO>(PersistCampeonatoData);
+
+                if (this.CampeonatoData != null && string.Compare(this.CampeonatoData.NomeCampeonato, this.SelectedNomeCampeonato, true) == 0)
+                    return;
+
+                if (this.CampeonatoData == null || string.Compare(this.SelectedNomeCampeonato, this.CampeonatoData.NomeCampeonato, true) != 0)
+                {
+                    this.CampeonatoData = new Helpers.CampeonatoDataLoader(
+                        _campeonatoApp,
+                        _campeonatoFaseApp,
+                        _campeonatoGrupoApp,
+                        _campeonatoTimeApp
+                        ).LoadCampeonatoData(this.SelectedCampeonato);
 
 
-                base.Persist.Put<ViewModels.Base.CampeonatoDataVO>("CampeonatoData", this.CampeonatoData);
+                    base.Persist.Put<ViewModels.Base.CampeonatoDataVO>(PersistCampeonatoData, this.CampeonatoData);
+                }
             }
         }
 
