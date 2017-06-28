@@ -11,13 +11,13 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
     {
         #region Variables
 
-        private Application.Interfaces.Boloes.IBolaoApp _bolaoApp;
 
         #endregion
 
         #region Constructors/Destructors
 
         public UserBoloesController(
+            Application.Interfaces.Boloes.IBolaoMembroApp bolaoMembroApp,
             Application.Interfaces.Boloes.IBolaoApp bolaoApp,
             Application.Interfaces.Campeonatos.ICampeonatoApp campeonatoApp,
             Application.Interfaces.Campeonatos.ICampeonatoFaseApp campeonatoFaseApp,
@@ -26,10 +26,10 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
             )
             : base 
             (
-                campeonatoApp, campeonatoFaseApp, campeonatoGrupoApp, campeonatoTimeApp
+                bolaoMembroApp, bolaoApp, campeonatoApp, campeonatoFaseApp, campeonatoGrupoApp, campeonatoTimeApp
             )
         {
-            _bolaoApp = bolaoApp;
+            
         }
 
         #endregion

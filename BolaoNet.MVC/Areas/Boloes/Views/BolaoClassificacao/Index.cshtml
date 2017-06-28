@@ -1,6 +1,87 @@
-﻿
+﻿@model IList<BolaoNet.MVC.ViewModels.Bolao.ClassificacaoViewModel>
 @{
     ViewBag.Title = "Classificação do Bolão";
+    BolaoNet.MVC.Controllers.AuthorizationController homeController =
+        ViewContext.Controller as BolaoNet.MVC.Controllers.AuthorizationController;
+    string userNameLogged = homeController.UserLogged.UserName;
 }
 
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
 
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content" style="display: block;">
+                        <div class="text-center m-t-lg">
+
+                            <div class="row">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <td>Pos</td>
+                                            <td></td>
+                                            <td>Membro</td>
+                                            <td>Nome</td>
+                                            <td>PT</td>
+                                            <td>E</td>
+                                            <td>VDE</td>
+                                            <td>GT1</td>
+                                            <td>GT2</td>
+                                            <td>C</td>
+                                            <td>EX</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @for (int c = 0; c < Model.Count; c++)
+                                        {
+                                            <tr
+                                                @if (string.Compare(userNameLogged, Model[c].UserName, true) == 0)
+                                                {
+                                                    @Html.Raw("class=\"info\"");
+                                                }                                                
+                                                >
+                                                <td>@Model[c].Posicao</td>
+                                                <td></td>
+                                                <td>@Model[c].UserName</td>
+                                                <td>@Model[c].FullName</td>
+                                                <td>@Model[c].TotalPontos</td>
+                                                <td>@Model[c].TotalEmpate</td>
+                                                <td>@Model[c].TotalVDE</td>
+                                                <td>@Model[c].TotalGolsTime1</td>
+                                                <td>@Model[c].TotalGolsTime2</td>
+                                                <td>@Model[c].TotalPlacarCheio</td>
+                                                <td>@Model[c].TotalApostaExtra</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content" style="display: block;">
+                        <div class="text-center m-t-lg">
+                            Legenda
+                            PT - pontos, E - Empates, V - Vitórias, GG - Gols Ganhador, GP - Gols Perdedor, RT1 - Resultado time 1, RT2 - Resultado Time 2, VDE - Vitória/Empate/Derrota, ERR - Erros, GGF - Gols Ganhador Fora, GGD - Gols Ganhador Dentro, GPF - Gols Perdedor Fora, GPD - Gols Perdedor Dentro, GE - Gols Empates, GT1 - Gols time 1, GT2 - Gols Time 2, C - Placar em cheio, EX - Pontos em Apostas Extras
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section scripts
+{
+    <script>
+
+    </script>
+}

@@ -17,13 +17,16 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
 
         #region Constructors/Destructors
 
-        public ApostasJogosController(Application.Interfaces.Boloes.IJogoUsuarioApp jogoUsuarioApp,
+        public ApostasJogosController(
+                Application.Interfaces.Boloes.IBolaoMembroApp bolaoMembroApp,
+                Application.Interfaces.Boloes.IBolaoApp bolaoApp,
+                Application.Interfaces.Boloes.IJogoUsuarioApp jogoUsuarioApp,
                 Application.Interfaces.Campeonatos.ICampeonatoApp campeonatoApp,
                 Application.Interfaces.Campeonatos.ICampeonatoFaseApp campeonatoFaseApp,
                 Application.Interfaces.Campeonatos.ICampeonatoGrupoApp campeonatoGrupoApp,
                 Application.Interfaces.Campeonatos.ICampeonatoTimeApp campeonatoTimeApp
             )
-            : base(campeonatoApp, campeonatoFaseApp, campeonatoGrupoApp, campeonatoTimeApp)
+            : base(bolaoMembroApp, bolaoApp, campeonatoApp, campeonatoFaseApp, campeonatoGrupoApp, campeonatoTimeApp)
         {
             _jogoUsuarioApp = jogoUsuarioApp;
         }

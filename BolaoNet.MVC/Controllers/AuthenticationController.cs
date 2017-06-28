@@ -70,7 +70,7 @@ namespace BolaoNet.MVC.Controllers
         {
             get { return HttpContext.User as CustomUserPrincipal; }
         }
-        protected virtual Domain.Entities.Users.User UserLogged
+        public virtual Domain.Entities.Users.User UserLogged
         {
             get
             {

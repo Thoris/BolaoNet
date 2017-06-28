@@ -17,6 +17,8 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
         #region Constructors/Destructors
 
         public BaseApostasAreaController(
+            Application.Interfaces.Boloes.IBolaoMembroApp bolaoMembroApp,
+            Application.Interfaces.Boloes.IBolaoApp bolaoApp,
             Application.Interfaces.Campeonatos.ICampeonatoApp campeonatoApp,
             Application.Interfaces.Campeonatos.ICampeonatoFaseApp campeonatoFaseApp,
             Application.Interfaces.Campeonatos.ICampeonatoGrupoApp campeonatoGrupoApp,
@@ -24,7 +26,7 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
             )
             : base
             (
-                campeonatoApp, campeonatoFaseApp, campeonatoGrupoApp, campeonatoTimeApp
+                bolaoMembroApp, bolaoApp, campeonatoApp, campeonatoFaseApp, campeonatoGrupoApp, campeonatoTimeApp
             )
         {
 

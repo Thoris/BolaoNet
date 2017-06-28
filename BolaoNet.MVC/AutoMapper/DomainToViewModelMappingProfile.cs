@@ -25,6 +25,7 @@ namespace BolaoNet.MVC.AutoMapper
             Mapper.CreateMap<ViewModels.Apostas.ApostaExtraViewModel, Domain.Entities.ValueObjects.ApostaExtraUsuarioVO>();
             Mapper.CreateMap<ViewModels.Apostas.ApostaExtraViewModel, Domain.Entities.Boloes.ApostaExtraUsuario>();
 
+            Mapper.CreateMap<ViewModels.Bolao.ClassificacaoViewModel, Domain.Entities.ValueObjects.BolaoClassificacaoVO>();
 
         }
     }
