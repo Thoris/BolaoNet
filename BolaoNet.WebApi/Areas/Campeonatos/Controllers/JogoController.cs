@@ -106,8 +106,11 @@ namespace BolaoNet.Services.Areas.Campeonatos.Controllers
         {
             return Service.GetJogos(campeonato, filter);
         }
-
+        public IList<Domain.Entities.Campeonatos.Jogo> SelectGoleadas(Domain.Entities.Campeonatos.Campeonato campeonato, int maxGols)
+        {
+            return Service.SelectGoleadas(campeonato, maxGols);
+        }
+ 
         #endregion
-
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,16 @@ namespace BolaoNet.MVC.Areas.Campeonatos.Controllers
 {
     public class GoleadasController: BaseCampeonatoAreaController
     {
+        #region Variables
+
+        private Application.Interfaces.Campeonatos.IJogoApp _jogoApp;
+
+        #endregion
+
         #region Constructors/Destructors
 
         public GoleadasController(
+            Application.Interfaces.Campeonatos.IJogoApp jogoApp,
             Application.Interfaces.Campeonatos.ICampeonatoApp campeonatoApp,
             Application.Interfaces.Campeonatos.ICampeonatoFaseApp campeonatoFaseApp,
             Application.Interfaces.Campeonatos.ICampeonatoGrupoApp campeonatoGrupoApp,
@@ -18,6 +26,7 @@ namespace BolaoNet.MVC.Areas.Campeonatos.Controllers
             )
             : base (campeonatoApp, campeonatoFaseApp, campeonatoGrupoApp, campeonatoTimeApp)
         {
+            _jogoApp = jogoApp;
         }
 
         #endregion
@@ -26,7 +35,20 @@ namespace BolaoNet.MVC.Areas.Campeonatos.Controllers
 
         public ActionResult Index()
         {
-            return View();
+
+            IList<Domain.Entities.Campeonatos.Jogo> list = _jogoApp.SelectGoleadas(base.SelectedCampeonato, 4);
+
+
+            IList<ViewModels.Campeonatos.CampeonatoJogoEntryViewModel> data =
+                Mapper.Map<IList<Domain.Entities.Campeonatos.Jogo>,
+                IList<ViewModels.Campeonatos.CampeonatoJogoEntryViewModel>>
+                (list);
+
+
+            ViewModels.Campeonatos.CampeonatoJogosListViewModel model = new ViewModels.Campeonatos.CampeonatoJogosListViewModel();
+            model.Jogos = data;
+
+            return View(model);
         }
 
         #endregion

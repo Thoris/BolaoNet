@@ -69,10 +69,7 @@
         }
         else
         {
-            <td>
-                @Html.TextBoxFor(x => x.Jogos[c].GolsTime1,
-                            new { @maxlenght = "2", style = "width: 40px", @class = "form-control input-sm" })
-            </td>
+            <td>@(Model.Jogos[c].GolsTime1)</td>
         }
         @Html.HiddenFor(x => x.Jogos[c].GolsTime1)
         <td>x</td>
@@ -90,10 +87,7 @@
         }
         else
         {
-            <td>
-                @Html.TextBoxFor(x => x.Jogos[c].GolsTime2,
-                            new { @maxlenght = "2", style = "width: 40px", @class = "form-control input-sm" })
-            </td>
+            <td>@(Model.Jogos[c].GolsTime2)</td>
         }
 
         <td><img src="@(Model.Jogos[c].ImageTime2)" /></td>
@@ -105,6 +99,11 @@
             }
         </td>*@
         <td>@(Model.Jogos[c].DataValidacao)</td>
+                <td>
+                    <button type="submit" class="btn" name="ButtonSelected" value="@Model.Jogos[c].JogoId">
+                        <i class="icon-user"></i>
+                    </button>
+                </td>
     </tr>
         }      
     </tbody>

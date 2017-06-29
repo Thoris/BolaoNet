@@ -45,5 +45,8 @@ namespace BolaoNet.Domain.Interfaces.Repositories.Campeonatos
 
         IList<Entities.Campeonatos.Jogo> GetJogos(string currentUserName, DateTime currentDateTime, 
             Entities.Campeonatos.Campeonato campeonato, Entities.ValueObjects.FilterJogosVO filter);
+
+        IList<Entities.Campeonatos.Jogo> SelectGoleadas(string currentUserName, DateTime currentDateTime,
+            Entities.Campeonatos.Campeonato campeonato, int maxGols);
     }
 }

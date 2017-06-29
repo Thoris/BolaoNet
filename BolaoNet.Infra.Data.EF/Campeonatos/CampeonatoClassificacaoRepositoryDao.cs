@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 namespace BolaoNet.Infra.Data.EF.Campeonatos
 {
     public class CampeonatoClassificacaoRepositoryDao : 
-        Base.BaseRepositoryDao<Domain.Entities.Campeonatos.CampeonatoClassificacao>, Domain.Interfaces.Repositories.Campeonatos.ICampeonatoClassificacaoDao
-    {
-
-        
+        Base.BaseRepositoryDao<Domain.Entities.Campeonatos.CampeonatoClassificacao>, 
+        Domain.Interfaces.Repositories.Campeonatos.ICampeonatoClassificacaoDao
+    {        
         #region Constructors/Destructors
 
         public CampeonatoClassificacaoRepositoryDao(Base.IUnitOfWork unitOfWork)
@@ -130,6 +129,58 @@ namespace BolaoNet.Infra.Data.EF.Campeonatos
                 return true;
             else
                 return false;
+        }
+        public IList<Domain.Entities.Campeonatos.CampeonatoClassificacao> LoadClassificacao(string currentUserName, DateTime currentDateTime, Domain.Entities.Campeonatos.Campeonato campeonato, Domain.Entities.Campeonatos.CampeonatoFase fase, Domain.Entities.Campeonatos.CampeonatoGrupo grupo, int rodada)
+        {
+            string command = "exec sp_CampeonatosClassificacao_LoadClassificacao " +
+             "  @CurrentLogin " +
+             ", @CurrentDateTime" +
+             ", @NomeCampeonato " +
+             ", @NomeFase" +
+             ", @NomeGrupo" +
+             ", @Rodada" +
+             ", @ErrorNumber out" +
+             ", @ErrorDescription out";
+
+
+            var errorNumber = new SqlParameter
+            {
+                ParameterName = "@ErrorNumber",
+                SqlDbType = System.Data.SqlDbType.Int,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var errorDescription = new SqlParameter
+            {
+                ParameterName = "@ErrorDescription",
+                SqlDbType = System.Data.SqlDbType.VarChar,
+                Size = 255,
+                Direction = System.Data.ParameterDirection.Output
+            };
+
+            IList<Domain.Entities.Campeonatos.CampeonatoClassificacao> res =
+                base.DataContext.Database.SqlQuery<Domain.Entities.Campeonatos.CampeonatoClassificacao>(command,
+                                                        new SqlParameter("CurrentLogin", currentUserName),
+                                                        new SqlParameter("CurrentDateTime", currentDateTime),
+                                                        new SqlParameter("NomeCampeonato", campeonato.Nome),
+                                                        new SqlParameter("NomeFase", fase.Nome),
+                                                        new SqlParameter("NomeGrupo", grupo.Nome),
+                                                        new SqlParameter("Rodada", rodada),
+                                                        errorNumber,
+                                                        errorDescription
+                                                    ).ToList();
+
+            int error = 0;
+            try
+            {
+                error = (int)errorNumber.Value;
+            }
+            catch
+            {
+
+            }
+
+            return res;
         }
 
         #endregion

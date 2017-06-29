@@ -1,0 +1,52 @@
+﻿@model BolaoNet.MVC.ViewModels.Users.UserCampeonatosViewModel
+@{
+    ViewBag.Title = "Seleção de Campeonatos";
+}
+@using (Html.BeginForm("Selecionar", "UserCampeonato", FormMethod.Post, new { }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content" style="display: block;">
+                        <h2 class="font-bold">Campeonato Selecionado</h2>
+                        
+                        @if (!string.IsNullOrEmpty(Model.CampeonatoSelecionado))
+                        {
+                            <div>
+                                <img src="yourImageSource" style="vertical-align: middle; width: 30px;">
+                                @Model.CampeonatoSelecionado
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Bolões Disponíveis </h5>
+                    </div>
+                    <div class="ibox-content" style="display: block;">
+                        <p>
+                            Selecione abaixo o campeonato:
+                        </p>
+                        <p>
+                            @for (int c = 0; c < Model.CampeonatosList.Count; c++)
+                            {
+                                <div>
+                                    <a href="@Url.Action("Selecionar", "UserBoloes", new { nomeBolao = @Model.CampeonatosList[c] })">
+                                        <img src="yourImageSource" style="vertical-align: middle; width: 30px;"> @Model.CampeonatosList[c]
+                                    </a>
+                                </div>
+                            }
+                            
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

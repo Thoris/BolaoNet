@@ -106,6 +106,10 @@ namespace BolaoNet.WebApi.Integration.Campeonatos
             return HttpPostApi<ICollection<Domain.Entities.Campeonatos.Jogo>>(parameters, "GetJogos").ToList<Domain.Entities.Campeonatos.Jogo>();
 
         }
+        public IList<Domain.Entities.Campeonatos.Jogo> SelectGoleadas(Domain.Entities.Campeonatos.Campeonato campeonato, int maxGols)
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
 

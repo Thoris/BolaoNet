@@ -301,10 +301,26 @@ namespace BolaoNet.Infra.Data.EF.Campeonatos
 
             return q.ToList();
         }
+        public IList<Domain.Entities.Campeonatos.Jogo> SelectGoleadas(string currentUserName, DateTime currentDateTime, Domain.Entities.Campeonatos.Campeonato campeonato, int maxGols)
+        {
 
+            var q =
+                from j in base.DataContext.Jogos
+
+                join f in base.DataContext.CampeonatosFases
+                  on new { c1 = j.NomeCampeonato, c2 = j.NomeFase }
+                  equals new { c1 = f.NomeCampeonato, c2 = f.Nome }
+
+                where string.Compare(j.NomeCampeonato, campeonato.Nome, true) == 0 &&
+                    (j.GolsTime1 >= maxGols || j.GolsTime2 >= maxGols)
+                orderby f.Ordem, j.NomeGrupo, j.Rodada
+                select j;
+
+
+
+            return q.ToList();
+        }
         #endregion
-
-
 
     }
 }

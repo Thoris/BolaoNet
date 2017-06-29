@@ -153,7 +153,7 @@ namespace BolaoNet.MVC.Areas.Campeonatos.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View("Jogos", model);
+                return View("Index", model);
             }
 
             SetFilterViewBags();
@@ -170,7 +170,7 @@ namespace BolaoNet.MVC.Areas.Campeonatos.Controllers
 
             model.Jogos = data;
 
-            return View("Jogos", model);
+            return View("Index", model);
         }
 
         [HttpGet]
@@ -180,7 +180,11 @@ namespace BolaoNet.MVC.Areas.Campeonatos.Controllers
 
             model = new ViewModels.Campeonatos.CampeonatoJogosListViewModel();
 
-            IList<Domain.Entities.Campeonatos.Jogo> list = Bind(new Domain.Entities.ValueObjects.FilterJogosVO());
+            IList<Domain.Entities.Campeonatos.Jogo> list = Bind(
+                new Domain.Entities.ValueObjects.FilterJogosVO()
+                {
+                    Rodada = 1,
+                });
             
 
             IList<ViewModels.Campeonatos.CampeonatoJogoEntryViewModel> data =
@@ -192,6 +196,11 @@ namespace BolaoNet.MVC.Areas.Campeonatos.Controllers
             model.Jogos = data;
 
             return View(model);
+        }
+
+        public ActionResult SelectJogo(string ButtonSelected, ViewModels.Campeonatos.CampeonatoJogosListViewModel model)
+        {
+            return View();
         }
 
         #endregion

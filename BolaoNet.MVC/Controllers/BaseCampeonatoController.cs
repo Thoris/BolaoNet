@@ -76,12 +76,53 @@ namespace BolaoNet.MVC.Controllers
 
         #region Methods
 
+        public bool IsCheckSelectedCampeonato()
+        {
+            if (string.IsNullOrEmpty(base.SelectedNomeCampeonato))
+            {
+                IList<Domain.Entities.Campeonatos.Campeonato> list =
+                    _campeonatoApp.GetAll().ToList ();
+
+                if (list.Count == 1)
+                {
+                    this.SelectedNomeCampeonato = list[0].Nome;
+
+                    LoadCampeonatoData();
+
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
         protected override void OnActionExecuting(System.Web.Mvc.ActionExecutingContext filterContext)
         {
             base.OnActionExecuting(filterContext);
 
-            LoadCampeonatoData();
+            if (!IsCheckSelectedCampeonato())
+            {
 
+                //RouteValueDictionary route = new RouteValueDictionary(new
+                //{
+                //    Area = "Users",
+                //    Controller = "AccountHome",
+                //    Action = "Profile",
+                //});
+
+                //filterContext.Result = new RedirectToRouteResult(route);
+
+                filterContext.Result = new BolaoNet.MVC.Areas.Users.Controllers.UserCampeonatoController
+                    (
+                    CampeonatoApp, CampeonatoFaseApp,
+                     CampeonatoGrupoApp, CampeonatoTimeApp
+                    ).Index();
+
+                return;
+            }
         }
         protected void LoadCampeonatoData()
         {

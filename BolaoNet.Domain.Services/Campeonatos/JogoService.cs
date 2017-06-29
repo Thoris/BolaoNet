@@ -111,6 +111,15 @@ namespace BolaoNet.Domain.Services.Campeonatos
 
             return Dao.GetJogos(base.CurrentUserName, DateTime.Now, campeonato, filter);
         }
+        public IList<Entities.Campeonatos.Jogo> SelectGoleadas(Entities.Campeonatos.Campeonato campeonato, int maxGols)
+        {
+            if (campeonato == null)
+                throw new ArgumentException("campeonato");
+            if (string.IsNullOrEmpty(campeonato.Nome))
+                throw new ArgumentException("campeonato.Nome");
+
+            return Dao.SelectGoleadas(base.CurrentUserName, DateTime.Now, campeonato, maxGols);
+        }
 
         #endregion
 

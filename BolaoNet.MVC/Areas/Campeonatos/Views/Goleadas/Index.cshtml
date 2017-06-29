@@ -1,7 +1,34 @@
-﻿
+﻿@model BolaoNet.MVC.ViewModels.Campeonatos.CampeonatoJogosListViewModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Goleadas";
 }
 
-<h2>Index</h2>
+@using (Html.BeginForm("SelectJogo", "Jogos", FormMethod.Post, new { }))
+{
+    @Html.AntiForgeryToken()
 
+
+    @Html.HiddenFor(x => x.Filtros.DataFinal)
+    @Html.HiddenFor(x => x.Filtros.DataInicial)
+    @Html.HiddenFor(x => x.Filtros.FilterSelected)
+    @Html.HiddenFor(x => x.Filtros.NomeFase)
+    @Html.HiddenFor(x => x.Filtros.NomeGrupo)
+    @Html.HiddenFor(x => x.Filtros.NomeTime)
+    @Html.HiddenFor(x => x.Filtros.Rodada)
+
+
+    <div class="row">
+        <div class="col-ld-12">
+
+            @Html.Partial("_JogosList", Model)
+
+        </div>
+    </div>
+
+}
+
+
+@section scripts
+{
+
+}
