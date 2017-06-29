@@ -1,7 +1,151 @@
-﻿
+﻿@model BolaoNet.MVC.ViewModels.Bolao.ApostasUsuariosListViewModel
 @{
-    ViewBag.Title = "Apostas dos Usuários";
+    ViewBag.Title = "Apostas dos Jogos do Bolão ";
+}
+@using (Html.BeginForm("Filtrar", "ApostasUsuarios", FormMethod.Post, new { }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+
+        <div class="col-ld-12">
+
+            <div class="col-xs-5">
+                <div class="form-group">
+                    <div class="input-group">
+
+                        @Html.DropDownListFor(model => model.Filtros.FilterSelected, new SelectList(
+                          new List<Object>{
+                               new { value = 0, text = "Ontem, Hoje, Amanhã"  },
+                               new { value = 1 , text = "Últimos 7 dias" },
+                               new { value = 2 , text = "Próximos 7 dias" },
+                               new { value = 3 , text = "Último Mês" },
+                               new { value = 4 , text = "Próximo mês" },
+                               new { value = 5 , text = "Este mês" },
+                               new { value = 6 , text = "Período" },
+                               new { value = 7 , text = "Rodada" },
+                               new { value = 8 , text = "Time" },
+                               new { value = 9 , text = "Fase" },
+                               new { value = 10 , text = "Grupo" }
+                            }, "value", "text", "Fase"), new { @id = "filtros", @class = "form-control input-sm" })
+
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-5">
+                <div class="form-group">
+
+                    <div class="input-group" id="filtroRodadas"
+                         @if (Model.Filtros.FilterSelected != (int)BolaoNet.MVC.ViewModels.Bolao.FilterJogosViewModel.FilterJogoType.Rodada) { @Html.Raw("style=\"display: none;\"") ; }>
+                        @Html.DropDownListFor(x => x.Filtros.Rodada, (SelectList)ViewBag.Rodadas, new { @class = "form-control input-sm" })
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+
+                    <div class="input-group" id="filtroFases"
+                         @if (Model.Filtros.FilterSelected != (int)BolaoNet.MVC.ViewModels.Bolao.FilterJogosViewModel.FilterJogoType.Fase) { @Html.Raw("style=\"display: none;\"") ; }>
+                        @Html.DropDownListFor(x => x.Filtros.NomeFase, (SelectList)ViewBag.Fases, new { @class = "form-control input-sm" })
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+
+                    <div class="input-group" id="filtroTimes"
+                         @if (Model.Filtros.FilterSelected != (int)BolaoNet.MVC.ViewModels.Bolao.FilterJogosViewModel.FilterJogoType.Time) { @Html.Raw("style=\"display: none;\"") ; }>
+                        @Html.DropDownListFor(x => x.Filtros.NomeTime, (SelectList)ViewBag.Times, new { @class = "form-control input-sm" })
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+
+                    <div class="input-group" id="filtroGrupos"
+                         @if (Model.Filtros.FilterSelected != (int)BolaoNet.MVC.ViewModels.Bolao.FilterJogosViewModel.FilterJogoType.Grupo) { @Html.Raw("style=\"display: none;\"") ; }>
+                        @Html.DropDownListFor(x => x.Filtros.NomeGrupo, (SelectList)ViewBag.Grupos, new { @class = "form-control input-sm" })
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+
+                    <div class="input-group" id="filtroPeriodo"
+                         @if (Model.Filtros.FilterSelected != (int)BolaoNet.MVC.ViewModels.Bolao.FilterJogosViewModel.FilterJogoType.Periodo) { @Html.Raw("style=\"display: none;\"") ; }>
+                        @Html.EditorFor(x => x.Filtros.DataInicial, new { @class = "form-control input-sm" })
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+
+                        @Html.EditorFor(x => x.Filtros.DataFinal, new { @class = "form-control input-sm" })
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <div class="form-group">
+                    <input type="submit" value="Filtrar" class="btn btn-default" />
+                </div>
+            </div>
+
+        </div>
+
+    </div>
 }
 
-<h2>Index</h2>
+@using (Html.BeginForm("SelectJogo", "ApostasUsuarios", FormMethod.Post, new { }))
+{
+    @Html.AntiForgeryToken()
 
+
+    @Html.HiddenFor(x => x.Filtros.DataFinal)
+    @Html.HiddenFor(x => x.Filtros.DataInicial)
+    @Html.HiddenFor(x => x.Filtros.FilterSelected)
+    @Html.HiddenFor(x => x.Filtros.NomeFase)
+    @Html.HiddenFor(x => x.Filtros.NomeGrupo)
+    @Html.HiddenFor(x => x.Filtros.NomeTime)
+    @Html.HiddenFor(x => x.Filtros.Rodada)
+
+
+    <div class="row">
+        <div class="col-ld-12">
+
+            @Html.Partial("_JogosList", Model)
+
+        </div>
+    </div>
+
+    if (Model.Apostas != null && Model.Apostas.Count > 0)
+    {
+        <div class="row">
+            <div class="col-sm-offset-5 col-sm-2 text-center">
+                @*<input type="submit" class="btn btn-primary btn-md active center-block " value="Salvar" />*@
+            </div>
+        </div>
+    }
+}
+
+
+@section scripts
+{
+    <script>
+
+    $(document).ready(function () {
+        $('#filtros').change(function () {
+
+            $("#filtroRodadas").hide();
+            $("#filtroFases").hide();
+            $("#filtroTimes").hide();
+            $("#filtroGrupos").hide();
+            $("#filtroPeriodo").hide();
+
+            if ($(this).val() == 6) {//Periodo
+                $("#filtroPeriodo").show();
+            }
+            else if ($(this).val() == 7) {//Rodada
+                $("#filtroRodadas").show();
+            }
+            else if ($(this).val() == 8) {//Time
+                $("#filtroTimes").show();
+            }
+            else if ($(this).val() == 9) {//Fase
+                $("#filtroFases").show();
+            }
+            else if ($(this).val() == 10) {//Grupo
+                $("#filtroGrupos").show();
+            }
+            //alert("value: " + $(this).val() + "   Text: " + $(this).find('option:selected').text());
+        });
+    })
+    </script>
+}

@@ -342,10 +342,21 @@ namespace BolaoNet.Domain.Services.Boloes
             this.Dao.InsertApostasAutomaticas(base.CurrentUserName, DateTime.Now, bolao, user, filter);
 
         }
+        public IList<Entities.Boloes.JogoUsuario> GetApostasJogo(Entities.Boloes.Bolao bolao, Entities.Campeonatos.Jogo jogo)
+        {
+            if (bolao == null)
+                throw new ArgumentException("bolao");
+            if (string.IsNullOrEmpty(bolao.Nome))
+                throw new ArgumentException("bolao.Nome");
+            if (jogo == null)
+                throw new ArgumentException("jogo");
+            if (jogo.JogoId == 0)
+                throw new ArgumentException("jogo.JogoId");
+
+            return Dao.GetApostasJogo(base.CurrentUserName, DateTime.Now, bolao, jogo);
+        }
 
         #endregion
-
-
 
     }
 }

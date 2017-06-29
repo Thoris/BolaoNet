@@ -50,10 +50,15 @@
     <Compile Include="Apostas\ApostasJogosListViewModel.cs" />
     <Compile Include="Apostas\FilterJogosViewModel.cs" />
     <Compile Include="Base\CampeonatoDataVO.cs" />
+    <Compile Include="Bolao\ApostaJogoUsuarioEntryViewModel.cs" />
+    <Compile Include="Bolao\ApostaJogoUsuarioPontosViewModel.cs" />
+    <Compile Include="Bolao\ApostasJogoViewModel.cs" />
+    <Compile Include="Bolao\ApostasUsuariosListViewModel.cs" />
     <Compile Include="Bolao\CampeonatoClassificacaoApostaEntryViewModel.cs" />
     <Compile Include="Bolao\CampeonatoClassificacaoApostaGrupoViewModel.cs" />
     <Compile Include="Bolao\CampeonatoClassificacaoApostaUsuarioViewModel.cs" />
     <Compile Include="Bolao\ClassificacaoViewModel.cs" />
+    <Compile Include="Bolao\FilterJogosViewModel.cs" />
     <Compile Include="Campeonatos\CampeonatoClassificacaoEntryViewModel.cs" />
     <Compile Include="Campeonatos\CampeonatoClassificacaoGrupoViewModel.cs" />
     <Compile Include="Campeonatos\CampeonatoHistoricoViewModel.cs" />

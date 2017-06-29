@@ -79,9 +79,13 @@ namespace BolaoNet.WebApi.Integration.Boloes
         {
             throw new NotImplementedException();
         }
+
+        public IList<Domain.Entities.Boloes.JogoUsuario> GetApostasJogo(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Campeonatos.Jogo jogo)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
-
-
 
     }
 }

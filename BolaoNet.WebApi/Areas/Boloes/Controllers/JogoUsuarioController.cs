@@ -81,11 +81,11 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
         {
             Service.InsertApostasAutomaticas(bolao, user, filter);
         }
+        public IList<Domain.Entities.Boloes.JogoUsuario> GetApostasJogo(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Campeonatos.Jogo jogo)
+        {
+            return Service.GetApostasJogo(bolao, jogo);
+        }
 
         #endregion
-
-
-
- 
     }
 }

@@ -979,8 +979,17 @@ namespace BolaoNet.Infra.Data.EF.Boloes
             }
              
         }
+        
+        public IList<Domain.Entities.Boloes.JogoUsuario> GetApostasJogo(string currentUserName, DateTime currentDateTime, Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Campeonatos.Jogo jogo)
+        {
+            return GetList(x => string.Compare(x.NomeBolao, bolao.Nome, true) == 0 &&
+                jogo.JogoId == x.JogoId).ToList();
+        }
 
         #endregion
+
+
+
 
     }
 }

@@ -37,7 +37,7 @@ namespace BolaoNet.Infra.Data.EF.Boloes
                       string.Compare(c.NomeFase, fase.Nome, true) == 0 &&
                       string.Compare(c.NomeGrupo, grupo.Nome, true) == 0 &&
                       string.Compare(c.UserName, user.UserName, true) == 0
-                orderby c.TotalPontos, c.TotalVitorias, (c.TotalGolsPro - c.TotalGolsContra) descending
+                orderby c.TotalPontos descending, c.TotalVitorias descending, (c.TotalGolsPro - c.TotalGolsContra) descending
                 select c;
 
 

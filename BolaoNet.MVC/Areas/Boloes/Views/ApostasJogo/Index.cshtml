@@ -1,0 +1,127 @@
+﻿@model BolaoNet.MVC.ViewModels.Bolao.ApostasJogoViewModel
+@{
+    ViewBag.Title = "Apostas do Jogo";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(x => x.NomeCampeonato)
+    @Html.HiddenFor(x => x.JogoId)
+    @Html.HiddenFor(x => x.IsDesempate)
+
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h3>Jogo</h3>
+                    </div>
+                    <div class="ibox-content" style="display: block;">
+
+                        <div class="row">
+                            <div class="form-group col-md-6 col-sm-6">
+                                <label>Fase:</label> @Model.NomeFase
+                            </div>
+                            <div class="form-group col-md-3 col-sm-3">
+                                <label>Grupo:</label> @Model.NomeGrupo
+                            </div>
+                            <div class="form-group col-md-3 col-sm-3">
+                                <label>Rodada:</label> @Model.Rodada
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-2 col-sm-2">
+                                @Model.NomeTime1
+                            </div>
+                            <div class="form-group col-md-1 col-sm-1 ">
+                                <img src="@(Model.ImageTime1)" />
+                            </div>
+                            <div class="form-group col-md-2 col-sm-2">
+                                @Html.TextBoxFor(x => x.GolsTime1, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.GolsTime1)
+                            </div>
+                            <div class="form-group col-md-1 col-sm-1 text-center">
+                                x
+                            </div>
+                            <div class="form-group col-md-2 col-sm-2">
+                                @Html.TextBoxFor(x => x.GolsTime2, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.GolsTime2)
+                            </div>
+                            <div class="form-group col-md-1 col-sm-1">
+                                <img src="@(Model.ImageTime2)" />
+                            </div>
+                            <div class="form-group col-md-2 col-sm-2">
+                                @Model.NomeTime2
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 text-center">
+                                <label>Data do Jogo</label>
+                            </div>
+                            <div class="col-sm-12 text-center">
+                                @Model.DataJogo
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            @if (Model.IsDesempate == true)
+            {
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Penaltis</h5>
+                        </div>
+                        <div class="ibox-content" style="display: block;">
+                            <div class="row">
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-2">
+                                    @Html.TextBoxFor(x => x.PenaltisTime1, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.PenaltisTime1)
+                                </div>
+                                <div class="col-sm-1 text-center">x</div>
+                                <div class="col-sm-2">
+                                    @Html.TextBoxFor(x => x.PenaltisTime2, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.PenaltisTime2)
+                                </div>
+                                <div class="col-sm-3"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            @if (Model.IsValido)
+            {
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Dados de Validação</h5>
+                        </div>
+                        <div class="ibox-content" style="display: block;">
+                            <div class="row">
+                                <div class="form-group col-md-6 col-sm-6">
+
+                                    @Html.Label("Validado por: ")
+                                    @Model.ValidadoBy
+
+
+                                </div>
+
+                                <div class="form-group col-md-6 col-sm-6">
+                                    <label>Data de Validação : </label>@Model.DataValidacao
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            }            
+        </div>
+    </div>
+}

@@ -39,6 +39,8 @@ namespace BolaoNet.Domain.Interfaces.Services.Boloes
             Entities.ValueObjects.FilterJogosVO filter);
 
         void InsertApostasAutomaticas(Entities.Boloes.Bolao bolao, Entities.Users.User user, Entities.ValueObjects.ApostasAutomaticasFilterVO filter);
-    
+
+        IList<Entities.Boloes.JogoUsuario> GetApostasJogo(Entities.Boloes.Bolao bolao, Entities.Campeonatos.Jogo jogo);
+
     }
 }
