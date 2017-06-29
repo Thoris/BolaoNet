@@ -97,6 +97,8 @@ namespace BolaoNet.MVC.Controllers
                 }
             }
 
+            LoadCampeonatoData();
+
             return true;
         }
         protected override void OnActionExecuting(System.Web.Mvc.ActionExecutingContext filterContext)

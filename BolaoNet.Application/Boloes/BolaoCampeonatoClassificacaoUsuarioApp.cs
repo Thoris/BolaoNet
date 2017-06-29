@@ -31,5 +31,14 @@ namespace BolaoNet.Application.Boloes
         }
 
         #endregion    
+    
+        #region IBolaoCampeonatoClassificacaoUsuarioApp members
+
+        public IList<Domain.Entities.Boloes.BolaoCampeonatoClassificacaoUsuario> LoadClassificacao(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Campeonatos.CampeonatoFase fase, Domain.Entities.Campeonatos.CampeonatoGrupo grupo, Domain.Entities.Users.User user)
+        {
+            return Service.LoadClassificacao(bolao, fase, grupo, user);
+        }
+
+        #endregion
     }
 }

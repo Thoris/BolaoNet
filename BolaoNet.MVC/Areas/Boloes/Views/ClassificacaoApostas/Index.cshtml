@@ -1,7 +1,87 @@
-﻿
+﻿@model BolaoNet.MVC.ViewModels.Bolao.CampeonatoClassificacaoApostaUsuarioViewModel
+
 @{
-    ViewBag.Title = "Classificação das Apostas";
+    ViewBag.Title = "Classificação dos grupos da aposta do Usuário";
 }
 
-<h2>Index</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
 
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+
+            @for (int c = 0; c < Model.Grupos.Count; c++)
+            {
+                <div class="col-lg-6">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Grupo @Model.Grupos[c].NomeGrupo</h5>
+                        </div>
+                        <div class="ibox-content" style="display: block;">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <td>Pos</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>J</td>
+                                        <td>PT</td>
+                                        <td>V</td>
+                                        <td>E</td>
+                                        <td>D</td>
+                                        <td>GP</td>
+                                        <td>GC</td>
+                                        <td>S</td>
+                                        <td>%</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @for (int l = 0; l < Model.Grupos[c].Posicoes.Count; l++)
+                                    {
+                                        <tr>
+                                            <td>@Model.Grupos[c].Posicoes[l].Posicao</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>@Model.Grupos[c].Posicoes[l].NomeTime</td>
+                                            <td>@Model.Grupos[c].Posicoes[l].Jogos</td>
+                                            <td>@Model.Grupos[c].Posicoes[l].TotalPontos</td>
+                                            <td>@Model.Grupos[c].Posicoes[l].TotalVitorias</td>
+                                            <td>@Model.Grupos[c].Posicoes[l].TotalEmpates</td>
+                                            <td>@Model.Grupos[c].Posicoes[l].TotalDerrotas</td>
+                                            <td>@Model.Grupos[c].Posicoes[l].TotalGolsPro</td>
+                                            <td>@Model.Grupos[c].Posicoes[l].TotalGolsContra</td>
+                                            <td>@Model.Grupos[c].Posicoes[l].Saldo</td>
+                                            <td>@Model.Grupos[c].Posicoes[l].Aproveitamento</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+
+                if (c > 0 && c % 2 == 0)
+                {
+                    @*</div>
+                        <div class="row">*@
+                }
+            }
+
+
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Legenda</h5>
+                    </div>
+                    <div class="ibox-content" style="display: block;">
+                        J - Jogos, P - Pontos, V - Vitórias, E - Empates, D - Derrotas, GP - Gols Pró, GC - Gols Contra, S - Saldo, % - Aproveitamento
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -50,9 +50,13 @@
     <Compile Include="Apostas\ApostasJogosListViewModel.cs" />
     <Compile Include="Apostas\FilterJogosViewModel.cs" />
     <Compile Include="Base\CampeonatoDataVO.cs" />
+    <Compile Include="Bolao\CampeonatoClassificacaoApostaEntryViewModel.cs" />
+    <Compile Include="Bolao\CampeonatoClassificacaoApostaGrupoViewModel.cs" />
+    <Compile Include="Bolao\CampeonatoClassificacaoApostaUsuarioViewModel.cs" />
     <Compile Include="Bolao\ClassificacaoViewModel.cs" />
     <Compile Include="Campeonatos\CampeonatoClassificacaoEntryViewModel.cs" />
     <Compile Include="Campeonatos\CampeonatoClassificacaoGrupoViewModel.cs" />
+    <Compile Include="Campeonatos\CampeonatoHistoricoViewModel.cs" />
     <Compile Include="Campeonatos\CampeonatoJogoEntryViewModel.cs" />
     <Compile Include="Campeonatos\CampeonatoJogosListViewModel.cs" />
     <Compile Include="Campeonatos\FilterJogosViewModel.cs" />
@@ -63,6 +67,7 @@
     <Compile Include="Account\LoginViewModel.cs" />
     <Compile Include="Account\ProfileViewModel.cs" />
     <Compile Include="Account\RegistrationUserViewModel.cs" />
+    <Compile Include="Resultados\ApostaExtraViewModel.cs" />
     <Compile Include="Resultados\JogoResultadoViewModel.cs" />
     <Compile Include="Users\UserBoloesViewModel.cs" />
     <Compile Include="Users\UserCampeonatosViewModel.cs" />

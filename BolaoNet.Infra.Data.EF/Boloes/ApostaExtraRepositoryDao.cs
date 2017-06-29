@@ -23,7 +23,7 @@ namespace BolaoNet.Infra.Data.EF.Boloes
 
         #region IApostaExtraDao members
 
-        public IList<Domain.Entities.Boloes.ApostaExtra> GetApostasBolao(string currentUserName, Domain.Entities.Boloes.Bolao bolao)
+        public IList<Domain.Entities.Boloes.ApostaExtra> GetApostasBolao(string currentUserName, DateTime currentDateTime, Domain.Entities.Boloes.Bolao bolao)
         {
             return base.GetList(x =>
                 string.Compare(x.NomeBolao, bolao.Nome, true) == 0).ToList<Domain.Entities.Boloes.ApostaExtra>();

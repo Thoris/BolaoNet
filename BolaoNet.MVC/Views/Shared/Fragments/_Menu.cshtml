@@ -108,14 +108,15 @@
         </li>
     </ul>
 </li>
-<li>
+<li @if (string.Compare(controllerArea, "Resultados", true) == 0 || string.Compare(controllerArea, "Admin", true) == 0)
+    {  @Html.Raw("class=\"active\"")  }>    
     <a href="/GrupoPonto/Grupos"><i class="fa fa-database"></i> <span class="nav-label">Admin</span> <span class="fa arrow"></span></a>
     <ul class="nav nav-second-level collapse">
-        <li @if (string.Compare(controllerAction, "Index", true) == 0 && 
-                string.Compare(controllerName, "BolaoClassificacao", true) == 0 && 
-                string.Compare(controllerArea, "Boloes", true) == 0)
+        <li @if (string.Compare(controllerAction, "Index", true) == 0 &&
+                string.Compare(controllerName, "ApostasExtrasResultados", true) == 0 &&
+                string.Compare(controllerArea, "Resultados", true) == 0)
             { @Html.Raw("class=\"active\"")  }>
-            <a href="/GrupoPonto/Grupos">Apostas Extras</a>
+            <a href="/Resultados/ApostasExtrasResultado/Index">Apostas Extras</a>
         </li>
         <li @if (string.Compare(controllerAction, "Index", true) == 0 && 
                 string.Compare(controllerName, "BolaoClassificacao", true) == 0 && 
@@ -158,7 +159,7 @@
         </li>
     </ul>
 </li>
-<li>
+<li @if (string.Compare(controllerArea, "Campeonatos", true) == 0 ) {  @Html.Raw("class=\"active\"")  }>    
     <a href="/GrupoPonto/Grupos"><i class="fa fa-database"></i> <span class="nav-label">Campeonato</span> <span class="fa arrow"></span></a>
     <ul class="nav nav-second-level collapse">
         <li @if (string.Compare(controllerAction, "Index", true) == 0 &&

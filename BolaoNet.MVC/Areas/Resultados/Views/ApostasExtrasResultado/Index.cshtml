@@ -1,7 +1,71 @@
-﻿
+﻿@model IList<BolaoNet.MVC.ViewModels.Resultados.ApostaExtraViewModel>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Resultado das Apostas Extras";
 }
 
-<h2>Index</h2>
+@using (Html.BeginForm("Salvar", "ApostasExtrasResultado", FormMethod.Post, new { }))
+{
+    @Html.AntiForgeryToken()
 
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content" style="display: block;">
+                        <div class="text-center m-t-lg">
+
+                            <div class="row">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <td>Título</td>
+                                            <td>Time</td>
+                                            <td>Válido</td>
+                                            <td>Por</td>
+                                            <td>Data Validação</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @for (int c = 0; c < Model.Count; c++)
+                                        {
+                                            @Html.HiddenFor(x => x[c].SalvarNomeTime)
+                                            @Html.HiddenFor(x => x[c].NomeBolao)
+                                            @Html.HiddenFor(x => x[c].Posicao)
+
+                                            <tr>
+                                                <td>@Model[c].Titulo</td>
+                                                <td>@Html.DropDownListFor(x => x[c].NomeTimeValidado, new SelectList(ViewBag.Times, Model[c].NomeTimeValidado), new { @class = "form-control input-sm", @id = "Time" + c.ToString(), @name = "Time" + c.ToString() })</td>
+                                                <td>@if (Model[c].IsValido == true) { @Html.Raw("Válido"); }</td>
+                                                <td>@Model[c].ValidadoBy</td>
+                                                <td>@Model[c].DataValidacao</td>
+                                                <td></td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-offset-5 col-sm-2 text-center">
+                                    <input type="submit" class="btn btn-primary btn-md active center-block " value="Salvar" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section scripts
+{
+    <script>
+
+    //$(document).ready(function () {
+    //    $('#Time1').change(function () {
+
+
+    //        alert("value: " + $(this).val());
+    //    });
+    //})
+    </script>
+}

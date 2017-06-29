@@ -173,6 +173,7 @@
     <Compile Include="Areas\Regras\Controllers\BolaoRegrasController.cs" />
     <Compile Include="Areas\Regras\RegrasAreaRegistration.cs" />
     <Compile Include="Areas\Resultados\Controllers\ApostasExtrasResultadoController.cs" />
+    <Compile Include="Areas\Resultados\Controllers\BaseResultadosAreaController.cs" />
     <Compile Include="Areas\Resultados\Controllers\JogoResultadoController.cs" />
     <Compile Include="Areas\Resultados\ResultadosAreaRegistration.cs" />
     <Compile Include="Areas\Users\Controllers\AccountHomeController.cs" />

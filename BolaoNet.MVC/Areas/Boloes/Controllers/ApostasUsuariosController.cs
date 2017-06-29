@@ -39,6 +39,11 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
             return View();
         }
 
+        public ActionResult ApostasJogo()
+        {
+            return View();
+        }
+
         #endregion
 
     }

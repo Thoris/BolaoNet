@@ -8,5 +8,6 @@ namespace BolaoNet.Domain.Interfaces.Repositories.Campeonatos
 {
     public interface ICampeonatoHistoricoDao : Base.IGenericDao<Entities.Campeonatos.CampeonatoHistorico>
     {
+        IList<Entities.Campeonatos.CampeonatoHistorico> LoadCampeoes(string currentUserName, DateTime currentDateTime, Entities.Campeonatos.Campeonato campeonato);
     }
 }

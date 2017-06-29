@@ -9,5 +9,6 @@ namespace BolaoNet.Domain.Interfaces.Services.Campeonatos
     public interface ICampeonatoHistoricoService
         : Base.IGenericService<Entities.Campeonatos.CampeonatoHistorico>
     {
+        IList<Entities.Campeonatos.CampeonatoHistorico> LoadCampeoes(Entities.Campeonatos.Campeonato campeonato);
     }
 }

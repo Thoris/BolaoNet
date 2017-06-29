@@ -32,5 +32,14 @@ namespace BolaoNet.WebApi.Integration.Campeonatos
         }
 
         #endregion
+
+        #region ICampeonatoHistoricoService members
+
+        public IList<Domain.Entities.Campeonatos.CampeonatoHistorico> LoadCampeoes(Domain.Entities.Campeonatos.Campeonato campeonato)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

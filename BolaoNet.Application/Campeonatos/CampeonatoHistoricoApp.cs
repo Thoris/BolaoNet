@@ -31,5 +31,14 @@ namespace BolaoNet.Application.Campeonatos
         }
 
         #endregion
+
+        #region ICampeonatoHistoricoApp members
+
+        public IList<Domain.Entities.Campeonatos.CampeonatoHistorico> LoadCampeoes(Domain.Entities.Campeonatos.Campeonato campeonato)
+        {
+            return Service.LoadCampeoes(campeonato);
+        }
+
+        #endregion
     }
 }

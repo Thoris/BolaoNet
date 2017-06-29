@@ -40,7 +40,7 @@ namespace BolaoNet.Domain.Services.Boloes
             if (string.IsNullOrEmpty(bolao.Nome))
                 throw new ArgumentException("bolao.Nome");
 
-            return Dao.GetApostasBolao(this.CurrentUserName, bolao);
+            return Dao.GetApostasBolao(this.CurrentUserName,DateTime.Now, bolao);
         }
         public bool InsertResult(Entities.Boloes.Bolao bolao, Entities.DadosBasicos.Time time, int posicao, Entities.Users.User validadoBy)
         {

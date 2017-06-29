@@ -320,6 +320,7 @@ namespace BolaoNet.Infra.Data.EF.Campeonatos
 
             return q.ToList();
         }
+
         #endregion
 
     }
