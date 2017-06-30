@@ -10,5 +10,6 @@ namespace BolaoNet.Domain.Interfaces.Services.Boloes
         : Base.IGenericService<Entities.Boloes.BolaoCriterioPontosTimes>
     {
         IList<Entities.Boloes.BolaoCriterioPontosTimes> GetCriterioPontosBolao(Entities.Boloes.Bolao bolao);
+
     }
 }

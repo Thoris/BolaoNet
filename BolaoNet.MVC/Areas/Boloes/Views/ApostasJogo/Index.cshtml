@@ -1,8 +1,11 @@
 ﻿@model BolaoNet.MVC.ViewModels.Bolao.ApostasJogoViewModel
 @{
     ViewBag.Title = "Apostas do Jogo";
+    BolaoNet.MVC.Controllers.AuthorizationController homeController =
+     ViewContext.Controller as BolaoNet.MVC.Controllers.AuthorizationController;
+    string userNameLogged = homeController.UserLogged.UserName;
 }
-@using (Html.BeginForm())
+@using (Html.BeginForm("Simular", "ApostasJogo", FormMethod.Post, new { }))
 {
     @Html.AntiForgeryToken()
 
@@ -38,16 +41,28 @@
                             <div class="form-group col-md-1 col-sm-1 ">
                                 <img src="@(Model.ImageTime1)" />
                             </div>
-                            <div class="form-group col-md-2 col-sm-2">
-                                @Html.TextBoxFor(x => x.GolsTime1, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m => m.GolsTime1)
+                            <div class="form-group col-md-2 col-sm-2 text-center">
+                                @if (Model.GolsTime1 != null)
+                                {
+                                    @Html.Raw(Model.GolsTime1.ToString());
+                                }
+                                else
+                                {
+                                    @Html.Raw("-");
+                                }
                             </div>
-                            <div class="form-group col-md-1 col-sm-1 text-center">
+                            <div class="form-group col-md-2 col-sm-2 text-center">
                                 x
                             </div>
-                            <div class="form-group col-md-2 col-sm-2">
-                                @Html.TextBoxFor(x => x.GolsTime2, new { @class = "form-control" })
-                                @Html.ValidationMessageFor(m => m.GolsTime2)
+                            <div class="form-group col-md-2 col-sm-2 text-center">
+                                @if (Model.GolsTime2 != null)
+                                {
+                                    @Html.Raw(Model.GolsTime2.ToString());
+                                }
+                                else
+                                {
+                                    @Html.Raw("-");
+                                }
                             </div>
                             <div class="form-group col-md-1 col-sm-1">
                                 <img src="@(Model.ImageTime2)" />
@@ -63,12 +78,58 @@
                             <div class="col-sm-12 text-center">
                                 @Model.DataJogo
                             </div>
+                            <div class="col-sm-12">
+                                <button class="btn btn-default" type="submit">Simular</button>
+                            </div>
                         </div>
 
-                    </div>
 
+                    </div>
+                    <div class="ibox-footer">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                Time 1 : @Model.TotalApostasTime1 ( @Model.PercentualTime1.ToString("0.00") % )
+                            </div>
+                            <div class="col-sm-4">
+                                Empate : @Model.TotalApostasEmpate ( @Model.PercentualEmpate.ToString("0.00") % )
+                            </div>
+                            <div class="col-sm-4">
+                                Time 2 : @Model.TotalApostasTime2 ( @Model.PercentualTime2.ToString("0.00") % )
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Simulação</h5>
+                    </div>
+                    <div class="ibox-content" style="display: block;">
+                        <div class="row">
+                            <div class="col-sm-3"></div>
+                            <div class="col-sm-2">
+                                @Html.TextBoxFor(x => x.SimulacaoGols1, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.SimulacaoGols1)
+                            </div>
+                            <div class="col-sm-2 text-center">x</div>
+                            <div class="col-sm-2">
+                                @Html.TextBoxFor(x => x.SimulacaoGols2, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.SimulacaoGols2)
+                            </div>
+                            <div class="col-sm-3"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-offset-5 col-sm-2 text-center">
+                                <input type="submit" class="btn btn-primary btn-md active center-block " value="Salvar" />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
 
             @if (Model.IsDesempate == true)
             {
@@ -81,13 +142,25 @@
                             <div class="row">
                                 <div class="col-sm-3"></div>
                                 <div class="col-sm-2">
-                                    @Html.TextBoxFor(x => x.PenaltisTime1, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(m => m.PenaltisTime1)
+                                    @if (Model.PenaltisTime1 != null)
+                                    {
+                                        @Html.Raw(Model.PenaltisTime1.ToString());
+                                    }
+                                    else
+                                    {
+                                        @Html.Raw("-");
+                                    }                                    
                                 </div>
                                 <div class="col-sm-1 text-center">x</div>
                                 <div class="col-sm-2">
-                                    @Html.TextBoxFor(x => x.PenaltisTime2, new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(m => m.PenaltisTime2)
+                                    @if (Model.PenaltisTime2 != null)
+                                    {
+                                        @Html.Raw(Model.PenaltisTime2.ToString());
+                                    }
+                                    else
+                                    {
+                                        @Html.Raw("-");
+                                    }
                                 </div>
                                 <div class="col-sm-3"></div>
                             </div>
@@ -96,32 +169,68 @@
                 </div>
             }
 
-            @if (Model.IsValido)
-            {
-                <div class="col-lg-12">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <h5>Dados de Validação</h5>
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Apostas</h5>
+                    </div>
+                    <div class="ibox-content" style="display: block;">
+                        <div class="row">
+                            <div class="form-group col-md-12 col-sm-12">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <td>Pos</td>                                            
+                                            <td>PTG</td>                                           
+                                            <td>Usuário</td>                                             
+                                            <td>Gols T1</td>
+                                            <td>x</td>
+                                            <td>Gols T2</td>
+                                            <td>PT</td>
+                                            <td></td>
+                                            <td>Extra</td>
+                                            @*<td>Data Aposta</td>*@
+                                            <td>%</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @for (int c = 0; c < Model.Apostas.Count; c++)
+                                        {
+                                            <tr
+                                                @if (string.Compare(userNameLogged, Model.Apostas[c].UserName, true) == 0)
+                                                {
+                                                    @Html.Raw("class=\"info\"");
+                                                }                                                                                                
+                                                >
+                                                <td>@Model.Apostas[c].Posicao</td>
+                                                <td>@Model.Apostas[c].TotalPontosClassificacao</td>
+                                                <td>@Model.Apostas[c].UserName</td>
+                                                <td class="text-center">@Model.Apostas[c].ApostaTime1</td>
+                                                <td>x</td>
+                                                <td class="text-center">@Model.Apostas[c].ApostaTime2</td>
+                                                <td>@Model.Apostas[c].Pontos</td>
+                                                <td>@Model.Apostas[c].IsMultiploTime</td>
+                                                <td>
+                                                    @if (Model.Apostas[c].Automatico == 1)
+                                                    {
+                                                        <span class="glyphicon glyphicon-flash" />
+                                                    }
+                                                </td>
+                                                @*<td>@Model.Apostas[c].DataAposta</td>*@
+                                                <td>
+                                                    @Model.Apostas[c].TotalApostasResultado (@Model.Apostas[c].PercentualResultado.ToString("0.00") %)
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>                               
+                            </div>                            
                         </div>
-                        <div class="ibox-content" style="display: block;">
-                            <div class="row">
-                                <div class="form-group col-md-6 col-sm-6">
 
-                                    @Html.Label("Validado por: ")
-                                    @Model.ValidadoBy
-
-
-                                </div>
-
-                                <div class="form-group col-md-6 col-sm-6">
-                                    <label>Data de Validação : </label>@Model.DataValidacao
-                                </div>
-                            </div>
-
-                        </div>
                     </div>
                 </div>
-            }            
+            </div>
+                   
         </div>
     </div>
 }

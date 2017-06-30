@@ -14,5 +14,9 @@ namespace BolaoNet.Domain.Interfaces.Repositories.Boloes
             out int pontosErro, out int pontosGanhadorFora, out int pontosGanhadorDentro, out int pontosPerdedorFora,
             out int pontosPerdedorDentro, out int pontosEmpateGols, out int pontosGolsTime1, out int pontosGolsTime2,
             out int pontosCheio);
+
+
+        IList<Entities.Boloes.BolaoCriterioPontos> LoadCriteriosPontos(string currentUserName, DateTime currentDateTime,
+            Entities.Boloes.Bolao bolao);
     }
 }

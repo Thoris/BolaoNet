@@ -16,7 +16,12 @@ namespace BolaoNet.MVC.ViewModels.Bolao
 
         #region Properties
 
-
+        public int Posicao { get; set; }
+        public int AlteracaoPosicao { get; set; }
+        public int TotalPontosClassificacao { get; set; }
+        public int TotalApostasResultado { get; set; }
+        public double PercentualResultado { get; set; }
+        public string Nome { get; set; }
 
         #endregion
     }

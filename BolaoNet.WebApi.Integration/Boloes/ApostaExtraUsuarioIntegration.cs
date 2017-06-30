@@ -46,7 +46,16 @@ namespace BolaoNet.WebApi.Integration.Boloes
                 parameters, "InsertResult").ToList<Domain.Entities.ValueObjects.ApostaExtraUsuarioVO>();
         }
 
-        #endregion
+        public IList<Domain.Entities.Boloes.ApostaExtraUsuario> GetApostasBolao(Domain.Entities.Boloes.Bolao bolao)
+        {
+            throw new NotImplementedException();
+        }
 
+        public IList<IList<Domain.Entities.Boloes.ApostaExtraUsuario>> GetApostasBolaoAgrupado(Domain.Entities.Boloes.Bolao bolao)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

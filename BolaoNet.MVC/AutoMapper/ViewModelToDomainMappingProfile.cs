@@ -45,7 +45,15 @@ namespace BolaoNet.MVC.AutoMapper
             Mapper.CreateMap<Domain.Entities.Campeonatos.Jogo, ViewModels.Bolao.ApostasJogoViewModel>();
             Mapper.CreateMap<Domain.Entities.Boloes.JogoUsuario, ViewModels.Bolao.ApostaJogoUsuarioPontosViewModel>();
 
-        
+            Mapper.CreateMap<Domain.Entities.Boloes.ApostaExtraUsuario, ViewModels.Bolao.ApostasExtrasUsuariosPontosViewModel>();
+            Mapper.CreateMap<Domain.Entities.Boloes.ApostaExtra, ViewModels.Bolao.ApostasExtrasEntryViewModel>();
+
+            Mapper.CreateMap<Domain.Entities.Campeonatos.Jogo, ViewModels.Bolao.ApostaJogoUsuarioEntryViewModel>();
+
+
+            Mapper.CreateMap<Domain.Entities.Boloes.BolaoCriterioPontos, ViewModels.Pontuacao.BolaoCriterioPontosViewModel>();
+            Mapper.CreateMap<Domain.Entities.Boloes.BolaoCriterioPontosTimes, ViewModels.Pontuacao.BolaoCriterioTimeViewModel>();
+
         }
     }
 }

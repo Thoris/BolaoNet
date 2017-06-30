@@ -20,6 +20,7 @@
                                         <tr>
                                             <td>Título</td>
                                             <td>Time</td>
+                                            <td>Pontos</td>
                                             <td>Válido</td>
                                             <td>Por</td>
                                             <td>Data Validação</td>
@@ -35,6 +36,7 @@
                                             <tr>
                                                 <td>@Model[c].Titulo</td>
                                                 <td>@Html.DropDownListFor(x => x[c].NomeTimeValidado, new SelectList(ViewBag.Times, Model[c].NomeTimeValidado), new { @class = "form-control input-sm", @id = "Time" + c.ToString(), @name = "Time" + c.ToString() })</td>
+                                                <td>@Model[c].TotalPontos</td>
                                                 <td>@if (Model[c].IsValido == true) { @Html.Raw("Válido"); }</td>
                                                 <td>@Model[c].ValidadoBy</td>
                                                 <td>@Model[c].DataValidacao</td>

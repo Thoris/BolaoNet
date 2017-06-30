@@ -16,6 +16,17 @@ namespace BolaoNet.MVC.ViewModels.Bolao
 
         #region Properties
 
+        public int SimulacaoGols1 { get; set; }
+        public int SimulacaoGols2 { get; set; }
+
+        public int TotalApostasTime1 { get; set; }
+        public int TotalApostasTime2 { get; set; }
+        public int TotalApostasEmpate { get; set; }
+
+        public double PercentualTime1 { get; set; }
+        public double PercentualTime2 { get; set; }
+        public double PercentualEmpate { get; set; }
+
         public string ImageTime1
         {
             get

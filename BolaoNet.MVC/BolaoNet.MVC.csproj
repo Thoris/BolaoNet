@@ -145,11 +145,8 @@
     <Compile Include="Areas\Boloes\Controllers\BolaoClassificacaoController.cs" />
     <Compile Include="Areas\Boloes\Controllers\ClassificacaoApostasController.cs" />
     <Compile Include="Areas\Boloes\Controllers\HistoricoPontosController.cs" />
-    <Compile Include="Areas\Boloes\Controllers\JogosController.cs" />
-    <Compile Include="Areas\Boloes\Controllers\PosicoesApostasExtras.cs" />
     <Compile Include="Areas\Boloes\Controllers\ResultadosDificeisController.cs" />
     <Compile Include="Areas\Boloes\Controllers\SemAcertosController.cs" />
-    <Compile Include="Areas\Boloes\Controllers\SimulacaoApostasExtrasController.cs" />
     <Compile Include="Areas\Campeonatos\CampeonatosAreaRegistration.cs" />
     <Compile Include="Areas\Campeonatos\Controllers\BaseCampeonatoAreaController.cs" />
     <Compile Include="Areas\Campeonatos\Controllers\CampeoesController.cs" />
@@ -169,6 +166,7 @@
     <Compile Include="Areas\Mensagens\MensagensAreaRegistration.cs" />
     <Compile Include="Areas\Pagamentos\Controllers\GerenciamentoController.cs" />
     <Compile Include="Areas\Pagamentos\PagamentosAreaRegistration.cs" />
+    <Compile Include="Areas\Pontuacao\Controllers\BasePontosAreaController.cs" />
     <Compile Include="Areas\Pontuacao\Controllers\BolaoCriteriosPontosController.cs" />
     <Compile Include="Areas\Pontuacao\PontuacaoAreaRegistration.cs" />
     <Compile Include="Areas\Regras\Controllers\BolaoRegrasController.cs" />
@@ -287,11 +285,8 @@
     <Content Include="Areas\Boloes\Views\ApostasUsuarios\Index.cshtml" />
     <Content Include="Areas\Boloes\Views\ClassificacaoApostas\Index.cshtml" />
     <Content Include="Areas\Boloes\Views\HistoricoPontos\Index.cshtml" />
-    <Content Include="Areas\Boloes\Views\Jogos\Index.cshtml" />
-    <Content Include="Areas\Boloes\Views\PosicoesApostasExtras\Index.cshtml" />
     <Content Include="Areas\Boloes\Views\ResultadosDificeis\Index.cshtml" />
     <Content Include="Areas\Boloes\Views\SemAcertos\Index.cshtml" />
-    <Content Include="Areas\Boloes\Views\SimulacaoApostasExtras\Index.cshtml" />
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Campeonatos\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Campeonatos\Views\Shared\_Layout.cshtml" />

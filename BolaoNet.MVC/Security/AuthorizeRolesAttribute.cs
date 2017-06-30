@@ -100,7 +100,9 @@ namespace BolaoNet.MVC.Security
             else
             {
                 filterContext.Result = new RedirectToRouteResult(new
-                            RouteValueDictionary(new { controller = "Account", action = "Login" }));
+                            RouteValueDictionary(new { area = "", controller = "Account", action = "Login" }));
+
+                
             }
         }
 

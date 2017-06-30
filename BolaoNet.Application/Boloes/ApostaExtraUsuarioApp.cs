@@ -38,7 +38,18 @@ namespace BolaoNet.Application.Boloes
         {
             return Service.GetApostasUser(bolao, user);
         }
+        public IList<Domain.Entities.Boloes.ApostaExtraUsuario> GetApostasBolao(Domain.Entities.Boloes.Bolao bolao)
+        {
+            return Service.GetApostasBolao(bolao);
+        }
 
+        public IList<IList<Domain.Entities.Boloes.ApostaExtraUsuario>> GetApostasBolaoAgrupado(Domain.Entities.Boloes.Bolao bolao)
+        {
+            return Service.GetApostasBolaoAgrupado(bolao);
+        }
         #endregion
+
+
+
     }
 }

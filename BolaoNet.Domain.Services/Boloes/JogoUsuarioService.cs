@@ -355,8 +355,29 @@ namespace BolaoNet.Domain.Services.Boloes
 
             return Dao.GetApostasJogo(base.CurrentUserName, DateTime.Now, bolao, jogo);
         }
+        public IList<Entities.ValueObjects.JogoUsuarioVO> LoadAcertosDificeis(Entities.Boloes.Bolao bolao, int totalMaximoAcertos)
+        {
+            if (bolao == null)
+                throw new ArgumentException("bolao");
+            if (string.IsNullOrEmpty (bolao.Nome))
+                throw new ArgumentException("bolao.Nome");
+
+            return Dao.LoadAcertosDificeis(base.CurrentUserName, DateTime.Now, bolao, totalMaximoAcertos);
+        }
+
+        public IList<Entities.Campeonatos.Jogo> LoadSemAcertos(Entities.Boloes.Bolao bolao)
+        {
+            if (bolao == null)
+                throw new ArgumentException("bolao");
+            if (string.IsNullOrEmpty(bolao.Nome))
+                throw new ArgumentException("bolao.Nome");
+
+            return Dao.LoadSemAcertos(base.CurrentUserName, DateTime.Now, bolao);
+        }
 
         #endregion
+
+
 
     }
 }

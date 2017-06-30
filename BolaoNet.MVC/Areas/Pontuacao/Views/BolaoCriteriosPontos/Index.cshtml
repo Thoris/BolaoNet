@@ -1,7 +1,109 @@
-﻿
+﻿@model BolaoNet.MVC.ViewModels.Pontuacao.BolaoCriterioViewModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Critérios do Bolão";
 }
+@using (Html.BeginForm("Salvar", "BolaoCriterioPontos", FormMethod.Post, new { }))
+{
+    @Html.AntiForgeryToken()
 
-<h2>Index</h2>
+    
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
 
+            @if (!string.IsNullOrEmpty(Model.Mensagem))
+            {
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h2>@Model.Mensagem</h2>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h3>Pontos dos Critérios do Bolão</h3>
+                    </div>
+                    <div class="ibox-content" style="display: block;">
+
+                        <div class="row">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <td>ID</td>
+                                        <td>Nome</td>
+                                        <td>Pontos</td>
+                                        <td>Descricao</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int c = 0; c < Model.CriterioPontos.Count; c++)
+                                    {
+                                        @Html.HiddenFor(x => x.CriterioPontos[c].CriterioID)
+                                        @Html.HiddenFor(x => x.CriterioPontos[c].NomeBolao)
+                                        <tr>
+                                            <td>@Model.CriterioPontos[c].CriterioID</td>
+                                            <td>@((BolaoNet.Domain.Entities.Boloes.BolaoCriterioPontos.CriteriosID)Model.CriterioPontos[c].CriterioID)</td>
+                                            <td>@Html.TextBoxFor(x => x.CriterioPontos[c].Pontos, new { @class = "form-control input-sm" })</td>
+                                            <td>@Model.CriterioPontos[c].Descricao</td>                                            
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+                        
+                        <div class="login-erro">
+                            @Html.ValidationSummary(true)
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Multiplicidade dos critérios dos times</h5>
+                    </div>
+                    <div class="ibox-content" style="display: block;">
+                        <div class="row">
+                           
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <td>Time</td>
+                                        <td>Pontos</td>                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int c = 0; c < Model.CriterioTimes.Count; c++)
+                                    {
+                                        @Html.HiddenFor(x => x.CriterioTimes[c].NomeBolao)
+                                        <tr>
+                                            <td>@Model.CriterioTimes[c].NomeTime</td>
+                                            <td>@Html.TextBoxFor(x => x.CriterioTimes[c].MultiploTime, new { @class = "form-control input-sm" })</td>                                            
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+
+            <div class="row">
+
+
+                <div class="col-sm-offset-5 col-sm-2 text-center">
+                    <input type="submit" class="btn btn-primary btn-md active center-block " value="Salvar" />
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -34,7 +34,6 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
 
         #endregion
 
-
         #region Methods
 
         private void SetFilterViewBags()
@@ -194,9 +193,15 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
 
             return View(model);
         }
-        public ActionResult SelectJogo(string ButtonSelected, ViewModels.Bolao.ApostasUsuariosListViewModel model)
+        public ActionResult SelectJogo(string buttonSelected, ViewModels.Bolao.ApostasUsuariosListViewModel model)
         {
-            return View();
+            if (string.IsNullOrEmpty(buttonSelected))
+                return RedirectToAction("Index");
+
+
+
+
+            return RedirectToAction("Index", "ApostasJogo", new { id = buttonSelected });
         }
 
         #endregion

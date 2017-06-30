@@ -11,7 +11,17 @@ namespace BolaoNet.Domain.Services.Boloes
         Base.BaseGenericService<Entities.Boloes.BolaoCriterioPontos>,
         Interfaces.Services.Boloes.IBolaoCriterioPontosService
     {
+        #region Properties
+
+        private Interfaces.Repositories.Boloes.IBolaoCriterioPontosDao Dao
+        {
+            get { return (Interfaces.Repositories.Boloes.IBolaoCriterioPontosDao)base.BaseDao; }
+        }
+
+        #endregion
         
+
+
         #region Constructors/Destructors
 
         public BolaoCriterioPontosService(string userName, Interfaces.Repositories.Boloes.IBolaoCriterioPontosDao dao, ILogging logging)
@@ -42,7 +52,7 @@ namespace BolaoNet.Domain.Services.Boloes
 
         public IList<Entities.Boloes.BolaoCriterioPontos> GetCriterioPontosBolao(Entities.Boloes.Bolao bolao)
         {
-            return null;
+            return Dao.LoadCriteriosPontos(base.CurrentUserName, DateTime.Now, bolao);
         }
         
         #endregion

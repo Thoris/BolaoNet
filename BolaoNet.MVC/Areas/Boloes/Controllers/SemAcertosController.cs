@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,13 +10,16 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
     public class SemAcertosController : BaseBolaoAreaController
     {
         #region Variables
-       
+
+        private Application.Interfaces.Boloes.IJogoUsuarioApp _jogoUsuarioApp;
+
         #endregion
 
         #region Constructors/Destructors
 
 
         public SemAcertosController(
+            Application.Interfaces.Boloes.IJogoUsuarioApp jogoUsuarioApp,
             Application.Interfaces.Boloes.IBolaoMembroApp bolaoMembroApp,
             Application.Interfaces.Boloes.IBolaoApp bolaoApp,
             Application.Interfaces.Campeonatos.ICampeonatoApp campeonatoApp,
@@ -25,6 +29,7 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
             )
             : base(bolaoMembroApp, bolaoApp, campeonatoApp, campeonatoFaseApp, campeonatoGrupoApp, campeonatoTimeApp)
         {
+            _jogoUsuarioApp = jogoUsuarioApp;
         }
 
         #endregion
@@ -33,10 +38,18 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
 
         public ActionResult Index()
         {
+            IList<Domain.Entities.Campeonatos.Jogo> list = _jogoUsuarioApp.LoadSemAcertos(base.SelectedBolao);
+
+            IList<ViewModels.Bolao.ApostaJogoUsuarioEntryViewModel> data =
+                 Mapper.Map<IList<Domain.Entities.Campeonatos.Jogo>,
+                 IList<ViewModels.Bolao.ApostaJogoUsuarioEntryViewModel>>
+                 (list);
 
 
+            ViewModels.Bolao.ApostasUsuariosListViewModel model = new ViewModels.Bolao.ApostasUsuariosListViewModel();
+            model.Apostas = data;
 
-            return View();
+            return View(model);
         }
 
         #endregion

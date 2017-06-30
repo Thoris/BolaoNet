@@ -56,12 +56,6 @@
             { @Html.Raw("class=\"active\"")  }>
             <a href="/Boloes/ApostasUsuarios/Index">Apostas dos Usuários</a>
         </li>
-                <li @if (string.Compare(controllerAction, "Index", true) == 0 &&
-                string.Compare(controllerName, "Jogos", true) == 0 && 
-                string.Compare(controllerArea, "Boloes", true) == 0)
-            { @Html.Raw("class=\"active\"")  }>
-            <a href="/Boloes/Jogos/Index">Jogos</a>
-        </li>
         <li @if (string.Compare(controllerAction, "Index", true) == 0 &&
                 string.Compare(controllerName, "ApostasExtras", true) == 0 && 
                 string.Compare(controllerArea, "Boloes", true) == 0)
@@ -69,25 +63,11 @@
             <a href="/Boloes/ApostasExtras/Index">Apostas Extras</a>
         </li>
         <li @if (string.Compare(controllerAction, "Index", true) == 0 &&
-                string.Compare(controllerName, "PosicoesApostasExtras", true) == 0 && 
-                string.Compare(controllerArea, "Boloes", true) == 0)
-            { @Html.Raw("class=\"active\"")  }>
-            <a href="/Boloes/PosicoesApostasExtras/Index">Posições Apostas Extras</a>
-        </li>
-
-        <li @if (string.Compare(controllerAction, "Index", true) == 0 &&
                 string.Compare(controllerName, "ClassificacaoApostas", true) == 0 && 
                 string.Compare(controllerArea, "Boloes", true) == 0)
             { @Html.Raw("class=\"active\"")  }>
             <a href="/Boloes/ClassificacaoApostas/Index">Classificação por Apostas</a>
         </li>
-        <li @if (string.Compare(controllerAction, "Index", true) == 0 &&
-                string.Compare(controllerName, "SimulacaoApostasExtras", true) == 0 && 
-                string.Compare(controllerArea, "Boloes", true) == 0)
-            { @Html.Raw("class=\"active\"")  }>
-            <a href="/Boloes/SimulacaoApostasExtras/Index">Simulação de Apostas Extras</a>
-        </li>
-
         <li @if (string.Compare(controllerAction, "Index", true) == 0 &&
                 string.Compare(controllerName, "ResultadosDificeis", true) == 0 && 
                 string.Compare(controllerArea, "Boloes", true) == 0)
@@ -130,11 +110,11 @@
             { @Html.Raw("class=\"active\"")  }>
             <a href="/GrupoPonto/Grupos">Pagamentos</a>
         </li>
-        <li @if (string.Compare(controllerAction, "Index", true) == 0 && 
-                string.Compare(controllerName, "BolaoClassificacao", true) == 0 && 
-                string.Compare(controllerArea, "Boloes", true) == 0)
+        <li @if (string.Compare(controllerAction, "Index", true) == 0 &&
+                string.Compare(controllerName, "BolaoCriterioPontos", true) == 0 && 
+                string.Compare(controllerArea, "Pontuacao", true) == 0)
             { @Html.Raw("class=\"active\"")  }>
-            <a href="/GrupoPonto/Grupos">Critérios pontos</a>
+            <a href="/Pontuacao/BolaoCriteriosPontos">Critérios pontos</a>
         </li>
 
         <li @if (string.Compare(controllerAction, "Index", true) == 0 && 

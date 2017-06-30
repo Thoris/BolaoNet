@@ -85,7 +85,18 @@ namespace BolaoNet.WebApi.Integration.Boloes
             throw new NotImplementedException();
         }
 
+        public IList<Domain.Entities.ValueObjects.JogoUsuarioVO> LoadAcertosDificeis(Domain.Entities.Boloes.Bolao bolao, int totalMaximoAcertos)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<Domain.Entities.Campeonatos.Jogo> LoadSemAcertos(Domain.Entities.Boloes.Bolao bolao)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
+
 
     }
 }

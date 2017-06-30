@@ -1,7 +1,165 @@
-﻿
+﻿@model BolaoNet.MVC.ViewModels.Bolao.ApostasExtrasViewModel
 @{
     ViewBag.Title = "Apostas Extras";
 }
 
-<h2>Index</h2>
+@using (Html.BeginForm("Simular", "ApostasExtras", FormMethod.Post, new { }))
+{
+    @Html.AntiForgeryToken()
 
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content" style="display: block;">
+                        <div class="text-center m-t-lg">
+
+                            <div class="row">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <td>Título</td>
+                                            <td>Time</td>
+                                            <td>Pontos</td>
+                                            <td>Válido</td>   
+                                            <td>Data Validação</td>                                         
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @for (int c = 0; c < Model.ApostasExtras.Count; c++)
+                                        {                                            
+                                            <tr>
+                                                <td>@Model.ApostasExtras[c].Titulo</td>
+                                                <td>
+                                                @if (@Model.ApostasExtras[c].NomeTimeValidado == null)
+                                                {
+                                                    @Html.Raw("-");
+                                                }
+                                                else
+                                                {
+                                                    @Html.Raw(Model.ApostasExtras[c].NomeTimeValidado);
+                                                }
+                                                </td>
+                                                <td>@Model.ApostasExtras[c].TotalPontos</td>
+                                                <td>@if (Model.ApostasExtras[c].IsValido == true)
+                                                { 
+                                                        @Html.Raw("Válido");
+                                                }
+                                                </td>
+                                                <td>@Model.ApostasExtras[c].DataValidacao</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+
+                                <div class="col-sm-12">
+                                    <button class="btn btn-default" type="submit">Simular</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Simulação</h5>
+                    </div>
+                    <div class="ibox-content" style="display: block;">
+                        <div class="row">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <td>Título</td>
+                                        <td>Time</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int c = 0; c < Model.ApostasExtras.Count; c++)
+                                    {
+                                        <tr>
+                                            <td>@Model.ApostasExtras[c].Titulo</td>
+                                            <td>@Html.DropDownListFor(x => x.ApostasExtras[c].NomeTimeValidado, 
+                                                new SelectList(ViewBag.Times, Model.ApostasExtras[c].NomeTimeValidado), 
+                                                new { @class = "form-control input-sm", @id = "Time" + c.ToString(), @name = "Time" + c.ToString() })</td>
+                                            
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-offset-5 col-sm-2 text-center">
+                                <input type="submit" class="btn btn-primary btn-md active center-block " value="Salvar" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Apostas Extras</h5>
+                    </div>
+                    <div class="ibox-content" style="display: block;">
+                        <div class="row">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <td>Posição</td>
+                                        <td>GPT</td>
+                                        <td>Usuário</td>
+                                        <td>PT</td>
+
+                                        @for (int c = 0; c < Model.ApostasExtras.Count; c++ )
+                                        {
+                                            <td>@Model.ApostasExtras[c].Posicao</td>
+                                        }
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int c = 0; c < Model.ApostasUsuarios.Count; c++)
+                                    {
+                                        <tr>
+                                            <td>@Model.ApostasUsuarios[c].Posicao</td>
+                                            <td>@Model.ApostasUsuarios[c].TotalPontosClassificacao</td>
+                                            <td>@Model.ApostasUsuarios[c].UserName</td>
+                                            <td>@Model.ApostasUsuarios[c].Pontos</td>
+                                            
+                                            @for (int i = 0; i < Model.ApostasUsuarios[c].Apostas.Count; i++)
+                                            {
+                                                <td>@Model.ApostasUsuarios[c].Apostas[i].NomeTime</td>
+                                            }
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+}
+@section scripts
+{
+    <script>
+
+    //$(document).ready(function () {
+    //    $('#Time1').change(function () {
+
+
+    //        alert("value: " + $(this).val());
+    //    });
+    //})
+    </script>
+}

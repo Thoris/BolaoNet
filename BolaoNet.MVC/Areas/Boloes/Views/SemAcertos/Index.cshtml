@@ -1,7 +1,28 @@
-﻿
+﻿@model BolaoNet.MVC.ViewModels.Bolao.ApostasUsuariosListViewModel
 @{
     ViewBag.Title = "Resultados sem acertos";
 }
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+           
+}
 
-<h2>Index</h2>
+@using (Html.BeginForm("SelectJogo", "ApostasUsuarios", FormMethod.Post, new { }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="row">
+        <div class="col-ld-12">
 
+            @Html.Partial("_JogosList", Model)
+
+        </div>
+    </div>
+}
+
+
+@section scripts
+{
+   
+}

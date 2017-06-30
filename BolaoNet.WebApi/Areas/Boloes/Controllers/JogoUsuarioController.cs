@@ -85,7 +85,18 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
         {
             return Service.GetApostasJogo(bolao, jogo);
         }
+        public IList<Domain.Entities.ValueObjects.JogoUsuarioVO> LoadAcertosDificeis(Domain.Entities.Boloes.Bolao bolao, int totalMaximoAcertos)
+        {
+            return Service.LoadAcertosDificeis(bolao, totalMaximoAcertos);
+        }
+
+        public IList<Domain.Entities.Campeonatos.Jogo> LoadSemAcertos(Domain.Entities.Boloes.Bolao bolao)
+        {
+            return Service.LoadSemAcertos(bolao);
+        }
 
         #endregion
+
+
     }
 }

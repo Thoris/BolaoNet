@@ -52,6 +52,10 @@
     <Compile Include="Base\CampeonatoDataVO.cs" />
     <Compile Include="Bolao\ApostaJogoUsuarioEntryViewModel.cs" />
     <Compile Include="Bolao\ApostaJogoUsuarioPontosViewModel.cs" />
+    <Compile Include="Bolao\ApostasExtrasEntryViewModel.cs" />
+    <Compile Include="Bolao\ApostasExtrasUsuarioEntryViewModel.cs" />
+    <Compile Include="Bolao\ApostasExtrasUsuariosPontosViewModel.cs" />
+    <Compile Include="Bolao\ApostasExtrasViewModel.cs" />
     <Compile Include="Bolao\ApostasJogoViewModel.cs" />
     <Compile Include="Bolao\ApostasUsuariosListViewModel.cs" />
     <Compile Include="Bolao\CampeonatoClassificacaoApostaEntryViewModel.cs" />
@@ -65,6 +69,9 @@
     <Compile Include="Campeonatos\CampeonatoJogoEntryViewModel.cs" />
     <Compile Include="Campeonatos\CampeonatoJogosListViewModel.cs" />
     <Compile Include="Campeonatos\FilterJogosViewModel.cs" />
+    <Compile Include="Pontuacao\BolaoCriterioPontosViewModel.cs" />
+    <Compile Include="Pontuacao\BolaoCriterioTimeViewModel.cs" />
+    <Compile Include="Pontuacao\BolaoCriterioViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Account\ActivationCodeViewModel.cs" />
     <Compile Include="Account\ChangePasswordViewModel.cs" />
@@ -83,6 +90,7 @@
       <Name>BolaoNet.Domain.Entities</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

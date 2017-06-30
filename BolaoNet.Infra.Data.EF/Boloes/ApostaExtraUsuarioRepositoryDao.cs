@@ -62,9 +62,17 @@ namespace BolaoNet.Infra.Data.EF.Boloes
 
             return q.ToList<Domain.Entities.ValueObjects.ApostaExtraUsuarioVO>();
         }
+        public IList<Domain.Entities.Boloes.ApostaExtraUsuario> GetApostasBolao(string currentUserName, DateTime currentDateTime, Domain.Entities.Boloes.Bolao bolao)
+        {
+            IList<Domain.Entities.Boloes.ApostaExtraUsuario> list =
+                GetList(x => string.Compare(x.NomeBolao, bolao.Nome, true) == 0).ToList ();
+                
+            list = list.ToList ().OrderBy (x => x.UserName).ToList();
+
+            return list;
+        }
 
         #endregion
-
 
     }
 }
