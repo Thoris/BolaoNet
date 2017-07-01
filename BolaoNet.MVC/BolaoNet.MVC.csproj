@@ -130,6 +130,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\BaseAdminAreaController.cs" />
     <Compile Include="Areas\Admin\Controllers\BolaoIniciarPararController.cs" />
     <Compile Include="Areas\Admin\Controllers\GerenciamentoMembrosBolaoController.cs" />
     <Compile Include="Areas\Apostas\ApostasAreaRegistration.cs" />
@@ -164,6 +165,7 @@
     <Compile Include="Areas\Criterios\CriteriosAreaRegistration.cs" />
     <Compile Include="Areas\Mensagens\Controllers\GerenciamentoController.cs" />
     <Compile Include="Areas\Mensagens\MensagensAreaRegistration.cs" />
+    <Compile Include="Areas\Pagamentos\Controllers\BasePagamentoAreaController.cs" />
     <Compile Include="Areas\Pagamentos\Controllers\GerenciamentoController.cs" />
     <Compile Include="Areas\Pagamentos\PagamentosAreaRegistration.cs" />
     <Compile Include="Areas\Pontuacao\Controllers\BasePontosAreaController.cs" />
@@ -322,6 +324,9 @@
     <Content Include="Areas\Users\Views\UserCampeonato\Index.cshtml" />
     <Content Include="Areas\Boloes\Views\Shared\_JogosList.cshtml" />
     <Content Include="Areas\Boloes\Views\ApostasJogo\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\BolaoIniciarParar\Index.cshtml" />
     <None Include="Content\js\jquery-1.10.2.intellisense.js" />
     <Content Include="Content\js\jquery-1.10.2.js" />
     <Content Include="Content\js\jquery-1.10.2.min.js" />
@@ -1039,7 +1044,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\Apostas\Models\" />
     <Folder Include="Areas\Boloes\Models\" />
     <Folder Include="Areas\Campeonatos\Models\" />

@@ -31,5 +31,19 @@ namespace BolaoNet.Application.Boloes
         }
 
         #endregion
+
+        #region IPagamentoApp members
+
+        public IList<Domain.Entities.Boloes.Pagamento> GetPagamentosBolao(Domain.Entities.Boloes.Bolao bolao)
+        {
+            return Service.GetPagamentosBolao(bolao);
+        }
+
+        public IList<Domain.Entities.Boloes.Pagamento> GetPagamentosBolaoSoma(Domain.Entities.Boloes.Bolao bolao)
+        {
+            return Service.GetPagamentosBolaoSoma(bolao);
+        }
+
+        #endregion
     }
 }

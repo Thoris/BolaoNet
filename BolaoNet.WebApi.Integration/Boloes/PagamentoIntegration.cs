@@ -32,5 +32,18 @@ namespace BolaoNet.WebApi.Integration.Boloes
         }
 
         #endregion
+
+        #region IPagamentoService members
+
+        public IList<Domain.Entities.Boloes.Pagamento> GetPagamentosBolao(Domain.Entities.Boloes.Bolao bolao)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<Domain.Entities.Boloes.Pagamento> GetPagamentosBolaoSoma(Domain.Entities.Boloes.Bolao bolao)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
     }
 }

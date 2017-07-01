@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\BolaoIniciarPararViewModel.cs" />
+    <Compile Include="Admin\BolaoIniciarStatusMembroViewModel.cs" />
     <Compile Include="Apostas\ApostaJogoEntryViewModel.cs" />
     <Compile Include="Apostas\ApostasAutomaticasViewModel.cs" />
     <Compile Include="Apostas\ApostaExtraViewModel.cs" />
@@ -69,6 +71,7 @@
     <Compile Include="Campeonatos\CampeonatoJogoEntryViewModel.cs" />
     <Compile Include="Campeonatos\CampeonatoJogosListViewModel.cs" />
     <Compile Include="Campeonatos\FilterJogosViewModel.cs" />
+    <Compile Include="Pagamentos\PagamentoViewModel.cs" />
     <Compile Include="Pontuacao\BolaoCriterioPontosViewModel.cs" />
     <Compile Include="Pontuacao\BolaoCriterioTimeViewModel.cs" />
     <Compile Include="Pontuacao\BolaoCriterioViewModel.cs" />
