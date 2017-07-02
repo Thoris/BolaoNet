@@ -1,4 +1,9 @@
-﻿<div class="row wrapper border-bottom white-bg page-heading">
+﻿@if(!string.IsNullOrEmpty (ViewBag.Title ))
+{
+<div class="row wrapper border-bottom white-bg page-heading">
+
+
+
     <div class="col-lg-10">
         @*<h2>@ViewBag.Grupo</h2>
         @Html.MvcSiteMap().SiteMapPath("BootstrapSiteMapPathHelperModel")*@
@@ -11,4 +16,6 @@
     </div>
     <div class="col-lg-2">
     </div>
+    
 </div>
+}
