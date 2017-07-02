@@ -9,5 +9,7 @@ namespace BolaoNet.Domain.Interfaces.Services.Boloes
     public interface IBolaoRegraService
         : Base.IGenericService<Entities.Boloes.BolaoRegra>
     {
+        IList<Entities.Boloes.BolaoRegra> GetRegrasBolao(Entities.Boloes.Bolao bolao);
+
     }
 }

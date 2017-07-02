@@ -8,5 +8,6 @@ namespace BolaoNet.Domain.Interfaces.Repositories.Boloes
 {
     public interface IBolaoRegraDao
     {
+        IList<Entities.Boloes.BolaoRegra> GetRegrasBolao(string currentUserName, DateTime currentDateTime, Entities.Boloes.Bolao bolao);
     }
 }

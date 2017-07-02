@@ -54,6 +54,9 @@ namespace BolaoNet.MVC.AutoMapper
             Mapper.CreateMap<Domain.Entities.Boloes.BolaoCriterioPontos, ViewModels.Pontuacao.BolaoCriterioPontosViewModel>();
             Mapper.CreateMap<Domain.Entities.Boloes.BolaoCriterioPontosTimes, ViewModels.Pontuacao.BolaoCriterioTimeViewModel>();
 
+            Mapper.CreateMap<Domain.Entities.Boloes.BolaoRegra, ViewModels.Regras.BolaoRegrasViewModel>();
+            Mapper.CreateMap<Domain.Entities.Boloes.Pagamento, ViewModels.Pagamentos.PagamentoViewModel>();
+
         }
     }
 }

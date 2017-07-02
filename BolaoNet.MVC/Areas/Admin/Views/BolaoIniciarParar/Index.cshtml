@@ -1,0 +1,133 @@
+﻿@model BolaoNet.MVC.ViewModels.Admin.BolaoIniciarPararViewModel
+@{
+    ViewBag.Title = "Gerenciamento do Bolão";
+}
+
+@using (Html.BeginForm("Simular", "ApostasExtras", FormMethod.Post, new { }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Dados do Boão</h5>
+                    </div>
+                    <div class="ibox-content" style="display: block;">
+                        <div class="text-center m-t-lg">
+
+                            <div class="row">
+                                <div class="form-group col-sm-4">
+                                    @Html.LabelFor(a => a.IsIniciado)
+                                    @if (Model.IsIniciado == true)
+                                    {
+                                        @Html.Raw("Iniciado");
+                                    }
+                                    else if (Model.IsIniciado == false)
+                                    {
+                                        @Html.Raw("Aguardando");
+                                    }
+                                    else
+                                    {
+                                        @Html.Raw("Aguardando Início");
+                                    }
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    @Html.LabelFor(a => a.IniciadoBy)
+                                    @Model.IniciadoBy
+                                </div>
+                                <div class="form-group col-sm-4">
+                                    @Html.LabelFor(a => a.DataIniciado)
+                                    @Model.DataIniciado
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2">Iniciar</div>
+                                <div class="col-sm-4"></div>
+                                <div class="col-sm-4"></div>
+                                <div class="col-sm-2">Aguardar</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2">Gerar Apostas</div>
+                                <div class="col-sm-4"></div>
+                                <div class="col-sm-4"></div>
+                                <div class="col-sm-2">Enviar Apostas</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-2">Enviar não pago</div>
+                                <div class="col-sm-4"></div>
+                                <div class="col-sm-4"></div>
+                                <div class="col-sm-2">Enviar Apostas faltantes</div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">Gerar resultados Finais</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Simulação</h5>
+                    </div>
+                    <div class="ibox-content" style="display: block;">
+                        <div class="row">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <td>Usuário</td>
+                                        <td>Nome Completo</td>
+                                        <td>Email</td>
+                                        <td>Restantes</td>
+                                        <td>Pago?</td>
+                                        <td>
+                                        </td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int c = 0; c < Model.StatusMembros.Count; c++)
+                                    {
+                                        <tr>
+                                            <td>@Model.StatusMembros[c].UserName</td>
+                                            <td>@Model.StatusMembros[c].FullName</td>
+                                            <td>@Model.StatusMembros[c].Email</td>
+                                            <td>@Model.StatusMembros[c].TotalApostasRestantes</td>
+                                            <td>@Model.StatusMembros[c].BolaoPago</td>
+                                            <td>
+
+                                            </td>
+                                            <td>
+                                                Download
+                                            </td>
+                                            <td>
+                                                Remover
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+@section scripts
+{
+    <script>
+
+    //$(document).ready(function () {
+    //    $('#Time1').change(function () {
+
+
+    //        alert("value: " + $(this).val());
+    //    });
+    //})
+    </script>
+}

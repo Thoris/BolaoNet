@@ -112,7 +112,8 @@ namespace BolaoNet.MVC.Controllers
             if (string.IsNullOrEmpty(returnUrl))
             {
                 return new RedirectToRouteResult(new
-                   RouteValueDictionary(new { controller = "Home", action = "Index" }));
+                   //RouteValueDictionary(new { controller = "Home", action = "Index" }));
+                   RouteValueDictionary(new { area="Users", controller = "AccountHome", action = "Index" }));
             }
             else
             {
@@ -254,7 +255,8 @@ namespace BolaoNet.MVC.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                //return RedirectToAction("Index", "Home", new { });
+                return RedirectToAction("Index", "AccountHome", new { area = "Users" });
             }
         }
 

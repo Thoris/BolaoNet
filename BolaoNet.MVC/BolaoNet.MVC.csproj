@@ -163,6 +163,7 @@
     <Compile Include="Areas\Campeonatos\Controllers\RecordsTimesController.cs" />
     <Compile Include="Areas\Campeonatos\Controllers\RodadasController.cs" />
     <Compile Include="Areas\Criterios\CriteriosAreaRegistration.cs" />
+    <Compile Include="Areas\Mensagens\Controllers\BaseMensagensAreaController.cs" />
     <Compile Include="Areas\Mensagens\Controllers\GerenciamentoController.cs" />
     <Compile Include="Areas\Mensagens\MensagensAreaRegistration.cs" />
     <Compile Include="Areas\Pagamentos\Controllers\BasePagamentoAreaController.cs" />
@@ -171,6 +172,7 @@
     <Compile Include="Areas\Pontuacao\Controllers\BasePontosAreaController.cs" />
     <Compile Include="Areas\Pontuacao\Controllers\BolaoCriteriosPontosController.cs" />
     <Compile Include="Areas\Pontuacao\PontuacaoAreaRegistration.cs" />
+    <Compile Include="Areas\Regras\Controllers\BaseBolaoRegrasAreaController.cs" />
     <Compile Include="Areas\Regras\Controllers\BolaoRegrasController.cs" />
     <Compile Include="Areas\Regras\RegrasAreaRegistration.cs" />
     <Compile Include="Areas\Resultados\Controllers\ApostasExtrasResultadoController.cs" />
@@ -178,7 +180,8 @@
     <Compile Include="Areas\Resultados\Controllers\JogoResultadoController.cs" />
     <Compile Include="Areas\Resultados\ResultadosAreaRegistration.cs" />
     <Compile Include="Areas\Users\Controllers\AccountHomeController.cs" />
-    <Compile Include="Areas\Users\Controllers\BaseUserController.cs" />
+    <Compile Include="Areas\Users\Controllers\BaseUserAreaController.cs" />
+    <Compile Include="Areas\Users\Controllers\BolaoClassificacaoGrupoGerenciamento.cs" />
     <Compile Include="Areas\Users\Controllers\UserBoloesController.cs" />
     <Compile Include="Areas\Users\Controllers\UserCampeonatoController.cs" />
     <Compile Include="Areas\Users\UsersAreaRegistration.cs" />
@@ -327,6 +330,10 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\BolaoIniciarParar\Index.cshtml" />
+    <Content Include="Areas\Pagamentos\Views\Gerenciamento\Create.cshtml" />
+    <Content Include="Areas\Pagamentos\Views\Gerenciamento\Edit.cshtml" />
+    <Content Include="Areas\Users\Views\BolaoClassificacaoGrupoGerenciamento\Index.cshtml" />
+    <Content Include="Areas\Users\Views\AccountHome\Index.cshtml" />
     <None Include="Content\js\jquery-1.10.2.intellisense.js" />
     <Content Include="Content\js\jquery-1.10.2.js" />
     <Content Include="Content\js\jquery-1.10.2.min.js" />

@@ -41,5 +41,14 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
 
         #endregion
+
+        #region IBolaoRegraService members
+
+        public IList<Domain.Entities.Boloes.BolaoRegra> GetRegrasBolao(Domain.Entities.Boloes.Bolao bolao)
+        {
+            return Service.GetRegrasBolao(bolao);
+        }
+
+        #endregion
     }
 }

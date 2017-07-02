@@ -6,8 +6,29 @@ using System.Web.Mvc;
 
 namespace BolaoNet.MVC.Areas.Mensagens.Controllers
 {
-    public class GerenciamentoController : Controller
+    public class GerenciamentoController : BaseMensagensAreaController
     {
+        
+        #region Constructors/Destructors
+
+        public GerenciamentoController(
+            Application.Interfaces.Boloes.IBolaoMembroApp bolaoMembroApp,
+            Application.Interfaces.Boloes.IBolaoApp bolaoApp,
+            Application.Interfaces.Campeonatos.ICampeonatoApp campeonatoApp,
+            Application.Interfaces.Campeonatos.ICampeonatoFaseApp campeonatoFaseApp,
+            Application.Interfaces.Campeonatos.ICampeonatoGrupoApp campeonatoGrupoApp,
+            Application.Interfaces.Campeonatos.ICampeonatoTimeApp campeonatoTimeApp
+            )
+            : base 
+            (
+                bolaoMembroApp, bolaoApp, campeonatoApp, campeonatoFaseApp, campeonatoGrupoApp, campeonatoTimeApp
+            )
+        {
+            
+        }
+
+        #endregion
+
         #region Actions
 
         public ActionResult Index()

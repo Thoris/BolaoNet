@@ -82,10 +82,20 @@
     <Compile Include="Account\LoginViewModel.cs" />
     <Compile Include="Account\ProfileViewModel.cs" />
     <Compile Include="Account\RegistrationUserViewModel.cs" />
+    <Compile Include="Regras\BolaoRegrasViewModel.cs" />
     <Compile Include="Resultados\ApostaExtraViewModel.cs" />
     <Compile Include="Resultados\JogoResultadoViewModel.cs" />
+    <Compile Include="Users\PaginaPrincipalModelView.cs" />
+    <Compile Include="Users\PaginaPrincipal\PaginaPrincipalBolaoPosicoesViewModel.cs" />
+    <Compile Include="Users\PaginaPrincipal\PaginaPrincipalBolaoSaldoDevedorViewModel.cs" />
+    <Compile Include="Users\PaginaPrincipal\PaginaPrincipalGrupoComparacaoModelView.cs" />
+    <Compile Include="Users\PaginaPrincipal\PaginaPrincipalMensagemViewModel.cs" />
+    <Compile Include="Users\PaginaPrincipal\PaginaPrincipalPontosObtidosViewModel.cs" />
+    <Compile Include="Users\PaginaPrincipal\PaginaPrincipalProximaApostaViewModel.cs" />
     <Compile Include="Users\UserBoloesViewModel.cs" />
     <Compile Include="Users\UserCampeonatosViewModel.cs" />
+    <Compile Include="Users\UserChangePasswordViewModel.cs" />
+    <Compile Include="Users\UserProfileViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BolaoNet.Domain.Entities\BolaoNet.Domain.Entities.csproj">

@@ -16,12 +16,13 @@ namespace BolaoNet.MVC.Controllers
         public ActionResult Index()
         {
 
+            return RedirectToAction("Index", "AccountHome", new { area = "Users" });
             //if (User.FirstName == "")
             //{
 
             //}
 
-            return View();
+            //return View();
         }
 
         #endregion
