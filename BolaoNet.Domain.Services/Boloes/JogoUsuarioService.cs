@@ -375,7 +375,29 @@ namespace BolaoNet.Domain.Services.Boloes
             return Dao.LoadSemAcertos(base.CurrentUserName, DateTime.Now, bolao);
         }
 
+        public IList<Entities.ValueObjects.JogoUsuarioVO> LoadPontosObtidos(Entities.Users.User user, int totalRetorno)
+        {
+            if (user == null)
+                throw new ArgumentException("user");
+            if (string.IsNullOrEmpty(user.UserName))
+                throw new ArgumentException("user.UserName");
+
+            return Dao.LoadPontosObtidos(base.CurrentUserName, DateTime.Now, user, totalRetorno);
+        }
+
+        public IList<Entities.ValueObjects.JogoUsuarioVO> LoadProximosJogosUsuario(Entities.Users.User user, int totalRetorno)
+        {
+            if (user == null)
+                throw new ArgumentException("user");
+            if (string.IsNullOrEmpty(user.UserName))
+                throw new ArgumentException("user.UserName");
+
+            return Dao.LoadProximosJogosUsuario(base.CurrentUserName, DateTime.Now, user, totalRetorno);
+        }
+
         #endregion
+
+
 
 
 

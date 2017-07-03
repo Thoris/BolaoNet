@@ -94,8 +94,19 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
         {
             return Service.LoadSemAcertos(bolao);
         }
+        public IList<Domain.Entities.ValueObjects.JogoUsuarioVO> LoadPontosObtidos(Domain.Entities.Users.User user, int totalRetorno)
+        {
+            return Service.LoadPontosObtidos(user, totalRetorno);
+        }
+
+        public IList<Domain.Entities.ValueObjects.JogoUsuarioVO> LoadProximosJogosUsuario(Domain.Entities.Users.User user, int totalRetorno)
+        {
+            return Service.LoadProximosJogosUsuario(user, totalRetorno);
+        }
 
         #endregion
+
+
 
 
     }

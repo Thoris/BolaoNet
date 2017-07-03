@@ -139,7 +139,7 @@ namespace BolaoNet.MVC.Controllers
 
             if (users == null || users.Count == 0)
             {
-                ModelState.AddModelError("", "Usuário com o email de requisição não encontrado.");
+                ModelState.AddModelError("", "Usuário e/ou email não encontrado(s).");
                 return View();
             }
 
@@ -166,8 +166,8 @@ namespace BolaoNet.MVC.Controllers
             {
                 return View();
             }
-
-            if (string.Compare (model.Email, model.ConfirmacaoEmail) != 0)
+            
+            if (string.Compare (model.Email, model.ConfirmacaoEmail, true) != 0)
             {
                 ModelState.AddModelError("", "Confirmação de email inválida.");
                 return View();
@@ -182,8 +182,7 @@ namespace BolaoNet.MVC.Controllers
                 ModelState.AddModelError("", "É necessário concordar com os termos para prosseguir.");
                 return View();
             }
-
-
+            
             Domain.Entities.Users.User data = Mapper.Map<ViewModels.Account.RegistrationUserViewModel, Domain.Entities.Users.User>(model);
 
             ValidationResult result = _userApp.RegisterUser(data);
@@ -224,9 +223,7 @@ namespace BolaoNet.MVC.Controllers
 
             Domain.Entities.Users.User data = Mapper.Map<ViewModels.Account.ActivationCodeViewModel, Domain.Entities.Users.User>(model);
 
-
             ValidationResult result = _userApp.ApproveUser(data, model.ActivateKey);
-
 
             if (!result.IsValid)
             {
@@ -236,9 +233,7 @@ namespace BolaoNet.MVC.Controllers
 
             Domain.Entities.Users.User user = _userApp.Load (data);
 
-
             _notificationApp.NotifyWelcome(user);
-
             
             return RedirectToAction("ActivateCodeSucessful", model);
         }

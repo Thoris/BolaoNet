@@ -48,8 +48,17 @@ namespace BolaoNet.Application.Boloes
             return Service.GetBoloesDisponiveis();
         }
 
-        #endregion
+        public IList<Domain.Entities.ValueObjects.UserBoloesVO> GetBoloesUsuario(Domain.Entities.Users.User user)
+        {
+            return Service.GetBoloesUsuario(user);
+        }
 
+        public IList<Domain.Entities.ValueObjects.UserSaldoBolaoVO> GetBoloesSaldoUsuario(Domain.Entities.Users.User user)
+        {
+            return Service.GetBoloesSaldoUsuario(user);
+        }
+
+        #endregion
 
     }
 }

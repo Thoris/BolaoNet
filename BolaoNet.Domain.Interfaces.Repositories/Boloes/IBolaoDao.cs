@@ -14,5 +14,9 @@ namespace BolaoNet.Domain.Interfaces.Repositories.Boloes
 
         IList<Entities.Boloes.Bolao> GetBoloesDisponiveis(string currentUserName, DateTime currentDateTime);
 
+        IList<Entities.ValueObjects.UserBoloesVO> GetBoloesUsuario(string currentUserName, DateTime currentDateTime, Entities.Users.User user);
+
+        IList<Entities.ValueObjects.UserSaldoBolaoVO> GetBoloesSaldoUsuario(string currentUserName, DateTime currentDateTime, Entities.Users.User user);
+
     }
 }

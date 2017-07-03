@@ -9,5 +9,6 @@ namespace BolaoNet.Domain.Interfaces.Services.Boloes
     public interface IBolaoMembroGrupoService
         : Base.IGenericService<Entities.Boloes.BolaoMembroGrupo>
     {
+        IList<Entities.ValueObjects.BolaoGrupoComparacaoClassificacaoVO> LoadClassificacao(Entities.Boloes.Bolao bolao, Entities.Users.User user);
     }
 }

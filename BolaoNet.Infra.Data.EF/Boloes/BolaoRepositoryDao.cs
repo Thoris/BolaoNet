@@ -126,9 +126,100 @@ namespace BolaoNet.Infra.Data.EF.Boloes
         {
             return GetAll().ToList<Domain.Entities.Boloes.Bolao>();
         }
+        public IList<Domain.Entities.ValueObjects.UserBoloesVO> GetBoloesUsuario(string currentUserName, DateTime currentDateTime, Domain.Entities.Users.User user)
+        {
+            string command = "exec sp_Users_Load_Boloes " +
+                          "  @CurrentLogin " +
+                          ", @CurrentDateTime" +
+                          ", @UserName" +
+                          ", @ErrorNumber out" +
+                          ", @ErrorDescription out";
+
+            var errorNumber = new SqlParameter
+            {
+                ParameterName = "@ErrorNumber",
+                SqlDbType = System.Data.SqlDbType.Int,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var errorDescription = new SqlParameter
+            {
+                ParameterName = "@ErrorDescription",
+                SqlDbType = System.Data.SqlDbType.VarChar,
+                Size = 255,
+                Direction = System.Data.ParameterDirection.Output
+            };
+
+            IList < Domain.Entities.ValueObjects.UserBoloesVO > res =
+                base.DataContext.Database.SqlQuery<Domain.Entities.ValueObjects.UserBoloesVO>(command,
+                                                    new SqlParameter("CurrentLogin", currentUserName),
+                                                    new SqlParameter("CurrentDateTime", currentDateTime),
+                                                    new SqlParameter("UserName", user.UserName),
+                                                    errorNumber,
+                                                    errorDescription
+                                                ).ToList();
+
+            int error = 0;
+            try
+            {
+                error = (int)errorNumber.Value;
+            }
+            catch
+            {
+
+            }
+
+            return res;
+
+        }
+        
+        public IList<Domain.Entities.ValueObjects.UserSaldoBolaoVO> GetBoloesSaldoUsuario(string currentUserName, DateTime currentDateTime, Domain.Entities.Users.User user)
+        {
+            string command = "exec sp_Users_Load_Pagamentos " +
+                         "  @CurrentLogin " +
+                         ", @CurrentDateTime" +
+                         ", @UserName" +
+                         ", @ErrorNumber out" +
+                         ", @ErrorDescription out";
+
+            var errorNumber = new SqlParameter
+            {
+                ParameterName = "@ErrorNumber",
+                SqlDbType = System.Data.SqlDbType.Int,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var errorDescription = new SqlParameter
+            {
+                ParameterName = "@ErrorDescription",
+                SqlDbType = System.Data.SqlDbType.VarChar,
+                Size = 255,
+                Direction = System.Data.ParameterDirection.Output
+            };
+
+            IList<Domain.Entities.ValueObjects.UserSaldoBolaoVO> res =
+                base.DataContext.Database.SqlQuery<Domain.Entities.ValueObjects.UserSaldoBolaoVO>(command,
+                                                    new SqlParameter("CurrentLogin", currentUserName),
+                                                    new SqlParameter("CurrentDateTime", currentDateTime),
+                                                    new SqlParameter("UserName", user.UserName),
+                                                    errorNumber,
+                                                    errorDescription
+                                                ).ToList();
+
+            int error = 0;
+            try
+            {
+                error = (int)errorNumber.Value;
+            }
+            catch
+            {
+
+            }
+
+            return res;
+        }
 
         #endregion
-
-
+        
     }
 }

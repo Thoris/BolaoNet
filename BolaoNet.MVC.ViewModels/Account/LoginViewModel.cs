@@ -23,6 +23,7 @@ namespace BolaoNet.MVC.ViewModels.Account
         [DisplayName("Senha")]
         public string Password { get; set; }
         
+        [DisplayName("Lembrar-me")]
         public bool RememberMe { get; set; }
         
         #endregion

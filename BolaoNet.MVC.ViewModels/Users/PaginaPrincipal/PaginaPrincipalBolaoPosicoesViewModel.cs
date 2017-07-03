@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,11 +11,20 @@ namespace BolaoNet.MVC.ViewModels.Users.PaginaPrincipal
     {
         #region Properties
 
+        [DisplayName("Bolão")]
         public string NomeBolao { get; set; }
-        public string Cobertura { get; set; }
-        public int Posicao { get; set; }
-        public int TotalApostasRestantes { get; set; }
-        public int TotalMembros { get; set; }
+
+        [DisplayName("Cobertura")]
+        public string NomeCampeonato { get; set; }
+
+        [DisplayName("Membros")]
+        public int Membros { get; set; }
+
+        [DisplayName("Posição")]
+        public int Position { get; set; }
+
+        [DisplayName("Restantes")]
+        public int ApostasRestantes { get; set; }
 
         #endregion
     }

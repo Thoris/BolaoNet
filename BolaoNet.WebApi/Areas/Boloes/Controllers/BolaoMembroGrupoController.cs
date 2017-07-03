@@ -41,5 +41,14 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
 
         #endregion
+
+        #region IBolaoMembroGrupoService members
+
+        public IList<Domain.Entities.ValueObjects.BolaoGrupoComparacaoClassificacaoVO> LoadClassificacao(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
+        {
+            return Service.LoadClassificacao(bolao, user);
+        }
+
+        #endregion
     }
 }

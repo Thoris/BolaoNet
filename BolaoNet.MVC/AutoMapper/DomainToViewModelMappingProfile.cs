@@ -58,7 +58,15 @@ namespace BolaoNet.MVC.AutoMapper
 
             Mapper.CreateMap<ViewModels.Pagamentos.PagamentoViewModel, Domain.Entities.Boloes.Pagamento>();
 
+            Mapper.CreateMap<ViewModels.Users.PaginaPrincipal.PaginaPrincipalBolaoPosicoesViewModel, Domain.Entities.ValueObjects.UserBoloesVO>();
+            Mapper.CreateMap<ViewModels.Users.PaginaPrincipal.PaginaPrincipalBolaoSaldoDevedorViewModel, Domain.Entities.ValueObjects.UserSaldoBolaoVO>();
 
+
+            Mapper.CreateMap<ViewModels.Users.PaginaPrincipal.PaginaPrincipalGrupoComparacaoModelView, Domain.Entities.ValueObjects.BolaoGrupoComparacaoClassificacaoVO>();
+
+
+            Mapper.CreateMap<ViewModels.Users.PaginaPrincipal.PaginaPrincipalProximaApostaViewModel, Domain.Entities.ValueObjects.JogoUsuarioVO>();
+            Mapper.CreateMap<ViewModels.Users.PaginaPrincipal.PaginaPrincipalPontosObtidosViewModel, Domain.Entities.ValueObjects.JogoUsuarioVO>();
         }
     }
 }

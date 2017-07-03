@@ -45,5 +45,10 @@ namespace BolaoNet.Domain.Interfaces.Services.Boloes
         IList<Entities.ValueObjects.JogoUsuarioVO> LoadAcertosDificeis(Entities.Boloes.Bolao bolao, int totalMaximoAcertos);
 
         IList<Entities.Campeonatos.Jogo> LoadSemAcertos(Entities.Boloes.Bolao bolao);
+
+        IList<Entities.ValueObjects.JogoUsuarioVO> LoadPontosObtidos(Entities.Users.User user, int totalRetorno);
+
+        IList<Entities.ValueObjects.JogoUsuarioVO> LoadProximosJogosUsuario(Entities.Users.User user, int totalRetorno);
+
     }
 }

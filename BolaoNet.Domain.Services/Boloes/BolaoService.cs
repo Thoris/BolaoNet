@@ -59,8 +59,30 @@ namespace BolaoNet.Domain.Services.Boloes
         {
             return Dao.GetBoloesDisponiveis(base.CurrentUserName, DateTime.Now);
         }
+        public IList<Entities.ValueObjects.UserBoloesVO> GetBoloesUsuario(Entities.Users.User user)
+        {
+            if (user == null)
+                throw new ArgumentException("user");
+            if (string.IsNullOrEmpty(user.UserName))
+                throw new ArgumentException("user.UserName");
+
+            return Dao.GetBoloesUsuario(base.CurrentUserName, DateTime.Now, user);
+        }
+        public IList<Entities.ValueObjects.UserSaldoBolaoVO> GetBoloesSaldoUsuario(Entities.Users.User user)
+        {
+            if (user == null)
+                throw new ArgumentException("user");
+            if (string.IsNullOrEmpty(user.UserName))
+                throw new ArgumentException("user.UserName");
+
+            return Dao.GetBoloesSaldoUsuario(base.CurrentUserName, DateTime.Now, user);
+        }
 
         #endregion
+
+
+
+
 
 
     }

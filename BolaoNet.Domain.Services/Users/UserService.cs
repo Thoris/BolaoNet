@@ -29,6 +29,42 @@ namespace BolaoNet.Domain.Services.Users
 
         #endregion
 
+        #region Methods
+
+        private string ConvertFullName(string fullName)
+        {
+            if (string.IsNullOrEmpty(fullName))
+                return "";
+
+            string res = fullName.Substring (0,1).ToUpper ();
+            bool foundBlank = false;
+            for (int c=1; c < fullName.Length; c++)
+            {
+                if (fullName[c] == ' ')
+                {
+                    foundBlank = true;
+                    res += fullName[c];
+                }
+                else
+                {
+                    if (foundBlank)
+                    {
+                        foundBlank = false;
+                        res += fullName[c].ToString().ToUpper();
+                    }
+                    else
+                    {
+                        res += fullName[c].ToString ().ToLower ();
+                    }
+                }
+            }
+
+            return res;
+            
+        }
+
+        #endregion
+
         #region IUserService members
 
         public Entities.Base.Common.Validation.ValidationResult Login(string userName, string password)
@@ -86,6 +122,10 @@ namespace BolaoNet.Domain.Services.Users
             if (userLoaded != null)
                 return new Entities.Base.Common.Validation.ValidationResult().Add("Usuário já existente.");
 
+
+            user.UserName = user.UserName.ToLower();
+            user.Email = user.Email.ToLower();
+            user.FullName = ConvertFullName(user.FullName);
 
             long total = this.Insert(user);
 
@@ -168,6 +208,9 @@ namespace BolaoNet.Domain.Services.Users
 
             if (userLoaded == null)
                 return new Entities.Base.Common.Validation.ValidationResult().Add("Usuário não encontrado.");
+
+            if (userLoaded.IsApproved)
+                return new Entities.Base.Common.Validation.ValidationResult().Add("Usuário já está aprovado.");
 
             if (string.Compare(userLoaded.ActivateKey, activationCode) != 0)
                 return new Entities.Base.Common.Validation.ValidationResult().Add("Código de ativação inválido.");

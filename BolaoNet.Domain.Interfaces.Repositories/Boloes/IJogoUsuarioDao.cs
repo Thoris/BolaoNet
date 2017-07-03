@@ -59,5 +59,10 @@ namespace BolaoNet.Domain.Interfaces.Repositories.Boloes
 
         IList<Entities.Campeonatos.Jogo> LoadSemAcertos(string currentUserName, DateTime currentDateTime, Entities.Boloes.Bolao bolao);
 
+
+        IList<Entities.ValueObjects.JogoUsuarioVO> LoadPontosObtidos(string currentUserName, DateTime currentDateTime, Entities.Users.User user, int totalRetorno);
+
+        IList<Entities.ValueObjects.JogoUsuarioVO> LoadProximosJogosUsuario(string currentUserName, DateTime currentDateTime, Entities.Users.User user, int totalRetorno);
+
     }
 }

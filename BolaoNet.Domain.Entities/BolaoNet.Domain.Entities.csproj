@@ -94,8 +94,11 @@
     <Compile Include="ValueObjects\ApostaExtraUsuarioVO.cs" />
     <Compile Include="ValueObjects\ApostasAutomaticasFilterVO.cs" />
     <Compile Include="ValueObjects\BolaoClassificacaoVO.cs" />
+    <Compile Include="ValueObjects\BolaoGrupoComparacaoClassificacaoVO.cs" />
     <Compile Include="ValueObjects\FilterJogosVO.cs" />
     <Compile Include="ValueObjects\JogoUsuarioVO.cs" />
+    <Compile Include="ValueObjects\UserBoloesVO.cs" />
+    <Compile Include="ValueObjects\UserSaldoBolaoVO.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

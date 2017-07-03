@@ -115,7 +115,7 @@ namespace BolaoNet.MVC.Resources.Views.Account {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lembrar.
+        ///   Looks up a localized string similar to Lembrar-me.
         /// </summary>
         public static string RememberMe {
             get {
@@ -151,7 +151,7 @@ namespace BolaoNet.MVC.Resources.Views.Account {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bem vindo ao novo sistema BolaoNet.
+        ///   Looks up a localized string similar to Bem vindo ao sistema BolaoNet.
         /// </summary>
         public static string Welcome {
             get {

@@ -58,8 +58,17 @@ namespace BolaoNet.WebApi.Integration.Boloes
             return null;
         }
 
-        #endregion
+        public IList<Domain.Entities.ValueObjects.UserBoloesVO> GetBoloesUsuario(Domain.Entities.Users.User user)
+        {
+            throw new NotImplementedException();
+        }
 
+        public IList<Domain.Entities.ValueObjects.UserSaldoBolaoVO> GetBoloesSaldoUsuario(Domain.Entities.Users.User user)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
 
     }
 }

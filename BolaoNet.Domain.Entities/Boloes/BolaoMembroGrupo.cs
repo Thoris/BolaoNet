@@ -25,8 +25,8 @@ namespace BolaoNet.Domain.Entities.Boloes
         [ForeignKey("NomeBolao, UserName")]
         public virtual BolaoMembro BolaoMembro { get; set; }
 
-        public string IncluidoBy { get; set; }
-        [ForeignKey("IncluidoBy")]
+        public string UserNameSelecionado { get; set; }
+        [ForeignKey("UserNameSelecionado")]
         public Users.User UserInclusao { get; set; }
 
 

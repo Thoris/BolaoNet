@@ -5,58 +5,50 @@
     <div id="wrapper">
         <div class="middle-box text-center loginscreen animated fadeInDown">
             <div>
-                @*<div class="row">
-                    <div class="row">*@
-                @*<div class="col-md-4 col-md-offset-4">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <div class="text-center">*@
-                                <h3><i class="fa fa-exclamation fa-4x"></i></h3>
-                                <h2 class="text-center">Ativação de código</h2>
-                                <p>Entre com o email e código para ativação do usuário.</p>
-                                <div class="panel-body">
+                <div>
+                    <h1 class="logo-name"><img src="~/Content/img/logo.png" alt="BolaoNet"></h1>
+                </div>
 
-                                    @using (Html.BeginForm("ActivateCode", "Account", FormMethod.Post, new { }))
-                                    {
-                                        @Html.AntiForgeryToken()
+                <h3><i class="fa fa-exclamation fa-4x"></i></h3>
+                <h2 class="text-center">Ativação de código</h2>
+                <p>Entre com o email e código para ativação do usuário.</p>
+                <div class="panel-body">
+                    @using (Html.BeginForm("ActivateCode", "Account", FormMethod.Post, new { }))
+                    {
+                        @Html.AntiForgeryToken()
 
-                                        <fieldset>
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user color-blue"></i></span>
-                                                    @Html.TextBoxFor(a => a.UserName, new { @class = "form-control", @placeholder = "Usuário" })
-                                                    @Html.ValidationMessageFor(m => m.UserName)
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <div class="input-group">
-                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-credit-card color-blue"></i></span>
-                                                    @Html.TextBoxFor(a => a.ActivateKey, new { @class = "form-control", @placeholder = "Código de ativação" })
-                                                    @Html.ValidationMessageFor(m => m.ActivateKey)
-                                                </div>
-                                            </div>
-
-                                            <div class="login-erro">
-                                                @Html.ValidationSummary(true)
-                                            </div>
-
-                                            <div class="form-group">
-                                                <input class="btn btn-lg btn-primary btn-block" value="Ativar código" type="submit">
-                                            </div>
-                                        </fieldset>
-                                    }
-                                @*</div>
+                        <fieldset>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user color-blue"></i></span>
+                                    @Html.TextBoxFor(a => a.UserName, new { @class = "form-control", @placeholder = "Usuário" })
+                                    @Html.ValidationMessageFor(m => m.UserName)
+                                </div>
                             </div>
-                        </div>
-                    </div>*@
+
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-credit-card color-blue"></i></span>
+                                    @Html.TextBoxFor(a => a.ActivateKey, new { @class = "form-control", @placeholder = "Código de ativação" })
+                                    @Html.ValidationMessageFor(m => m.ActivateKey)
+                                </div>
+                            </div>
+
+                            <div class="login-erro">
+                                @Html.ValidationSummary(true)
+                            </div>
+
+                            <div class="form-group">
+                                <input class="btn btn-lg btn-primary btn-block" value="Ativar código" type="submit">
+                            </div>
+                        </fieldset>
+                    }
                 </div>
             </div>
         </div>
-    @*</div>
-</div>*@
     </div>
 </div>
+
 
 @section scripts {
     @Scripts.Render("~/bundles/jqueryval")

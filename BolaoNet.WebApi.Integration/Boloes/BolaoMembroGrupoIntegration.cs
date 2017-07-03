@@ -32,5 +32,14 @@ namespace BolaoNet.WebApi.Integration.Boloes
         }
 
         #endregion
+
+        #region IBolaoMembroGrupoService members
+
+        public IList<Domain.Entities.ValueObjects.BolaoGrupoComparacaoClassificacaoVO> LoadClassificacao(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

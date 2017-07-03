@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.MVC.ViewModels.Users.PaginaPrincipal
 {
-    public class PaginaPrincipalProximaApostaViewModel
+    public class PaginaPrincipalProximaApostaViewModel : PaginaPrincipalPontosObtidosViewModel
     {
     }
 }

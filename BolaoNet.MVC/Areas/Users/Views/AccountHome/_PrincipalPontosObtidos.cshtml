@@ -1,0 +1,44 @@
+﻿@model IList<BolaoNet.MVC.ViewModels.Users.PaginaPrincipal.PaginaPrincipalPontosObtidosViewModel>
+
+<div class="ibox float-e-margins">
+    <div class="ibox-title">
+        <h3>Pontos Obtidos</h3>
+    </div>
+    <div class="ibox-content" style="display: block;">
+        <div class="row">
+            @if(Model.Count > 0)
+            { 
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <td>@Html.DisplayNameFor( x => x[0].DataJogo)</td>
+                        <td>@Html.DisplayNameFor( x => x[0].NomeEstadio)</td>
+                        <td>@Html.DisplayNameFor(x => x[0].NomeTime1)</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>@Html.DisplayNameFor(x => x[0].NomeTime2)</td>
+                        <td>@Html.DisplayNameFor(x => x[0].Pontos)</td>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @for (int c = 0; c < Model.Count; c++)
+                    {
+                        <tr>
+                            <td>@Model[c].DataJogo</td>
+                            <td>@Model[c].NomeEstadio</td>
+                            <td>@Model[c].NomeTime1</td>
+                            <td></td>
+                            <td>x</td>
+                            <td></td>
+                            <td>@Model[c].NomeTime2</td>
+                            <td>@Model[c].Pontos</td>
+                        </tr>
+                    }                    
+                </tbody>
+            </table>
+            }
+        </div>
+    </div>
+</div>

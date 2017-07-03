@@ -334,6 +334,11 @@
     <Content Include="Areas\Pagamentos\Views\Gerenciamento\Edit.cshtml" />
     <Content Include="Areas\Users\Views\BolaoClassificacaoGrupoGerenciamento\Index.cshtml" />
     <Content Include="Areas\Users\Views\AccountHome\Index.cshtml" />
+    <Content Include="Areas\Users\Views\AccountHome\_PrincipalMeusBoloes.cshtml" />
+    <Content Include="Areas\Users\Views\AccountHome\_PrincipalSaldoBoloes.cshtml" />
+    <Content Include="Areas\Users\Views\AccountHome\_PrincipalGrupoBolao.cshtml" />
+    <Content Include="Areas\Users\Views\AccountHome\_PrincipalPontosObtidos.cshtml" />
+    <Content Include="Areas\Users\Views\AccountHome\_PrincipalProximoJogos.cshtml" />
     <None Include="Content\js\jquery-1.10.2.intellisense.js" />
     <Content Include="Content\js\jquery-1.10.2.js" />
     <Content Include="Content\js\jquery-1.10.2.min.js" />
@@ -1047,6 +1052,7 @@
     <Content Include="Views\Account\ActivateCodeSucessful.cshtml" />
     <Content Include="Views\Account\ForgotPasswordSent.cshtml" />
     <Content Include="Views\Shared\Fragments\_Profile.cshtml" />
+    <Content Include="Views\Account\_RegistrationRegras.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

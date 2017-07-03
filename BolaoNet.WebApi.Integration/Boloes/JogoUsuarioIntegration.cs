@@ -95,6 +95,16 @@ namespace BolaoNet.WebApi.Integration.Boloes
             throw new NotImplementedException();
         }
 
+        public IList<Domain.Entities.ValueObjects.JogoUsuarioVO> LoadPontosObtidos(Domain.Entities.Users.User user, int totalRetorno)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<Domain.Entities.ValueObjects.JogoUsuarioVO> LoadProximosJogosUsuario(Domain.Entities.Users.User user, int totalRetorno)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
 
