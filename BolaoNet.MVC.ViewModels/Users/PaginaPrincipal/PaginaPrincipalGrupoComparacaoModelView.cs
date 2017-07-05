@@ -9,6 +9,7 @@ namespace BolaoNet.MVC.ViewModels.Users.PaginaPrincipal
 {
     public class PaginaPrincipalGrupoComparacaoModelView
     {
+
         #region Properties
 
         //public int PosicaoComparacao { get; set; }

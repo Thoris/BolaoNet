@@ -10,7 +10,17 @@
 
         <div class="col-ld-12">
 
-            <div class="col-xs-5">
+
+            <div class="col-xs-3">
+                 <div class="form-group">
+                    <div class="input-group">
+                        @Html.DropDownListFor(x => x.Filtros.UserName, (SelectList)ViewBag.Membros, new { @class = "form-control input-sm" })
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-3">
                 <div class="form-group">
                     <div class="input-group">
 
@@ -22,7 +32,7 @@
                                new { value = 3 , text = "Último Mês" },
                                new { value = 4 , text = "Próximo mês" },
                                new { value = 5 , text = "Este mês" },
-                               new { value = 6 , text = "Período" },
+                               //new { value = 6 , text = "Período" },
                                new { value = 7 , text = "Rodada" },
                                new { value = 8 , text = "Time" },
                                new { value = 9 , text = "Fase" },
@@ -33,7 +43,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-5">
+            <div class="col-xs-4">
                 <div class="form-group">
 
                     <div class="input-group" id="filtroRodadas"
@@ -62,10 +72,10 @@
 
                     <div class="input-group" id="filtroPeriodo"
                          @if (Model.Filtros.FilterSelected != (int)BolaoNet.MVC.ViewModels.Bolao.FilterJogosViewModel.FilterJogoType.Periodo) { @Html.Raw("style=\"display: none;\"") ; }>
-                        @Html.EditorFor(x => x.Filtros.DataInicial, new { @class = "form-control input-sm" })
+                        @Html.EditorFor(x => x.Filtros.DataInicial,new { htmlAttributes = new { @class = "form-control" } })
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 
-                        @Html.EditorFor(x => x.Filtros.DataFinal, new { @class = "form-control input-sm" })
+                        @Html.EditorFor(x => x.Filtros.DataFinal, new { htmlAttributes = new { @class = "form-control" } })
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
 
@@ -107,9 +117,11 @@
 
     if (Model.Apostas != null && Model.Apostas.Count > 0)
     {
+
         <div class="row">
-            <div class="col-sm-offset-5 col-sm-2 text-center">
-                @*<input type="submit" class="btn btn-primary btn-md active center-block " value="Salvar" />*@
+
+            <div class="col-sm-offset-10 col-sm-2">
+                <input type="button" class="btn btn-default btn-sm center-block " value="Download" onclick="location.href='@Url.Action("DownloadApostas")'" />
             </div>
         </div>
     }

@@ -890,114 +890,112 @@ namespace BolaoNet.Infra.Data.EF.Boloes
                 rodadaFilter = (int)filter.Rodada;
 
 
-            #region Comments
+            var q =
+                from j in base.DataContext.Jogos
+
+                join f in base.DataContext.CampeonatosFases
+                  on new { c1 = j.NomeCampeonato, c2 = j.NomeFase }
+                  equals new { c1 = f.NomeCampeonato, c2 = f.Nome }
+
+                join u in base.DataContext.JogosUsuarios
+                        on new { c1 = j.NomeCampeonato, c2 = j.JogoId, c3 = user.UserName, c4 = bolao.Nome }
+                    equals new { c1 = u.NomeCampeonato, c2 = u.JogoId, c3 = u.UserName, c4 = u.NomeBolao }
+                into ju
+                from p in ju.DefaultIfEmpty()
+                where string.Compare(j.NomeCampeonato, bolao.NomeCampeonato, true) == 0 &&
+                (DateTime.Compare(j.DataJogo, dataInicioFilter) >= 0 || filter.DataInicial == null) &&
+                (DateTime.Compare(j.DataJogo, dataFimFilter) <= 0 || filter.DataFinal == null) &&
+                (j.Rodada == rodadaFilter || filter.Rodada == null) &&
+                (string.Compare(j.NomeTime1, filter.NomeTime, true) == 0 || string.Compare(j.NomeTime2, filter.NomeTime, true) == 0 || filter.NomeTime == null) &&
+                (string.Compare(j.NomeGrupo, filter.NomeGrupo, true) == 0 || filter.NomeGrupo == null) &&
+                (string.Compare(j.NomeFase, filter.NomeFase, true) == 0 || filter.NomeFase == null)
+                orderby f.Ordem, j.NomeGrupo, j.Rodada
+                select new Domain.Entities.ValueObjects.JogoUsuarioVO()
+                {
+                    NomeCampeonato = j.NomeCampeonato,
+                    JogoId = j.JogoId,
+                    NomeTime1 = j.NomeTime1,
+                    GolsTime1 = j.GolsTime1,
+                    PenaltisTime1 = j.PenaltisTime1,
+                    NomeTime2 = j.NomeTime2,
+                    GolsTime2 = j.GolsTime2,
+                    PenaltisTime2 = j.PenaltisTime2,
+                    NomeEstadio = j.NomeEstadio,
+                    DataJogo = j.DataJogo,
+                    Rodada = j.Rodada,
+                    PartidaValida = j.PartidaValida,
+                    DataValidacao = j.DataValidacao,
+                    NomeFase = j.NomeFase,
+                    NomeGrupo = j.NomeGrupo,
+                    IsValido = j.IsValido,
+                    ValidadoBy = j.ValidadoBy,
+
+                    UserName = p.UserName,
+
+                    DataAposta = p.DataAposta,
+
+                    Automatico = p.Automatico,
+
+                    ApostaTime1 = p.ApostaTime1,
+                    ApostaTime2 = p.ApostaTime2,
+                    ApostaPenaltis1 = p.ApostaPenaltis1,
+                    ApostaPenaltis2 = p.ApostaPenaltis2,
+
+                    Valido = p.Valido,
+
+                    NomeTimeResult1 = p.NomeTimeResult1,
+                    NomeTimeResult2 = p.NomeTimeResult2,
+
+                    Pontos = p.Pontos,
+
+                    IsEmpate = p.IsEmpate,
+                    IsDerrota = p.IsDerrota,
+                    IsVitoria = p.IsVitoria,
+                    IsGolsGanhador = p.IsGolsGanhador,
+                    IsGolsPerdedor = p.IsGolsPerdedor,
+                    IsResultTime1 = p.IsResultTime1,
+                    IsResultTime2 = p.IsResultTime2,
+                    IsVDE = p.IsVDE,
+                    IsErro = p.IsErro,
+                    IsGolsGanhadorFora = p.IsGolsGanhadorFora,
+                    IsGolsGanhadorDentro = p.IsGolsGanhadorDentro,
+                    IsGolsPerdedorFora = p.IsGolsPerdedorFora,
+                    IsGolsPerdedorDentro = p.IsGolsPerdedorDentro,
+                    IsGolsEmpate = p.IsGolsEmpate,
+                    IsGolsTime1 = p.IsGolsTime1,
+                    IsGolsTime2 = p.IsGolsTime2,
+                    IsPlacarCheio = p.IsPlacarCheio,
+                    IsMultiploTime = p.IsMultiploTime,
+                    MultiploTime = p.MultiploTime,
+
+                    Ganhador = p.Ganhador,
+
+
+                };
+
+            //#endregion
 
             //var q =
-            //    from j in base.DataContext.Jogos
-                
-            //    join f in base.DataContext.CampeonatosFases
-            //      on new { c1 = j.NomeCampeonato, c2 = j.NomeFase }
-            //      equals new { c1 = f.NomeCampeonato, c2 = f.Nome}
+            //  from j in base.DataContext.Jogos
 
-            //    join u in base.DataContext.JogosUsuarios
-            //            on new { c1 = j.NomeCampeonato, c2 = j.JogoId, c3 = user.UserName, c4 = bolao.Nome }
-            //        equals new { c1 = u.NomeCampeonato, c2 = u.JogoId, c3 = u.UserName, c4 = u.NomeBolao }
-            //    into ju
-            //    from p in ju.DefaultIfEmpty()
-            //    where string.Compare(j.NomeCampeonato, bolao.NomeCampeonato, true) == 0 &&
-            //    (DateTime.Compare(j.DataJogo, dataInicioFilter) >= 0 || filter.DataInicial == null) &&
-            //    (DateTime.Compare(j.DataJogo, dataFimFilter) <= 0 || filter.DataFinal == null) &&
-            //    (j.Rodada == rodadaFilter || filter.Rodada == null) &&
-            //    (string.Compare (j.NomeTime1, filter.NomeTime, true) == 0 || string.Compare (j.NomeTime2, filter.NomeTime, true) == 0 || filter.NomeTime == null ) &&
-            //    (string.Compare (j.NomeGrupo, filter.NomeGrupo, true) == 0 || filter.NomeGrupo == null) &&
-            //    (string.Compare (j.NomeFase, filter.NomeFase, true) == 0 || filter.NomeFase == null)
-            //    orderby f.Ordem, j.NomeGrupo, j.Rodada
-            //    select new Domain.Entities.ValueObjects.JogoUsuarioVO()
-            //    {
-            //        NomeCampeonato = j.NomeCampeonato,
-            //        JogoId = j.JogoId,
-            //        NomeTime1 = j.NomeTime1,
-            //        GolsTime1 = j.GolsTime1, 
-            //        PenaltisTime1 = j.PenaltisTime1,     
-            //        NomeTime2 = j.NomeTime2,
-            //        GolsTime2 = j.GolsTime2,
-            //        PenaltisTime2 = j.PenaltisTime2,
-            //        NomeEstadio = j.NomeEstadio,
-            //        DataJogo = j.DataJogo,
-            //        Rodada = j.Rodada,
-            //        PartidaValida = j.PartidaValida,
-            //        DataValidacao = j.DataValidacao,
-            //        NomeFase = j.NomeFase,
-            //        NomeGrupo = j.NomeGrupo,
-            //        IsValido = j.IsValido,
-            //        ValidadoBy = j.ValidadoBy,
+            //  join f in base.DataContext.CampeonatosFases
+            //    on new { c1 = j.NomeCampeonato, c2 = j.NomeFase }
+            //    equals new { c1 = f.NomeCampeonato, c2 = f.Nome }
 
-            //        UserName = p.UserName,
-
-            //        DataAposta = p.DataAposta,
-
-            //        Automatico = p.Automatico,
-
-            //        ApostaTime1 = p.ApostaTime1,
-            //        ApostaTime2 = p.ApostaTime2,
-            //        ApostaPenaltis1 = p.ApostaPenaltis1,
-            //        ApostaPenaltis2 = p.ApostaPenaltis2,
-
-            //        Valido = p.Valido,
-
-            //        NomeTimeResult1 = p.NomeTimeResult1,
-            //        NomeTimeResult2 = p.NomeTimeResult2,
-
-            //        Pontos = p.Pontos,
-
-            //        IsEmpate = p.IsEmpate,
-            //        IsDerrota = p.IsDerrota,
-            //        IsVitoria = p.IsVitoria ,
-            //        IsGolsGanhador = p.IsGolsGanhador,
-            //        IsGolsPerdedor = p.IsGolsPerdedor,
-            //        IsResultTime1 = p.IsResultTime1,
-            //        IsResultTime2 = p.IsResultTime2,
-            //        IsVDE = p.IsVDE,
-            //        IsErro = p.IsErro,
-            //        IsGolsGanhadorFora = p.IsGolsGanhadorFora,
-            //        IsGolsGanhadorDentro = p.IsGolsGanhadorDentro,
-            //        IsGolsPerdedorFora = p.IsGolsPerdedorFora,
-            //        IsGolsPerdedorDentro = p.IsGolsPerdedorDentro,
-            //        IsGolsEmpate = p.IsGolsEmpate,
-            //        IsGolsTime1 = p.IsGolsTime1,
-            //        IsGolsTime2 = p.IsGolsTime2,
-            //        IsPlacarCheio = p.IsPlacarCheio,
-            //        IsMultiploTime = p.IsMultiploTime,
-            //        MultiploTime = p.MultiploTime,
-
-            //        Ganhador = p.Ganhador, 
-
-
-            //    };
-
-            #endregion
-
-            var q =
-              from j in base.DataContext.Jogos
-
-              join f in base.DataContext.CampeonatosFases
-                on new { c1 = j.NomeCampeonato, c2 = j.NomeFase }
-                equals new { c1 = f.NomeCampeonato, c2 = f.Nome }
-
-              join u in base.DataContext.JogosUsuarios
-                      on new { c1 = j.NomeCampeonato, c2 = j.JogoId, c3 = user.UserName, c4 = bolao.Nome }
-                  equals new { c1 = u.NomeCampeonato, c2 = u.JogoId, c3 = u.UserName, c4 = u.NomeBolao }
-              into ju
-              from p in ju.DefaultIfEmpty()
-              where string.Compare(j.NomeCampeonato, bolao.NomeCampeonato, true) == 0 &&
-              (DateTime.Compare(j.DataJogo, dataInicioFilter) >= 0 || filter.DataInicial == null) &&
-              (DateTime.Compare(j.DataJogo, dataFimFilter) <= 0 || filter.DataFinal == null) &&
-              (j.Rodada == rodadaFilter || filter.Rodada == null) &&
-              (string.Compare(j.NomeTime1, filter.NomeTime, true) == 0 || string.Compare(j.NomeTime2, filter.NomeTime, true) == 0 || filter.NomeTime == null) &&
-              (string.Compare(j.NomeGrupo, filter.NomeGrupo, true) == 0 || filter.NomeGrupo == null) &&
-              (string.Compare(j.NomeFase, filter.NomeFase, true) == 0 || filter.NomeFase == null)
-              orderby f.Ordem, j.NomeGrupo, j.Rodada
-              select Convert(j, p);
+            //  join u in base.DataContext.JogosUsuarios
+            //          on new { c1 = j.NomeCampeonato, c2 = j.JogoId, c3 = user.UserName, c4 = bolao.Nome }
+            //      equals new { c1 = u.NomeCampeonato, c2 = u.JogoId, c3 = u.UserName, c4 = u.NomeBolao }
+            //  into ju
+            //  from p in ju.DefaultIfEmpty()
+            //  where string.Compare(j.NomeCampeonato, bolao.NomeCampeonato, true) == 0 &&
+            //  (DateTime.Compare(j.DataJogo, dataInicioFilter) >= 0 || filter.DataInicial == null) &&
+            //  (DateTime.Compare(j.DataJogo, dataFimFilter) <= 0 || filter.DataFinal == null) &&
+            //  (j.Rodada == rodadaFilter || filter.Rodada == null) &&
+            //  (string.Compare(j.NomeTime1, filter.NomeTime, true) == 0 || string.Compare(j.NomeTime2, filter.NomeTime, true) == 0 || filter.NomeTime == null) &&
+            //  (string.Compare(j.NomeGrupo, filter.NomeGrupo, true) == 0 || filter.NomeGrupo == null) &&
+            //  (string.Compare(j.NomeFase, filter.NomeFase, true) == 0 || filter.NomeFase == null)
+            //  orderby f.Ordem, j.NomeGrupo, j.Rodada
+            //  select Convert(j, p);
 
             return q.ToList<Domain.Entities.ValueObjects.JogoUsuarioVO>();
         }

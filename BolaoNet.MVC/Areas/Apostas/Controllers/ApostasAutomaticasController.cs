@@ -35,6 +35,7 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
 
         #region Actions
 
+        [HttpGet]
         public ActionResult Index()
         {
             ViewModels.Apostas.ApostasAutomaticasViewModel model = new ViewModels.Apostas.ApostasAutomaticasViewModel();
@@ -43,6 +44,7 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
 
             return View(model);
         }
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Salvar(ViewModels.Apostas.ApostasAutomaticasViewModel model)

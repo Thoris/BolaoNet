@@ -30,6 +30,7 @@ namespace BolaoNet.MVC.ViewModels.Bolao
 
         #region Properties
 
+        public string UserName { get; set; }
         public int FilterSelected { get; set; }
         public string NomeGrupo { get; set; }
         public string NomeFase { get; set; }

@@ -77,10 +77,10 @@
                      {
                           @Html.Raw("style=\"display: none;\""); 
                      }  >
-                    @Html.EditorFor(x => x.Filtros.DataInicial, new { @class = "form-control input-sm" })
+                    @Html.EditorFor(x => x.Filtros.DataInicial, new { htmlAttributes = new { @class = "form-control" } })
                     <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
 
-                    @Html.EditorFor(x => x.Filtros.DataFinal, new { @class = "form-control input-sm" })
+                    @Html.EditorFor(x => x.Filtros.DataFinal, new { htmlAttributes = new { @class = "form-control" } })
                     <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                 </div>
 
@@ -91,7 +91,8 @@
             <div class="form-group">
                 <input type="submit" value="Filtrar" class="btn btn-default" />
             </div>
-        </div>        
+        </div>      
+  
         
     </div>
 
@@ -124,9 +125,14 @@
     {
         <div class="row">
             <div class="col-sm-offset-5 col-sm-2 text-center">
-                <input type="submit" class="btn btn-primary btn-md active center-block " value="Salvar" />            
+                <input type="submit" class="btn btn-primary btn-lg center-block " value="Salvar" />            
             </div>    
+
+            <div class="col-sm-offset-3 col-sm-2">                
+                <input type="button" class="btn btn-default btn-sm center-block " value="Download" onclick="location.href='@Url.Action("DownloadApostas")'" />
+            </div>
         </div>
+
     }
 }
 

@@ -54,12 +54,14 @@
 
                                 <div class="form-group col-md-4 col-sm-4">
                                     @Html.LabelFor(a => a.DataInicial)
-                                    @Html.TextBoxFor(a => a.DataInicial, new { @class = "form-control input-sm", @placeholder = "Data Inicial" })
+                                    @*@Html.EditorFor(a => a.DataInicial, new { @class = "form-control input-sm", @placeholder = "Data Inicial" })*@
+                                    @Html.EditorFor(a => a.DataInicial, new { htmlAttributes = new { @class = "form-control  input-sm" }, @placeholder = "Data Inicial" })
+
                                     @Html.ValidationMessageFor(m => m.DataInicial)
                                 </div>
                                 <div class="form-group col-md-4 col-sm-4">
                                     @Html.LabelFor(a => a.DataFinal)
-                                    @Html.TextBoxFor(a => a.DataFinal, new { @class = "form-control input-sm", @placeholder = "Data Final" })
+                                    @Html.EditorFor(a => a.DataFinal, new { htmlAttributes = new { @class = "form-control  input-sm" }, @placeholder = "Data Final" })
                                     @Html.ValidationMessageFor(m => m.DataFinal)
                                 </div>
 
@@ -113,12 +115,12 @@
 
                                 <div class="form-group col-md-4 col-sm-4">
                                     @Html.LabelFor(a => a.ApostaTimeCasa)
-                                    @Html.TextBoxFor(a => a.ApostaTimeCasa, new { @class = "form-control input-sm" })
+                                    @Html.EditorFor(a => a.ApostaTimeCasa, new { @class = "form-control input-sm" })
                                     @Html.ValidationMessageFor(m => m.ApostaTimeCasa)
                                 </div>
                                 <div class="form-group col-md-4 col-sm-4">
                                     @Html.LabelFor(a => a.ApostaTimeFora)
-                                    @Html.TextBoxFor(a => a.ApostaTimeFora, new { @class = "form-control input-sm" })
+                                    @Html.EditorFor(a => a.ApostaTimeFora, new { @class = "form-control input-sm" })
                                     @Html.ValidationMessageFor(m => m.ApostaTimeFora)
                                 </div>
 
@@ -137,12 +139,12 @@
 
                                 <div class="form-group col-md-4 col-sm-4">
                                     @Html.LabelFor(a => a.ValorInicial)
-                                    @Html.TextBoxFor(a => a.ValorInicial, new { @class = "form-control input-sm" })
+                                    @Html.EditorFor(a => a.ValorInicial, new { @class = "form-control input-sm" })
                                     @Html.ValidationMessageFor(m => m.ValorInicial)
                                 </div>
                                 <div class="form-group col-md-4 col-sm-4">
                                     @Html.LabelFor(a => a.ValorFinal)
-                                    @Html.TextBoxFor(a => a.ValorFinal, new { @class = "form-control input-sm" })
+                                    @Html.EditorFor(a => a.ValorFinal, new { @class = "form-control input-sm" })
                                     @Html.ValidationMessageFor(m => m.ValorFinal)
                                 </div>
 
@@ -150,9 +152,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
 
 
                 <div class="row">
@@ -235,8 +234,14 @@
     </div>
 }
 
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
 
 <script>
+
+
+
     $(document).ready(function () {
         $("input[name=TipoAposta]").on("change", function () {
 
@@ -244,6 +249,9 @@
 
             $("#rodada").hide();
             $("#periodo").hide();
+
+            //$("#DataInicial").val = null;
+            //$("#DataFinal").val = null;
 
             if (data == 0) { //todos
             }
@@ -260,6 +268,12 @@
 
     $(document).ready(function () {
         $("input[name=ValoresFixos]").on("change", function () {
+
+            
+            //$("input[name=ApostaTimeCasa]").val = null;
+            //$("input[name=ApostaTimeFora]").val = null;
+            //$("input[name=ValorInicial]").val = null;
+            //$("input[name=ValorFinal]").val = null;
 
             var data = $(this).val();
 
@@ -288,3 +302,8 @@
         });
     });
 </script>
+
+
+}
+
+

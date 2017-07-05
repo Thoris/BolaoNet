@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -102,6 +103,11 @@ namespace BolaoNet.MVC.Controllers
 
                 return;
             }
+        }
+        protected ActionResult DownloadStream(Stream stream, string fileType, string fileName)
+        {
+
+            return File(stream, fileType, fileName);
         }
 
         #endregion

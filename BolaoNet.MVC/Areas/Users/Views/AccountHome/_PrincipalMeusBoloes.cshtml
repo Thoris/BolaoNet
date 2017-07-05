@@ -23,11 +23,23 @@
                     @for (int c = 0; c < Model.Count; c++)
                     {
                         <tr>
-                            <td>@Model[c].NomeBolao</td>
-                            <td>@Model[c].NomeCampeonato</td>
+                            <td>
+                                <a href="#">
+                                    @Model[c].NomeBolao
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#">
+                                    @Model[c].NomeCampeonato
+                                </a>
+                            </td>
                             <td>@Model[c].Membros</td>
                             <td>@Model[c].Position</td>
-                            <td>@Model[c].ApostasRestantes</td>
+                            <td>
+                                <a href="#">
+                                    @Model[c].ApostasRestantes
+                                </a>
+                            </td>
                         </tr>
                     }                    
                 </tbody>

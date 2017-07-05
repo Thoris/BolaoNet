@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -338,6 +339,27 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
 
 
             return RedirectToAction("Jogos", "ApostasJogos", model);
+        }
+
+        public ActionResult DownloadApostas()
+        {
+            //new Helpers.Downloader().DownloadRelatorio();
+
+            MemoryStream stream = new MemoryStream();
+            StreamWriter writer = new StreamWriter(stream);
+
+            writer.WriteLine("teste 1");
+            writer.WriteLine("teste 1");
+            writer.WriteLine("teste 1");
+            writer.WriteLine("teste 1");
+            writer.WriteLine("teste 1");
+            writer.WriteLine("teste 1");
+            writer.WriteLine("teste 1");
+
+            writer.Flush();
+            stream.Seek(0, SeekOrigin.Begin);
+
+            return base.DownloadStream(stream, "text/plain", "file.txt");
         }
 
         #endregion

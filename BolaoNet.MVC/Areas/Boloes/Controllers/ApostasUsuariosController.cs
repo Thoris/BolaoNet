@@ -42,6 +42,12 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
             ViewBag.Fases = new SelectList(base.CampeonatoData.NomeFases);
             ViewBag.Grupos = new SelectList(base.CampeonatoData.NomeGrupos);
             ViewBag.Times = new SelectList(base.CampeonatoData.NomeTimes);
+
+
+            IList<Domain.Entities.Boloes.BolaoMembro> membros = _bolaoMembroApp.GetListUsersInBolao(base.SelectedBolao);
+            ViewBag.Membros = new SelectList(membros, "UserName", "UserName", base.UserLogged.UserName);
+        
+        
         }
         private Domain.Entities.ValueObjects.FilterJogosVO GetFilter(ViewModels.Bolao.FilterJogosViewModel filter)
         {
@@ -128,12 +134,12 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
             return res;
 
         }
-        private IList<Domain.Entities.ValueObjects.JogoUsuarioVO> Bind(Domain.Entities.ValueObjects.FilterJogosVO filter)
+        private IList<Domain.Entities.ValueObjects.JogoUsuarioVO> Bind(Domain.Entities.ValueObjects.FilterJogosVO filter, string userName)
         {
             IList<Domain.Entities.ValueObjects.JogoUsuarioVO> list =
                _jogoUsuarioApp.GetJogosUser(
                base.SelectedBolao,
-               base.UserLogged,
+               new Domain.Entities.Users.User (userName),
                filter);
 
             return list;
@@ -155,7 +161,7 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
             SetFilterViewBags();
 
             IList<Domain.Entities.ValueObjects.JogoUsuarioVO> list =
-                Bind(GetFilter(model.Filtros));
+                Bind(GetFilter(model.Filtros), model.Filtros.UserName);
 
 
             IList<ViewModels.Bolao.ApostaJogoUsuarioEntryViewModel> data =
@@ -180,19 +186,22 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
                 new Domain.Entities.ValueObjects.FilterJogosVO ()
                 {
                     Rodada = 1
-                }) ;
-
+                },
+                base.UserLogged.UserName) ;
+            
 
             IList<ViewModels.Bolao.ApostaJogoUsuarioEntryViewModel> data =
                 Mapper.Map<IList<Domain.Entities.ValueObjects.JogoUsuarioVO>,
                 IList<ViewModels.Bolao.ApostaJogoUsuarioEntryViewModel>>
                 (list);
 
-
+            model.Filtros.FilterSelected = (int)ViewModels.Bolao.FilterJogosViewModel.FilterJogoType.Rodada;
+            model.Filtros.Rodada = 1;
             model.Apostas = data;
 
             return View(model);
         }
+
         public ActionResult SelectJogo(string buttonSelected, ViewModels.Bolao.ApostasUsuariosListViewModel model)
         {
             if (string.IsNullOrEmpty(buttonSelected))
