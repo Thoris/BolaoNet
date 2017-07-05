@@ -71,10 +71,6 @@
             }
             else
             {
-                @*<td>
-                    @Html.TextBoxFor(x => x.Apostas[c].SalvarApostaTime1,
-                                new { @maxlenght = "2", style = "width: 40px", @class = "form-control input-sm" })
-                </td>*@
                 <td>@(Model.Apostas[c].GolsTime1)</td>
             }
             @Html.HiddenFor(x => x.Apostas[c].GolsTime1)
@@ -93,20 +89,16 @@
             }
             else
             {
-                <td>@(Model.Apostas[c].GolsTime2)</td>
-                @*<td>
-                    @Html.TextBoxFor(x => x.Apostas[c].SalvarApostaTime2,
-                                new { @maxlenght = "2", style = "width: 40px", @class = "form-control input-sm" })
-                </td>*@
+                <td>@(Model.Apostas[c].GolsTime2)</td>   
             }
 
             <td><img src="@(Model.Apostas[c].ImageTime2)" /></td>
             <td class="text-left">@(Model.Apostas[c].NomeTime2)</td>
 
 
-            <td>@Model.Apostas[c].ApostaTime1</td>
+            <td><strong>@Model.Apostas[c].ApostaTime1</strong></td>
             <td>x</td>
-            <td>@Model.Apostas[c].ApostaTime2</td>
+            <td><strong>@Model.Apostas[c].ApostaTime2</strong></td>
 
             <td>
                 @if (Model.Apostas[c].Automatico == 1)
@@ -115,7 +107,19 @@
                 }
             </td>
             <td>@(Model.Apostas[c].DataAposta)</td>
-            <td>@(Model.Apostas[c].Pontos)</td>
+            <td>
+                
+                @if(Model.Apostas[c].Pontos != 0)
+                { 
+                    <i class="fa fa-plus-circle" 
+                       style="color:@BolaoNet.MVC.Helpers.ColorPontosHelper.GetColorPontos(Model.Apostas[c].Pontos)" 
+                       aria-hidden="true"></i>
+                }
+                <strong style="color:@BolaoNet.MVC.Helpers.ColorPontosHelper.GetColorPontos(Model.Apostas[c].Pontos)">
+                    @(Model.Apostas[c].Pontos)
+                </strong>
+
+            </td>
             <td>
                 <a href="@Url.Action("Index", "ApostasJogo", new { area= "Boloes", id = @Model.Apostas[c].JogoId})">                        
                     <span class="glyphicon glyphicon-list-alt"></span>

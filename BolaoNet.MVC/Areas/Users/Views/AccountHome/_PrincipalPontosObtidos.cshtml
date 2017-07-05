@@ -11,7 +11,7 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <td>@Html.DisplayNameFor(x => x[0].JogoId)</td>
+                        <th>@Html.DisplayNameFor(x => x[0].JogoId)</th>
                         <td>@Html.DisplayNameFor( x => x[0].DataJogo)</td>
                         <td class="text-right">@Html.DisplayNameFor(x => x[0].NomeTime1)</td>
                         <td>@Html.DisplayNameFor(x => x[0].GolsTime1)</td>
@@ -22,7 +22,7 @@
                         <td></td>
                         <td>@Html.DisplayNameFor(x => x[0].ApostaTime2)</td>
                         <td>@Html.DisplayNameFor(x => x[0].Pontos)</td>
-                        @*<td></td>*@
+                        <td></td>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,21 +30,37 @@
                     @for (int c = 0; c < Model.Count; c++)
                     {
                         <tr>
-                            <td>@Model[c].JogoId</td>
+                            <th>@Model[c].JogoId</th>
                             <td>@Model[c].DataJogo.ToString("dd/MM/yy HH:mm")</td>
                             <td class="text-right">@Model[c].NomeTime1 <img src=@Model[c].ImageTime1></td>
                             <td>@Model[c].GolsTime1</td>
                             <td>x</td>
                             <td>@Model[c].GolsTime2</td>
                             <td class="text-left"><img src=@Model[c].ImageTime2> @Model[c].NomeTime2 </td>
-                            <td>@Model[c].ApostaTime1</td>
+                            <td><strong>@Model[c].ApostaTime1</strong></td>
                             <td>x</td>
-                            <td>@Model[c].ApostaTime2</td>
+                            <td><strong>@Model[c].ApostaTime2</strong></td>
+                            
+                            <td class="text-center">
+                                @if(Model[c].Pontos != 0)
+                                { 
+                                    <i class="fa fa-plus-circle" 
+                                        style="color:@BolaoNet.MVC.Helpers.ColorPontosHelper.GetColorPontos(Model[c].Pontos)" 
+                                        aria-hidden="true"></i>
+                                }
+                                <strong style="color:@BolaoNet.MVC.Helpers.ColorPontosHelper.GetColorPontos(Model[c].Pontos)">
+                                    @(Model[c].Pontos)
+                                </strong>
+
+
+                            </td>
                             <td>
-                                <a href="@Url.Action("Index", "ApostasJogo", new { area= "Boloes", id = @Model[c].JogoId})" >@Model[c].Pontos | 
+                                <a href="@Url.Action("Index", "ApostasJogo", new { area= "Boloes", id = @Model[c].JogoId})">
                                     <span class="glyphicon glyphicon-list-alt"></span>
                                 </a>
                             </td>
+
+
                             @*<td>
                                 <a href="@Url.Action("Action", "Controller")" class="btn btn-secondary btn-sm">
                                     <span class="glyphicon glyphicon-plus-sign"></span>

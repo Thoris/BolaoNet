@@ -9,8 +9,11 @@
 
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-6">
                 <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Validação</h5>
+                    </div>
                     <div class="ibox-content" style="display: block;">
                         <div class="text-center m-t-lg">
 
@@ -52,16 +55,16 @@
                                     </tbody>
                                 </table>
 
-                                <div class="col-sm-12">
+                                @*<div class="col-sm-12">
                                     <button class="btn btn-default" type="submit">Simular</button>
-                                </div>
+                                </div>*@
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-12">
+            <div class="col-lg-6">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <h5>Simulação</h5>
@@ -73,6 +76,7 @@
                                     <tr>
                                         <td>Título</td>
                                         <td>Time</td>
+                                        <td></td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -80,10 +84,23 @@
                                     {
                                         <tr>
                                             <td>@Model.ApostasExtras[c].Titulo</td>
-                                            <td>@Html.DropDownListFor(x => x.ApostasExtras[c].NomeTimeValidado, 
-                                                new SelectList(ViewBag.Times, Model.ApostasExtras[c].NomeTimeValidado), 
-                                                new { @class = "form-control input-sm", @id = "Time" + c.ToString(), @name = "Time" + c.ToString() })</td>
-                                            
+                                            <td>
+                                                @Html.DropDownListFor(x => x.ApostasExtras[c].NomeTimeValidado, 
+                                                new SelectList(ViewBag.Times, Model.ApostasExtras[c].NomeTimeValidado),
+                                                new { @class = "form-control input-sm", @id = "Time" + (c + 1).ToString(), @name = "Time" + (c + 1).ToString() })
+                                            </td>
+                                            <td>
+                                                @if (Model.ApostasExtras[c].NomeTimeValidado == null)
+                                                {
+                                                    <img src="" />
+                                                }
+                                                else
+                                                {
+                                                    <img src="~/Content/img/database/times/@(Model.ApostasExtras[c].NomeTimeValidado).gif"
+                                                         id="@("Image" + @Model.ApostasExtras[c].NomeTimeValidado)" />
+                                                }
+                                            </td>
+
                                         </tr>
                                     }
                                 </tbody>
@@ -92,7 +109,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-offset-5 col-sm-2 text-center">
-                                <input type="submit" class="btn btn-primary btn-md active center-block " value="Salvar" />
+                                <input type="submit" class="btn btn-primary btn-md center-block " value="Simular" />
                             </div>
                         </div>
                     </div>
@@ -134,7 +151,8 @@
                                             
                                             @for (int i = 0; i < Model.ApostasUsuarios[c].Apostas.Count; i++)
                                             {
-                                                <td>@Model.ApostasUsuarios[c].Apostas[i].NomeTime</td>
+                                                @*<td>@Model.ApostasUsuarios[c].Apostas[i].NomeTime</td>*@
+                                                <td><img src="@Model.ApostasUsuarios[c].Apostas[i].ImageTime" /></td>
                                             }
                                         </tr>
                                     }
@@ -150,16 +168,38 @@
         </div>
     </div>
 }
+
+
 @section scripts
 {
     <script>
 
-    //$(document).ready(function () {
-    //    $('#Time1').change(function () {
+        $(document).ready(function () {
+            $('#Time1').change(function () {
 
+                var img = "/Content/img/database/times/" + $(this).val() + ".gif";
+                $('#Image1').attr('src', img);
+            });
+            $('#Time2').change(function () {
 
-    //        alert("value: " + $(this).val());
-    //    });
-    //})
+                var img = "/Content/img/database/times/" + $(this).val() + ".gif";
+                $('#Image2').attr('src', img);
+            });
+            $('#Time3').change(function () {
+
+                var img = "/Content/img/database/times/" + $(this).val() + ".gif";
+                $('#Image3').attr('src', img);
+            });
+            $('#Time4').change(function () {
+
+                var img = "/Content/img/database/times/" + $(this).val() + ".gif";
+                $('#Image4').attr('src', img);
+            });
+            $('#Time5').change(function () {
+
+                var img = "/Content/img/database/times/" + $(this).val() + ".gif";
+                $('#Image5').attr('src', img);
+            });
+        })
     </script>
 }

@@ -13,5 +13,14 @@ namespace BolaoNet.MVC.ViewModels.Bolao
         private const string FormatIcon = "/Content/img/database/times/{0}.gif";
 
         #endregion
+
+
+        public string ImageTime
+        {
+            get
+            {
+                return string.Format(FormatIcon, this.NomeTime);
+            }
+        }
     }
 }

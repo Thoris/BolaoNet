@@ -20,6 +20,7 @@
                                         <tr>
                                             <td>Título</td>
                                             <td>Time</td>
+                                            <td></td>
                                             <td>Pontos</td>
                                             <td>Válido</td>
                                             <td>Por</td>
@@ -35,7 +36,19 @@
 
                                             <tr>
                                                 <td>@Model[c].Titulo</td>
-                                                <td>@Html.DropDownListFor(x => x[c].NomeTimeValidado, new SelectList(ViewBag.Times, Model[c].NomeTimeValidado), new { @class = "form-control input-sm", @id = "Time" + c.ToString(), @name = "Time" + c.ToString() })</td>
+                                                <td>@Html.DropDownListFor(x => x[c].NomeTimeValidado, new SelectList(ViewBag.Times, Model[c].NomeTimeValidado), 
+                                                new { @class = "form-control input-sm", @id = "Time" + (c+1).ToString(), @name = "Time" + (c+1).ToString() })</td>
+                                                <td>
+                                                    @if(Model[c].SalvarNomeTime == null)
+                                                    {
+                                                        <img src="" />
+                                                    }
+                                                    else
+                                                    { 
+                                                    <img src="~/Content/img/database/times/@(Model[c].SalvarNomeTime).gif"
+                                                         id="@("Image" + @Model[c].Posicao)" />
+                                                    }
+                                                </td>
                                                 <td>@Model[c].TotalPontos</td>
                                                 <td>@if (Model[c].IsValido == true) { @Html.Raw("Válido"); }</td>
                                                 <td>@Model[c].ValidadoBy</td>
@@ -48,7 +61,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-sm-offset-5 col-sm-2 text-center">
-                                    <input type="submit" class="btn btn-primary btn-md active center-block " value="Salvar" />
+                                    <input type="submit" class="btn btn-primary btn-lg center-block " value="Salvar" />
                                 </div>
                             </div>
                         </div>
@@ -62,12 +75,32 @@
 {
     <script>
 
-    //$(document).ready(function () {
-    //    $('#Time1').change(function () {
+        $(document).ready(function () {
+            $('#Time1').change(function () {
 
+                var img = "/Content/img/database/times/" + $(this).val() + ".gif";
+                $('#Image1').attr('src', img);
+            });
+            $('#Time2').change(function () {
 
-    //        alert("value: " + $(this).val());
-    //    });
-    //})
+                var img = "/Content/img/database/times/" + $(this).val() + ".gif";
+                $('#Image2').attr('src', img);
+            });
+            $('#Time3').change(function () {
+
+                var img = "/Content/img/database/times/" + $(this).val() + ".gif";
+                $('#Image3').attr('src', img);
+            });
+            $('#Time4').change(function () {
+
+                var img = "/Content/img/database/times/" + $(this).val() + ".gif";
+                $('#Image4').attr('src', img);
+            });
+            $('#Time5').change(function () {
+
+                var img = "/Content/img/database/times/" + $(this).val() + ".gif";
+                $('#Image5').attr('src', img);
+            });
+        })
     </script>
 }

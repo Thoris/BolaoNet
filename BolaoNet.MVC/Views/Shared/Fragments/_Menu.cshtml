@@ -11,8 +11,13 @@
     }
 }
 
-<li>
-    <a href="/Home/index"><i class="fa fa-th-large"></i> <span class="nav-label">Página inicial</span></a>
+<li
+    @if(string.Compare(controllerArea, "Users", true) == 0 && 
+        string.Compare(controllerName, "AccountHome", true) == 0 && 
+        string.Compare (controllerAction, "Index", true ) == 0) 
+    {  @Html.Raw("class=\"active\"") } >
+         
+    <a href="/Users/AccountHome/index"><i class="fa fa-th-large"></i> <span class="nav-label">Página inicial</span></a>
 </li>
 <li @if((string.Compare(controllerArea, "Apostas", true) == 0) ||
         (string.Compare(controllerArea, "Users", true) == 0 && string.Compare(controllerName, "UserBoloes", true) == 0)) 

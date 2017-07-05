@@ -11,6 +11,43 @@
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
 
+
+            <div class="col-sm-12">
+                <div class="ibox-title">
+                    <h5>Apostas do usuário @Model.UserName</h5>
+                </div>
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content" style="display: block;">
+                        <div class="col-xs-3 col-sm-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    @Html.DropDownListFor(x => x.UserName, (SelectList)ViewBag.Membros, new { @class = "form-control input-sm" })
+                                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        @*<div class="col-xs-3">
+                            <div class="form-group">
+                                <div class="input-group">
+                                </div>
+                            </div>
+                        </div>*@
+
+
+                        <div class="col-xs-offset-2 col-sm-2">
+                            <div class="form-group">
+                                <input type="submit" value="Filtrar" class="btn btn-default" />
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
             @for (int c = 0; c < Model.Grupos.Count; c++)
             {
                 <div class="col-lg-6">
@@ -21,11 +58,10 @@
                         <div class="ibox-content" style="display: block;">
                             <table class="table table-hover">
                                 <thead>
-                                    <tr>
+                                    <tr class="text-center">
                                         <td>Pos</td>
                                         <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>Time</td>
                                         <td>J</td>
                                         <td>PT</td>
                                         <td>V</td>
@@ -41,11 +77,20 @@
 
                                     @for (int l = 0; l < Model.Grupos[c].Posicoes.Count; l++)
                                     {
-                                        <tr>
-                                            <td>@Model.Grupos[c].Posicoes[l].Posicao</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>@Model.Grupos[c].Posicoes[l].NomeTime</td>
+                                        <tr class="text-center">
+                                            <td
+                                               @if(Model.Grupos[c].Posicoes[l].BackColor != null)
+                                               {
+                                                   @Html.Raw("bgcolor=\"" + Model.Grupos[c].Posicoes[l].BackColor.Value.Name + "\" ");
+                                               } 
+                                               @if(Model.Grupos[c].Posicoes[l].ForeColor != null)
+                                               {
+                                                   @Html.Raw("color=\"" + Model.Grupos[c].Posicoes[l].ForeColor.Value.Name + "\"");
+                                               } 
+                                                >
+                                            @Model.Grupos[c].Posicoes[l].Posicao</td>
+                                            <td><img src="@Model.Grupos[c].Posicoes[l].ImageTime" /></td>
+                                            <td class="text-left">@Model.Grupos[c].Posicoes[l].NomeTime</td>
                                             <td>@Model.Grupos[c].Posicoes[l].Jogos</td>
                                             <td>@Model.Grupos[c].Posicoes[l].TotalPontos</td>
                                             <td>@Model.Grupos[c].Posicoes[l].TotalVitorias</td>
@@ -54,7 +99,7 @@
                                             <td>@Model.Grupos[c].Posicoes[l].TotalGolsPro</td>
                                             <td>@Model.Grupos[c].Posicoes[l].TotalGolsContra</td>
                                             <td>@Model.Grupos[c].Posicoes[l].Saldo</td>
-                                            <td>@Model.Grupos[c].Posicoes[l].Aproveitamento</td>
+                                            <td>@Model.Grupos[c].Posicoes[l].Aproveitamento.ToString("0.00")</td>
                                         </tr>
                                     }
                                 </tbody>
@@ -67,7 +112,7 @@
                 if (c > 0 && c % 2 == 0)
                 {
                     @*</div>
-                        <div class="row">*@
+                    <div class="row">*@
                 }
             }
 

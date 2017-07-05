@@ -8,7 +8,7 @@
         <div class="row">
             @if (Model.Count > 0)
             {
-                <table class="table table-hover">
+                <table class="table table-hover text-center">
                     <thead>
                         <tr>
                             <td>@Html.DisplayNameFor(x => x[0].JogoId)</td>
@@ -27,20 +27,19 @@
                         @for (int c = 0; c < Model.Count; c++)
                         {
                             <tr>
-                                <td>@Model[c].JogoId</td>
+                                <th>@Model[c].JogoId</th>
                                 <td>@Model[c].DataJogo.ToString("dd/MM/yy HH:mm")</td>
                                 <td>@Model[c].NomeEstadio</td>
                                 <td class="text-right">@Model[c].NomeTime1 <img src=@Model[c].ImageTime1></td>
-                                <td>@Model[c].ApostaTime1</td>
+                                <td><strong>@Model[c].ApostaTime1</strong></td>
                                 <td>x</td>
-                                <td>@Model[c].ApostaTime2</td>
+                                <td><strong>@Model[c].ApostaTime2</strong></td>
                                 <td class="text-left"><img src=@Model[c].ImageTime2> @Model[c].NomeTime2 </td>
                                 <td>
-                                    <a href="@Url.Action("Index", "ApostasJogo", new { area= "Boloes", id = @Model[c].JogoId})">
-                                        |
-                                    <span class="glyphicon glyphicon-list-alt"></span>
-                                </a>
-                            </td>
+                                    <a href="@Url.Action("Index", "ApostasJogo", new { area= "Boloes", id = @Model[c].JogoId})">                                       
+                                        <span class="glyphicon glyphicon-list-alt"></span>
+                                    </a>
+                                </td>
                             </tr>
                         }
                     </tbody>

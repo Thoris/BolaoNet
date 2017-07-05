@@ -32,5 +32,14 @@ namespace BolaoNet.WebApi.Integration.Campeonatos
         }
 
         #endregion
+
+        #region ICampeonatoPosicaoService members
+        
+        public IList<Domain.Entities.Campeonatos.CampeonatoPosicao> GetPosicao(Domain.Entities.Campeonatos.Campeonato campeonato, Domain.Entities.Campeonatos.CampeonatoFase fase)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

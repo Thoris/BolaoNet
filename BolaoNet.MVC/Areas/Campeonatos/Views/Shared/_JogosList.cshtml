@@ -100,11 +100,15 @@
         </td>*@
         <td>@(Model.Jogos[c].DataValidacao)</td>
                 <td>
-                    <button type="submit" class="btn" name="ButtonSelected" value="@Model.Jogos[c].JogoId">
+                    @*<button type="submit" class="btn" name="ButtonSelected" value="@Model.Jogos[c].JogoId">
                         <i class="icon-user"></i>
-                    </button>
-                </td>
-    </tr>
+                    </button>*@
+
+                    <a href="@Url.Action("Index", "JogoResultado", new { area = "Resultados", id = @Model.Jogos[c].JogoId })">
+                        <span class="fa fa-check-square-o"></span>
+                    </a>
+            </td>
+        </tr>
         }      
     </tbody>
 </table>

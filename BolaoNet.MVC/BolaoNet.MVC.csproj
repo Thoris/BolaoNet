@@ -190,6 +190,7 @@
     <Compile Include="Controllers\BaseBolaoController.cs" />
     <Compile Include="Controllers\BaseCampeonatoController.cs" />
     <Compile Include="Helpers\CampeonatoDataLoader.cs" />
+    <Compile Include="Helpers\ColorPontosHelper.cs" />
     <Compile Include="Helpers\PersistenceProviders\PersistenceProvider.cs" />
     <Compile Include="Security\AuthorizeRolesAttribute.cs" />
     <Compile Include="Security\CustomUserPrincipal.cs" />
