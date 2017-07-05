@@ -46,7 +46,8 @@
 
     </ul>
 </li>
-<li @if (string.Compare(controllerArea, "Boloes", true) == 0 ) {  @Html.Raw("class=\"active\"")  }>
+<li @if (string.Compare(controllerArea, "Boloes", true) == 0 || string.Compare(controllerArea, "Regras", true) == 0)
+    {  @Html.Raw("class=\"active\"")  }>
     <a href="/GrupoPonto/Grupos"><i class="fa fa-life-ring"></i> <span class="nav-label">Bolão</span> <span class="fa arrow"></span></a>
     <ul class="nav nav-second-level collapse">
         <li @if (string.Compare(controllerAction, "Index", true) == 0 && 
