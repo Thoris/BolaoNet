@@ -1,0 +1,142 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@section header
+{
+<link href="~/content/css/jquery.Jcrop.min.css" rel="stylesheet" />
+
+}
+
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+
+        <div class="col-lg-4">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h3>Foto corrente</h3>
+                </div>
+                <div class="ibox-content" style="display: block;">
+                    <div width="160px" height="120px">
+                        <p>
+                            <img id="my-cropped-image" src="#" />
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-8">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h3>Carregamento de Foto</h3>
+                </div>
+                <div class="ibox-content" style="display: block;">
+                    <div class="row">
+                        <p>
+                            <img id="my-origin-image" src="~/Content/img/funny_cat_v1.jpg" />
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+<p><a href="#" id="hl-crop-image">Crop Image</a></p>
+
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/jcrop")
+
+    <script type="text/javascript">
+
+        var imageCropWidth = 0;
+        var imageCropHeight = 0;
+        var cropPointX = 0;
+        var cropPointY = 0;
+
+        $(document).ready(function () {
+            initCrop();
+        });
+
+
+
+
+
+        $("#hl-crop-image").on("click", function (e) {
+            e.preventDefault();
+            cropImage();
+        });
+
+
+
+
+
+        function updatePreview(c) {
+            if (parseInt(c.w) > 0) {
+                var rx = xsize / c.w;
+                var ry = ysize / c.h;
+
+                $pimg.css({
+                    width: Math.round(rx * boundx) + 'px',
+                    height: Math.round(ry * boundy) + 'px',
+                    marginLeft: '-' + Math.round(rx * c.x) + 'px',
+                    marginTop: '-' + Math.round(ry * c.y) + 'px'
+                });
+            }
+        };
+
+        function initCrop() {
+            $('#my-origin-image').Jcrop({
+                onChange: setCoordsAndImgSize,
+                //aspectRatio: xsize / ysize
+                //aspectRatio: 1
+                aspectRatio: 160 / 120                       
+            });
+        }
+
+        function setCoordsAndImgSize(e) {
+
+            imageCropWidth = e.w;
+            imageCropHeight = e.h;
+
+            cropPointX = e.x;
+            cropPointY = e.y;
+        }
+
+        function cropImage() {
+
+            if (imageCropWidth == 0 && imageCropHeight == 0) {
+                alert("Please select crop area.");
+                return;
+            }
+
+            $.ajax({
+                url: '/Users/AccountHome/CropImage',
+                type: 'POST',
+                data: {
+                    imagePath: $("#my-origin-image").attr("src"),
+                    cropPointX: cropPointX,
+                    cropPointY: cropPointY,
+                    imageCropWidth: imageCropWidth,
+                    imageCropHeight: imageCropHeight
+                },
+                success: function (data) {
+                    $("#my-cropped-image")
+                        .attr("src", data.photoPath + "?t=" + new Date().getTime())
+                        .show();
+                },
+                error: function (data) { }
+            });
+        }
+
+    </script>
+}

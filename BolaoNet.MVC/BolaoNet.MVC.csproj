@@ -191,6 +191,8 @@
     <Compile Include="Controllers\BaseCampeonatoController.cs" />
     <Compile Include="Helpers\CampeonatoDataLoader.cs" />
     <Compile Include="Helpers\ColorPontosHelper.cs" />
+    <Compile Include="Helpers\FileHelper.cs" />
+    <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Helpers\PersistenceProviders\PersistenceProvider.cs" />
     <Compile Include="Security\AuthorizeRolesAttribute.cs" />
     <Compile Include="Security\CustomUserPrincipal.cs" />
@@ -228,6 +230,9 @@
     <Content Include="Content\css\fonts\Semibold\OpenSans-Semibold.svg" />
     <Content Include="Content\css\glyphicons-ie7.css" />
     <Content Include="Content\css\ie8-and-down.css" />
+    <Content Include="Content\css\Jcrop.gif" />
+    <Content Include="Content\css\jquery.Jcrop.css" />
+    <Content Include="Content\css\jquery.Jcrop.min.css" />
     <Content Include="Content\css\open-sans.css" />
     <Content Include="Content\css\patterns\header-profile-skin-1.png" />
     <Content Include="Content\css\patterns\header-profile-skin-2.png" />
@@ -256,6 +261,7 @@
     <Content Include="Areas\Apostas\Views\ApostasJogos\Jogos.cshtml" />
     <Content Include="Areas\Users\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Users\Views\Shared\_Layout.cshtml" />
+    <Content Include="Content\img\funny_cat_v1.jpg" />
     <Content Include="Content\img\logo-alta.png" />
     <Content Include="Content\img\logo-high.png" />
     <Content Include="Content\img\logo.png" />
@@ -340,6 +346,7 @@
     <Content Include="Areas\Users\Views\AccountHome\_PrincipalGrupoBolao.cshtml" />
     <Content Include="Areas\Users\Views\AccountHome\_PrincipalPontosObtidos.cshtml" />
     <Content Include="Areas\Users\Views\AccountHome\_PrincipalProximoJogos.cshtml" />
+    <Content Include="Areas\Users\Views\AccountHome\ChangeProfileImage.cshtml" />
     <None Include="Content\js\jquery-1.10.2.intellisense.js" />
     <Content Include="Content\js\jquery-1.10.2.js" />
     <Content Include="Content\js\jquery-1.10.2.min.js" />
@@ -349,6 +356,9 @@
     <Content Include="Content\js\jquery-latest.js" />
     <Content Include="Content\js\jquery-ui-1.10.4.min.js" />
     <Content Include="Content\js\jquery-ui.custom.min.js" />
+    <Content Include="Content\js\jquery.color.js" />
+    <Content Include="Content\js\jquery.Jcrop.js" />
+    <Content Include="Content\js\jquery.Jcrop.min.js" />
     <Content Include="Content\js\jquery.latest.js" />
     <Content Include="Content\js\jquery.maskedinput.min.js" />
     <Content Include="Content\js\jquery.placeholder.js" />

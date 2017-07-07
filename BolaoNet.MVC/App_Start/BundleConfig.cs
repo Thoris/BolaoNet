@@ -146,6 +146,11 @@ namespace BolaoNet.MVC
 
 
 
+            bundles.Add(new ScriptBundle("~/bundles/jcrop").Include(
+                  "~/Content/js/jquery.jcrop.min.js"));
+            bundles.Add(new StyleBundle("~/Content/jcrop").Include(
+               "~/Content/css/ie8-and-down.css"));
+
 
 
 
