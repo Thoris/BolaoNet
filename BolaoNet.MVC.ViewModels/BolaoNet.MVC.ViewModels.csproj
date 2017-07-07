@@ -34,6 +34,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ReferencedComponents\Mvc\System.Web.Mvc.dll</HintPath>
@@ -86,6 +87,7 @@
     <Compile Include="Regras\BolaoRegrasViewModel.cs" />
     <Compile Include="Resultados\ApostaExtraViewModel.cs" />
     <Compile Include="Resultados\JogoResultadoViewModel.cs" />
+    <Compile Include="Users\AccountHomeProfileImage.cs" />
     <Compile Include="Users\PaginaPrincipalModelView.cs" />
     <Compile Include="Users\PaginaPrincipal\PaginaPrincipalBolaoPosicoesViewModel.cs" />
     <Compile Include="Users\PaginaPrincipal\PaginaPrincipalBolaoSaldoDevedorViewModel.cs" />

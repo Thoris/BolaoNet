@@ -43,6 +43,13 @@
     <Reference Include="AutoMapper">
       <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
@@ -55,7 +62,6 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -180,6 +186,7 @@
     <Compile Include="Areas\Resultados\Controllers\JogoResultadoController.cs" />
     <Compile Include="Areas\Resultados\ResultadosAreaRegistration.cs" />
     <Compile Include="Areas\Users\Controllers\AccountHomeController.cs" />
+    <Compile Include="Areas\Users\Controllers\AccountHomeProfileImageController.cs" />
     <Compile Include="Areas\Users\Controllers\BaseUserAreaController.cs" />
     <Compile Include="Areas\Users\Controllers\BolaoClassificacaoGrupoGerenciamento.cs" />
     <Compile Include="Areas\Users\Controllers\UserBoloesController.cs" />
@@ -347,6 +354,7 @@
     <Content Include="Areas\Users\Views\AccountHome\_PrincipalPontosObtidos.cshtml" />
     <Content Include="Areas\Users\Views\AccountHome\_PrincipalProximoJogos.cshtml" />
     <Content Include="Areas\Users\Views\AccountHome\ChangeProfileImage.cshtml" />
+    <Content Include="Areas\Users\Views\AccountHomeProfileImage\Index.cshtml" />
     <None Include="Content\js\jquery-1.10.2.intellisense.js" />
     <Content Include="Content\js\jquery-1.10.2.js" />
     <Content Include="Content\js\jquery-1.10.2.min.js" />
@@ -1083,6 +1091,9 @@
     <Folder Include="Areas\Visitante\Controllers\" />
     <Folder Include="Areas\Visitante\Models\" />
     <Folder Include="Areas\Visitante\Views\Shared\" />
+    <Folder Include="Content\img\database\profiles\" />
+    <Folder Include="Content\img\database\temp\crop\" />
+    <Folder Include="Content\img\database\temp\uploaded\" />
     <Folder Include="Views\Shared\Fragments\Menus\" />
   </ItemGroup>
   <ItemGroup>

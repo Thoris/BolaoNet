@@ -18,10 +18,13 @@
                     <h3>Foto corrente</h3>
                 </div>
                 <div class="ibox-content" style="display: block;">
-                    <div width="160px" height="120px">
-                        <p>
-                            <img id="my-cropped-image" src="#" />
-                        </p>
+                    <div class="row">
+                        <div style="height:150px; width:150px;">
+                            <p>
+                                <img id="my-cropped-image" src="#" width="100%" />
+                            </p>
+                            <p><a href="#" id="hl-crop-image">Crop Image</a></p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -49,15 +52,20 @@
 
 
 
-<p><a href="#" id="hl-crop-image">Crop Image</a></p>
+
 
 
 
 @section scripts{
     @Scripts.Render("~/bundles/jcrop")
 
+
+    
+
+
     <script type="text/javascript">
 
+        /*
         var imageCropWidth = 0;
         var imageCropHeight = 0;
         var cropPointX = 0;
@@ -97,9 +105,7 @@
         function initCrop() {
             $('#my-origin-image').Jcrop({
                 onChange: setCoordsAndImgSize,
-                //aspectRatio: xsize / ysize
-                //aspectRatio: 1
-                aspectRatio: 160 / 120                       
+                aspectRatio: 1                
             });
         }
 
@@ -137,6 +143,7 @@
                 error: function (data) { }
             });
         }
-
+        */
+        
     </script>
 }
