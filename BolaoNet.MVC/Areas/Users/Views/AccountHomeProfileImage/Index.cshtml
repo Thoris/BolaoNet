@@ -6,16 +6,10 @@
 @section header
 {
     <link href="~/content/css/jquery.Jcrop.min.css" rel="stylesheet" />
-
 }
-
-
 
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
-
-
-
         <div class="col-lg-8">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
@@ -24,35 +18,47 @@
                 <div class="ibox-content" style="display: block;">
                     <div class="row">
                         
-                        @using (Html.BeginForm("Upload", "AccountHomeProfileImage", FormMethod.Post, 
+                        @*@using (Html.BeginForm("Upload", "AccountHomeProfileImage", FormMethod.Post, 
                             new { enctype = "multipart/form-data" }))
                         {
                             @Html.HiddenFor(x => x.UserName )
                             @Html.HiddenFor(x => x.TempCropFile)
-                            @Html.HiddenFor(x => x.TempUploadedFile)
+                            @Html.HiddenFor(x => x.TempUploadedFile)*@
 
-                            <div>                              
+                        <div class="col-md-12">
+                            <div>
                                 @Html.TextBoxFor(m => m.AttachedFile, new { type = "file", @class = "file-uploading" })
                             </div>
-                            <br />
+                        </div>
+                            @*<br />
                             <div class="row">
                                 <div class="col-lg-2">
                                     <input type="submit" class="btn btn-default" name="Submit" id="Submit" value="Upload" />
                                 </div>
-                            </div>
-                        }
+                            </div>*@
+                        @*}*@
 
                     </div>
+                    @*<div class="row">
+                        <div class="col-md-12">
+                            @if (!string.IsNullOrEmpty(Model.TempUploadedFile))
+                            {
+                                <img id="my-origin-image" src="@Model.TempUploadedFile" width="100%" />
+                            }
+                            else
+                            {
+                                <h4>Carregue a foto para atualizar o perfil.</h4>
+                            }
+                        </div>
+                    </div>*@
+
                     <div class="row">
-                        @if(!string.IsNullOrEmpty(Model.TempUploadedFile))
-                        {
-                            <img id="my-origin-image" src="@Model.TempUploadedFile" />
-                        }
-                        else
-                        {
-                            <h4>Carregue a foto para atualizar o perfil.</h4>
-                        }
+                        <div class="col-md-12">
+                            <div id="views"></div>
+                        </div>
                     </div>
+
+
                     @if(!string.IsNullOrEmpty(Model.TempUploadedFile))
                     { 
                         <br/>
@@ -66,7 +72,6 @@
             </div>
         </div>
 
-
         <div class="col-lg-4">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
@@ -74,10 +79,14 @@
                 </div>
                 <div class="ibox-content" style="display: block;">
                     <div class="row">
-                        <div style="height:150px; width:150px;">
-                            @*<img id="my-cropped-image" src="#" width="100%" />*@
-                            <img id="my-cropped-image" src="@Model.TempCropFile" width="100%" />
+
+                        <div class="col-md-12">
+                            <canvas id="target" style="width: 200px; height: 200px; overflow: hidden"></canvas>
                         </div>
+
+ 
+
+
                         <br />
                         <div>
                             @using (Html.BeginForm("Salvar", "AccountHomeProfileImage", FormMethod.Post,
@@ -86,7 +95,7 @@
                                 @Html.HiddenFor(x => x.UserName)
                                 @Html.HiddenFor(x => x.TempCropFile)
                                 @Html.HiddenFor(x => x.TempUploadedFile)
-                                <input type="submit" class="btn btn-primary btn-sm center-block" name="Salvar" id="Salvar" value="Salvar" />
+                                <input type="button" class="btn btn-primary btn-sm center-block" name="Salvar" id="Salvar" value="Salvar" />
                             }
                         </div>
                     </div>
@@ -100,21 +109,347 @@
 
 
 
-
-
-
-
-
 @section scripts{
     @Scripts.Render("~/bundles/jcrop")
 
-
-
-
-
     <script type="text/javascript">
 
+        var crop_max_width = 500;
+        var crop_max_height = 500;
+        var jcrop_api;
+        var canvas;
+        var context;
+        var image;
+
+
+        jQuery(function($){
+
+            // Create variables (in this scope) to hold the API and image size
+            var jcrop_api,
+                boundx,
+                boundy;
+
+
+            var canvasTarget = $("#target")[0];
+            var contextTarget = canvasTarget.getContext("2d");
+
+            $("#AttachedFile").change(function () {
+                loadImage(this);
+            });
+
+            function loadImage(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    canvas = null;
+                    reader.onload = function (e) {
+                        image = new Image();
+                        image.onload = validateImage;
+                        image.src = e.target.result;
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            function validateImage() {
+                if (canvas != null) {
+                    image = new Image();
+                    image.onload = restartJcrop;
+                    image.src = canvas.toDataURL('image/png');
+                } else restartJcrop();
+            }
+
+
+            function restartJcrop() {
+                
+                if (jcrop_api != null) {
+                    jcrop_api.destroy();
+                }
+                $("#views").empty();
+                $("#views").append("<canvas id=\"canvas\">");
+                canvas = $("#canvas")[0];
+                context = canvas.getContext("2d");
+                canvas.width = image.width;
+                canvas.height = image.height;
+                context.drawImage(image, 0, 0);
+                $("#canvas").Jcrop({
+                    onChange: selectcanvas,
+                    onSelect: selectcanvas,
+                    boxWidth: crop_max_width,
+                    boxHeight: crop_max_height,
+                    aspectRatio: 1,
+                    setSelect: [10, 100, 100, 100],
+                }, function () {
+                    jcrop_api = this;
+                });
+            }
+
+            function selectcanvas(c) {
+               
+                if (parseInt(c.w) > 0) {                 
+                    canvasTarget.width = Math.round(c.w);
+                    canvasTarget.height = Math.round(c.h);
+                    contextTarget.drawImage(image, Math.round(c.x), Math.round(c.y), Math.round(c.w), Math.round(c.h),
+                        0, 0, canvasTarget.width, canvasTarget.height);
+                }
+            }
+            /*
+            $("#form").submit(function (e) {
+                e.preventDefault();
+                formData = new FormData($(this)[0]);
+                var blob = dataURLtoBlob(canvas.toDataURL('image/png'));
+                //---Add file blob to the form data
+                formData.append("cropped_image[]", blob);
+                $.ajax({
+                    url: "whatever.php",
+                    type: "POST",
+                    data: formData,
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success: function (data) {
+                        alert("Success");
+                    },
+                    error: function (data) {
+                        alert("Error");
+                    },
+                    complete: function (data) { }
+                });
+            });
+            */
+
+            $("#Salvar").click(function () {
+
+                salvar();
+            });
+
+            function salvar() {
+
+                //if (imageCropWidth == 0 && imageCropHeight == 0) {
+                //    alert("Por favor, selecione uma área da figura para recortar.");
+                //    return;
+                //}
+
+                var data = canvasTarget.toDataURL();
+
+
+                $.ajax({
+                    url: '/Users/AccountHomeProfileImage/Salvar',
+                    type: 'POST',
+                    data: {
+                        imageData: data
+                    },
+                    success: function (result) {
+                        //window.location.href = "@Url.Content("~/Capture/FailToCapturePhoto/")";
+                        window.location.href = "/Users/AccountHome/Index";
+                    },
+                    error: function (result) {
+                        alert('Error: ' + err.name + ' - ' + result);
+                    }
+                });
+            }
+
+
+        });
+
+       
+
+
+
+        /*
+        var crop_max_width = 500;
+        var crop_max_height = 500;
+        var jcrop_api;
+        var canvas;
+        var context;
+        var image;
+        var target;
         
+
+
+        var prefsize;
+
+        $("#AttachedFile").change(function () {
+            loadImage(this);
+        });
+
+        function loadImage(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                canvas = null;
+                reader.onload = function (e) {
+                    image = new Image();
+                    image.onload = validateImage;
+                    image.src = e.target.result;
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function dataURLtoBlob(dataURL) {
+            var BASE64_MARKER = ';base64,';
+            if (dataURL.indexOf(BASE64_MARKER) == -1) {
+                var parts = dataURL.split(',');
+                var contentType = parts[0].split(':')[1];
+                var raw = decodeURIComponent(parts[1]);
+
+                return new Blob([raw], {
+                    type: contentType
+                });
+            }
+            var parts = dataURL.split(BASE64_MARKER);
+            var contentType = parts[0].split(':')[1];
+            var raw = window.atob(parts[1]);
+            var rawLength = raw.length;
+            var uInt8Array = new Uint8Array(rawLength);
+            for (var i = 0; i < rawLength; ++i) {
+                uInt8Array[i] = raw.charCodeAt(i);
+            }
+
+            return new Blob([uInt8Array], {
+                type: contentType
+            });
+        }
+
+        function validateImage() {
+            if (canvas != null) {
+                image = new Image();
+                image.onload = restartJcrop;
+                image.src = canvas.toDataURL('image/png');
+            } else restartJcrop();
+        }
+
+        function restartJcrop() {
+            if (jcrop_api != null) {
+                jcrop_api.destroy();
+            }
+            $("#views").empty();
+            $("#views").append("<canvas id=\"canvas\">");
+            canvas = $("#canvas")[0];
+            context = canvas.getContext("2d");
+            canvas.width = image.width;
+            canvas.height = image.height;
+            context.drawImage(image, 0, 0);
+            $("#canvas").Jcrop({
+                onChange: selectcanvas,
+                onSelect: selectcanvas,
+                onRelease: clearcanvas,
+                boxWidth: crop_max_width,
+                boxHeight: crop_max_height,
+                aspectRatio: 1,
+                setSelect: [10, 100, 100, 100],
+            }, function () {
+                jcrop_api = this;
+            });
+            clearcanvas();
+        }
+
+        function clearcanvas() {
+            prefsize = {
+                x: 0,
+                y: 0,
+                w: canvas.width,
+                h: canvas.height,
+            };
+        }
+
+        function selectcanvas(coords) {
+            prefsize = {
+                x: Math.round(coords.x),
+                y: Math.round(coords.y),
+                w: Math.round(coords.w),
+                h: Math.round(coords.h)
+            };
+
+        }
+
+        function applyCrop() {
+            canvas.width = prefsize.w;
+            canvas.height = prefsize.h;
+            context.drawImage(image, prefsize.x, prefsize.y, prefsize.w, prefsize.h, 0, 0, canvas.width, canvas.height);
+            validateImage();
+        }
+
+        function applyScale(scale) {
+            if (scale == 1) return;
+            canvas.width = canvas.width * scale;
+            canvas.height = canvas.height * scale;
+            context.drawImage(image, 0, 0, canvas.width, canvas.height);
+            validateImage();
+        }
+
+        function applyRotate() {
+            canvas.width = image.height;
+            canvas.height = image.width;
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            context.translate(image.height / 2, image.width / 2);
+            context.rotate(Math.PI / 2);
+            context.drawImage(image, -image.width / 2, -image.height / 2);
+            validateImage();
+        }
+
+        function applyHflip() {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            context.translate(image.width, 0);
+            context.scale(-1, 1);
+            context.drawImage(image, 0, 0);
+            validateImage();
+        }
+
+        function applyVflip() {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            context.translate(0, image.height);
+            context.scale(1, -1);
+            context.drawImage(image, 0, 0);
+            validateImage();
+        }
+
+        $("#cropbutton").click(function (e) {
+            applyCrop();
+        });
+        $("#scalebutton").click(function (e) {
+            var scale = prompt("Scale Factor:", "1");
+            applyScale(scale);
+        });
+        $("#rotatebutton").click(function (e) {
+            applyRotate();
+        });
+        $("#hflipbutton").click(function (e) {
+            applyHflip();
+        });
+        $("#vflipbutton").click(function (e) {
+            applyVflip();
+        });
+
+        $("#form").submit(function (e) {
+            e.preventDefault();
+            formData = new FormData($(this)[0]);
+            var blob = dataURLtoBlob(canvas.toDataURL('image/png'));
+            //---Add file blob to the form data
+            formData.append("cropped_image[]", blob);
+            $.ajax({
+                url: "whatever.php",
+                type: "POST",
+                data: formData,
+                contentType: false,
+                cache: false,
+                processData: false,
+                success: function (data) {
+                    alert("Success");
+                },
+                error: function (data) {
+                    alert("Error");
+                },
+                complete: function (data) { }
+            });
+        });
+        */
+
+        //http://jsfiddle.net/w1Lh4w2t/
+        /*
+        var canvas = document.getElementById('my-origin-image');
+        //var context = canvas.getContext('2d');
+
+
         var imageCropWidth = 0;
         var imageCropHeight = 0;
         var cropPointX = 0;
@@ -125,16 +460,10 @@
         });
 
 
-
-
-
         $("#hl-crop-image").on("click", function (e) {
             e.preventDefault();
             cropImage();
         });
-
-
-
 
 
         function updatePreview(c) {
@@ -160,7 +489,7 @@
 
         function setCoordsAndImgSize(e) {
 
-            imageCropWidth = e.w;
+            imageCropWidth = canvas.width;//e.w;
             imageCropHeight = e.h;
 
             cropPointX = e.x;
@@ -170,7 +499,7 @@
         function cropImage() {
 
             if (imageCropWidth == 0 && imageCropHeight == 0) {
-                alert("Please select crop area.");
+                alert("Por favor, selecione uma área da figura para recortar.");
                 return;
             }
 
@@ -192,7 +521,7 @@
                 error: function (data) { }
             });
         }
-        
+        */
 
     </script>
 }
