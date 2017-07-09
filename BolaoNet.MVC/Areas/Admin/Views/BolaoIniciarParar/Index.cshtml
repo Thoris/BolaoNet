@@ -9,7 +9,7 @@
 
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-4">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <h5>Dados do Boão</h5>
@@ -43,30 +43,94 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-sm-2">Iniciar</div>
-                                <div class="col-sm-4"></div>
-                                <div class="col-sm-4"></div>
-                                <div class="col-sm-2">Aguardar</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2">Gerar Apostas</div>
-                                <div class="col-sm-4"></div>
-                                <div class="col-sm-4"></div>
-                                <div class="col-sm-2">Enviar Apostas</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-2">Enviar não pago</div>
-                                <div class="col-sm-4"></div>
-                                <div class="col-sm-4"></div>
-                                <div class="col-sm-2">Enviar Apostas faltantes</div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-12">Gerar resultados Finais</div>
+                                <div class="col-sm-6 left">                                
+                                    <a href="@Url.Action("Iniciar")" class="btn btn-success btn-sm center-block @if(Model.IsIniciado == true) { @Html.Raw("disabled");}"
+                                       onclick="return confirm('Deseja iniciar o bolão, isto pode implicar em bloqueios de apostas dos usuários');  ">Iniciar</a>                                
+                                </div>
+                                <div class="col-sm-6 right">
+                                    <a href="@Url.Action("Aguardar")" class="btn btn-success btn-sm center-block @if(Model.IsIniciado != true) { @Html.Raw("disabled");}"
+                                       onclick="return confirm('Deseja voltar em status de aguardando? Isto pode implicar na habilitação de alteração de apostas');  ">Aguardar</a>
+
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+
+
+            <div class="col-lg-4">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Geração de Dados</h5>
+                    </div>
+                    <div class="ibox-content" style="display: block;">
+                        <div class="text-center m-t-lg">
+
+                            <div class="row">
+                                <div class="form-group col-sm-12">
+                                    <div class="col-sm-6 center">
+                                        
+
+                                        <a href="@Url.Action("GerarApostas")" class="btn btn-success btn-sm center-block"
+                                           onclick="return confirm('Deseja gerar as apostas dos usuários?');">Gerar Apostas</a>
+
+
+                                    </div>
+                                    <div class="col-sm-6 center">
+           
+                                        <a href="@Url.Action("GerarFinal")" class="btn btn-success btn-sm center-block"
+                                           onclick="return confirm('Deseja gerar as apostas finais do bolão?');">Gerar Final</a>
+
+                                    </div>
+                                </div>
+                                
+
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-lg-4">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Notificação</h5>
+                    </div>
+                    <div class="ibox-content" style="display: block;">
+                        <div class="text-center m-t-lg">
+
+                            <div class="row">
+                                <div class="form-group col-sm-12">
+                                    <div class="col-sm-6 center">                                      
+                                        <a href="@Url.Action("EnviarApostasRestantes")" class="btn btn-success btn-sm center-block"
+                                           onclick="return confirm('Deseja enviar notificação a todos os membros do bolão que estão com apostas pendentes?');">Enviar Restantes</a>
+                                    </div>
+                                    <div class="col-sm-6 center">
+                                        <a href="@Url.Action("EnviarNaoPago")" class="btn btn-success btn-sm center-block"
+                                           onclick="return confirm('Deseja enviar notificação a todos os membros do que ainda não fizeram o pagamento?');">Enviar Não Pago</a>
+                                    </div>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <a href="@Url.Action("EnviarInicial")" class="btn btn-success btn-sm center-block"
+                                       onclick="return confirm('Deseja enviar as apostas iniciais a todos os membros do bolão?');">Enviar Apostas Iniciais</a>
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <a href="@Url.Action("EnviarFinal")" class="btn btn-success btn-sm center-block"
+                                       onclick="return confirm('Deseja enviar as apostas finais a todos os membros do bolão?');">Enviar Apostas Iniciais</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
 
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">

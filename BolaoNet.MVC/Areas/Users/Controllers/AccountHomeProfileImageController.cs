@@ -13,8 +13,8 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
     {
         #region Constants
 
-        private const string TempUploadedFolder = "/Content/img/database/Temp/Uploaded/";
-        private const string TempCropImageFolder = "/Content/img/database/Temp/Crop/";
+        //private const string TempUploadedFolder = "/Content/img/database/Temp/Uploaded/";
+        //private const string TempCropImageFolder = "/Content/img/database/Temp/Crop/";
         private const string FolderProfileImage = "/Content/img/database/profiles/";
 
         #endregion
@@ -56,6 +56,19 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
             //Storing the data into the file
             System.IO.File.WriteAllBytes(file, data);
 
+            System.Drawing.Image img = System.Drawing.Bitmap.FromFile(file);
+
+
+
+            //MemoryStream stream = new MemoryStream(data);
+
+            System.Drawing.Image imgProfile = Helpers.ImageHelper.Resize(img, 150, 150);
+
+            string fileProfile = Server.MapPath(FolderProfileImage + "/" + base.UserLogged.UserName + "_profile.gif");
+            if (System.IO.File.Exists(fileProfile))
+                System.IO.File.Delete(fileProfile);
+
+            //imgProfile.Save(fileProfile);
 
             return RedirectToAction("Index", "AccountHome", new { area="Users" });
             

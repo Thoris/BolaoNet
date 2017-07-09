@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -27,9 +28,33 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
 
         #region Actions
 
+
+        public ActionResult Iniciar()
+        {
+            bool res = _bolaoApp.Iniciar(base.UserLogged, base.SelectedBolao);
+
+
+            return RedirectToAction("Index");
+        }
+        public ActionResult Aguardar()
+        {
+
+            bool res = _bolaoApp.Aguardar(base.SelectedBolao);
+
+            return RedirectToAction("Index");
+        }
         public ActionResult Index()
         {
-            ViewModels.Admin.BolaoIniciarPararViewModel model = new ViewModels.Admin.BolaoIniciarPararViewModel();
+            //ViewModels.Admin.BolaoIniciarPararViewModel model = new ViewModels.Admin.BolaoIniciarPararViewModel();
+
+
+            Domain.Entities.Boloes.Bolao bolaoLoaded =  _bolaoApp.Load(base.SelectedBolao);
+
+
+            ViewModels.Admin.BolaoIniciarPararViewModel model =
+                 Mapper.Map<Domain.Entities.Boloes.Bolao, ViewModels.Admin.BolaoIniciarPararViewModel>(bolaoLoaded);
+
+
 
             model.StatusMembros = new List<ViewModels.Admin.BolaoIniciarStatusMembroViewModel>();
             model.StatusMembros.Add(new ViewModels.Admin.BolaoIniciarStatusMembroViewModel()

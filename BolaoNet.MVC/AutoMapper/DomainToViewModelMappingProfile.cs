@@ -67,6 +67,10 @@ namespace BolaoNet.MVC.AutoMapper
 
             Mapper.CreateMap<ViewModels.Users.PaginaPrincipal.PaginaPrincipalProximaApostaViewModel, Domain.Entities.ValueObjects.JogoUsuarioVO>();
             Mapper.CreateMap<ViewModels.Users.PaginaPrincipal.PaginaPrincipalPontosObtidosViewModel, Domain.Entities.ValueObjects.JogoUsuarioVO>();
+
+            Mapper.CreateMap<ViewModels.Admin.BolaoIniciarPararViewModel, Domain.Entities.Boloes.Bolao>();
+        
+        
         }
     }
 }

@@ -13,6 +13,27 @@ namespace BolaoNet.MVC.Helpers
     {
         #region Methods
 
+        public static Image Resize(Image image, int width, int height)
+        {
+            
+
+            using (var srcImage = image)
+            using (var newImage = new Bitmap(width, height))
+            using (var graphics = Graphics.FromImage(newImage))
+            using (var stream = new MemoryStream())
+            {
+                graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                graphics.DrawImage(srcImage, new Rectangle(0, 0, width, height));
+                newImage.Save(stream, ImageFormat.Png);
+                //return File(stream.ToArray(), "image/png");
+
+                return newImage;
+            }
+        }
+
+
         public static byte[] CropImage(byte[] content, int x, int y, int width, int height)
         {
             using (MemoryStream stream = new MemoryStream(content))

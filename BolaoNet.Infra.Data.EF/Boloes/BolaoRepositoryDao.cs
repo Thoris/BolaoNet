@@ -76,7 +76,7 @@ namespace BolaoNet.Infra.Data.EF.Boloes
 
         public bool Aguardar(string currentUserName, DateTime currentDateTime, Domain.Entities.Boloes.Bolao bolao)
         {
-            string command = "exec sp_Boloes_Iniciar " +
+            string command = "exec sp_Boloes_Aguardar " +
                            "  @CurrentLogin " +
                            ", @CurrentDateTime" +
                            ", @NomeBolao" +
