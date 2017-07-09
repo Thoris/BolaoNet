@@ -29,10 +29,10 @@ namespace BolaoNet.Infra.Data.EF.Boloes
                 from bmg in base.DataContext.BoloesMembrosGrupos
 
                 join u in base.DataContext.Usuarios
-                  on bmg.UserName equals u.UserName
+                  on bmg.UserNameSelecionado equals u.UserName
 
                 join bmc in base.DataContext.BoloesMembrosClassificacao
-                        on new { c1 = bmg.UserName, c2 = bmg.NomeBolao }
+                        on new { c1 = bmg.UserNameSelecionado, c2 = bmg.NomeBolao }
                     equals new { c1 = bmc.UserName, c2 = bmc.NomeBolao }
                 into gbmc
 

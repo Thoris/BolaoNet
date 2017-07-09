@@ -1,17 +1,116 @@
-﻿
+﻿@model BolaoNet.MVC.ViewModels.Users.UserGrupoComparacaoViewModel
 @{
-    Layout = null;
+    ViewBag.Title = "Grupo de Comparação";
 }
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
 
-<!DOCTYPE html>
+        <div class="col-lg-5">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h3>Grupo de Comparação</h3>
+                </div>
+                <div class="ibox-content" style="display: block;">
+                    <div class="row">
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <div> 
+                        <div class="col-lg-12">
+                            @if (Model.GrupoSelecionado != null && Model.GrupoSelecionado.Count > 0)
+                            {
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+
+                                            <td>@Html.DisplayNameFor(x => x.GrupoSelecionado[0].UserName)</td>
+                                            <td>@Html.DisplayNameFor(x => x.GrupoSelecionado[0].FullName)</td>
+                                            <td></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @for (int c = 0; c < Model.GrupoSelecionado.Count; c++)
+                                        {
+                                            <tr>
+
+                                                <td>@Model.GrupoSelecionado[c].UserName</td>
+                                                <td>@Model.GrupoSelecionado[c].FullName</td>
+                                                <td>
+                                                    <a href="@Url.Action("Remove", "BolaoClassificacaoGrupoGerenciamento", new { UserName = Model.GrupoSelecionado[c].UserName})">
+                                                        <span class="glyphicon glyphicon-remove"></span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-7">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h3>Membros do Campeonato</h3>
+                </div>
+                <div class="ibox-content" style="display: block;">
+                    <div class="row">
+
+                        <div class="col-lg-12">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <td></td>
+                                        <td>Pos</td>
+                                        <td></td>
+                                        <td>Membro</td>
+                                        <td>Nome</td>
+                                        <td>PT</td>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @for (int c = 0; c < Model.Classificacao.Count; c++)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <a href="@Url.Action("Add", "BolaoClassificacaoGrupoGerenciamento", new { UserName = Model.Classificacao[c].UserName})">
+                                                    <span class="glyphicon glyphicon-plus"></span>
+                                                </a>
+                                            </td>
+                                            <td>@Model.Classificacao[c].Posicao</td>
+                                            <td>
+                                                @if (Model.Classificacao[c].Posicao == Model.Classificacao[c].LastPosicao)
+                                                {
+                                                    @Html.Raw("<span class=\"glyphicon glyphicon-stop black\">&nbsp;&nbsp;</span>");
+                                                }
+                                                else if (Model.Classificacao[c].Posicao < Model.Classificacao[c].LastPosicao)
+                                                {
+                                                    @Html.Raw("<span class=\"glyphicon glyphicon-arrow-up blue\">&nbsp;" + (Model.Classificacao[c].LastPosicao - Model.Classificacao[c].Posicao) + "</span>");
+
+                                                }
+                                                else
+                                                {
+                                                    @*<span class="glyphicon glyphicon-arrow-down ">*@
+                                                    @Html.Raw("<span style=\"color:red\" class=\"glyphicon glyphicon-arrow-down \">&nbsp;" + (Model.Classificacao[c].Posicao - Model.Classificacao[c].LastPosicao) + "</span>");
+                                                }
+
+                                            </td>
+                                            <td>@Model.Classificacao[c].UserName</td>
+                                            <td>@Model.Classificacao[c].FullName</td>
+                                            <td>@Model.Classificacao[c].TotalPontos</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</body>
-</html>

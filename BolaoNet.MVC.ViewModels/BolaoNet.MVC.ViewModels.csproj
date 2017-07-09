@@ -98,6 +98,7 @@
     <Compile Include="Users\UserBoloesViewModel.cs" />
     <Compile Include="Users\UserCampeonatosViewModel.cs" />
     <Compile Include="Users\UserChangePasswordViewModel.cs" />
+    <Compile Include="Users\UserGrupoComparacaoViewModel.cs" />
     <Compile Include="Users\UserProfileViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

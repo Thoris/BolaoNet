@@ -188,7 +188,7 @@
     <Compile Include="Areas\Users\Controllers\AccountHomeController.cs" />
     <Compile Include="Areas\Users\Controllers\AccountHomeProfileImageController.cs" />
     <Compile Include="Areas\Users\Controllers\BaseUserAreaController.cs" />
-    <Compile Include="Areas\Users\Controllers\BolaoClassificacaoGrupoGerenciamento.cs" />
+    <Compile Include="Areas\Users\Controllers\BolaoClassificacaoGrupoGerenciamentoController.cs" />
     <Compile Include="Areas\Users\Controllers\UserBoloesController.cs" />
     <Compile Include="Areas\Users\Controllers\UserCampeonatoController.cs" />
     <Compile Include="Areas\Users\UsersAreaRegistration.cs" />

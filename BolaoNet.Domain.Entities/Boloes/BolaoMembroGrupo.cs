@@ -25,6 +25,7 @@ namespace BolaoNet.Domain.Entities.Boloes
         [ForeignKey("NomeBolao, UserName")]
         public virtual BolaoMembro BolaoMembro { get; set; }
 
+        [Key, Column(Order = 3)]
         public string UserNameSelecionado { get; set; }
         [ForeignKey("UserNameSelecionado")]
         public Users.User UserInclusao { get; set; }
@@ -38,10 +39,11 @@ namespace BolaoNet.Domain.Entities.Boloes
         {
 
         }
-        public BolaoMembroGrupo(string userName, string nomeBolao)
+        public BolaoMembroGrupo(string userName, string nomeBolao, string userNameSelecionado)
         {
             this.UserName = userName;
             this.NomeBolao = nomeBolao;
+            this.UserNameSelecionado = userNameSelecionado;
         }
 
         #endregion
