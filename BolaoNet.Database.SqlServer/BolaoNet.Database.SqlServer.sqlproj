@@ -136,5 +136,7 @@
     <None Include="build\0122.Create_StoredProcedure_sp_CampeonatosClassificacao_LoadClassificacao.sql" />
     <None Include="build\0123.Create_Stored_Procedure_sp_Users_Load_Boloes.sql" />
     <None Include="build\0124.Create_Stored_Procedure_sp_Users_Load_Pagamentos.sql" />
+    <None Include="build\0125.Create_Stored_Procedure_sp_BoloesMembros_LoadStatus.sql" />
+    <None Include="build\0126.Create_Stored_Procedure_sp_BoloesMembros_Del.sql" />
   </ItemGroup>
 </Project>

@@ -70,6 +70,7 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
             Bind<Domain.Interfaces.Services.Facade.Campeonatos.IStructureCopaMundoFacadeService>().To<Domain.Services.Facade.Campeonatos.StructureCopaMundoFacadeService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Facade.Campeonatos.ICopaMundo2014FacadeService>().To<Domain.Services.Facade.Campeonatos.CopaMundo2014FacadeService>().WithConstructorArgument("userName", userName);
 
+            Bind<Domain.Interfaces.Services.Reports.IBolaoMembroApostasReportService>().To<Domain.Services.Reports.BolaoMembroApostasReportService>().WithConstructorArgument("userName", userName);
 
         }
 

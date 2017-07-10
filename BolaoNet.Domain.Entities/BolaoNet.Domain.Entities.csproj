@@ -97,7 +97,9 @@
     <Compile Include="ValueObjects\BolaoGrupoComparacaoClassificacaoVO.cs" />
     <Compile Include="ValueObjects\FilterJogosVO.cs" />
     <Compile Include="ValueObjects\JogoUsuarioVO.cs" />
+    <Compile Include="ValueObjects\Reports\BolaoMembroApostasVO.cs" />
     <Compile Include="ValueObjects\UserBoloesVO.cs" />
+    <Compile Include="ValueObjects\UserMembroStatusVO.cs" />
     <Compile Include="ValueObjects\UserSaldoBolaoVO.cs" />
   </ItemGroup>
   <ItemGroup>

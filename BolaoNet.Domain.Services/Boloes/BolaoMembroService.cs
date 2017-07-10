@@ -51,8 +51,34 @@ namespace BolaoNet.Domain.Services.Boloes
 
             return Dao.GetListBolaoInUsers(this.CurrentUserName, DateTime.Now, user);
         }
+        public IList<Entities.ValueObjects.UserMembroStatusVO> GetUserStatus(Entities.Boloes.Bolao bolao)
+        {
+            if (bolao == null)
+                throw new ArgumentException("bolao");
+            if (string.IsNullOrEmpty(bolao.Nome))
+                throw new ArgumentException("bolao.Nome");
+
+            return Dao.GetUserStatus(this.CurrentUserName, DateTime.Now, bolao);
+        }
+
+        public bool RemoverMembroBolao(Entities.Boloes.Bolao bolao, Entities.Boloes.BolaoMembro membro)
+        {
+            if (bolao == null)
+                throw new ArgumentException("bolao");
+            if (string.IsNullOrEmpty(bolao.Nome))
+                throw new ArgumentException("bolao.Nome");
+            if (membro == null)
+                throw new ArgumentException("membro");
+            if (string.IsNullOrEmpty(membro.UserName))
+                throw new ArgumentException("membro.Nome");
+
+            return Dao.RemoverMembroBolao(base.CurrentUserName, DateTime.Now, bolao, membro);
+        }
 
         #endregion
+
+
+
 
 
     }

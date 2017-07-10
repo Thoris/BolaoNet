@@ -17,5 +17,7 @@ namespace BolaoNet.Domain.Interfaces.Services.Boloes
         IList<Entities.ValueObjects.UserBoloesVO> GetBoloesUsuario(Entities.Users.User user);
 
         IList<Entities.ValueObjects.UserSaldoBolaoVO> GetBoloesSaldoUsuario(Entities.Users.User user);
+
+        bool IsIniciado(Entities.Boloes.Bolao bolao);
     }
 }

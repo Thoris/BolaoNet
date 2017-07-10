@@ -130,6 +130,8 @@ namespace BolaoNet.Tests.Debug
 
             //report.GenerateApostasUsers(new Entities.Boloes.Bolao("Copa do Mundo 2014"));
 
+            
+
         }
     }
 }

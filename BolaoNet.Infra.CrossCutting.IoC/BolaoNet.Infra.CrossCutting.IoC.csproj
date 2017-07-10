@@ -102,6 +102,10 @@
       <Project>{634e95f1-4f38-4bdb-ad16-8dfcd6c73ab5}</Project>
       <Name>BolaoNet.Infra.Notification.Mail</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Infra.Reports\BolaoNet.Infra.Reports.csproj">
+      <Project>{5c3e6aa6-f8d2-4940-be65-3fc76db96b59}</Project>
+      <Name>BolaoNet.Infra.Reports</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BolaoNet.WebApi.Integration\BolaoNet.WebApi.Integration.csproj">
       <Project>{2af5e54a-613c-4a7a-896c-9f946593c8f5}</Project>
       <Name>BolaoNet.WebApi.Integration</Name>

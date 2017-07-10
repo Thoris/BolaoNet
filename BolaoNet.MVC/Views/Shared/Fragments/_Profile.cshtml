@@ -5,7 +5,8 @@
 <li class="nav-header">
     <div class="dropdown profile-element">
         <span>
-            <img alt="image" class="img-circle" src="~/Content/img/profile_small.jpg" />
+            @*<img alt="image" class="img-circle" src="~/Content/img/profile_small.jpg" />*@
+            <img alt="image" class="img-circle img-profile" src="~/Content/img/database/profiles/@(homeController.UserLogged.UserName).gif" />
         </span>
         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
             <span class="clear">

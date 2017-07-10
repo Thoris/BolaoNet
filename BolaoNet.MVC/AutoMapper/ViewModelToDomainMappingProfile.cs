@@ -68,7 +68,8 @@ namespace BolaoNet.MVC.AutoMapper
 
 
             Mapper.CreateMap<Domain.Entities.Boloes.Bolao, ViewModels.Admin.BolaoIniciarPararViewModel>();
-        
+
+            Mapper.CreateMap<Domain.Entities.ValueObjects.UserMembroStatusVO, ViewModels.Admin.BolaoIniciarStatusMembroViewModel>();
         }
     }
 }

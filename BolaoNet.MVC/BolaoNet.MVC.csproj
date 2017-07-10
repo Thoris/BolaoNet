@@ -140,11 +140,13 @@
     <Compile Include="Areas\Admin\Controllers\BolaoIniciarPararController.cs" />
     <Compile Include="Areas\Admin\Controllers\GerenciamentoMembrosBolaoController.cs" />
     <Compile Include="Areas\Apostas\ApostasAreaRegistration.cs" />
+    <Compile Include="Areas\Apostas\Controllers\AcessoBolaoController.cs" />
     <Compile Include="Areas\Apostas\Controllers\ApostasAutomaticasController.cs" />
     <Compile Include="Areas\Apostas\Controllers\ApostasExtrasController.cs" />
     <Compile Include="Areas\Apostas\Controllers\ApostasJogosController.cs" />
     <Compile Include="Areas\Apostas\Controllers\BaseApostasAreaController.cs" />
     <Compile Include="Areas\Boloes\BoloesAreaRegistration.cs" />
+    <Compile Include="Areas\Boloes\Controllers\AcessoBolaoController.cs" />
     <Compile Include="Areas\Boloes\Controllers\ApostasExtrasController.cs" />
     <Compile Include="Areas\Boloes\Controllers\ApostasJogoController.cs" />
     <Compile Include="Areas\Boloes\Controllers\BaseBolaoAreaController.cs" />
@@ -225,6 +227,7 @@
     <Content Include="Content\css\bootstrap-datepicker.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\custom-site.css" />
     <Content Include="Content\css\fonts\BoldItalic\OpenSans-BoldItalic.svg" />
     <Content Include="Content\css\fonts\Bold\OpenSans-Bold.svg" />
     <Content Include="Content\css\fonts\ExtraBoldItalic\OpenSans-ExtraBoldItalic.svg" />
@@ -355,6 +358,8 @@
     <Content Include="Areas\Users\Views\AccountHome\_PrincipalProximoJogos.cshtml" />
     <Content Include="Areas\Users\Views\AccountHome\ChangeProfileImage.cshtml" />
     <Content Include="Areas\Users\Views\AccountHomeProfileImage\Index.cshtml" />
+    <Content Include="Areas\Apostas\Views\AcessoBolao\BolaoIniciado.cshtml" />
+    <Content Include="Areas\Boloes\Views\AcessoBolao\BolaoNaoIniciado.cshtml" />
     <None Include="Content\js\jquery-1.10.2.intellisense.js" />
     <Content Include="Content\js\jquery-1.10.2.js" />
     <Content Include="Content\js\jquery-1.10.2.min.js" />

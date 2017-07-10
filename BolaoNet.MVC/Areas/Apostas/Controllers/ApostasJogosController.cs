@@ -13,6 +13,7 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
         #region Variables
 
         private Application.Interfaces.Boloes.IJogoUsuarioApp _jogoUsuarioApp;
+        private Application.Interfaces.Reports.IBolaoMembroApostasReportApp _bolaoMembroApostasReportApp;
 
         #endregion
 
@@ -25,11 +26,13 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
                 Application.Interfaces.Campeonatos.ICampeonatoApp campeonatoApp,
                 Application.Interfaces.Campeonatos.ICampeonatoFaseApp campeonatoFaseApp,
                 Application.Interfaces.Campeonatos.ICampeonatoGrupoApp campeonatoGrupoApp,
-                Application.Interfaces.Campeonatos.ICampeonatoTimeApp campeonatoTimeApp
+                Application.Interfaces.Campeonatos.ICampeonatoTimeApp campeonatoTimeApp,
+                Application.Interfaces.Reports.IBolaoMembroApostasReportApp bolaoMembroApostasReportApp
             )
             : base(bolaoMembroApp, bolaoApp, campeonatoApp, campeonatoFaseApp, campeonatoGrupoApp, campeonatoTimeApp)
         {
             _jogoUsuarioApp = jogoUsuarioApp;
+            _bolaoMembroApostasReportApp = bolaoMembroApostasReportApp;
         }
 
         #endregion
@@ -345,21 +348,31 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
         {
             //new Helpers.Downloader().DownloadRelatorio();
 
-            MemoryStream stream = new MemoryStream();
-            StreamWriter writer = new StreamWriter(stream);
+            //MemoryStream stream = new MemoryStream();
+            //StreamWriter writer = new StreamWriter(stream);
 
-            writer.WriteLine("teste 1");
-            writer.WriteLine("teste 1");
-            writer.WriteLine("teste 1");
-            writer.WriteLine("teste 1");
-            writer.WriteLine("teste 1");
-            writer.WriteLine("teste 1");
-            writer.WriteLine("teste 1");
+            //writer.WriteLine("teste 1");
+            //writer.WriteLine("teste 1");
+            //writer.WriteLine("teste 1");
+            //writer.WriteLine("teste 1");
+            //writer.WriteLine("teste 1");
+            //writer.WriteLine("teste 1");
+            //writer.WriteLine("teste 1");
 
-            writer.Flush();
-            stream.Seek(0, SeekOrigin.Begin);
+            //writer.Flush();
+            //stream.Seek(0, SeekOrigin.Begin);
 
-            return base.DownloadStream(stream, "text/plain", "file.txt");
+            Domain.Entities.ValueObjects.Reports.BolaoMembroApostasVO data =
+                _bolaoMembroApostasReportApp.GetData(base.SelectedBolao, base.UserLogged);
+
+            Stream streamReport = _bolaoMembroApostasReportApp.Generate(
+                "gif",
+                Server.MapPath("~/Content/img/database/profiles"),
+                Server.MapPath("~/Content/img/database/times"), data);
+
+
+            return base.DownloadStream(streamReport, "text/plain", base.UserLogged.UserName + ".pdf");
+            //return base.DownloadStream(stream, "text/plain", "file.txt");
         }
 
         #endregion

@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BolaoMembroApostasReport.cs" />
     <Compile Include="DataManager\MergeApostasApostasUsuario.cs" />
     <Compile Include="DataManager\MergeJogoJogoUsuario.cs" />
     <Compile Include="Entities\EntityApostasExtras.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="FormatReports\IApostasUserReport.cs" />
     <Compile Include="FormatReports\PDF\ApostaUserReportPdf.cs" />
     <Compile Include="FormatReports\PDF\Base\BasePdfCopaMundoReport.cs" />
+    <Compile Include="Interfaces\IBolaoMembroApostasReport.cs" />
     <Compile Include="Managers\CopaMundoApostasUserReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

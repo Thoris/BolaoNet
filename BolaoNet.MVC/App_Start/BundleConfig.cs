@@ -125,6 +125,7 @@ namespace BolaoNet.MVC
                       "~/Content/css/bootstrap.min.css",
                       "~/Content/css/font-awesome/css/font-awesome.css",
                       "~/Content/css/animate.css",
+                      "~/Content/css/custom-site.css",
                       "~/Content/css/style.css"));
 
             bundles.Add(new StyleBundle("~/Content/css8").Include(

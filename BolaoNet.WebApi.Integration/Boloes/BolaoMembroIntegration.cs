@@ -45,8 +45,17 @@ namespace BolaoNet.WebApi.Integration.Boloes
             return base.HttpPostApi<ICollection<Domain.Entities.Boloes.BolaoMembro>>(
                 new Dictionary<string, string>(), user, "GetListBolaoInUsers").ToList<Domain.Entities.Boloes.BolaoMembro>();
         }
+        public IList<Domain.Entities.ValueObjects.UserMembroStatusVO> GetUserStatus(Domain.Entities.Boloes.Bolao bolao)
+        {
+            throw new NotImplementedException();
+        }
+        public bool RemoverMembroBolao(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Boloes.BolaoMembro membro)
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
+
 
 
     }

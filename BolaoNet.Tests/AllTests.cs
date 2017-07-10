@@ -4,11 +4,14 @@ using BolaoNet.Application.Interfaces.Facade;
 using BolaoNet.Application.Interfaces.Facade.Campeonatos;
 using BolaoNet.Application.Interfaces.Users;
 using BolaoNet.Domain.Interfaces.Repositories.Users;
+using BolaoNet.Domain.Interfaces.Services.Boloes;
 using BolaoNet.Domain.Interfaces.Services.Facade.Campeonatos;
+using BolaoNet.Domain.Interfaces.Services.Logging;
 using BolaoNet.Domain.Interfaces.Services.Users;
 using Ninject;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -27,6 +30,25 @@ namespace BolaoNet.Tests
 
             CopaDoMundoTests.CopaDoMundo2014Tests.BolaoCopaMundo2014UserApostasAppTests test;
 
+
+
+            Domain.Services.Reports.BolaoMembroApostasReportService report = new Domain.Services.Reports.BolaoMembroApostasReportService(
+                "thoris",
+                kernel.Get<ILogging>(),
+                kernel.Get<IBolaoService>(),
+                kernel.Get<IApostaExtraUsuarioService>(),
+                kernel.Get<IJogoUsuarioService>(),
+                kernel.Get<IUserService>(),
+                new Infra.Reports.Pdf.PdfBolaoMembroApostasReport()
+                );
+            
+            Stream res =
+                report.Generate("", "", "", 
+                report.GetData(new Domain.Entities.Boloes.Bolao ("Copa do Mundo 2014"), new Domain.Entities.Users.User("thoris")));
+
+
+
+            return;
 
             //ICopaMundo2014FacadeService copaFacadeService = kernel.Get<ICopaMundo2014FacadeService>();
 

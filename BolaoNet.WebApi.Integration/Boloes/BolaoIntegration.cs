@@ -67,8 +67,11 @@ namespace BolaoNet.WebApi.Integration.Boloes
         {
             throw new NotImplementedException();
         }
+        public bool IsIniciado(Domain.Entities.Boloes.Bolao bolao)
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
-
     }
 }

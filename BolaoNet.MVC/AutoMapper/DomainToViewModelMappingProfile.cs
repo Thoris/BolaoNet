@@ -69,7 +69,8 @@ namespace BolaoNet.MVC.AutoMapper
             Mapper.CreateMap<ViewModels.Users.PaginaPrincipal.PaginaPrincipalPontosObtidosViewModel, Domain.Entities.ValueObjects.JogoUsuarioVO>();
 
             Mapper.CreateMap<ViewModels.Admin.BolaoIniciarPararViewModel, Domain.Entities.Boloes.Bolao>();
-        
+
+            Mapper.CreateMap<ViewModels.Admin.BolaoIniciarStatusMembroViewModel, Domain.Entities.ValueObjects.UserMembroStatusVO>();
         
         }
     }

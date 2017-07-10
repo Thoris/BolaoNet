@@ -2,8 +2,12 @@
 @{
     ViewBag.Title = "Apostas dos Jogos do Bolão ";
 }
+
+@Html.HiddenFor(x => x.UserName)
+
 @using (Html.BeginForm("Filtrar", "ApostasUsuarios", FormMethod.Post, new { }))
 {
+    @Html.HiddenFor(x => x.UserName)
     @Html.AntiForgeryToken()
 
     <div class="row">
@@ -105,7 +109,7 @@
     @Html.HiddenFor(x => x.Filtros.NomeGrupo)
     @Html.HiddenFor(x => x.Filtros.NomeTime)
     @Html.HiddenFor(x => x.Filtros.Rodada)
-
+    
 
     <div class="row">
         <div class="col-ld-12">
@@ -121,7 +125,11 @@
         <div class="row">
 
             <div class="col-sm-offset-10 col-sm-2">
-                <input type="button" class="btn btn-default btn-sm center-block " value="Download" onclick="location.href='@Url.Action("DownloadApostas")'" />
+
+                <a href="@Url.Action("DownloadApostas", "ApostasUsuarios", new { userName = Model.UserName})" class="btn btn-default btn-sm center-block ">Download</a>
+
+
+                @*<input type="button" class="btn btn-default btn-sm center-block " value="Download" onclick="location.href='@Url.Action("DownloadApostas", new { username = Model.UserName})'" />*@
             </div>
         </div>
     }

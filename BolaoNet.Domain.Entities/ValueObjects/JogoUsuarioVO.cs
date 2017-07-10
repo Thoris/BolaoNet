@@ -69,7 +69,11 @@ namespace BolaoNet.Domain.Entities.ValueObjects
         public bool? IsMultiploTime { get; set; }
         public int? MultiploTime { get; set; }
 
-        public int? Ganhador { get; set; } 
+        public int? Ganhador { get; set; }
+
+        //
+        public string DescricaoTime1 { get; set; }
+        public string DescricaoTime2 { get; set; }
 
         #endregion
     }

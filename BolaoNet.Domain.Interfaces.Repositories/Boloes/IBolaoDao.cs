@@ -18,5 +18,7 @@ namespace BolaoNet.Domain.Interfaces.Repositories.Boloes
 
         IList<Entities.ValueObjects.UserSaldoBolaoVO> GetBoloesSaldoUsuario(string currentUserName, DateTime currentDateTime, Entities.Users.User user);
 
+        bool IsIniciado(string currentUserName, DateTime currentDateTime, Entities.Boloes.Bolao bolao);
+
     }
 }

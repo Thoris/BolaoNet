@@ -130,11 +130,11 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
         {
             return Service.GetBoloesSaldoUsuario(user);
         }
+        public bool IsIniciado(Domain.Entities.Boloes.Bolao bolao)
+        {
+            return Service.IsIniciado(bolao);
+        }
         #endregion
-
-
-
-
 
     }
 }

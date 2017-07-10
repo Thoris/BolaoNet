@@ -48,8 +48,18 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
         {
             return Service.GetListBolaoInUsers(user);
         }
+        public IList<Domain.Entities.ValueObjects.UserMembroStatusVO> GetUserStatus(Domain.Entities.Boloes.Bolao bolao)
+        {
+            return Service.GetUserStatus(bolao);
+        }
+
+        public bool RemoverMembroBolao(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Boloes.BolaoMembro membro)
+        {
+            return Service.RemoverMembroBolao(bolao, membro);
+        }
 
         #endregion
+
 
     }
 }

@@ -92,6 +92,7 @@
     <Compile Include="Facade\UserFacadeService.cs" />
     <Compile Include="FactoryService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\BolaoMembroApostasReportService.cs" />
     <Compile Include="Users\RoleService.cs" />
     <Compile Include="Users\UserService.cs" />
     <Compile Include="Users\UserInRoleService.cs" />

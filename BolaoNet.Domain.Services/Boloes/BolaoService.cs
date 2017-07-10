@@ -77,12 +77,17 @@ namespace BolaoNet.Domain.Services.Boloes
 
             return Dao.GetBoloesSaldoUsuario(base.CurrentUserName, DateTime.Now, user);
         }
+        public bool IsIniciado(Entities.Boloes.Bolao bolao)
+        {
+            if (bolao == null)
+                throw new ArgumentException("bolao");
+            if (string.IsNullOrEmpty(bolao.Nome))
+                throw new ArgumentException("bolao.Nome");
+
+            return Dao.IsIniciado(base.CurrentUserName, DateTime.Now, bolao);
+        }
 
         #endregion
-
-
-
-
 
 
     }

@@ -364,7 +364,6 @@ namespace BolaoNet.Domain.Services.Boloes
 
             return Dao.LoadAcertosDificeis(base.CurrentUserName, DateTime.Now, bolao, totalMaximoAcertos);
         }
-
         public IList<Entities.Campeonatos.Jogo> LoadSemAcertos(Entities.Boloes.Bolao bolao)
         {
             if (bolao == null)
@@ -374,7 +373,6 @@ namespace BolaoNet.Domain.Services.Boloes
 
             return Dao.LoadSemAcertos(base.CurrentUserName, DateTime.Now, bolao);
         }
-
         public IList<Entities.ValueObjects.JogoUsuarioVO> LoadPontosObtidos(Entities.Users.User user, int totalRetorno)
         {
             if (user == null)
@@ -384,7 +382,6 @@ namespace BolaoNet.Domain.Services.Boloes
 
             return Dao.LoadPontosObtidos(base.CurrentUserName, DateTime.Now, user, totalRetorno);
         }
-
         public IList<Entities.ValueObjects.JogoUsuarioVO> LoadProximosJogosUsuario(Entities.Users.User user, int totalRetorno)
         {
             if (user == null)
@@ -396,10 +393,5 @@ namespace BolaoNet.Domain.Services.Boloes
         }
 
         #endregion
-
-
-
-
-
     }
 }

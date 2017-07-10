@@ -45,9 +45,7 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
         }
         public ActionResult Index()
         {
-            //ViewModels.Admin.BolaoIniciarPararViewModel model = new ViewModels.Admin.BolaoIniciarPararViewModel();
-
-
+            
             Domain.Entities.Boloes.Bolao bolaoLoaded =  _bolaoApp.Load(base.SelectedBolao);
 
 
@@ -57,18 +55,46 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
 
 
             model.StatusMembros = new List<ViewModels.Admin.BolaoIniciarStatusMembroViewModel>();
-            model.StatusMembros.Add(new ViewModels.Admin.BolaoIniciarStatusMembroViewModel()
+
+
+            IList<Domain.Entities.ValueObjects.UserMembroStatusVO> listMembros =
+                _bolaoMembroApp.GetUserStatus(base.SelectedBolao);
+
+
+            IList<ViewModels.Admin.BolaoIniciarStatusMembroViewModel> membrosModel =
+                 Mapper.Map<
+                 IList<Domain.Entities.ValueObjects.UserMembroStatusVO>, 
+                 IList<ViewModels.Admin.BolaoIniciarStatusMembroViewModel>>
+                 (listMembros);
+
+
+            for (int c = 0; c < membrosModel.Count; c++ )
+            {
+                if (membrosModel[c].Pago != 0)
                 {
-                    UserName = "teste",
-                    FullName = "thoris angelo",
-                    TotalApostasRestantes = 2,
-                    Email = "thorisa@hotmail.com"
-                });
+                    membrosModel[c].FaltaPagamento = true;
+                }
+
+                if (membrosModel[c].Restantes > 0)
+                {
+                    membrosModel[c].ApostasRestantes = true;
+                }
+            }
+
+            model.StatusMembros = membrosModel;
+
 
 
             return View(model);
         }
-
+        public ActionResult RemoverMembro(ViewModels.Admin.BolaoIniciarStatusMembroViewModel model)
+        {
+            if (string.IsNullOrEmpty(model.UserName))
+            {
+                _bolaoMembroApp.RemoverMembroBolao(base.SelectedBolao, new Domain.Entities.Boloes.BolaoMembro(base.SelectedNomeBolao, model.UserName));
+            }
+            return RedirectToAction("Index");
+        }
         #endregion
     }
 }

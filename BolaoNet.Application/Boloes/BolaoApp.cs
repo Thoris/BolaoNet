@@ -58,7 +58,11 @@ namespace BolaoNet.Application.Boloes
             return Service.GetBoloesSaldoUsuario(user);
         }
 
-        #endregion
+        public bool IsIniciado(Domain.Entities.Boloes.Bolao bolao)
+        {
+            return Service.IsIniciado(bolao);
+        }
 
+        #endregion
     }
 }

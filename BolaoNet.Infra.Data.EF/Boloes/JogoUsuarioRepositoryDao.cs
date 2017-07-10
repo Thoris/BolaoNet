@@ -132,7 +132,6 @@ namespace BolaoNet.Infra.Data.EF.Boloes
             else
                 return false;
         }
-
         public bool UpdateAposta(string currentUserName, Domain.Entities.Boloes.JogoUsuario jogoUsuario)
         {
             int res = base.Update(jogoUsuario);
@@ -141,7 +140,6 @@ namespace BolaoNet.Infra.Data.EF.Boloes
             else
                 return false;
         }
-
         public bool CalculeTime(string currentUserName, DateTime currentDateTime, Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user, Domain.Entities.DadosBasicos.Time time, Domain.Entities.Campeonatos.CampeonatoFase fase, Domain.Entities.Campeonatos.CampeonatoGrupo grupo)
         {
 
@@ -205,7 +203,6 @@ namespace BolaoNet.Infra.Data.EF.Boloes
             else
                 return false;
         }
-
         public bool CalculeDependencia(string currentUserName, DateTime currentDateTime, Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user, Domain.Entities.Campeonatos.Jogo jogo, Domain.Entities.Campeonatos.CampeonatoFase fase, Domain.Entities.Campeonatos.CampeonatoGrupo grupo, int apostaTime1, int apostaTime2, int? penaltis1, int? penaltis2)
         {
             string command = "exec sp_JogosUsuarios_Calcule_Dependencia " +
@@ -294,7 +291,6 @@ namespace BolaoNet.Infra.Data.EF.Boloes
             else
                 return false;
         }
-
         public bool CalculeFinal(string currentUserName, DateTime currentDateTime, Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user, Domain.Entities.Campeonatos.Jogo jogo, Domain.Entities.Campeonatos.CampeonatoFase fase, Domain.Entities.Campeonatos.CampeonatoGrupo grupo, int apostaTime1, int apostaTime2, int? penaltis1, int? penaltis2)
         {
             string command = "exec sp_JogosUsuarios_Calcule_Final " +
@@ -383,7 +379,6 @@ namespace BolaoNet.Infra.Data.EF.Boloes
             else
                 return false;
         }
-
         public bool CalculeGrupo(string currentUserName, DateTime currentDateTime, Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user, Domain.Entities.Campeonatos.Campeonato campeonato, Domain.Entities.Campeonatos.CampeonatoFase fase, Domain.Entities.Campeonatos.CampeonatoGrupo grupo)
         {
             string command = "exec sp_JogosUsuarios_Calcule_Grupo " +
@@ -439,7 +434,6 @@ namespace BolaoNet.Infra.Data.EF.Boloes
             else
                 return false;
         }
-
         public bool ProcessAposta(string currentUserName, DateTime currentDateTime, Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user, Domain.Entities.Campeonatos.Jogo jogo, int automatico, int apostaTime1, int apostaTime2, int? penaltis1, int? penaltis2, int? ganhador)
         {
             string command = "exec sp_JogosUsuarios_ProcessAposta " +
@@ -529,7 +523,6 @@ namespace BolaoNet.Infra.Data.EF.Boloes
             else
                 return false;
         }
-
         public Domain.Entities.Boloes.JogoUsuario CalculePontos(string currentUserName, DateTime currentDateTime, int gols1, int gols2, int aposta1, int aposta2, int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1, int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, bool isMultiploTime, int multiploTime, Domain.Entities.Boloes.JogoUsuario pontosEntity)
         {
             string command = "exec sp_JogosUsuarios_CalculaPontos " +
@@ -796,7 +789,6 @@ namespace BolaoNet.Infra.Data.EF.Boloes
             return pontosEntity;
 
         }
-
         public bool Validacao(string currentUserName, DateTime currentDateTime, Domain.Entities.Campeonatos.Jogo jogo, Domain.Entities.Campeonatos.CampeonatoFase fase, Domain.Entities.Campeonatos.CampeonatoGrupo grupo, int rodada, Domain.Entities.DadosBasicos.Time time1, Domain.Entities.DadosBasicos.Time time2, int gols1, int gols2, int? penaltis1, int? penaltis2, Domain.Entities.Users.User validadoBy)
         {
             string command = "exec sp_JogosUsuariosValidacao " +
@@ -866,14 +858,12 @@ namespace BolaoNet.Infra.Data.EF.Boloes
             else
                 return false;
         }
-
         public IList<Domain.Entities.Boloes.JogoUsuario> GetJogosByUser(string currentUserName, Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
         {
             return base.GetList(x =>
                 string.Compare(x.NomeBolao, bolao.Nome, true) == 0 &&
                 string.Compare(x.UserName, user.UserName, true) == 0).ToList<Domain.Entities.Boloes.JogoUsuario>();
-        }
-        
+        }        
         public IList<Domain.Entities.ValueObjects.JogoUsuarioVO> GetJogosUser(string currentUserName, Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user, Domain.Entities.ValueObjects.FilterJogosVO filter)
         {            
             DateTime dataInicioFilter = new DateTime(1900, 1, 1);
@@ -999,7 +989,6 @@ namespace BolaoNet.Infra.Data.EF.Boloes
 
             return q.ToList<Domain.Entities.ValueObjects.JogoUsuarioVO>();
         }
-
         public void InsertApostasAutomaticas(string currentUserName, DateTime currentDateTime, Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user, Domain.Entities.ValueObjects.ApostasAutomaticasFilterVO filter)
         {
 
@@ -1068,14 +1057,12 @@ namespace BolaoNet.Infra.Data.EF.Boloes
 
             }
              
-        }
-        
+        }        
         public IList<Domain.Entities.Boloes.JogoUsuario> GetApostasJogo(string currentUserName, DateTime currentDateTime, Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Campeonatos.Jogo jogo)
         {
             return GetList(x => string.Compare(x.NomeBolao, bolao.Nome, true) == 0 &&
                 jogo.JogoId == x.JogoId).ToList();
         }
-
         public IList<Domain.Entities.ValueObjects.JogoUsuarioVO> LoadAcertosDificeis(string currentUserName, DateTime currentDateTime, Domain.Entities.Boloes.Bolao bolao, int totalMaximoAcertos)
         {
             var q =
@@ -1159,12 +1146,10 @@ namespace BolaoNet.Infra.Data.EF.Boloes
 
             return q.ToList<Domain.Entities.ValueObjects.JogoUsuarioVO>();
         }
-
         public IList<Domain.Entities.Campeonatos.Jogo> LoadSemAcertos(string currentUserName, DateTime currentDateTime, Domain.Entities.Boloes.Bolao bolao)
         {
             return base.DataContext.Jogos.ToList ();
         }
-
         public IList<Domain.Entities.ValueObjects.JogoUsuarioVO> LoadPontosObtidos(string currentUserName, DateTime currentDateTime, Domain.Entities.Users.User user, int totalRetorno)
         {
             //#region Comments
@@ -1266,7 +1251,6 @@ namespace BolaoNet.Infra.Data.EF.Boloes
 
             return q.ToList();
         }
-
         public IList<Domain.Entities.ValueObjects.JogoUsuarioVO> LoadProximosJogosUsuario(string currentUserName, DateTime currentDateTime, Domain.Entities.Users.User user, int totalRetorno)
         {
             //#region Comments

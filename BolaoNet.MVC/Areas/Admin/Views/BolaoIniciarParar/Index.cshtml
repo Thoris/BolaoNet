@@ -135,45 +135,64 @@
             <div class="col-lg-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>Simulação</h5>
+                        <h5>Status dos Membros</h5>
                     </div>
                     <div class="ibox-content" style="display: block;">
                         <div class="row">
+
+                            @if(Model.StatusMembros != null && Model.StatusMembros.Count > 0)
+                            { 
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <td>Usuário</td>
-                                        <td>Nome Completo</td>
-                                        <td>Email</td>
-                                        <td>Restantes</td>
-                                        <td>Pago?</td>
-                                        <td>
-                                        </td>
+                                        <td>@Html.DisplayNameFor(x => x.StatusMembros[0].UserName)</td>
+                                        <td></td>
+                                        <td>@Html.DisplayNameFor(x => x.StatusMembros[0].FullName)</td>
+                                        <td>@Html.DisplayNameFor(x => x.StatusMembros[0].Email)</td>
+                                        <td>@Html.DisplayNameFor(x => x.StatusMembros[0].Restantes)</td>
+                                        <td>@Html.DisplayNameFor(x => x.StatusMembros[0].Pago)</td>
+                                        <td></td>
+                                        <td></td>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @for (int c = 0; c < Model.StatusMembros.Count; c++)
                                     {
-                                        <tr>
-                                            <td>@Model.StatusMembros[c].UserName</td>
-                                            <td>@Model.StatusMembros[c].FullName</td>
-                                            <td>@Model.StatusMembros[c].Email</td>
-                                            <td>@Model.StatusMembros[c].TotalApostasRestantes</td>
-                                            <td>@Model.StatusMembros[c].BolaoPago</td>
+                                        <tr 
+                                            @if (Model.StatusMembros[c].ApostasRestantes) 
+                                            {
+                                                Html.Raw(" class=\"warning\"");
+                                            }
+                                            else if (Model.StatusMembros[c].FaltaPagamento)
+                                            {
+                                                Html.Raw(" class=\"danger\"");
+                                            }
+                                            else 
+                                            {
+                                                
+                                            }>
+                                            <td>@Html.DisplayFor(x=>x.StatusMembros[c].UserName)</td>
                                             <td>
 
                                             </td>
+                                            <td>@Model.StatusMembros[c].FullName</td>
+                                            <td>@Model.StatusMembros[c].Email</td>
+                                            <td>@Model.StatusMembros[c].Restantes</td>
+                                            <td>@Model.StatusMembros[c].Pago</td>                                            
                                             <td>
-                                                Download
+                                                <a href="@Url.Action("DownloadApostas", "BolaoIniciarParar", new { username = @Model.StatusMembros[c].UserName })">
+                                                    <span class="glyphicon glyphicon-download"></span>
+                                                </a>
                                             </td>
                                             <td>
-                                                Remover
+                                                <a href="@Url.Action("RemoverMembro", new { Username = @Model.StatusMembros[c].UserName })" @*class="btn btn-success btn-sm center-block"*@
+                                                   onclick="return confirm('Deseja remover o membro do Bolão?');"><span class="glyphicon glyphicon-remove"></span></a>
                                             </td>
                                         </tr>
                                     }
                                 </tbody>
                             </table>
-
+                            }
                         </div>
                     </div>
                 </div>

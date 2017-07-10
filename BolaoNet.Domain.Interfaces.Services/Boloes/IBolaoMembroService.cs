@@ -12,5 +12,9 @@ namespace BolaoNet.Domain.Interfaces.Services.Boloes
 
         IList<Entities.Boloes.BolaoMembro> GetListUsersInBolao(Entities.Boloes.Bolao bolao);
         IList<Entities.Boloes.BolaoMembro> GetListBolaoInUsers(Entities.Users.User user);
+
+        IList<Entities.ValueObjects.UserMembroStatusVO> GetUserStatus(Entities.Boloes.Bolao bolao);
+
+        bool RemoverMembroBolao(Entities.Boloes.Bolao bolao, Entities.Boloes.BolaoMembro membro);
     }
 }

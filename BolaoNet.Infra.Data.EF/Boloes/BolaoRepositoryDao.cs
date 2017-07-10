@@ -73,7 +73,6 @@ namespace BolaoNet.Infra.Data.EF.Boloes
             else
                 return false;
         }
-
         public bool Aguardar(string currentUserName, DateTime currentDateTime, Domain.Entities.Boloes.Bolao bolao)
         {
             string command = "exec sp_Boloes_Aguardar " +
@@ -121,7 +120,6 @@ namespace BolaoNet.Infra.Data.EF.Boloes
             else
                 return false;
         }
-
         public IList<Domain.Entities.Boloes.Bolao> GetBoloesDisponiveis(string currentUserName, DateTime currentDateTime)
         {
             return GetAll().ToList<Domain.Entities.Boloes.Bolao>();
@@ -171,8 +169,7 @@ namespace BolaoNet.Infra.Data.EF.Boloes
 
             return res;
 
-        }
-        
+        }        
         public IList<Domain.Entities.ValueObjects.UserSaldoBolaoVO> GetBoloesSaldoUsuario(string currentUserName, DateTime currentDateTime, Domain.Entities.Users.User user)
         {
             string command = "exec sp_Users_Load_Pagamentos " +
@@ -218,8 +215,22 @@ namespace BolaoNet.Infra.Data.EF.Boloes
 
             return res;
         }
+        public bool IsIniciado(string currentUserName, DateTime currentDateTime, Domain.Entities.Boloes.Bolao bolao)
+        {
+            var q =
+              (from j in base.DataContext.Boloes
+               where string.Compare(bolao.Nome, j.Nome, true) == 0
+               select new { j.IsIniciado}
+               ).Single();
+
+            bool ? res = q.IsIniciado;
+
+            if (res == true)
+                return true;
+            else
+                return false;
+        }
 
         #endregion
-        
     }
 }

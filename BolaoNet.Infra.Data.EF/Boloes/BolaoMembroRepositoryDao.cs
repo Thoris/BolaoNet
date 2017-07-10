@@ -93,7 +93,111 @@ namespace BolaoNet.Infra.Data.EF.Boloes
         {
             return base.GetList(x => string.Compare(x.UserName, user.UserName, true) == 0).ToList();
         }
+        public IList<Domain.Entities.ValueObjects.UserMembroStatusVO> GetUserStatus(string currentUserName, DateTime currentDateTime, Domain.Entities.Boloes.Bolao bolao)
+        {
+            string command = "exec sp_BoloesMembros_LoadStatus " +
+                  "  @CurrentLogin " +
+                  ", @CurrentDateTime" +
+                  ", @NomeBolao" +
+                  ", @ErrorNumber out" +
+                  ", @ErrorDescription out";
+
+
+
+            var errorNumber = new SqlParameter
+            {
+                ParameterName = "@ErrorNumber",
+                SqlDbType = System.Data.SqlDbType.Int,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var errorDescription = new SqlParameter
+            {
+                ParameterName = "@ErrorDescription",
+                SqlDbType = System.Data.SqlDbType.VarChar,
+                Size = 255,
+                Direction = System.Data.ParameterDirection.Output
+            };
+
+
+
+            IList<Domain.Entities.ValueObjects.UserMembroStatusVO> res =
+                base.DataContext.Database.SqlQuery<Domain.Entities.ValueObjects.UserMembroStatusVO>(command,
+                                                        new SqlParameter("CurrentLogin", currentUserName),
+                                                        new SqlParameter("CurrentDateTime", currentDateTime),
+                                                        new SqlParameter("NomeBolao", bolao.Nome),
+                                                        errorNumber,
+                                                        errorDescription
+                                                    ).ToList ();
+
+            int error = 0;
+            try
+            {
+                error = (int)errorNumber.Value;
+            }
+            catch
+            {
+
+            }
+
+            return res;
+        }
+        public bool RemoverMembroBolao(string currentUserName, DateTime currentDateTime, Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Boloes.BolaoMembro membro)
+        {
+            string command = "exec sp_BoloesMembros_Del " +
+                  "  @CurrentLogin " +
+                  ", @CurrentDateTime" +
+                  ", @NomeBolao" +
+                  ", @UserName" +
+                  ", @ErrorNumber out" +
+                  ", @ErrorDescription out";
+
+
+
+            var errorNumber = new SqlParameter
+            {
+                ParameterName = "@ErrorNumber",
+                SqlDbType = System.Data.SqlDbType.Int,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var errorDescription = new SqlParameter
+            {
+                ParameterName = "@ErrorDescription",
+                SqlDbType = System.Data.SqlDbType.VarChar,
+                Size = 255,
+                Direction = System.Data.ParameterDirection.Output
+            };
+
+
+
+            object res =
+                base.DataContext.Database.SqlQuery<object>(command,
+                                                        new SqlParameter("CurrentLogin", currentUserName),
+                                                        new SqlParameter("CurrentDateTime", currentDateTime),
+                                                        new SqlParameter("NomeBolao", bolao.Nome),
+                                                        new SqlParameter("UserName", membro.UserName),
+                                                        errorNumber,
+                                                        errorDescription
+                                                    ).ToList();
+
+            //int error = 0;
+            //try
+            //{
+            //    error = (int)errorNumber.Value;
+            //}
+            //catch
+            //{
+
+            //}
+
+            return true;
+        }
         
         #endregion
+
+
+
+
     }
 }

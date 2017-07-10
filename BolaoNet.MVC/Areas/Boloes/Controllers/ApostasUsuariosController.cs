@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,6 +13,7 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
         #region Variables
 
         private Application.Interfaces.Boloes.IJogoUsuarioApp _jogoUsuarioApp;
+        private Application.Interfaces.Reports.IBolaoMembroApostasReportApp _bolaoMembroApostasReportApp;
 
         #endregion
 
@@ -25,11 +27,13 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
             Application.Interfaces.Campeonatos.ICampeonatoApp campeonatoApp,
             Application.Interfaces.Campeonatos.ICampeonatoFaseApp campeonatoFaseApp,
             Application.Interfaces.Campeonatos.ICampeonatoGrupoApp campeonatoGrupoApp,
-            Application.Interfaces.Campeonatos.ICampeonatoTimeApp campeonatoTimeApp
+            Application.Interfaces.Campeonatos.ICampeonatoTimeApp campeonatoTimeApp,
+            Application.Interfaces.Reports.IBolaoMembroApostasReportApp bolaoMembroApostasReportApp
             )
             : base(bolaoMembroApp, bolaoApp, campeonatoApp, campeonatoFaseApp, campeonatoGrupoApp, campeonatoTimeApp)
         {
             _jogoUsuarioApp = jogoUsuarioApp;
+            _bolaoMembroApostasReportApp = bolaoMembroApostasReportApp;
         }
 
         #endregion
@@ -169,7 +173,7 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
                 IList<ViewModels.Bolao.ApostaJogoUsuarioEntryViewModel>>
                 (list);
 
-
+            model.UserName = model.Filtros.UserName;
             model.Apostas = data;
 
             return View("Index", model);
@@ -198,6 +202,7 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
             model.Filtros.FilterSelected = (int)ViewModels.Bolao.FilterJogosViewModel.FilterJogoType.Rodada;
             model.Filtros.Rodada = 1;
             model.Apostas = data;
+            model.UserName = base.UserLogged.UserName;
 
             return View(model);
         }
@@ -211,6 +216,20 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
 
 
             return RedirectToAction("Index", "ApostasJogo", new { id = buttonSelected });
+        }
+
+        public ActionResult DownloadApostas(ViewModels.Bolao.ApostasUsuariosListViewModel model)
+        {
+            Domain.Entities.ValueObjects.Reports.BolaoMembroApostasVO data =
+                _bolaoMembroApostasReportApp.GetData(base.SelectedBolao, new Domain.Entities.Users.User (model.UserName));
+
+            Stream streamReport = _bolaoMembroApostasReportApp.Generate(
+                "gif",
+                Server.MapPath("~/Content/img/database/profiles"),
+                Server.MapPath("~/Content/img/database/times"), data);
+
+
+            return base.DownloadStream(streamReport, "text/plain", model.UserName + ".pdf");
         }
 
         #endregion

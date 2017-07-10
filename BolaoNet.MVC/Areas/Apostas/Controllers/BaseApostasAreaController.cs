@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace BolaoNet.MVC.Areas.Apostas.Controllers
 {
@@ -31,6 +32,27 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
         {
 
         }
+
+        #endregion
+
+        #region Methods
+
+        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            base.OnActionExecuting(filterContext);
+
+            bool bolaoIniciado = _bolaoApp.IsIniciado(base.SelectedBolao);
+
+            if (bolaoIniciado)
+            {
+                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new
+                {
+                    controller = "AcessoBolao",
+                    action = "BolaoIniciado"
+                }));
+            }
+
+        } 
 
         #endregion
     }
