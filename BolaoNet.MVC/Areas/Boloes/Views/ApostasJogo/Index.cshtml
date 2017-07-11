@@ -201,7 +201,8 @@
                                     <thead>
                                         <tr>
                                             <td class="text-center">Pos</td>                                         
-                                            <td class="text-center">PTG</td>                                           
+                                            <td class="text-center">PTG</td>   
+                                            <td></td>                                        
                                             <td class="text-center">Usuário</td>                                             
                                             <td class="text-center">Gols T1</td>
                                             <td class="text-center">x</td>
@@ -223,6 +224,9 @@
                                                 >
                                                 <td class="text-center">@Model.Apostas[c].Posicao</td>                                                
                                                 <td class="text-center">@Model.Apostas[c].TotalPontosClassificacao</td>
+                                                <td>
+                                                    <img class="img-username" src="/Content/img/database/profiles/@(Model.Apostas[c].UserName).gif" />
+                                                </td>
                                                 <td class="text-center">@Model.Apostas[c].UserName</td>
                                                 <td class="text-center"><strong>@Model.Apostas[c].ApostaTime1</strong></td>
                                                 <td class="text-center">x</td>

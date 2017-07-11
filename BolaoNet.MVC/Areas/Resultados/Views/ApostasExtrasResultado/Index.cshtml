@@ -50,7 +50,16 @@
                                                     }
                                                 </td>
                                                 <td>@Model[c].TotalPontos</td>
-                                                <td>@if (Model[c].IsValido == true) { @Html.Raw("Válido"); }</td>
+                                                <td>
+                                                    @if (Model[c].IsValido == true)
+                                                    {
+                                                        @Html.Raw("<span class=\"glyphicon glyphicon-ok\">&nbsp;</span>");
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.Raw("<span class=\"glyphicon glyphicon-remove\">&nbsp;</span>");
+                                                    }    
+                                                </td>
                                                 <td>@Model[c].ValidadoBy</td>
                                                 <td>@Model[c].DataValidacao</td>
                                                 <td></td>

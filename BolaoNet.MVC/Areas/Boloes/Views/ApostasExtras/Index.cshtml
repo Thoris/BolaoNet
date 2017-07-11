@@ -1,6 +1,10 @@
 ﻿@model BolaoNet.MVC.ViewModels.Bolao.ApostasExtrasViewModel
 @{
     ViewBag.Title = "Apostas Extras";
+
+    BolaoNet.MVC.Controllers.AuthorizationController homeController =
+        ViewContext.Controller as BolaoNet.MVC.Controllers.AuthorizationController;
+    string userNameLogged = homeController.UserLogged.UserName;
 }
 
 @using (Html.BeginForm("Simular", "ApostasExtras", FormMethod.Post, new { }))
@@ -9,7 +13,7 @@
 
     <div class="wrapper wrapper-content animated fadeInRight">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-7">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <h5>Validação</h5>
@@ -23,6 +27,7 @@
                                         <tr>
                                             <td>Título</td>
                                             <td>Time</td>
+                                            <td></td>
                                             <td>Pontos</td>
                                             <td>Válido</td>   
                                             <td>Data Validação</td>                                         
@@ -43,11 +48,22 @@
                                                     @Html.Raw(Model.ApostasExtras[c].NomeTimeValidado);
                                                 }
                                                 </td>
+                                                <td>
+                                                    @if(!string.IsNullOrEmpty (Model.ApostasExtras[c].NomeTimeValidado))
+                                                    {
+                                                        <img src="/Content/img/database/times/@(Model.ApostasExtras[c].NomeTimeValidado).gif" />
+                                                    }
+                                                </td>
                                                 <td>@Model.ApostasExtras[c].TotalPontos</td>
-                                                <td>@if (Model.ApostasExtras[c].IsValido == true)
-                                                { 
-                                                        @Html.Raw("Válido");
-                                                }
+                                                <td>
+                                                    @if (Model.ApostasExtras[c].IsValido == true)
+                                                    { 
+                                                        @Html.Raw("<span class=\"glyphicon glyphicon-ok\">&nbsp;</span>");
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.Raw("<span class=\"glyphicon glyphicon-remove\">&nbsp;</span>");
+                                                    }
                                                 </td>
                                                 <td>@Model.ApostasExtras[c].DataValidacao</td>
                                             </tr>
@@ -64,7 +80,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-6">
+            <div class="col-lg-5">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
                         <h5>Simulação</h5>
@@ -72,13 +88,13 @@
                     <div class="ibox-content" style="display: block;">
                         <div class="row">
                             <table class="table table-hover">
-                                <thead>
+                                @*<thead>
                                     <tr>
                                         <td>Título</td>
                                         <td>Time</td>
                                         <td></td>
                                     </tr>
-                                </thead>
+                                </thead>*@
                                 <tbody>
                                     @for (int c = 0; c < Model.ApostasExtras.Count; c++)
                                     {
@@ -97,7 +113,7 @@
                                                 else
                                                 {
                                                     <img src="~/Content/img/database/times/@(Model.ApostasExtras[c].NomeTimeValidado).gif"
-                                                         id="@("Image" + @Model.ApostasExtras[c].NomeTimeValidado)" />
+                                                         id="@("Image" + @Model.ApostasExtras[c].Posicao)" />
                                                 }
                                             </td>
 
@@ -131,27 +147,38 @@
                                     <tr>
                                         <td>Posição</td>
                                         <td>GPT</td>
+                                        <td></td>
                                         <td>Usuário</td>
                                         <td>PT</td>
 
                                         @for (int c = 0; c < Model.ApostasExtras.Count; c++ )
                                         {
-                                            <td>@Model.ApostasExtras[c].Posicao</td>
+                                            <td colspan="2">@Model.ApostasExtras[c].Titulo</td>
                                         }
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @for (int c = 0; c < Model.ApostasUsuarios.Count; c++)
                                     {
-                                        <tr>
+                                        <tr
+                                            @if (string.Compare(userNameLogged, Model.ApostasUsuarios[c].UserName, true) == 0)
+                                                {
+                                                    @Html.Raw("class=\"info\"");
+                                                } 
+                                            
+                                            >
                                             <td>@Model.ApostasUsuarios[c].Posicao</td>
                                             <td>@Model.ApostasUsuarios[c].TotalPontosClassificacao</td>
+                                            <td>
+                                                <img class="img-username" src="/Content/img/database/profiles/@(Model.ApostasUsuarios[c].UserName).gif" />
+                                            </td>
                                             <td>@Model.ApostasUsuarios[c].UserName</td>
                                             <td>@Model.ApostasUsuarios[c].Pontos</td>
                                             
                                             @for (int i = 0; i < Model.ApostasUsuarios[c].Apostas.Count; i++)
                                             {
                                                 @*<td>@Model.ApostasUsuarios[c].Apostas[i].NomeTime</td>*@
+                                                <td>@Model.ApostasUsuarios[c].Apostas[i].TotalPontos</td>
                                                 <td><img src="@Model.ApostasUsuarios[c].Apostas[i].ImageTime" /></td>
                                             }
                                         </tr>
@@ -176,7 +203,6 @@
 
         $(document).ready(function () {
             $('#Time1').change(function () {
-
                 var img = "/Content/img/database/times/" + $(this).val() + ".gif";
                 $('#Image1').attr('src', img);
             });
@@ -202,4 +228,6 @@
             });
         })
     </script>
+
+
 }

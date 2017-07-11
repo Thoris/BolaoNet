@@ -35,6 +35,8 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
 
             bool bolaoIniciado = _bolaoApp.IsIniciado(base.SelectedBolao);
 
+            base.IsBolaoIniciado = bolaoIniciado;
+
             if (!bolaoIniciado)
             {
                 filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary(new

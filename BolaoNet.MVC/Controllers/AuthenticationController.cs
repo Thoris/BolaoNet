@@ -15,6 +15,17 @@ namespace BolaoNet.MVC.Controllers
     {
         #region Properties
 
+        public bool IsBolaoIniciado
+        {
+            get
+            {
+                return Persist.Get<bool>(BaseBolaoController.PersistIsBolaoIniciado);
+            }
+            set
+            {
+                Persist.Put<bool>(BaseBolaoController.PersistIsBolaoIniciado, value);
+            }
+        }
         public string SelectedNomeBolao
         {
             get

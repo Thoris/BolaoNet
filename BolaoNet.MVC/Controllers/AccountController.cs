@@ -103,6 +103,11 @@ namespace BolaoNet.MVC.Controllers
 
                 Persist.Put<string>(BaseBolaoController.PersistNomeBolaoSelected, bolaoLoaded.Nome);
                 Persist.Put<string>(BaseBolaoController.PersistNomeCampeonatoSelected, bolaoLoaded.NomeCampeonato);
+                
+                if (bolaoLoaded.IsIniciado == true)
+                    Persist.Put<bool>(BaseBolaoController.PersistIsBolaoIniciado, true);
+                else
+                    Persist.Put<bool>(BaseBolaoController.PersistIsBolaoIniciado, false);
             }
 
 

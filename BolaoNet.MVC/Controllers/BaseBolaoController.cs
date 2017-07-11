@@ -13,6 +13,7 @@ namespace BolaoNet.MVC.Controllers
         #region Constants
 
         public const string PersistNomeBolaoSelected = "NomeBolaoSelected";
+        public const string PersistIsBolaoIniciado = "IsBolaoIniciado";
 
         #endregion
 
