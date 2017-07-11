@@ -19,7 +19,7 @@
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
-
+                                            <td></td>
                                             <td>@Html.DisplayNameFor(x => x.GrupoSelecionado[0].UserName)</td>
                                             <td>@Html.DisplayNameFor(x => x.GrupoSelecionado[0].FullName)</td>
                                             <td></td>
@@ -30,7 +30,9 @@
                                         @for (int c = 0; c < Model.GrupoSelecionado.Count; c++)
                                         {
                                             <tr>
-
+                                                <td>
+                                                    <img class="img-username" src="/Content/img/database/profiles/@(Model.GrupoSelecionado[c].UserName).gif" />
+                                                </td>
                                                 <td>@Model.GrupoSelecionado[c].UserName</td>
                                                 <td>@Model.GrupoSelecionado[c].FullName</td>
                                                 <td>
@@ -63,6 +65,7 @@
                                     <tr>
                                         <td></td>
                                         <td>Pos</td>
+                                        <td></td>
                                         <td></td>
                                         <td>Membro</td>
                                         <td>Nome</td>
@@ -97,6 +100,9 @@
                                                     @Html.Raw("<span style=\"color:red\" class=\"glyphicon glyphicon-arrow-down \">&nbsp;" + (Model.Classificacao[c].Posicao - Model.Classificacao[c].LastPosicao) + "</span>");
                                                 }
 
+                                            </td>
+                                            <td>
+                                                <img class="img-username" src="/Content/img/database/profiles/@(Model.Classificacao[c].UserName).gif" />
                                             </td>
                                             <td>@Model.Classificacao[c].UserName</td>
                                             <td>@Model.Classificacao[c].FullName</td>

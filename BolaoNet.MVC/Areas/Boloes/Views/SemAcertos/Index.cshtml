@@ -1,6 +1,10 @@
 ﻿@model BolaoNet.MVC.ViewModels.Bolao.ApostasUsuariosListViewModel
 @{
     ViewBag.Title = "Resultados sem acertos";
+
+    string currentGrupo = "";
+    string currentFase = "";
+    bool isGrouped = false;
 }
 @using (Html.BeginForm())
 {
@@ -15,7 +19,96 @@
     <div class="row">
         <div class="col-ld-12">
 
-            @Html.Partial("_JogosList", Model)
+            @*@Html.Partial("_JogosList", Model)*@
+
+
+            
+            <table class="table table-hover">
+                <tbody>
+        
+                    @for (int c = 0; c < Model.Apostas.Count; c++)
+                    {
+                        @Html.HiddenFor(x => x.Apostas[c].NomeCampeonato)
+                        @Html.HiddenFor(x => x.Apostas[c].JogoId)
+
+                        isGrouped = false;
+                        if (string.Compare(Model.Apostas[c].NomeGrupo, currentGrupo, true) != 0)
+                        {
+                            if (!string.IsNullOrEmpty(Model.Apostas[c].NomeGrupo.Trim()))
+                            {
+                                <tr>
+                                    <th scope="rowgroup" colspan="11">Grupo @(Model.Apostas[c].NomeGrupo)</th>
+                                </tr>
+                                isGrouped = true;
+                            }
+                            currentGrupo = Model.Apostas[c].NomeGrupo;
+                        }
+                        if (!isGrouped && string.IsNullOrEmpty(Model.Apostas[c].NomeGrupo.Trim()) &&
+                            string.Compare(Model.Apostas[c].NomeFase, currentFase, true) != 0)
+                        {                
+                            <tr>
+                                <th scope="rowgroup" colspan="11">Fase @(Model.Apostas[c].NomeFase)</th>
+                            </tr>
+                            currentFase = Model.Apostas[c].NomeFase;
+                        }
+                        @*<tr class="active">*@
+                    <tr class="active">
+
+                    <th scope="row">@(Model.Apostas[c].JogoId)</th>
+                        <td>@(Model.Apostas[c].DataJogo.ToString("dd/MM/yy HH:mm"))</td>
+                        <td>@(Model.Apostas[c].NomeEstadio)</td>
+                        <td class="text-right">@(Model.Apostas[c].NomeTime1)</td>
+                        <td><img src="@(Model.Apostas[c].ImageTime1)" /></td>
+
+                        @if (Model.Apostas[c].IsLocked)
+                        {
+                            if (Model.Apostas[c].GolsTime1 != null)
+                            {
+                                <td>@(Model.Apostas[c].GolsTime1)</td>
+                            }
+                            else
+                            {
+                                <td>-</td>
+                            }
+                        }
+                        else
+                        {
+                            <td>@(Model.Apostas[c].GolsTime1)</td>
+                        }
+                        @Html.HiddenFor(x => x.Apostas[c].GolsTime1)
+                        <td>x</td>
+                        @Html.HiddenFor(x => x.Apostas[c].GolsTime2)
+                        @if (Model.Apostas[c].IsLocked)
+                        {
+                            if (Model.Apostas[c].GolsTime2 != null)
+                            {
+                                <td>@(Model.Apostas[c].GolsTime2)</td>
+                            }
+                            else
+                            {
+                                <td>-</td>
+                            }
+                        }
+                        else
+                        {
+                            <td>@(Model.Apostas[c].GolsTime2)</td>   
+                        }
+
+                        <td><img src="@(Model.Apostas[c].ImageTime2)" /></td>
+                        <td class="text-left">@(Model.Apostas[c].NomeTime2)</td>
+
+
+                        <td>
+                            <a href="@Url.Action("Index", "ApostasJogo", new { area= "Boloes", id = @Model.Apostas[c].JogoId})">                        
+                                <span class="glyphicon glyphicon-list-alt"></span>
+                            </a>
+                        </td>
+
+                    </tr>
+                    }      
+                </tbody>
+            </table>
+
 
         </div>
     </div>

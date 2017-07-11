@@ -1065,90 +1065,183 @@ namespace BolaoNet.Infra.Data.EF.Boloes
         }
         public IList<Domain.Entities.ValueObjects.JogoUsuarioVO> LoadAcertosDificeis(string currentUserName, DateTime currentDateTime, Domain.Entities.Boloes.Bolao bolao, int totalMaximoAcertos)
         {
-            var q =
-                from j in base.DataContext.Jogos
+            //var q =
+            //    from j in base.DataContext.Jogos
 
-                join f in base.DataContext.CampeonatosFases
-                  on new { c1 = j.NomeCampeonato, c2 = j.NomeFase }
-                  equals new { c1 = f.NomeCampeonato, c2 = f.Nome }
+            //    join f in base.DataContext.CampeonatosFases
+            //      on new { c1 = j.NomeCampeonato, c2 = j.NomeFase }
+            //      equals new { c1 = f.NomeCampeonato, c2 = f.Nome }
 
-                join u in base.DataContext.JogosUsuarios
-                        on new { c1 = j.NomeCampeonato, c2 = j.JogoId, c3 = bolao.Nome }
-                    equals new { c1 = u.NomeCampeonato, c2 = u.JogoId, c3 = u.NomeBolao }
-                into ju
-                from p in ju.DefaultIfEmpty()
-                where string.Compare(j.NomeCampeonato, bolao.NomeCampeonato, true) == 0
-                orderby f.Ordem, j.NomeGrupo, j.Rodada
-                select new Domain.Entities.ValueObjects.JogoUsuarioVO()
-                {
-                    NomeCampeonato = j.NomeCampeonato,
-                    JogoId = j.JogoId,
-                    NomeTime1 = j.NomeTime1,
-                    GolsTime1 = j.GolsTime1,
-                    PenaltisTime1 = j.PenaltisTime1,
-                    NomeTime2 = j.NomeTime2,
-                    GolsTime2 = j.GolsTime2,
-                    PenaltisTime2 = j.PenaltisTime2,
-                    NomeEstadio = j.NomeEstadio,
-                    DataJogo = j.DataJogo,
-                    Rodada = j.Rodada,
-                    PartidaValida = j.PartidaValida,
-                    DataValidacao = j.DataValidacao,
-                    NomeFase = j.NomeFase,
-                    NomeGrupo = j.NomeGrupo,
-                    IsValido = j.IsValido,
-                    ValidadoBy = j.ValidadoBy,
+            //    join u in base.DataContext.JogosUsuarios
+            //            on new { c1 = j.NomeCampeonato, c2 = j.JogoId, c3 = bolao.Nome }
+            //        equals new { c1 = u.NomeCampeonato, c2 = u.JogoId, c3 = u.NomeBolao }
+            //    into ju
+            //    from p in ju.DefaultIfEmpty()
+            //    where string.Compare(j.NomeCampeonato, bolao.NomeCampeonato, true) == 0
+            //    orderby f.Ordem, j.NomeGrupo, j.Rodada
+            //    select new Domain.Entities.ValueObjects.JogoUsuarioVO()
+            //    {
+            //        NomeCampeonato = j.NomeCampeonato,
+            //        JogoId = j.JogoId,
+            //        NomeTime1 = j.NomeTime1,
+            //        GolsTime1 = j.GolsTime1,
+            //        PenaltisTime1 = j.PenaltisTime1,
+            //        NomeTime2 = j.NomeTime2,
+            //        GolsTime2 = j.GolsTime2,
+            //        PenaltisTime2 = j.PenaltisTime2,
+            //        NomeEstadio = j.NomeEstadio,
+            //        DataJogo = j.DataJogo,
+            //        Rodada = j.Rodada,
+            //        PartidaValida = j.PartidaValida,
+            //        DataValidacao = j.DataValidacao,
+            //        NomeFase = j.NomeFase,
+            //        NomeGrupo = j.NomeGrupo,
+            //        IsValido = j.IsValido,
+            //        ValidadoBy = j.ValidadoBy,
 
-                    UserName = p.UserName,
+            //        UserName = p.UserName,
 
-                    DataAposta = p.DataAposta,
+            //        DataAposta = p.DataAposta,
 
-                    Automatico = p.Automatico,
+            //        Automatico = p.Automatico,
 
-                    ApostaTime1 = p.ApostaTime1,
-                    ApostaTime2 = p.ApostaTime2,
-                    ApostaPenaltis1 = p.ApostaPenaltis1,
-                    ApostaPenaltis2 = p.ApostaPenaltis2,
+            //        ApostaTime1 = p.ApostaTime1,
+            //        ApostaTime2 = p.ApostaTime2,
+            //        ApostaPenaltis1 = p.ApostaPenaltis1,
+            //        ApostaPenaltis2 = p.ApostaPenaltis2,
 
-                    Valido = p.Valido,
+            //        Valido = p.Valido,
 
-                    NomeTimeResult1 = p.NomeTimeResult1,
-                    NomeTimeResult2 = p.NomeTimeResult2,
+            //        NomeTimeResult1 = p.NomeTimeResult1,
+            //        NomeTimeResult2 = p.NomeTimeResult2,
 
-                    Pontos = p.Pontos,
+            //        Pontos = p.Pontos,
 
-                    IsEmpate = p.IsEmpate,
-                    IsDerrota = p.IsDerrota,
-                    IsVitoria = p.IsVitoria,
-                    IsGolsGanhador = p.IsGolsGanhador,
-                    IsGolsPerdedor = p.IsGolsPerdedor,
-                    IsResultTime1 = p.IsResultTime1,
-                    IsResultTime2 = p.IsResultTime2,
-                    IsVDE = p.IsVDE,
-                    IsErro = p.IsErro,
-                    IsGolsGanhadorFora = p.IsGolsGanhadorFora,
-                    IsGolsGanhadorDentro = p.IsGolsGanhadorDentro,
-                    IsGolsPerdedorFora = p.IsGolsPerdedorFora,
-                    IsGolsPerdedorDentro = p.IsGolsPerdedorDentro,
-                    IsGolsEmpate = p.IsGolsEmpate,
-                    IsGolsTime1 = p.IsGolsTime1,
-                    IsGolsTime2 = p.IsGolsTime2,
-                    IsPlacarCheio = p.IsPlacarCheio,
-                    IsMultiploTime = p.IsMultiploTime,
-                    MultiploTime = p.MultiploTime,
+            //        IsEmpate = p.IsEmpate,
+            //        IsDerrota = p.IsDerrota,
+            //        IsVitoria = p.IsVitoria,
+            //        IsGolsGanhador = p.IsGolsGanhador,
+            //        IsGolsPerdedor = p.IsGolsPerdedor,
+            //        IsResultTime1 = p.IsResultTime1,
+            //        IsResultTime2 = p.IsResultTime2,
+            //        IsVDE = p.IsVDE,
+            //        IsErro = p.IsErro,
+            //        IsGolsGanhadorFora = p.IsGolsGanhadorFora,
+            //        IsGolsGanhadorDentro = p.IsGolsGanhadorDentro,
+            //        IsGolsPerdedorFora = p.IsGolsPerdedorFora,
+            //        IsGolsPerdedorDentro = p.IsGolsPerdedorDentro,
+            //        IsGolsEmpate = p.IsGolsEmpate,
+            //        IsGolsTime1 = p.IsGolsTime1,
+            //        IsGolsTime2 = p.IsGolsTime2,
+            //        IsPlacarCheio = p.IsPlacarCheio,
+            //        IsMultiploTime = p.IsMultiploTime,
+            //        MultiploTime = p.MultiploTime,
 
-                    Ganhador = p.Ganhador,
-
-
-                };
+            //        Ganhador = p.Ganhador,
 
 
+            //    };
 
-            return q.ToList<Domain.Entities.ValueObjects.JogoUsuarioVO>();
+
+
+            //return q.ToList<Domain.Entities.ValueObjects.JogoUsuarioVO>();
+
+
+
+            string command = "exec sp_JogosUsuarios_Load_Acertos_Dificeis " +
+                  "  @CurrentLogin " +
+                  ", @CurrentDateTime" +
+                  ", @NomeBolao" +
+                  ", @TotalAcertos" +
+                  ", @ErrorNumber out" +
+                  ", @ErrorDescription out";
+
+            var errorNumber = new SqlParameter
+            {
+                ParameterName = "@ErrorNumber",
+                SqlDbType = System.Data.SqlDbType.Int,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var errorDescription = new SqlParameter
+            {
+                ParameterName = "@ErrorDescription",
+                SqlDbType = System.Data.SqlDbType.VarChar,
+                Size = 255,
+                Direction = System.Data.ParameterDirection.Output
+            };
+
+            IList<Domain.Entities.ValueObjects.JogoUsuarioVO> res =
+                base.DataContext.Database.SqlQuery<Domain.Entities.ValueObjects.JogoUsuarioVO>(command,
+                                                        new SqlParameter("CurrentLogin", currentUserName),
+                                                        new SqlParameter("CurrentDateTime", currentDateTime),
+                                                        new SqlParameter("NomeBolao", bolao.Nome),
+                                                        new SqlParameter("TotalAcertos", totalMaximoAcertos),
+                                                        errorNumber,
+                                                        errorDescription
+                                                    ).ToList();
+
+
+            int error = 0;
+            try
+            {
+                error = (int)errorNumber.Value;
+            }
+            catch
+            {
+
+            }
+            return res;
+
         }
         public IList<Domain.Entities.Campeonatos.Jogo> LoadSemAcertos(string currentUserName, DateTime currentDateTime, Domain.Entities.Boloes.Bolao bolao)
         {
-            return base.DataContext.Jogos.ToList ();
+            //return base.DataContext.Jogos.ToList ();
+
+
+            string command = "exec sp_JogosUsuarios_Load_Sem_Acertos " +
+                 "  @CurrentLogin " +
+                 ", @CurrentDateTime" +
+                 ", @NomeBolao" +
+                 ", @ErrorNumber out" +
+                 ", @ErrorDescription out";
+
+            var errorNumber = new SqlParameter
+            {
+                ParameterName = "@ErrorNumber",
+                SqlDbType = System.Data.SqlDbType.Int,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var errorDescription = new SqlParameter
+            {
+                ParameterName = "@ErrorDescription",
+                SqlDbType = System.Data.SqlDbType.VarChar,
+                Size = 255,
+                Direction = System.Data.ParameterDirection.Output
+            };
+
+            IList<Domain.Entities.Campeonatos.Jogo> res =
+                base.DataContext.Database.SqlQuery<Domain.Entities.Campeonatos.Jogo>(command,
+                                                        new SqlParameter("CurrentLogin", currentUserName),
+                                                        new SqlParameter("CurrentDateTime", currentDateTime),
+                                                        new SqlParameter("NomeBolao", bolao.Nome),
+                                                        errorNumber,
+                                                        errorDescription
+                                                    ).ToList();
+
+
+            int error = 0;
+            try
+            {
+                error = (int)errorNumber.Value;
+            }
+            catch
+            {
+
+            }
+            return res;
+
         }
         public IList<Domain.Entities.ValueObjects.JogoUsuarioVO> LoadPontosObtidos(string currentUserName, DateTime currentDateTime, Domain.Entities.Users.User user, int totalRetorno)
         {

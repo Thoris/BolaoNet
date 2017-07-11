@@ -138,5 +138,7 @@
     <None Include="build\0124.Create_Stored_Procedure_sp_Users_Load_Pagamentos.sql" />
     <None Include="build\0125.Create_Stored_Procedure_sp_BoloesMembros_LoadStatus.sql" />
     <None Include="build\0126.Create_Stored_Procedure_sp_BoloesMembros_Del.sql" />
+    <None Include="build\0127.Create_Stored_Procedure_sp_JogosUsuarios_Load_Acertos_Dificeis.sql" />
+    <None Include="build\0128.Create_Stored_Procedure_sp_JogosUsuarios_Load_Sem_Acertos.sql" />
   </ItemGroup>
 </Project>

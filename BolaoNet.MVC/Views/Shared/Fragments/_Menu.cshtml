@@ -199,12 +199,12 @@ else
             <a href="/Campeonatos/Estatisticas/Index">Estatísticas</a>
         </li>
 
-        <li @if (string.Compare(controllerAction, "Index", true) == 0 &&
+        @*<li @if (string.Compare(controllerAction, "Index", true) == 0 &&
                 string.Compare(controllerName, "GraficoRodadas", true) == 0 &&
                 string.Compare(controllerArea, "Campeonatos", true) == 0)
             { @Html.Raw("class=\"active\"")  }>
             <a href="/Campeonatos/GraficoRodadas/Index">Gráfico Rodadas</a>
-        </li>
+        </li>*@
 
         <li @if (string.Compare(controllerAction, "Index", true) == 0 &&
                 string.Compare(controllerName, "Historico", true) == 0 &&
