@@ -17,7 +17,7 @@ namespace BolaoNet.MVC.Areas.Pagamentos.Controllers
 
         #region Constructors/Destructors
 
-        public GerenciamentoController(
+        public GerenciamentoController(            
             Application.Interfaces.Boloes.IPagamentoApp pagamentoApp,
             Application.Interfaces.Boloes.IBolaoMembroApp bolaoMembroApp,
             Application.Interfaces.Boloes.IBolaoApp bolaoApp,
@@ -29,6 +29,26 @@ namespace BolaoNet.MVC.Areas.Pagamentos.Controllers
             : base (bolaoMembroApp, bolaoApp, campeonatoApp, campeonatoFaseApp, campeonatoGrupoApp, campeonatoTimeApp)
         {
             _pagamentoApp = pagamentoApp;
+        }
+
+        #endregion
+
+        #region Methods
+
+        private string GetStringFormaPagamento(int id)
+        {
+            switch(id)
+            {
+                case 1:
+                    return "Dinheiro";
+                case 2:
+                    return "Cheque";
+                case 3:
+                    return "Depósito";
+                case 4:
+                    return "Outro";
+            }
+            return "";
         }
 
         #endregion
@@ -49,35 +69,119 @@ namespace BolaoNet.MVC.Areas.Pagamentos.Controllers
                 (list);
 
 
-            return View(model);
+            for (int c = 0; c < model.Count; c++ )
+            {
+                model[c].TipoPagamentoDescricao = GetStringFormaPagamento(model[c].PagamentoTipoID);
+            }
+
+                return View(model);
         }
         [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            IList<Domain.Entities.Boloes.BolaoMembro> membros =
+                _bolaoMembroApp.GetListUsersInBolao(base.SelectedBolao);
+
+            ViewBag.Membros = membros;
+
+            ViewModels.Pagamentos.PagamentoViewModel model = new ViewModels.Pagamentos.PagamentoViewModel();
+
+            model.NomeBolao = base.SelectedNomeBolao;
+
+            return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(ViewModels.Pagamentos.PagamentoViewModel model)
         {
-            return View();
+
+            if (!ModelState.IsValid)
+            {
+                IList<Domain.Entities.Boloes.BolaoMembro> membros =
+               _bolaoMembroApp.GetListUsersInBolao(base.SelectedBolao);
+
+                ViewBag.Membros = membros;
+
+                return View("Create", model);
+            }
+
+
+            Domain.Entities.Boloes.Pagamento entity =             
+                Mapper.Map<ViewModels.Pagamentos.PagamentoViewModel, 
+                Domain.Entities.Boloes.Pagamento>(model);
+
+
+            _pagamentoApp.Insert(entity);
+
+
+            return RedirectToAction("Index");
         }
 
-        [HttpPost]
-        public ActionResult Delete (ViewModels.Pagamentos.PagamentoViewModel model)
+        //[ValidateAntiForgeryToken]
+        [HttpGet]
+        public ActionResult Delete(string nomeBolao, string userName, DateTime dataPagamento)
+        //public ActionResult Delete (ViewModels.Pagamentos.PagamentoViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Index");
+            }
+
+            Domain.Entities.Boloes.Pagamento entity = 
+                new Domain.Entities.Boloes.Pagamento(dataPagamento, nomeBolao, userName);
+                //Mapper.Map<ViewModels.Pagamentos.PagamentoViewModel,
+                //Domain.Entities.Boloes.Pagamento>(model);
+
+
+            Domain.Entities.Boloes.Pagamento pagamentoLoaded = _pagamentoApp.Load(entity);
+
+
+            _pagamentoApp.Delete(pagamentoLoaded);
+
             return RedirectToAction("Index");
         }
         [HttpGet]
         public ActionResult Edit(string nomeBolao, string userName, DateTime dataPagamento)
+        //public ActionResult Edit(ViewModels.Pagamentos.PagamentoViewModel model)
         {
-            return View();
+            //ViewModels.Pagamentos.PagamentoViewModel model = new ViewModels.Pagamentos.PagamentoViewModel();
+
+            Domain.Entities.Boloes.Pagamento entry = 
+                new Domain.Entities.Boloes.Pagamento(dataPagamento, nomeBolao, userName);
+
+             Domain.Entities.Boloes.Pagamento entryLoaded = 
+                 _pagamentoApp.Load(entry);
+
+
+             ViewModels.Pagamentos.PagamentoViewModel model =
+                Mapper.Map<Domain.Entities.Boloes.Pagamento, ViewModels.Pagamentos.PagamentoViewModel>
+                (entryLoaded);
+            
+
+            return View(model);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(ViewModels.Pagamentos.PagamentoViewModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Edit", model);
+            }
+
+            Domain.Entities.Boloes.Pagamento entity =
+                Mapper.Map<ViewModels.Pagamentos.PagamentoViewModel,
+                Domain.Entities.Boloes.Pagamento>(model);
+
+
+            Domain.Entities.Boloes.Pagamento pagamentoLoaded = _pagamentoApp.Load(entity);
+
+            pagamentoLoaded.Valor = model.Valor;
+            pagamentoLoaded.PagamentoTipoID = model.PagamentoTipoID;
+            pagamentoLoaded.Descricao = model.Descricao;
+
+
             return RedirectToAction("Index");
         }
 

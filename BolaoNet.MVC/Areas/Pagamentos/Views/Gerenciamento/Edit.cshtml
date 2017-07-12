@@ -12,7 +12,74 @@
                 </div>
                 <div class="ibox-content" style="display: block;">
                     <div class="row">
+                        @using (Html.BeginForm("Edit", "Gerenciamento", FormMethod.Post, new { }))
+                        {
+                            @Html.AntiForgeryToken()
 
+                            @Html.HiddenFor(x => x.NomeBolao)
+                            @Html.HiddenFor(x=>x.UserName)
+                            @Html.HiddenFor(x=>x.DataPagamento)
+                            <div class="col-md-12 col-sm-12">
+
+                                <div class="form-group col-md-4 col-sm-4">
+                                    @Html.LabelFor(a => a.UserName)
+                                    <br />
+                                    @Html.DisplayFor(x => x.UserName)
+                                    @Html.ValidationMessageFor(m => m.UserName)
+                                </div>
+                                <div class="form-group col-md-8 col-sm-8">
+                                    @Html.LabelFor(a => a.FullName)
+                                    <br />
+                                    @Html.DisplayFor(a => a.FullName, new { @class = "form-control input-sm" })
+                                    @Html.ValidationMessageFor(m => m.FullName)
+                                </div>
+
+                            </div>
+                            <div class="col-md-12 col-sm-12">
+
+                                <div class="form-group col-md-4 col-sm-4">
+                                    @Html.LabelFor(a => a.DataPagamento)
+                                    <br />
+                                    @Html.DisplayFor(a => a.DataPagamento, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(m => m.DataPagamento)
+                                </div>
+
+                                <div class="form-group col-md-4 col-sm-4">
+                                    @Html.LabelFor(a => a.PagamentoTipoID)
+                                    @Html.DropDownListFor(model => model.PagamentoTipoID, new SelectList(
+                                    new List<Object>{
+                                        new { value = 1, text = "Dinheiro"  },
+                                        new { value = 2 , text = "Cheque" },
+                                        new { value = 3 , text = "Depósito" },
+                                        new { value = 4 , text = "Outro" },
+                                    }, "value", "text", 0), "- Selecione -", new { @class = "form-control input-sm" })
+                                    @Html.ValidationMessageFor(m => m.PagamentoTipoID)
+                                </div>
+
+                                <div class="form-group col-md-4 col-sm-4">
+                                    @Html.LabelFor(a => a.Valor)
+                                    @Html.EditorFor(a => a.Valor, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(m => m.Valor)
+                                </div>
+
+                            </div>
+                            <div class="col-md-12 col-sm-12">
+                                <div class="form-group col-md-12 col-sm-12">
+                                    @Html.LabelFor(a => a.Descricao)
+                                    @Html.TextAreaFor(a => a.Descricao, new { @class = "form-control input-sm", @placeholder = "" })
+                                    @Html.ValidationMessageFor(m => m.Descricao)
+                                </div>
+
+                            </div>
+                            <div class="col-md-12 col-sm-12">
+                                <div class="login-erro">
+                                    @Html.ValidationSummary(true)
+                                </div>
+                                <div class="col-sm-offset-4 col-md-4 col-sm-4 centered-text">
+                                    <input onclick="javascript:showWait();" type="submit" class="btn btn-lg btn-success btn-block" value="Salvar" />
+                                </div>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>

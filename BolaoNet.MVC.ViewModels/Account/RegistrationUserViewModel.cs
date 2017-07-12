@@ -29,7 +29,7 @@ namespace BolaoNet.MVC.ViewModels.Account
         [DataType(DataType.Date, ErrorMessage="O campo precisa ser uma data")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         //[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-        [DisplayName("Data de Nascimento {yyyy-MM-dd}")]
+        [DisplayName("Data de Nascimento")]
         public Nullable<DateTime> BirthDate { get; set; }
         
         [DataType(DataType.PhoneNumber, ErrorMessage="Formato de telefone inválido")]

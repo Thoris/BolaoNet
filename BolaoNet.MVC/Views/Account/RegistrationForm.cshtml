@@ -91,7 +91,7 @@
                                             @Html.ValidationSummary(true)
                                         </div>
                                         <div class="col-sm-offset-4 col-md-4 col-sm-4 centered-text">
-                                            <input type="submit" class="btn btn-lg btn-success btn-block" value="Salvar" />
+                                            <input onclick="javascript:showWait();" type="submit" class="btn btn-lg btn-success btn-block" value="Salvar" />
                                         </div>
                                     </div>
                                 }
@@ -107,5 +107,5 @@
 @Html.Partial("_RegistrationRegras")
 
 @section scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    
 }

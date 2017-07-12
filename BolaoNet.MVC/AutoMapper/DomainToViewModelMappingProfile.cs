@@ -73,7 +73,9 @@ namespace BolaoNet.MVC.AutoMapper
             Mapper.CreateMap<ViewModels.Admin.BolaoIniciarStatusMembroViewModel, Domain.Entities.ValueObjects.UserMembroStatusVO>();
 
             Mapper.CreateMap<ViewModels.Users.UserProfileViewModel, Domain.Entities.Users.User>();
-        
+
+
+            Mapper.CreateMap<ViewModels.Pagamentos.PagamentoViewModel, Domain.Entities.Boloes.Pagamento>();
         }
     }
 }

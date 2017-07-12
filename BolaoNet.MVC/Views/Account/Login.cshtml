@@ -34,7 +34,7 @@
                         @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = @Res.Password_PlaceHolder })
                         @Html.ValidationMessageFor(m => m.Password)
                     </div>
-                    <button type="submit" class="btn btn-primary block full-width m-b">@Res.LoginAccess</button>
+                    <button type="submit" onclick="javascript:showWait();" class="btn btn-primary block full-width m-b">@Res.LoginAccess</button>
 
                     <div class="row omb_row-sm-offset-12">
                         <div class="col-xs-12 col-sm-6">
@@ -63,6 +63,6 @@
 
 
 @section scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    @*@Scripts.Render("~/bundles/jqueryval")*@
 }
 

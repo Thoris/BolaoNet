@@ -15,6 +15,7 @@ namespace BolaoNet.Domain.Entities.ValueObjects
         public string UserName { get; set; }
         public DateTime ? DataInicio { get; set; }
         public decimal Valor { get; set; }
+        public decimal TaxaParticipacao { get; set; }
         
         #endregion
     }

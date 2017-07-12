@@ -17,7 +17,7 @@ namespace BolaoNet.Domain.Entities.Boloes
             Dinheiro = 1,
             Cheque = 2,
             Deposito = 3,
-
+            Outro = 4,
         }
 
         #endregion
@@ -44,6 +44,7 @@ namespace BolaoNet.Domain.Entities.Boloes
 
         //public Tipo TipoPagamento{get;set;}
         public decimal ? Valor{get;set;}
+
         public string Descricao{get;set;}
 
         #endregion

@@ -61,47 +61,62 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
 
             IList<Domain.Entities.ValueObjects.UserSaldoBolaoVO> listSaldo = _bolaoApp.GetBoloesSaldoUsuario(base.UserLogged);
 
+            for (int c = 0; c < listSaldo.Count; c++)
+            {
+                if (listSaldo[c].TaxaParticipacao == listSaldo[c].Valor)
+                {
+                    listSaldo.RemoveAt(c);
+                    c--;
+                }
+                else
+                {
+                    listSaldo[c].Valor = listSaldo[c].Valor - listSaldo[c].TaxaParticipacao;
+                }
+            }
+
             model.Saldo =
                 Mapper.Map<
                 IList<Domain.Entities.ValueObjects.UserSaldoBolaoVO>,
                 IList<ViewModels.Users.PaginaPrincipal.PaginaPrincipalBolaoSaldoDevedorViewModel>
                 >(listSaldo);
 
+            
 
-            if (base.SelectedBolao != null && !string.IsNullOrEmpty(base.SelectedBolao.Nome))
-            {
-                IList<Domain.Entities.ValueObjects.BolaoGrupoComparacaoClassificacaoVO> listClassificacao =
-                    _bolaoMembroGrupoApp.LoadClassificacao(base.SelectedBolao, base.UserLogged);
 
-                model.ComparacaoMembros =
-                    Mapper.Map<
-                    IList<Domain.Entities.ValueObjects.BolaoGrupoComparacaoClassificacaoVO>,
-                    IList<ViewModels.Users.PaginaPrincipal.PaginaPrincipalGrupoComparacaoModelView>
-                    >(listClassificacao);
-
-                for (int c = 0; c < model.ComparacaoMembros.Count; c++)
+                if (base.SelectedBolao != null && !string.IsNullOrEmpty(base.SelectedBolao.Nome))
                 {
-                    if (c == 0)
-                        model.ComparacaoMembros[c].PosicaoIndividual = 1;
-                    else
+                    IList<Domain.Entities.ValueObjects.BolaoGrupoComparacaoClassificacaoVO> listClassificacao =
+                        _bolaoMembroGrupoApp.LoadClassificacao(base.SelectedBolao, base.UserLogged);
+
+                    model.ComparacaoMembros =
+                        Mapper.Map<
+                        IList<Domain.Entities.ValueObjects.BolaoGrupoComparacaoClassificacaoVO>,
+                        IList<ViewModels.Users.PaginaPrincipal.PaginaPrincipalGrupoComparacaoModelView>
+                        >(listClassificacao);
+
+                    for (int c = 0; c < model.ComparacaoMembros.Count; c++)
                     {
-                        if (model.ComparacaoMembros[c].TotalPontos ==
-                            model.ComparacaoMembros[c - 1].TotalPontos)
-                        {
-                            model.ComparacaoMembros[c].PosicaoIndividual = model.ComparacaoMembros[c - 1].PosicaoIndividual;
-                        }
+                        if (c == 0)
+                            model.ComparacaoMembros[c].PosicaoIndividual = 1;
                         else
                         {
-                            model.ComparacaoMembros[c].PosicaoIndividual = c + 1;
+                            if (model.ComparacaoMembros[c].TotalPontos ==
+                                model.ComparacaoMembros[c - 1].TotalPontos)
+                            {
+                                model.ComparacaoMembros[c].PosicaoIndividual = model.ComparacaoMembros[c - 1].PosicaoIndividual;
+                            }
+                            else
+                            {
+                                model.ComparacaoMembros[c].PosicaoIndividual = c + 1;
+                            }
                         }
-                    }
 
+                    }
                 }
-            }
-            else
-            {
-                model.ComparacaoMembros = new List<ViewModels.Users.PaginaPrincipal.PaginaPrincipalGrupoComparacaoModelView>();
-            }
+                else
+                {
+                    model.ComparacaoMembros = new List<ViewModels.Users.PaginaPrincipal.PaginaPrincipalGrupoComparacaoModelView>();
+                }
 
 
             IList<Domain.Entities.ValueObjects.JogoUsuarioVO> proximos = 
@@ -238,13 +253,13 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View("Index", model);
+                return View("ChangePassword", model);
             }
 
             if (string.Compare(model.NewPassword, model.ConfirmPassword) != 0)
             {
                 ModelState.AddModelError("", "Confirmação de senha inválida.");
-                return View("Index", model);
+                return View("ChangePassword", model);
             }
 
             Domain.Entities.Users.User userLoaded = _userApp.Load(base.UserLogged);
@@ -252,7 +267,7 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
             if (string.Compare (model.NewPassword, userLoaded.Password, true) != 0)
             {
                 ModelState.AddModelError("", "Senha inválida.");
-                return View("Index", model);
+                return View("ChangePassword", model);
             }
 
             userLoaded.Password = model.NewPassword;

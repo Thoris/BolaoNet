@@ -43,6 +43,12 @@
 
 @section scripts
 {
+    <script>
+        function showWait() {
+            $('#myPleaseWait').modal('show');
+        }
+    </script>
+    @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/metismenu")
     @Scripts.Render("~/bundles/slimscroll")
     @Scripts.Render("~/bundles/custom")

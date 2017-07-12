@@ -12,6 +12,7 @@ namespace BolaoNet.MVC.ViewModels.Users
     {
         #region Properties
 
+        [DisplayName("Usuário")]
         public string UserName { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "O campo senha é obrigatório.")]

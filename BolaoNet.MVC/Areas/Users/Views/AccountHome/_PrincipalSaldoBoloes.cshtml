@@ -16,20 +16,32 @@
                         <td>@Html.DisplayNameFor(x => x[0].Valor)</td>                        
                     </tr>
                 </thead>
-                <tbody>
-
+                <tbody>                    
                     @for (int c = 0; c < Model.Count; c++)
                     {
                         <tr>
                             <td>@Model[c].NomeBolao</td>
-                            <td>@Model[c].DataInicio</td>
-                            @*<td>@Html.DisplayFor(model => @model[c].DataInicio, "{0:dd/MM/yyyy}")</td>*@
+                            <td>
+                                @if (Model[c].DataInicio != null)
+                                { 
+                                    @Html.Raw(((DateTime)Model[c].DataInicio).ToString("dd/MM/yyyy"));
+                                }
+                                else
+                                {
+                                    @Html.Raw("-");
+                                }  
+                            </td>
                             <td>@Model[c].Valor</td>                            
                         </tr>
-                    }                    
+                    }                                     
                 </tbody>
             </table>
             }
+            else
+            {
+                <h5 class="center-block">Você está em dia com o pagamento do bolão.</h5>
+            }
+  
         </div>
     </div>
 </div>

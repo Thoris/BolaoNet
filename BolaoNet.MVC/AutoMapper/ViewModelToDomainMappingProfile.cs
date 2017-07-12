@@ -73,7 +73,7 @@ namespace BolaoNet.MVC.AutoMapper
 
 
             Mapper.CreateMap<Domain.Entities.Users.User, ViewModels.Users.UserProfileViewModel>();
-        
+            Mapper.CreateMap<Domain.Entities.Boloes.Pagamento, ViewModels.Pagamentos.PagamentoViewModel>();
         }
     }
 }
