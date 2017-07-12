@@ -70,6 +70,10 @@ namespace BolaoNet.MVC.AutoMapper
             Mapper.CreateMap<Domain.Entities.Boloes.Bolao, ViewModels.Admin.BolaoIniciarPararViewModel>();
 
             Mapper.CreateMap<Domain.Entities.ValueObjects.UserMembroStatusVO, ViewModels.Admin.BolaoIniciarStatusMembroViewModel>();
+
+
+            Mapper.CreateMap<Domain.Entities.Users.User, ViewModels.Users.UserProfileViewModel>();
+        
         }
     }
 }

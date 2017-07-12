@@ -33,6 +33,7 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
         {
             bool res = _bolaoApp.Iniciar(base.UserLogged, base.SelectedBolao);
 
+            base.IsBolaoIniciado = true;
 
             return RedirectToAction("Index");
         }
@@ -40,6 +41,8 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
         {
 
             bool res = _bolaoApp.Aguardar(base.SelectedBolao);
+
+            base.IsBolaoIniciado = false;
 
             return RedirectToAction("Index");
         }

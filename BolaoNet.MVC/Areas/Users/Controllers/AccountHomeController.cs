@@ -17,12 +17,14 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
         private Application.Interfaces.Boloes.IBolaoApp _bolaoApp;
         private Application.Interfaces.Boloes.IBolaoMembroGrupoApp _bolaoMembroGrupoApp;
         private Application.Interfaces.Boloes.IJogoUsuarioApp _jogoUsuarioApp;
+        private Application.Interfaces.Users.IUserApp _userApp;
 
         #endregion
 
         #region Constructors/Destructors
 
         public AccountHomeController(
+            Application.Interfaces.Users.IUserApp userApp,
             Application.Interfaces.Boloes.IBolaoApp bolaoApp, 
             Application.Interfaces.Boloes.IBolaoMembroGrupoApp bolaoMembroGrupoApp,
             Application.Interfaces.Boloes.IJogoUsuarioApp jogoUsuarioApp
@@ -31,6 +33,7 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
             _bolaoApp = bolaoApp;
             _bolaoMembroGrupoApp = bolaoMembroGrupoApp;
             _jogoUsuarioApp = jogoUsuarioApp;
+            _userApp = userApp;
         }
 
         #endregion
@@ -126,13 +129,44 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
         [HttpGet]
         public new ActionResult Profile()
         {
-            return View();
+
+            Domain.Entities.Users.User userLoaded = _userApp.Load(base.UserLogged);
+
+            ViewModels.Users.UserProfileViewModel model =
+                Mapper.Map<Domain.Entities.Users.User, ViewModels.Users.UserProfileViewModel>(userLoaded);
+
+            return View(model);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public new ActionResult Profile(ViewModels.Users.UserProfileViewModel model)
         {
-            return View();
+            Domain.Entities.Users.User userLoaded = _userApp.Load(base.UserLogged);
+
+            if (!ModelState.IsValid)
+            {
+                model = Mapper.Map<Domain.Entities.Users.User, ViewModels.Users.UserProfileViewModel>(userLoaded);
+
+                return View("Profile", model);
+            }
+
+
+            userLoaded.FullName = model.FullName;
+            userLoaded.Male = model.Male;
+            userLoaded.BirthDate = model.BirthDate;
+            userLoaded.PhoneNumber = model.PhoneNumber;
+            userLoaded.CellPhone = model.CellPhone;
+            userLoaded.PostalCode = model.PostalCode;
+            userLoaded.Country = model.Country;
+            userLoaded.State = model.State;
+            userLoaded.Street = model.Street;
+            userLoaded.StreetNumber = model.StreetNumber;
+            userLoaded.ReceiveEmails = model.ReceiveEmails;
+
+            _userApp.Update(userLoaded);
+
+
+            return RedirectToAction("Index");
         }
 
         public ActionResult ConfigurarGrupoComparacao()
@@ -192,13 +226,41 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
         [HttpGet]
         public ActionResult ChangePassword()
         {
-            return View();
+            ViewModels.Users.UserChangePasswordViewModel model = new ViewModels.Users.UserChangePasswordViewModel();
+            model.UserName = base.UserLogged.UserName;
+
+
+            return View(model);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult ChangePassword(ViewModels.Users.UserChangePasswordViewModel model)
         {
-            return View();
+            if (!ModelState.IsValid)
+            {
+                return View("Index", model);
+            }
+
+            if (string.Compare(model.NewPassword, model.ConfirmPassword) != 0)
+            {
+                ModelState.AddModelError("", "Confirmação de senha inválida.");
+                return View("Index", model);
+            }
+
+            Domain.Entities.Users.User userLoaded = _userApp.Load(base.UserLogged);
+
+            if (string.Compare (model.NewPassword, userLoaded.Password, true) != 0)
+            {
+                ModelState.AddModelError("", "Senha inválida.");
+                return View("Index", model);
+            }
+
+            userLoaded.Password = model.NewPassword;
+
+            _userApp.Update(userLoaded);
+
+
+            return RedirectToAction("Index");
         }
 
         public ActionResult Logoff()
