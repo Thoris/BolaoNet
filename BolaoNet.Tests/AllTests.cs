@@ -33,7 +33,7 @@ namespace BolaoNet.Tests
 
 
             Pontuacao.CalculoPontuacaoTests t = new Pontuacao.CalculoPontuacaoTests();
-            t.TestPontuacaoJogo();
+            t.TestAll();
 
 
 
