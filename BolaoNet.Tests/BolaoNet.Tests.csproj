@@ -47,7 +47,9 @@
     <Compile Include="CopaDoMundoTests\CopaDoMundo2014Tests\BolaoCopaMundo2014AppHelper.cs" />
     <Compile Include="CopaDoMundoTests\CopaDoMundo2014Tests\BolaoCopaMundo2014UserApostasAppTests.cs" />
     <Compile Include="NinjectCommon.cs" />
+    <Compile Include="Pontuacao\CalculoPontuacaoTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\BolaoClearUtility.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BolaoNet.Application.Reports\BolaoNet.Application.Reports.csproj">

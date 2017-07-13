@@ -1,5 +1,7 @@
 ﻿@model IList<BolaoNet.MVC.ViewModels.Users.PaginaPrincipal.PaginaPrincipalBolaoSaldoDevedorViewModel>
-
+@{
+    decimal saldoDevedor = 0;
+}
 <div class="ibox float-e-margins">
     <div class="ibox-title">
         <h3>Saldo de Pagamentos</h3>
@@ -19,6 +21,7 @@
                 <tbody>                    
                     @for (int c = 0; c < Model.Count; c++)
                     {
+                        saldoDevedor += (decimal) Model[c].Valor;
                         <tr>
                             <td>@Model[c].NomeBolao</td>
                             <td>
@@ -31,9 +34,14 @@
                                     @Html.Raw("-");
                                 }  
                             </td>
-                            <td>@Model[c].Valor</td>                            
+                            <td style="color: red">@(Model[c].Valor.ToString("0.00"))</td>                            
                         </tr>
-                    }                                     
+                    }      
+                            
+                    <tr>
+                        <td colspan="2">Saldo Devedor: </td>
+                        <td style="color: red"><strong>@(saldoDevedor.ToString("0.00"))</strong></td>
+                    </tr>                      
                 </tbody>
             </table>
             }
@@ -44,4 +52,11 @@
   
         </div>
     </div>
+    @*<div class="ibox-footer" style="display: block;">
+        <div class="row">
+            <div class="col-lg-12 right">
+                <h4>Saldo Devedor: <strong style="color: red">@(saldoDevedor.ToString("0.00"))</strong></h4>
+            </div>
+        </div>
+    </div>*@
 </div>

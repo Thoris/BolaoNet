@@ -10,6 +10,7 @@ namespace BolaoNet.MVC.ViewModels.Users
     {
         #region Properties
 
+        public decimal SaldoDevedor { get; set; }
         public IList<PaginaPrincipal.PaginaPrincipalBolaoPosicoesViewModel> Posicoes { get; set; }
         public IList<PaginaPrincipal.PaginaPrincipalBolaoSaldoDevedorViewModel> Saldo { get; set; }
         public IList<PaginaPrincipal.PaginaPrincipalGrupoComparacaoModelView> ComparacaoMembros { get; set; }

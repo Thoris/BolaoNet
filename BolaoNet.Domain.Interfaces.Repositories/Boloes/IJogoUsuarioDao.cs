@@ -43,6 +43,56 @@ namespace BolaoNet.Domain.Interfaces.Repositories.Boloes
         //    int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, bool isMultiploTime, int multiploTime,
         //    Entities.Interfaces.IPontosJogosUsuarioEntity pontosEntity);
 
+        int CalcularPontos(string currentUserName, DateTime currentDatetime, int gols1, int gols2, int aposta1, int aposta2,
+	        int pontosEmpate,
+	        int pontosVitoria,
+	        int pontosDerrota,
+	        int pontosGanhador,
+	        int pontosPerdedor,
+	        int pontosTime1,
+	        int pontosTime2,
+	        int pontosVDE,
+	        int pontosErro,
+	        int pontosGanhadorFora,
+	        int pontosGanhadorDentro,
+	        int pontosPerdedorFora,
+	        int pontosPerdedorDentro,
+	        int pontosEmpateGols,
+	        int pontosGolsTime1,
+	        int pontosGolsTime2,
+	        int pontosCheio,
+	
+	
+	        bool isMultiploTime,
+	        int multiploTime,
+	
+	        out int pontosTime1Total,
+	        out int pontosTime2Total,
+	        out int pontosTotal,
+		
+	        out bool countEmpate,
+	        out bool countVitoria,
+	        out bool countDerrota,
+	        out bool countGanhador,
+	        out bool countPerdedor,
+	        out bool countTime1,
+	        out bool countTime2,
+	        out bool countVDE,
+	        out bool countErro,
+	        out bool countGanhadorFora,
+	        out bool countGanhadorDentro,
+	        out bool countPerdedorFora,
+	        out bool countPerdedorDentro,
+	        out bool countEmpateGols,
+	        out bool countGolsTime1,
+	        out bool countGolsTime2,
+	        out bool countCheio,
+	
+	
+            out int errorNumber,
+            out string errorDescription
+            );
+
 
         IList<Entities.ValueObjects.JogoUsuarioVO> GetJogosUser(string currentUserName, Entities.Boloes.Bolao bolao, Entities.Users.User user,
             Entities.ValueObjects.FilterJogosVO filter);

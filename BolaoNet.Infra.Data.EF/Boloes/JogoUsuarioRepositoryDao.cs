@@ -1448,5 +1448,329 @@ namespace BolaoNet.Infra.Data.EF.Boloes
         }
 
         #endregion
+
+
+        public int CalcularPontos(string currentUserName, DateTime currentDatetime, int gols1, int gols2, int aposta1, int aposta2, int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1, int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, bool isMultiploTime, int multiploTime, 
+            out int pontosTime1Total, out int pontosTime2Total, out int pontosTotal, out bool countEmpate, out bool countVitoria, out bool countDerrota, out bool countGanhador, out bool countPerdedor, out bool countTime1, out bool countTime2, out bool countVDE, out bool countErro, out bool countGanhadorFora, out bool countGanhadorDentro, out bool countPerdedorFora, out bool countPerdedorDentro, out bool countEmpateGols, out bool countGolsTime1, out bool countGolsTime2, out bool countCheio, out int errorNumber, out string errorDescription)
+        {
+
+            pontosTime1Total = 0;
+            pontosTime2Total = 0;
+            pontosTotal = 0;
+            countEmpate = false;
+            countVitoria = false;
+            countDerrota = false;
+            countGanhador = false;
+            countPerdedor = false;
+            countTime1 = false;
+            countTime2 = false;
+            countVDE = false;
+            countErro = false;
+            countGanhadorFora = false;
+            countGanhadorDentro = false;
+            countPerdedorFora = false;
+            countPerdedorDentro = false;
+            countEmpateGols = false;
+            countGolsTime1 = false;
+            countGolsTime2 = false;
+            countCheio = false;
+            errorNumber = 0;
+            errorDescription = null;
+
+
+
+            string command = "exec sp_JogosUsuarios_CalculaPontos " +
+                "  @CurrentLogin " +
+                ", @CurrentDateTime" +
+	            ", @Gols1" + 
+	            ", @Gols2" + 
+	            ", @Aposta1" +
+                ", @Aposta2 " +	
+	            ", @PontosEmpate " +
+	            ", @PontosVitoria " +
+	            ", @PontosDerrota " +
+	            ", @PontosGanhador " +
+	            ", @PontosPerdedor " +
+	            ", @PontosTime1 " +
+	            ", @PontosTime2 " +
+	            ", @PontosVDE " +
+	            ", @PontosErro " +
+	            ", @PontosGanhadorFora " +
+	            ", @PontosGanhadorDentro " +
+	            ", @PontosPerdedorFora " +
+	            ", @PontosPerdedorDentro " +
+	            ", @PontosEmpateGols " +
+	            ", @PontosGolsTime1 " +
+	            ", @PontosGolsTime2 " +
+	            ", @PontosCheio " +	
+	            ", @IsMultiploTime " +
+	            ", @MultiploTime " +	
+	            ", @PontosTime1Total out " +
+	            ", @PontosTime2Total out " +
+	            ", @PontosTotal out " +	
+	            ", @CountEmpate out " +
+	            ", @CountVitoria out " +
+	            ", @CountDerrota out " +
+	            ", @CountGanhador out " +
+	            ", @CountPerdedor out " +
+	            ", @CountTime1 out " +
+	            ", @CountTime2 out " +
+	            ", @CountVDE out " +
+	            ", @CountErro out " +
+	            ", @CountGanhadorFora out " +
+	            ", @CountGanhadorDentro out " +
+	            ", @CountPerdedorFora out " +
+	            ", @CountPerdedorDentro out " +
+	            ", @CountEmpateGols out " +
+	            ", @CountGolsTime1 out " +
+	            ", @CountGolsTime2 out " +
+	            ", @CountCheio out " +	
+                ", @ErrorNumber out" +
+                ", @ErrorDescription out";
+
+            #region Output Parameters
+
+            var pPontosTime1Total = new SqlParameter
+            {
+                ParameterName = "@PontosTime1Total",
+                SqlDbType = System.Data.SqlDbType.Int,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var pPontosTime2Total = new SqlParameter
+            {
+                ParameterName = "@PontosTime2Total",
+                SqlDbType = System.Data.SqlDbType.Int,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var pPontosTotal = new SqlParameter
+            {
+                ParameterName = "@PontosTotal",
+                SqlDbType = System.Data.SqlDbType.Int,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var pCountEmpate = new SqlParameter
+            {
+                ParameterName = "@CountEmpate",
+                SqlDbType = System.Data.SqlDbType.Bit,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var pCountVitoria = new SqlParameter
+            {
+                ParameterName = "@CountVitoria",
+                SqlDbType = System.Data.SqlDbType.Bit,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var pCountDerrota = new SqlParameter
+            {
+                ParameterName = "@CountDerrota",
+                SqlDbType = System.Data.SqlDbType.Bit,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var pCountGanhador = new SqlParameter
+            {
+                ParameterName = "@CountGanhador",
+                SqlDbType = System.Data.SqlDbType.Bit,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var pCountPerdedor = new SqlParameter
+            {
+                ParameterName = "@CountPerdedor",
+                SqlDbType = System.Data.SqlDbType.Bit,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var pCountTime1 = new SqlParameter
+            {
+                ParameterName = "@CountTime1",
+                SqlDbType = System.Data.SqlDbType.Bit,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var pCountTime2 = new SqlParameter
+            {
+                ParameterName = "@CountTime2",
+                SqlDbType = System.Data.SqlDbType.Bit,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var pCountVDE = new SqlParameter
+            {
+                ParameterName = "@CountVDE",
+                SqlDbType = System.Data.SqlDbType.Bit,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var pCountErro = new SqlParameter
+            {
+                ParameterName = "@CountErro",
+                SqlDbType = System.Data.SqlDbType.Bit,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var pCountGanhadorFora = new SqlParameter
+            {
+                ParameterName = "@CountGanhadorFora",
+                SqlDbType = System.Data.SqlDbType.Bit,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var pCountGanhadorDentro = new SqlParameter
+            {
+                ParameterName = "@CountGanhadorDentro",
+                SqlDbType = System.Data.SqlDbType.Bit,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var pCountPerdedorFora = new SqlParameter
+            {
+                ParameterName = "@CountPerdedorFora",
+                SqlDbType = System.Data.SqlDbType.Bit,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var pCountPerdedorDentro = new SqlParameter
+            {
+                ParameterName = "@CountPerdedorDentro",
+                SqlDbType = System.Data.SqlDbType.Bit,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var pCountEmpateGols = new SqlParameter
+            {
+                ParameterName = "@CountEmpateGols",
+                SqlDbType = System.Data.SqlDbType.Bit,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var pCountGolsTime1 = new SqlParameter
+            {
+                ParameterName = "@CountGolsTime1",
+                SqlDbType = System.Data.SqlDbType.Bit,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var pCountGolsTime2 = new SqlParameter
+            {
+                ParameterName = "@CountGolsTime2",
+                SqlDbType = System.Data.SqlDbType.Bit,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var pCountCheio = new SqlParameter
+            {
+                ParameterName = "@CountCheio",
+                SqlDbType = System.Data.SqlDbType.Bit,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+
+
+
+            var errorNumberParam = new SqlParameter
+            {
+                ParameterName = "@ErrorNumber",
+                SqlDbType = System.Data.SqlDbType.Int,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var errorDescriptionParam = new SqlParameter
+            {
+                ParameterName = "@ErrorDescription",
+                SqlDbType = System.Data.SqlDbType.VarChar,
+                Size = 255,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            #endregion
+
+            IList<object> res =
+                base.DataContext.Database.SqlQuery<object>(command,
+                            new SqlParameter("CurrentLogin", currentUserName),
+                            new SqlParameter("CurrentDateTime", currentDatetime),
+
+                            new SqlParameter("Gols1", gols1),
+                            new SqlParameter("Gols2", gols2),
+                            new SqlParameter("Aposta1" , aposta1),
+                            new SqlParameter("Aposta2 " , aposta2),
+                            new SqlParameter("PontosEmpate " , pontosEmpate),
+                            new SqlParameter("PontosVitoria " , pontosVitoria),
+                            new SqlParameter("PontosDerrota " , pontosDerrota),
+                            new SqlParameter("PontosGanhador " , pontosGanhador),
+                            new SqlParameter("PontosPerdedor " , pontosPerdedor),
+                            new SqlParameter("PontosTime1 " , pontosTime1),
+                            new SqlParameter("PontosTime2 " , pontosTime2),
+                            new SqlParameter("PontosVDE " , pontosVDE),
+                            new SqlParameter("PontosErro " , pontosErro),
+                            new SqlParameter("PontosGanhadorFora " , pontosGanhadorFora),
+                            new SqlParameter("PontosGanhadorDentro " , pontosGanhadorDentro),
+                            new SqlParameter("PontosPerdedorFora " , pontosPerdedorFora),
+                            new SqlParameter("PontosPerdedorDentro " , pontosPerdedorDentro),
+                            new SqlParameter("PontosEmpateGols " , pontosEmpateGols),
+                            new SqlParameter("PontosGolsTime1 " , pontosGolsTime1),
+                            new SqlParameter("PontosGolsTime2 " , pontosGolsTime2),
+                            new SqlParameter("PontosCheio " , pontosCheio),
+                            new SqlParameter("IsMultiploTime " , isMultiploTime),
+                            new SqlParameter("MultiploTime " , multiploTime),
+
+                            pPontosTime1Total,
+                            pPontosTime2Total ,
+                            pPontosTotal ,
+                            pCountEmpate ,
+                            pCountVitoria ,
+                            pCountDerrota ,
+                            pCountGanhador ,
+                            pCountPerdedor ,
+                            pCountTime1 ,
+                            pCountTime2 ,
+                            pCountVDE ,
+                            pCountErro ,
+                            pCountGanhadorFora ,
+                            pCountGanhadorDentro ,
+                            pCountPerdedorFora ,
+                            pCountPerdedorDentro ,
+                            pCountEmpateGols ,
+                            pCountGolsTime1 ,
+                            pCountGolsTime2 ,
+                            pCountCheio ,
+
+                            errorNumberParam,
+                            errorDescriptionParam
+                        ).ToList();
+
+
+
+            pontosTime1Total = (int)pPontosTime1Total.Value;
+            pontosTime2Total = (int)pPontosTime2Total.Value;
+            pontosTotal = (int)pPontosTotal.Value;
+            countEmpate = (bool)pCountEmpate.Value;
+            countVitoria = (bool)pCountVitoria.Value;
+            countDerrota = (bool)pCountDerrota.Value;
+            countGanhador = (bool)pCountGanhador.Value;
+            countPerdedor = (bool)pCountPerdedor.Value;
+            countTime1 = (bool)pCountTime1.Value;
+            countTime2 = (bool)pCountTime2.Value;
+            countVDE = (bool)pCountVDE.Value;
+            countErro = (bool)pCountErro.Value;
+            countGanhadorFora = (bool)pCountGanhadorFora.Value;
+            countGanhadorDentro = (bool)pCountGanhadorDentro.Value;
+            countPerdedorFora = (bool)pCountPerdedorFora.Value;
+            countPerdedorDentro = (bool)pCountPerdedorDentro.Value;
+            countEmpateGols = (bool)pCountEmpateGols.Value;
+            countGolsTime1 = (bool)pCountGolsTime1.Value;
+            countGolsTime2 = (bool)pCountGolsTime2.Value;
+            countCheio = (bool)pCountCheio.Value;
+            errorNumber = (int)errorNumberParam.Value;
+            //errorDescription = (string)errorDescriptionParam.Value;
+
+
+            return 0;
+
+        }
     }
 }

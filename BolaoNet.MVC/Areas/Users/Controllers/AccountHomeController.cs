@@ -61,6 +61,7 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
 
             IList<Domain.Entities.ValueObjects.UserSaldoBolaoVO> listSaldo = _bolaoApp.GetBoloesSaldoUsuario(base.UserLogged);
 
+
             for (int c = 0; c < listSaldo.Count; c++)
             {
                 if (listSaldo[c].TaxaParticipacao == listSaldo[c].Valor)
@@ -70,7 +71,7 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
                 }
                 else
                 {
-                    listSaldo[c].Valor = listSaldo[c].Valor - listSaldo[c].TaxaParticipacao;
+                    listSaldo[c].Valor = listSaldo[c].Valor - listSaldo[c].TaxaParticipacao; 
                 }
             }
 

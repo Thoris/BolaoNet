@@ -32,6 +32,11 @@ namespace BolaoNet.Tests
 
 
 
+            Pontuacao.CalculoPontuacaoTests t = new Pontuacao.CalculoPontuacaoTests();
+            t.TestPontuacaoJogo();
+
+
+
             Domain.Services.Reports.BolaoMembroApostasReportService report = new Domain.Services.Reports.BolaoMembroApostasReportService(
                 "thoris",
                 kernel.Get<ILogging>(),
