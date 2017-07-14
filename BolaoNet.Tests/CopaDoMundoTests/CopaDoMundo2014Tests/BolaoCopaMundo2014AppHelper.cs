@@ -277,6 +277,10 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
             return false;
         }
 
+        public bool ClearApostasMembros()
+        {
+            return true;
+        }
 
         #endregion
     }

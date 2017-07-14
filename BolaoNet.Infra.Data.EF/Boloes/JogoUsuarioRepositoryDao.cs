@@ -1769,7 +1769,7 @@ namespace BolaoNet.Infra.Data.EF.Boloes
             //errorDescription = (string)errorDescriptionParam.Value;
 
 
-            return 0;
+            return (int)pPontosTotal.Value;
 
         }
     }

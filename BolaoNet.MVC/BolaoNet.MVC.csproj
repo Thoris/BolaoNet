@@ -1107,10 +1107,6 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BolaoNet.Application.Reports\BolaoNet.Application.Reports.csproj">
-      <Project>{05909801-2c3e-4770-b41f-abb42ebd9193}</Project>
-      <Name>BolaoNet.Application.Reports</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BolaoNet.Application\BolaoNet.Application.csproj">
       <Project>{ed9e722a-a4f1-4774-9325-7057c17284ef}</Project>
       <Name>BolaoNet.Application</Name>

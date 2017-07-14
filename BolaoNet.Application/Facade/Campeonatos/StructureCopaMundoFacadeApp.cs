@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Application.Facade.Campeonatos
 {
-    public class StructureCopaMundoFacadeApp : Interfaces.Facade.Campeonatos.IStructureCopaMundoFacadeApp
+    public class StructureCopaMundoFacadeApp : 
+        Interfaces.Facade.Campeonatos.IStructureCopaMundoFacadeApp
     {
         #region Variables
 
@@ -26,48 +27,52 @@ namespace BolaoNet.Application.Facade.Campeonatos
         #region IStructureCopaMundoFacadeApp members
 
 
-
-
-        #endregion
-        
         public Domain.Entities.Campeonatos.Campeonato CreateCampeonato(string nomeCampeonato, bool isTime)
         {
-            throw new NotImplementedException();
+            return _service.CreateCampeonato(nomeCampeonato, isTime);
         }
 
         public IList<Domain.Entities.Campeonatos.CampeonatoPosicao> GetCampeonatoPosicoes(string nomeFase)
         {
-            throw new NotImplementedException();
+            return _service.GetCampeonatoPosicoes(nomeFase);
         }
 
         public IList<Domain.Entities.Campeonatos.Jogo> GetJogosOitavas(int rodada, string nomeGrupo, string nomeFase, IList<DateTime> datas, IList<string> estadios, IList<int> ids)
         {
-            throw new NotImplementedException();
+            return GetJogosOitavas(rodada, nomeGrupo, nomeFase, datas, estadios, ids);
         }
 
         public IList<Domain.Entities.Campeonatos.Jogo> GetJogosQuartas(int rodada, string nomeGrupo, string nomeFase, IList<DateTime> datas, IList<string> estadios, IList<int> ids, IList<int> idsGanhadores)
         {
-            throw new NotImplementedException();
+            return GetJogosQuartas(rodada, nomeGrupo, nomeFase, datas, estadios, ids, idsGanhadores);
         }
 
         public IList<Domain.Entities.Campeonatos.Jogo> GetJogosSemi(int rodada, string nomeGrupo, string nomeFase, IList<DateTime> datas, IList<string> estadios, IList<int> ids, IList<int> idsGanhadores)
         {
-            throw new NotImplementedException();
+            return GetJogosSemi(rodada, nomeGrupo, nomeFase, datas, estadios, ids, idsGanhadores);
         }
 
         public IList<Domain.Entities.Campeonatos.Jogo> GetJogosFinal(int rodada, string nomeGrupo, string nomeFase, IList<DateTime> datas, IList<string> estadios, IList<int> ids, IList<int> idsGanhadores)
         {
-            throw new NotImplementedException();
+            return GetJogosFinal(rodada, nomeGrupo, nomeFase, datas, estadios, ids, idsGanhadores);
         }
 
         public IList<Domain.Entities.Campeonatos.Jogo> GetJogosGrupo(string nomeGrupo, string nomeFase, IList<string> times, IList<DateTime> datas, IList<string> estadios, IList<int> ids)
         {
-            throw new NotImplementedException();
+            return _service.GetJogosGrupo(nomeGrupo, nomeFase, times, datas, estadios, ids);
         }
 
         public bool InsertResult(int jogoID, bool setCurrentData, Domain.Entities.Users.User validadoBy, int golsTime1, int golsTime2, int? penaltis1, int? penaltis2)
         {
-            throw new NotImplementedException();
+            return _service.InsertResult(jogoID, setCurrentData, validadoBy, golsTime1, golsTime2, penaltis1, penaltis2);
         }
+
+        public bool RestartCampeonato(string nomeCampeonato)
+        {
+            return _service.RestartCampeonato(nomeCampeonato);
+        }
+
+        #endregion
+        
     }
 }

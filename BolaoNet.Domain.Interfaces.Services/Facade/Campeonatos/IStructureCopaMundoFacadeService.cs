@@ -29,5 +29,8 @@ namespace BolaoNet.Domain.Interfaces.Services.Facade.Campeonatos
             IList<string> estadios, IList<int> ids);
         
         bool InsertResult(int jogoID, bool setCurrentData, Entities.Users.User validadoBy, int golsTime1, int golsTime2, int? penaltis1, int? penaltis2);
+
+        bool RestartCampeonato(string nomeCampeonato);
+    
     }
 }

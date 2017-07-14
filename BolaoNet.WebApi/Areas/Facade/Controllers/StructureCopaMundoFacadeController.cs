@@ -61,7 +61,14 @@ namespace BolaoNet.WebApi.Areas.Facade.Controllers
         {
             throw new NotImplementedException();
         }
+        public bool RestartCampeonato(string nomeCampeonato)
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
+
+
+
     }
 }

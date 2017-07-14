@@ -121,6 +121,71 @@ namespace BolaoNet.Tests.Pontuacao
 
 
             TestCampeonatoPontosJogo0a0Aposta0a0();
+            TestCampeonatoPontosJogo0a0Aposta1a0();
+            TestCampeonatoPontosJogo0a0Aposta0a1();
+            TestCampeonatoPontosJogo0a0Aposta1a1();
+            TestCampeonatoPontosJogo0a0Aposta2a0();
+            TestCampeonatoPontosJogo0a0Aposta2a1();
+            TestCampeonatoPontosJogo0a0Aposta0a2();
+            TestCampeonatoPontosJogo0a0Aposta1a2();
+            TestCampeonatoPontosJogo0a0Aposta2a2();
+
+
+            TestCampeonatoPontosJogo1a0Aposta0a0();
+            TestCampeonatoPontosJogo1a0Aposta1a0();
+            TestCampeonatoPontosJogo1a0Aposta0a1();
+            TestCampeonatoPontosJogo1a0Aposta1a1();
+            TestCampeonatoPontosJogo1a0Aposta2a0();
+            TestCampeonatoPontosJogo1a0Aposta2a1();
+            TestCampeonatoPontosJogo1a0Aposta0a2();
+            TestCampeonatoPontosJogo1a0Aposta1a2();
+            TestCampeonatoPontosJogo1a0Aposta2a2();
+
+
+            TestCampeonatoPontosJogo0a1Aposta0a0();
+            TestCampeonatoPontosJogo0a1Aposta1a0();
+            TestCampeonatoPontosJogo0a1Aposta0a1();
+            TestCampeonatoPontosJogo0a1Aposta1a1();
+            TestCampeonatoPontosJogo0a1Aposta2a0();
+            TestCampeonatoPontosJogo0a1Aposta2a1();
+            TestCampeonatoPontosJogo0a1Aposta0a2();
+            TestCampeonatoPontosJogo0a1Aposta1a2();
+            TestCampeonatoPontosJogo0a1Aposta2a2();
+
+
+
+
+            TestCampeonatoPontosJogo0a0Aposta0a0Brasil();
+            TestCampeonatoPontosJogo0a0Aposta1a0Brasil();
+            TestCampeonatoPontosJogo0a0Aposta0a1Brasil();
+            TestCampeonatoPontosJogo0a0Aposta1a1Brasil();
+            TestCampeonatoPontosJogo0a0Aposta2a0Brasil();
+            TestCampeonatoPontosJogo0a0Aposta2a1Brasil();
+            TestCampeonatoPontosJogo0a0Aposta0a2Brasil();
+            TestCampeonatoPontosJogo0a0Aposta1a2Brasil();
+            TestCampeonatoPontosJogo0a0Aposta2a2Brasil();
+
+
+            TestCampeonatoPontosJogo1a0Aposta0a0Brasil();
+            TestCampeonatoPontosJogo1a0Aposta1a0Brasil();
+            TestCampeonatoPontosJogo1a0Aposta0a1Brasil();
+            TestCampeonatoPontosJogo1a0Aposta1a1Brasil();
+            TestCampeonatoPontosJogo1a0Aposta2a0Brasil();
+            TestCampeonatoPontosJogo1a0Aposta2a1Brasil();
+            TestCampeonatoPontosJogo1a0Aposta0a2Brasil();
+            TestCampeonatoPontosJogo1a0Aposta1a2Brasil();
+            TestCampeonatoPontosJogo1a0Aposta2a2Brasil();
+
+
+            TestCampeonatoPontosJogo0a1Aposta0a0Brasil();
+            TestCampeonatoPontosJogo0a1Aposta1a0Brasil();
+            TestCampeonatoPontosJogo0a1Aposta0a1Brasil();
+            TestCampeonatoPontosJogo0a1Aposta1a1Brasil();
+            TestCampeonatoPontosJogo0a1Aposta2a0Brasil();
+            TestCampeonatoPontosJogo0a1Aposta2a1Brasil();
+            TestCampeonatoPontosJogo0a1Aposta0a2Brasil();
+            TestCampeonatoPontosJogo0a1Aposta1a2Brasil();
+            TestCampeonatoPontosJogo0a1Aposta2a2Brasil();
         }
 
         private void ClearInput()
@@ -193,8 +258,29 @@ namespace BolaoNet.Tests.Pontuacao
                 out errorNumber, out errorDescription);
         }
 
-        private void SetPontosCampeonato()
+        private void SetPontosCampeonato(bool isMultiplo)
         {
+            pontosEmpate = 2;
+            pontosVitoria = 0;
+            pontosDerrota = 0;
+            pontosGanhador = 0;
+            pontosPerdedor = 0;
+            pontosTime1 = 0;
+            pontosTime2 = 0;
+            pontosVDE = 3;
+            pontosErro = 0;
+            pontosGanhadorFora = 0;
+            pontosGanhadorDentro = 0;
+            pontosPerdedorFora = 0;
+            pontosPerdedorDentro = 0;
+            pontosEmpateGols =  -2;
+            pontosGolsTime1 = 1;
+            pontosGolsTime2 = 1;
+            pontosCheio = 5;
+
+
+            isMultiploTime = isMultiplo;
+            multiploTime = 2;
         }
 
         #endregion
@@ -1092,7 +1178,156 @@ namespace BolaoNet.Tests.Pontuacao
         public void TestCampeonatoPontosJogo0a0Aposta0a0()
         {
             ClearInput();
-            SetPontosCampeonato();
+            SetPontosCampeonato(false);
+
+            int gols1 = 0;
+            int gols2 = 0;
+
+            int aposta1 = 0;
+            int aposta2 = 0;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(10, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo0a0Aposta1a0()
+        {
+            ClearInput();
+            SetPontosCampeonato(false);
+
+            int gols1 = 0;
+            int gols2 = 0;
+
+            int aposta1 = 1;
+            int aposta2 = 0;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(1, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo0a0Aposta0a1()
+        {
+            ClearInput();
+            SetPontosCampeonato(false);
+
+            int gols1 = 0;
+            int gols2 = 0;
+
+            int aposta1 = 0;
+            int aposta2 = 1;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(1, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo0a0Aposta1a1()
+        {
+            ClearInput();
+            SetPontosCampeonato(false);
+
+            int gols1 = 0;
+            int gols2 = 0;
+
+            int aposta1 = 1;
+            int aposta2 = 1;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(5, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo0a0Aposta2a0()
+        {
+            ClearInput();
+            SetPontosCampeonato(false);
+
+            int gols1 = 0;
+            int gols2 = 0;
+
+            int aposta1 = 2;
+            int aposta2 = 0;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(1, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo0a0Aposta2a1()
+        {
+            ClearInput();
+            SetPontosCampeonato(false);
+
+            int gols1 = 0;
+            int gols2 = 0;
+
+            int aposta1 = 2;
+            int aposta2 = 1;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(0, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo0a0Aposta0a2()
+        {
+            ClearInput();
+            SetPontosCampeonato(false);
+
+            int gols1 = 0;
+            int gols2 = 0;
+
+            int aposta1 = 0;
+            int aposta2 = 2;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(1, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo0a0Aposta1a2()
+        {
+            ClearInput();
+            SetPontosCampeonato(false);
+
+            int gols1 = 0;
+            int gols2 = 0;
+
+            int aposta1 = 1;
+            int aposta2 = 2;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(0, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo0a0Aposta2a2()
+        {
+            ClearInput();
+            SetPontosCampeonato(false);
+
+            int gols1 = 0;
+            int gols2 = 0;
+
+            int aposta1 = 2;
+            int aposta2 = 2;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(5, pontosResultados);
+        }
+        
+        #endregion
+
+        #region Copa 1 x 0
+
+        [TestMethod]
+        public void TestCampeonatoPontosJogo1a0Aposta0a0()
+        {
+            ClearInput();
+            SetPontosCampeonato(false);
 
             int gols1 = 1;
             int gols2 = 0;
@@ -1104,7 +1339,731 @@ namespace BolaoNet.Tests.Pontuacao
 
             Assert.AreEqual(1, pontosResultados);
         }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo1a0Aposta1a0()
+        {
+            ClearInput();
+            SetPontosCampeonato(false);
 
+            int gols1 = 1;
+            int gols2 = 0;
+
+            int aposta1 = 1;
+            int aposta2 = 0;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(10, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo1a0Aposta0a1()
+        {
+            ClearInput();
+            SetPontosCampeonato(false);
+
+            int gols1 = 1;
+            int gols2 = 0;
+
+            int aposta1 = 0;
+            int aposta2 = 1;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(0, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo1a0Aposta1a1()
+        {
+            ClearInput();
+            SetPontosCampeonato(false);
+
+            int gols1 = 1;
+            int gols2 = 0;
+
+            int aposta1 = 1;
+            int aposta2 = 1;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(1, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo1a0Aposta2a0()
+        {
+            ClearInput();
+            SetPontosCampeonato(false);
+
+            int gols1 = 1;
+            int gols2 = 0;
+
+            int aposta1 = 2;
+            int aposta2 = 0;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(4, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo1a0Aposta2a1()
+        {
+            ClearInput();
+            SetPontosCampeonato(false);
+
+            int gols1 = 1;
+            int gols2 = 0;
+
+            int aposta1 = 2;
+            int aposta2 = 1;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(3, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo1a0Aposta0a2()
+        {
+            ClearInput();
+            SetPontosCampeonato(false);
+
+            int gols1 = 1;
+            int gols2 = 0;
+
+            int aposta1 = 0;
+            int aposta2 = 2;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(0, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo1a0Aposta1a2()
+        {
+            ClearInput();
+            SetPontosCampeonato(false);
+
+            int gols1 = 1;
+            int gols2 = 0;
+
+            int aposta1 = 1;
+            int aposta2 = 2;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(1, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo1a0Aposta2a2()
+        {
+            ClearInput();
+            SetPontosCampeonato(false);
+
+            int gols1 = 1;
+            int gols2 = 0;
+
+            int aposta1 = 2;
+            int aposta2 = 2;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(0, pontosResultados);
+        }
+
+        #endregion
+
+        #region Copa 0 x 1
+
+        [TestMethod]
+        public void TestCampeonatoPontosJogo0a1Aposta0a0()
+        {
+            ClearInput();
+            SetPontosCampeonato(false);
+
+            int gols1 = 0;
+            int gols2 = 1;
+
+            int aposta1 = 0;
+            int aposta2 = 0;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(1, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo0a1Aposta1a0()
+        {
+            ClearInput();
+            SetPontosCampeonato(false);
+
+            int gols1 = 0;
+            int gols2 = 1;
+
+            int aposta1 = 1;
+            int aposta2 = 0;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(0, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo0a1Aposta0a1()
+        {
+            ClearInput();
+            SetPontosCampeonato(false);
+
+            int gols1 = 0;
+            int gols2 = 1;
+
+            int aposta1 = 0;
+            int aposta2 = 1;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(10, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo0a1Aposta1a1()
+        {
+            ClearInput();
+            SetPontosCampeonato(false);
+
+            int gols1 = 0;
+            int gols2 = 1;
+
+            int aposta1 = 1;
+            int aposta2 = 1;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(1, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo0a1Aposta2a0()
+        {
+            ClearInput();
+            SetPontosCampeonato(false);
+
+            int gols1 = 0;
+            int gols2 = 1;
+
+            int aposta1 = 2;
+            int aposta2 = 0;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(0, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo0a1Aposta2a1()
+        {
+            ClearInput();
+            SetPontosCampeonato(false);
+
+            int gols1 = 0;
+            int gols2 = 1;
+
+            int aposta1 = 2;
+            int aposta2 = 1;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(1, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo0a1Aposta0a2()
+        {
+            ClearInput();
+            SetPontosCampeonato(false);
+
+            int gols1 = 0;
+            int gols2 = 1;
+
+            int aposta1 = 0;
+            int aposta2 = 2;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(4, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo0a1Aposta1a2()
+        {
+            ClearInput();
+            SetPontosCampeonato(false);
+
+            int gols1 = 0;
+            int gols2 = 1;
+
+            int aposta1 = 1;
+            int aposta2 = 2;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(3, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo0a1Aposta2a2()
+        {
+            ClearInput();
+            SetPontosCampeonato(false);
+
+            int gols1 = 0;
+            int gols2 = 1;
+
+            int aposta1 = 2;
+            int aposta2 = 2;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(0, pontosResultados);
+        }
+
+        #endregion
+
+
+        #region Copa 0 x 0 - Brasil
+
+        [TestMethod]
+        public void TestCampeonatoPontosJogo0a0Aposta0a0Brasil()
+        {
+            ClearInput();
+            SetPontosCampeonato(true);
+
+            int gols1 = 0;
+            int gols2 = 0;
+
+            int aposta1 = 0;
+            int aposta2 = 0;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(20, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo0a0Aposta1a0Brasil()
+        {
+            ClearInput();
+            SetPontosCampeonato(true);
+
+            int gols1 = 0;
+            int gols2 = 0;
+
+            int aposta1 = 1;
+            int aposta2 = 0;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(2, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo0a0Aposta0a1Brasil()
+        {
+            ClearInput();
+            SetPontosCampeonato(true);
+
+            int gols1 = 0;
+            int gols2 = 0;
+
+            int aposta1 = 0;
+            int aposta2 = 1;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(2, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo0a0Aposta1a1Brasil()
+        {
+            ClearInput();
+            SetPontosCampeonato(true);
+
+            int gols1 = 0;
+            int gols2 = 0;
+
+            int aposta1 = 1;
+            int aposta2 = 1;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(10, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo0a0Aposta2a0Brasil()
+        {
+            ClearInput();
+            SetPontosCampeonato(true);
+
+            int gols1 = 0;
+            int gols2 = 0;
+
+            int aposta1 = 2;
+            int aposta2 = 0;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(2, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo0a0Aposta2a1Brasil()
+        {
+            ClearInput();
+            SetPontosCampeonato(true);
+
+            int gols1 = 0;
+            int gols2 = 0;
+
+            int aposta1 = 2;
+            int aposta2 = 1;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(0, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo0a0Aposta0a2Brasil()
+        {
+            ClearInput();
+            SetPontosCampeonato(true);
+
+            int gols1 = 0;
+            int gols2 = 0;
+
+            int aposta1 = 0;
+            int aposta2 = 2;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(2, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo0a0Aposta1a2Brasil()
+        {
+            ClearInput();
+            SetPontosCampeonato(true);
+
+            int gols1 = 0;
+            int gols2 = 0;
+
+            int aposta1 = 1;
+            int aposta2 = 2;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(0, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo0a0Aposta2a2Brasil()
+        {
+            ClearInput();
+            SetPontosCampeonato(true);
+
+            int gols1 = 0;
+            int gols2 = 0;
+
+            int aposta1 = 2;
+            int aposta2 = 2;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(10, pontosResultados);
+        }
+
+        #endregion
+
+        #region Copa 1 x 0 - Brasil
+
+        [TestMethod]
+        public void TestCampeonatoPontosJogo1a0Aposta0a0Brasil()
+        {
+            ClearInput();
+            SetPontosCampeonato(true);
+
+            int gols1 = 1;
+            int gols2 = 0;
+
+            int aposta1 = 0;
+            int aposta2 = 0;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(2, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo1a0Aposta1a0Brasil()
+        {
+            ClearInput();
+            SetPontosCampeonato(true);
+
+            int gols1 = 1;
+            int gols2 = 0;
+
+            int aposta1 = 1;
+            int aposta2 = 0;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(20, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo1a0Aposta0a1Brasil()
+        {
+            ClearInput();
+            SetPontosCampeonato(true);
+
+            int gols1 = 1;
+            int gols2 = 0;
+
+            int aposta1 = 0;
+            int aposta2 = 1;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(0, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo1a0Aposta1a1Brasil()
+        {
+            ClearInput();
+            SetPontosCampeonato(true);
+
+            int gols1 = 1;
+            int gols2 = 0;
+
+            int aposta1 = 1;
+            int aposta2 = 1;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(2, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo1a0Aposta2a0Brasil()
+        {
+            ClearInput();
+            SetPontosCampeonato(true);
+
+            int gols1 = 1;
+            int gols2 = 0;
+
+            int aposta1 = 2;
+            int aposta2 = 0;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(8, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo1a0Aposta2a1Brasil()
+        {
+            ClearInput();
+            SetPontosCampeonato(true);
+
+            int gols1 = 1;
+            int gols2 = 0;
+
+            int aposta1 = 2;
+            int aposta2 = 1;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(6, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo1a0Aposta0a2Brasil()
+        {
+            ClearInput();
+            SetPontosCampeonato(true);
+
+            int gols1 = 1;
+            int gols2 = 0;
+
+            int aposta1 = 0;
+            int aposta2 = 2;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(0, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo1a0Aposta1a2Brasil()
+        {
+            ClearInput();
+            SetPontosCampeonato(true);
+
+            int gols1 = 1;
+            int gols2 = 0;
+
+            int aposta1 = 1;
+            int aposta2 = 2;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(2, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo1a0Aposta2a2Brasil()
+        {
+            ClearInput();
+            SetPontosCampeonato(true);
+
+            int gols1 = 1;
+            int gols2 = 0;
+
+            int aposta1 = 2;
+            int aposta2 = 2;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(0, pontosResultados);
+        }
+
+        #endregion
+
+        #region Copa 0 x 1 - Brasil
+
+        [TestMethod]
+        public void TestCampeonatoPontosJogo0a1Aposta0a0Brasil()
+        {
+            ClearInput();
+            SetPontosCampeonato(true);
+
+            int gols1 = 0;
+            int gols2 = 1;
+
+            int aposta1 = 0;
+            int aposta2 = 0;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(2, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo0a1Aposta1a0Brasil()
+        {
+            ClearInput();
+            SetPontosCampeonato(true);
+
+            int gols1 = 0;
+            int gols2 = 1;
+
+            int aposta1 = 1;
+            int aposta2 = 0;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(0, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo0a1Aposta0a1Brasil()
+        {
+            ClearInput();
+            SetPontosCampeonato(true);
+
+            int gols1 = 0;
+            int gols2 = 1;
+
+            int aposta1 = 0;
+            int aposta2 = 1;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(20, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo0a1Aposta1a1Brasil()
+        {
+            ClearInput();
+            SetPontosCampeonato(true);
+
+            int gols1 = 0;
+            int gols2 = 1;
+
+            int aposta1 = 1;
+            int aposta2 = 1;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(2, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo0a1Aposta2a0Brasil()
+        {
+            ClearInput();
+            SetPontosCampeonato(true);
+
+            int gols1 = 0;
+            int gols2 = 1;
+
+            int aposta1 = 2;
+            int aposta2 = 0;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(0, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo0a1Aposta2a1Brasil()
+        {
+            ClearInput();
+            SetPontosCampeonato(true);
+
+            int gols1 = 0;
+            int gols2 = 1;
+
+            int aposta1 = 2;
+            int aposta2 = 1;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(2, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo0a1Aposta0a2Brasil()
+        {
+            ClearInput();
+            SetPontosCampeonato(true);
+
+            int gols1 = 0;
+            int gols2 = 1;
+
+            int aposta1 = 0;
+            int aposta2 = 2;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(8, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo0a1Aposta1a2Brasil()
+        {
+            ClearInput();
+            SetPontosCampeonato(true);
+
+            int gols1 = 0;
+            int gols2 = 1;
+
+            int aposta1 = 1;
+            int aposta2 = 2;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(6, pontosResultados);
+        }
+        [TestMethod]
+        public void TestCampeonatoPontosJogo0a1Aposta2a2Brasil()
+        {
+            ClearInput();
+            SetPontosCampeonato(true);
+
+            int gols1 = 0;
+            int gols2 = 1;
+
+            int aposta1 = 2;
+            int aposta2 = 2;
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+
+            Assert.AreEqual(0, pontosResultados);
+        }
 
         #endregion
 

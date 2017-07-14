@@ -31,8 +31,6 @@ namespace BolaoNet.WebApi.Integration.Facade.Campeonatos
 
         #region IStructureCopaMundoFacadeService members
 
-
-
         public Domain.Entities.Campeonatos.Campeonato CreateCampeonato(string nomeCampeonato, bool isTime)
         {
             throw new NotImplementedException();
@@ -72,7 +70,13 @@ namespace BolaoNet.WebApi.Integration.Facade.Campeonatos
         {
             throw new NotImplementedException();
         }
+        public bool RestartCampeonato(string nomeCampeonato)
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
+
+
     }
 }

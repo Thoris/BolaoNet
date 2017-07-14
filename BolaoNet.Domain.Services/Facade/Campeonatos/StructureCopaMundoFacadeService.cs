@@ -86,7 +86,13 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
         {
             return base.InsertResult(base.Campeonato, jogoID, setCurrentData, validadoBy, golsTime1, golsTime2, penaltis1, penaltis2);
         }
+        public bool RestartCampeonato(string nomeCampeonato)
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
+
+
     }
 }
