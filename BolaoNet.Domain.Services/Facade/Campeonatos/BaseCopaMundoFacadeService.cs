@@ -537,12 +537,12 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             list.Add(new Entities.Campeonatos.CampeonatoPosicao(campeonato.Nome, nomeFase, nomeGrupo, 1)
             {
                 ForeColorName = "White",
-                BackColorName = "Green"
+                BackColorName = "LightGreen"
             });
             list.Add(new Entities.Campeonatos.CampeonatoPosicao(campeonato.Nome, nomeFase, nomeGrupo, 2)
             {
                 ForeColorName = "White",
-                BackColorName = "Green"
+                BackColorName = "LightGreen"
             });
 
             return list;

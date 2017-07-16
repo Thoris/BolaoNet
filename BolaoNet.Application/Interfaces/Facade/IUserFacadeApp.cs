@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Application.Interfaces.Facade
 {
-    public interface IUserFacadeApp : Domain.Interfaces.Services.Facade.IUserFacadeService
+    public interface IUserFacadeApp : 
+        Domain.Interfaces.Services.Facade.IUserFacadeService
     {
     }
 }

@@ -20,12 +20,12 @@ BEGIN
 
 	SELECT b.Nome as 'NomeBolao', b.NomeCampeonato,
 			(SELECT Count(*) FROM BoloesMembros c WHERE c.NomeBolao = a.NomeBolao) as 'Membros', 
-			(
+			ISNULL((
 			  SELECT Posicao 
 				FROM BoloesMembrosClassificacao d 
 			   WHERE d.NomeBolao		= a.NomeBolao
 			     AND d.UserName			= @UserName
-			) as 'Position',
+			),0) as 'Position',
 			
 			(SELECT Count(*)
 			  FROM Jogos j

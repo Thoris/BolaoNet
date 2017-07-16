@@ -387,7 +387,8 @@ namespace BolaoNet.Domain.Services
 
         public Interfaces.Services.Facade.IInitializationFacadeService CreateInitializationFacadeService()
         {
-            return new Facade.InitializationFacadeService(this);
+            return null;
+            //return new Facade.InitializationFacadeService(this);
         }
 
         public Interfaces.Services.Facade.IUserFacadeService CreateUserFacadeService()

@@ -140,5 +140,7 @@
     <None Include="build\0126.Create_Stored_Procedure_sp_BoloesMembros_Del.sql" />
     <None Include="build\0127.Create_Stored_Procedure_sp_JogosUsuarios_Load_Acertos_Dificeis.sql" />
     <None Include="build\0128.Create_Stored_Procedure_sp_JogosUsuarios_Load_Sem_Acertos.sql" />
+    <None Include="build\0129.Create_Stored_Procedure_sp_Campeonatos_Reiniciar.sql" />
+    <None Include="build\0130.Create_Stored_Procedure_sp_Clear_Database.sql" />
   </ItemGroup>
 </Project>

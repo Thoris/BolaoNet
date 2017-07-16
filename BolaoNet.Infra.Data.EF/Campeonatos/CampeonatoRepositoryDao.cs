@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,7 +35,63 @@ namespace BolaoNet.Infra.Data.EF.Campeonatos
             return results.ToList<int>();
 
         }
+        public void Reiniciar(string currentUserName, DateTime currentDateTime, Domain.Entities.Campeonatos.Campeonato campeonato)
+        {
+            string command = "exec sp_Campeonatos_Reiniciar " +
+                                     "  @CurrentLogin " +
+                                     ", @CurrentDateTime" +
+                                     ", @NomeCampeonato" +
+                                     
+                                     ", @ErrorNumber out" +
+                                     ", @ErrorDescription out";
+
+            var errorNumber = new SqlParameter
+            {
+                ParameterName = "@ErrorNumber",
+                SqlDbType = System.Data.SqlDbType.Int,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var errorDescription = new SqlParameter
+            {
+                ParameterName = "@ErrorDescription",
+                SqlDbType = System.Data.SqlDbType.VarChar,
+                Size = 255,
+                Direction = System.Data.ParameterDirection.Output
+            };
+
+            base.DataContext.Database.SqlQuery<object>(command,
+                            new SqlParameter("CurrentLogin", currentUserName),
+                            new SqlParameter("CurrentDateTime", currentDateTime),
+                            new SqlParameter("NomeCampeonato", campeonato.Nome),                                                        
+                            errorNumber,
+                            errorDescription
+                        );
+
+            int error = 0;
+            try
+            {
+                error = (int)errorNumber.Value;
+            }
+            catch
+            {
+
+            }
+             
+        }
+
+        public void ClearDatabase(string currentUserName, DateTime currentDateTime)
+        {
+            string command = "exec sp_Clear_Database ";
+                                                 
+            //base.DataContext.Database.SqlQuery<object>(command).Single();
+            object[] parameters = new object[] { };
+            base.DataContext.Database.ExecuteSqlCommand(command, parameters);
+
+        }
 
         #endregion
+
+
     }
 }

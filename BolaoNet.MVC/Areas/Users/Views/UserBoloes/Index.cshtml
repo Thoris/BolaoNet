@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Seleção de Bolão";
 }
-@using (Html.BeginForm("Selecionar", "UserBoloes", FormMethod.Post, new { }))
+@using (Html.BeginForm("Selecionar", "UserBoloes", FormMethod.Get, new { }))
 {
     @Html.AntiForgeryToken()
 
@@ -39,7 +39,7 @@
                             { 
                                 <div>
                                     <a href="@Url.Action("Selecionar", "UserBoloes", new { nomeBolao = @Model.BoloesList[c] })">
-                                         <img src="yourImageSource"  style="vertical-align: middle; width: 30px;"> @Model.BoloesList[c]
+                                         <img src=""  style="vertical-align: middle; width: 30px;"> @Model.BoloesList[c]
                                     </a> 
                                 </div>
                             }

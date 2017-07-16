@@ -13,6 +13,9 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
 
         public override void Load()
         {
+
+            Bind<Application.Interfaces.Facade.IInitializationFacadeApp>().To<Application.Facade.InitializationFacadeApp>();
+
             Bind<Application.Interfaces.Notification.INotificationApp>().To<Application.Notification.NotificationApp>();
 
             Bind<Application.Interfaces.Boloes.IApostaExtraApp>().To<Application.Boloes.ApostaExtraApp>();

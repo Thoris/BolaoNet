@@ -10,5 +10,9 @@ namespace BolaoNet.Domain.Interfaces.Services.Campeonatos
         : Base.IGenericService<Entities.Campeonatos.Campeonato>
     {
         IList<int> GetRodadasCampeonato(Entities.Campeonatos.Campeonato campeonato);
+
+        void Reiniciar(Entities.Campeonatos.Campeonato campeonato);
+
+        void ClearDatabase();
     }
 }

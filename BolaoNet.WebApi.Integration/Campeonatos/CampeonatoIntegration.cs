@@ -39,7 +39,18 @@ namespace BolaoNet.WebApi.Integration.Campeonatos
         {
             throw new NotImplementedException();
         }
+        public void Reiniciar(Domain.Entities.Campeonatos.Campeonato campeonato)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ClearDatabase()
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
+
+
     }
 }

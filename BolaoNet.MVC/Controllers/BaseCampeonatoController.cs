@@ -126,7 +126,7 @@ namespace BolaoNet.MVC.Controllers
                 return;
             }
         }
-        protected void LoadCampeonatoData()
+        public void LoadCampeonatoData()
         {
             if (string.IsNullOrEmpty(base.SelectedNomeCampeonato))
                 return;

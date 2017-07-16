@@ -24,10 +24,11 @@ namespace BolaoNet.Domain.Entities.Campeonatos
         {
             get
             {
-                if (Jogos == 0)
+                if (Jogos == 0 || Jogos == null)
                     return 0;
                 else
                 {
+                    
                     int totalPontos = (Jogos != null ? (int)Jogos : 0) * 3;
 
                     double result = ((double)TotalPontos / (double)totalPontos) * (double)100;

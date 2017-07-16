@@ -152,6 +152,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BolaoNet.Tests.Interface", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BolaoNet.Infra.Reports", "BolaoNet.Infra.Reports\BolaoNet.Infra.Reports.csproj", "{5C3E6AA6-F8D2-4940-BE65-3FC76DB96B59}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BolaoNet.MVC.Tests", "BolaoNet.MVC.Tests\BolaoNet.MVC.Tests.csproj", "{0E555D9B-B7CA-4E98-8C23-96E5282042C5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -242,6 +244,10 @@ Global
 		{5C3E6AA6-F8D2-4940-BE65-3FC76DB96B59}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C3E6AA6-F8D2-4940-BE65-3FC76DB96B59}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C3E6AA6-F8D2-4940-BE65-3FC76DB96B59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E555D9B-B7CA-4E98-8C23-96E5282042C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E555D9B-B7CA-4E98-8C23-96E5282042C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E555D9B-B7CA-4E98-8C23-96E5282042C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E555D9B-B7CA-4E98-8C23-96E5282042C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -297,5 +303,6 @@ Global
 		{634E95F1-4F38-4BDB-AD16-8DFCD6C73AB5} = {6409FF15-ABAE-41F4-AB64-B03FC1D19390}
 		{6A0F5416-AF00-458C-912C-B36EB12BC3F7} = {80B65053-B40D-49BF-8881-F4CF52F0DE15}
 		{5C3E6AA6-F8D2-4940-BE65-3FC76DB96B59} = {8E9DE538-DED5-4B14-9405-501A2F6FC2C0}
+		{0E555D9B-B7CA-4E98-8C23-96E5282042C5} = {80B65053-B40D-49BF-8881-F4CF52F0DE15}
 	EndGlobalSection
 EndGlobal

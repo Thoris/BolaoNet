@@ -21,13 +21,27 @@ namespace BolaoNet.Domain.Services.Facade
 
         #region Constructors/Destructors
 
-        public InitializationFacadeService(Interfaces.Services.IFactoryService factory)
+        //public InitializationFacadeService(Interfaces.Services.IFactoryService factory)
+        //{
+        //    _criterioFixoBO = factory.CreateCriterioFixoService();
+        //    _pagamentoTipoBO = factory.CreatePagamentoTipoService();
+        //    _roleBO = factory.CreateRoleService();
+        //    _userBO = factory.CreateUserService();
+        //    _userInRoleBO = factory.CreateUserInRoleService();
+        //}
+
+        public InitializationFacadeService(
+            Interfaces.Services.DadosBasicos.ICriterioFixoService criterioFixoBO,
+            Interfaces.Services.DadosBasicos.IPagamentoTipoService pagamentoTipoBO,
+            Interfaces.Services.Users.IRoleService roleBO,
+            Interfaces.Services.Users.IUserService userBO,
+            Interfaces.Services.Users.IUserInRoleService userInRoleBO)
         {
-            _criterioFixoBO = factory.CreateCriterioFixoService();
-            _pagamentoTipoBO = factory.CreatePagamentoTipoService();
-            _roleBO = factory.CreateRoleService();
-            _userBO = factory.CreateUserService();
-            _userInRoleBO = factory.CreateUserInRoleService();
+            _criterioFixoBO = criterioFixoBO;
+            _pagamentoTipoBO = pagamentoTipoBO;
+            _roleBO = roleBO;
+            _userBO = userBO;
+            _userInRoleBO = userInRoleBO;
         }
 
         #endregion

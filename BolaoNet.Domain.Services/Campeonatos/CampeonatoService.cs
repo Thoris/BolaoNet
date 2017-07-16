@@ -42,6 +42,17 @@ namespace BolaoNet.Domain.Services.Campeonatos
             return BaseDao.GetRodadasCampeonato(base.CurrentUserName, campeonato);
         }
 
+
+
+        public void Reiniciar(Entities.Campeonatos.Campeonato campeonato)
+        {
+            BaseDao.Reiniciar(base.CurrentUserName, DateTime.Now, campeonato);
+        }
+
+        public void ClearDatabase()
+        {
+            BaseDao.ClearDatabase(base.CurrentUserName, DateTime.Now);
+        }
         #endregion
     }
 }

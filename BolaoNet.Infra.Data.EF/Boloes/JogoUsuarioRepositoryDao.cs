@@ -471,7 +471,7 @@ namespace BolaoNet.Infra.Data.EF.Boloes
             {
                 if (apostaTime1 == apostaTime2)
                 {
-                    ganhador = 2;
+                    ganhador = 0;
                     //if (penaltis1 != null && penaltis2 != null)
                     //{
                     //    if ((int)penaltis1 > (int)penaltis2)
@@ -482,11 +482,11 @@ namespace BolaoNet.Infra.Data.EF.Boloes
                 }
                 else if (apostaTime1 > apostaTime2)
                 {
-                    ganhador = 0;
+                    ganhador = 1;
                 }
                 else if (apostaTime1 < apostaTime2)
                 {
-                    ganhador = 1;
+                    ganhador = 2;
                 }
             }
 

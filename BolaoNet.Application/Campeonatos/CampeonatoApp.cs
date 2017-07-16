@@ -38,6 +38,15 @@ namespace BolaoNet.Application.Campeonatos
         {
             return Service.GetRodadasCampeonato(campeonato);
         }
+        public void Reiniciar(Domain.Entities.Campeonatos.Campeonato campeonato)
+        {
+            Service.Reiniciar(campeonato);
+        }
+
+        public void ClearDatabase()
+        {
+            Service.ClearDatabase();
+        }
 
         #endregion
     }

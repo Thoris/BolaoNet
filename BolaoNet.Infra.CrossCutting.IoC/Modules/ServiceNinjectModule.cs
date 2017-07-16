@@ -19,6 +19,10 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
 
             Bind(typeof(Domain.Interfaces.Services.Base.IGenericService<>)).To(typeof(Domain.Services.Base.BaseGenericService<>)).WithConstructorArgument("userName", userName);
 
+
+            Bind<Domain.Interfaces.Services.Facade.IInitializationFacadeService>().To<Domain.Services.Facade.InitializationFacadeService>().WithConstructorArgument("userName", userName);
+            
+
             Bind<Domain.Interfaces.Services.Boloes.IApostaExtraService>().To<Domain.Services.Boloes.ApostaExtraService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Boloes.IApostaExtraUsuarioService>().To<Domain.Services.Boloes.ApostaExtraUsuarioService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Boloes.IApostaPontosService>().To<Domain.Services.Boloes.ApostaPontosService>().WithConstructorArgument("userName", userName);

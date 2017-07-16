@@ -45,7 +45,7 @@ namespace BolaoNet.Domain.Entities.Campeonatos
 
         public bool IsValid()
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         #endregion

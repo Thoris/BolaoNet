@@ -11,15 +11,22 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
         #region Constants
 
         private const string FirstPlaceForeColorName = "White";
-        private const string FirstPlaceBackColorName = "Green";
+        private const string FirstPlaceBackColorName = "LightGreen";
         private const string SecondPlaceForeColorName = "White";
-        private const string SecondPlaceBackColorName = "Green";
+        private const string SecondPlaceBackColorName = "LightGreen";
 
-        protected const string FaseClassificatoria = "Classificatória";
-        protected const string FaseOitavasFinal = "Oitavas de Final";
-        protected const string FaseQuartasFinal = "Quartas de Final";
-        protected const string FaseSemiFinal = "Semi finais";
-        protected const string FaseFinal = "Final";
+        //protected const string FaseClassificatoria = "Classificatória";
+        //protected const string FaseOitavasFinal = "Oitavas de Final";
+        //protected const string FaseQuartasFinal = "Quartas de Final";
+        //protected const string FaseSemiFinal = "Semi finais";
+        //protected const string FaseFinal = "Final";
+
+
+        protected const string FaseClassificatoria = Domain.Entities.Campeonatos.CampeonatoFase.FaseClassificatoria;
+        protected const string FaseOitavasFinal = Domain.Entities.Campeonatos.CampeonatoFase.FaseOitavasFinal;
+        protected const string FaseQuartasFinal = Domain.Entities.Campeonatos.CampeonatoFase.FaseQuartasFinal;
+        protected const string FaseSemiFinal = Domain.Entities.Campeonatos.CampeonatoFase.FaseSemiFinal;
+        protected const string FaseFinal = Domain.Entities.Campeonatos.CampeonatoFase.FaseFinal;
 
         #endregion
 

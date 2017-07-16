@@ -20,12 +20,14 @@ namespace BolaoNet.MVC.Controllers
         private Application.Interfaces.Notification.INotificationApp _notificationApp;
         private Application.Interfaces.Boloes.IBolaoMembroApp _bolaoMembroApp;
         private Application.Interfaces.Boloes.IBolaoApp _bolaoApp;
+        private Security.ICookieManager _cookieManager;
 
         #endregion
 
         #region Constructors/Destructors
 
         public AccountController(
+            //Security.ICookieManager cookieManager,
             Application.Interfaces.Users.IUserApp userApp, 
             Application.Interfaces.Users.IUserInRoleApp userInRoleApp, 
             Application.Interfaces.Boloes.IBolaoMembroApp bolaoMembroApp, 
@@ -38,6 +40,7 @@ namespace BolaoNet.MVC.Controllers
             _notificationApp = notificationApp;
             _bolaoMembroApp = bolaoMembroApp;
             _bolaoApp = bolaoApp;
+            //_cookieManager = cookieManager;
         }
 
         #endregion
@@ -90,7 +93,7 @@ namespace BolaoNet.MVC.Controllers
             };
             
             Security.AuthenticationManagement.SaveAuthentication(Response, userModel, model.RememberMe);
-
+            //_cookieManager.SaveAuthentication(Response, userModel, model.RememberMe);
 
             //Buscando a lista de bolões do usuário
             IList<Domain.Entities.Boloes.BolaoMembro> list =
@@ -198,11 +201,36 @@ namespace BolaoNet.MVC.Controllers
                 return View();
             }
 
+
+
+            Domain.Entities.Users.Role[] roles = {
+                                                  new Domain.Entities.Users.Role("Apostador"),
+                                                  new Domain.Entities.Users.Role("Convidado"),
+                                                  new Domain.Entities.Users.Role("Visitante de Bolão"),
+                                                  new Domain.Entities.Users.Role("Visitante de Campeonato"),
+                                               };
+
+            for (int c=0; c < roles.Length; c++)
+            {                
+                _userInRoleApp.Insert(new Domain.Entities.Users.UserInRole(data.UserName, roles[c].RoleName));
+            }
+
             string codeGenerated = _userApp.GenerateActivationCode(data);
             data.ActivateKey = codeGenerated;
 
 
+            string sourceProfileImage = "~/Content/img/profile_small.jpg";
+            string targetProfileImage = "~/Content/img/database/profiles/" + data.UserName + ".gif";
+
+            targetProfileImage = Server.MapPath(targetProfileImage);
+            if (System.IO.File.Exists(targetProfileImage))
+                System.IO.File.Delete(targetProfileImage);
+
+            System.IO.File.Copy(Server.MapPath(sourceProfileImage), Server.MapPath(targetProfileImage));
+
             _notificationApp.NotifyActivationCode(data);
+
+           
 
 
             return RedirectToAction("RegistrationFormSent", model);
@@ -236,7 +264,25 @@ namespace BolaoNet.MVC.Controllers
                 return View();
             }
 
+
+
             Domain.Entities.Users.User user = _userApp.Load (data);
+
+            IList<Domain.Entities.Boloes.Bolao> bolaoList = _bolaoApp.GetAll().ToList ();
+
+            for (int c = 0; c < bolaoList.Count; c++ )
+            {
+                if (bolaoList[c].IsIniciado != true)
+                {
+                    Domain.Entities.Boloes.BolaoMembro bolaoMembro = 
+                        new Domain.Entities.Boloes.BolaoMembro(user.UserName, bolaoList[c].Nome);
+                    
+                    if (_bolaoMembroApp.Load (bolaoMembro) == null)
+                    {
+                        _bolaoMembroApp.Insert(bolaoMembro);
+                    }
+                }
+            }
 
             _notificationApp.NotifyWelcome(user);
             
@@ -260,7 +306,13 @@ namespace BolaoNet.MVC.Controllers
             }
         }
 
+        
+        public ActionResult ConfigCulture(string culture)
+        {
 
+            base.SetCulture(culture);
+            return RedirectToAction("Login");
+        }
         #endregion
     }
 }

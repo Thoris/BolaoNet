@@ -67,6 +67,8 @@ namespace BolaoNet.MVC.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<Security.ICookieManager>().To<Security.CookieManager>();
+
         }        
     }
 }

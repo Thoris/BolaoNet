@@ -10,8 +10,8 @@ namespace BolaoNet.Tests.Debug
     {
         static void Main(string[] args)
         {
-            new Tests.AllTests().Execute();
-
+            //new Tests.AllTests().Execute();
+            new MVC.Tests.Execution().Execute();
 
             //Domain.Interfaces.Services.Boloes.IBolaoService b =
             //     new BolaoNet.Application.FactoryApp("thoris", "http://localhost:9586/").CreateBolaoService();

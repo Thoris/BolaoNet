@@ -52,6 +52,7 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
 
             return View(model);
         }
+        [HttpGet]
         public ActionResult Selecionar(string nomeBolao)
         {
             if (!ModelState.IsValid)

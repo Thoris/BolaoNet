@@ -47,7 +47,6 @@ namespace BolaoNet.MVC.Controllers
                 };
             }
         }
-
         public string SelectedNomeCampeonato
         {
             get
@@ -70,11 +69,13 @@ namespace BolaoNet.MVC.Controllers
                     return new Domain.Entities.Campeonatos.Campeonato(this.SelectedNomeCampeonato);
                 }
             }
-        }
-            
+        }            
         protected virtual new CustomUserPrincipal User
         {
-            get { return HttpContext.User as CustomUserPrincipal; }
+            get 
+            {
+                return HttpContext.User as CustomUserPrincipal; 
+            }
         }
         public virtual Domain.Entities.Users.User UserLogged
         {
@@ -132,6 +133,7 @@ namespace BolaoNet.MVC.Controllers
                 return RedirectToAction("Index", "Home");
             }
         }
+
         #endregion
     }
 }

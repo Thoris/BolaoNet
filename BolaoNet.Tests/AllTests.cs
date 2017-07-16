@@ -26,10 +26,35 @@ namespace BolaoNet.Tests
         public void Execute()
         {
             Ninject.StandardKernel kernel = (StandardKernel)NinjectCommon.CreateKernel();
-            
 
             CopaDoMundoTests.CopaDoMundo2014Tests.BolaoCopaMundo2014UserApostasAppTests test;
 
+            test = new CopaDoMundoTests.CopaDoMundo2014Tests.BolaoCopaMundo2014UserApostasAppTests(
+                kernel.Get<IUserApp>(),
+                kernel.Get<IJogoUsuarioApp>(),
+                kernel.Get<IJogoApp>(),
+                kernel.Get<IBolaoApp>(),
+                kernel.Get<IBolaoMembroApp>(),
+                kernel.Get<ICampeonatoApp>(),
+                kernel.Get<IUserFacadeApp>(),
+                kernel.Get<IApostaExtraApp>(),
+                kernel.Get<ICopaMundo2014FacadeApp>()
+                );
+
+
+            //test.TestCreateBolaoCopaDoMundo2014();
+            Domain.Entities.Boloes.Bolao bolao =new Domain.Entities.Boloes.Bolao("Copa do Mundo 2014");
+
+            test.CreateUserApostasFixo(bolao, "Usuario0x0", "usuario0x0@hotmail.com", 0, 0);
+            test.CreateUserApostasFixo(bolao, "Usuario1x0", "usuario0x0@hotmail.com", 1, 0);
+            test.CreateUserApostasFixo(bolao, "Usuario0x1", "usuario0x0@hotmail.com", 0, 1);
+            test.CreateUserApostasFixo(bolao, "Usuario1x1", "usuario0x0@hotmail.com", 1, 1); 
+            test.CreateUserApostasFixo(bolao, "Usuario2x0", "usuario0x0@hotmail.com", 2, 0);
+            test.CreateUserApostasFixo(bolao, "Usuario2x1", "usuario0x0@hotmail.com", 2, 1);
+            test.CreateUserApostasFixo(bolao, "Usuario0x2", "usuario0x0@hotmail.com", 0, 2);
+            test.CreateUserApostasFixo(bolao, "Usuario1x2", "usuario0x0@hotmail.com", 1, 2);
+            test.CreateUserApostasFixo(bolao, "Usuario2x2", "usuario0x0@hotmail.com", 2, 2);
+           
 
 
             Pontuacao.CalculoPontuacaoTests t = new Pontuacao.CalculoPontuacaoTests();
@@ -37,19 +62,19 @@ namespace BolaoNet.Tests
 
 
 
-            Domain.Services.Reports.BolaoMembroApostasReportService report = new Domain.Services.Reports.BolaoMembroApostasReportService(
-                "thoris",
-                kernel.Get<ILogging>(),
-                kernel.Get<IBolaoService>(),
-                kernel.Get<IApostaExtraUsuarioService>(),
-                kernel.Get<IJogoUsuarioService>(),
-                kernel.Get<IUserService>(),
-                new Infra.Reports.Pdf.PdfBolaoMembroApostasReport()
-                );
+            //Domain.Services.Reports.BolaoMembroApostasReportService report = new Domain.Services.Reports.BolaoMembroApostasReportService(
+            //    "thoris",
+            //    kernel.Get<ILogging>(),
+            //    kernel.Get<IBolaoService>(),
+            //    kernel.Get<IApostaExtraUsuarioService>(),
+            //    kernel.Get<IJogoUsuarioService>(),
+            //    kernel.Get<IUserService>(),
+            //    new Infra.Reports.Pdf.PdfBolaoMembroApostasReport()
+            //    );
             
-            Stream res =
-                report.Generate("", "", "", 
-                report.GetData(new Domain.Entities.Boloes.Bolao ("Copa do Mundo 2014"), new Domain.Entities.Users.User("thoris")));
+            //Stream res =
+            //    report.Generate("", "", "", 
+            //    report.GetData(new Domain.Entities.Boloes.Bolao ("Copa do Mundo 2014"), new Domain.Entities.Users.User("thoris")));
 
 
 
@@ -63,17 +88,7 @@ namespace BolaoNet.Tests
             
 
 
-            test = new CopaDoMundoTests.CopaDoMundo2014Tests.BolaoCopaMundo2014UserApostasAppTests(
-                kernel.Get<IUserApp>(),
-                kernel.Get<IJogoUsuarioApp>(),
-                kernel.Get<IJogoApp>(),
-                kernel.Get<IBolaoApp>(),
-                kernel.Get<IBolaoMembroApp>(),
-                kernel.Get<ICampeonatoApp>(),
-                kernel.Get<IUserFacadeApp>(),
-                kernel.Get<IApostaExtraApp>(),
-                kernel.Get<ICopaMundo2014FacadeApp>()
-                );
+
 
 
             test.TestUserManagement();

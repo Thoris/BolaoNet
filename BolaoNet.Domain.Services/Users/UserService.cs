@@ -217,6 +217,7 @@ namespace BolaoNet.Domain.Services.Users
 
             if (!userLoaded.IsApproved)
             {
+
                 userLoaded.IsApproved = true;
                 if (!this.Update(userLoaded))
                     return userLoaded.ValidationResult;
