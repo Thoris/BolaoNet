@@ -32,7 +32,7 @@ AS
 BEGIN
 
 	
-	IF (@CurrentDateTime = NULL)
+	IF (@CurrentDateTime IS NULL)
 		SET @CurrentDateTime = GetDate()
 
 	SET @ErrorNumber = 0

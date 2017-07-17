@@ -64,6 +64,8 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
                 case ViewModels.Apostas.ApostasAutomaticasViewModel.TipoApostaEnum.TodosJogos:
 
                     model.Rodada = null;
+                    model.DataFinal = null;
+                    model.DataInicial = null;
 
                     break;
 
@@ -151,6 +153,20 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
             }
             
 
+            if (model.SubstituicaoAposta == ViewModels.Apostas.ApostasAutomaticasViewModel.SubstituicaoApostaEnum.Todas)
+            {
+                model.ApostasAutomaticas = ViewModels.Apostas.ApostasAutomaticasViewModel.ApostasAutomaticasEnum.Todas;
+            }
+            else
+            {
+                if (model.ApostasAutomaticas == null)
+                {
+                    ModelState.AddModelError("", "É necessário atribuir o tipo de substituição.");
+                    return View("Index", model);
+                }
+
+            }
+
             #endregion
 
 
@@ -158,6 +174,10 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
                 Mapper.Map<ViewModels.Apostas.ApostasAutomaticasViewModel,
                 Domain.Entities.ValueObjects.ApostasAutomaticasFilterVO>(model);
 
+
+
+            data.TipoAposta = (int)model.SubstituicaoAposta;
+            data.TipoAutomatico = (int)model.ApostasAutomaticas;
 
             _jogoUsuarioApp.InsertApostasAutomaticas(base.SelectedBolao, base.UserLogged, data);
 

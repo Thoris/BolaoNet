@@ -166,13 +166,17 @@
                         </div>
                         <div class="ibox-content" style="display: block;">
                             <div class="row">                                
-                                <div class="col-sm-4 col-xs-offset-1">
-                                    @Html.TextBoxFor(x => x.SimulacaoGols1, new { @class = "form-control" })
+                                <div class="col-sm-5">
+                                    @*@Html.TextBoxFor(x => x.SimulacaoGols1, new { @class = "form-control" })*@
+                                    @Html.EditorFor(a => a.SimulacaoGols1, new { @class = "form-control input-sm" })
                                     @Html.ValidationMessageFor(m => m.SimulacaoGols1)
                                 </div>
                                 <div class="col-sm-1 text-center">x</div>
-                                <div class="col-sm-4">
-                                    @Html.TextBoxFor(x => x.SimulacaoGols2, new { @class = "form-control" })
+                                <div class="col-sm-5">
+                                    @*@Html.TextBoxFor(x => x.SimulacaoGols2, new { @class = "form-control" })*@
+                                    @Html.EditorFor(a => a.SimulacaoGols2, new { @class = "form-control input-sm" })
+
+
                                     @Html.ValidationMessageFor(m => m.SimulacaoGols2)
                                 </div>
                             </div>
@@ -232,7 +236,7 @@
                                                 <td class="text-center">x</td>
                                                 <td class="text-center"><strong>@Model.Apostas[c].ApostaTime2</strong></td>
                                                 <td class="text-center">
-                                                    @if(Model.Apostas[c].Pontos != 0)
+                                                    @if(Model.Apostas[c].Pontos != 0 && Model.Apostas[c].Pontos != null)
                                                     { 
                                                         <i class="fa fa-plus-circle" 
                                                            style="color:@BolaoNet.MVC.Helpers.ColorPontosHelper.GetColorPontos(Model.Apostas[c].Pontos)" 

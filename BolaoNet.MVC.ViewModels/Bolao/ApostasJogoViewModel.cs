@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,8 +18,15 @@ namespace BolaoNet.MVC.ViewModels.Bolao
 
         #region Properties
 
+        [Range(0, 10)]
+        [Required(ErrorMessage="O campo gols 1 precisa ser preenchido.")]
         public int SimulacaoGols1 { get; set; }
+        [Range(0, 10)]
+        [Required(ErrorMessage = "O campo gols 2 precisa ser preenchido.")]
         public int SimulacaoGols2 { get; set; }
+
+
+
 
         public int TotalApostasTime1 { get; set; }
         public int TotalApostasTime2 { get; set; }

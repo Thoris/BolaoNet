@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\GenericApp.cs" />
+    <Compile Include="Boloes\BolaoMembroPontoApp.cs" />
     <Compile Include="Facade\Campeonatos\CopaMundo2014FacadeApp.cs" />
     <Compile Include="Facade\Campeonatos\StructureCopaMundoFacadeApp.cs" />
     <Compile Include="Facade\InitializationFacadeApp.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="Interfaces\Boloes\IBolaoMembroClassificacaoApp.cs" />
     <Compile Include="Interfaces\Boloes\IBolaoMembroGrupoApp.cs" />
     <Compile Include="Interfaces\Boloes\IBolaoMembroApp.cs" />
+    <Compile Include="Interfaces\Boloes\IBolaoMembroPontoApp.cs" />
     <Compile Include="Interfaces\Boloes\IBolaoPontoRodadaApp.cs" />
     <Compile Include="Interfaces\Boloes\IBolaoPontoRodadaUsuarioApp.cs" />
     <Compile Include="Interfaces\Boloes\IBolaoPontuacaoApp.cs" />

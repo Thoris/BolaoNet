@@ -19,6 +19,17 @@ namespace BolaoNet.MVC.Controllers
 
         #region Methods
 
+        public bool IsUserInRole(PermissionLevel [] levels)
+        {
+            CustomUserPrincipal user = this.HttpContext.User as CustomUserPrincipal;
+
+            if (user != null)
+            {
+                
+            }
+
+            return false;
+        }
 
         #endregion
     }

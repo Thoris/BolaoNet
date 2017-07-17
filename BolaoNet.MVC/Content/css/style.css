@@ -3433,6 +3433,7 @@ body.body-small .footer.fixed {
   margin-bottom: 5px;
 }
 /* TABLES */
+
 .table-bordered {
   border: 1px solid #EBEBEB;
 }
@@ -3464,6 +3465,8 @@ body.body-small .footer.fixed {
   padding: 8px;
   vertical-align: top;
 }
+
+
 /* PANELS */
 .panel.blank-panel {
   background: none;
@@ -7554,6 +7557,7 @@ body.skin-3 {
 .breadcrumb > .active { color: #ff6100;}
  
  /* Tables */
+ /* //COMENTADO PARA NAO DIVIDIR AS COLUNAS
 table.table, .table thead, .table tbody, .table th, .table td, .table tr { display: block;}
  .table {
     width: 100%;
@@ -7563,6 +7567,7 @@ table.table, .table thead, .table tbody, .table th, .table td, .table tr { displ
     border: 1px solid #ddd;
 	display: block
 }
+     */
  /* Footer */
 .footer { font-size: 10px; }
 .ibox-title.busca .col-md-4 {  display: none;}

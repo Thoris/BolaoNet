@@ -27,6 +27,8 @@
                                             @Html.ValidationMessageFor(m => m.FullName)
                                         </div>
 
+                                    </div>
+                                    <div class="col-md-12 col-sm-12">
                                         <div class="form-group col-md-4 col-sm-4">
                                             @Html.LabelFor(a => a.Male)
                                             @Html.DropDownListFor(model => model.Male, new SelectList(
@@ -46,7 +48,9 @@
                                             @Html.TextBoxFor(a => a.PhoneNumber, new { @class = "form-control input-sm", @placeholder = "" })
                                             @Html.ValidationMessageFor(m => m.PhoneNumber)
                                         </div>
-
+                                    </div>
+                                    <div class="col-md-12 col-sm-12">
+                                    
                                         <div class="form-group col-md-6 col-sm-6">
                                             @Html.LabelFor(a => a.Email)
                                             @Html.TextBoxFor(a => a.Email, new { @class = "form-control input-sm", @placeholder = "" })
@@ -58,6 +62,10 @@
                                             @Html.TextBoxFor(a => a.ConfirmacaoEmail, new { @class = "form-control input-sm", @placeholder = "" })
                                             @Html.ValidationMessageFor(m => m.ConfirmacaoEmail)
                                         </div>
+
+                                    </div>
+                                    <div class="col-md-12 col-sm-12">
+
 
                                         <div class="form-group col-md-6 col-sm-6">
                                             @Html.LabelFor(a => a.Password)

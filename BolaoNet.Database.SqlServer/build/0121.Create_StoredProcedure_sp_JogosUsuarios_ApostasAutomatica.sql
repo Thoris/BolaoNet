@@ -32,7 +32,6 @@ CREATE PROCEDURE [sp_JogosUsuarios_ApostasAutomatica]
 )
 AS
 BEGIN
-
 	SET @ErrorNumber = 0
 	SET @ErrorDescription = NULL
 	
@@ -59,15 +58,23 @@ BEGIN
 
 
 	SELECT @NomeCampeonato = NomeCampeonato FROM Boloes WHERE Nome = @NomeBolao
+		
+	IF (@CurrentDateTime IS NULL)
+		SET @CurrentDateTime = GetDate()
 
+
+print CONVERT(VARCHAR, @CurrentDateTime)
+
+	SET @ErrorNumber = 0
+	SET @ErrorDescription = NULL
 	
 	DECLARE CurJogos									-- Cursor usado para carregar os jogos do campeonato
 	  CURSOR FOR
-	  SELECT Jogos.IdJogo, Jogos.NomeCampeonato, Jogos.NomeTime1, Jogos.NomeTime2, Jogos.DataJogo,
+	  SELECT Jogos.JogoId, Jogos.NomeCampeonato, Jogos.NomeTime1, Jogos.NomeTime2, Jogos.DataJogo,
 			JogosUsuarios.ApostaTime1, JogosUsuarios.ApostaTime2, Jogos.Nomegrupo, Jogos.NomeFase
 		FROM Jogos 
 		LEFT JOIN JogosUsuarios
-		  ON Jogos.IdJogo				= JogosUsuarios.IdJogo
+		  ON Jogos.JogoId				= JogosUsuarios.JogoId
 		 AND Jogos.NomeCampeonato		= JogosUsuarios.NomeCampeonato
 		 AND JogosUsuarios.NomeBolao	= @NomeBolao
 		 AND JogosUsuarios.UserName		= @UserName
@@ -203,7 +210,7 @@ BEGIN
 							 WHERE NomeCampeonato	= @CurNomeCampeonato
 							   AND NomeBolao		= @NomeBolao
 							   AND UserName			= @UserName
-							   AND IdJogo			= @CurIDJogo
+							   AND JogoId			= @CurIDJogo
 							)
 				)
 			BEGIN
@@ -213,7 +220,7 @@ BEGIN
 			
 				INSERT INTO JogosUsuarios
 					(
-						IDJogo,
+						JogoId,
 						NomeCampeonato,
 						UserName,
 						NomeBolao,
@@ -270,7 +277,7 @@ BEGIN
 						ModifiedBy			= @CurrentLogin,
 						ModifiedDate		= @CurrentDateTime,
 						ActiveFlag			= 0
-				 WHERE 	IDJogo				= @CurIDJogo
+				 WHERE 	JogoId				= @CurIDJogo
 				   AND	NomeCampeonato		= @CurNomeCampeonato	
 				   AND	UserName			= @Username
 				   AND	NomeBolao			= @NomeBolao
@@ -325,7 +332,7 @@ BEGIN
 			@CurrentLogin,
 			@CurrentDateTime,
 			@CurNomeCampeonato,
-			@CurIDJogo,
+			--@CurIDJogo,
 			@NomeBolao,
 			@UserName,
 			@CurNomeTime1,
@@ -340,7 +347,7 @@ BEGIN
 			@CurrentLogin,
 			@CurrentDateTime,
 			@CurNomeCampeonato,
-			@CurIDJogo,
+			--@CurIDJogo,
 			@NomeBolao,
 			@UserName,
 			@CurNomeTime2,
@@ -361,7 +368,7 @@ BEGIN
 		SELECT @NomeTimeResult1 = NomeTimeResult1, @NomeTimeResult2 = NomeTimeResult2
 		  FROM JogosUsuarios
 		 WHERE NomeCampeonato	= @CurNomeCampeonato
-		   AND IDJogo			= @CurIdJogo
+		   AND JogoId			= @CurIdJogo
 		   AND UserName			= @UserName
 		   
 		
@@ -423,8 +430,6 @@ BEGIN
 		
 	--SELECT * FROM @Jogos
 	
-	
 END
-
 
 GO

@@ -54,6 +54,11 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
                         model.ApostasUsuarios[i].FullName = membros[c].FullName;
                         model.ApostasUsuarios[i].TotalPontosClassificacao = (int)membros[c].TotalPontos;
 
+                        if (membros[c].TotalApostaExtra == null)
+                            model.ApostasUsuarios[i].Pontos = 0;
+                        else
+                            model.ApostasUsuarios[i].Pontos = (int)membros[c].TotalApostaExtra;
+                                                
                         membros.RemoveAt(c);
                         break;
                     }
@@ -99,7 +104,7 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
                 model.ApostasUsuarios.Add(new ViewModels.Bolao.ApostasExtrasUsuarioEntryViewModel()
                     {
                         Apostas = entry,
-                        UserName = entry[0].UserName
+                        UserName = entry[0].UserName,                        
                     });
             }
 

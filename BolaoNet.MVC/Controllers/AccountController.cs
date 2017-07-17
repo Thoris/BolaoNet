@@ -226,7 +226,8 @@ namespace BolaoNet.MVC.Controllers
             if (System.IO.File.Exists(targetProfileImage))
                 System.IO.File.Delete(targetProfileImage);
 
-            System.IO.File.Copy(Server.MapPath(sourceProfileImage), Server.MapPath(targetProfileImage));
+            //System.IO.File.Copy(Server.MapPath(sourceProfileImage), Server.MapPath(targetProfileImage));
+            System.IO.File.Copy(Server.MapPath(sourceProfileImage), targetProfileImage);
 
             _notificationApp.NotifyActivationCode(data);
 

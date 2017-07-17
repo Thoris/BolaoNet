@@ -1,6 +1,9 @@
 ﻿using BolaoNet.MVC.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -27,6 +30,42 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
 
         #endregion
 
+        #region Methods
+
+        /// <summary>
+        /// Resize the image to the specified width and height.
+        /// </summary>
+        /// <param name="image">The image to resize.</param>
+        /// <param name="width">The width to resize to.</param>
+        /// <param name="height">The height to resize to.</param>
+        /// <returns>The resized image.</returns>
+        public Bitmap ResizeImage(Image image, int width, int height)
+        {
+            var destRect = new Rectangle(0, 0, width, height);
+            var destImage = new Bitmap(width, height);
+
+            destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
+
+            using (var graphics = Graphics.FromImage(destImage))
+            {
+                graphics.CompositingMode = CompositingMode.SourceCopy;
+                graphics.CompositingQuality = CompositingQuality.HighQuality;
+                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
+                graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+                using (var wrapMode = new ImageAttributes())
+                {
+                    wrapMode.SetWrapMode(WrapMode.TileFlipXY);
+                    graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
+                }
+            }
+
+            return destImage;
+        }
+
+        #endregion
+
         #region Actions
 
         [HttpGet]
@@ -48,27 +87,41 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
             byte[] data = Convert.FromBase64String(source);
 
 
-            string file = Server.MapPath(FolderProfileImage + "/" + base.UserLogged.UserName + ".gif");
-            if (System.IO.File.Exists (file))
-                System.IO.File.Delete (file);
+            string fileTemp = Server.MapPath(FolderProfileImage + "/" + base.UserLogged.UserName + "_.gif");
+            if (System.IO.File.Exists(fileTemp))
+                System.IO.File.Delete(fileTemp);
             
 
             //Storing the data into the file
-            System.IO.File.WriteAllBytes(file, data);
+            System.IO.File.WriteAllBytes(fileTemp, data);
 
-            System.Drawing.Image img = System.Drawing.Bitmap.FromFile(file);
+            System.Drawing.Image img = System.Drawing.Bitmap.FromFile(fileTemp);
 
-
-
-            //MemoryStream stream = new MemoryStream(data);
-
-            System.Drawing.Image imgProfile = Helpers.ImageHelper.Resize(img, 150, 150);
-
-            string fileProfile = Server.MapPath(FolderProfileImage + "/" + base.UserLogged.UserName + "_profile.gif");
+            
+            string fileProfile = Server.MapPath(FolderProfileImage + "/" + base.UserLogged.UserName + ".gif");
             if (System.IO.File.Exists(fileProfile))
                 System.IO.File.Delete(fileProfile);
 
-            //imgProfile.Save(fileProfile);
+
+            Bitmap resultProfile = ResizeImage(img, 100, 100);
+            resultProfile.Save(fileProfile);
+
+
+            string fileSmall = Server.MapPath(FolderProfileImage + "/" + base.UserLogged.UserName + "_profile.gif");
+            if (System.IO.File.Exists(fileSmall))
+                System.IO.File.Delete(fileSmall);
+
+            Bitmap resultSmall = ResizeImage(img, 50, 50);
+            resultSmall.Save(fileSmall);
+
+
+            resultSmall.Dispose();
+            resultProfile.Dispose();
+            img.Dispose();
+            
+
+            System.IO.File.Delete(fileTemp);
+            
 
             return RedirectToAction("Index", "AccountHome", new { area="Users" });
             

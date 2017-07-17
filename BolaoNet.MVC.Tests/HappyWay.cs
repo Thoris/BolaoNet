@@ -360,7 +360,8 @@ namespace BolaoNet.MVC.Tests
                     campeonatoApp,
                     campeonatoFaseApp,
                     campeonatoGrupoApp,
-                    campeonatoTimeApp);
+                    campeonatoTimeApp,
+                    bolaoMembroApostasReportApp);
 
             Mocks.MvcMockHelpers.SetMockControllerContext(bolaoIniciarPararController, userAdmin);
 

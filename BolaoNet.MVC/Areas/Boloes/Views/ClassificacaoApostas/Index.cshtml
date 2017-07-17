@@ -109,10 +109,10 @@
                     </div>
                 </div>
 
-                if (c > 0 && c % 2 == 0)
+                if (c > 0 && (c + 1) % 2 == 0)
                 {
-                    @*</div>
-                    <div class="row">*@
+                    @Html.Raw("</div>");
+                    @Html.Raw("<div class=\"row\">");
                 }
             }
 

@@ -155,6 +155,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="Areas\Boloes\Controllers\BolaoMembroPontoController.cs" />
     <Compile Include="Helpers\NinjectResolver.cs" />
     <Compile Include="Helpers\NinjectScope.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />

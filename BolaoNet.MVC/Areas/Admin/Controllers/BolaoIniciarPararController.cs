@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -9,6 +10,11 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
 {
     public class BolaoIniciarPararController: BaseAdminAreaController
     {
+        #region Variables
+
+        private Application.Interfaces.Reports.IBolaoMembroApostasReportApp _bolaoMembroApostasReportApp;
+        #endregion
+
         #region Constructors/Destructors
 
         public BolaoIniciarPararController(
@@ -17,17 +23,17 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
             Application.Interfaces.Campeonatos.ICampeonatoApp campeonatoApp,
             Application.Interfaces.Campeonatos.ICampeonatoFaseApp campeonatoFaseApp,
             Application.Interfaces.Campeonatos.ICampeonatoGrupoApp campeonatoGrupoApp,
-            Application.Interfaces.Campeonatos.ICampeonatoTimeApp campeonatoTimeApp
+            Application.Interfaces.Campeonatos.ICampeonatoTimeApp campeonatoTimeApp,
+            Application.Interfaces.Reports.IBolaoMembroApostasReportApp bolaoMembroApostasReportApp
             )
             : base (bolaoMembroApp, bolaoApp, campeonatoApp, campeonatoFaseApp, campeonatoGrupoApp, campeonatoTimeApp)
         {
-            
+            _bolaoMembroApostasReportApp = bolaoMembroApostasReportApp;
         }
 
         #endregion
 
         #region Actions
-
 
         public ActionResult Iniciar()
         {
@@ -98,6 +104,20 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
             }
             return RedirectToAction("Index");
         }
+        public ActionResult DownloadApostas(string userName)
+        {
+            Domain.Entities.ValueObjects.Reports.BolaoMembroApostasVO data =
+                _bolaoMembroApostasReportApp.GetData(base.SelectedBolao, new Domain.Entities.Users.User(userName));
+
+            Stream streamReport = _bolaoMembroApostasReportApp.Generate(
+                "gif",
+                Server.MapPath("~/Content/img/database/profiles"),
+                Server.MapPath("~/Content/img/database/times"), data);
+
+
+            return base.DownloadStream(streamReport, "text/plain", userName + ".pdf");
+        }
+
         #endregion
     }
 }

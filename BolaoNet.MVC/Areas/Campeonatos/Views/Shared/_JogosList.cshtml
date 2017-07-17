@@ -51,7 +51,7 @@
             >
 
         <th scope="row">@(Model.Jogos[c].JogoId)</th>
-        <td>@(Model.Jogos[c].DataJogo)</td>
+        <td>@(Model.Jogos[c].DataJogo.ToString("dd/MM/yy HH:mm"))</td>
         <td>@(Model.Jogos[c].NomeEstadio)</td>
         <td class="text-right">@(Model.Jogos[c].NomeTime1)</td>
         <td><img src="@(Model.Jogos[c].ImageTime1)" /></td>

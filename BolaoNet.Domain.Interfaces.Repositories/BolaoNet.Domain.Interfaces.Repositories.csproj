@@ -52,6 +52,7 @@
     <Compile Include="Boloes\IBolaoMembroDao.cs" />
     <Compile Include="Boloes\IBolaoMembroGrupoDao.cs" />
     <Compile Include="Boloes\IBolaoMembroGrupoPontoDao.cs" />
+    <Compile Include="Boloes\IBolaoMembroPontoDao.cs" />
     <Compile Include="Boloes\IBolaoPontoRodadaDao.cs" />
     <Compile Include="Boloes\IBolaoPontoRodadaUsuarioDao.cs" />
     <Compile Include="Boloes\IBolaoPontuacaoDao.cs" />

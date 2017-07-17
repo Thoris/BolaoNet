@@ -91,7 +91,7 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
             model.PercentualTime2 = (double)totalTime2 / (double)total * (double)100;
 
         }
-        private void MergeClassificacao(ViewModels.Bolao.ApostasJogoViewModel model, IList<Domain.Entities.ValueObjects.BolaoClassificacaoVO> membros)
+        private void MergeClassificacao(ViewModels.Bolao.ApostasJogoViewModel model, IList<Domain.Entities.ValueObjects.BolaoClassificacaoVO> membros) //, bool somaPontosJogo)
         {
             for (int c=membros.Count - 1; c >= 0; c--)
             {
@@ -102,6 +102,9 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
                         model.Apostas[i].Posicao = (int)membros[c].Posicao;
                         model.Apostas[i].Nome = membros[c].FullName;
                         model.Apostas[i].TotalPontosClassificacao = (int)membros[c].TotalPontos;
+
+                        //if (somaPontosJogo)
+                        //    model.Apostas[i].TotalPontosClassificacao += model.Apostas[i].TotalApostasResultado;
 
                         membros.RemoveAt(c);
                         break;
@@ -147,12 +150,36 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Simular(ViewModels.Bolao.ApostasJogoViewModel model)
+        public ActionResult Simular(ViewModels.Bolao.ApostasJogoViewModel modelParam)
         {
+            Domain.Entities.Campeonatos.Jogo jogo =
+                _jogoApp.Load(new Domain.Entities.Campeonatos.Jogo(base.SelectedNomeCampeonato, modelParam.JogoId));
+
+            ViewModels.Bolao.ApostasJogoViewModel model =
+                Mapper.Map<Domain.Entities.Campeonatos.Jogo, ViewModels.Bolao.ApostasJogoViewModel>(jogo);
+
+
+            IList<Domain.Entities.Boloes.JogoUsuario> apostas =
+                _jogoUsuarioApp.GetApostasJogo(base.SelectedBolao, jogo);
+
+            IList<ViewModels.Bolao.ApostaJogoUsuarioPontosViewModel> list =
+                Mapper.Map<IList<Domain.Entities.Boloes.JogoUsuario>,
+                IList<ViewModels.Bolao.ApostaJogoUsuarioPontosViewModel>>(apostas);
+
+
+            IList<Domain.Entities.ValueObjects.BolaoClassificacaoVO> membros =
+                _bolaoMembroClassificacaoApp.LoadClassificacao(base.SelectedBolao, null);
+
+            model.Apostas = list;
+
+            CalcularPercentuais(model);
+            MergeClassificacao(model, membros);
+
+            model.Apostas = model.Apostas.OrderBy(x => x.Posicao).ToList();
 
 
 
-            return View(model);
+            return View("Index", model);
         }
 
         #endregion

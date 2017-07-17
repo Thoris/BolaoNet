@@ -992,7 +992,7 @@ namespace BolaoNet.Infra.Data.EF.Boloes
         public void InsertApostasAutomaticas(string currentUserName, DateTime currentDateTime, Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user, Domain.Entities.ValueObjects.ApostasAutomaticasFilterVO filter)
         {
 
-            string command = "exec sp_JogosUsuarios_CalculaPontos " +
+            string command = "exec sp_JogosUsuarios_ApostasAutomatica " +
                           "  @CurrentLogin " +
                           ", @CurrentDateTime" +
                           ", @NomeBolao" +
@@ -1036,7 +1036,7 @@ namespace BolaoNet.Infra.Data.EF.Boloes
                                                         new SqlParameter("Rodada", filter.Rodada ?? SqlInt32.Null),
                                                         new SqlParameter("DataInicial", filter.DataInicial ?? SqlDateTime.Null),
                                                         new SqlParameter("DataFinal", filter.DataFinal ?? SqlDateTime.Null),
-                                                        new SqlParameter("NomeTime", filter.NomeTime),
+                                                        new SqlParameter("NomeTime", filter.NomeTime ?? SqlString.Null),
                                                         new SqlParameter("UserName", user.UserName),
                                                         new SqlParameter("GolsTime1", filter.ApostaTimeCasa ?? SqlInt32.Null),
                                                         new SqlParameter("GolsTime2", filter.ApostaTimeFora ?? SqlInt32.Null),
@@ -1045,7 +1045,7 @@ namespace BolaoNet.Infra.Data.EF.Boloes
                                                         new SqlParameter("Randomizado", !filter.ValoresFixos),
                                                         errorNumber,
                                                         errorDescription
-                                                    );
+                                                    ).ToList();
 
             int error = 0;
             try
@@ -1446,11 +1446,7 @@ namespace BolaoNet.Infra.Data.EF.Boloes
 
             return q.ToList();
         }
-
-        #endregion
-
-
-        public int CalcularPontos(string currentUserName, DateTime currentDatetime, int gols1, int gols2, int aposta1, int aposta2, int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1, int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, bool isMultiploTime, int multiploTime, 
+        public int CalcularPontos(string currentUserName, DateTime currentDatetime, int gols1, int gols2, int aposta1, int aposta2, int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1, int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, bool isMultiploTime, int multiploTime,
             out int pontosTime1Total, out int pontosTime2Total, out int pontosTotal, out bool countEmpate, out bool countVitoria, out bool countDerrota, out bool countGanhador, out bool countPerdedor, out bool countTime1, out bool countTime2, out bool countVDE, out bool countErro, out bool countGanhadorFora, out bool countGanhadorDentro, out bool countPerdedorFora, out bool countPerdedorDentro, out bool countEmpateGols, out bool countGolsTime1, out bool countGolsTime2, out bool countCheio, out int errorNumber, out string errorDescription)
         {
 
@@ -1482,49 +1478,49 @@ namespace BolaoNet.Infra.Data.EF.Boloes
             string command = "exec sp_JogosUsuarios_CalculaPontos " +
                 "  @CurrentLogin " +
                 ", @CurrentDateTime" +
-	            ", @Gols1" + 
-	            ", @Gols2" + 
-	            ", @Aposta1" +
-                ", @Aposta2 " +	
-	            ", @PontosEmpate " +
-	            ", @PontosVitoria " +
-	            ", @PontosDerrota " +
-	            ", @PontosGanhador " +
-	            ", @PontosPerdedor " +
-	            ", @PontosTime1 " +
-	            ", @PontosTime2 " +
-	            ", @PontosVDE " +
-	            ", @PontosErro " +
-	            ", @PontosGanhadorFora " +
-	            ", @PontosGanhadorDentro " +
-	            ", @PontosPerdedorFora " +
-	            ", @PontosPerdedorDentro " +
-	            ", @PontosEmpateGols " +
-	            ", @PontosGolsTime1 " +
-	            ", @PontosGolsTime2 " +
-	            ", @PontosCheio " +	
-	            ", @IsMultiploTime " +
-	            ", @MultiploTime " +	
-	            ", @PontosTime1Total out " +
-	            ", @PontosTime2Total out " +
-	            ", @PontosTotal out " +	
-	            ", @CountEmpate out " +
-	            ", @CountVitoria out " +
-	            ", @CountDerrota out " +
-	            ", @CountGanhador out " +
-	            ", @CountPerdedor out " +
-	            ", @CountTime1 out " +
-	            ", @CountTime2 out " +
-	            ", @CountVDE out " +
-	            ", @CountErro out " +
-	            ", @CountGanhadorFora out " +
-	            ", @CountGanhadorDentro out " +
-	            ", @CountPerdedorFora out " +
-	            ", @CountPerdedorDentro out " +
-	            ", @CountEmpateGols out " +
-	            ", @CountGolsTime1 out " +
-	            ", @CountGolsTime2 out " +
-	            ", @CountCheio out " +	
+                ", @Gols1" +
+                ", @Gols2" +
+                ", @Aposta1" +
+                ", @Aposta2 " +
+                ", @PontosEmpate " +
+                ", @PontosVitoria " +
+                ", @PontosDerrota " +
+                ", @PontosGanhador " +
+                ", @PontosPerdedor " +
+                ", @PontosTime1 " +
+                ", @PontosTime2 " +
+                ", @PontosVDE " +
+                ", @PontosErro " +
+                ", @PontosGanhadorFora " +
+                ", @PontosGanhadorDentro " +
+                ", @PontosPerdedorFora " +
+                ", @PontosPerdedorDentro " +
+                ", @PontosEmpateGols " +
+                ", @PontosGolsTime1 " +
+                ", @PontosGolsTime2 " +
+                ", @PontosCheio " +
+                ", @IsMultiploTime " +
+                ", @MultiploTime " +
+                ", @PontosTime1Total out " +
+                ", @PontosTime2Total out " +
+                ", @PontosTotal out " +
+                ", @CountEmpate out " +
+                ", @CountVitoria out " +
+                ", @CountDerrota out " +
+                ", @CountGanhador out " +
+                ", @CountPerdedor out " +
+                ", @CountTime1 out " +
+                ", @CountTime2 out " +
+                ", @CountVDE out " +
+                ", @CountErro out " +
+                ", @CountGanhadorFora out " +
+                ", @CountGanhadorDentro out " +
+                ", @CountPerdedorFora out " +
+                ", @CountPerdedorDentro out " +
+                ", @CountEmpateGols out " +
+                ", @CountGolsTime1 out " +
+                ", @CountGolsTime2 out " +
+                ", @CountCheio out " +
                 ", @ErrorNumber out" +
                 ", @ErrorDescription out";
 
@@ -1696,48 +1692,48 @@ namespace BolaoNet.Infra.Data.EF.Boloes
 
                             new SqlParameter("Gols1", gols1),
                             new SqlParameter("Gols2", gols2),
-                            new SqlParameter("Aposta1" , aposta1),
-                            new SqlParameter("Aposta2 " , aposta2),
-                            new SqlParameter("PontosEmpate " , pontosEmpate),
-                            new SqlParameter("PontosVitoria " , pontosVitoria),
-                            new SqlParameter("PontosDerrota " , pontosDerrota),
-                            new SqlParameter("PontosGanhador " , pontosGanhador),
-                            new SqlParameter("PontosPerdedor " , pontosPerdedor),
-                            new SqlParameter("PontosTime1 " , pontosTime1),
-                            new SqlParameter("PontosTime2 " , pontosTime2),
-                            new SqlParameter("PontosVDE " , pontosVDE),
-                            new SqlParameter("PontosErro " , pontosErro),
-                            new SqlParameter("PontosGanhadorFora " , pontosGanhadorFora),
-                            new SqlParameter("PontosGanhadorDentro " , pontosGanhadorDentro),
-                            new SqlParameter("PontosPerdedorFora " , pontosPerdedorFora),
-                            new SqlParameter("PontosPerdedorDentro " , pontosPerdedorDentro),
-                            new SqlParameter("PontosEmpateGols " , pontosEmpateGols),
-                            new SqlParameter("PontosGolsTime1 " , pontosGolsTime1),
-                            new SqlParameter("PontosGolsTime2 " , pontosGolsTime2),
-                            new SqlParameter("PontosCheio " , pontosCheio),
-                            new SqlParameter("IsMultiploTime " , isMultiploTime),
-                            new SqlParameter("MultiploTime " , multiploTime),
+                            new SqlParameter("Aposta1", aposta1),
+                            new SqlParameter("Aposta2 ", aposta2),
+                            new SqlParameter("PontosEmpate ", pontosEmpate),
+                            new SqlParameter("PontosVitoria ", pontosVitoria),
+                            new SqlParameter("PontosDerrota ", pontosDerrota),
+                            new SqlParameter("PontosGanhador ", pontosGanhador),
+                            new SqlParameter("PontosPerdedor ", pontosPerdedor),
+                            new SqlParameter("PontosTime1 ", pontosTime1),
+                            new SqlParameter("PontosTime2 ", pontosTime2),
+                            new SqlParameter("PontosVDE ", pontosVDE),
+                            new SqlParameter("PontosErro ", pontosErro),
+                            new SqlParameter("PontosGanhadorFora ", pontosGanhadorFora),
+                            new SqlParameter("PontosGanhadorDentro ", pontosGanhadorDentro),
+                            new SqlParameter("PontosPerdedorFora ", pontosPerdedorFora),
+                            new SqlParameter("PontosPerdedorDentro ", pontosPerdedorDentro),
+                            new SqlParameter("PontosEmpateGols ", pontosEmpateGols),
+                            new SqlParameter("PontosGolsTime1 ", pontosGolsTime1),
+                            new SqlParameter("PontosGolsTime2 ", pontosGolsTime2),
+                            new SqlParameter("PontosCheio ", pontosCheio),
+                            new SqlParameter("IsMultiploTime ", isMultiploTime),
+                            new SqlParameter("MultiploTime ", multiploTime),
 
                             pPontosTime1Total,
-                            pPontosTime2Total ,
-                            pPontosTotal ,
-                            pCountEmpate ,
-                            pCountVitoria ,
-                            pCountDerrota ,
-                            pCountGanhador ,
-                            pCountPerdedor ,
-                            pCountTime1 ,
-                            pCountTime2 ,
-                            pCountVDE ,
-                            pCountErro ,
-                            pCountGanhadorFora ,
-                            pCountGanhadorDentro ,
-                            pCountPerdedorFora ,
-                            pCountPerdedorDentro ,
-                            pCountEmpateGols ,
-                            pCountGolsTime1 ,
-                            pCountGolsTime2 ,
-                            pCountCheio ,
+                            pPontosTime2Total,
+                            pPontosTotal,
+                            pCountEmpate,
+                            pCountVitoria,
+                            pCountDerrota,
+                            pCountGanhador,
+                            pCountPerdedor,
+                            pCountTime1,
+                            pCountTime2,
+                            pCountVDE,
+                            pCountErro,
+                            pCountGanhadorFora,
+                            pCountGanhadorDentro,
+                            pCountPerdedorFora,
+                            pCountPerdedorDentro,
+                            pCountEmpateGols,
+                            pCountGolsTime1,
+                            pCountGolsTime2,
+                            pCountCheio,
 
                             errorNumberParam,
                             errorDescriptionParam
@@ -1772,5 +1768,8 @@ namespace BolaoNet.Infra.Data.EF.Boloes
             return (int)pPontosTotal.Value;
 
         }
+
+        #endregion
+
     }
 }

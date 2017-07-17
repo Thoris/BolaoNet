@@ -14,7 +14,7 @@ namespace BolaoNet.MVC.ViewModels.Bolao
 
         #endregion
 
-
+        public int Pontos { get; set; }
         public string ImageTime
         {
             get

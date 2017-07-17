@@ -275,7 +275,6 @@
     <Content Include="Areas\Apostas\Views\ApostasJogos\Jogos.cshtml" />
     <Content Include="Areas\Users\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Users\Views\Shared\_Layout.cshtml" />
-    <Content Include="Content\img\funny_cat_v1.jpg" />
     <Content Include="Content\img\logo-alta.png" />
     <Content Include="Content\img\logo-high.png" />
     <Content Include="Content\img\logo.png" />

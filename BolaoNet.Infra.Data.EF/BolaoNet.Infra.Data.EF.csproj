@@ -57,6 +57,7 @@
     <Compile Include="Boloes\BolaoCriterioPontosTimesRepositoryDao.cs" />
     <Compile Include="Boloes\BolaoMembroClassificacaoRepositoryDao.cs" />
     <Compile Include="Boloes\BolaoMembroGrupoRepositoryDao.cs" />
+    <Compile Include="Boloes\BolaoMembroPontoDao.cs" />
     <Compile Include="Boloes\BolaoMembroRepositoryDao.cs" />
     <Compile Include="Boloes\BolaoPontoRodadaRepositoryDao.cs" />
     <Compile Include="Boloes\BolaoPontoRodadaUsuarioRepositoryDao.cs" />

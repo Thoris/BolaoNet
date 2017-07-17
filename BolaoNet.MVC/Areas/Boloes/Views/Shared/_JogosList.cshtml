@@ -109,7 +109,7 @@
             <td>@(Model.Apostas[c].DataAposta)</td>
             <td>
                 
-                @if(Model.Apostas[c].Pontos != 0)
+                @if (Model.Apostas[c].Pontos != 0 && Model.Apostas[c].Pontos != null)
                 { 
                     <i class="fa fa-plus-circle" 
                        style="color:@BolaoNet.MVC.Helpers.ColorPontosHelper.GetColorPontos(Model.Apostas[c].Pontos)" 
