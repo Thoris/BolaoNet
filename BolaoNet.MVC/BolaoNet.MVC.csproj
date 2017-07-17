@@ -1100,6 +1100,7 @@
     <Folder Include="Areas\Visitante\Controllers\" />
     <Folder Include="Areas\Visitante\Models\" />
     <Folder Include="Areas\Visitante\Views\Shared\" />
+    <Folder Include="Content\img\database\apostas\" />
     <Folder Include="Content\img\database\profiles\" />
     <Folder Include="Content\img\database\temp\crop\" />
     <Folder Include="Content\img\database\temp\uploaded\" />

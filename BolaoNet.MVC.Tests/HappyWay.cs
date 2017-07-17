@@ -569,7 +569,51 @@ namespace BolaoNet.MVC.Tests
 
                 #endregion
             }
-            
+
+            #region Apostas Extras 
+
+            MVC.Areas.Resultados.Controllers.ApostasExtrasResultadoController apostasExtrasResultadoController =
+                new Areas.Resultados.Controllers.ApostasExtrasResultadoController(
+                    apostaExtraApp,
+                    bolaoMembroApp,
+                    bolaoApp,
+                    campeonatoApp,
+                    campeonatoFaseApp,
+                    campeonatoGrupoApp,
+                    campeonatoTimeApp);
+            Mocks.MvcMockHelpers.SetMockControllerContext(apostasExtrasResultadoController, userAdmin);
+
+            IList<ViewModels.Resultados.ApostaExtraViewModel> apostaExtraModel = 
+                new List<ViewModels.Resultados.ApostaExtraViewModel>();
+
+            apostaExtraModel.Add (new ViewModels.Resultados.ApostaExtraViewModel () 
+                {
+                    NomeBolao = bolao.Nome,
+                    Posicao = 1,
+                    SalvarNomeTime = "Alemanha"
+                });
+            apostaExtraModel.Add (new ViewModels.Resultados.ApostaExtraViewModel () 
+                {
+                    NomeBolao = bolao.Nome,
+                    Posicao = 2,
+                    SalvarNomeTime = "Argentina"
+                });
+            apostaExtraModel.Add (new ViewModels.Resultados.ApostaExtraViewModel () 
+                {
+                    NomeBolao = bolao.Nome,
+                    Posicao = 3,
+                    SalvarNomeTime = "Holanda"
+                });
+            apostaExtraModel.Add (new ViewModels.Resultados.ApostaExtraViewModel () 
+                {
+                    NomeBolao = bolao.Nome,
+                    Posicao = 4,
+                    SalvarNomeTime = "Brasil"
+                });
+
+            var apostaExtraView = apostasExtrasResultadoController.Salvar(apostaExtraModel) as ViewResult;
+
+            #endregion
         }
     }
 }

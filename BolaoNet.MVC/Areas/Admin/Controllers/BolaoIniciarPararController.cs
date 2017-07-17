@@ -10,6 +10,16 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
 {
     public class BolaoIniciarPararController: BaseAdminAreaController
     {
+        #region Constants
+
+        private const string FolderApostas = "~/Content/img/database/apostas/";
+        private const string FileApostasInicial = "ApostasIniciais";
+        private const string FileApostasFinal = "ApostasFinais";
+        private const string ExtensionFileApostas = ".pdf";
+        private const string CompressedFile = ".zip";
+
+        #endregion
+
         #region Variables
 
         private Application.Interfaces.Reports.IBolaoMembroApostasReportApp _bolaoMembroApostasReportApp;
@@ -91,6 +101,23 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
             }
 
             model.StatusMembros = membrosModel;
+
+
+            string fileToCheck = Server.MapPath(System.IO.Path.Combine (FolderApostas, FileApostasInicial + ExtensionFileApostas));
+            if (System.IO.File.Exists(fileToCheck))
+                model.FileApostasInicial = new FileInfo(fileToCheck);
+
+            fileToCheck = Server.MapPath(System.IO.Path.Combine(FolderApostas, FileApostasFinal + ExtensionFileApostas));
+            if (System.IO.File.Exists(fileToCheck))
+                model.FileApostasFinal = new FileInfo(fileToCheck);
+
+            fileToCheck = Server.MapPath(System.IO.Path.Combine(FolderApostas, FileApostasInicial + CompressedFile));
+            if (System.IO.File.Exists(fileToCheck))
+                model.FileApostasInicialZip = new FileInfo(fileToCheck);
+
+            fileToCheck = Server.MapPath(System.IO.Path.Combine(FolderApostas, FileApostasFinal + CompressedFile));
+            if (System.IO.File.Exists(fileToCheck))
+                model.FileApostasFinalZip = new FileInfo(fileToCheck);
 
 
 

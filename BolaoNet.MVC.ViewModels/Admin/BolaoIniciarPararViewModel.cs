@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +29,16 @@ namespace BolaoNet.MVC.ViewModels.Admin
         //    set { base.IsIniciado = value; }
         //}
         public IList<BolaoIniciarStatusMembroViewModel> StatusMembros { get; set; }
+
+
+        public FileInfo FileApostasInicial { get; set; }
+
+        public FileInfo FileApostasInicialZip { get; set; }
+
+        public FileInfo FileApostasFinal { get; set; }
+
+        public FileInfo FileApostasFinalZip { get; set; }
+        
 
         #endregion
     }

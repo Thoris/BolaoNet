@@ -68,6 +68,14 @@
                     <div class="ibox-content" style="display: block;">
                         <div class="text-center m-t-lg">
 
+
+                            @if(Model.FileApostasInicial != null || Model.FileApostasInicialZip != null)
+                            {
+                                <div class="row">
+                                    teste
+                                </div>
+                            }
+
                             <div class="row">
                                 <div class="form-group col-sm-12">
                                     <div class="col-sm-6 center">
@@ -89,6 +97,15 @@
 
                                 
                             </div>
+
+                            @if (Model.FileApostasFinal != null || Model.FileApostasFinalZip != null)
+                            {
+                                <div class="row">
+                                    teste
+                                </div>
+                            }
+
+
                         </div>
                     </div>
                 </div>

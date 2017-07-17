@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pdf\PdfBolaoApostasFimReport.cs" />
+    <Compile Include="Pdf\PdfBolaoApostasInicioReport.cs" />
     <Compile Include="Pdf\PdfBolaoMembroApostasReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
