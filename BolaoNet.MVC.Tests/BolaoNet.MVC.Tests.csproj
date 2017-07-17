@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0E555D9B-B7CA-4E98-8C23-96E5282042C5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BolaoNet.MVC.Tests</RootNamespace>
+    <AssemblyName>BolaoNet.MVC.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.4.1.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\ReferencedComponents\EntityFramework\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\ReferencedComponents\EntityFramework\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.7.63\lib\net45\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\ReferencedComponents\ninject\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+  <ItemGroup>
+    <Compile Include="Execution.cs" />
+    <Compile Include="HappyWay.cs" />
+    <Compile Include="IoC\IoC.cs" />
+    <Compile Include="IoC\Modules\ApplicationNinjectModule.cs" />
+    <Compile Include="IoC\Modules\ControllerNinjectModule.cs" />
+    <Compile Include="IoC\Modules\InfrastructureNinjectModule.cs" />
+    <Compile Include="IoC\Modules\RepositoryNinjectModule.cs" />
+    <Compile Include="IoC\Modules\ServiceNinjectModule.cs" />
+    <Compile Include="IoC\NinjectCommon.cs" />
+    <Compile Include="Mocks\ContextMocks.cs" />
+    <Compile Include="Mocks\MvcMockHelpers.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BolaoNet.Application\BolaoNet.Application.csproj">
+      <Project>{ed9e722a-a4f1-4774-9325-7057c17284ef}</Project>
+      <Name>BolaoNet.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Domain.Entities\BolaoNet.Domain.Entities.csproj">
+      <Project>{862efb06-ac74-4b8d-b338-37d52c90410a}</Project>
+      <Name>BolaoNet.Domain.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Domain.Interfaces.Repositories\BolaoNet.Domain.Interfaces.Repositories.csproj">
+      <Project>{87e9d03a-e8fc-48f6-8f44-c66d569d4fe8}</Project>
+      <Name>BolaoNet.Domain.Interfaces.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Domain.Interfaces.Services\BolaoNet.Domain.Interfaces.Services.csproj">
+      <Project>{c5c21c55-243a-4eae-927a-a10b3b4b7ff4}</Project>
+      <Name>BolaoNet.Domain.Interfaces.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Domain.Services\BolaoNet.Domain.Services.csproj">
+      <Project>{a75056e8-0a9d-47aa-a4ed-a521329610bf}</Project>
+      <Name>BolaoNet.Domain.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Infra.CrossCutting.Caching\BolaoNet.Infra.CrossCutting.Caching.csproj">
+      <Project>{a4bbdac0-8fa4-49e0-93a8-b225f6a34cf4}</Project>
+      <Name>BolaoNet.Infra.CrossCutting.Caching</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Infra.CrossCutting.IoC\BolaoNet.Infra.CrossCutting.IoC.csproj">
+      <Project>{1bbac3a3-b5eb-49eb-8200-574a99c5b060}</Project>
+      <Name>BolaoNet.Infra.CrossCutting.IoC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Infra.CrossCutting.Logging\BolaoNet.Infra.CrossCutting.Logging.csproj">
+      <Project>{d5662387-a5aa-46a5-bcc2-ef728c777edf}</Project>
+      <Name>BolaoNet.Infra.CrossCutting.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Infra.Data.EF.Mapping\BolaoNet.Infra.Data.EF.Mapping.csproj">
+      <Project>{ff32f8b8-0bbd-48ae-ac10-e23d989ce562}</Project>
+      <Name>BolaoNet.Infra.Data.EF.Mapping</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Infra.Data.EF\BolaoNet.Infra.Data.EF.csproj">
+      <Project>{d0a5e0bf-24a1-40a3-ab36-603db298ceb3}</Project>
+      <Name>BolaoNet.Infra.Data.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Infra.Notification.Mail\BolaoNet.Infra.Notification.Mail.csproj">
+      <Project>{634e95f1-4f38-4bdb-ad16-8dfcd6c73ab5}</Project>
+      <Name>BolaoNet.Infra.Notification.Mail</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Infra.Reports\BolaoNet.Infra.Reports.csproj">
+      <Project>{5c3e6aa6-f8d2-4940-be65-3fc76db96b59}</Project>
+      <Name>BolaoNet.Infra.Reports</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.MVC.Resources\BolaoNet.MVC.Resources.csproj">
+      <Project>{7060ccc5-a067-4bf6-846b-a89aeab80811}</Project>
+      <Name>BolaoNet.MVC.Resources</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.MVC.ViewModels\BolaoNet.MVC.ViewModels.csproj">
+      <Project>{26fa094c-849d-4172-93f8-2bca38749b2a}</Project>
+      <Name>BolaoNet.MVC.ViewModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.MVC\BolaoNet.MVC.csproj">
+      <Project>{a024a3ce-4926-47b0-8ea5-c1dd49df8907}</Project>
+      <Name>BolaoNet.MVC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Tests\BolaoNet.Tests.csproj">
+      <Project>{9abe0f07-4a14-4364-95f8-5154275400db}</Project>
+      <Name>BolaoNet.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.WebApi.Integration\BolaoNet.WebApi.Integration.csproj">
+      <Project>{2af5e54a-613c-4a7a-896c-9f946593c8f5}</Project>
+      <Name>BolaoNet.WebApi.Integration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.WebApi\BolaoNet.WebApi.csproj">
+      <Project>{660c66ef-6adc-4f74-bac3-c05e12f5008f}</Project>
+      <Name>BolaoNet.WebApi</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
