@@ -67,12 +67,55 @@
                     </div>
                     <div class="ibox-content" style="display: block;">
                         <div class="text-center m-t-lg">
-
-
-                            @if(Model.FileApostasInicial != null || Model.FileApostasInicialZip != null)
+                            @if(Model.FileApostasInicial != null || Model.FileApostasFinal != null)
                             {
                                 <div class="row">
-                                    teste
+                                     <table class="table table-hover">
+                                         <thead>
+                                             <tr>
+                                                 <td>Nome</td>
+                                                 <td>Data</td>
+                                                 <td></td>
+                                                 <td></td>
+                                             </tr>                                             
+                                         </thead>
+                                         <tbody>
+                                             @if (Model.FileApostasInicial != null)
+                                             { 
+                                                 <tr>
+                                                     <td>Inicial</td>
+                                                     <td>@Model.FileApostasInicial.LastWriteTime.ToString("dd/MM/yy HH:mm")</td>
+                                                     <td><a href="@Url.Action("DownloadFile", new { FileName = @Model.FileApostasInicial.Name })">pdf</a></td>
+
+                                                     @if(Model.FileApostasInicialZip != null)
+                                                     { 
+                                                        <td><a href="@Url.Action("DownloadFile", new { FileName = @Model.FileApostasInicialZip.Name })">zip</a></td>
+                                                     }
+                                                     else
+                                                     {
+                                                         <td></td>
+                                                     }
+                                                 </tr>
+                                             }
+                                             @if (Model.FileApostasFinal != null)
+                                             { 
+                                                 <tr>
+                                                     <td>Final</td>
+                                                     <td>@Model.FileApostasFinal.LastWriteTime.ToString("dd/MM/yy HH:mm")</td>
+                                                     <td><a href="@Url.Action("DownloadFile", new { FileName = @Model.FileApostasFinal.Name })">pdf</a></td>
+
+                                                     @if (Model.FileApostasFinalZip != null)
+                                                     { 
+                                                        <td><a href="@Url.Action("DownloadFile", new { FileName = @Model.FileApostasFinalZip.Name })">zip</a></td>
+                                                     }
+                                                     else
+                                                     {
+                                                         <td></td>
+                                                     }
+                                                 </tr>
+                                             }
+                                         </tbody>
+                                     </table>
                                 </div>
                             }
 
@@ -92,20 +135,8 @@
                                            onclick="return confirm('Deseja gerar as apostas finais do bolão?');">Gerar Final</a>
 
                                     </div>
-                                </div>
-                                
-
-                                
-                            </div>
-
-                            @if (Model.FileApostasFinal != null || Model.FileApostasFinalZip != null)
-                            {
-                                <div class="row">
-                                    teste
-                                </div>
-                            }
-
-
+                                </div>                                                                
+                            </div>                             
                         </div>
                     </div>
                 </div>
@@ -132,11 +163,11 @@
                                            onclick="return confirm('Deseja enviar notificação a todos os membros do que ainda não fizeram o pagamento?');">Enviar Não Pago</a>
                                     </div>
                                 </div>
-                                <div class="form-group col-sm-12">
+                                <div class="form-group col-sm-12 @if(Model.FileApostasInicialZip == null) { @Html.Raw("disabled");}">
                                     <a href="@Url.Action("EnviarInicial")" class="btn btn-success btn-sm center-block"
                                        onclick="return confirm('Deseja enviar as apostas iniciais a todos os membros do bolão?');">Enviar Apostas Iniciais</a>
                                 </div>
-                                <div class="form-group col-sm-12">
+                                <div class="form-group col-sm-12 @if(Model.FileApostasFinalZip == null) { @Html.Raw("disabled");}">
                                     <a href="@Url.Action("EnviarFinal")" class="btn btn-success btn-sm center-block"
                                        onclick="return confirm('Deseja enviar as apostas finais a todos os membros do bolão?');">Enviar Apostas Iniciais</a>
                                 </div>
@@ -190,7 +221,7 @@
                                             }>
                                             <td>@Html.DisplayFor(x=>x.StatusMembros[c].UserName)</td>
                                             <td>
-
+                                                <img class="img-username" src="/Content/img/database/profiles/@(Model.StatusMembros[c].UserName).gif" />
                                             </td>
                                             <td>@Model.StatusMembros[c].FullName</td>
                                             <td>@Model.StatusMembros[c].Email</td>

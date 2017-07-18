@@ -37,7 +37,5 @@ namespace BolaoNet.Application.Reports
         }
 
         #endregion
-
-
     }
 }

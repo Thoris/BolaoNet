@@ -71,6 +71,8 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
 
 
             Bind<Application.Interfaces.Reports.IBolaoMembroApostasReportApp>().To<Application.Reports.BolaoMembroApostasReportApp>();
+            Bind<Application.Interfaces.Reports.IBolaoApostasInicioReportApp>().To<Application.Reports.BolaoApostasInicioReportApp>();
+            Bind<Application.Interfaces.Reports.IBolaoApostasFimReportApp>().To<Application.Reports.BolaoApostasFimReportApp>();
 
             
         }

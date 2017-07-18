@@ -9,10 +9,9 @@ namespace BolaoNet.Domain.Interfaces.Services.Reports
 {
     public interface IBolaoApostasInicioReportService
     {
-        IList<Domain.Entities.ValueObjects.Reports.BolaoMembroApostasVO> GetData(
-            Domain.Entities.Boloes.Bolao bolao);
+        Entities.ValueObjects.Reports.BolaoIniciarVO GetData(Domain.Entities.Boloes.Bolao bolao);
 
-        Stream Generate(string extension, string folderProfiles, string folderTimes, IList<Domain.Entities.ValueObjects.Reports.BolaoMembroApostasVO> data);
+        Stream Generate(string fileName, string compressedFileName, string extension, string folderProfiles, string folderTimes, Entities.ValueObjects.Reports.BolaoIniciarVO data);
 
     }
 }

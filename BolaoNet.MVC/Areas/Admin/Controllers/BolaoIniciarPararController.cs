@@ -23,6 +23,10 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
         #region Variables
 
         private Application.Interfaces.Reports.IBolaoMembroApostasReportApp _bolaoMembroApostasReportApp;
+        private Application.Interfaces.Reports.IBolaoApostasInicioReportApp _bolaoApostasInicioReportApp;
+        private Application.Interfaces.Reports.IBolaoApostasFimReportApp _bolaoApostasFimReportApp;
+
+
         #endregion
 
         #region Constructors/Destructors
@@ -34,38 +38,25 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
             Application.Interfaces.Campeonatos.ICampeonatoFaseApp campeonatoFaseApp,
             Application.Interfaces.Campeonatos.ICampeonatoGrupoApp campeonatoGrupoApp,
             Application.Interfaces.Campeonatos.ICampeonatoTimeApp campeonatoTimeApp,
-            Application.Interfaces.Reports.IBolaoMembroApostasReportApp bolaoMembroApostasReportApp
+            Application.Interfaces.Reports.IBolaoMembroApostasReportApp bolaoMembroApostasReportApp,
+            Application.Interfaces.Reports.IBolaoApostasInicioReportApp bolaoApostasInicioReportApp,
+            Application.Interfaces.Reports.IBolaoApostasFimReportApp bolaoApostasFimReportApp
             )
             : base (bolaoMembroApp, bolaoApp, campeonatoApp, campeonatoFaseApp, campeonatoGrupoApp, campeonatoTimeApp)
         {
             _bolaoMembroApostasReportApp = bolaoMembroApostasReportApp;
+            _bolaoApostasInicioReportApp = bolaoApostasInicioReportApp;
+            _bolaoApostasFimReportApp = bolaoApostasFimReportApp;
         }
 
         #endregion
 
         #region Actions
 
-        public ActionResult Iniciar()
-        {
-            bool res = _bolaoApp.Iniciar(base.UserLogged, base.SelectedBolao);
-
-            base.IsBolaoIniciado = true;
-
-            return RedirectToAction("Index");
-        }
-        public ActionResult Aguardar()
-        {
-
-            bool res = _bolaoApp.Aguardar(base.SelectedBolao);
-
-            base.IsBolaoIniciado = false;
-
-            return RedirectToAction("Index");
-        }
         public ActionResult Index()
         {
-            
-            Domain.Entities.Boloes.Bolao bolaoLoaded =  _bolaoApp.Load(base.SelectedBolao);
+
+            Domain.Entities.Boloes.Bolao bolaoLoaded = _bolaoApp.Load(base.SelectedBolao);
 
 
             ViewModels.Admin.BolaoIniciarPararViewModel model =
@@ -82,12 +73,12 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
 
             IList<ViewModels.Admin.BolaoIniciarStatusMembroViewModel> membrosModel =
                  Mapper.Map<
-                 IList<Domain.Entities.ValueObjects.UserMembroStatusVO>, 
+                 IList<Domain.Entities.ValueObjects.UserMembroStatusVO>,
                  IList<ViewModels.Admin.BolaoIniciarStatusMembroViewModel>>
                  (listMembros);
 
 
-            for (int c = 0; c < membrosModel.Count; c++ )
+            for (int c = 0; c < membrosModel.Count; c++)
             {
                 if (membrosModel[c].Pago != 0)
                 {
@@ -103,7 +94,7 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
             model.StatusMembros = membrosModel;
 
 
-            string fileToCheck = Server.MapPath(System.IO.Path.Combine (FolderApostas, FileApostasInicial + ExtensionFileApostas));
+            string fileToCheck = Server.MapPath(System.IO.Path.Combine(FolderApostas, FileApostasInicial + ExtensionFileApostas));
             if (System.IO.File.Exists(fileToCheck))
                 model.FileApostasInicial = new FileInfo(fileToCheck);
 
@@ -122,6 +113,23 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
 
 
             return View(model);
+        }        
+        public ActionResult Iniciar()
+        {
+            bool res = _bolaoApp.Iniciar(base.UserLogged, base.SelectedBolao);
+
+            base.IsBolaoIniciado = true;
+
+            return RedirectToAction("Index");
+        }
+        public ActionResult Aguardar()
+        {
+
+            bool res = _bolaoApp.Aguardar(base.SelectedBolao);
+
+            base.IsBolaoIniciado = false;
+
+            return RedirectToAction("Index");
         }
         public ActionResult RemoverMembro(ViewModels.Admin.BolaoIniciarStatusMembroViewModel model)
         {
@@ -143,6 +151,62 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
 
 
             return base.DownloadStream(streamReport, "text/plain", userName + ".pdf");
+        }
+        public ActionResult GerarApostas()
+        {
+
+            Domain.Entities.ValueObjects.Reports.BolaoIniciarVO data =
+                _bolaoApostasInicioReportApp.GetData(base.SelectedBolao);
+
+
+            string fileToCheck = Server.MapPath(System.IO.Path.Combine(FolderApostas, FileApostasInicial + ExtensionFileApostas));
+            if (System.IO.File.Exists(fileToCheck))
+                System.IO.File.Delete(fileToCheck);
+
+            string fileToCheckZip = Server.MapPath(System.IO.Path.Combine(FolderApostas, FileApostasInicial + CompressedFile));
+            if (System.IO.File.Exists(fileToCheckZip))
+                System.IO.File.Delete(fileToCheckZip);
+
+            Stream streamReport = _bolaoApostasInicioReportApp.Generate(
+                            fileToCheck,
+                            fileToCheckZip,
+                           "gif",
+                           Server.MapPath("~/Content/img/database/profiles"),
+                           Server.MapPath("~/Content/img/database/times"), data);
+
+
+            return RedirectToAction("Index");
+        }
+        public ActionResult GerarFinal()
+        {
+            Domain.Entities.ValueObjects.Reports.BolaoFinalVO data =
+               _bolaoApostasFimReportApp.GetData(base.SelectedBolao);
+
+
+            string fileToCheck = Server.MapPath(System.IO.Path.Combine(FolderApostas, FileApostasFinal + ExtensionFileApostas));
+            if (System.IO.File.Exists(fileToCheck))
+                System.IO.File.Delete(fileToCheck);
+
+            string fileToCheckZip = Server.MapPath(System.IO.Path.Combine(FolderApostas, FileApostasFinal + CompressedFile));
+            if (System.IO.File.Exists(fileToCheckZip))
+                System.IO.File.Delete(fileToCheckZip);
+
+            Stream streamReport = _bolaoApostasInicioReportApp.Generate(
+                            fileToCheck,
+                            fileToCheckZip,
+                           "gif",
+                           Server.MapPath("~/Content/img/database/profiles"),
+                           Server.MapPath("~/Content/img/database/times"), data);
+
+
+            return RedirectToAction("Index");
+        }
+        public ActionResult DownloadFile(string fileName)
+        {
+            string folder = Server.MapPath(System.IO.Path.Combine(FolderApostas, fileName));
+
+            StreamReader reader = new StreamReader(folder);
+            return base.DownloadStream(reader.BaseStream, "text/plain", fileName);
         }
 
         #endregion

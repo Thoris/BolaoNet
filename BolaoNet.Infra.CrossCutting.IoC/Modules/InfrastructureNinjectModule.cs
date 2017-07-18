@@ -21,6 +21,8 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
 
 
             Bind<Domain.Interfaces.Services.Reports.FormatReport.IBolaoMembroApostasFormatReportService>().To<Infra.Reports.Pdf.PdfBolaoMembroApostasReport>();
+            Bind<Domain.Interfaces.Services.Reports.FormatReport.IBolaoApostasInicioFormatReportService>().To<Infra.Reports.Pdf.PdfBolaoApostasInicioReport>();
+            Bind<Domain.Interfaces.Services.Reports.FormatReport.IBolaoApostasFimFormatReportService>().To<Infra.Reports.Pdf.PdfBolaoApostasFimReport>();
             //Bind<IGenreAppService>().To<GenreAppService>();
             //Bind<IArtistAppService>().To<ArtistAppService>();
             //Bind<IAlbumAppService>().To<AlbumAppService>();

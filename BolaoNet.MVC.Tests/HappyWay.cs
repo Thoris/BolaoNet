@@ -44,6 +44,8 @@ namespace BolaoNet.MVC.Tests
             ICampeonatoGrupoApp campeonatoGrupoApp = kernel.Get<ICampeonatoGrupoApp>();
             ICampeonatoTimeApp campeonatoTimeApp = kernel.Get<ICampeonatoTimeApp>();
             IBolaoMembroApostasReportApp bolaoMembroApostasReportApp = kernel.Get<IBolaoMembroApostasReportApp>();
+            IBolaoApostasInicioReportApp bolaoApostasInicioReportApp = kernel.Get<IBolaoApostasInicioReportApp>();
+            IBolaoApostasFimReportApp bolaoApostasFimReportApp = kernel.Get<IBolaoApostasFimReportApp>();
             IApostaExtraApp apostaExtraApp = kernel.Get<IApostaExtraApp>();                
             IBolaoPremioApp bolaoPremioApp = kernel.Get<IBolaoPremioApp>();
             IBolaoCriterioPontosApp bolaoCriterioPontosApp = kernel.Get<IBolaoCriterioPontosApp>();
@@ -361,7 +363,10 @@ namespace BolaoNet.MVC.Tests
                     campeonatoFaseApp,
                     campeonatoGrupoApp,
                     campeonatoTimeApp,
-                    bolaoMembroApostasReportApp);
+                    bolaoMembroApostasReportApp,
+                    bolaoApostasInicioReportApp,
+                    bolaoApostasFimReportApp
+                    );
 
             Mocks.MvcMockHelpers.SetMockControllerContext(bolaoIniciarPararController, userAdmin);
 
@@ -590,25 +595,29 @@ namespace BolaoNet.MVC.Tests
                 {
                     NomeBolao = bolao.Nome,
                     Posicao = 1,
-                    SalvarNomeTime = "Alemanha"
+                    NomeTimeValidado = "Alemanha",
+                    SalvarNomeTime = null,
                 });
             apostaExtraModel.Add (new ViewModels.Resultados.ApostaExtraViewModel () 
                 {
                     NomeBolao = bolao.Nome,
                     Posicao = 2,
-                    SalvarNomeTime = "Argentina"
+                    NomeTimeValidado = "Argentina",
+                    SalvarNomeTime = null,
                 });
             apostaExtraModel.Add (new ViewModels.Resultados.ApostaExtraViewModel () 
                 {
                     NomeBolao = bolao.Nome,
                     Posicao = 3,
-                    SalvarNomeTime = "Holanda"
+                    NomeTimeValidado = "Holanda",
+                    SalvarNomeTime = null,
                 });
             apostaExtraModel.Add (new ViewModels.Resultados.ApostaExtraViewModel () 
                 {
                     NomeBolao = bolao.Nome,
                     Posicao = 4,
-                    SalvarNomeTime = "Brasil"
+                    NomeTimeValidado = "Brasil",
+                    SalvarNomeTime = null,
                 });
 
             var apostaExtraView = apostasExtrasResultadoController.Salvar(apostaExtraModel) as ViewResult;

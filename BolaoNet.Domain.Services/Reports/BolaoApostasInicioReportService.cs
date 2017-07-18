@@ -40,7 +40,7 @@ namespace BolaoNet.Domain.Services.Reports
 
         #region IBolaoMembroApostasReportService members
 
-        public IList<Entities.ValueObjects.Reports.BolaoMembroApostasVO> GetData(Entities.Boloes.Bolao bolao)
+        public  Entities.ValueObjects.Reports.BolaoIniciarVO GetData(Entities.Boloes.Bolao bolao)
         {
             if (bolao == null)
                 throw new ArgumentException("bolao");
@@ -48,9 +48,12 @@ namespace BolaoNet.Domain.Services.Reports
                 throw new ArgumentException("bolao.Nome");
 
 
+            Entities.ValueObjects.Reports.BolaoIniciarVO res = new Entities.ValueObjects.Reports.BolaoIniciarVO();
+
             IList<Domain.Entities.Boloes.BolaoMembro> membros = _bolaoMembro.GetListUsersInBolao(bolao);
 
-            IList<Entities.ValueObjects.Reports.BolaoMembroApostasVO> res = new List<Entities.ValueObjects.Reports.BolaoMembroApostasVO>();
+            //IList<Entities.ValueObjects.Reports.BolaoMembroApostasVO> res = 
+             res.Membros = new List<Entities.ValueObjects.Reports.BolaoMembroApostasVO>();
 
             
             for (int c = 0; c < membros.Count; c++)
@@ -66,14 +69,14 @@ namespace BolaoNet.Domain.Services.Reports
                 entry.ApostasExtras = _apostaExtraUsuarios.GetApostasUser(bolaoLoaded, userLoaded);
                 entry.JogosUsuarios = _jogoUsuario.GetJogosUser(bolaoLoaded, userLoaded, new Entities.ValueObjects.FilterJogosVO());
 
-                res.Add(entry);
+                res.Membros.Add(entry);
             }
             return res;
         }
 
-        public Stream Generate(string extension, string folderProfiles, string folderTimes, IList<Entities.ValueObjects.Reports.BolaoMembroApostasVO> data)
+        public Stream Generate(string fileName, string compressedFileName, string extension, string folderProfiles, string folderTimes, Entities.ValueObjects.Reports.BolaoIniciarVO data)
         {
-            return _output.Generate(extension, folderProfiles, folderTimes, data);
+            return _output.Generate(fileName, compressedFileName, extension, folderProfiles, folderTimes, data);
         }
 
         #endregion

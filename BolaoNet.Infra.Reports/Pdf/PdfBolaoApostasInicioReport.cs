@@ -1,4 +1,5 @@
-﻿using iTextSharp.text;
+﻿using ICSharpCode.SharpZipLib.Zip;
+using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System;
 using System.Collections.Generic;
@@ -1000,11 +1001,43 @@ namespace BolaoNet.Infra.Reports.Pdf
             return new Domain.Entities.ValueObjects.JogoUsuarioVO();            
         }
 
+        private void CompressFile(string sourceFile, string targetFile)
+        {
+            // Zip up the files - From SharpZipLib Demo Code
+            using (ZipOutputStream s = new ZipOutputStream(File.Create(targetFile)))
+            {
+                s.SetLevel(9); // 0-9, 9 being the highest compression
+
+                byte[] buffer = new byte[4096];
+
+
+                ZipEntry entry = new ZipEntry(Path.GetFileName(sourceFile));
+
+                entry.DateTime = DateTime.Now;
+                s.PutNextEntry(entry);
+
+                using (FileStream fs = File.OpenRead(sourceFile))
+                {
+                    int sourceBytes;
+                    do
+                    {
+                        sourceBytes = fs.Read(buffer, 0, buffer.Length);
+
+                        s.Write(buffer, 0, sourceBytes);
+
+                    } while (sourceBytes > 0);
+                }
+
+                s.Finish();
+                s.Close();
+            }
+        }
+
         #endregion
 
         #region IBolaoApostasInicioFormatReportService members
 
-        public Stream Generate(string extension, string folderProfiles, string folderTimes, IList<Domain.Entities.ValueObjects.Reports.BolaoMembroApostasVO> data)
+        public Stream Generate(string fileName, string compressedFileName, string extension, string folderProfiles, string folderTimes, Domain.Entities.ValueObjects.Reports.BolaoIniciarVO data)
         {
             Document document = new Document(PageSize.A4);
 
@@ -1016,13 +1049,13 @@ namespace BolaoNet.Infra.Reports.Pdf
 
             document.Open();
 
-            for (int c = 0; c < data.Count; c++)
+            for (int c = 0; c < data.Membros.Count; c++)
             {
 
                 document.NewPage();
 
                 CreatePage(false, false, 0, 0, writer, extension, "", folderProfiles, folderTimes,
-                    new Domain.Entities.Users.User(data[c].UserName), data[c].JogosUsuarios, data[c].ApostasExtras);
+                    new Domain.Entities.Users.User(data.Membros[c].UserName), data.Membros[c].JogosUsuarios, data.Membros[c].ApostasExtras);
             }
             document.Close();
             
@@ -1030,6 +1063,15 @@ namespace BolaoNet.Infra.Reports.Pdf
             MemoryStream res = new MemoryStream(output);
             
             fs.Close();
+
+            using (var fileStream = System.IO.File.Create(fileName))
+            {
+                res.Seek(0, SeekOrigin.Begin);
+                res.CopyTo(fileStream);
+            }
+
+
+            CompressFile(fileName, compressedFileName);
 
             return res;
         }

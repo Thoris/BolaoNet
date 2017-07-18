@@ -132,12 +132,16 @@
     <Compile Include="Interfaces\Facade\IInitializationFacadeApp.cs" />
     <Compile Include="Interfaces\Facade\IUserFacadeApp.cs" />
     <Compile Include="Interfaces\Notification\INotificationApp.cs" />
+    <Compile Include="Interfaces\Reports\IBolaoApostasFimReportApp.cs" />
+    <Compile Include="Interfaces\Reports\IBolaoApostasInicioReportApp.cs" />
     <Compile Include="Interfaces\Reports\IBolaoMembroApostasReportApp.cs" />
     <Compile Include="Interfaces\Users\IRoleApp.cs" />
     <Compile Include="Interfaces\Users\IUserInRoleApp.cs" />
     <Compile Include="Interfaces\Users\IUserApp.cs" />
     <Compile Include="Notification\NotificationApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\BolaoApostasFimReportApp.cs" />
+    <Compile Include="Reports\BolaoApostasInicioReportApp.cs" />
     <Compile Include="Reports\BolaoMembroApostasReportApp.cs" />
     <Compile Include="ServiceType.cs" />
     <Compile Include="Users\RoleApp.cs" />

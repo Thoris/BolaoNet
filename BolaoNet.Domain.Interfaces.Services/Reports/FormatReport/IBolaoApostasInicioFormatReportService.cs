@@ -9,6 +9,6 @@ namespace BolaoNet.Domain.Interfaces.Services.Reports.FormatReport
 {
     public interface IBolaoApostasInicioFormatReportService
     {
-        Stream Generate(string extension, string folderProfiles, string folderTimes, IList<Domain.Entities.ValueObjects.Reports.BolaoMembroApostasVO> data);
+        Stream Generate(string fileName, string compressedFileName, string extension, string folderProfiles, string folderTimes, Entities.ValueObjects.Reports.BolaoIniciarVO data);
     }
 }
