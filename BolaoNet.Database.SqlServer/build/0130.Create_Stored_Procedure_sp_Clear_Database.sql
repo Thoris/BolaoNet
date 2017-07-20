@@ -28,8 +28,8 @@ BEGIN
 
 
 	DELETE FROM Pagamentos
-	DELETE FROM PagamentosTipo
-
+	DELETE FROM PagamentosTipo	
+	DBCC CHECKIDENT ('PagamentosTipo', RESEED, 0);
 
 	DELETE FROM BoloesMembros
 

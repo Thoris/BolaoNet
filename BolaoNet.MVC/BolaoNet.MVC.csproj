@@ -1081,6 +1081,9 @@
     <Content Include="Views\Shared\Fragments\_Profile.cshtml" />
     <Content Include="Views\Account\_RegistrationRegras.cshtml" />
     <Content Include="Views\Shared\Fragments\_Dialog.cshtml" />
+    <Content Include="Views\Shared\Fragments\Menus\_BolaoMenu.cshtml" />
+    <Content Include="Views\Shared\Fragments\Menus\_AdminMenu.cshtml" />
+    <Content Include="Views\Shared\Fragments\Menus\_CampeonatoMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1104,7 +1107,6 @@
     <Folder Include="Content\img\database\profiles\" />
     <Folder Include="Content\img\database\temp\crop\" />
     <Folder Include="Content\img\database\temp\uploaded\" />
-    <Folder Include="Views\Shared\Fragments\Menus\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

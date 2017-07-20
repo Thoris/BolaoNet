@@ -22,14 +22,20 @@ namespace BolaoNet.MVC.ViewModels.Users.PaginaPrincipal
         {
             get
             {
-                return string.Format(FormatIcon, this.NomeTime1);
+                if (string.IsNullOrEmpty(this.NomeTime1))
+                    return string.Format(FormatIcon, this.NomeTimeResult1);
+                else
+                    return string.Format(FormatIcon, this.NomeTime1);
             }
         }
         public string ImageTime2
         {
             get
             {
-                return string.Format(FormatIcon, this.NomeTime2);
+                if (string.IsNullOrEmpty(this.NomeTime2))
+                    return string.Format(FormatIcon, this.NomeTimeResult2);
+                else
+                    return string.Format(FormatIcon, this.NomeTime2);
             }
         }
 

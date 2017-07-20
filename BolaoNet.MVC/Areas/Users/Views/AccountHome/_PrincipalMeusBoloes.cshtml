@@ -24,21 +24,24 @@
                     {
                         <tr>
                             <td>
-                                <a href="#">
+                                @*<a href="#">
                                     @Model[c].NomeBolao
-                                </a>
+                                </a>*@
+                                @Model[c].NomeBolao 
                             </td>
                             <td>
-                                <a href="#">
+                                @*<a href="#">
                                     @Model[c].NomeCampeonato
-                                </a>
+                                </a>*@
+                                @Model[c].NomeCampeonato
                             </td>
                             <td>@Model[c].Membros</td>
                             <td>@Model[c].Position</td>
                             <td>
-                                <a href="#">
+                                @*<a href="/Apostas/ApostasJogos/Jogos">
                                     @Model[c].ApostasRestantes
-                                </a>
+                                </a>*@
+                                @Model[c].ApostasRestantes
                             </td>
                         </tr>
                     }                    

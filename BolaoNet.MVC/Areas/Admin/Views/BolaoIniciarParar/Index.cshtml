@@ -222,38 +222,17 @@
                                 </thead>
                                 <tbody>
                                     @for (int c = 0; c < Model.StatusMembros.Count; c++)
-                                    {
-                                        <tr 
-                                            @if (Model.StatusMembros[c].ApostasRestantes) 
-                                            {
-                                                Html.Display(" class=\"warning\"");
+                                    {                                       
+                                        <tr
+                                            @if (Model.StatusMembros[c].ApostasRestantes)
+                                            { 
+                                                @Html.Raw(" class=\"warning\"") 
                                             }
                                             else if (Model.StatusMembros[c].FaltaPagamento)
-                                            {
-                                                Html.Display(" class=\"danger\"");
+                                            { 
+                                                @Html.Raw(" class=\"danger\"") 
                                             }
-                                            else 
-                                            {
-                                                Html.Raw(" class=\"danger\"");
-                                                
-                                            }
-                                            >
-                                        
-                                        @*@if (Model.StatusMembros[c].ApostasRestantes)
-                                        {
-                                            Html.Raw("<tr class=\"warning\">");
-                                        }
-                                        else if (Model.StatusMembros[c].FaltaPagamento)
-                                        {
-                                            Html.Raw("<tr class=\"danger\">");
-                                        } 
-                                        else
-                                        {
-                                            Html.Raw("<tr>");    
-                                        }*@
-                                            
-                                        
-                                        
+                                            >                               
                                             <td>@Html.DisplayFor(x=>x.StatusMembros[c].UserName)</td>
                                             <td>
                                                 <img class="img-username" src="/Content/img/database/profiles/@(Model.StatusMembros[c].UserName).gif" />
@@ -264,12 +243,12 @@
                                             <td>@Model.StatusMembros[c].Pago</td>                                            
                                             <td>
                                                 <a href="@Url.Action("DownloadApostas", "BolaoIniciarParar", new { username = @Model.StatusMembros[c].UserName })">
-                                                    <span class="glyphicon glyphicon-download"></span>
+                                                    <span class="glyphicon glyphicon-download fa-lg"></span>
                                                 </a>
                                             </td>
                                             <td>
                                                 <a href="@Url.Action("RemoverMembro", new { Username = @Model.StatusMembros[c].UserName })" @*class="btn btn-success btn-sm center-block"*@
-                                                   onclick="return confirm('Deseja remover o membro do Bolão?');"><span class="glyphicon glyphicon-remove"></span></a>
+                                                   onclick="return confirm('Deseja remover o membro do Bolão?');"><span class="glyphicon glyphicon-remove fa-lg"></span></a>
                                             </td>
                                         </tr>
                                     }

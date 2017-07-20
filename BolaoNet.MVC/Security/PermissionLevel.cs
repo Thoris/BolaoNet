@@ -24,4 +24,32 @@ namespace BolaoNet.MVC.Security
         VisitanteBolao,
         VisitanteCampeonato,
     }
+     
+    public class PermissionLevelDesc
+    {
+        public static readonly string[] Levels = new string[]
+        {            
+            "Administrador",
+            "Apostador",
+            "Convidado",
+            "Gerenciador de Avisos",
+            "Gerenciador de Bolão",
+            "Gerenciador de Critérios",
+            "Gerenciador de Dados Básicos",
+            "Gerenciador de Enquetes",
+            "Gerenciador de Mensagens",
+            "Gerenciador de Pagamentos",
+            "Gerenciador de Pontuação",
+            "Gerenciador de Publicidade",
+            "Gerenciador de Resultados",
+            "Visitante de Bolão",
+            "Visitante de Campeonato"
+        };
+     
+
+        public static string GetDescription(PermissionLevel level)
+        {
+            return Levels[(int)level];
+        }
+    }
 }

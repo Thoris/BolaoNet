@@ -25,7 +25,7 @@ namespace BolaoNet.MVC.Controllers
 
             if (user != null)
             {
-                
+                //user.Roles
             }
 
             return false;

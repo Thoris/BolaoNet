@@ -74,6 +74,8 @@ namespace BolaoNet.MVC.Tests.IoC.Modules
             Bind<Domain.Interfaces.Services.Facade.Campeonatos.ICopaMundo2014FacadeService>().To<Domain.Services.Facade.Campeonatos.CopaMundo2014FacadeService>().WithConstructorArgument("userName", userName);
 
             Bind<Domain.Interfaces.Services.Reports.IBolaoMembroApostasReportService>().To<Domain.Services.Reports.BolaoMembroApostasReportService>().WithConstructorArgument("userName", userName);
+            Bind<Domain.Interfaces.Services.Reports.IBolaoApostasInicioReportService>().To<Domain.Services.Reports.BolaoApostasInicioReportService>().WithConstructorArgument("userName", userName);
+            Bind<Domain.Interfaces.Services.Reports.IBolaoApostasFimReportService>().To<Domain.Services.Reports.BolaoApostasFimReportService>().WithConstructorArgument("userName", userName);
 
         }
 

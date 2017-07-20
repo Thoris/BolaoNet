@@ -19,8 +19,11 @@ namespace BolaoNet.MVC.Tests.IoC.Modules
             //Bind<Domain.Interfaces.Services.Notification.INotificationService>().To<Infra.Notification.Mail.MailNotification>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Notification.INotificationService>().To<Infra.Notification.Mail.Mock.MailNotificationMock>();
 
-
             Bind<Domain.Interfaces.Services.Reports.FormatReport.IBolaoMembroApostasFormatReportService>().To<Infra.Reports.Pdf.PdfBolaoMembroApostasReport>();
+            Bind<Domain.Interfaces.Services.Reports.FormatReport.IBolaoApostasInicioFormatReportService>().To<Infra.Reports.Pdf.PdfBolaoApostasInicioReport>();
+            Bind<Domain.Interfaces.Services.Reports.FormatReport.IBolaoApostasFimFormatReportService>().To<Infra.Reports.Pdf.PdfBolaoApostasFimReport>();
+           
+            //Bind<Domain.Interfaces.Services.Reports.FormatReport.IBolaoMembroApostasFormatReportService>().To<Infra.Reports.Pdf.PdfBolaoMembroApostasReport>();
             //Bind<IGenreAppService>().To<GenreAppService>();
             //Bind<IArtistAppService>().To<ArtistAppService>();
             //Bind<IAlbumAppService>().To<AlbumAppService>();
