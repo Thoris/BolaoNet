@@ -163,14 +163,31 @@
                                            onclick="return confirm('Deseja enviar notificação a todos os membros do que ainda não fizeram o pagamento?');">Enviar Não Pago</a>
                                     </div>
                                 </div>
-                                <div class="form-group col-sm-12 @if(Model.FileApostasInicialZip == null) { @Html.Raw("disabled");}">
-                                    <a href="@Url.Action("EnviarInicial")" class="btn btn-success btn-sm center-block"
-                                       onclick="return confirm('Deseja enviar as apostas iniciais a todos os membros do bolão?');">Enviar Apostas Iniciais</a>
-                                </div>
-                                <div class="form-group col-sm-12 @if(Model.FileApostasFinalZip == null) { @Html.Raw("disabled");}">
+                                @if (Model.FileApostasInicialZip != null)
+                                {
+                                    <div class="form-group col-sm-12">
+                                        <a href="@Url.Action("EnviarInicial")" class="btn btn-success btn-sm center-block"
+                                           onclick="return confirm('Deseja enviar as apostas iniciais a todos os membros do bolão?');">Enviar Apostas Iniciais</a>
+
+                                    </div>
+                                }
+                                @if (Model.FileApostasFinalZip != null)
+                                {
+                                    <div class="form-group col-sm-12 @if(Model.FileApostasFinalZip == null) { @Html.Raw("disabled");}">
                                     <a href="@Url.Action("EnviarFinal")" class="btn btn-success btn-sm center-block"
                                        onclick="return confirm('Deseja enviar as apostas finais a todos os membros do bolão?');">Enviar Apostas Iniciais</a>
-                                </div>
+                                    </div>    
+                                }
+
+
+                                @*<div class="form-group col-sm-12 @if(Model.FileApostasInicialZip == null) { @Html.Raw("disabled");}">
+                                    <a href="@Url.Action("EnviarInicial")" class="btn btn-success btn-sm center-block"
+                                       onclick="return confirm('Deseja enviar as apostas iniciais a todos os membros do bolão?');">Enviar Apostas Iniciais</a>
+                                </div>*@
+                                @*<div class="form-group col-sm-12 @if(Model.FileApostasFinalZip == null) { @Html.Raw("disabled");}">
+                                    <a href="@Url.Action("EnviarFinal")" class="btn btn-success btn-sm center-block"
+                                       onclick="return confirm('Deseja enviar as apostas finais a todos os membros do bolão?');">Enviar Apostas Iniciais</a>
+                                </div>*@
                             </div>
                         </div>
                     </div>
@@ -209,16 +226,34 @@
                                         <tr 
                                             @if (Model.StatusMembros[c].ApostasRestantes) 
                                             {
-                                                Html.Raw(" class=\"warning\"");
+                                                Html.Display(" class=\"warning\"");
                                             }
                                             else if (Model.StatusMembros[c].FaltaPagamento)
                                             {
-                                                Html.Raw(" class=\"danger\"");
+                                                Html.Display(" class=\"danger\"");
                                             }
                                             else 
                                             {
+                                                Html.Raw(" class=\"danger\"");
                                                 
-                                            }>
+                                            }
+                                            >
+                                        
+                                        @*@if (Model.StatusMembros[c].ApostasRestantes)
+                                        {
+                                            Html.Raw("<tr class=\"warning\">");
+                                        }
+                                        else if (Model.StatusMembros[c].FaltaPagamento)
+                                        {
+                                            Html.Raw("<tr class=\"danger\">");
+                                        } 
+                                        else
+                                        {
+                                            Html.Raw("<tr>");    
+                                        }*@
+                                            
+                                        
+                                        
                                             <td>@Html.DisplayFor(x=>x.StatusMembros[c].UserName)</td>
                                             <td>
                                                 <img class="img-username" src="/Content/img/database/profiles/@(Model.StatusMembros[c].UserName).gif" />

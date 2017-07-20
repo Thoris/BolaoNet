@@ -154,6 +154,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BolaoNet.Infra.Reports", "B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BolaoNet.MVC.Tests", "BolaoNet.MVC.Tests\BolaoNet.MVC.Tests.csproj", "{0E555D9B-B7CA-4E98-8C23-96E5282042C5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharpZip", "SharpZip", "{FD68D9F6-79A8-4BFE-89CB-6F2316849C01}"
+	ProjectSection(SolutionItems) = preProject
+		ReferencedComponents\SharpZip\ICSharpCode.SharpZipLib.dll = ReferencedComponents\SharpZip\ICSharpCode.SharpZipLib.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -304,5 +309,6 @@ Global
 		{6A0F5416-AF00-458C-912C-B36EB12BC3F7} = {80B65053-B40D-49BF-8881-F4CF52F0DE15}
 		{5C3E6AA6-F8D2-4940-BE65-3FC76DB96B59} = {8E9DE538-DED5-4B14-9405-501A2F6FC2C0}
 		{0E555D9B-B7CA-4E98-8C23-96E5282042C5} = {80B65053-B40D-49BF-8881-F4CF52F0DE15}
+		{FD68D9F6-79A8-4BFE-89CB-6F2316849C01} = {0DD79E73-9DDE-475A-A7AC-DDE941D14543}
 	EndGlobalSection
 EndGlobal
