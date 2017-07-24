@@ -391,7 +391,37 @@ namespace BolaoNet.Domain.Services.Boloes
 
             return Dao.LoadProximosJogosUsuario(base.CurrentUserName, DateTime.Now, user, totalRetorno);
         }
+        public int CalcularPontoSimulation(int gols1, int gols2, int aposta1, int aposta2, int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1, int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, bool isMultiploTime, int multiploTime)
+        {
+            int pontosTime1Total = 0;
+            int pontosTime2Total = 0;
+            int pontosTotal = 0;
+
+            int countEmpate = 0;	// Se o usuário apostou empate e o jogo deu empate
+            int countVitoria = 0;	// Se o usuário apostou vitória para o time e deu vitória para o time selecionado
+            int countDerrota = 0;	// Se o usuário apostou derrota para o time e deu derrota para o time selecionado
+            int countGanhador = 0;	// Se acertou o time ganhador, idependente se está jogando em casa ou fora
+            int countPerdedor = 0;	// Se acertou o time perdedor, idependente se está jogando em casa ou fora
+            int countTime1 = 0;	// Se acertou a quantidade de gols do time 1 
+            int countTime2 = 0;	// Se acertou a quantidade de gols do time 2
+            int countVDE = 0;	// Se acertou se deu empate/derrota ou vitória no jogo
+            int countErro = 0;	// Se errou o jogo
+            int countGanhadorFora = 0;	// Se acertou que o time foi ganhador jogando fora de casa
+            int countGanhadorDentro = 0;	// Se acertou que o time foi ganhador dentro de casa
+            int countPerdedorFora = 0;	// Se acertou que o time foi perdedor fora de casa
+            int countPerdedorDentro = 0;	// Se acertou que o time foi perdedor dentro de casa
+            int countEmpateGols = 0;	// Se acertou a quantidade de gols quando ocorrer empate
+            int countGolsTime1 = 0;	// Se acertou a quantidade de gols do time 1
+            int countGolsTime2 = 0;	// Se acertou a quantidade de gols do time 2
+            int countCheio = 0;	// Se acertou em cheio o resultado
+
+
+            throw new NotImplementedException();
+        }
 
         #endregion
+
+
+
     }
 }
