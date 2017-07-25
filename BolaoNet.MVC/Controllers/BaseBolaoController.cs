@@ -53,61 +53,33 @@ namespace BolaoNet.MVC.Controllers
         #endregion
 
         #region Methods
-
-        public bool IsCheckSelectedBolao()
-        {
-            if (string.IsNullOrEmpty(base.SelectedNomeBolao))
-            {
-                IList<Domain.Entities.Boloes.BolaoMembro> list =
-                    _bolaoMembroApp.GetListBolaoInUsers(base.UserLogged);
-
-                if (list.Count == 1)
-                {
-                    this.SelectedNomeBolao = list[0].NomeBolao;
-
-                    Domain.Entities.Boloes.Bolao bolaoLoaded = _bolaoApp.Load(base.SelectedBolao);
-
-                    this.SelectedNomeCampeonato = bolaoLoaded.NomeCampeonato;
-                    //LoadCampeonatoData();
-
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
+         
         protected override void OnActionExecuting(System.Web.Mvc.ActionExecutingContext filterContext)
         {
             base.OnActionExecuting(filterContext);
 
-            if (!IsCheckSelectedBolao())
+            if (!IsCheckSelectedBolao(_bolaoMembroApp, _bolaoApp))
             {
-                
-                //RouteValueDictionary route = new RouteValueDictionary(new
-                //{
-                //    Area = "Users",
-                //    Controller = "AccountHome",
-                //    Action = "Profile",
-                //});
 
-                //filterContext.Result = new RedirectToRouteResult(route);
+                filterContext.Result = new RedirectToRouteResult(
+                    new RouteValueDictionary(
+                        new { 
+                            controller = "UserBoloes", 
+                            action = "Index",
+                            area = "Users"
+                        }));
 
-                filterContext.Result = new BolaoNet.MVC.Areas.Users.Controllers.UserBoloesController
-                    (
-                     _bolaoMembroApp, _bolaoApp, CampeonatoApp, CampeonatoFaseApp, 
-                     CampeonatoGrupoApp, CampeonatoTimeApp
-                    ).Index();                
+                //filterContext.Result = new BolaoNet.MVC.Areas.Users.Controllers.UserBoloesController
+                //    (
+                //     _bolaoMembroApp, _bolaoApp, CampeonatoApp, CampeonatoFaseApp, 
+                //     CampeonatoGrupoApp, CampeonatoTimeApp
+                //    ).Index();                
 
                 return;
             }
         }
         protected ActionResult DownloadStream(Stream stream, string fileType, string fileName)
         {
-
             return File(stream, fileType, fileName);
         }
 

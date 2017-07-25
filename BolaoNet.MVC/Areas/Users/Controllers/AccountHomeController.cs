@@ -24,11 +24,13 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
         #region Constructors/Destructors
 
         public AccountHomeController(
+            Application.Interfaces.Boloes.IBolaoMembroApp bolaoMembroApp,
             Application.Interfaces.Users.IUserApp userApp,
             Application.Interfaces.Boloes.IBolaoApp bolaoApp, 
             Application.Interfaces.Boloes.IBolaoMembroGrupoApp bolaoMembroGrupoApp,
             Application.Interfaces.Boloes.IJogoUsuarioApp jogoUsuarioApp
             )
+            : base(bolaoApp, bolaoMembroApp)
         {
             _bolaoApp = bolaoApp;
             _bolaoMembroGrupoApp = bolaoMembroGrupoApp;
@@ -190,7 +192,7 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
             return RedirectToAction("Index", "BolaoClassificacaoGrupoGerenciamento");
         }
 
-
+        #region Comments
         //public ActionResult ChangeProfileImage()
         //{
         //    return View();
@@ -237,7 +239,7 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
         //    string photoPath = string.Concat("/", "Temp", "/", fileName);
         //    return Json(new { photoPath = photoPath }, JsonRequestBehavior.AllowGet);
         //}
-
+        #endregion
 
         [HttpGet]
         public ActionResult ChangePassword()

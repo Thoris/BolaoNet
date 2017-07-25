@@ -20,14 +20,12 @@ namespace BolaoNet.MVC.Controllers
         private Application.Interfaces.Notification.INotificationApp _notificationApp;
         private Application.Interfaces.Boloes.IBolaoMembroApp _bolaoMembroApp;
         private Application.Interfaces.Boloes.IBolaoApp _bolaoApp;
-        private Security.ICookieManager _cookieManager;
 
         #endregion
 
         #region Constructors/Destructors
 
         public AccountController(
-            //Security.ICookieManager cookieManager,
             Application.Interfaces.Users.IUserApp userApp, 
             Application.Interfaces.Users.IUserInRoleApp userInRoleApp, 
             Application.Interfaces.Boloes.IBolaoMembroApp bolaoMembroApp, 
@@ -39,8 +37,7 @@ namespace BolaoNet.MVC.Controllers
             _userInRoleApp = userInRoleApp;
             _notificationApp = notificationApp;
             _bolaoMembroApp = bolaoMembroApp;
-            _bolaoApp = bolaoApp;
-            //_cookieManager = cookieManager;
+            _bolaoApp = bolaoApp; 
         }
 
         #endregion
@@ -93,8 +90,7 @@ namespace BolaoNet.MVC.Controllers
             };
             
             Security.AuthenticationManagement.SaveAuthentication(Response, userModel, model.RememberMe);
-            //_cookieManager.SaveAuthentication(Response, userModel, model.RememberMe);
-
+            
             //Buscando a lista de bolões do usuário
             IList<Domain.Entities.Boloes.BolaoMembro> list =
                 _bolaoMembroApp.GetListBolaoInUsers(new Domain.Entities.Users.User(model.UserName));
@@ -103,7 +99,7 @@ namespace BolaoNet.MVC.Controllers
             {
                 Domain.Entities.Boloes.Bolao bolaoLoaded =
                     _bolaoApp.Load(new Domain.Entities.Boloes.Bolao(list[0].NomeBolao));
-
+                
                 Persist.Put<string>(BaseBolaoController.PersistNomeBolaoSelected, bolaoLoaded.Nome);
                 Persist.Put<string>(BaseBolaoController.PersistNomeCampeonatoSelected, bolaoLoaded.NomeCampeonato);
                 
@@ -119,9 +115,12 @@ namespace BolaoNet.MVC.Controllers
 
             if (string.IsNullOrEmpty(returnUrl))
             {
-                return new RedirectToRouteResult(new
-                   //RouteValueDictionary(new { controller = "Home", action = "Index" }));
-                   RouteValueDictionary(new { area="Users", controller = "AccountHome", action = "Index" }));
+                return new RedirectToRouteResult(new                   
+                   RouteValueDictionary(new { 
+                       area="Users", 
+                       controller = "AccountHome", 
+                       action = "Index" 
+                   }));
             }
             else
             {
@@ -306,14 +305,14 @@ namespace BolaoNet.MVC.Controllers
                 return RedirectToAction("Index", "AccountHome", new { area = "Users" });
             }
         }
-
-        
+      
         public ActionResult ConfigCulture(string culture)
         {
 
             base.SetCulture(culture);
             return RedirectToAction("Login");
         }
+
         #endregion
     }
 }

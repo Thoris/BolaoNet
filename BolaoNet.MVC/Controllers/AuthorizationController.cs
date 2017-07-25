@@ -8,7 +8,6 @@ namespace BolaoNet.MVC.Controllers
 { 
     public abstract class AuthorizationController : AuthenticationController
     {
-
         #region Constructors/Destructors
 
         public AuthorizationController()
@@ -29,6 +28,35 @@ namespace BolaoNet.MVC.Controllers
             }
 
             return false;
+        }
+
+        //http://www.dotnettricks.com/learn/mvc/custom-authentication-and-authorization-in-aspnet-mvc
+
+        protected bool IsCheckSelectedBolao(Application.Interfaces.Boloes.IBolaoMembroApp bolaoMembroApp, Application.Interfaces.Boloes.IBolaoApp bolaoApp)
+        {
+            if (string.IsNullOrEmpty(base.SelectedNomeBolao))
+            {
+                IList<Domain.Entities.Boloes.BolaoMembro> list =
+                    bolaoMembroApp.GetListBolaoInUsers(base.UserLogged);
+
+                if (list.Count == 1)
+                {
+                    this.SelectedNomeBolao = list[0].NomeBolao;
+
+                    Domain.Entities.Boloes.Bolao bolaoLoaded = bolaoApp.Load(base.SelectedBolao);
+
+                    this.SelectedNomeCampeonato = bolaoLoaded.NomeCampeonato;
+                    this.IsBolaoIniciado = bolaoLoaded.IsIniciado == true ? true : false;
+
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         #endregion

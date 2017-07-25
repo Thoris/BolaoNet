@@ -25,8 +25,7 @@ namespace BolaoNet.MVC.Security
             var encryptedTicket = FormsAuthentication.Encrypt(authenticationTicket);
             var httpCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
 
-            //if (response != null)
-                response.Cookies.Add(httpCookie);
+            response.Cookies.Add(httpCookie);
 
         }
 

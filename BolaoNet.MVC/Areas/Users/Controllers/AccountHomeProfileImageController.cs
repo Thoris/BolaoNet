@@ -24,7 +24,10 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
 
         #region Constructors/Destructors
 
-        public AccountHomeProfileImageController()
+        public AccountHomeProfileImageController(
+            Application.Interfaces.Boloes.IBolaoApp bolaoApp,
+            Application.Interfaces.Boloes.IBolaoMembroApp bolaoMembroApp)
+            : base (bolaoApp, bolaoMembroApp)
         {            
         }
 

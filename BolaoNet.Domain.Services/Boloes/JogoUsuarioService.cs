@@ -393,8 +393,8 @@ namespace BolaoNet.Domain.Services.Boloes
         }
         public int CalcularPontoSimulation(int gols1, int gols2, int aposta1, int aposta2, int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1, int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, bool isMultiploTime, int multiploTime)
         {
-            int pontosTime1Total = 0;
-            int pontosTime2Total = 0;
+            //int pontosTime1Total = 0;
+            //int pontosTime2Total = 0;
             int pontosTotal = 0;
 
             int countEmpate = 0;	// Se o usuário apostou empate e o jogo deu empate
@@ -416,7 +416,143 @@ namespace BolaoNet.Domain.Services.Boloes
             int countCheio = 0;	// Se acertou em cheio o resultado
 
 
-            throw new NotImplementedException();
+            //-----------------------------------------
+            //Parte 1: Verificando o resultado do jogo
+            //-----------------------------------------
+
+
+            //-----------
+            //Empate
+            //-----------
+            if (gols1 == gols2)
+            {
+                if (aposta1 == aposta2)
+                {
+                    countEmpate = 1;
+                    countVDE = 1;
+
+                    //Se acertou o resultado do ganhador
+                    if (aposta1 == gols1)
+                    {
+                        countGanhador = 1;
+                        countTime1 = 1;
+                        countEmpateGols = 1;
+
+                        countPerdedor = 1;
+                        countTime2 = 1;
+                        countCheio = 1;
+                    }     
+                }
+                else
+                {
+                    countErro = 1;
+
+                }//endif aposta1 == aposta2
+
+            }    
+            //---------------
+            //Time 1 Ganhador
+            //---------------            
+            else if (gols1 > gols2)
+            {
+                if (aposta1 > aposta2)
+                {
+                    countVitoria = 1;
+                    countDerrota = 1;
+                    countVDE = 1;
+
+
+                    if (aposta1 == gols1 && aposta2 == gols2)
+                    {
+                        countCheio = 1;
+                        countGanhadorDentro = 1;
+                        countPerdedorFora = 1;
+                    }
+
+                    if (aposta1 == gols1)
+                    {
+                        countGanhador = 1;
+                        countTime1 = 1;
+                    }
+
+                    if (aposta2 == gols2)
+                    {
+                        countPerdedor = 1;
+                        countTime2 = 1;
+                    }
+                }
+                else
+                {
+                    countErro = 1;
+                }
+            }
+            //---------------
+            //Time 2 Ganhador
+            //--------------- 
+            else if (gols1 < gols2)
+            {
+                if (aposta1 < aposta2)
+                {
+                    countVitoria = 1;
+                    countDerrota = 1;
+                    countVDE = 1;
+
+                    if (aposta1 == gols1 && aposta2 == gols2)
+                    {
+                        countCheio = 1;
+                        countGanhadorFora = 1;
+                        countPerdedorDentro = 1;
+                    }
+
+                    if (aposta1 == gols1)
+                    {
+                        countPerdedor = 1;
+                        countTime1 = 1;
+                    }
+                }
+                else
+                {
+                    countErro = 1;
+                }                      
+            }//endif gols1 == gols2
+
+            //--------------------------------------------------------------
+            // PARTE 2 : Verificando a quantidade de gols do time casa/fora
+            //--------------------------------------------------------------
+            if (gols1 == aposta1)
+            {
+                countGolsTime1 = 1;
+            }
+            if (gols2 == aposta2)
+            {
+                countGolsTime2 = 1;
+            }
+
+            pontosTotal = countEmpate * pontosEmpate +
+                countVitoria * pontosVitoria +
+                countDerrota * pontosDerrota +
+                countGanhador * pontosGanhador +
+                countPerdedor * pontosPerdedor +
+                countTime1 * pontosTime1 +
+                countTime2 * pontosTime2 +
+                countVDE * pontosVDE +
+                countErro * pontosErro +
+                countGanhadorFora * pontosGanhadorFora +
+                countGanhadorDentro * pontosGanhadorDentro +
+                countPerdedorFora * pontosPerdedorFora +
+                countPerdedorDentro * pontosPerdedorDentro +
+                countEmpateGols * pontosEmpateGols +
+                countGolsTime1 * pontosGolsTime1 +
+                countGolsTime2 * pontosGolsTime2 +
+                countCheio * pontosCheio;
+
+            if (isMultiploTime)
+            {
+                pontosTotal *= multiploTime;
+            }
+
+
+            return pontosTotal;
         }
 
         #endregion

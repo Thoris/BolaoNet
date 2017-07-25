@@ -125,6 +125,7 @@
     <Folder Include="InfraCrossCutting\LoggingTests\" />
     <Folder Include="IntegrationTests\" />
     <Folder Include="MvcTests\" />
+    <Folder Include="ServicesTests\" />
     <Folder Include="WebApiIntegrationTests\" />
     <Folder Include="WebApiTests\" />
   </ItemGroup>

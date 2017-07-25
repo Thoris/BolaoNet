@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace BolaoNet.MVC.Controllers
 {
@@ -107,22 +109,20 @@ namespace BolaoNet.MVC.Controllers
 
             if (!IsCheckSelectedCampeonato())
             {
+                //filterContext.Result = new BolaoNet.MVC.Areas.Users.Controllers.UserCampeonatoController
+                //    (
+                //    CampeonatoApp, CampeonatoFaseApp,
+                //     CampeonatoGrupoApp, CampeonatoTimeApp
+                //    ).Index();
 
-                //RouteValueDictionary route = new RouteValueDictionary(new
-                //{
-                //    Area = "Users",
-                //    Controller = "AccountHome",
-                //    Action = "Profile",
-                //});
-
-                //filterContext.Result = new RedirectToRouteResult(route);
-
-                filterContext.Result = new BolaoNet.MVC.Areas.Users.Controllers.UserCampeonatoController
-                    (
-                    CampeonatoApp, CampeonatoFaseApp,
-                     CampeonatoGrupoApp, CampeonatoTimeApp
-                    ).Index();
-
+                filterContext.Result = new RedirectToRouteResult(
+                new RouteValueDictionary(
+                    new
+                    {
+                        controller = "UserCampeonato",
+                        action = "Index",
+                        area = "Users"
+                    }));
                 return;
             }
         }
