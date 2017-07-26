@@ -20,6 +20,9 @@ namespace BolaoNet.MVC.ViewModels.Campeonatos
         {
             get
             {
+                if (string.IsNullOrEmpty(this.NomeTime1))
+                    return "";
+
                 return string.Format(FormatIcon, this.NomeTime1);
                 //if (!string.IsNullOrEmpty (this.NomeTimeResult1))
                 //    return string.Format (FormatIcon, this.NomeTimeResult1);
@@ -33,6 +36,10 @@ namespace BolaoNet.MVC.ViewModels.Campeonatos
         {
             get
             {
+
+                if (string.IsNullOrEmpty(this.NomeTime2))
+                    return "";
+
                 return string.Format(FormatIcon, this.NomeTime2);
                 //if (!string.IsNullOrEmpty (this.NomeTimeResult2))
                 //    return string.Format (FormatIcon, this.NomeTimeResult2);

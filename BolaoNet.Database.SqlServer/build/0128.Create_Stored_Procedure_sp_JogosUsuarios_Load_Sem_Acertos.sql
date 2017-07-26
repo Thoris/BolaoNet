@@ -20,6 +20,11 @@ BEGIN
 
 	SELECT *
   FROM Jogos j
+	 INNER JOIN CampeonatosFases fas
+	    ON j.NomeFase			= fas.Nome
+	 INNER JOIN CampeonatosGrupos grp
+	    ON j.NomeGrupo		= grp.Nome
+
  WHERE j.IsValido		= 1
    AND 0 = (
 			SELECT ISNULL(Count(*), 0) 
@@ -30,7 +35,7 @@ BEGIN
 			   AND u.NomeBolao			= @NomeBolao
 			)
 			
-	ORDER BY Rodada, DataJogo
+	ORDER BY fas.Ordem, grp.ordem, Rodada, DataJogo
 
 
 

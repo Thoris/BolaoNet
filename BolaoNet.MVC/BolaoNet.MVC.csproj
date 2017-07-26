@@ -201,6 +201,7 @@
     <Compile Include="Helpers\CampeonatoDataLoader.cs" />
     <Compile Include="Helpers\ColorPontosHelper.cs" />
     <Compile Include="Helpers\CultureHelper.cs" />
+    <Compile Include="Helpers\CustomHandleErrorAttribute.cs" />
     <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Helpers\PersistenceProviders\PersistenceProvider.cs" />

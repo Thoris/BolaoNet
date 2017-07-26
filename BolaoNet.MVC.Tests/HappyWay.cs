@@ -528,7 +528,8 @@ namespace BolaoNet.MVC.Tests
                         campeonatoApp,
                         campeonatoFaseApp,
                         campeonatoGrupoApp,
-                        campeonatoTimeApp);
+                        campeonatoTimeApp,
+                        bolaoPremioApp);
 
                 Mocks.MvcMockHelpers.SetMockControllerContext(jogoResultadoController, userAdmin);
 
@@ -557,7 +558,9 @@ namespace BolaoNet.MVC.Tests
                         campeonatoApp,
                         campeonatoFaseApp,
                         campeonatoGrupoApp,
-                        campeonatoTimeApp);
+                        campeonatoTimeApp, 
+                        bolaoCriterioPontosApp,
+                        bolaoCriterioPontosTimesApp);
 
 
                 Mocks.MvcMockHelpers.SetMockControllerContext(apostasJogoController, userAdmin);

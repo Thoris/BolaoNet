@@ -12,7 +12,8 @@ namespace BolaoNet.MVC.ViewModels.Bolao
         
         public IList<ApostasExtrasEntryViewModel> ApostasExtras { get; set; }
         public IList<ApostasExtrasUsuarioEntryViewModel> ApostasUsuarios { get; set; }
-        
+        public IList<ApostasExtrasEntryViewModel> Simulacao { get; set; }
+
         #endregion
     }
 }

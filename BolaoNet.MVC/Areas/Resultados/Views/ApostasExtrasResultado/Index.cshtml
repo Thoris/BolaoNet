@@ -36,7 +36,7 @@
 
                                             <tr>
                                                 <td>@Model[c].Titulo</td>
-                                                <td>@Html.DropDownListFor(x => x[c].NomeTimeValidado, new SelectList(ViewBag.Times, Model[c].NomeTimeValidado), 
+                                                <td>@Html.DropDownListFor(x => x[c].NomeTimeValidado, new SelectList(ViewBag.Times, Model[c].NomeTimeValidado), "-- Selecione --",
                                                 new { @class = "form-control input-sm", @id = "Time" + (c+1).ToString(), @name = "Time" + (c+1).ToString() })</td>
                                                 <td>
                                                     @if(Model[c].SalvarNomeTime == null)

@@ -8,5 +8,6 @@ namespace BolaoNet.Domain.Interfaces.Repositories.Boloes
 {
     public interface IBolaoPremioDao
     {
+        IList<Entities.Boloes.BolaoPremio> GetPremiosBolao(string currentUserName, DateTime currentDateTime, Entities.Boloes.Bolao bolao);
     }
 }

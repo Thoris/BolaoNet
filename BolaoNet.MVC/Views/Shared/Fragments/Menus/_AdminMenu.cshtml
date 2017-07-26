@@ -16,8 +16,7 @@
     {  @Html.Raw("class=\"active\"")  }>    
     <a href="/GrupoPonto/Grupos"><i class="fa fa-users"></i> <span class="nav-label">Admin</span> <span class="fa arrow"></span></a>
     <ul class="nav nav-second-level collapse">
-        <li @if (string.Compare(controllerAction, "Index", true) == 0 &&
-                string.Compare(controllerName, "ApostasExtrasResultados", true) == 0 &&
+        <li @if (string.Compare(controllerName, "ApostasExtrasResultados", true) == 0 &&
                 string.Compare(controllerArea, "Resultados", true) == 0)
             { @Html.Raw("class=\"active\"")  }>
             <a href="/Resultados/ApostasExtrasResultado/Index" onclick="javascript:showWait();">Apostas Extras</a>

@@ -10,6 +10,9 @@ namespace BolaoNet.MVC.ViewModels.Bolao
     {
         #region Properties
 
+        public string ForeColorName { get; set; }
+        public string BackColorName { get; set; }
+
         public string NomeBolao { get; set; }
         public string UserName { get; set; }
 

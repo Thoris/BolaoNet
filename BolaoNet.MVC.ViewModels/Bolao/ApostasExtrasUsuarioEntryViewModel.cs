@@ -13,6 +13,7 @@ namespace BolaoNet.MVC.ViewModels.Bolao
         public string UserName { get; set; }
         public string FullName { get; set; }
         public int Posicao { get; set; }
+        public int LastPosicao { get; set; }
         public int TotalPontosClassificacao { get; set; }
         public int Pontos { get; set; }
         public IList<ApostasExtrasUsuariosPontosViewModel> Apostas { get; set; }

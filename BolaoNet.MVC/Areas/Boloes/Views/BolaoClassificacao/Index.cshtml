@@ -1,4 +1,4 @@
-﻿@model IList<BolaoNet.MVC.ViewModels.Bolao.ClassificacaoViewModel>
+﻿@model BolaoNet.MVC.ViewModels.Bolao.BolaoClassificacaoViewModel
 @{
     ViewBag.Title = "Classificação do Bolão";
     BolaoNet.MVC.Controllers.AuthorizationController homeController =
@@ -36,44 +36,69 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @for (int c = 0; c < Model.Count; c++)
+                                        @for (int c = 0; c < Model.Classificacao.Count; c++)
                                         {
                                             <tr
-                                                @if (string.Compare(userNameLogged, Model[c].UserName, true) == 0)
+                                                @if (string.Compare(userNameLogged, Model.Classificacao[c].UserName, true) == 0)
                                                 {
                                                     @Html.Raw("class=\"info\"");
                                                 }                                                
                                                 >
-                                                <td>@Model[c].Posicao</td>
+                                                @*<td @if (Model.Classificacao[c].BackColorName != null) { @Html.Raw("bgcolor=\"" + Model.Classificacao[c].BackColorName + "\" ") ; }
+                                                    @if (Model.Classificacao[c].ForeColorName != null) { @Html.Raw("color=\"" + Model.Classificacao[c].ForeColorName + "\"") ; }>
+                                                    @Model.Classificacao[c].Posicao
+                                                </td>*@
                                                 <td>
-                                                    @if(Model[c].Posicao == Model[c].LastPosicao)
+                                                     @if (Model.Classificacao[c].BackColorName != null)
+                                                     {
+
+                                                        <i class="fa fa-usd" style="color:@(Model.Classificacao[c].ForeColorName)" aria-hidden="true"></i>
+                                                        <strong style="color:@(Model.Classificacao[c].BackColorName)">@(Model.Classificacao[c].Posicao)</strong>
+                                                     }
+                                                     else
+                                                     {
+                                                         if (c == Model.Classificacao.Count - 1)
+                                                         {
+                                                            <i class="fa fa-ambulance" style="color:black" aria-hidden="true"></i>
+                                                            <strong style="color:black">@(Model.Classificacao[c].Posicao)</strong>
+                                                     
+                                                         }
+                                                         else 
+                                                         { 
+                                                            <strong>@Model.Classificacao[c].Posicao</strong>
+                                                         }
+                                                     }
+                                                </td>
+
+                                                <td>
+                                                    @if (Model.Classificacao[c].Posicao == Model.Classificacao[c].LastPosicao)
                                                     {
                                                         @Html.Raw("<span class=\"glyphicon glyphicon-stop black\">&nbsp;&nbsp;</span>");
                                                     }
-                                                    else if (Model[c].Posicao < Model[c].LastPosicao )
+                                                    else if (Model.Classificacao[c].Posicao < Model.Classificacao[c].LastPosicao)
                                                     {
-                                                        @Html.Raw("<span class=\"glyphicon glyphicon-arrow-up blue\">&nbsp;" + (Model[c].LastPosicao - Model[c].Posicao) + "</span>");
+                                                        @Html.Raw("<span class=\"glyphicon glyphicon-arrow-up blue\">&nbsp;" + (Model.Classificacao[c].LastPosicao - Model.Classificacao[c].Posicao) + "</span>");
 
                                                     }
                                                     else
                                                     {
                                                         @*<span class="glyphicon glyphicon-arrow-down ">*@
-                                                        @Html.Raw("<span style=\"color:red\" class=\"glyphicon glyphicon-arrow-down \">&nbsp;" + (Model[c].Posicao - Model[c].LastPosicao) + "</span>");
+                                                        @Html.Raw("<span style=\"color:red\" class=\"glyphicon glyphicon-arrow-down \">&nbsp;" + (Model.Classificacao[c].Posicao - Model.Classificacao[c].LastPosicao) + "</span>");
                                                     }
                                                     
                                                 </td>
-                                                <td>@Model[c].UserName</td>
+                                                <td>@Model.Classificacao[c].UserName</td>
                                                 <td>
-                                                    <img class="img-username" src="/Content/img/database/profiles/@(Model[c].UserName).gif" />
+                                                    <img class="img-username" src="/Content/img/database/profiles/@(Model.Classificacao[c].UserName).gif?time=@(DateTime.Now)" />
                                                 </td>
-                                                <td>@Model[c].FullName</td>
-                                                <td>@Model[c].TotalPontos</td>
-                                                <td>@Model[c].TotalEmpate</td>
-                                                <td>@Model[c].TotalVDE</td>
-                                                <td>@Model[c].TotalGolsTime1</td>
-                                                <td>@Model[c].TotalGolsTime2</td>
-                                                <td>@Model[c].TotalPlacarCheio</td>
-                                                <td>@Model[c].TotalApostaExtra</td>
+                                                <td>@Model.Classificacao[c].FullName</td>
+                                                <td>@Model.Classificacao[c].TotalPontos</td>
+                                                <td>@Model.Classificacao[c].TotalEmpate</td>
+                                                <td>@Model.Classificacao[c].TotalVDE</td>
+                                                <td>@Model.Classificacao[c].TotalGolsTime1</td>
+                                                <td>@Model.Classificacao[c].TotalGolsTime2</td>
+                                                <td>@Model.Classificacao[c].TotalPlacarCheio</td>
+                                                <td>@Model.Classificacao[c].TotalApostaExtra</td>
                                             </tr>
                                         }
                                     </tbody>
@@ -97,6 +122,16 @@
                         </div>
                     </div>
                 </div>
+                @*<div class="ibox float-e-margins">
+                    <div class="ibox-content" style="display: block;">
+                        <div class="text-center m-t-lg">
+                            @for(int c=0; c < Model.Premios.Count; c++)
+                            {
+                                
+                            }
+                        </div>
+                    </div>
+                </div>*@
             </div>
         </div>
     </div>

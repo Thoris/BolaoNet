@@ -41,5 +41,14 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
 
         #endregion
+
+        #region IBolaoPremioService members
+
+        public IList<Domain.Entities.Boloes.BolaoPremio> GetPremiosBolao(Domain.Entities.Boloes.Bolao bolao)
+        {
+            return Service.GetPremiosBolao(bolao);
+        }
+
+        #endregion
     }
 }

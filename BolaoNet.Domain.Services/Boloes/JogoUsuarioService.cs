@@ -554,10 +554,25 @@ namespace BolaoNet.Domain.Services.Boloes
 
             return pontosTotal;
         }
+        public IList<Entities.Boloes.JogoUsuario> Simulate(IList<Entities.Boloes.JogoUsuario> apostas, int gols1, int gols2, int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1, int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, bool isMultiploTime, int multiploTime)
+        {
+            if (apostas == null)
+                throw new ArgumentException("apostas");
 
-        #endregion
+            for (int c= 0; c < apostas.Count; c++)
+            {
+                int pontos = CalcularPontoSimulation(gols1, gols2, (int)apostas[c].ApostaTime1, (int)apostas[c].ApostaTime2,
+                    pontosEmpate, pontosVitoria, pontosDerrota, pontosGanhador, pontosPerdedor,
+                    pontosTime1, pontosTime2, pontosVDE, pontosErro, pontosGanhadorFora,
+                    pontosGanhadorDentro, pontosPerdedorFora, pontosPerdedorDentro, pontosEmpateGols,
+                    pontosGolsTime1, pontosGolsTime2, pontosCheio, isMultiploTime, multiploTime);
 
+                apostas[c].Pontos = pontos;
+            }
 
-
+            return apostas;
+        }
+    
+        #endregion    
     }
 }

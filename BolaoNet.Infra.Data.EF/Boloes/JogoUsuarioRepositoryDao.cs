@@ -1367,7 +1367,7 @@ namespace BolaoNet.Infra.Data.EF.Boloes
 
                 where string.Compare(u.UserName, user.UserName, true) == 0 &&
                  j.IsValido == false
-                orderby j.DataJogo descending
+                orderby j.DataJogo
                 select new Domain.Entities.ValueObjects.JogoUsuarioVO()
                 {
                     NomeCampeonato = j.NomeCampeonato,

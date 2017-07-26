@@ -235,7 +235,7 @@
                                             >                               
                                             <td>@Html.DisplayFor(x=>x.StatusMembros[c].UserName)</td>
                                             <td>
-                                                <img class="img-username" src="/Content/img/database/profiles/@(Model.StatusMembros[c].UserName).gif" />
+                                                <img class="img-username" src="/Content/img/database/profiles/@(Model.StatusMembros[c].UserName).gif?time=@(DateTime.Now)" />
                                             </td>
                                             <td>@Model.StatusMembros[c].FullName</td>
                                             <td>@Model.StatusMembros[c].Email</td>

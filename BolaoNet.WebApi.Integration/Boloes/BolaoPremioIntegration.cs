@@ -32,5 +32,14 @@ namespace BolaoNet.WebApi.Integration.Boloes
         }
 
         #endregion
+
+        #region IBolaoPremioService members
+        
+        public IList<Domain.Entities.Boloes.BolaoPremio> GetPremiosBolao(Domain.Entities.Boloes.Bolao bolao)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

@@ -5,6 +5,14 @@
     string currentGrupo = "";
     string currentFase = "";
     bool isGrouped = false;
+
+    bool usuarioResultado = false;
+
+    BolaoNet.MVC.Controllers.AuthorizationController homeController =
+        ViewContext.Controller as BolaoNet.MVC.Controllers.AuthorizationController;
+
+    usuarioResultado = true;
+    //usuarioResultado = homeController.IsUserInRole(BolaoNet.MVC.Security.PermissionLevel.GerenciadorResultados);
 }
 
 <table class="table table-hover">
@@ -53,7 +61,7 @@
         <th scope="row">@(Model.Jogos[c].JogoId)</th>
         <td>@(Model.Jogos[c].DataJogo.ToString("dd/MM/yy HH:mm"))</td>
         <td>@(Model.Jogos[c].NomeEstadio)</td>
-        <td class="text-right">@(Model.Jogos[c].NomeTime1)</td>
+        <td class="text-right">@(Model.Jogos[c].NomeTime1 ?? Model.Jogos[c].DescricaoTime1)</td>
         <td><img src="@(Model.Jogos[c].ImageTime1)" /></td>
 
         @if (Model.Jogos[c].IsLocked)
@@ -91,7 +99,7 @@
         }
 
         <td><img src="@(Model.Jogos[c].ImageTime2)" /></td>
-        <td class="text-left">@(Model.Jogos[c].NomeTime2)</td>
+        <td class="text-left">@(Model.Jogos[c].NomeTime2 ?? Model.Jogos[c].DescricaoTime2)</td>
         @*<td>
             @if (Model.Jogos[c].Automatico == 1)
             {
@@ -104,9 +112,13 @@
                         <i class="icon-user"></i>
                     </button>*@
 
-                    <a href="@Url.Action("Index", "JogoResultado", new { area = "Resultados", id = @Model.Jogos[c].JogoId })">
-                        <span class="fa fa-check-square-o fa-lg"></span>
-                    </a>
+                    @if (usuarioResultado == true)
+                    { 
+
+                        <a href="@Url.Action("Index", "JogoResultado", new { area = "Resultados", id = @Model.Jogos[c].JogoId })">
+                            <span class="fa fa-check-square-o fa-lg"></span>
+                        </a>
+                    }
             </td>
         </tr>
         }      

@@ -56,7 +56,12 @@ namespace BolaoNet.Domain.Interfaces.Services.Boloes
             int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, 
             int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1, 
             int pontosGolsTime2, int pontosCheio, bool isMultiploTime, int multiploTime);
-        
 
+
+        IList<Entities.Boloes.JogoUsuario> Simulate(IList<Entities.Boloes.JogoUsuario> apostas, int gols1, int gols2,
+            int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1,
+            int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro,
+            int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1,
+            int pontosGolsTime2, int pontosCheio, bool isMultiploTime, int multiploTime);
     }
 }

@@ -96,7 +96,11 @@ BEGIN
 	 INNER JOIN Jogos jog
 		ON usu.NomeCampeonato	= jog.NomeCampeonato
 	   AND usu.JogoID			= jog.JogoId
-	 ORDER BY jog.Rodada, jog.JogoId
+	 INNER JOIN CampeonatosFases fas
+	    ON jog.NomeFase			= fas.Nome
+	 INNER JOIN CampeonatosGrupos grp
+	    ON jog.NomeGrupo		= grp.Nome
+	 ORDER BY fas.Ordem, grp.ordem, jog.Rodada, jog.JogoId
 
 
 	 

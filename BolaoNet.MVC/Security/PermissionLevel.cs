@@ -6,9 +6,9 @@ using System.Web;
 namespace BolaoNet.MVC.Security
 {
     [Flags]
-    public enum PermissionLevel
+    public enum PermissionLevel : int
     {
-        Administrador,
+        Administrador = 0,
         Apostador,
         Convidado,
         GerenciadorAvisos,

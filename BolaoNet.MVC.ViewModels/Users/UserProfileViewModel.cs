@@ -43,12 +43,25 @@ namespace BolaoNet.MVC.ViewModels.Users
         [DisplayName("Quero receber emails")]
         public bool ReceiveEmails { get; set; }
 
+        [DisplayName("Celular")]
         public string CellPhone { get; set; }
+        
+        [DisplayName("Cidade")]
         public string City { get; set; }
+        
+        [DisplayName("País")]
         public string Country { get; set; }
+
+        [DisplayName("Estado")]        
         public string State { get; set; }
+
+        [DisplayName("Rua")]        
         public string Street { get; set; }
+
+        [DisplayName("Num.")]        
         public int? StreetNumber { get; set; }
+
+        [DisplayName("CEP")]        
         public string PostalCode { get; set; }
 
 

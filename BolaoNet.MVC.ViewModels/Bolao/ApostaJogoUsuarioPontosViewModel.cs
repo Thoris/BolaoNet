@@ -16,6 +16,7 @@ namespace BolaoNet.MVC.ViewModels.Bolao
 
         #region Properties
 
+        public int LastPosicao { get; set; }
         public int Posicao { get; set; }
         public int AlteracaoPosicao { get; set; }
         public int TotalPontosClassificacao { get; set; }

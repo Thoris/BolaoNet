@@ -42,11 +42,11 @@
                                 </h3>
                             </div>
                             <div class="form-group col-md-1 col-sm-1 ">
-                                <img src="@(Model.ImageTime1)" width="100%" />
+                                <img src="@(Model.ImageTime1)" @*width="100%"*@ />
                             </div>
                             <div class="form-group col-md-2 col-sm-2 text-center">
                                 <h1><strong>
-                                    @if (Model.GolsTime1 != null)
+                                    @if (Model.IsValido == true)
                                     {
                                         @Html.Raw(Model.GolsTime1.ToString());
                                     }
@@ -62,7 +62,7 @@
                             </div>
                             <div class="form-group col-md-2 col-sm-2 text-center">
                                 <h1><strong>
-                                    @if (Model.GolsTime2 != null)
+                                    @if (Model.IsValido == true)
                                     {
                                         @Html.Raw(Model.GolsTime2.ToString());
                                     }
@@ -74,7 +74,7 @@
                                 </h1>
                             </div>
                             <div class="form-group col-md-1 col-sm-1">
-                                <img src="@(Model.ImageTime2)" width="100%" />
+                                <img src="@(Model.ImageTime2)" @*width="100%"*@ />
                             </div>
                             <div class="form-group col-md-2 col-sm-2">
                                 <h3>
@@ -204,13 +204,12 @@
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <td class="text-center">Pos</td>                                         
+                                            <td class="text-center">Pos</td>   
+                                            <td></td>                                      
                                             <td class="text-center">PTG</td>   
                                             <td></td>                                        
                                             <td class="text-center">Usuário</td>                                             
-                                            <td class="text-center">Gols T1</td>
-                                            <td class="text-center">x</td>
-                                            <td class="text-center">Gols T2</td>
+                                            <td colspan="3" class="text-center">Apostas</td>
                                             <td class="text-center">PT</td>
                                             <td class="text-center">Extra</td>
                                             <td class="text-center"></td>
@@ -226,10 +225,30 @@
                                                     @Html.Raw("class=\"info\"");
                                                 }                                                                                                
                                                 >
-                                                <td class="text-center">@Model.Apostas[c].Posicao</td>                                                
+                                                <td class="text-center">@Model.Apostas[c].Posicao</td>     
+                                                <td>
+                                                    @if(Model.Apostas[c].LastPosicao != 0)
+                                                    {
+                                                        if(Model.Apostas[c].Posicao == Model.Apostas[c].LastPosicao)
+                                                        {
+                                                            @Html.Raw("<span class=\"glyphicon glyphicon-stop black\">&nbsp;&nbsp;</span>");
+                                                        }
+                                                        else if (Model.Apostas[c].Posicao < Model.Apostas[c].LastPosicao)
+                                                        {
+                                                            @Html.Raw("<span class=\"glyphicon glyphicon-arrow-up blue\">&nbsp;" + (Model.Apostas[c].LastPosicao - Model.Apostas[c].Posicao) + "</span>");
+
+                                                        }
+                                                        else
+                                                        {
+                                                            @*<span class="glyphicon glyphicon-arrow-down ">*@
+                                                            @Html.Raw("<span style=\"color:red\" class=\"glyphicon glyphicon-arrow-down \">&nbsp;" + (Model.Apostas[c].Posicao - Model.Apostas[c].LastPosicao) + "</span>");
+                                                        }
+                                                    }
+                                                    
+                                                </td>                                         
                                                 <td class="text-center">@Model.Apostas[c].TotalPontosClassificacao</td>
                                                 <td>
-                                                    <img class="img-username" src="/Content/img/database/profiles/@(Model.Apostas[c].UserName).gif" />
+                                                    <img class="img-username" src="/Content/img/database/profiles/@(Model.Apostas[c].UserName).gif?time=@(DateTime.Now)" />
                                                 </td>
                                                 <td class="text-center">@Model.Apostas[c].UserName</td>
                                                 <td class="text-center"><strong>@Model.Apostas[c].ApostaTime1</strong></td>

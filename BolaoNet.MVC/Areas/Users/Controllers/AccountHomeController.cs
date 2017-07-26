@@ -91,6 +91,9 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
                     IList<Domain.Entities.ValueObjects.BolaoGrupoComparacaoClassificacaoVO> listClassificacao =
                         _bolaoMembroGrupoApp.LoadClassificacao(base.SelectedBolao, base.UserLogged);
 
+                    listClassificacao = listClassificacao.OrderByDescending(x => x.TotalPontos).ToList();
+
+
                     model.ComparacaoMembros =
                         Mapper.Map<
                         IList<Domain.Entities.ValueObjects.BolaoGrupoComparacaoClassificacaoVO>,

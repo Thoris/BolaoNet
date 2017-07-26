@@ -74,6 +74,9 @@ namespace BolaoNet.MVC.AutoMapper
 
             Mapper.CreateMap<Domain.Entities.Users.User, ViewModels.Users.UserProfileViewModel>();
             Mapper.CreateMap<Domain.Entities.Boloes.Pagamento, ViewModels.Pagamentos.PagamentoViewModel>();
+
+
+            Mapper.CreateMap<Domain.Entities.Boloes.BolaoPremio, ViewModels.Bolao.PremioViewModel>();
         }
     }
 }
