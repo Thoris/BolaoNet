@@ -32,7 +32,8 @@ namespace BolaoNet.MVC.ViewModels.Pagamentos
         [DisplayName("Forma de pagamento")]
         public string TipoPagamentoDescricao { get; set; }
 
-        [DataType(DataType.Currency, ErrorMessage = "O campo precisa ser um valor decimal")]        
+        [DataType(DataType.Currency, ErrorMessage = "O campo precisa ser um valor decimal")]
+        [DisplayFormat(DataFormatString = "{0:F2}", ApplyFormatInEditMode = true)]
         [DisplayName("Valor pago")]        
         public decimal? Valor { get; set; }
 

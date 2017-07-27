@@ -66,7 +66,7 @@
 
         @if (Model.Jogos[c].IsLocked)
         {
-            if (Model.Jogos[c].GolsTime1 != null)
+            if (Model.Jogos[c].GolsTime1 != null && Model.Jogos[c].IsValido == false)
             {
                 <td>@(Model.Jogos[c].GolsTime1)</td>
             }
@@ -77,14 +77,21 @@
         }
         else
         {
-            <td>@(Model.Jogos[c].GolsTime1)</td>
+            if(Model.Jogos[c].IsValido == false)
+            {
+                <td></td>   
+            }
+            else
+            {            
+                <td>@(Model.Jogos[c].GolsTime1)</td>
+            }
         }
         @Html.HiddenFor(x => x.Jogos[c].GolsTime1)
         <td>x</td>
         @Html.HiddenFor(x => x.Jogos[c].GolsTime2)
         @if (Model.Jogos[c].IsLocked)
         {
-            if (Model.Jogos[c].GolsTime2 != null)
+            if (Model.Jogos[c].GolsTime2 != null && Model.Jogos[c].IsValido == false)
             {
                 <td>@(Model.Jogos[c].GolsTime2)</td>
             }
@@ -95,7 +102,14 @@
         }
         else
         {
-            <td>@(Model.Jogos[c].GolsTime2)</td>
+            if (Model.Jogos[c].IsValido == false)
+            {
+                <td></td>
+            }
+            else
+            {
+                <td>@(Model.Jogos[c].GolsTime2)</td>
+            }
         }
 
         <td><img src="@(Model.Jogos[c].ImageTime2)" /></td>

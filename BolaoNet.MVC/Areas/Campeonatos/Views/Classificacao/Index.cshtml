@@ -47,18 +47,21 @@
                                                 @Model[c].Posicoes[l].Posicao
                                             </td>
                                             <td>
-                                                @if (Model[c].Posicoes[l].Posicao == Model[c].Posicoes[l].LastPosicao)
-                                                {
-                                                    @Html.Raw("<span class=\"glyphicon glyphicon-stop black\">&nbsp;&nbsp;</span>");
-                                                }
-                                                else if (Model[c].Posicoes[l].Posicao < Model[c].Posicoes[l].LastPosicao)
-                                                {
-                                                    @Html.Raw("<span class=\"glyphicon glyphicon-arrow-up blue\">&nbsp;" + (Model[c].Posicoes[l].LastPosicao - Model[c].Posicoes[l].Posicao) + "</span>");
+                                                @if (Model[c].Posicoes[l].LastPosicao != 0 && Model[c].Posicoes[l].LastPosicao != null)
+                                                {                                                     
+                                                    if (Model[c].Posicoes[l].Posicao == Model[c].Posicoes[l].LastPosicao)
+                                                    {
+                                                        @Html.Raw("<span class=\"glyphicon glyphicon-stop black\">&nbsp;&nbsp;</span>");
+                                                    }
+                                                    else if (Model[c].Posicoes[l].Posicao < Model[c].Posicoes[l].LastPosicao)
+                                                    {
+                                                        @Html.Raw("<span class=\"glyphicon glyphicon-arrow-up blue\">&nbsp;" + (Model[c].Posicoes[l].LastPosicao - Model[c].Posicoes[l].Posicao) + "</span>");
 
-                                                }
-                                                else
-                                                {
-                                                    @Html.Raw("<span style=\"color:red\" class=\"glyphicon glyphicon-arrow-down \">&nbsp;" + (Model[c].Posicoes[l].Posicao - Model[c].Posicoes[l].LastPosicao) + "</span>");
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.Raw("<span style=\"color:red\" class=\"glyphicon glyphicon-arrow-down \">&nbsp;" + (Model[c].Posicoes[l].Posicao - Model[c].Posicoes[l].LastPosicao) + "</span>");
+                                                    }
                                                 }
                                             </td>
                                             <td><img src="@Model[c].Posicoes[l].ImageTime" /></td>

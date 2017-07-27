@@ -88,7 +88,7 @@ namespace BolaoNet.MVC.Resources.Views.Shared.Fragments {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to BOLAONET.
+        ///   Looks up a localized string similar to BNet.
         /// </summary>
         public static string LogoElement {
             get {
