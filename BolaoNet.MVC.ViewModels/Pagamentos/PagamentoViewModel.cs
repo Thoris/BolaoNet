@@ -22,7 +22,7 @@ namespace BolaoNet.MVC.ViewModels.Pagamentos
 
         [Required(ErrorMessage = "O campo Data de Pagamento precisa ser preenchido.")]
         [DataType(DataType.Date, ErrorMessage = "O campo precisa ser uma data")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = false)]
         [DisplayName("Data de Pagamento")]
         public DateTime ? DataPagamento { get; set; }
 

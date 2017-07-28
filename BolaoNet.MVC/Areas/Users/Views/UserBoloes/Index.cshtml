@@ -16,10 +16,12 @@
 
                         @if(!string.IsNullOrEmpty (Model.BolaoSelecionado))
                         {
-                            <div>
+                            @*<div>
                                 <img src="yourImageSource" style="vertical-align: middle; width: 30px;"> 
                                 @Model.BolaoSelecionado
-                            </div>
+                            </div>*@
+
+                            <button class="btn btn-w-m btn-grupomedicao" type="button">@Model.BolaoSelecionado</button>
                         }
                     
                     </div>
@@ -37,12 +39,16 @@
                         <p>
                             @for (int c = 0; c < Model.BoloesList.Count; c++ )
                             { 
-                                <div>
+                                @*<div>
                                     <a href="@Url.Action("Selecionar", "UserBoloes", new { nomeBolao = @Model.BoloesList[c] })">
                                          <img src=""  style="vertical-align: middle; width: 30px;"> @Model.BoloesList[c]
                                     </a> 
-                                </div>
+                                </div>*@
+
+                                <a href="@Url.Action("Selecionar", "UserBoloes", new { nomeBolao = @Model.BoloesList[c] })" class="btn btn-w-m btn-grupomedicao" type="button">@Model.BoloesList[c]</a>
+
                             }
+
                             @*<a href="grupos-medicao.html"><button class="btn btn-w-m btn-grupomedicao" type="button">ANEEL</button></a>
                             <a href="grupos-medicao.html"><button class="btn btn-w-m btn-grupomedicao" type="button">CHIP GERAL</button></a>
                             <a href="grupos-medicao.html"><button class="btn btn-w-m btn-grupomedicao" type="button">CLIENTES GERAÇÃO</button></a>

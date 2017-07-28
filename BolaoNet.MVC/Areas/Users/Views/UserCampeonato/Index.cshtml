@@ -15,10 +15,12 @@
                         
                         @if (!string.IsNullOrEmpty(Model.CampeonatoSelecionado))
                         {
-                            <div>
+                            <button class="btn btn-w-m btn-grupomedicao" type="button">@Model.CampeonatoSelecionado</button>
+                            
+                            @*<div>
                                 <img src="yourImageSource" style="vertical-align: middle; width: 30px;">
                                 @Model.CampeonatoSelecionado
-                            </div>
+                            </div>*@
                         }
 
                     </div>
@@ -36,11 +38,14 @@
                         <p>
                             @for (int c = 0; c < Model.CampeonatosList.Count; c++)
                             {
-                                <div>
+                                @*<div>
                                     <a href="@Url.Action("Selecionar", "UserBoloes", new { nomeBolao = @Model.CampeonatosList[c] })">
                                         <img src="yourImageSource" style="vertical-align: middle; width: 30px;"> @Model.CampeonatosList[c]
                                     </a>
-                                </div>
+                                </div>*@
+
+                                 <a href="@Url.Action("Selecionar", "UserCampeonato", new { nomeBolao = @Model.CampeonatosList[c] })" class="btn btn-w-m btn-grupomedicao" type="button">@Model.CampeonatosList[c]</a>
+
                             }
                             
                         </p>

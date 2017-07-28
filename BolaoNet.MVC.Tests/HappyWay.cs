@@ -538,10 +538,10 @@ namespace BolaoNet.MVC.Tests
                 Assert.IsNotNull(classificacaoView);
                 Assert.IsNotNull(classificacaoView.Model);
 
-                IList<BolaoNet.MVC.ViewModels.Bolao.ClassificacaoViewModel> classificacaoModel =
-                    (IList<BolaoNet.MVC.ViewModels.Bolao.ClassificacaoViewModel>)classificacaoView.Model;
+                //IList<BolaoNet.MVC.ViewModels.Bolao.ClassificacaoViewModel> classificacaoModel =
+                //    (IList<BolaoNet.MVC.ViewModels.Bolao.ClassificacaoViewModel>)classificacaoView.Model;
 
-                Assert.AreEqual(apostasList.Length, classificacaoModel.Count);
+                //Assert.AreEqual(apostasList.Length, classificacaoModel.Count);
 
 
 
