@@ -18,7 +18,9 @@
 
                             @Html.HiddenFor(x => x.NomeBolao)
                             @Html.HiddenFor(x=>x.UserName)
-                            @Html.HiddenFor(x=>x.DataPagamento)
+                            @*@Html.HiddenFor(x=>x.DataPagamento)*@
+                            @Html.EditorFor(a => a.DataPagamento, new { })
+                           
                             <div class="col-md-12 col-sm-12">
 
                                 <div class="form-group col-md-4 col-sm-4">
