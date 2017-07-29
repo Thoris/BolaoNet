@@ -47,8 +47,19 @@ namespace BolaoNet.Domain.Services.Campeonatos
             if (string.IsNullOrEmpty(grupo.Nome))
                 throw new ArgumentException("grupo.Nome");
 
+            if (IsSaveLog)
+                CheckStart();
 
-            return Dao.LoadClassificacao(base.CurrentUserName, DateTime.Now, campeonato, fase, grupo, rodada);
+            IList<Entities.Campeonatos.CampeonatoClassificacao> res =
+                Dao.LoadClassificacao(base.CurrentUserName, DateTime.Now, campeonato, fase, grupo, rodada);
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Carregamento da classificação do campeonato [" + campeonato.Nome + "] fase [" + fase.Nome + "] grupo [" + grupo.Nome + "] rodada [" + rodada + "] total " + res.Count));
+            }
+
+            return res;
         }
 
         #endregion

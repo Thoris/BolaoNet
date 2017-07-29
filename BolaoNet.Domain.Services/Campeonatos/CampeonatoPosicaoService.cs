@@ -44,7 +44,20 @@ namespace BolaoNet.Domain.Services.Campeonatos
             else if (string.IsNullOrEmpty(fase.Nome))
                 throw new ArgumentException("fase.Nome");
 
-            return Dao.GetPosicao(base.CurrentUserName, DateTime.Now, campeonato, fase);
+            if (IsSaveLog)
+                CheckStart();
+            
+            
+            IList<Entities.Campeonatos.CampeonatoPosicao> res =
+                Dao.GetPosicao(base.CurrentUserName, DateTime.Now, campeonato, fase);
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Buscando posições do campeonato [" + campeonato.Nome + "] fase [" + fase.Nome + "] total: " + res.Count));
+            }
+
+            return res;
 
         }
 

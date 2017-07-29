@@ -21,6 +21,10 @@ namespace BolaoNet.MVC
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             AutoMapperConfig.RegisterMappings();
+
+
+            //log4net.Config.XmlConfigurator.Configure();
+            //new Infra.CrossCutting.Logging.Logger().Configure("log4net.config");
         }
 
         protected void Application_PostAuthenticateRequest(Object sender, EventArgs e)

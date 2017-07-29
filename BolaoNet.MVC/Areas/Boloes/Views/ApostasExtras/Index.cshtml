@@ -49,7 +49,7 @@
                                                 }
                                                 else
                                                 {
-                                                    @Html.Raw(Model.ApostasExtras[c].NomeTimeValidado);
+                                                    @Html.Raw(Model.ApostasExtras[c].NomeTimeValidado);                                                    
                                                 }
                                                 </td>
                                                 <td>
@@ -111,6 +111,7 @@
                                                 @if (Model.ApostasExtras[c].IsValido == true)
                                                 {
                                                     @Html.DisplayTextFor( x => x.ApostasExtras[c].NomeTimeValidado )
+                                                    @Html.HiddenFor( x => x.ApostasExtras[c].NomeTimeValidado )
                                                 }
                                                 else
                                                 { 

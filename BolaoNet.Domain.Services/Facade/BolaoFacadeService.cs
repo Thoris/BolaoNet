@@ -32,9 +32,6 @@ namespace BolaoNet.Domain.Services.Facade
 
         public IList<Entities.Boloes.JogoUsuario> InsertJogoUsuario(Entities.Users.User user, Entities.Boloes.Bolao bolao, Entities.Campeonatos.Jogo jogo, int automatico, int time1, int time2, int? penaltis1, int? penaltis2)
         {
-
-
-
             _jogoUsuarioBO.ProcessAposta(bolao, user, jogo, automatico, time1, time2, penaltis1, penaltis2, null);
 
             return null;
@@ -90,9 +87,5 @@ namespace BolaoNet.Domain.Services.Facade
 
 
         #endregion
-
-
-
-
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BolaoNet.Domain.Interfaces.Services.Logging;
+using BolaoNet.Domain.Services.Base;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Domain.Services.Reports
 {
-    public class BolaoApostasInicioReportService :
+    public class BolaoApostasInicioReportService : BaseAuditService<Domain.Entities.Boloes.Bolao>,
         Interfaces.Services.Reports.IBolaoApostasInicioReportService
     {
         #region Variables
@@ -20,6 +21,7 @@ namespace BolaoNet.Domain.Services.Reports
         private Interfaces.Services.Boloes.IJogoUsuarioService _jogoUsuario;
         private Interfaces.Services.Users.IUserService _user;
         private Interfaces.Services.Reports.FormatReport.IBolaoApostasInicioFormatReportService _output;
+        private ILogging _logging;
 
         #endregion
 
@@ -34,6 +36,7 @@ namespace BolaoNet.Domain.Services.Reports
             _jogoUsuario = jogoUsuario;
             _user = user;
             _output = output;
+            _logging = logging;
         }
 
         #endregion
@@ -47,6 +50,9 @@ namespace BolaoNet.Domain.Services.Reports
             if (string.IsNullOrEmpty(bolao.Nome))
                 throw new ArgumentException("bolao.Nome");
 
+
+            if (IsSaveLog)
+                CheckStart();
 
             Entities.ValueObjects.Reports.BolaoIniciarVO res = new Entities.ValueObjects.Reports.BolaoIniciarVO();
 
@@ -71,12 +77,31 @@ namespace BolaoNet.Domain.Services.Reports
 
                 res.Membros.Add(entry);
             }
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Carregamento dos dados do bolão [" + bolao.Nome + "]"));
+            }
+
+
             return res;
         }
 
         public Stream Generate(string fileName, string compressedFileName, string extension, string folderProfiles, string folderTimes, Entities.ValueObjects.Reports.BolaoIniciarVO data)
         {
-            return _output.Generate(fileName, compressedFileName, extension, folderProfiles, folderTimes, data);
+
+            if (IsSaveLog)
+                CheckStart();
+
+            Stream res = _output.Generate(fileName, compressedFileName, extension, folderProfiles, folderTimes, data);
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Relatório gerado."));
+            }
+
+            return res;
+        
         }
 
         #endregion

@@ -39,7 +39,19 @@ namespace BolaoNet.Domain.Services.Campeonatos
             if (string.IsNullOrEmpty(campeonato.Nome))
                 throw new ArgumentException("campeonato.Nome");
 
-            return BaseDao.GetFasesCampeonato(base.CurrentUserName, campeonato);
+            if (IsSaveLog)
+                CheckStart();
+
+            IList<Entities.Campeonatos.CampeonatoFase> res=
+                BaseDao.GetFasesCampeonato(base.CurrentUserName, campeonato);
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Carregamento de fases do campeonato [" + campeonato.Nome + "] total: " + res.Count));
+            }
+
+            return res;
         }
 
         #endregion

@@ -40,7 +40,19 @@ namespace BolaoNet.Domain.Services.Boloes
             if (string.IsNullOrEmpty(bolao.Nome))
                 throw new ArgumentException("bolao.Nome");
 
-            return Dao.LoadClassificacao(base.CurrentUserName, DateTime.Now, bolao, rodada);
+
+            if (IsSaveLog)
+                CheckStart();
+
+
+            IList<Entities.ValueObjects.BolaoClassificacaoVO> res = Dao.LoadClassificacao(base.CurrentUserName, DateTime.Now, bolao, rodada);
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Carregamento da classificação do bolão [" + bolao.Nome + "] total: " + res.Count));
+            }
+
+            return res;
 
         }
 

@@ -10,6 +10,7 @@ namespace BolaoNet.Tests.Debug
     {
         static void Main(string[] args)
         {
+
             //new Tests.AllTests().Execute();
             new MVC.Tests.Execution().Execute();
 

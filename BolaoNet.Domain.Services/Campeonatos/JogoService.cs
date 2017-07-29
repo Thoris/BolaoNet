@@ -47,7 +47,18 @@ namespace BolaoNet.Domain.Services.Campeonatos
                 throw new ArgumentException("validadoBy.UserName");
 
 
-            return Dao.InsertResult(base.CurrentUserName, DateTime.Now, jogo, gols1, penaltis1, gols2, penaltis2, setCurrentData, validadoBy);
+            if (IsSaveLog)
+                CheckStart();
+
+            bool res = Dao.InsertResult(base.CurrentUserName, DateTime.Now, jogo, gols1, penaltis1, gols2, penaltis2, setCurrentData, validadoBy);
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Inclusão de resultado [" + jogo.JogoId + "] gols1 [" + gols1 + "] gols2 [" + gols2 + "] setcurrent[" + setCurrentData + "] por validado [" + validadoBy.UserName + "] res: " + res));
+            }
+
+            return res;
         }
         public IList<Entities.Campeonatos.Jogo> GetJogosByCampeonato(Entities.Campeonatos.Campeonato campeonato)
         {
@@ -56,7 +67,19 @@ namespace BolaoNet.Domain.Services.Campeonatos
             if (string.IsNullOrEmpty(campeonato.Nome))
                 throw new ArgumentException("campeonato.Nome");
 
-            return Dao.GetJogosByCampeonato(this.CurrentUserName, campeonato);
+            if (IsSaveLog)
+                CheckStart();
+
+            IList<Entities.Campeonatos.Jogo> res = Dao.GetJogosByCampeonato(this.CurrentUserName, campeonato);
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Buscando jogos do campeonato [" + campeonato.Nome + "] total: " + res.Count));
+            }
+
+            return res;
+        
         }
         public IList<Entities.Campeonatos.Jogo> LoadJogos(int rodada, DateTime dataInicial, DateTime dataFinal, Entities.Campeonatos.CampeonatoFase fase, Entities.Campeonatos.Campeonato campeonato, Entities.Campeonatos.CampeonatoGrupo grupo, string condition)
         {
@@ -73,9 +96,19 @@ namespace BolaoNet.Domain.Services.Campeonatos
             if (string.IsNullOrEmpty(grupo.Nome))
                 throw new ArgumentException("grupo.Nome");
 
+            if (IsSaveLog)
+                CheckStart();
 
-            return Dao.LoadJogos(base.CurrentUserName, DateTime.Now, rodada, dataInicial, dataFinal,
+            IList<Entities.Campeonatos.Jogo> res = Dao.LoadJogos(base.CurrentUserName, DateTime.Now, rodada, dataInicial, dataFinal,
                 fase, campeonato, grupo, condition);
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Buscando jogos do campeonato [" + campeonato.Nome + "] por período. total: " + res.Count));
+            }
+
+            return res;
         }
         public IList<Entities.Campeonatos.Jogo> LoadFinishedJogos(Entities.Campeonatos.Campeonato campeonato, int totalJogos)
         {
@@ -86,7 +119,19 @@ namespace BolaoNet.Domain.Services.Campeonatos
             if (totalJogos == 0)
                 throw new ArgumentException("totalJogos");
 
-            return Dao.LoadFinishedJogos(base.CurrentUserName, DateTime.Now, campeonato, totalJogos);
+            if (IsSaveLog)
+                CheckStart();
+            
+            
+            IList<Entities.Campeonatos.Jogo> res = Dao.LoadFinishedJogos(base.CurrentUserName, DateTime.Now, campeonato, totalJogos);
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Carregando jogos finalizados do campeonato [" + campeonato.Nome + "] máximo [" + totalJogos + "] total: " + res.Count));
+            }
+
+            return res;
 
         }
         public IList<Entities.Campeonatos.Jogo> LoadNextJogos(Entities.Campeonatos.Campeonato campeonato, int totalJogos)
@@ -98,7 +143,18 @@ namespace BolaoNet.Domain.Services.Campeonatos
             if (totalJogos == 0)
                 throw new ArgumentException("totalJogos");
 
-            return Dao.LoadNextJogos(base.CurrentUserName, DateTime.Now, campeonato, totalJogos);
+            if (IsSaveLog)
+                CheckStart();
+
+            IList<Entities.Campeonatos.Jogo> res = Dao.LoadNextJogos(base.CurrentUserName, DateTime.Now, campeonato, totalJogos);
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Buscando próximos jogos do campeonato [" + campeonato.Nome + "] máximo [" + totalJogos + "] total: " + res.Count));
+            }
+
+            return res;
         }
         public IList<Entities.Campeonatos.Jogo> GetJogos(Entities.Campeonatos.Campeonato campeonato, Entities.ValueObjects.FilterJogosVO filter)
         {
@@ -109,7 +165,18 @@ namespace BolaoNet.Domain.Services.Campeonatos
             if (filter == null)
                 throw new ArgumentException("filter");
 
-            return Dao.GetJogos(base.CurrentUserName, DateTime.Now, campeonato, filter);
+            if (IsSaveLog)
+                CheckStart();
+
+            IList<Entities.Campeonatos.Jogo> res = Dao.GetJogos(base.CurrentUserName, DateTime.Now, campeonato, filter);
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Buscando jogos do campeonato [" + campeonato.Nome + "] total: " + res.Count));
+            }
+
+            return res;
         }
         public IList<Entities.Campeonatos.Jogo> SelectGoleadas(Entities.Campeonatos.Campeonato campeonato, int maxGols)
         {
@@ -118,7 +185,18 @@ namespace BolaoNet.Domain.Services.Campeonatos
             if (string.IsNullOrEmpty(campeonato.Nome))
                 throw new ArgumentException("campeonato.Nome");
 
-            return Dao.SelectGoleadas(base.CurrentUserName, DateTime.Now, campeonato, maxGols);
+            if (IsSaveLog)
+                CheckStart();
+
+            IList<Entities.Campeonatos.Jogo> res = Dao.SelectGoleadas(base.CurrentUserName, DateTime.Now, campeonato, maxGols);
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Buscando goleadas do campeonato [" + campeonato.Nome + "] total: " + res.Count));
+            }
+
+            return res;
         }
 
         #endregion

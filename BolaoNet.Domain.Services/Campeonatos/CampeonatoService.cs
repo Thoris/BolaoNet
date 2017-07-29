@@ -39,19 +39,50 @@ namespace BolaoNet.Domain.Services.Campeonatos
             if (string.IsNullOrEmpty(campeonato.Nome))
                 throw new ArgumentException("campeonato.Nome");
 
-            return BaseDao.GetRodadasCampeonato(base.CurrentUserName, campeonato);
+            if (IsSaveLog)
+                CheckStart();
+
+            IList<int> res = BaseDao.GetRodadasCampeonato(base.CurrentUserName, campeonato);
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Buscando as rodadas do campeonato [" + campeonato.Nome + "] total: " + res.Count));
+            }
+
+            return res;
         }
 
 
 
         public void Reiniciar(Entities.Campeonatos.Campeonato campeonato)
         {
+            if (IsSaveLog)
+                CheckStart();
+
             BaseDao.Reiniciar(base.CurrentUserName, DateTime.Now, campeonato);
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Reiniciando campeonato [" + campeonato.Nome + "] "));
+            }
+
         }
 
         public void ClearDatabase()
         {
+            if (IsSaveLog)
+                CheckStart();
+
             BaseDao.ClearDatabase(base.CurrentUserName, DateTime.Now);
+
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Apagando o banco de dados"));
+            }
         }
         #endregion
     }

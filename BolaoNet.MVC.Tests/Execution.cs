@@ -17,6 +17,12 @@ namespace BolaoNet.MVC.Tests
 
            
 
+
+
+
+
+           
+
             new HappyWay().TestFullCycle();
         }
 

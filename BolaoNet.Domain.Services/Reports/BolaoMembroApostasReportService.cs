@@ -1,4 +1,5 @@
 ﻿using BolaoNet.Domain.Interfaces.Services.Logging;
+using BolaoNet.Domain.Services.Base;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Domain.Services.Reports
 {
-    public class BolaoMembroApostasReportService : 
+    public class BolaoMembroApostasReportService : BaseAuditService<Domain.Entities.Boloes.Bolao>,
         Interfaces.Services.Reports.IBolaoMembroApostasReportService
     {
         #region Variables
@@ -19,6 +20,7 @@ namespace BolaoNet.Domain.Services.Reports
         private Interfaces.Services.Boloes.IJogoUsuarioService _jogoUsuario;
         private Interfaces.Services.Users.IUserService _user;
         private Interfaces.Services.Reports.FormatReport.IBolaoMembroApostasFormatReportService _output;
+        private ILogging _logging;
 
         #endregion
 
@@ -32,6 +34,7 @@ namespace BolaoNet.Domain.Services.Reports
             _jogoUsuario = jogoUsuario;
             _user = user;
             _output = output;
+            _logging = logging;
         }
 
         #endregion
@@ -49,6 +52,10 @@ namespace BolaoNet.Domain.Services.Reports
             if (string.IsNullOrEmpty(user.UserName))
                 throw new ArgumentException("user.UserName");
 
+
+            if (IsSaveLog)
+                CheckStart();
+
             Entities.ValueObjects.Reports.BolaoMembroApostasVO res = new Entities.ValueObjects.Reports.BolaoMembroApostasVO();
 
 
@@ -61,12 +68,32 @@ namespace BolaoNet.Domain.Services.Reports
             res.ApostasExtras = _apostaExtraUsuarios.GetApostasUser(bolaoLoaded, user);
             res.JogosUsuarios = _jogoUsuario.GetJogosUser(bolaoLoaded, user, new Entities.ValueObjects.FilterJogosVO());
 
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Carregamento dos dados do bolão [" + bolao.Nome + "]"));
+            }
+
+
             return res;
 
         }
         public Stream Generate(string extension, string folderProfiles, string folderTimes, Domain.Entities.ValueObjects.Reports.BolaoMembroApostasVO data)
         {
-            return _output.Generate(extension, folderProfiles, folderTimes, data);
+
+            if (IsSaveLog)
+                CheckStart();
+
+            Stream res = _output.Generate(extension, folderProfiles, folderTimes, data);
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Relatório gerado."));
+            }
+
+            return res;
+        
         }
 
         #endregion

@@ -40,7 +40,19 @@ namespace BolaoNet.Domain.Services.Boloes
             if (string.IsNullOrEmpty(bolao.Nome))
                 throw new ArgumentException("bolao.Nome");
 
-            return Dao.GetRegrasBolao(base.CurrentUserName, DateTime.Now, bolao);
+
+            if (IsSaveLog)
+                CheckStart();
+
+            IList<Entities.Boloes.BolaoRegra> res =
+                Dao.GetRegrasBolao(base.CurrentUserName, DateTime.Now, bolao);
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Carregamento das regras do bolão [" + bolao.Nome + "] total: " + res.Count));
+            }
+
+            return res;
         }
 
         #endregion

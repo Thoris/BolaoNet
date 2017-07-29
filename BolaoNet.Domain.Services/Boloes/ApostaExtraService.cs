@@ -40,7 +40,17 @@ namespace BolaoNet.Domain.Services.Boloes
             if (string.IsNullOrEmpty(bolao.Nome))
                 throw new ArgumentException("bolao.Nome");
 
-            return Dao.GetApostasBolao(this.CurrentUserName,DateTime.Now, bolao);
+            if (IsSaveLog)
+                CheckStart();
+
+            IList<Entities.Boloes.ApostaExtra> res = Dao.GetApostasBolao(this.CurrentUserName,DateTime.Now, bolao);
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Apostas do bolão: [" + bolao.Nome + "] carregados : " + res.Count));
+            }
+
+            return res;
         }
         public bool InsertResult(Entities.Boloes.Bolao bolao, Entities.DadosBasicos.Time time, int posicao, Entities.Users.User validadoBy)
         {
@@ -59,7 +69,17 @@ namespace BolaoNet.Domain.Services.Boloes
             if (string.IsNullOrEmpty(validadoBy.UserName))
                 throw new ArgumentException("validadoBy.UserName");
 
-            return Dao.InsertResult(this.CurrentUserName, DateTime.Now, bolao, time, posicao, validadoBy);
+            if (IsSaveLog)
+                CheckStart();
+
+            bool res = Dao.InsertResult(this.CurrentUserName, DateTime.Now, bolao, time, posicao, validadoBy);
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Resultado do bolão: [" + bolao.Nome + "] da posição: [" + posicao + "] time: ["+ time.Nome + "] : " + res));
+            }
+
+            return res;
         }
 
         #endregion

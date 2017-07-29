@@ -30,7 +30,7 @@ namespace BolaoNet.Domain.Services.Base
         /// <summary>
         /// Variável que possui o serviço de log.
         /// </summary>
-        private ILogging _logging;
+        protected ILogging _logging;
 
         private readonly ValidationResult _validationResult;
 

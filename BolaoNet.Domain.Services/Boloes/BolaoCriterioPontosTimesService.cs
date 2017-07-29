@@ -29,9 +29,17 @@ namespace BolaoNet.Domain.Services.Boloes
                 throw new ArgumentException("bolao");
             if (string.IsNullOrEmpty(bolao.Nome))
                 throw new ArgumentException("bolao.Nome");
-
-            return GetList( x => string.Compare(x.NomeBolao, bolao.Nome, true) == 0).ToList<Entities.Boloes.BolaoCriterioPontosTimes>();
             
+            IList<Entities.Boloes.BolaoCriterioPontosTimes> res =
+                GetList( x => string.Compare(x.NomeBolao, bolao.Nome, true) == 0).ToList<Entities.Boloes.BolaoCriterioPontosTimes>();
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Busca de pontos dos critérios dos times do bolão [" + bolao.Nome + "] total: " + res.Count));
+            }
+
+            return res;
         }
 
         #endregion

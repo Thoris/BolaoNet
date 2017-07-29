@@ -38,8 +38,19 @@ namespace BolaoNet.Domain.Services.Users
                 throw new ArgumentException("user");
             if (string.IsNullOrEmpty(user.UserName))
                 throw new ArgumentException("user.UserName");
-            
-            return Dao.GetRolesInUser(base.CurrentUserName, user);
+
+            if (IsSaveLog)
+                CheckStart();
+
+            IList<Entities.Users.Role> res = Dao.GetRolesInUser(base.CurrentUserName, user);
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Carregamento de roles do usuário [" + user.UserName + "] total: " + res.Count));
+            }
+
+            return res;
         }
 
         #endregion

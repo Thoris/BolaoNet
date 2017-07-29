@@ -43,7 +43,19 @@ namespace BolaoNet.Domain.Services.Boloes
             if (string.IsNullOrEmpty(bolao.Nome))
                 throw new ArgumentException("bolao.Nome");
 
-            return Dao.Iniciar(base.CurrentUserName, DateTime.Now, iniciadoBy, bolao);
+
+            if (IsSaveLog)
+                CheckStart();
+
+            bool res = Dao.Iniciar(base.CurrentUserName, DateTime.Now, iniciadoBy, bolao);
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Início do bolão [" + bolao.Nome + "] por [" + iniciadoBy.UserName + "] res: " + res));
+            }
+
+            return res;
         }
 
         public bool Aguardar(Entities.Boloes.Bolao bolao)
@@ -53,11 +65,35 @@ namespace BolaoNet.Domain.Services.Boloes
             if (string.IsNullOrEmpty(bolao.Nome))
                 throw new ArgumentException("bolao.Nome");
 
-            return Dao.Aguardar(base.CurrentUserName, DateTime.Now,  bolao);
+
+            if (IsSaveLog)
+                CheckStart();
+
+            bool res = Dao.Aguardar(base.CurrentUserName, DateTime.Now,  bolao);
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Aguardando o bolão [" + bolao.Nome + "] res: " + res));
+            }
+
+            return res;
         }
         public IList<Entities.Boloes.Bolao> GetBoloesDisponiveis()
         {
-            return Dao.GetBoloesDisponiveis(base.CurrentUserName, DateTime.Now);
+
+            if (IsSaveLog)
+                CheckStart();
+
+            IList<Entities.Boloes.Bolao> res = Dao.GetBoloesDisponiveis(base.CurrentUserName, DateTime.Now);
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Verificando os bolões disponíveis. total: " + res.Count));
+            }
+
+            return res;
         }
         public IList<Entities.ValueObjects.UserBoloesVO> GetBoloesUsuario(Entities.Users.User user)
         {
@@ -66,7 +102,19 @@ namespace BolaoNet.Domain.Services.Boloes
             if (string.IsNullOrEmpty(user.UserName))
                 throw new ArgumentException("user.UserName");
 
-            return Dao.GetBoloesUsuario(base.CurrentUserName, DateTime.Now, user);
+
+            if (IsSaveLog)
+                CheckStart();
+
+            IList<Entities.ValueObjects.UserBoloesVO> res = Dao.GetBoloesUsuario(base.CurrentUserName, DateTime.Now, user);
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Carregamento de bolões do usuário [" + user.UserName + "] total: " + res.Count));
+            }
+
+            return res;
         }
         public IList<Entities.ValueObjects.UserSaldoBolaoVO> GetBoloesSaldoUsuario(Entities.Users.User user)
         {
@@ -75,7 +123,20 @@ namespace BolaoNet.Domain.Services.Boloes
             if (string.IsNullOrEmpty(user.UserName))
                 throw new ArgumentException("user.UserName");
 
-            return Dao.GetBoloesSaldoUsuario(base.CurrentUserName, DateTime.Now, user);
+
+            if (IsSaveLog)
+                CheckStart();
+
+            IList<Entities.ValueObjects.UserSaldoBolaoVO> res =
+                Dao.GetBoloesSaldoUsuario(base.CurrentUserName, DateTime.Now, user);
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Buscando saldo de pagamento do usuário [" + user.UserName + "] total: " + res.Count));
+            }
+
+            return res;
         }
         public bool IsIniciado(Entities.Boloes.Bolao bolao)
         {
@@ -84,7 +145,20 @@ namespace BolaoNet.Domain.Services.Boloes
             if (string.IsNullOrEmpty(bolao.Nome))
                 throw new ArgumentException("bolao.Nome");
 
-            return Dao.IsIniciado(base.CurrentUserName, DateTime.Now, bolao);
+
+            if (IsSaveLog)
+                CheckStart();
+
+            bool res = Dao.IsIniciado(base.CurrentUserName, DateTime.Now, bolao);
+
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Verificação se o bolão [" + bolao.Nome + "] está iniciado. res: " + res));
+            }
+
+            return res;
         }
 
         #endregion

@@ -43,8 +43,18 @@ namespace BolaoNet.Domain.Services.Boloes
             if (string.IsNullOrEmpty(user.UserName))
                 throw new ArgumentException("user.UserName");
 
+            if (IsSaveLog)
+                CheckStart();
 
-            return Dao.GetApostasUser(this.CurrentUserName, DateTime.Now, bolao, user);
+            IList<Domain.Entities.ValueObjects.ApostaExtraUsuarioVO>  res = Dao.GetApostasUser(this.CurrentUserName, DateTime.Now, bolao, user);
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Busca de apostas do usuário [" + user.UserName + "] do bolão [" + bolao.Nome + "] total: " + res.Count));
+            }
+
+
+            return res;
         }
         public IList<Entities.Boloes.ApostaExtraUsuario> GetApostasBolao(Entities.Boloes.Bolao bolao)
         {
@@ -53,16 +63,29 @@ namespace BolaoNet.Domain.Services.Boloes
             if (string.IsNullOrEmpty(bolao.Nome))
                 throw new ArgumentException("bolao.Nome");
 
-            return Dao.GetApostasBolao(this.CurrentUserName, DateTime.Now, bolao);
-        }
+            if (IsSaveLog)
+                CheckStart();
 
+            IList<Entities.Boloes.ApostaExtraUsuario> res = Dao.GetApostasBolao(this.CurrentUserName, DateTime.Now, bolao);
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Busca de apostas do bolão [" + bolao.Nome + "] total: " + res.Count));
+            }
+
+            return res;
+
+        }
         public IList<IList<Entities.Boloes.ApostaExtraUsuario>> GetApostasBolaoAgrupado(Entities.Boloes.Bolao bolao)
         {
             if (bolao == null)
                 throw new ArgumentException("bolao");
             if (string.IsNullOrEmpty(bolao.Nome))
                 throw new ArgumentException("bolao.Nome");
-
+            
+            if (IsSaveLog)
+                CheckStart();
 
             IList<Entities.Boloes.ApostaExtraUsuario> list = GetApostasBolao(bolao);
 
@@ -85,6 +108,10 @@ namespace BolaoNet.Domain.Services.Boloes
             }
 
 
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Busca de apostas do bolão agrupado [" + bolao.Nome + "] total: " + res.Count));
+            }
             return res;
         }
 

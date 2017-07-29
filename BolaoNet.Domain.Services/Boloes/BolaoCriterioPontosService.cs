@@ -20,8 +20,6 @@ namespace BolaoNet.Domain.Services.Boloes
 
         #endregion
         
-
-
         #region Constructors/Destructors
 
         public BolaoCriterioPontosService(string userName, Interfaces.Repositories.Boloes.IBolaoCriterioPontosDao dao, ILogging logging)
@@ -52,7 +50,21 @@ namespace BolaoNet.Domain.Services.Boloes
 
         public IList<Entities.Boloes.BolaoCriterioPontos> GetCriterioPontosBolao(Entities.Boloes.Bolao bolao)
         {
-            return Dao.LoadCriteriosPontos(base.CurrentUserName, DateTime.Now, bolao);
+            if (bolao == null)
+                throw new ArgumentException("bolao");
+            if (string.IsNullOrEmpty(bolao.Nome))
+                throw new ArgumentException("bolao.Nome");
+
+            if (IsSaveLog)
+                CheckStart();
+
+            IList<Entities.Boloes.BolaoCriterioPontos> res = Dao.LoadCriteriosPontos(base.CurrentUserName, DateTime.Now, bolao);
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Busca de pontos dos critérios do bolão [" + bolao.Nome + "] total: " + res.Count));
+            }
+            return res;
         }
         
         #endregion

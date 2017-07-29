@@ -40,8 +40,19 @@ namespace BolaoNet.Domain.Services.Campeonatos
             if (string.IsNullOrEmpty(campeonato.Nome))
                 throw new ArgumentException("campeonato.Nome");
 
+            if (IsSaveLog)
+                CheckStart();
 
-            return BaseDao.LoadCampeoes(base.CurrentUserName, DateTime.Now, campeonato);
+            IList<Entities.Campeonatos.CampeonatoHistorico> res =
+                BaseDao.LoadCampeoes(base.CurrentUserName, DateTime.Now, campeonato);
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Carregamento de histórico de campeões do campeonato [" + campeonato.Nome + "] total: " + res.Count));
+            }
+
+            return res;
         }
 
         #endregion

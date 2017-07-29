@@ -576,6 +576,7 @@ namespace BolaoNet.Infra.Reports.Pdf
             table.AddCell(CreateOitavasRight(showOnlyPartidaValida, fim, imagePath, imageExtension, oitavas));
 
             table.TotalWidth = 580;
+            //table.TotalWidth = 480;
 
             table.WriteSelectedRows(0, -1, 5, 280, writer.DirectContent);
 

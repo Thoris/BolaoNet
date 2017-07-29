@@ -44,9 +44,19 @@ namespace BolaoNet.Domain.Services.Boloes
             if (string.IsNullOrEmpty(user.UserName))
                 throw new ArgumentException("user.Nome");
 
+            if (IsSaveLog)
+                CheckStart();
 
-            return Dao.LoadClassificacao(base.CurrentUserName, DateTime.Now, bolao, user);
+             IList<Entities.ValueObjects.BolaoGrupoComparacaoClassificacaoVO> res =
+                 Dao.LoadClassificacao(base.CurrentUserName, DateTime.Now, bolao, user);
 
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Carregamento do grupo de comparação do bolão [" + bolao.Nome + "] e usuário [" +  user.UserName + "] total: " + res.Count));
+            }
+
+            return res;
         }
 
         #endregion

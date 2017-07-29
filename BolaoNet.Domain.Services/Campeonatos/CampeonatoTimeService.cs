@@ -40,7 +40,19 @@ namespace BolaoNet.Domain.Services.Campeonatos
             if (string.IsNullOrEmpty(campeonato.Nome))
                 throw new ArgumentException("campeonato.Nome");
 
-            return BaseDao.GetTimesCampeonato(base.CurrentUserName, campeonato);
+            if (IsSaveLog)
+                CheckStart();
+
+            IList<Entities.Campeonatos.CampeonatoTime> res =
+                BaseDao.GetTimesCampeonato(base.CurrentUserName, campeonato);
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Buscando os times do campeonato [" + campeonato.Nome + "] total: " + res.Count));
+            }
+
+            return res;
 
         }
 

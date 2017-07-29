@@ -95,9 +95,31 @@ namespace BolaoNet.MVC.Areas.Pagamentos.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ViewModels.Pagamentos.PagamentoViewModel model)
         {
-
+            bool invalid = false;
+            Domain.Entities.Boloes.Pagamento entity = null;             
+            
             if (!ModelState.IsValid)
             {
+                invalid = true;
+            }
+            else
+            {
+                
+                entity =             
+                    Mapper.Map<ViewModels.Pagamentos.PagamentoViewModel, 
+                    Domain.Entities.Boloes.Pagamento>(model);
+
+                if (_pagamentoApp.Load(entity) != null)
+                {
+                    ModelState.AddModelError("", "Pagamento do usuário já existe.");
+                    invalid = true;
+                }
+            }
+
+
+            if (invalid)
+            {
+
                 IList<Domain.Entities.Boloes.BolaoMembro> membros =
                _bolaoMembroApp.GetListUsersInBolao(base.SelectedBolao);
 
@@ -107,9 +129,6 @@ namespace BolaoNet.MVC.Areas.Pagamentos.Controllers
             }
 
 
-            Domain.Entities.Boloes.Pagamento entity =             
-                Mapper.Map<ViewModels.Pagamentos.PagamentoViewModel, 
-                Domain.Entities.Boloes.Pagamento>(model);
 
 
             _pagamentoApp.Insert(entity);

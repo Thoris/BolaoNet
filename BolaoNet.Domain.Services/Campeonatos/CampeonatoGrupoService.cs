@@ -30,7 +30,6 @@ namespace BolaoNet.Domain.Services.Campeonatos
 
         #endregion
 
-
         #region ICampeonatoGrupoService members
 
         public IList<Entities.Campeonatos.CampeonatoGrupo> GetGruposCampeonato(Entities.Campeonatos.Campeonato campeonato)
@@ -40,7 +39,19 @@ namespace BolaoNet.Domain.Services.Campeonatos
             if (string.IsNullOrEmpty(campeonato.Nome))
                 throw new ArgumentException("campeonato.Nome");
 
-            return BaseDao.GetGruposCampeonato(base.CurrentUserName, campeonato);
+
+            if (IsSaveLog)
+                CheckStart();
+
+            IList<Entities.Campeonatos.CampeonatoGrupo> res= BaseDao.GetGruposCampeonato(base.CurrentUserName, campeonato);
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Carregamento de grupos do campeonato [" + campeonato.Nome + "] total: " + res.Count));
+            }
+
+            return res;
         }
 
         #endregion

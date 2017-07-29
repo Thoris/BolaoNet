@@ -32,7 +32,7 @@ namespace BolaoNet.Domain.Services.Base
         /// </summary>
         public BaseAuditService()
         {
-
+            IsSaveLog = true;
         }
 
         #endregion
@@ -76,14 +76,31 @@ namespace BolaoNet.Domain.Services.Base
         /// </summary>
         /// <param name="entity">Entidade a ser analisada</param>
         /// <returns>Identificador da entidade, ou 0 caso não seja do tipo BaseModel</returns>
-        protected long GetId(T entity)
+        protected string GetId(T entity)
         {
             //T id = default(T);
 
             //if (typeof(T).IsSubclassOf(typeof(Entities.Base.IBaseModel)))
             //    id = (entity as Model.BaseModel).ID;
 
-            return 0;
+
+            if (typeof(T).IsSubclassOf(typeof(Entities.Base.BaseEntity)))
+            {
+                Entities.Base.BaseEntity entityData = entity as Entities.Base.BaseEntity;
+
+                IDictionary<string, object> listKeys = entityData.GetPrimaryKey();
+
+                string res = "";
+                
+                foreach (KeyValuePair<string, object> entry in listKeys)
+                {
+                    res += " [" + entry.Key + " = " + entry.Value + "]";
+                }
+
+                return res;
+            }
+
+            return "";
         }
         /// <summary>
         /// Método que retorna string que possui o identificador da entidade.

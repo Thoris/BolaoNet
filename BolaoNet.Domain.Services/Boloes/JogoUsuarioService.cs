@@ -293,8 +293,19 @@ namespace BolaoNet.Domain.Services.Boloes
                 throw new ArgumentException("jogo.JogoId");
 
 
-            return this.Dao.ProcessAposta(base.CurrentUserName, DateTime.Now, bolao, user, jogo, 
+            if (IsSaveLog)
+                CheckStart();
+
+            bool res = this.Dao.ProcessAposta(base.CurrentUserName, DateTime.Now, bolao, user, jogo, 
                 automatico, apostaTime1, apostaTime2, penaltis1, penaltis2, ganhador);
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Resultado do bolão: [" + bolao.Nome + "] do usuário [" + user.UserName + "] jogo [" + jogo.JogoId + "] [" +  apostaTime1 + "x" + apostaTime2 + "] : " + res));
+            }
+
+            return res;
         }
         public IList<Entities.Boloes.JogoUsuario> GetJogosByUser(Entities.Boloes.Bolao bolao, Entities.Users.User user)
         {
@@ -308,7 +319,19 @@ namespace BolaoNet.Domain.Services.Boloes
                 throw new ArgumentException("user.UserName");
 
 
-            return this.Dao.GetJogosByUser(this.CurrentUserName, bolao, user);
+            if (IsSaveLog)
+                CheckStart();
+
+            IList < Entities.Boloes.JogoUsuario > res = this.Dao.GetJogosByUser(this.CurrentUserName, bolao, user);
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Busca de jogos por usuário do bolão : [" + bolao.Nome + "] do usuário [" + user.UserName + "] total : " + res.Count));
+            }
+
+            return res;
+        
         }
         public IList<Entities.ValueObjects.JogoUsuarioVO> GetJogosUser(Entities.Boloes.Bolao bolao, Entities.Users.User user, Entities.ValueObjects.FilterJogosVO filter)
         {
@@ -324,7 +347,18 @@ namespace BolaoNet.Domain.Services.Boloes
                 throw new ArgumentException("bolao.NomeCampeonato");
 
 
-            return this.Dao.GetJogosUser(this.CurrentUserName, bolao, user, filter);
+            if (IsSaveLog)
+                CheckStart();
+
+            IList < Entities.ValueObjects.JogoUsuarioVO > res = this.Dao.GetJogosUser(this.CurrentUserName, bolao, user, filter);
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Busca de jogos por usuário do bolão : [" + bolao.Nome + "] do usuário [" + user.UserName + "] total : " + res.Count));
+            }
+
+            return res;
         }
         public void InsertApostasAutomaticas(Entities.Boloes.Bolao bolao, Entities.Users.User user, Entities.ValueObjects.ApostasAutomaticasFilterVO filter)
         {
@@ -339,7 +373,16 @@ namespace BolaoNet.Domain.Services.Boloes
             if (filter == null)
                 throw new ArgumentException("filter");
 
+
+            if (IsSaveLog)
+                CheckStart();
+
             this.Dao.InsertApostasAutomaticas(base.CurrentUserName, DateTime.Now, bolao, user, filter);
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Inclusão de apostas automáticas do bolão : [" + bolao.Nome + "] do usuário [" + user.UserName + "] " ));
+            }
 
         }
         public IList<Entities.Boloes.JogoUsuario> GetApostasJogo(Entities.Boloes.Bolao bolao, Entities.Campeonatos.Jogo jogo)
@@ -353,7 +396,19 @@ namespace BolaoNet.Domain.Services.Boloes
             if (jogo.JogoId == 0)
                 throw new ArgumentException("jogo.JogoId");
 
-            return Dao.GetApostasJogo(base.CurrentUserName, DateTime.Now, bolao, jogo);
+
+            if (IsSaveLog)
+                CheckStart();
+
+            IList<Entities.Boloes.JogoUsuario> res =  Dao.GetApostasJogo(base.CurrentUserName, DateTime.Now, bolao, jogo);
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Busca de apostas do jogo [" + jogo.JogoId + "] do bolão : [" + bolao.Nome + "] Total: " + res.Count));
+            }
+
+            return res;
         }
         public IList<Entities.ValueObjects.JogoUsuarioVO> LoadAcertosDificeis(Entities.Boloes.Bolao bolao, int totalMaximoAcertos)
         {
@@ -362,7 +417,19 @@ namespace BolaoNet.Domain.Services.Boloes
             if (string.IsNullOrEmpty (bolao.Nome))
                 throw new ArgumentException("bolao.Nome");
 
-            return Dao.LoadAcertosDificeis(base.CurrentUserName, DateTime.Now, bolao, totalMaximoAcertos);
+            if (IsSaveLog)
+                CheckStart();
+
+            IList<Entities.ValueObjects.JogoUsuarioVO> res = Dao.LoadAcertosDificeis(base.CurrentUserName, DateTime.Now, bolao, totalMaximoAcertos);
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Busca de acertos difíceis do bolão [" + bolao.Nome + "] com máximo [" +  totalMaximoAcertos + "] total: " + res.Count));
+            }
+
+
+            return res;
         }
         public IList<Entities.Campeonatos.Jogo> LoadSemAcertos(Entities.Boloes.Bolao bolao)
         {
@@ -371,7 +438,19 @@ namespace BolaoNet.Domain.Services.Boloes
             if (string.IsNullOrEmpty(bolao.Nome))
                 throw new ArgumentException("bolao.Nome");
 
-            return Dao.LoadSemAcertos(base.CurrentUserName, DateTime.Now, bolao);
+
+            if (IsSaveLog)
+                CheckStart();
+
+            IList<Entities.Campeonatos.Jogo> res =  Dao.LoadSemAcertos(base.CurrentUserName, DateTime.Now, bolao);
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Busca de jogos sem acertos do bolão [" + bolao.Nome + "] total: " + res.Count));
+            }
+
+            return res;
         }
         public IList<Entities.ValueObjects.JogoUsuarioVO> LoadPontosObtidos(Entities.Users.User user, int totalRetorno)
         {
@@ -380,7 +459,18 @@ namespace BolaoNet.Domain.Services.Boloes
             if (string.IsNullOrEmpty(user.UserName))
                 throw new ArgumentException("user.UserName");
 
-            return Dao.LoadPontosObtidos(base.CurrentUserName, DateTime.Now, user, totalRetorno);
+
+            if (IsSaveLog)
+                CheckStart();
+
+            IList<Entities.ValueObjects.JogoUsuarioVO> res = Dao.LoadPontosObtidos(base.CurrentUserName, DateTime.Now, user, totalRetorno);
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Carregamento de pontos obtidos do usuário [" + user.UserName + "] com totalRetorno [" + totalRetorno + "] total: " + res.Count));
+            }
+
+            return res;
         }
         public IList<Entities.ValueObjects.JogoUsuarioVO> LoadProximosJogosUsuario(Entities.Users.User user, int totalRetorno)
         {
@@ -389,7 +479,19 @@ namespace BolaoNet.Domain.Services.Boloes
             if (string.IsNullOrEmpty(user.UserName))
                 throw new ArgumentException("user.UserName");
 
-            return Dao.LoadProximosJogosUsuario(base.CurrentUserName, DateTime.Now, user, totalRetorno);
+
+            if (IsSaveLog)
+                CheckStart();
+
+            IList<Entities.ValueObjects.JogoUsuarioVO> res = Dao.LoadProximosJogosUsuario(base.CurrentUserName, DateTime.Now, user, totalRetorno);
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Carregamento de próximos jogos do usuário [" + user.UserName + "] com totalRetorno [" + totalRetorno + "] total: " + res.Count));
+            }
+
+            return res;
         }
         public int CalcularPontoSimulation(int gols1, int gols2, int aposta1, int aposta2, int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1, int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, bool isMultiploTime, int multiploTime)
         {

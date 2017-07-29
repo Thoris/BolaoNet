@@ -43,7 +43,21 @@ namespace BolaoNet.Domain.Services.Boloes
             if (string.IsNullOrEmpty(user.UserName))
                 throw new ArgumentException("user.Nome");
 
-            return Dao.GetHistoricoClassificacao(base.CurrentUserName, DateTime.Now, bolao, user);
+
+            if (IsSaveLog)
+                CheckStart();
+
+            IList<Entities.Boloes.BolaoMembroPonto> res =
+                Dao.GetHistoricoClassificacao(base.CurrentUserName, DateTime.Now, bolao, user);
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Carregamento de histórico do bolão [" + bolao.Nome + "] e usuário [" + user.UserName + "] total: " + res.Count));
+            }
+
+            return res;
+        
         }
 
 

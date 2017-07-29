@@ -39,7 +39,19 @@ namespace BolaoNet.Domain.Services.Boloes
             if (string.IsNullOrEmpty(bolao.Nome))
                 throw new ArgumentException("bolao.Nome");
 
-            return Dao.GetPagamentosBolao(base.CurrentUserName, DateTime.Now, bolao);
+
+            if (IsSaveLog)
+                CheckStart();
+
+            IList<Entities.Boloes.Pagamento> res = Dao.GetPagamentosBolao(base.CurrentUserName, DateTime.Now, bolao);
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Buscando pagamentos do bolão [" + bolao.Nome + "] total: " + res.Count));
+            }
+
+            return res;
         }
 
         public IList<Entities.Boloes.Pagamento> GetPagamentosBolaoSoma(Entities.Boloes.Bolao bolao)
@@ -48,6 +60,9 @@ namespace BolaoNet.Domain.Services.Boloes
                 throw new ArgumentException("bolao");
             if (string.IsNullOrEmpty(bolao.Nome))
                 throw new ArgumentException("bolao.Nome");
+
+            if (IsSaveLog)
+                CheckStart();
 
             IList<Entities.Boloes.Pagamento> res = this.GetPagamentosBolao(bolao);
 
@@ -62,6 +77,12 @@ namespace BolaoNet.Domain.Services.Boloes
                     res.RemoveAt(c);
                     c--;
                 }
+            }
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Buscando soma de pagamentos do bolão [" + bolao.Nome + "] total: " + res.Count));
             }
 
             return res;

@@ -52,7 +52,18 @@ namespace BolaoNet.Domain.Services.Boloes
             if (string.IsNullOrEmpty(user.UserName))
                 throw new ArgumentException("user.UserName");
 
-            return Dao.LoadClassificacao(base.CurrentUserName, DateTime.Now, bolao, fase, grupo, user);
+            if (IsSaveLog)
+                CheckStart();
+
+            IList<Entities.Boloes.BolaoCampeonatoClassificacaoUsuario> res = Dao.LoadClassificacao(base.CurrentUserName, DateTime.Now, bolao, fase, grupo, user);
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Carregamento de Classificação do do bolão [" + bolao.Nome + "] Fase [" + fase.Nome + "] Grupo [" + grupo.Nome + "] usuário [" + user.UserName + "] total: " + res.Count));
+            }
+
+            return res;
         }
 
         #endregion

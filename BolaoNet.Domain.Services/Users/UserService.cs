@@ -74,6 +74,9 @@ namespace BolaoNet.Domain.Services.Users
             if (string.IsNullOrEmpty(password))
                 throw new ArgumentException("password");
 
+            if (IsSaveLog)
+                CheckStart();
+
             Entities.Base.Common.Validation.ValidationResult res = new Entities.Base.Common.Validation.ValidationResult();
 
             Entities.Users.User userLoaded = this.Load(new Entities.Users.User(userName));
@@ -112,6 +115,9 @@ namespace BolaoNet.Domain.Services.Users
         {
             if (user == null)
                 throw new ArgumentException("user");
+
+            if (IsSaveLog)
+                CheckStart();
 
             if (!user.IsValid())
                 return user.ValidationResult;
@@ -154,6 +160,9 @@ namespace BolaoNet.Domain.Services.Users
                 return new Entities.Base.Common.Validation.ValidationResult().Add("Confirmação de senha inválida.");
 
 
+            if (IsSaveLog)
+                CheckStart();
+
             Entities.Users.User userLoaded = this.Load(new Entities.Users.User(userName));
 
             if (userLoaded == null)
@@ -178,6 +187,9 @@ namespace BolaoNet.Domain.Services.Users
         {
             if (user == null)
                 throw new ArgumentException("user");
+
+            if (IsSaveLog)
+                CheckStart();
 
             Entities.Users.User userLoaded = this.Load(user);
 
@@ -204,6 +216,8 @@ namespace BolaoNet.Domain.Services.Users
             if (string.IsNullOrEmpty(activationCode))
                 throw new ArgumentException("activationCode");
 
+            if (IsSaveLog)
+                CheckStart();
             Entities.Users.User userLoaded = this.Load(user);
 
             if (userLoaded == null)
@@ -238,7 +252,18 @@ namespace BolaoNet.Domain.Services.Users
             if (string.IsNullOrEmpty(email))
                 throw new ArgumentException("email");
 
-            return BaseDao.SearchByUserNameEmail(base.CurrentUserName, userName, email);
+            if (IsSaveLog)
+                CheckStart();
+
+            IList<Entities.Users.User> res = BaseDao.SearchByUserNameEmail(base.CurrentUserName, userName, email);
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Busca de usuários por email [" + email + "] usuario [" + userName + "] total: " + res.Count));
+            }
+
+            return res;
         }
 
         #endregion
