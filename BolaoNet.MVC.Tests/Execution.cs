@@ -2,6 +2,7 @@
 using Ninject;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,15 +16,14 @@ namespace BolaoNet.MVC.Tests
         public void Execute()
         {
 
+
+            new HappyWay().TestGeneratePdfMembro();
+
+
+
            
 
-
-
-
-
-           
-
-            new HappyWay().TestFullCycle();
+            //new HappyWay().TestFullCycle();
         }
 
         #endregion

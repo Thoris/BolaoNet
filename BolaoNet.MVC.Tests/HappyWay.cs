@@ -13,6 +13,8 @@ using BolaoNet.Application.Interfaces.Reports;
 using BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests;
 using System.Web;
 using System.Collections.Generic;
+using System.IO;
+using System.Diagnostics;
 
 namespace BolaoNet.MVC.Tests
 {
@@ -626,6 +628,43 @@ namespace BolaoNet.MVC.Tests
             var apostaExtraView = apostasExtrasResultadoController.Salvar(apostaExtraModel) as ViewResult;
 
             #endregion
+        }
+
+
+        public void TestGeneratePdfMembro()
+        {
+
+            Ninject.StandardKernel kernel = (StandardKernel)NinjectCommon.CreateKernel();
+
+            IBolaoMembroApostasReportApp _bolaoMembroApostasReportApp = 
+                kernel.Get<IBolaoMembroApostasReportApp>();
+
+            IBolaoMembroApostasReportApp bolaoMembroApostasReportApp =
+                kernel.Get<IBolaoMembroApostasReportApp>();
+
+
+            Domain.Entities.ValueObjects.Reports.BolaoMembroApostasVO data =
+                _bolaoMembroApostasReportApp.GetData(
+                    new Domain.Entities.Boloes.Bolao("Copa do Mundo 2014"),
+                    new Domain.Entities.Users.User("usuario1x1"));
+
+            Stream streamReport = bolaoMembroApostasReportApp.Generate(
+                "gif",
+                @"..\..\..\BolaoNet.MVC\Content\img\database\profiles2",
+                @"..\..\..\BolaoNet.MVC\Content\img\database\times2", 
+                data);
+
+            if (System.IO.File.Exists("file.pdf"))
+                System.IO.File.Delete("file.pdf");
+
+            using (var fileStream = File.Create("file.pdf"))
+            {
+                streamReport.Seek(0, SeekOrigin.Begin);
+                streamReport.CopyTo(fileStream);
+            }
+
+            Process.Start("file.pdf");
+             
         }
     }
 }
