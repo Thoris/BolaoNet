@@ -68,11 +68,41 @@ namespace BolaoNet.Infra.Reports.Pdf
             grupos[i].TotalWidth = width;
             grupos[i++].WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 1), 800 - (distY * 3), writer.DirectContent);
 
+
+
+            PdfPTable legendas = new PdfPTable(1);
+
+            //pos
+            //bandeira
+            //time
+            //J
+            //PT
+            //V
+            //E
+            //D
+            //GP
+            //GC
+            //S
+            //%
+
+            width = 550;
+            PdfPCell cellTitle = new PdfPCell(new Phrase(
+                "Pos = Posição no grupo; J = Jogos realizados; PT = Pontos somados; V = Vitórias; E = Empates; D = Derrotas; GP = Gols Pró; GC = Gols Contra; S = Saldo de Gols; % = Percentual de aproveitamento ",
+                new Font(Font.HELVETICA, 8f, Font.BOLD, Color.BLACK)));
+            cellTitle.HorizontalAlignment = Element.ALIGN_CENTER;
+            cellTitle.VerticalAlignment = Element.ALIGN_MIDDLE;
+            //cellPos.BackgroundColor = Color.YELLOW;
+            cellTitle.BorderWidth = 1;
+            legendas.AddCell(cellTitle);
+
+            legendas.TotalWidth = width;
+            legendas.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 0), 100, writer.DirectContent);
+
             return table;
         }
         private PdfPTable CreateGrupoClassificacao(string nomeGrupo,string imageTimesFolder, string imageExtension, IList<Domain.Entities.Boloes.BolaoCampeonatoClassificacaoUsuario> classificacaoTimes)
         {
-            float[] relative = new float[] { 1, 2, 4, 1, 1, 1, 1, 1, 1, 1, 1, 2 };
+            float[] relative = new float[] { 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 2 };
 
 
             //PdfPTable table = new PdfPTable(12);
@@ -189,11 +219,24 @@ namespace BolaoNet.Infra.Reports.Pdf
                 //cellPos.BackgroundColor = Color.YELLOW;
                 cellPos.BorderWidth = 0;
 
-                PdfPCell cellBandeira = new PdfPCell(new Phrase("", new Font(Font.HELVETICA, size, Font.BOLD, Color.BLACK)));
-                cellBandeira.HorizontalAlignment = Element.ALIGN_CENTER;
-                cellBandeira.VerticalAlignment = Element.ALIGN_MIDDLE;
-                //cellBandeira.BackgroundColor = Color.YELLOW;
-                cellBandeira.BorderWidth = 0;
+                //PdfPCell cellBandeira = new PdfPCell(new Phrase("", new Font(Font.HELVETICA, size, Font.BOLD, Color.BLACK)));
+                //cellBandeira.HorizontalAlignment = Element.ALIGN_CENTER;
+                //cellBandeira.VerticalAlignment = Element.ALIGN_MIDDLE;
+                ////cellBandeira.BackgroundColor = Color.YELLOW;
+                //cellBandeira.BorderWidth = 0;
+
+
+
+                PdfPCell cellBandeira = new PdfPCell();
+                string timeFileImage = System.IO.Path.Combine(imageTimesFolder, classificacaoTimes[c].NomeTime + "." + imageExtension);
+                if (System.IO.File.Exists(timeFileImage))
+                {
+                    Image imgTime = Image.GetInstance(timeFileImage);
+                    cellBandeira.AddElement(imgTime);
+                    cellBandeira.BorderWidth = 0;
+                }
+
+
 
                 PdfPCell cellTime = new PdfPCell(new Phrase(classificacaoTimes[c].NomeTime.ToString(), new Font(Font.HELVETICA, 6f, Font.BOLD, Color.BLACK)));
                 cellTime.HorizontalAlignment = Element.ALIGN_LEFT;
@@ -201,8 +244,10 @@ namespace BolaoNet.Infra.Reports.Pdf
                 //cellTime.BackgroundColor = Color.YELLOW;
                 cellTime.BorderWidth = 0;
 
+                int totalJogos = (classificacaoTimes[c].TotalDerrotas ?? 0) + 
+                    (classificacaoTimes[c].TotalEmpates ?? 0 ) + (classificacaoTimes[c].TotalVitorias ?? 0);
                 PdfPCell cellJogos = new PdfPCell(new Phrase(
-                    (classificacaoTimes[c].TotalDerrotas + classificacaoTimes[c].TotalEmpates + classificacaoTimes[c].TotalVitorias).ToString(),
+                    (totalJogos).ToString(),
                     new Font(Font.HELVETICA, size, Font.BOLD, Color.BLACK)));
                 cellJogos.HorizontalAlignment = Element.ALIGN_CENTER;
                 cellJogos.VerticalAlignment = Element.ALIGN_MIDDLE;
@@ -252,7 +297,10 @@ namespace BolaoNet.Infra.Reports.Pdf
                 //cellSaldo.BackgroundColor = Color.YELLOW;
                 cellSaldo.BorderWidth = 0;
 
-                PdfPCell cellPerc = new PdfPCell(new Phrase("0".ToString(), new Font(Font.HELVETICA, size, Font.BOLD, Color.BLACK)));
+
+                int totalPontos = totalJogos * 3;
+                double perc = (double)(classificacaoTimes[c].TotalPontos ?? 0) / (double)totalPontos * (double)100;
+                PdfPCell cellPerc = new PdfPCell(new Phrase(perc.ToString("0.0"), new Font(Font.HELVETICA, size, Font.BOLD, Color.BLACK)));
                 cellPerc.HorizontalAlignment = Element.ALIGN_CENTER;
                 cellPerc.VerticalAlignment = Element.ALIGN_MIDDLE;
                 //cellPerc.BackgroundColor = Color.YELLOW;
@@ -569,16 +617,16 @@ namespace BolaoNet.Infra.Reports.Pdf
             }
 
             grupoA.TotalWidth = width;
-            grupoA.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 0), 660, writer.DirectContent);
+            grupoA.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 0), 650, writer.DirectContent);
 
             grupoB.TotalWidth = width;
-            grupoB.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 1), 660, writer.DirectContent);
+            grupoB.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 1), 650, writer.DirectContent);
 
             grupoC.TotalWidth = width;
-            grupoC.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 2), 660, writer.DirectContent);
+            grupoC.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 2), 650, writer.DirectContent);
 
             grupoD.TotalWidth = width;
-            grupoD.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 3), 660, writer.DirectContent);
+            grupoD.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 3), 650, writer.DirectContent);
 
             grupoE.TotalWidth = width;
             grupoE.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 0), 470, writer.DirectContent);
@@ -591,6 +639,11 @@ namespace BolaoNet.Infra.Reports.Pdf
 
             grupoH.TotalWidth = width;
             grupoH.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 3), 470, writer.DirectContent);
+
+
+
+            
+
         }
         private PdfPTable CreateGrupoJogos(bool showOnlyPartidaValida, bool fim, string imageExtension, string title, string imagePath, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> list)
         {
@@ -1301,9 +1354,14 @@ namespace BolaoNet.Infra.Reports.Pdf
             //string folderTime = System.IO.Path.Combine(baseFolder, "times");
             //string folderProfile = System.IO.Path.Combine(baseFolder, "profiles");
             //string noFile = "..\\..\\..\\BolaoNet.MVC\\Content\\img\\profile_small.jpg";
-            
+
+
+            Domain.Entities.Users.User user = new Domain.Entities.Users.User(data.UserName);
+            user.FullName = data.FullName;
+            user.Email = data.Email;
+
             CreatePage(false, false, 0, 0, writer, extension, "", folderProfiles, folderTimes,
-                new Domain.Entities.Users.User(data.UserName), data.JogosUsuarios, data.ApostasExtras );
+                user, data.JogosUsuarios, data.ApostasExtras);
 
             document.NewPage();
 

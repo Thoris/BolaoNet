@@ -24,6 +24,45 @@ namespace BolaoNet.Infra.Reports.Pdf
 
         #region Methods
 
+        private void CreateRegrasPage( PdfWriter writer, Domain.Entities.Boloes.Bolao bolao, IList<Domain.Entities.Boloes.BolaoRegra> regras)
+        {
+
+            PdfPTable tableTitle = new PdfPTable(1);
+
+            PdfPCell cellTitleBolao = new PdfPCell(
+                new Phrase(bolao.Nome, new Font(Font.HELVETICA, 18f, Font.BOLD, Color.BLACK)));
+            cellTitleBolao.BorderWidth = 0;
+
+            tableTitle.AddCell(cellTitleBolao);
+            tableTitle.TotalWidth = 300;            
+            tableTitle.WriteSelectedRows(0, -1, 30, 800, writer.DirectContent);
+
+
+
+            PdfPTable table = new PdfPTable(1);
+
+
+
+            int spaceLeft = 40;
+            int width = 520;
+
+            for (int c = 0; c < regras.Count; c++)
+            {
+                PdfPCell cellTitle = new PdfPCell(new Phrase(regras[c].Descricao,
+                    new Font(Font.HELVETICA, 9f, Font.BOLD, Color.BLACK)));
+                cellTitle.HorizontalAlignment = Element.ALIGN_LEFT;
+                cellTitle.VerticalAlignment = Element.ALIGN_MIDDLE;
+                cellTitle.BorderWidth = 0;
+                table.AddCell(cellTitle);
+            }
+
+            table.TotalWidth = width;
+            table.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 0), 700, writer.DirectContent);
+
+
+        }
+
+
         public void CreatePage(bool showOnlyPartidaValida, bool fim, int posicao, int pontos, PdfWriter writer, string imageExtension, string noPictureFile, string imageUserPath, string imageTimesPath, Domain.Entities.Users.User user, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> list, IList<Domain.Entities.ValueObjects.ApostaExtraUsuarioVO> listExtra)
         {
             List<Domain.Entities.ValueObjects.JogoUsuarioVO>[] grupo = new List<Domain.Entities.ValueObjects.JogoUsuarioVO>[8];
@@ -68,7 +107,7 @@ namespace BolaoNet.Infra.Reports.Pdf
 
 
                         break;
-                       
+
                     //case "oitavas de final":
                     case Domain.Entities.Campeonatos.CampeonatoFase.FaseOitavasFinal:
                         oitavas.Add(jogo);
@@ -138,6 +177,9 @@ namespace BolaoNet.Infra.Reports.Pdf
 
             CreateGrupos(showOnlyPartidaValida, fim, writer, imageTimesPath, imageExtension, grupo);
             CreateEliminatorias(showOnlyPartidaValida, fim, writer, imageTimesPath, imageExtension, oitavas, quartas, semiFinais, finais);
+
+
+
         }
         private PdfPTable CreateUserData(string imageFolder, string imageExtension, string noPictureFile, Domain.Entities.Users.User user)
         {
@@ -299,16 +341,16 @@ namespace BolaoNet.Infra.Reports.Pdf
             }
 
             grupoA.TotalWidth = width;
-            grupoA.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 0), 660, writer.DirectContent);
+            grupoA.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 0), 650, writer.DirectContent);
 
             grupoB.TotalWidth = width;
-            grupoB.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 1), 660, writer.DirectContent);
+            grupoB.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 1), 650, writer.DirectContent);
 
             grupoC.TotalWidth = width;
-            grupoC.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 2), 660, writer.DirectContent);
+            grupoC.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 2), 650, writer.DirectContent);
 
             grupoD.TotalWidth = width;
-            grupoD.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 3), 660, writer.DirectContent);
+            grupoD.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 3), 650, writer.DirectContent);
 
             grupoE.TotalWidth = width;
             grupoE.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 0), 470, writer.DirectContent);
@@ -321,6 +363,11 @@ namespace BolaoNet.Infra.Reports.Pdf
 
             grupoH.TotalWidth = width;
             grupoH.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 3), 470, writer.DirectContent);
+
+
+
+
+
         }
         private PdfPTable CreateGrupoJogos(bool showOnlyPartidaValida, bool fim, string imageExtension, string title, string imagePath, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> list)
         {
@@ -576,13 +623,19 @@ namespace BolaoNet.Infra.Reports.Pdf
             table.AddCell("");
             table.AddCell(CreateOitavasRight(showOnlyPartidaValida, fim, imagePath, imageExtension, oitavas));
 
-            table.TotalWidth = 580;
+            //table.TotalWidth = 580;
+            table.TotalWidth = 540;
+            table.SpacingAfter = 10;
 
-            table.WriteSelectedRows(0, -1, 5, 280, writer.DirectContent);
+            //table.WriteSelectedRows(0, -1, 5, 280, writer.DirectContent);
+            table.WriteSelectedRows(0, -1, 25, 280, writer.DirectContent);
 
 
-            int oitavasLeft = 45;
-            int oitavasRight = 541;
+            //int oitavasLeft = 45;
+            //int oitavasRight = 541;
+
+            int oitavasLeft = 65;
+            int oitavasRight = 531;
 
             PdfContentByte cb = writer.DirectContent;
             cb.MoveTo(oitavasLeft, 247);
@@ -603,41 +656,41 @@ namespace BolaoNet.Infra.Reports.Pdf
             cb.Stroke();
 
             cb.MoveTo(oitavasLeft, 233);
-            cb.LineTo(oitavasLeft + 49, 233);
+            cb.LineTo(oitavasLeft + 43, 233);
             cb.Stroke();
 
 
             cb.MoveTo(oitavasLeft, 121);
-            cb.LineTo(oitavasLeft + 49, 121);
+            cb.LineTo(oitavasLeft + 43, 121);
             cb.Stroke();
 
 
             cb.MoveTo(oitavasRight, 233);
-            cb.LineTo(oitavasRight - 45, 233);
+            cb.LineTo(oitavasRight - 49, 233);
             cb.Stroke();
 
 
             cb.MoveTo(oitavasRight, 121);
-            cb.LineTo(oitavasRight - 45, 121);
+            cb.LineTo(oitavasRight - 49, 121);
             cb.Stroke();
 
 
             //   |
-            cb.MoveTo(130, 223);
-            cb.LineTo(130, 139);
+            cb.MoveTo(145, 223);
+            cb.LineTo(145, 139);
             cb.Stroke();
             //   |
-            cb.MoveTo(460, 223);
-            cb.LineTo(460, 139);
+            cb.MoveTo(445, 223);
+            cb.LineTo(445, 139);
             cb.Stroke();
 
             // -
-            cb.MoveTo(130, 180);
-            cb.LineTo(180 - 4, 180);
+            cb.MoveTo(145, 180);
+            cb.LineTo(180 + 4, 180);
             cb.Stroke();
             // -
-            cb.MoveTo(460, 180);
-            cb.LineTo(410 + 3, 180);
+            cb.MoveTo(445, 180);
+            cb.LineTo(407, 180);
             cb.Stroke();
 
 
@@ -655,12 +708,12 @@ namespace BolaoNet.Infra.Reports.Pdf
 
 
             cb.MoveTo(280, 180);
-            cb.LineTo(247 + 6, 180);
+            cb.LineTo(247 + 8, 180);
             cb.Stroke();
 
 
             cb.MoveTo(310, 180);
-            cb.LineTo(343 - 6, 180);
+            cb.LineTo(343 - 8, 180);
             cb.Stroke();
 
         }
@@ -998,7 +1051,7 @@ namespace BolaoNet.Infra.Reports.Pdf
 
             }//end for jogo
 
-            return new Domain.Entities.ValueObjects.JogoUsuarioVO();            
+            return new Domain.Entities.ValueObjects.JogoUsuarioVO();
         }
 
         private void CompressFile(string sourceFile, string targetFile)
@@ -1048,14 +1101,23 @@ namespace BolaoNet.Infra.Reports.Pdf
 
 
             document.Open();
+            document.NewPage();
+
+
+            CreateRegrasPage(writer, data.Bolao, data.Regras);
+
 
             for (int c = 0; c < data.Membros.Count; c++)
             {
 
                 document.NewPage();
 
+                Domain.Entities.Users.User user = new Domain.Entities.Users.User(data.Membros[c].UserName);
+                user.FullName = data.Membros[c].FullName;
+                user.Email = data.Membros[c].Email;
+
                 CreatePage(false, false, 0, 0, writer, extension, "", folderProfiles, folderTimes,
-                    new Domain.Entities.Users.User(data.Membros[c].UserName), data.Membros[c].JogosUsuarios, data.Membros[c].ApostasExtras);
+                    user, data.Membros[c].JogosUsuarios, data.Membros[c].ApostasExtras);
             }
             document.Close();
             

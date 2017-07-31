@@ -959,7 +959,8 @@ namespace BolaoNet.Infra.Data.EF.Boloes
                     MultiploTime = p.MultiploTime,
 
                     Ganhador = p.Ganhador,
-
+                    DescricaoTime1 = j.DescricaoTime1,
+                    DescricaoTime2 = j.DescricaoTime2,
 
                 };
 

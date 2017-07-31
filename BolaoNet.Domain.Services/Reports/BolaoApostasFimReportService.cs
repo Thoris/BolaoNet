@@ -19,6 +19,7 @@ namespace BolaoNet.Domain.Services.Reports
         private Interfaces.Services.Boloes.IApostaExtraUsuarioService _apostaExtraUsuarios;
         private Interfaces.Services.Boloes.IJogoUsuarioService _jogoUsuario;
         private Interfaces.Services.Users.IUserService _user;
+        private Interfaces.Services.Boloes.IBolaoRegraService _regraService;
         private Interfaces.Services.Reports.FormatReport.IBolaoApostasFimFormatReportService _output;
         private ILogging _logging;
 
@@ -26,7 +27,7 @@ namespace BolaoNet.Domain.Services.Reports
 
         #region Constructors/Destructors
 
-        public BolaoApostasFimReportService(string userName, ILogging logging, Interfaces.Services.Boloes.IBolaoMembroService bolaoMembro, Interfaces.Services.Boloes.IBolaoService bolao, Interfaces.Services.Boloes.IApostaExtraUsuarioService apostaExtraUsuarios, Interfaces.Services.Boloes.IJogoUsuarioService jogoUsuario, Interfaces.Services.Users.IUserService user, Interfaces.Services.Reports.FormatReport.IBolaoApostasFimFormatReportService output)
+        public BolaoApostasFimReportService(string userName, ILogging logging, Interfaces.Services.Boloes.IBolaoMembroService bolaoMembro, Interfaces.Services.Boloes.IBolaoService bolao, Interfaces.Services.Boloes.IApostaExtraUsuarioService apostaExtraUsuarios, Interfaces.Services.Boloes.IJogoUsuarioService jogoUsuario, Interfaces.Services.Users.IUserService user, Interfaces.Services.Boloes.IBolaoRegraService regraService, Interfaces.Services.Reports.FormatReport.IBolaoApostasFimFormatReportService output)
         {
             _bolaoMembro = bolaoMembro;
             _bolao = bolao;
@@ -35,6 +36,7 @@ namespace BolaoNet.Domain.Services.Reports
             _jogoUsuario = jogoUsuario;
             _user = user;
             _output = output;
+            _regraService = regraService;
             _logging = logging;
         }
 
@@ -49,24 +51,25 @@ namespace BolaoNet.Domain.Services.Reports
             if (string.IsNullOrEmpty(bolao.Nome))
                 throw new ArgumentException("bolao.Nome");
 
-            
+
             if (IsSaveLog)
                 CheckStart();
 
-            Entities.ValueObjects.Reports.BolaoFinalVO res = new Entities.ValueObjects.Reports.BolaoFinalVO();
+            Entities.ValueObjects.Reports.BolaoIniciarVO res = new Entities.ValueObjects.Reports.BolaoIniciarVO();
 
             IList<Domain.Entities.Boloes.BolaoMembro> membros = _bolaoMembro.GetListUsersInBolao(bolao);
 
             //IList<Entities.ValueObjects.Reports.BolaoMembroApostasVO> res = 
             res.Membros = new List<Entities.ValueObjects.Reports.BolaoMembroApostasVO>();
 
+            Domain.Entities.Boloes.Bolao bolaoLoaded = _bolao.Load(bolao);
+            res.Bolao = bolaoLoaded;
 
             for (int c = 0; c < membros.Count; c++)
             {
                 Entities.ValueObjects.Reports.BolaoMembroApostasVO entry = new Entities.ValueObjects.Reports.BolaoMembroApostasVO();
 
                 Domain.Entities.Users.User userLoaded = _user.Load(new Domain.Entities.Users.User(membros[c].UserName));
-                Domain.Entities.Boloes.Bolao bolaoLoaded = _bolao.Load(bolao);
 
                 entry.Email = userLoaded.Email;
                 entry.UserName = userLoaded.UserName;
@@ -76,6 +79,8 @@ namespace BolaoNet.Domain.Services.Reports
 
                 res.Membros.Add(entry);
             }
+
+            res.Regras = _regraService.GetRegrasBolao(bolao);
 
             
             if (IsSaveLog)

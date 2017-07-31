@@ -20,6 +20,7 @@ namespace BolaoNet.Domain.Services.Reports
         private Interfaces.Services.Boloes.IApostaExtraUsuarioService _apostaExtraUsuarios;
         private Interfaces.Services.Boloes.IJogoUsuarioService _jogoUsuario;
         private Interfaces.Services.Users.IUserService _user;
+        private Interfaces.Services.Boloes.IBolaoRegraService _regraService;
         private Interfaces.Services.Reports.FormatReport.IBolaoApostasInicioFormatReportService _output;
         private ILogging _logging;
 
@@ -27,7 +28,7 @@ namespace BolaoNet.Domain.Services.Reports
 
         #region Constructors/Destructors
 
-        public BolaoApostasInicioReportService(string userName, ILogging logging, Interfaces.Services.Boloes.IBolaoMembroService bolaoMembro, Interfaces.Services.Boloes.IBolaoService bolao, Interfaces.Services.Boloes.IApostaExtraUsuarioService apostaExtraUsuarios, Interfaces.Services.Boloes.IJogoUsuarioService jogoUsuario, Interfaces.Services.Users.IUserService user, Interfaces.Services.Reports.FormatReport.IBolaoApostasInicioFormatReportService output)
+        public BolaoApostasInicioReportService(string userName, ILogging logging, Interfaces.Services.Boloes.IBolaoMembroService bolaoMembro, Interfaces.Services.Boloes.IBolaoService bolao, Interfaces.Services.Boloes.IApostaExtraUsuarioService apostaExtraUsuarios, Interfaces.Services.Boloes.IJogoUsuarioService jogoUsuario, Interfaces.Services.Users.IUserService user, Interfaces.Services.Boloes.IBolaoRegraService regraService, Interfaces.Services.Reports.FormatReport.IBolaoApostasInicioFormatReportService output)
         {
             _bolaoMembro = bolaoMembro;
             _bolao = bolao;
@@ -35,6 +36,7 @@ namespace BolaoNet.Domain.Services.Reports
             _apostaExtraUsuarios = apostaExtraUsuarios;
             _jogoUsuario = jogoUsuario;
             _user = user;
+            _regraService = regraService;
             _output = output;
             _logging = logging;
         }
@@ -59,24 +61,28 @@ namespace BolaoNet.Domain.Services.Reports
             IList<Domain.Entities.Boloes.BolaoMembro> membros = _bolaoMembro.GetListUsersInBolao(bolao);
 
             //IList<Entities.ValueObjects.Reports.BolaoMembroApostasVO> res = 
-             res.Membros = new List<Entities.ValueObjects.Reports.BolaoMembroApostasVO>();
+            res.Membros = new List<Entities.ValueObjects.Reports.BolaoMembroApostasVO>();
 
-            
+            Domain.Entities.Boloes.Bolao bolaoLoaded = _bolao.Load(bolao);
+            res.Bolao = bolaoLoaded;
+
             for (int c = 0; c < membros.Count; c++)
             {
                 Entities.ValueObjects.Reports.BolaoMembroApostasVO entry = new Entities.ValueObjects.Reports.BolaoMembroApostasVO();
 
                 Domain.Entities.Users.User userLoaded = _user.Load(new Domain.Entities.Users.User(membros[c].UserName));
-                Domain.Entities.Boloes.Bolao bolaoLoaded = _bolao.Load(bolao);
-
+                
                 entry.Email = userLoaded.Email;
                 entry.UserName = userLoaded.UserName;
                 entry.FullName = userLoaded.FullName;
                 entry.ApostasExtras = _apostaExtraUsuarios.GetApostasUser(bolaoLoaded, userLoaded);
                 entry.JogosUsuarios = _jogoUsuario.GetJogosUser(bolaoLoaded, userLoaded, new Entities.ValueObjects.FilterJogosVO());
-
+                
                 res.Membros.Add(entry);
             }
+
+            res.Regras = _regraService.GetRegrasBolao(bolao);
+
 
             if (IsSaveLog)
             {
@@ -105,7 +111,5 @@ namespace BolaoNet.Domain.Services.Reports
         }
 
         #endregion
-
-
     }
 }
