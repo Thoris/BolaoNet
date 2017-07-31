@@ -8,6 +8,7 @@ namespace BolaoNet.Domain.Entities.ValueObjects.Reports
 {
     public class BolaoFinalVO : BolaoIniciarVO
     {
-        
+        public IList<Domain.Entities.ValueObjects.BolaoClassificacaoVO> Classificacao { get; set; }
+        public IList<Domain.Entities.Boloes.BolaoPremio> Premios { get; set; }
     }
 }

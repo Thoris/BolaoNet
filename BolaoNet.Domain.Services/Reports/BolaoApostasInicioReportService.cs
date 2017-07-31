@@ -86,7 +86,7 @@ namespace BolaoNet.Domain.Services.Reports
 
             if (IsSaveLog)
             {
-                _logging.Debug(this, GetMessageTotalTime("Carregamento dos dados do bolão [" + bolao.Nome + "]"));
+                _logging.Debug(this, GetMessageTotalTime("Carregamento dos dados do relatório inicial do bolão [" + bolao.Nome + "]"));
             }
 
 

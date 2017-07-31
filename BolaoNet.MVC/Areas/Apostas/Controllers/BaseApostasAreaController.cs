@@ -1,4 +1,5 @@
 ﻿using BolaoNet.MVC.Controllers;
+using BolaoNet.MVC.Security;
 using Ninject;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Web.Routing;
 
 namespace BolaoNet.MVC.Areas.Apostas.Controllers
 {
+    [AuthorizeRoles( PermissionLevel.Administrador , PermissionLevel.Apostador)]
     public class BaseApostasAreaController : BaseBolaoController
     {
         #region Properties

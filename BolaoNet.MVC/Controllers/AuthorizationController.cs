@@ -31,7 +31,7 @@ namespace BolaoNet.MVC.Controllers
             return user.IsInRole(desc);
 
         }
-        public bool IsUserInRole(PermissionLevel [] levels)
+        public bool IsUserInRole(params PermissionLevel [] levels)
         {
             CustomUserPrincipal user = this.HttpContext.User as CustomUserPrincipal;
 

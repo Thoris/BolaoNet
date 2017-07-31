@@ -84,7 +84,7 @@ namespace BolaoNet.MVC.Security
                     if (!CurrentUser.IsInRole(Roles))
                     {
                         filterContext.Result = new RedirectToRouteResult(new
-                            RouteValueDictionary(new { controller = "Error", action = "AccessDenied" }));
+                            RouteValueDictionary(new { area = "", controller = "Error", action = "AccessDenied" }));
                     }
                 }
 
@@ -93,7 +93,7 @@ namespace BolaoNet.MVC.Security
                     if (!Users.Contains(CurrentUser.UserName))
                     {
                         filterContext.Result = new RedirectToRouteResult(new
-                            RouteValueDictionary(new { controller = "Error", action = "AccessDenied" }));
+                            RouteValueDictionary(new { area = "", controller = "Error", action = "AccessDenied" }));
                     }
                 }
             }
@@ -139,7 +139,7 @@ namespace BolaoNet.MVC.Security
             else
             {
                 filterContext.Result = new RedirectToRouteResult(new
-                    RouteValueDictionary(new { controller = "Error", action = "AccessDenied" }));
+                    RouteValueDictionary(new { area = "", controller = "Error", action = "AccessDenied" }));
             }
         }
 

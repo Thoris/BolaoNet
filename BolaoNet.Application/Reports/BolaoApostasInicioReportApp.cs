@@ -36,9 +36,6 @@ namespace BolaoNet.Application.Reports
             return _service.Generate(fileName, compressedFileName, extension, folderProfiles, folderTimes, data);
         }
 
-        #endregion
-    
-
-
+        #endregion 
     }
 }

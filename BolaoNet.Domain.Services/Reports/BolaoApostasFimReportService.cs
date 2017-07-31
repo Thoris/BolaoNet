@@ -21,13 +21,15 @@ namespace BolaoNet.Domain.Services.Reports
         private Interfaces.Services.Users.IUserService _user;
         private Interfaces.Services.Boloes.IBolaoRegraService _regraService;
         private Interfaces.Services.Reports.FormatReport.IBolaoApostasFimFormatReportService _output;
+        private Interfaces.Services.Boloes.IBolaoMembroClassificacaoService _bolaoMembroClassificacaoService;
+        private Interfaces.Services.Boloes.IBolaoPremioService _bolaoPremioApp;
         private ILogging _logging;
 
         #endregion
 
         #region Constructors/Destructors
 
-        public BolaoApostasFimReportService(string userName, ILogging logging, Interfaces.Services.Boloes.IBolaoMembroService bolaoMembro, Interfaces.Services.Boloes.IBolaoService bolao, Interfaces.Services.Boloes.IApostaExtraUsuarioService apostaExtraUsuarios, Interfaces.Services.Boloes.IJogoUsuarioService jogoUsuario, Interfaces.Services.Users.IUserService user, Interfaces.Services.Boloes.IBolaoRegraService regraService, Interfaces.Services.Reports.FormatReport.IBolaoApostasFimFormatReportService output)
+        public BolaoApostasFimReportService(string userName, ILogging logging, Interfaces.Services.Boloes.IBolaoMembroService bolaoMembro, Interfaces.Services.Boloes.IBolaoService bolao, Interfaces.Services.Boloes.IApostaExtraUsuarioService apostaExtraUsuarios, Interfaces.Services.Boloes.IJogoUsuarioService jogoUsuario, Interfaces.Services.Users.IUserService user, Interfaces.Services.Boloes.IBolaoRegraService regraService, Interfaces.Services.Boloes.IBolaoMembroClassificacaoService bolaoMembroClassificacaoService, Interfaces.Services.Boloes.IBolaoPremioService bolaoPremioApp, Interfaces.Services.Reports.FormatReport.IBolaoApostasFimFormatReportService output)
         {
             _bolaoMembro = bolaoMembro;
             _bolao = bolao;
@@ -37,6 +39,8 @@ namespace BolaoNet.Domain.Services.Reports
             _user = user;
             _output = output;
             _regraService = regraService;
+            _bolaoMembroClassificacaoService = bolaoMembroClassificacaoService;
+            _bolaoPremioApp = bolaoPremioApp;
             _logging = logging;
         }
 
@@ -82,10 +86,15 @@ namespace BolaoNet.Domain.Services.Reports
 
             res.Regras = _regraService.GetRegrasBolao(bolao);
 
+            res.Classificacao =
+                _bolaoMembroClassificacaoService.LoadClassificacao(bolao, null);
+            
+            res.Premios = _bolaoPremioApp.GetPremiosBolao(bolao);
+            
             
             if (IsSaveLog)
             {
-                _logging.Debug(this, GetMessageTotalTime("Carregamento dos dados do bolão [" + bolao.Nome + "]"));
+                _logging.Debug(this, GetMessageTotalTime("Carregamento dos dados do relatório fim do bolão [" + bolao.Nome + "]"));
             }
 
             return res;

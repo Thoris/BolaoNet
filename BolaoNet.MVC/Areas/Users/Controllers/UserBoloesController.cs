@@ -1,4 +1,5 @@
 ﻿using BolaoNet.MVC.Controllers;
+using BolaoNet.MVC.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Web.Mvc;
 
 namespace BolaoNet.MVC.Areas.Users.Controllers
 {
+    [AuthorizeRoles(PermissionLevel.Administrador | PermissionLevel.VisitanteBolao  | PermissionLevel.Apostador)]
     public class UserBoloesController : BaseBolaoController
     {
         #region Variables

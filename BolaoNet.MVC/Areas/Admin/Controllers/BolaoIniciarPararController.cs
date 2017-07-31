@@ -191,7 +191,7 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
             if (System.IO.File.Exists(fileToCheckZip))
                 System.IO.File.Delete(fileToCheckZip);
 
-            Stream streamReport = _bolaoApostasInicioReportApp.Generate(
+            Stream streamReport = _bolaoApostasFimReportApp.Generate(
                             fileToCheck,
                             fileToCheckZip,
                            "gif",

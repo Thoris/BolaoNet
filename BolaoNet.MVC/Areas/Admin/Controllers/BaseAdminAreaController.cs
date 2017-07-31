@@ -1,4 +1,5 @@
 ﻿using BolaoNet.MVC.Controllers;
+using BolaoNet.MVC.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Web;
 
 namespace BolaoNet.MVC.Areas.Admin.Controllers
 {
+    [AuthorizeRoles(PermissionLevel.Administrador , PermissionLevel.GerenciadorBolao , PermissionLevel.VisitanteBolao)]
     public class BaseAdminAreaController : BaseBolaoController
     {
         #region Constructors/Destructors

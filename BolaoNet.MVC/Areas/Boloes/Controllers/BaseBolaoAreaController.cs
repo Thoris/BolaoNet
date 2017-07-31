@@ -1,4 +1,5 @@
 ﻿using BolaoNet.MVC.Controllers;
+using BolaoNet.MVC.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Web.Routing;
 
 namespace BolaoNet.MVC.Areas.Boloes.Controllers
 {
+    [AuthorizeRoles(PermissionLevel.Administrador , PermissionLevel.Apostador , PermissionLevel.VisitanteBolao , PermissionLevel.GerenciadorBolao)]
     public class BaseBolaoAreaController : BaseBolaoController
     {
         #region Constructors/Destructors
