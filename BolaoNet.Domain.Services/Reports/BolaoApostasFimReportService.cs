@@ -55,7 +55,7 @@ namespace BolaoNet.Domain.Services.Reports
             if (IsSaveLog)
                 CheckStart();
 
-            Entities.ValueObjects.Reports.BolaoIniciarVO res = new Entities.ValueObjects.Reports.BolaoIniciarVO();
+            Entities.ValueObjects.Reports.BolaoFinalVO res = new Entities.ValueObjects.Reports.BolaoFinalVO();
 
             IList<Domain.Entities.Boloes.BolaoMembro> membros = _bolaoMembro.GetListUsersInBolao(bolao);
 
