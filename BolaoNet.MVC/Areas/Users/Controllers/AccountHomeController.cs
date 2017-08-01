@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BolaoNet.MVC.Helpers;
+using BolaoNet.MVC.Security;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,6 +11,7 @@ using System.Web.Mvc;
 
 namespace BolaoNet.MVC.Areas.Users.Controllers
 {
+    [AuthorizeRoles]
     public class AccountHomeController : BaseUserAreaController
     {
         #region Variables
