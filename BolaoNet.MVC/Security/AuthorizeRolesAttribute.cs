@@ -31,8 +31,19 @@ namespace BolaoNet.MVC.Security
 
         public AuthorizeRolesAttribute(params PermissionLevel[] allowedRoles)
         {
-            var allowedRolesAsStrings = allowedRoles.Select(x => Enum.GetName(typeof(PermissionLevel), x));
-            Roles = string.Join(",", allowedRolesAsStrings);
+            //var allowedRolesAsStrings = allowedRoles.Select(x => Enum.GetName(typeof(PermissionLevel), x));
+            //Roles = string.Join(",", allowedRolesAsStrings);
+
+            Roles = "";
+            for (int c = 0; c < allowedRoles.Length; c++ )
+            {
+                int pos = (int) allowedRoles[c];
+                if (c > 0)
+                    Roles += ",";
+                
+                Roles += PermissionLevelDesc.Levels[pos];
+            }
+
 
             this.allowedPermissionLevels = allowedRoles;
             //How to use: [AuthorizeRoles(UserPermissionLevel.Admin, UserPermissionLevel.User)]

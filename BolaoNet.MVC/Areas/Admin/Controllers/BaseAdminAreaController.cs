@@ -7,7 +7,7 @@ using System.Web;
 
 namespace BolaoNet.MVC.Areas.Admin.Controllers
 {
-    [AuthorizeRoles(PermissionLevel.Administrador , PermissionLevel.GerenciadorBolao , PermissionLevel.VisitanteBolao)]
+    [AuthorizeRoles(PermissionLevel.Administrador , PermissionLevel.GerenciadorBolao)]
     public class BaseAdminAreaController : BaseBolaoController
     {
         #region Constructors/Destructors
