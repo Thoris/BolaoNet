@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Base\BaseRepositoryDao.cs" />
     <Compile Include="Base\IUnitOfWork.cs" />
+    <Compile Include="Base\MultipleResultSets.cs" />
     <Compile Include="Boloes\ApostaExtraRepositoryDao.cs" />
     <Compile Include="Boloes\ApostaExtraUsuarioRepositoryDao.cs" />
     <Compile Include="Boloes\ApostaPontosRepositoryDao.cs" />

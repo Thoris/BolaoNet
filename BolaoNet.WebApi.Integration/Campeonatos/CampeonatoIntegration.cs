@@ -48,8 +48,14 @@ namespace BolaoNet.WebApi.Integration.Campeonatos
         {
             throw new NotImplementedException();
         }
+        public IList<IList<Domain.Entities.ValueObjects.CampeonatoRecordVO>> GetRecords(Domain.Entities.Campeonatos.Campeonato campeonato, Domain.Interfaces.Services.Campeonatos.RecordTipoPesquisa tipo)
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
+
+
 
 
     }

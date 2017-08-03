@@ -142,5 +142,14 @@
     <None Include="build\0128.Create_Stored_Procedure_sp_JogosUsuarios_Load_Sem_Acertos.sql" />
     <None Include="build\0129.Create_Stored_Procedure_sp_Campeonatos_Reiniciar.sql" />
     <None Include="build\0130.Create_Stored_Procedure_sp_Clear_Database.sql" />
+    <None Include="build\0131.Create_Stored_Procedure_sp_CampeonatosRecordTimeRecordJogosGols.sql" />
+    <None Include="build\0132.Create_Stored_Procedure_sp_CampeonatosRecordTimeRecordSemGanhar.sql" />
+    <None Include="build\0133.Create_Stored_Procedure_sp_CampeonatosRecordTimeRecordSemPerder.sql" />
+    <None Include="build\0134.Create_Stored_Procedure_sp_CampeonatosRecordTimeRecordSeqDerrotas.sql" />
+    <None Include="build\0135.Create_Stored_Procedure_sp_CampeonatosRecordTimeRecordSeqEmpates.sql" />
+    <None Include="build\0136.Create_Stored_Procedure_sp_CampeonatosRecordTimeRecordSeqVitorias.sql" />
+    <None Include="build\0137.Create_Stored_Procedure_sp_CampeonatosRecords.sql" />
+    <None Include="build\0138.Create_Stored_Procedure_sp_CampeonatosRecordGols.sql" />
+    <None Include="build\0139.Create_Stored_Procedure_sp_CampeonatosRecordGolsFrequencia.sql" />
   </ItemGroup>
 </Project>

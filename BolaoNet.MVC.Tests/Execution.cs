@@ -15,7 +15,10 @@ namespace BolaoNet.MVC.Tests
 
         public void Execute()
         {
+            Domain.Services.Encrypt.EncryptDecrypt t = new Domain.Services.Encrypt.EncryptDecrypt();
+            string res = t.EncryptText("usuario0x0", "thoris01");
 
+            string d = t.DecryptText(res, "thoris01");
 
             new HappyWay().TestGeneratePdfMembro();
 

@@ -47,7 +47,13 @@ namespace BolaoNet.Application.Campeonatos
         {
             Service.ClearDatabase();
         }
+        public IList<IList<Domain.Entities.ValueObjects.CampeonatoRecordVO>> GetRecords(Domain.Entities.Campeonatos.Campeonato campeonato, Domain.Interfaces.Services.Campeonatos.RecordTipoPesquisa tipo)
+        {
+            return Service.GetRecords(campeonato, tipo);
+        }
 
         #endregion
+
+
     }
 }

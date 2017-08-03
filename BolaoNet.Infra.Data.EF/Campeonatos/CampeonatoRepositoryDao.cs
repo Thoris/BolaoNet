@@ -89,8 +89,14 @@ namespace BolaoNet.Infra.Data.EF.Campeonatos
             base.DataContext.Database.ExecuteSqlCommand(command, parameters);
 
         }
+        public IList<IList<Domain.Entities.ValueObjects.CampeonatoRecordVO>> GetRecords(string currentUserName, DateTime currentDateTime, Domain.Entities.Campeonatos.Campeonato campeonato, int tipo)
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
+
+
 
 
     }

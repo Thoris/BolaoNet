@@ -84,6 +84,28 @@ namespace BolaoNet.Domain.Services.Campeonatos
                 _logging.Debug(this, GetMessageTotalTime("Apagando o banco de dados"));
             }
         }
+
+        public IList<IList<Entities.ValueObjects.CampeonatoRecordVO>> GetRecords(Entities.Campeonatos.Campeonato campeonato, Interfaces.Services.Campeonatos.RecordTipoPesquisa tipo)
+        {
+            if (IsSaveLog)
+                CheckStart();
+
+            IList<IList<Entities.ValueObjects.CampeonatoRecordVO>> res = BaseDao.GetRecords(base.CurrentUserName, DateTime.Now,
+                campeonato, (int)tipo);
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Records obtidos"));
+            }
+
+            return res;
+        }
+
         #endregion
+
+
+
+
+
     }
 }

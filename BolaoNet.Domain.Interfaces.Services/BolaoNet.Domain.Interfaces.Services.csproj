@@ -76,6 +76,7 @@
     <Compile Include="Campeonatos\IHistoricoService.cs" />
     <Compile Include="Campeonatos\IJogoService.cs" />
     <Compile Include="Campeonatos\IPontuacaoService.cs" />
+    <Compile Include="Campeonatos\RecordTipoPesquisa.cs" />
     <Compile Include="DadosBasicos\ICriterioFixoService.cs" />
     <Compile Include="DadosBasicos\IEstadioService.cs" />
     <Compile Include="DadosBasicos\IPagamentoTipoService.cs" />

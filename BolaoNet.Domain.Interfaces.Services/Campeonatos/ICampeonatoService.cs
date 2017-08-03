@@ -14,5 +14,8 @@ namespace BolaoNet.Domain.Interfaces.Services.Campeonatos
         void Reiniciar(Entities.Campeonatos.Campeonato campeonato);
 
         void ClearDatabase();
+
+
+        IList<IList<Domain.Entities.ValueObjects.CampeonatoRecordVO>> GetRecords(Entities.Campeonatos.Campeonato campeonato, Services.Campeonatos.RecordTipoPesquisa tipo);
     }
 }

@@ -196,7 +196,7 @@ namespace BolaoNet.Domain.Services.Users
             if (userLoaded == null)
                 throw new Exception("Usuário " + user.UserName + " não encontrado.");
 
-            string activationKey = "teste";
+            string activationKey = new Encrypt.EncryptDecrypt().EncryptText(userLoaded.UserName, userLoaded.Password);
 
             userLoaded.ActivateKey = activationKey;
 

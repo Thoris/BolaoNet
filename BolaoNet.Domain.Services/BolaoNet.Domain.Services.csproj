@@ -82,6 +82,7 @@
     <Compile Include="DadosBasicos\EstadioService.cs" />
     <Compile Include="DadosBasicos\PagamentoTipoService.cs" />
     <Compile Include="DadosBasicos\TimeService.cs" />
+    <Compile Include="Encrypt\EncryptDecrypt.cs" />
     <Compile Include="Facade\BolaoFacadeService.cs" />
     <Compile Include="Facade\CampeonatoFacadeService.cs" />
     <Compile Include="Facade\Campeonatos\BaseCopaMundoFacadeService.cs" />

@@ -13,5 +13,8 @@ namespace BolaoNet.Domain.Interfaces.Repositories.Campeonatos
         void Reiniciar(string currentUserName, DateTime currentDateTime, Entities.Campeonatos.Campeonato campeonato);
 
         void ClearDatabase(string currentUserName, DateTime currentDateTime);
+
+        IList<IList<Entities.ValueObjects.CampeonatoRecordVO>> GetRecords(string currentUserName, DateTime currentDateTime, Entities.Campeonatos.Campeonato campeonato, int tipo);
+        
     }
 }
