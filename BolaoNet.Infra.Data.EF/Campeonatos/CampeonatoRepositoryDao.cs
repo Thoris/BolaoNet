@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Objects;
+using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -91,7 +93,59 @@ namespace BolaoNet.Infra.Data.EF.Campeonatos
         }
         public IList<IList<Domain.Entities.ValueObjects.CampeonatoRecordVO>> GetRecords(string currentUserName, DateTime currentDateTime, Domain.Entities.Campeonatos.Campeonato campeonato, int tipo)
         {
-            throw new NotImplementedException();
+            IList<IList<Domain.Entities.ValueObjects.CampeonatoRecordVO>> res =
+                new List<IList<Domain.Entities.ValueObjects.CampeonatoRecordVO>>();
+
+
+            var cmd = base.DataContext.Database.Connection.CreateCommand();
+            string formatCommand = 
+                @"EXEC	sp_CampeonatosRecords
+		                @CurrentLogin = NULL,
+		                @CurrentDateTime = NULL,
+		                @NomeCampeonato = N'{0}',
+		                @TipoPesquisa = {1}";
+
+            cmd.CommandText = string.Format(formatCommand, campeonato.Nome, tipo);
+
+            try
+            {
+
+                base.DataContext.Database.Connection.Open();
+                var reader = cmd.ExecuteReader();
+                var geral = ((IObjectContextAdapter)base.DataContext)
+                    .ObjectContext
+                    .Translate<Domain.Entities.ValueObjects.CampeonatoRecordVO>(reader);
+
+                IList<Domain.Entities.ValueObjects.CampeonatoRecordVO> geralList = geral.ToList();
+                res.Add(geralList);
+
+                reader.NextResult();
+
+                var casa = ((IObjectContextAdapter)base.DataContext)
+                    .ObjectContext
+                    .Translate<Domain.Entities.ValueObjects.CampeonatoRecordVO>(reader);
+
+
+                IList<Domain.Entities.ValueObjects.CampeonatoRecordVO> casaList = casa.ToList();
+                res.Add(casaList);
+
+                reader.NextResult();
+
+                var fora = ((IObjectContextAdapter)base.DataContext)
+                    .ObjectContext
+                    .Translate<Domain.Entities.ValueObjects.CampeonatoRecordVO>(reader);
+
+
+                IList<Domain.Entities.ValueObjects.CampeonatoRecordVO> foralList = fora.ToList();
+                res.Add(foralList);
+            }
+            finally
+            {
+                base.DataContext.Database.Connection.Close();
+            }
+
+            return res;
+           
         }
 
         #endregion

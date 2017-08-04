@@ -29,7 +29,10 @@ namespace BolaoNet.Infra.Notification.Mail.Templates
             this.Tags = new List<TagValue>();
 
 
-            this.Tags.Add(new TagValue("SIGNATURE", ""));
+            string signature = System.Configuration.ConfigurationManager.AppSettings["SIGNATURE"];
+
+
+            this.Tags.Add(new TagValue("SIGNATURE", signature));
             
         }
 
@@ -63,7 +66,7 @@ namespace BolaoNet.Infra.Notification.Mail.Templates
 
             for (int c = 0; c < values.Count; c++ )
             {
-                result = result.Replace(values[c].Tag, values[c].Value);
+                result = result.Replace("[%" + values[c].Tag + "%]", values[c].Value);
             }
 
             return result;

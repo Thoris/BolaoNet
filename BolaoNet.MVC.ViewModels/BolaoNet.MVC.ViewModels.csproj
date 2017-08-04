@@ -74,6 +74,8 @@
     <Compile Include="Campeonatos\CampeonatoHistoricoViewModel.cs" />
     <Compile Include="Campeonatos\CampeonatoJogoEntryViewModel.cs" />
     <Compile Include="Campeonatos\CampeonatoJogosListViewModel.cs" />
+    <Compile Include="Campeonatos\CampeonatoRecordsListViewModel.cs" />
+    <Compile Include="Campeonatos\CampeonatoRecordsViewModel.cs" />
     <Compile Include="Campeonatos\FilterJogosViewModel.cs" />
     <Compile Include="Pagamentos\PagamentoViewModel.cs" />
     <Compile Include="Pontuacao\BolaoCriterioPontosViewModel.cs" />

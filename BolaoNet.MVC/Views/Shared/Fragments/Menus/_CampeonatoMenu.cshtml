@@ -35,11 +35,55 @@
                 { @Html.Raw("class=\"active\"")  }>
                 <a href="/Campeonatos/Goleadas/Index" onclick="javascript:showWait();"><i class="fa fa-hand-o-up"></i><span class="nav-label">Goleadas</span></a>
             </li>
-            <li @if (string.Compare(controllerName, "RecordsGols", true) == 0 &&
-                    string.Compare(controllerArea, "Campeonatos", true) == 0)
-                { @Html.Raw("class=\"active\"")  }>
-                <a href="/Campeonatos/RecordsGols/Index" onclick="javascript:showWait();"><i class="fa fa-crosshairs"></i><span class="nav-label">Placares Records</span></a>
+           
+
+            <li @if (string.Compare(controllerArea, "Campeonatos", true) == 0 && string.Compare(controllerName,"RecordsTimes",true) == 0) {  @Html.Raw("class=\"active\"")  }>    
+                <a href="/GrupoPonto/Grupos"><i class="fa fa-soccer-ball-o"></i> <span class="nav-label">Placares Records</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li>
+                        <a href="/Campeonatos/RecordsTimes/Index/1" onclick="javascript:showWait();">
+                            <i class="fa fa-trophy"></i><span class="nav-label">Qtd jogos sem ganhar</span></a>
+                    </li>
+                    <li>
+                        <a href="/Campeonatos/RecordsTimes/Index/2" onclick="javascript:showWait();">
+                            <i class="fa fa-trophy"></i><span class="nav-label">Qtd jogos sem perder</span></a>
+                    </li>
+                    <li>
+                        <a href="/Campeonatos/RecordsTimes/Index/3" onclick="javascript:showWait();">
+                            <i class="fa fa-trophy"></i><span class="nav-label">Sequencia de derrotas</span></a>
+                    </li>
+                    <li>
+                        <a href="/Campeonatos/RecordsTimes/Index/4" onclick="javascript:showWait();">
+                            <i class="fa fa-trophy"></i><span class="nav-label">Sequencia de empates</span></a>
+                    </li>
+                    <li>
+                        <a href="/Campeonatos/RecordsTimes/Index/5" onclick="javascript:showWait();">
+                            <i class="fa fa-trophy"></i><span class="nav-label">Sequencia de vitórias</span></a>
+                    </li>
+                    <li>
+                        <a href="/Campeonatos/RecordsTimes/Index/6" onclick="javascript:showWait();">
+                            <i class="fa fa-trophy"></i><span class="nav-label">Record qtd jogos sem ganhar</span></a>
+                    </li>
+                    <li>
+                        <a href="/Campeonatos/RecordsTimes/Index/7" onclick="javascript:showWait();">
+                            <i class="fa fa-trophy"></i><span class="nav-label">Record qtd jogos sem perder</span></a>
+                    </li>
+                    <li>
+                        <a href="/Campeonatos/RecordsTimes/Index/8" onclick="javascript:showWait();">
+                            <i class="fa fa-trophy"></i><span class="nav-label">Record seq derrotas</span></a>
+                    </li>
+                    <li>
+                        <a href="/Campeonatos/RecordsTimes/Index/9" onclick="javascript:showWait();">
+                            <i class="fa fa-trophy"></i><span class="nav-label">Record seq empates</span></a>
+                    </li>
+                    <li>
+                        <a href="/Campeonatos/RecordsTimes/Index/10" onclick="javascript:showWait();">
+                            <i class="fa fa-trophy"></i><span class="nav-label">Record seq vitorias</span></a>
+                    </li>
+                </ul>
             </li>
+
+            
 
             <li @if (string.Compare(controllerName, "Estatisticas", true) == 0 &&
                     string.Compare(controllerArea, "Campeonatos", true) == 0)

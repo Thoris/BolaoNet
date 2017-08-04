@@ -1,4 +1,5 @@
-﻿using BolaoNet.MVC.Tests.IoC;
+﻿using BolaoNet.Application.Interfaces.Campeonatos;
+using BolaoNet.MVC.Tests.IoC;
 using Ninject;
 using System;
 using System.Collections.Generic;
@@ -15,14 +16,17 @@ namespace BolaoNet.MVC.Tests
 
         public void Execute()
         {
-            Domain.Services.Encrypt.EncryptDecrypt t = new Domain.Services.Encrypt.EncryptDecrypt();
-            string res = t.EncryptText("usuario0x0", "thoris01");
+            //Domain.Services.Encrypt.EncryptDecrypt t = new Domain.Services.Encrypt.EncryptDecrypt();
+            //string res = t.EncryptText("usuario0x0", "thoris01");
 
-            string d = t.DecryptText(res, "thoris01");
+            //string d = t.DecryptText(res, "thoris01");
 
-            new HappyWay().TestGeneratePdfMembro();
+            //new HappyWay().TestGeneratePdfMembro();
 
+            Ninject.StandardKernel kernel = (StandardKernel)NinjectCommon.CreateKernel();
+            ICampeonatoApp campeonatoApp = kernel.Get<ICampeonatoApp>();
 
+            campeonatoApp.GetRecords(new Domain.Entities.Campeonatos.Campeonato("Copa do Mundo 2014"), Domain.Interfaces.Services.Campeonatos.RecordTipoPesquisa.RecordQtdJogosSemGanhar);
 
            
 

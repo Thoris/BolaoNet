@@ -17,7 +17,7 @@ namespace BolaoNet.Infra.Notification.Mail.Templates
         #region Constructors/Destructors
 
         public BaseTemplateMailUser(string currentUserName, string folder, string templateHtmlFile, string title, Domain.Entities.Users.User user)
-            : base(currentUserName, folder, title, templateHtmlFile)
+            : base(currentUserName, folder, templateHtmlFile, title)
         {
             this.User = user;
         }

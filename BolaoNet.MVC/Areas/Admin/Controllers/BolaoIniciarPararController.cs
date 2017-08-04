@@ -25,7 +25,7 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
         private Application.Interfaces.Reports.IBolaoMembroApostasReportApp _bolaoMembroApostasReportApp;
         private Application.Interfaces.Reports.IBolaoApostasInicioReportApp _bolaoApostasInicioReportApp;
         private Application.Interfaces.Reports.IBolaoApostasFimReportApp _bolaoApostasFimReportApp;
-
+        private Application.Interfaces.Notification.INotificationApp _notificationApp;
 
         #endregion
 
@@ -40,13 +40,15 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
             Application.Interfaces.Campeonatos.ICampeonatoTimeApp campeonatoTimeApp,
             Application.Interfaces.Reports.IBolaoMembroApostasReportApp bolaoMembroApostasReportApp,
             Application.Interfaces.Reports.IBolaoApostasInicioReportApp bolaoApostasInicioReportApp,
-            Application.Interfaces.Reports.IBolaoApostasFimReportApp bolaoApostasFimReportApp
+            Application.Interfaces.Reports.IBolaoApostasFimReportApp bolaoApostasFimReportApp,
+            Application.Interfaces.Notification.INotificationApp notificationApp
             )
             : base (bolaoMembroApp, bolaoApp, campeonatoApp, campeonatoFaseApp, campeonatoGrupoApp, campeonatoTimeApp)
         {
             _bolaoMembroApostasReportApp = bolaoMembroApostasReportApp;
             _bolaoApostasInicioReportApp = bolaoApostasInicioReportApp;
             _bolaoApostasFimReportApp = bolaoApostasFimReportApp;
+            _notificationApp = notificationApp;
         }
 
         #endregion
@@ -207,6 +209,56 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
 
             StreamReader reader = new StreamReader(folder);
             return base.DownloadStream(reader.BaseStream, "text/plain", fileName);
+        }
+        public ActionResult EnviarApostasRestantes()
+        {
+
+           
+
+
+
+
+
+            return RedirectToAction("Index");
+        }
+        public ActionResult EnviarNaoPago()
+        {
+            Domain.Entities.Boloes.Bolao bolaoLoaded = _bolaoApp.Load(base.SelectedBolao);
+
+            IList<Domain.Entities.ValueObjects.UserMembroStatusVO> listMembros =
+                _bolaoMembroApp.GetUserStatus(base.SelectedBolao);
+
+            IList<Domain.Entities.Users.User> sendList = new List<Domain.Entities.Users.User>();
+
+            for (int c = 0; c < listMembros.Count; c++)
+            {
+                if (listMembros[c].Pago != 0)
+                {
+                    sendList.Add( new Domain.Entities.Users.User (listMembros[c].UserName)
+                        {
+                            Email = listMembros[c].Email,
+                            FullName = listMembros[c].FullName
+                        });
+                }
+            }
+
+
+
+            for (int c = 0; c < sendList.Count; c++ )
+            {
+                _notificationApp.NotityPagamentoRestante(sendList[c]);
+            }
+
+
+            return RedirectToAction("Index");
+        }
+        public ActionResult EnviarInicial()
+        {
+            return RedirectToAction("Index");
+        }
+        public ActionResult EnviarFinal()
+        {
+            return RedirectToAction("Index");
         }
 
         #endregion

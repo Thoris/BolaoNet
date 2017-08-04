@@ -84,6 +84,7 @@ namespace BolaoNet.Infra.Notification.Mail
             {
                 System.Net.NetworkCredential credentials = new System.Net.NetworkCredential(from, password);
                 client.Credentials = credentials;
+                //client.UseDefaultCredentials = false;
             }
 
             MailAddress fromMail = new MailAddress(from);
@@ -115,7 +116,7 @@ namespace BolaoNet.Infra.Notification.Mail
                                 message.Attachments.Add(new Attachment(attachmentFiles[c]));
                         }
 
-
+                        message.Subject = title;
                         message.Body = body;
                         message.IsBodyHtml = htmlType;
 

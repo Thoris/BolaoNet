@@ -57,6 +57,12 @@ namespace BolaoNet.Domain.Services.Campeonatos
 
         public void Reiniciar(Entities.Campeonatos.Campeonato campeonato)
         {
+            if (campeonato == null)
+                throw new ArgumentException("campeonato");
+            if (string.IsNullOrEmpty(campeonato.Nome))
+                throw new ArgumentException("campeonato.Nome");
+
+
             if (IsSaveLog)
                 CheckStart();
 
@@ -87,6 +93,12 @@ namespace BolaoNet.Domain.Services.Campeonatos
 
         public IList<IList<Entities.ValueObjects.CampeonatoRecordVO>> GetRecords(Entities.Campeonatos.Campeonato campeonato, Interfaces.Services.Campeonatos.RecordTipoPesquisa tipo)
         {
+
+            if (campeonato == null)
+                throw new ArgumentException("campeonato");
+            if (string.IsNullOrEmpty(campeonato.Nome))
+                throw new ArgumentException("campeonato.Nome");
+
             if (IsSaveLog)
                 CheckStart();
 
@@ -95,7 +107,7 @@ namespace BolaoNet.Domain.Services.Campeonatos
 
             if (IsSaveLog)
             {
-                _logging.Debug(this, GetMessageTotalTime("Records obtidos"));
+                _logging.Debug(this, GetMessageTotalTime("Records obtidos do campeonato [" + campeonato.Nome + "] tipo: [" + tipo +"]"));
             }
 
             return res;

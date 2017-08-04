@@ -13,7 +13,7 @@ namespace BolaoNet.Infra.Notification.Mail
         #region Constructors/Destructors
 
         public MailNotification(string userName)
-            : base(userName)            
+            : base(userName)
         {
         }
 
@@ -32,7 +32,6 @@ namespace BolaoNet.Infra.Notification.Mail
                 true,
                 new string [] {user.Email});
         }
-
         public void NotifyWelcome(Domain.Entities.Users.User user)
         {
             ITemplateMail template = new Templates.WelcomeTemplateMail(
@@ -44,7 +43,6 @@ namespace BolaoNet.Infra.Notification.Mail
                 true,
                 new string[] { user.Email });
         }
-
         public void NotifySendPassword(Domain.Entities.Users.User user)
         {
             ITemplateMail template = new Templates.ResetPasswordTemplateMail(
@@ -56,7 +54,6 @@ namespace BolaoNet.Infra.Notification.Mail
                 true,
                 new string[] { user.Email });
         }
-
         public void NotityPagamentoRestante(Domain.Entities.Users.User user)
         {
             ITemplateMail template = new Templates.PagamentosRestantesTemplateMail(
@@ -79,7 +76,6 @@ namespace BolaoNet.Infra.Notification.Mail
                 true,
                 new string[] { user.Email });
         }
-
         public void NotifyApostasRestantes(Domain.Entities.Users.User user)
         {
             ITemplateMail template = new Templates.ApostasRestantesTemplateMail(
@@ -93,8 +89,5 @@ namespace BolaoNet.Infra.Notification.Mail
         }
 
         #endregion
-
-
-
     }
 }

@@ -8,7 +8,7 @@ CREATE PROCEDURE [dbo].[sp_CampeonatosRecords]
     @CurrentLogin						varchar(25) = null,
 	@CurrentDateTime					datetime = null,
 	@NomeCampeonato						varchar(50),
-	@TipoPesquisa						int,
+	@TipoPesquisa						int
 	-- 1 = Quantidade de jogos sem ganhar
 	-- 2 = Quantidade de jogos sem perder
 	-- 3 = Sequencia de derrotas
@@ -19,11 +19,14 @@ CREATE PROCEDURE [dbo].[sp_CampeonatosRecords]
 	-- 8 = Record de Sequencia de derrotas
 	-- 9 = Record de Sequencia de empates
 	-- 10 = Record de Sequencia de vitorias	
-	@ErrorNumber						int OUTPUT,
-    @ErrorDescription					varchar(4000) OUTPUT
+	--@ErrorNumber						int OUTPUT,
+    --@ErrorDescription					varchar(4000) OUTPUT
 )
 AS
 BEGIN
+	DECLARE @ErrorNumber int
+	DECLARE @ErrorDescription VARCHAR(4000)
+
 	SET @ErrorNumber = 0
 	SET @ErrorDescription = NULL	
 
