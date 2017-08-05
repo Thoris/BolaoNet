@@ -13,10 +13,6 @@ namespace BolaoNet.Infra.Notification.Mail.Mock
             
         }
 
-        public void NotifyApostasBolao(Domain.Entities.Users.User user, System.IO.Stream file)
-        {
-            
-        }
 
         public void NotifyApostasRestantes(Domain.Entities.Users.User user)
         {
@@ -36,6 +32,18 @@ namespace BolaoNet.Infra.Notification.Mail.Mock
         public void NotifySendPassword(Domain.Entities.Users.User user)
         {
             
+        }
+
+        public void NotifyApostasBolao(Domain.Entities.Users.User user, string file)
+        { 
+        }
+
+        public void NotifyApostasIniciaisBolao(IList<string> emails, string file)
+        { 
+        }
+
+        public void NotifyApostasFinaisBolao(IList<string> emails, string file)
+        { 
         }
     }
 }

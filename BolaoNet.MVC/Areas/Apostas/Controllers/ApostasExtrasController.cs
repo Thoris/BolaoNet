@@ -95,6 +95,11 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
                 }
             }
 
+            if (data.Count > 0)
+            {
+                base.ShowMessage("Apostas extras armazenadas com sucesso.");
+            }
+
 
             return RedirectToAction("Index");
         }

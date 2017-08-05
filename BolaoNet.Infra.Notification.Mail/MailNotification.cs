@@ -65,7 +65,7 @@ namespace BolaoNet.Infra.Notification.Mail
                 true,
                 new string[] { user.Email });
         }
-        public void NotifyApostasBolao(Domain.Entities.Users.User user, System.IO.Stream file)
+        public void NotifyApostasBolao(Domain.Entities.Users.User user, string file)
         {
             ITemplateMail template = new Templates.ApostasBolaoTemplateMail(
                base.CurrentUserName, GetFolderTemplates(), user);
@@ -74,7 +74,8 @@ namespace BolaoNet.Infra.Notification.Mail
                 template.LoadTitle(),
                 template.LoadBody(),
                 true,
-                new string[] { user.Email });
+                new string[] { user.Email }, 
+                file);
         }
         public void NotifyApostasRestantes(Domain.Entities.Users.User user)
         {
@@ -88,6 +89,35 @@ namespace BolaoNet.Infra.Notification.Mail
                 new string[] { user.Email });
         }
 
+        public void NotifyApostasIniciaisBolao(IList<string> emails, string file)
+        {
+            ITemplateMail template = new Templates.ApostasBolaoInicialTemplateEmail(
+              base.CurrentUserName, GetFolderTemplates());
+
+            SendMailFromAppSettingsConfig(
+                template.LoadTitle(),
+                template.LoadBody(),
+                true,
+                emails.ToArray(),
+                file);
+        }
+
+        public void NotifyApostasFinaisBolao(IList<string> emails, string file)
+        {
+            ITemplateMail template = new Templates.ApostasBolaoFinalTemplateEmail(
+              base.CurrentUserName, GetFolderTemplates());
+
+            SendMailFromAppSettingsConfig(
+                template.LoadTitle(),
+                template.LoadBody(),
+                true,
+                emails.ToArray(),
+                file);
+        }
+
         #endregion
+
+
+
     }
 }

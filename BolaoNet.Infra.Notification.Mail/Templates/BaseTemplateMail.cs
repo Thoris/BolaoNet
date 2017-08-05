@@ -30,9 +30,11 @@ namespace BolaoNet.Infra.Notification.Mail.Templates
 
 
             string signature = System.Configuration.ConfigurationManager.AppSettings["SIGNATURE"];
+            string url = System.Configuration.ConfigurationManager.AppSettings["URL"];
 
 
             this.Tags.Add(new TagValue("SIGNATURE", signature));
+            this.Tags.Add(new TagValue("URL", url));
             
         }
 

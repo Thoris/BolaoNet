@@ -134,6 +134,9 @@ namespace BolaoNet.MVC.Areas.Pagamentos.Controllers
             _pagamentoApp.Insert(entity);
 
 
+            base.ShowMessage("Pagamento inserido com sucesso.");
+
+
             return RedirectToAction("Index");
         }
 
@@ -157,6 +160,9 @@ namespace BolaoNet.MVC.Areas.Pagamentos.Controllers
 
 
             _pagamentoApp.Delete(pagamentoLoaded);
+
+
+            base.ShowMessage("Pagamento excluído com sucesso.");
 
             return RedirectToAction("Index");
         }
@@ -200,6 +206,9 @@ namespace BolaoNet.MVC.Areas.Pagamentos.Controllers
             pagamentoLoaded.PagamentoTipoID = model.PagamentoTipoID;
             pagamentoLoaded.Descricao = model.Descricao;
 
+
+
+            base.ShowMessage("Pagamento editado com sucesso.");
 
             return RedirectToAction("Index");
         }

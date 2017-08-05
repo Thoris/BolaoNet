@@ -81,6 +81,10 @@ namespace BolaoNet.MVC.Areas.Resultados.Controllers
                     base.UserLogged);
             }
 
+            if (data.Count > 0)
+            {
+                base.ShowMessage("Resultados de apostas extras inseridos com sucesso.");
+            }
 
             return RedirectToAction("Index");
         }

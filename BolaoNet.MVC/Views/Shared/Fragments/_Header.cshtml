@@ -12,10 +12,29 @@
         TESTE*@
 
 
-        <h2>@ViewBag.Title</h2>
+        <h2>@ViewBag.Title</h2>        
     </div>
     <div class="col-lg-2">
     </div>
     
 </div>
 }
+
+@if (!string.IsNullOrEmpty((string)TempData["ShowMessage"]))
+{ 
+    <div class="row">
+        <div class="col-lg-12 alert alert-warning">
+            <h3><strong>@(TempData["ShowMessage"])</strong></h3>
+        </div>
+    </div>
+}
+
+@if (!string.IsNullOrEmpty((string)TempData["ShowErrorMessage"]))
+{
+    <div class="row">
+        <div class="col-lg-12 alert alert-danger">
+            <h3><strong>@(TempData["ShowErrorMessage"])</strong></h3>
+        </div>
+    </div>
+}
+

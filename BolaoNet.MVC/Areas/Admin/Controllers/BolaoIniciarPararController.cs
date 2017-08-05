@@ -122,6 +122,9 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
 
             base.IsBolaoIniciado = true;
 
+
+            base.ShowMessage("Bolão iniciado com sucesso.");
+
             return RedirectToAction("Index");
         }
         public ActionResult Aguardar()
@@ -130,6 +133,9 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
             bool res = _bolaoApp.Aguardar(base.SelectedBolao);
 
             base.IsBolaoIniciado = false;
+
+
+            base.ShowMessage("Bolão alterado com status de aguardando.");
 
             return RedirectToAction("Index");
         }
@@ -176,6 +182,7 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
                            Server.MapPath("~/Content/img/database/profiles"),
                            Server.MapPath("~/Content/img/database/times"), data);
 
+            base.ShowMessage("Arquivo de apostas iniciais gerado com sucesso.");
 
             return RedirectToAction("Index");
         }
@@ -201,6 +208,9 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
                            Server.MapPath("~/Content/img/database/times"), data);
 
 
+
+            base.ShowMessage("Arquivo de apostas finais gerado com sucesso.");
+
             return RedirectToAction("Index");
         }
         public ActionResult DownloadFile(string fileName)
@@ -213,13 +223,44 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
         public ActionResult EnviarApostasRestantes()
         {
 
-           
+            Domain.Entities.Boloes.Bolao bolaoLoaded = _bolaoApp.Load(base.SelectedBolao);
+
+            IList<Domain.Entities.ValueObjects.UserMembroStatusVO> listMembros =
+                _bolaoMembroApp.GetUserStatus(base.SelectedBolao);
+
+            IList<Domain.Entities.Users.User> sendList = new List<Domain.Entities.Users.User>();
+
+            for (int c = 0; c < listMembros.Count; c++)
+            {
+                if (listMembros[c].Restantes != 0)
+                {
+                    sendList.Add(new Domain.Entities.Users.User(listMembros[c].UserName)
+                    {
+                        Email = listMembros[c].Email,
+                        FullName = listMembros[c].FullName
+                    });
+                }
+            }
 
 
 
+            for (int c = 0; c < sendList.Count; c++)
+            {
+                _notificationApp.NotifyApostasRestantes(sendList[c]);
+            }
 
+            if (sendList.Count > 0)
+            {
+                base.ShowMessage("Apostas enviadas com sucesso.");
+            }
+            else
+            {
+                base.ShowErrorMessage("Não há pendência de apostas dos usuários.");
+            }
 
             return RedirectToAction("Index");
+
+
         }
         public ActionResult EnviarNaoPago()
         {
@@ -249,16 +290,59 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
                 _notificationApp.NotityPagamentoRestante(sendList[c]);
             }
 
+            if (sendList.Count > 0)
+            {
+                base.ShowMessage("Notificações de pendência da pagamentos enviadas com sucesso.");
+            }
+            else
+            {
+                base.ShowErrorMessage("Não há pendência de pagamentos dos usuários.");
+            }
 
             return RedirectToAction("Index");
         }
         public ActionResult EnviarInicial()
         {
+            IList<Domain.Entities.ValueObjects.UserMembroStatusVO> listMembros =
+                _bolaoMembroApp.GetUserStatus(base.SelectedBolao);
+
+            IList<string> emails = new List<string>();
+
+            for (int c = 0; c < listMembros.Count;c ++ )
+            {
+                emails.Add(listMembros[c].Email);
+            }
+
+            string fileToCheckZip = Server.MapPath(System.IO.Path.Combine(FolderApostas, FileApostasInicial + CompressedFile));
+            
+            _notificationApp.NotifyApostasIniciaisBolao(emails,fileToCheckZip) ;
+
+            base.ShowMessage("Apostas iniciais enviadas com sucesso.");
+
             return RedirectToAction("Index");
         }
         public ActionResult EnviarFinal()
         {
+            IList<Domain.Entities.ValueObjects.UserMembroStatusVO> listMembros =
+             _bolaoMembroApp.GetUserStatus(base.SelectedBolao);
+
+            IList<string> emails = new List<string>();
+
+            for (int c = 0; c < listMembros.Count; c++)
+            {
+                emails.Add(listMembros[c].Email);
+            }
+
+            string fileToCheckZip = Server.MapPath(System.IO.Path.Combine(FolderApostas, FileApostasFinal + CompressedFile));
+
+            _notificationApp.NotifyApostasFinaisBolao(emails, fileToCheckZip);
+
+
+            base.ShowMessage("Apostas finais enviadas com sucesso.");
+
             return RedirectToAction("Index");
+
+             
         }
 
         #endregion

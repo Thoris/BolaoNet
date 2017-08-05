@@ -181,6 +181,9 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
 
             _jogoUsuarioApp.InsertApostasAutomaticas(base.SelectedBolao, base.UserLogged, data);
 
+            base.ShowMessage("Apostas inseridas com sucesso.");
+
+
             return RedirectToAction("ViewJogos");
         }
 

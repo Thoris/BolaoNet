@@ -341,6 +341,11 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
             }
 
 
+            if (list.Count > 0)
+            {
+                base.ShowMessage("Apostas inseridas com sucesso.");
+            }
+
             return RedirectToAction("Jogos", "ApostasJogos", model);
         }
 

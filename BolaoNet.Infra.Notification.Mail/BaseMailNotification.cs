@@ -102,13 +102,18 @@ namespace BolaoNet.Infra.Notification.Mail
 
                 _lastEmailSent = DateTime.Now;
 
-                for (int i = 0; i < targets.Length; i++)
-                {
-                    MailAddress to = new MailAddress(targets[i]);
+                //for (int i = 0; i < targets.Length; i++)
+                //{
+                    //MailAddress to = new MailAddress(targets[i]);   
+                    MailAddress to = new MailAddress(targets[0]);    
 
                     // Specify the message content.
                     using (MailMessage message = new MailMessage(fromMail, to))
                     {
+                        for (int i = 1; i < targets.Length; i++ )
+                        {
+                            message.CC.Add(new MailAddress(targets[i]));
+                        }
 
                         if (attachmentFiles != null && attachmentFiles.Length > 0)
                         {
@@ -118,12 +123,12 @@ namespace BolaoNet.Infra.Notification.Mail
 
                         message.Subject = title;
                         message.Body = body;
-                        message.IsBodyHtml = htmlType;
+                        message.IsBodyHtml = htmlType; 
 
                         client.Send(message);
                     }
 
-                }
+                //}
             }//end lock
 
         }

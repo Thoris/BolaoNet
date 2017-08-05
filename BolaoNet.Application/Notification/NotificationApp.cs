@@ -30,7 +30,7 @@ namespace BolaoNet.Application.Notification
             _service.NotifyActivationCode(user);
         }
 
-        public void NotifyApostasBolao(Domain.Entities.Users.User user, System.IO.Stream file)
+        public void NotifyApostasBolao(Domain.Entities.Users.User user, string file)
         {
             _service.NotifyApostasBolao(user, file);
         }
@@ -55,6 +55,18 @@ namespace BolaoNet.Application.Notification
             _service.NotifySendPassword(user);
         }
 
+        public void NotifyApostasIniciaisBolao(IList<string> emails, string file)
+        {
+            _service.NotifyApostasIniciaisBolao(emails, file);
+        }
+
+        public void NotifyApostasFinaisBolao(IList<string> emails, string file)
+        {
+            _service.NotifyApostasFinaisBolao(emails, file);
+        }
         #endregion
+
+
+
     }
 }

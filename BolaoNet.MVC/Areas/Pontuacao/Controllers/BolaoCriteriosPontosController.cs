@@ -69,7 +69,51 @@ namespace BolaoNet.MVC.Areas.Pontuacao.Controllers
 
             return View(model);
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Salvar(ViewModels.Pontuacao.BolaoCriterioViewModel model)
+        {
+            IList<Domain.Entities.Boloes.BolaoCriterioPontos> pontos =
+              Mapper.Map<IList<ViewModels.Pontuacao.BolaoCriterioPontosViewModel>,
+              IList<Domain.Entities.Boloes.BolaoCriterioPontos>>(model.CriterioPontos);
 
+
+            IList<Domain.Entities.Boloes.BolaoCriterioPontosTimes> times =
+                Mapper.Map<IList<ViewModels.Pontuacao.BolaoCriterioTimeViewModel>,
+                IList<Domain.Entities.Boloes.BolaoCriterioPontosTimes>>(model.CriterioTimes);
+
+
+            for (int c = 0; c < pontos.Count;c++ )
+            {
+                Domain.Entities.Boloes.BolaoCriterioPontos pontosEntry = _bolaoCriterioPontosApp.Load(pontos[c]);
+
+                if (pontosEntry == null)
+                    _bolaoCriterioPontosApp.Insert(pontos[c]);
+                else
+                {
+                    pontosEntry.Pontos = pontos[c].Pontos;
+                    _bolaoCriterioPontosApp.Update(pontosEntry);
+                }
+            }
+
+
+            for (int c = 0; c < times.Count;c ++ )
+            {
+                Domain.Entities.Boloes.BolaoCriterioPontosTimes timesEntry = _bolaoCriterioPontosTimesApp.Load(times[c]);
+
+                if (timesEntry == null)
+                    _bolaoCriterioPontosApp.Insert(pontos[c]);
+                else
+                {
+                    timesEntry.MultiploTime = times[c].MultiploTime;
+                    _bolaoCriterioPontosTimesApp.Update(timesEntry);
+                }
+            }
+
+            base.ShowMessage("Pontuação atualizada com sucesso");
+
+                return RedirectToAction("Index");
+        }
         #endregion
     }
 }

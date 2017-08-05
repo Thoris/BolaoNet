@@ -124,7 +124,10 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
             
 
             System.IO.File.Delete(fileTemp);
-            
+
+
+
+            base.ShowMessage("Foto do perfil alterado com sucesso.");
 
             return RedirectToAction("Index", "AccountHome", new { area="Users" });
             

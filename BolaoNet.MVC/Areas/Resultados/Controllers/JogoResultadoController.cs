@@ -99,7 +99,17 @@ namespace BolaoNet.MVC.Areas.Resultados.Controllers
                     Mapper.Map<Domain.Entities.Campeonatos.Jogo, ViewModels.Resultados.JogoResultadoViewModel>
                     (jogoView);
 
+
+                base.ShowErrorMessage("Erro ao inserir o resultado do jogo.");
+                
+
                 return View("Index", modelView);
+            }
+            else
+            {
+                base.ShowMessage("Resultados do jogo inserido com sucesso.");
+                
+
             }
 
             return RedirectToAction("Index", new { id = model.JogoId, message = "Jogo armazenado com sucesso" });

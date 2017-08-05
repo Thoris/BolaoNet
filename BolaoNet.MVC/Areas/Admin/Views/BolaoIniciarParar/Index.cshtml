@@ -156,11 +156,11 @@
                                 <div class="form-group col-sm-12">
                                     <div class="col-sm-6 center">                                      
                                         <a href="@Url.Action("EnviarApostasRestantes")" class="btn btn-success btn-sm center-block"
-                                           onclick="return confirm('Deseja enviar notificação a todos os membros do bolão que estão com apostas pendentes?');">Enviar Restantes</a>
+                                           onclick="return confirm('Deseja enviar notificação a todos os membros do bolão que estão com apostas pendentes?');">Restantes</a>
                                     </div>
                                     <div class="col-sm-6 center">
                                         <a href="@Url.Action("EnviarNaoPago")" class="btn btn-success btn-sm center-block"
-                                           onclick="return confirm('Deseja enviar notificação a todos os membros do que ainda não fizeram o pagamento?');">Enviar Não Pago</a>
+                                           onclick="return confirm('Deseja enviar notificação a todos os membros do que ainda não fizeram o pagamento?');">Não Pago</a>
                                     </div>
                                 </div>
                                 @if (Model.FileApostasInicialZip != null)
@@ -175,7 +175,7 @@
                                 {
                                     <div class="form-group col-sm-12 @if(Model.FileApostasFinalZip == null) { @Html.Raw("disabled");}">
                                     <a href="@Url.Action("EnviarFinal")" class="btn btn-success btn-sm center-block"
-                                       onclick="return confirm('Deseja enviar as apostas finais a todos os membros do bolão?');">Enviar Apostas Iniciais</a>
+                                       onclick="return confirm('Deseja enviar as apostas finais a todos os membros do bolão?');">Enviar Apostas Finais</a>
                                     </div>    
                                 }
 

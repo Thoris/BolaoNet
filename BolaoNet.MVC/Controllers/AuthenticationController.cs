@@ -106,6 +106,22 @@ namespace BolaoNet.MVC.Controllers
 
         #endregion
 
+        #region Methods
+
+        public void ShowMessage(string message)
+        {
+            //ViewBag.MessagePage = message;
+            TempData.Add("ShowMessage", message);
+        }
+        public void ShowErrorMessage(string message)
+        {
+            //ViewBag.MessageErrorPage = message;
+            TempData.Add("ShowErrorMessage", message);
+
+        }
+
+        #endregion
+
         #region Actions
 
         public ActionResult Logout()

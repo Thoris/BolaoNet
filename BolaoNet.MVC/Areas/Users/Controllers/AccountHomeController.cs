@@ -189,6 +189,9 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
             _userApp.Update(userLoaded);
 
 
+
+            base.ShowMessage("Dados do perfil inseridos com sucesso.");
+
             return RedirectToAction("Index");
         }
 

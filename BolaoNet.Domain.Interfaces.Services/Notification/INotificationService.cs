@@ -10,7 +10,9 @@ namespace BolaoNet.Domain.Interfaces.Services.Notification
     public interface INotificationService
     {
         void NotifyActivationCode(Entities.Users.User user);
-        void NotifyApostasBolao(Entities.Users.User user, Stream file);
+        void NotifyApostasBolao(Entities.Users.User user, string file);
+        void NotifyApostasIniciaisBolao(IList<string> emails, string file);
+        void NotifyApostasFinaisBolao(IList<string> emails, string file);
         void NotifyApostasRestantes(Entities.Users.User user);
         void NotityPagamentoRestante(Entities.Users.User user);
         void NotifyWelcome(Entities.Users.User user);
