@@ -78,6 +78,8 @@
     <Compile Include="Campeonatos\CampeonatoRecordsViewModel.cs" />
     <Compile Include="Campeonatos\FilterJogosViewModel.cs" />
     <Compile Include="Pagamentos\PagamentoViewModel.cs" />
+    <Compile Include="Pontuacao\BolaoCriterioPontosSimulacaoListViewModel.cs" />
+    <Compile Include="Pontuacao\BolaoCriterioPontosSimulacaoViewModel.cs" />
     <Compile Include="Pontuacao\BolaoCriterioPontosViewModel.cs" />
     <Compile Include="Pontuacao\BolaoCriterioTimeViewModel.cs" />
     <Compile Include="Pontuacao\BolaoCriterioViewModel.cs" />

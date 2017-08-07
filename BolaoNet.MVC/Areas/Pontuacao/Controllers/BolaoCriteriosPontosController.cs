@@ -12,6 +12,7 @@ namespace BolaoNet.MVC.Areas.Pontuacao.Controllers
         #region Variables
         private Application.Interfaces.Boloes.IBolaoCriterioPontosApp _bolaoCriterioPontosApp;
         private Application.Interfaces.Boloes.IBolaoCriterioPontosTimesApp _bolaoCriterioPontosTimesApp;
+        private Application.Interfaces.Boloes.IJogoUsuarioApp _jogoUsuarioApp;
 
         #endregion
 
@@ -25,7 +26,8 @@ namespace BolaoNet.MVC.Areas.Pontuacao.Controllers
             Application.Interfaces.Campeonatos.ICampeonatoApp campeonatoApp,
             Application.Interfaces.Campeonatos.ICampeonatoFaseApp campeonatoFaseApp,
             Application.Interfaces.Campeonatos.ICampeonatoGrupoApp campeonatoGrupoApp,
-            Application.Interfaces.Campeonatos.ICampeonatoTimeApp campeonatoTimeApp
+            Application.Interfaces.Campeonatos.ICampeonatoTimeApp campeonatoTimeApp,
+            Application.Interfaces.Boloes.IJogoUsuarioApp jogoUsuarioApp
             )
             : base
             (
@@ -35,6 +37,8 @@ namespace BolaoNet.MVC.Areas.Pontuacao.Controllers
         {
             _bolaoCriterioPontosApp = bolaoCriterioPontosApp;
             _bolaoCriterioPontosTimesApp = bolaoCriterioPontosTimesApp;
+            _jogoUsuarioApp = jogoUsuarioApp;
+
         }
 
         #endregion
@@ -66,6 +70,11 @@ namespace BolaoNet.MVC.Areas.Pontuacao.Controllers
 
             model.CriterioPontos = pontosVO;
             model.CriterioTimes = timesVO;
+
+            model.Simulacoes = new List<ViewModels.Pontuacao.BolaoCriterioPontosSimulacaoListViewModel>();
+
+
+
 
             return View(model);
         }
@@ -114,6 +123,7 @@ namespace BolaoNet.MVC.Areas.Pontuacao.Controllers
 
                 return RedirectToAction("Index");
         }
+
         #endregion
     }
 }

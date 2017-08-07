@@ -12,6 +12,8 @@ namespace BolaoNet.MVC.ViewModels.Pontuacao
 
         public string Mensagem { get; set; }
         public IList<BolaoCriterioPontosViewModel> CriterioPontos { get; set; }
+        public IList<BolaoCriterioTimeViewModel> CriterioTimes { get; set; }
+        public IList<BolaoCriterioPontosSimulacaoListViewModel> Simulacoes { get; set; }
 
         #endregion
     }

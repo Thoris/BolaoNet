@@ -37,14 +37,14 @@
                                             <td>@Model.CriterioPontos[c].CriterioID</td>
                                             <td>@((BolaoNet.Domain.Entities.Boloes.BolaoCriterioPontos.CriteriosID)Model.CriterioPontos[c].CriterioID)</td>
                                             <td>@Html.TextBoxFor(x => x.CriterioPontos[c].Pontos, new { @class = "form-control input-sm" })</td>
-                                            <td>@Model.CriterioPontos[c].Descricao</td>                                            
+                                            <td>@Model.CriterioPontos[c].Descricao</td>
                                         </tr>
                                     }
                                 </tbody>
                             </table>
 
                         </div>
-                        
+
                         <div class="login-erro">
                             @Html.ValidationSummary(true)
                         </div>
@@ -53,7 +53,7 @@
                 </div>
             </div>
 
-            
+
             <div class="col-lg-4">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
@@ -61,22 +61,22 @@
                     </div>
                     <div class="ibox-content" style="display: block;">
                         <div class="row">
-                           
+
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
                                         <td>Time</td>
-                                        <td>Pontos</td>                                        
+                                        <td>Pontos</td>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @for (int c = 0; c < Model.CriterioTimes.Count; c++)
                                     {
-                                        @Html.HiddenFor( x => x.CriterioTimes[c].NomeTime)
+                                        @Html.HiddenFor(x => x.CriterioTimes[c].NomeTime)
                                         @Html.HiddenFor(x => x.CriterioTimes[c].NomeBolao)
                                         <tr>
                                             <td>@Model.CriterioTimes[c].NomeTime</td>
-                                            <td>@Html.TextBoxFor(x => x.CriterioTimes[c].MultiploTime, new { @class = "form-control input-sm" })</td>                                            
+                                            <td>@Html.TextBoxFor(x => x.CriterioTimes[c].MultiploTime, new { @class = "form-control input-sm" })</td>
                                         </tr>
                                     }
                                 </tbody>
@@ -85,7 +85,38 @@
                     </div>
                 </div>
             </div>
-           
+
+
+
+
+            @for (int c=0; c < Model.Simulacoes.Count; c++)
+            { 
+                <div class="col-lg-4">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Aposta @Model.Simulacoes[c].GolsTime1 x @Model.Simulacoes[c].GolsTime2</h5>
+                        </div>
+                        <div class="ibox-content" style="display: block;">
+                            <div class="row">
+
+                                <table class="table table-hover">
+                                   
+                                    <tbody>
+                                        @for (int i = 0; i < @Model.Simulacoes[c].Simulacao.Count; i++)
+                                        { 
+                                            <tr>
+                                                <td>@Model.Simulacoes[c].Simulacao[i].ApostaTime1</td>
+                                                <td>@Model.Simulacoes[c].Simulacao[i].ApostaTime2</td>
+                                                <td>@Model.Simulacoes[c].Simulacao[i].Pontos</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
 
             <div class="row">
 
@@ -95,5 +126,6 @@
                 </div>
             </div>
         </div>
+
     </div>
 }
