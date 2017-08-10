@@ -112,7 +112,10 @@ namespace BolaoNet.MVC.Controllers
             base.OnActionExecuting(filterContext);
 
         }
-
+        protected override void OnException(ExceptionContext filterContext)
+        {
+            base.OnException(filterContext);
+        }
         #endregion
     }
 }
