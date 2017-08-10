@@ -20,6 +20,8 @@ namespace BolaoNet.Infra.Notification.Mail.Templates
         public ApostasBolaoTemplateMail(string currentUserName, string folder, Domain.Entities.Users.User user)
             : base(currentUserName, folder, TemplateHtmlFile, Title, user)
         {
+            base.Tags.Add(new TagValue("NOME", user.FirstName));
+            
         }
 
         #endregion

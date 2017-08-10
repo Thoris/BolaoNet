@@ -20,6 +20,7 @@ namespace BolaoNet.Infra.Notification.Mail.Templates
         public ApostasBolaoFinalTemplateEmail(string currentUserName, string folder)
             : base(currentUserName, folder, TemplateHtmlFile, Title, null)
         {
+            
         }
 
         #endregion

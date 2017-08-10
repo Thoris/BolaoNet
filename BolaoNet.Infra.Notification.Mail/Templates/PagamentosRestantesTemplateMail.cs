@@ -21,8 +21,7 @@ namespace BolaoNet.Infra.Notification.Mail.Templates
             : base(currentUserName, folder, TemplateHtmlFile, Title, user)
         {
             base.Tags.Add(new TagValue("NOME", user.FirstName));
-            base.Tags.Add(new TagValue("PASSWORD", user.Password));
-            base.Tags.Add(new TagValue("URL", ""));            
+            base.Tags.Add(new TagValue("PASSWORD", user.Password));          
         }
 
         #endregion

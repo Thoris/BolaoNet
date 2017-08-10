@@ -73,7 +73,11 @@ namespace BolaoNet.MVC.Areas.Pontuacao.Controllers
 
             model.Simulacoes = new List<ViewModels.Pontuacao.BolaoCriterioPontosSimulacaoListViewModel>();
 
-
+            model.Simulacoes.Add(new ViewModels.Pontuacao.BolaoCriterioPontosSimulacaoListViewModel()
+                {
+                    GolsTime1 = 1,
+                    GolsTime2 = 1,
+                });
 
 
             return View(model);

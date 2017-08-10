@@ -241,8 +241,19 @@ namespace BolaoNet.MVC.Controllers
         }
 
         [HttpGet]        
-        public ActionResult ActivateCode()
+        public ActionResult ActivateCode(string login, string key)
         {
+            if (!string.IsNullOrEmpty(login) && !string.IsNullOrEmpty(key))
+            {
+                ViewModels.Account.ActivationCodeViewModel model = new ViewModels.Account.ActivationCodeViewModel();
+                model.ActivateKey = key;
+                model.UserName = login;
+
+                return ActivateCode(model);
+            }
+
+            
+
             return View();
         }
         [HttpPost]

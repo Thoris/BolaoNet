@@ -21,7 +21,6 @@ namespace BolaoNet.Infra.Notification.Mail.Templates
             : base(currentUserName, folder, TemplateHtmlFile, Title, user)
         {
             base.Tags.Add(new TagValue("NOME", user.FirstName));
-            base.Tags.Add(new TagValue("URLACTIVATION", ""));
             base.Tags.Add(new TagValue("USER", user.UserName));
             base.Tags.Add(new TagValue("ACTIVATIONKEY", user.ActivateKey));
         }
