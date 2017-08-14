@@ -52,12 +52,14 @@ namespace BolaoNet.Domain.Services.Boloes
 
             if (IsSaveLog)
             {
-                _logging.Debug(this, GetMessageTotalTime("Início do bolão [" + bolao.Nome + "] por [" + iniciadoBy.UserName + "] res: " + res));
+                if (res)
+                    _logging.Info(this, GetMessageTotalTime("Início do bolão [" + bolao.Nome + "] por [" + iniciadoBy.UserName + "] res: " + res));
+                else
+                    _logging.Warn(this, GetMessageTotalTime("Início do bolão [" + bolao.Nome + "] por [" + iniciadoBy.UserName + "] res: " + res));
             }
 
             return res;
         }
-
         public bool Aguardar(Entities.Boloes.Bolao bolao)
         {
             if (bolao == null)
@@ -74,7 +76,10 @@ namespace BolaoNet.Domain.Services.Boloes
 
             if (IsSaveLog)
             {
-                _logging.Debug(this, GetMessageTotalTime("Aguardando o bolão [" + bolao.Nome + "] res: " + res));
+                if (res)
+                    _logging.Info(this, GetMessageTotalTime("Aguardando o bolão [" + bolao.Nome + "] res: " + res));
+                else
+                    _logging.Warn(this, GetMessageTotalTime("Aguardando o bolão [" + bolao.Nome + "] res: " + res));            
             }
 
             return res;
@@ -162,7 +167,5 @@ namespace BolaoNet.Domain.Services.Boloes
         }
 
         #endregion
-
-
     }
 }

@@ -302,7 +302,10 @@ namespace BolaoNet.Domain.Services.Boloes
 
             if (IsSaveLog)
             {
-                _logging.Debug(this, GetMessageTotalTime("Resultado do bolão: [" + bolao.Nome + "] do usuário [" + user.UserName + "] jogo [" + jogo.JogoId + "] [" +  apostaTime1 + "x" + apostaTime2 + "] : " + res));
+                if (res)
+                    _logging.Info(this, GetMessageTotalTime("Resultado do bolão: [" + bolao.Nome + "] do usuário [" + user.UserName + "] jogo [" + jogo.JogoId + "] [" +  apostaTime1 + "x" + apostaTime2 + "] : " + res));
+                else
+                    _logging.Warn(this, GetMessageTotalTime("Resultado do bolão: [" + bolao.Nome + "] do usuário [" + user.UserName + "] jogo [" + jogo.JogoId + "] [" + apostaTime1 + "x" + apostaTime2 + "] : " + res));                       
             }
 
             return res;
@@ -381,7 +384,7 @@ namespace BolaoNet.Domain.Services.Boloes
 
             if (IsSaveLog)
             {
-                _logging.Debug(this, GetMessageTotalTime("Inclusão de apostas automáticas do bolão : [" + bolao.Nome + "] do usuário [" + user.UserName + "] " ));
+                _logging.Info(this, GetMessageTotalTime("Inclusão de apostas automáticas do bolão : [" + bolao.Nome + "] do usuário [" + user.UserName + "] " ));
             }
 
         }

@@ -1,4 +1,5 @@
-﻿using BolaoNet.MVC.Helpers;
+﻿using BolaoNet.Domain.Interfaces.Services.Logging;
+using BolaoNet.MVC.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -102,20 +103,39 @@ namespace BolaoNet.MVC.Controllers
             return new FilePathResult(caminhoCompleto, "text/html");
 
         }
-
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            
-            
-
-
             base.OnActionExecuting(filterContext);
 
         }
-        protected override void OnException(ExceptionContext filterContext)
-        {
-            base.OnException(filterContext);
-        }
+        //protected override void OnException(ExceptionContext filterContext)
+        //{
+        //    Exception ex = filterContext.Exception;
+        //    filterContext.ExceptionHandled = true;
+
+        //    ILogging logging = DependencyResolver.Current.GetService<ILogging>();
+
+        //    logging.Fatal(this, filterContext.Exception);
+
+        //    var model = new HandleErrorInfo(filterContext.Exception, "Controller", "Action");
+
+        //    //filterContext.Result = RedirectToAction("Index", "ErrorHandler", new { area = ""});
+        //    //filterContext.Result = new ViewResult
+        //    //{
+        //    //    ViewName = "~/Views/Shared/Error.cshtml"
+        //    //};
+
+        //    filterContext.Result = new ViewResult()
+        //    {
+        //        ViewName = "~/Views/Shared/Error.cshtml",
+        //        ViewData = new ViewDataDictionary(model)
+        //    };
+
+
+
+        //  //  base.OnException(filterContext);
+        //}
+
         #endregion
     }
 }

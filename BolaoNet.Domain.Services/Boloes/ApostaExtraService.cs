@@ -76,7 +76,10 @@ namespace BolaoNet.Domain.Services.Boloes
 
             if (IsSaveLog)
             {
-                _logging.Debug(this, GetMessageTotalTime("Resultado do bolão: [" + bolao.Nome + "] da posição: [" + posicao + "] time: ["+ time.Nome + "] : " + res));
+                if (res)
+                    _logging.Info(this, GetMessageTotalTime("Resultado do bolão: [" + bolao.Nome + "] da posição: [" + posicao + "] time: ["+ time.Nome + "] : " + res));
+                else
+                    _logging.Warn(this, GetMessageTotalTime("Resultado do bolão: [" + bolao.Nome + "] da posição: [" + posicao + "] time: [" + time.Nome + "] : " + res));
             }
 
             return res;

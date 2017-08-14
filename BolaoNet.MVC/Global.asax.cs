@@ -1,4 +1,5 @@
-﻿using BolaoNet.MVC.AutoMapper;
+﻿using BolaoNet.Domain.Interfaces.Services.Logging;
+using BolaoNet.MVC.AutoMapper;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,19 @@ namespace BolaoNet.MVC
         {
             Security.AuthenticationManagement.SetContextAuthentication(Request);
 
+        }
+
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            Exception exception = Server.GetLastError();
+
+            Server.ClearError();
+
+            ILogging logging = DependencyResolver.Current.GetService<ILogging>();
+
+            logging.Fatal(this, exception);
+            
+            Response.Redirect("~/Views/Shared/Error.cshtml");
         }
     }
 }

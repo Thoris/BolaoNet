@@ -81,14 +81,23 @@ namespace BolaoNet.Domain.Services.Users
 
             Entities.Users.User userLoaded = this.Load(new Entities.Users.User(userName));
 
-            if (userLoaded == null)            
+            if (userLoaded == null)
+            {
+                _logging.Warn(this, GetMessageTotalTime("Usuário [" + userName + "] não encontrado"));            
                 return new Entities.Base.Common.Validation.ValidationResult().Add("Usuário não encontrado.");
+            }
 
             if (userLoaded.IsLockedOut)
+            {
+                _logging.Warn(this, GetMessageTotalTime("Usuário [" + userName + "] bloqueado"));
                 return new Entities.Base.Common.Validation.ValidationResult().Add("Usuário bloqueado.");
+            }
 
             if (!userLoaded.IsApproved)
+            {
+                _logging.Warn(this, GetMessageTotalTime("Usuário [" + userName + "] ainda não ativado"));
                 return new Entities.Base.Common.Validation.ValidationResult().Add("Usuário ainda não ativado.");
+            }
 
             if (string.Compare(password, userLoaded.Password) != 0)
             {
@@ -97,6 +106,7 @@ namespace BolaoNet.Domain.Services.Users
 
                 this.Update(userLoaded);
 
+                _logging.Warn(this, GetMessageTotalTime("Usuário [" + userName + "] com senha incorreta"));
                 return new Entities.Base.Common.Validation.ValidationResult().Add("Senha incorreta.");
             }
             else
@@ -107,6 +117,8 @@ namespace BolaoNet.Domain.Services.Users
 
                 this.Update(userLoaded);
 
+
+                _logging.Info(this, GetMessageTotalTime("Login do usuário [" + userName + "]"));
                 return new Entities.Base.Common.Validation.ValidationResult();
             }
         }
@@ -126,8 +138,10 @@ namespace BolaoNet.Domain.Services.Users
             Entities.Users.User userLoaded = this.Load(user);
 
             if (userLoaded != null)
+            {
+                _logging.Warn(this, GetMessageTotalTime("Usuário [" + user.UserName + "] já existente"));
                 return new Entities.Base.Common.Validation.ValidationResult().Add("Usuário já existente.");
-
+            }
 
             user.UserName = user.UserName.ToLower();
             user.Email = user.Email.ToLower();
@@ -137,10 +151,12 @@ namespace BolaoNet.Domain.Services.Users
 
             if (total != 1)
             {
+                _logging.Warn(this, GetMessageTotalTime("Erro ao registrar o usuário [" + user.UserName + "]"));
                 return user.ValidationResult;
             }
             else
             {
+                _logging.Warn(this, GetMessageTotalTime("Usuário [" + user.UserName + "] registrado com sucesso."));
                 return new Entities.Base.Common.Validation.ValidationResult();
             }
         }
@@ -175,9 +191,13 @@ namespace BolaoNet.Domain.Services.Users
             bool updatedResult = this.Update(userLoaded);
 
             if (!updatedResult)
+            {
+                _logging.Warn(this, GetMessageTotalTime("Erro ao atualizar a senha do Usuário [" + userName + "]."));
                 return userLoaded.ValidationResult;
+            }
 
 
+            _logging.Warn(this, GetMessageTotalTime("Senha do Usuário [" + userName + "] alterada com sucesso."));
             return new Entities.Base.Common.Validation.ValidationResult();
 
 
@@ -194,8 +214,10 @@ namespace BolaoNet.Domain.Services.Users
             Entities.Users.User userLoaded = this.Load(user);
 
             if (userLoaded == null)
+            {
+                _logging.Warn(this, GetMessageTotalTime("Usuário [" + user.UserName + "] não encontrado."));
                 throw new Exception("Usuário " + user.UserName + " não encontrado.");
-
+            }
             string activationKey = new Encrypt.EncryptDecrypt().EncryptText(userLoaded.UserName, userLoaded.Password);
 
             userLoaded.ActivateKey = activationKey;
@@ -203,6 +225,8 @@ namespace BolaoNet.Domain.Services.Users
             if (!this.Update(userLoaded))
                 return null;
 
+
+            _logging.Warn(this, GetMessageTotalTime("Código de ativação do Usuário [" + user.UserName + "] gerado com sucesso."));
             return activationKey;
 
         }
@@ -221,25 +245,38 @@ namespace BolaoNet.Domain.Services.Users
             Entities.Users.User userLoaded = this.Load(user);
 
             if (userLoaded == null)
+            {
+                _logging.Warn(this, GetMessageTotalTime("Usuário [" + user.UserName + "] não encontrado."));
                 return new Entities.Base.Common.Validation.ValidationResult().Add("Usuário não encontrado.");
-
+            }
             if (userLoaded.IsApproved)
+            {
+                _logging.Warn(this, GetMessageTotalTime("Usuário [" + user.UserName + "] já aprovado."));
                 return new Entities.Base.Common.Validation.ValidationResult().Add("Usuário já está aprovado.");
-
+            }
             if (string.Compare(userLoaded.ActivateKey, activationCode) != 0)
+            {
+                _logging.Warn(this, GetMessageTotalTime("Código de ativação do Usuário [" + user.UserName + "] inválido."));
                 return new Entities.Base.Common.Validation.ValidationResult().Add("Código de ativação inválido.");
-
+            }
             if (!userLoaded.IsApproved)
             {
 
                 userLoaded.IsApproved = true;
                 if (!this.Update(userLoaded))
+                {
+                    _logging.Warn(this, GetMessageTotalTime("Erro ao atualizar o código de ativação do Usuário [" + user.UserName + "]."));
                     return userLoaded.ValidationResult;
+                }
                 else
+                {
+                    _logging.Warn(this, GetMessageTotalTime("Usuário [" + user.UserName + "] aprovado com sucesso."));
                     return new Entities.Base.Common.Validation.ValidationResult();
+                }
             }
             else
             {
+                _logging.Warn(this, GetMessageTotalTime("Usuário [" + user.UserName + "] já aprovado com sucesso."));
                 return new Entities.Base.Common.Validation.ValidationResult();
             }
 

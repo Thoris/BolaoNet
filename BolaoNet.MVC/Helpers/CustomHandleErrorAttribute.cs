@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BolaoNet.Domain.Interfaces.Services.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,10 +18,38 @@ namespace BolaoNet.MVC.Helpers
         public override void OnException(ExceptionContext filterContext)
         {
 
-            //LogManager.LogTool.Fatal(filterContext.Controller, filterContext.Exception);
+               Exception ex = filterContext.Exception;
+               filterContext.ExceptionHandled = true;
+
+               ILogging logging = DependencyResolver.Current.GetService<ILogging>();
+
+               logging.Fatal(this, filterContext.Exception);
 
 
-            base.OnException(filterContext);
+               string controllerName = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString();
+               string controllerAction = HttpContext.Current.Request.RequestContext.RouteData.Values["action"].ToString();
+               string controllerArea = null;
+               if (HttpContext.Current.Request.RequestContext.RouteData.DataTokens["area"] != null)
+               {
+                   controllerArea = HttpContext.Current.Request.RequestContext.RouteData.DataTokens["area"].ToString();
+               }
+
+
+               var model = new HandleErrorInfo(filterContext.Exception, controllerName, controllerAction);
+
+               //filterContext.Result = RedirectToAction("Index", "ErrorHandler", new { area = ""});
+               //filterContext.Result = new ViewResult
+               //{
+               //    ViewName = "~/Views/Shared/Error.cshtml"
+               //};
+
+               filterContext.Result = new ViewResult()
+               {
+                   ViewName = "~/Views/Shared/Error.cshtml",
+                   ViewData = new ViewDataDictionary(model)
+               };
+
+            //base.OnException(filterContext);
         }
 
         #endregion

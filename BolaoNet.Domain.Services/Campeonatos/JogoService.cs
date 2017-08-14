@@ -55,7 +55,11 @@ namespace BolaoNet.Domain.Services.Campeonatos
 
             if (IsSaveLog)
             {
-                _logging.Debug(this, GetMessageTotalTime("Inclusão de resultado [" + jogo.JogoId + "] gols1 [" + gols1 + "] gols2 [" + gols2 + "] setcurrent[" + setCurrentData + "] por validado [" + validadoBy.UserName + "] res: " + res));
+                if (res)
+                    _logging.Info(this, GetMessageTotalTime("Inclusão de resultado [" + jogo.JogoId + "] gols1 [" + gols1 + "] gols2 [" + gols2 + "] setcurrent[" + setCurrentData + "] por validado [" + validadoBy.UserName + "] res: " + res));
+                else
+                    _logging.Warn(this, GetMessageTotalTime("Inclusão de resultado [" + jogo.JogoId + "] gols1 [" + gols1 + "] gols2 [" + gols2 + "] setcurrent[" + setCurrentData + "] por validado [" + validadoBy.UserName + "] res: " + res));
+            
             }
 
             return res;

@@ -52,9 +52,6 @@ namespace BolaoNet.Domain.Services.Campeonatos
 
             return res;
         }
-
-
-
         public void Reiniciar(Entities.Campeonatos.Campeonato campeonato)
         {
             if (campeonato == null)
@@ -71,11 +68,10 @@ namespace BolaoNet.Domain.Services.Campeonatos
 
             if (IsSaveLog)
             {
-                _logging.Debug(this, GetMessageTotalTime("Reiniciando campeonato [" + campeonato.Nome + "] "));
+                _logging.Warn(this, GetMessageTotalTime("Reiniciando campeonato [" + campeonato.Nome + "] "));
             }
 
         }
-
         public void ClearDatabase()
         {
             if (IsSaveLog)
@@ -87,10 +83,9 @@ namespace BolaoNet.Domain.Services.Campeonatos
 
             if (IsSaveLog)
             {
-                _logging.Debug(this, GetMessageTotalTime("Apagando o banco de dados"));
+                _logging.Warn(this, GetMessageTotalTime("Apagando o banco de dados"));
             }
         }
-
         public IList<IList<Entities.ValueObjects.CampeonatoRecordVO>> GetRecords(Entities.Campeonatos.Campeonato campeonato, Interfaces.Services.Campeonatos.RecordTipoPesquisa tipo)
         {
 
@@ -114,10 +109,5 @@ namespace BolaoNet.Domain.Services.Campeonatos
         }
 
         #endregion
-
-
-
-
-
     }
 }

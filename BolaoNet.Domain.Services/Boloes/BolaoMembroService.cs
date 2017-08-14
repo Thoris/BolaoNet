@@ -97,7 +97,6 @@ namespace BolaoNet.Domain.Services.Boloes
             return res;
 
         }
-
         public bool RemoverMembroBolao(Entities.Boloes.Bolao bolao, Entities.Boloes.BolaoMembro membro)
         {
             if (bolao == null)
@@ -117,7 +116,11 @@ namespace BolaoNet.Domain.Services.Boloes
 
             if (IsSaveLog)
             {
-                _logging.Debug(this, GetMessageTotalTime("Removeção do usuário [" + membro.UserName + "] do bolão [" + bolao.Nome + "] res: " + res));
+                if (res)
+                    _logging.Info(this, GetMessageTotalTime("Removeção do usuário [" + membro.UserName + "] do bolão [" + bolao.Nome + "] res: " + res));
+                else
+                    _logging.Warn(this, GetMessageTotalTime("Removeção do usuário [" + membro.UserName + "] do bolão [" + bolao.Nome + "] res: " + res));
+            
             }
 
             return res;
