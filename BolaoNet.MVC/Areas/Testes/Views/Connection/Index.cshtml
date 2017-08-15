@@ -1,7 +1,17 @@
-﻿
+﻿@model BolaoNet.MVC.ViewModels.Testes.TestesViewModel
+
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
 
+@Html.ActionLink("Testar Conexão", "TestConnection")
+<br />
+@Model.ResultTestConnection
+
+<p />
+
+@Html.ActionLink("Obter Data Corrente", "GetCurrentDateTime")
+<br />
+@Model.ResultCurrentDateTime

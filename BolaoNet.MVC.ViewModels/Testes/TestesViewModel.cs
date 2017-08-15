@@ -8,5 +8,11 @@ namespace BolaoNet.MVC.ViewModels.Testes
 {
     public class TestesViewModel
     {
+        #region Properties
+
+        public bool ? ResultTestConnection { get; set; }
+        public DateTime? ResultCurrentDateTime { get; set; }
+        
+        #endregion
     }
 }

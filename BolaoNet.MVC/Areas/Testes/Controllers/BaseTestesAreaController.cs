@@ -10,7 +10,7 @@ namespace BolaoNet.MVC.Areas.Testes.Controllers
     {
         #region Variables
 
-        private Application.Interfaces.Testes.ITestesApp _testesApp;
+        protected Application.Interfaces.Testes.ITestesApp _testesApp;
 
         #endregion
 
