@@ -135,6 +135,7 @@
     <Compile Include="Interfaces\Reports\IBolaoApostasFimReportApp.cs" />
     <Compile Include="Interfaces\Reports\IBolaoApostasInicioReportApp.cs" />
     <Compile Include="Interfaces\Reports\IBolaoMembroApostasReportApp.cs" />
+    <Compile Include="Interfaces\Testes\ITestesApp.cs" />
     <Compile Include="Interfaces\Users\IRoleApp.cs" />
     <Compile Include="Interfaces\Users\IUserInRoleApp.cs" />
     <Compile Include="Interfaces\Users\IUserApp.cs" />
@@ -144,6 +145,7 @@
     <Compile Include="Reports\BolaoApostasInicioReportApp.cs" />
     <Compile Include="Reports\BolaoMembroApostasReportApp.cs" />
     <Compile Include="ServiceType.cs" />
+    <Compile Include="Testes\TestesApp.cs" />
     <Compile Include="Users\RoleApp.cs" />
     <Compile Include="Users\UserInRoleApp.cs" />
     <Compile Include="Users\UserApp.cs" />

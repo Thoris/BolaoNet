@@ -18,6 +18,8 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
 
             Bind(typeof(Domain.Interfaces.Repositories.Base.IGenericDao<>)).To(typeof(Infra.Data.EF.Base.BaseRepositoryDao<>));
 
+            Bind<Domain.Interfaces.Repositories.Testes.ITesteDao>().To<Infra.Data.EF.Testes.TesteDao>();
+
             Bind<Domain.Interfaces.Repositories.Boloes.IApostaExtraDao>().To<Infra.Data.EF.Boloes.ApostaExtraRepositoryDao>();
             Bind<Domain.Interfaces.Repositories.Boloes.IApostaExtraUsuarioDao>().To<Infra.Data.EF.Boloes.ApostaExtraUsuarioRepositoryDao>();
             Bind<Domain.Interfaces.Repositories.Boloes.IApostaPontosDao>().To<Infra.Data.EF.Boloes.ApostaPontosRepositoryDao>();

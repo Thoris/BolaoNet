@@ -191,6 +191,9 @@
     <Compile Include="Areas\Resultados\Controllers\BaseResultadosAreaController.cs" />
     <Compile Include="Areas\Resultados\Controllers\JogoResultadoController.cs" />
     <Compile Include="Areas\Resultados\ResultadosAreaRegistration.cs" />
+    <Compile Include="Areas\Testes\Controllers\BaseTestesAreaController.cs" />
+    <Compile Include="Areas\Testes\Controllers\ConnectionController.cs" />
+    <Compile Include="Areas\Testes\TestesAreaRegistration.cs" />
     <Compile Include="Areas\Users\Controllers\AccountHomeController.cs" />
     <Compile Include="Areas\Users\Controllers\AccountHomeProfileImageController.cs" />
     <Compile Include="Areas\Users\Controllers\BaseUserAreaController.cs" />
@@ -368,6 +371,10 @@
     <Content Include="Areas\Users\Views\AccountHomeProfileImage\Index.cshtml" />
     <Content Include="Areas\Apostas\Views\AcessoBolao\BolaoIniciado.cshtml" />
     <Content Include="Areas\Boloes\Views\AcessoBolao\BolaoNaoIniciado.cshtml" />
+    <Content Include="Areas\Testes\Views\web.config" />
+    <Content Include="Areas\Testes\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Testes\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Testes\Views\Connection\Index.cshtml" />
     <None Include="Content\js\jquery-1.10.2.intellisense.js" />
     <Content Include="Content\js\jquery-1.10.2.js" />
     <Content Include="Content\js\jquery-1.10.2.min.js" />
@@ -1106,6 +1113,7 @@
     <Folder Include="Areas\Pontuacao\Models\" />
     <Folder Include="Areas\Regras\Models\" />
     <Folder Include="Areas\Resultados\Models\" />
+    <Folder Include="Areas\Testes\Models\" />
     <Folder Include="Areas\Users\Models\" />
     <Folder Include="Areas\Visitante\Controllers\" />
     <Folder Include="Areas\Visitante\Models\" />

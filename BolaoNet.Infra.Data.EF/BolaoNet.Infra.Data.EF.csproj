@@ -92,6 +92,7 @@
     <Compile Include="FactoryDaoEF.cs" />
     <Compile Include="Initializers\SqlDataContextInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Testes\TesteDao.cs" />
     <Compile Include="UnitOfWork.cs" />
     <Compile Include="Users\RoleRepositoryDao.cs" />
     <Compile Include="Users\UserInRoleRepositoryDao.cs" />

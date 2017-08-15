@@ -97,6 +97,7 @@
     <Compile Include="Reports\BolaoApostasFimReportService.cs" />
     <Compile Include="Reports\BolaoApostasInicioReportService.cs" />
     <Compile Include="Reports\BolaoMembroApostasReportService.cs" />
+    <Compile Include="Testes\TestesService.cs" />
     <Compile Include="Users\RoleService.cs" />
     <Compile Include="Users\UserService.cs" />
     <Compile Include="Users\UserInRoleService.cs" />

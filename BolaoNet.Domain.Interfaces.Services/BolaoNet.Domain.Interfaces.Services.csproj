@@ -100,6 +100,7 @@
     <Compile Include="Reports\IBolaoApostasFimReportService.cs" />
     <Compile Include="Reports\IBolaoApostasInicioReportService.cs" />
     <Compile Include="Reports\IBolaoMembroApostasReportService.cs" />
+    <Compile Include="Testes\ITesteService.cs" />
     <Compile Include="Users\IRoleService.cs" />
     <Compile Include="Users\IUserService.cs" />
     <Compile Include="Users\IUserInRoleService.cs" />

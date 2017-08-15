@@ -16,6 +16,9 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
 
             Bind<Application.Interfaces.Facade.IInitializationFacadeApp>().To<Application.Facade.InitializationFacadeApp>();
 
+            Bind<Application.Interfaces.Testes.ITestesApp>().To<Application.Testes.TestesApp>();
+
+
             Bind<Application.Interfaces.Notification.INotificationApp>().To<Application.Notification.NotificationApp>();
 
             Bind<Application.Interfaces.Boloes.IApostaExtraApp>().To<Application.Boloes.ApostaExtraApp>();

@@ -98,6 +98,7 @@
     <Compile Include="FactoryIntegration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SerializationUtil.cs" />
+    <Compile Include="Tests\TestesIntegration.cs" />
     <Compile Include="Users\RoleIntegration.cs" />
     <Compile Include="Users\UserInRoleIntegration.cs" />
     <Compile Include="Users\UserIntegration.cs" />

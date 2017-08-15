@@ -93,6 +93,7 @@
     <Compile Include="Regras\BolaoRegrasViewModel.cs" />
     <Compile Include="Resultados\ApostaExtraViewModel.cs" />
     <Compile Include="Resultados\JogoResultadoViewModel.cs" />
+    <Compile Include="Testes\TestesViewModel.cs" />
     <Compile Include="Users\AccountHomeProfileImage.cs" />
     <Compile Include="Users\PaginaPrincipalModelView.cs" />
     <Compile Include="Users\PaginaPrincipal\PaginaPrincipalBolaoPosicoesViewModel.cs" />

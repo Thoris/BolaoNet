@@ -24,6 +24,10 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
                 .WhenInjectedExactlyInto(typeof(Application.Base.GenericApp<>))
                 .WithConstructorArgument("url", url);
 
+            Bind<Domain.Interfaces.Services.Testes.ITesteService>().To<WebApi.Integration.Tests.TestesIntegration>()
+                .WhenInjectedExactlyInto(typeof(Application.Testes.TestesApp))
+                .WithConstructorArgument("url", url);
+
             Bind<Domain.Interfaces.Services.Boloes.IApostaExtraService>().To<WebApi.Integration.Boloes.ApostaExtraIntegration>()
                 .WhenInjectedExactlyInto(typeof(Application.Boloes.ApostaExtraApp))
                 .WithConstructorArgument("url", url);

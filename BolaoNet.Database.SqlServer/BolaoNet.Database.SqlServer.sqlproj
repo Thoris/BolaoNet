@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="build\0001.Cleaning_Up.sql" />
+    <Build Include="build\0046.Create_Table_Log.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="build\0008.Create_Table_UserMaritalStatus.sql" />
