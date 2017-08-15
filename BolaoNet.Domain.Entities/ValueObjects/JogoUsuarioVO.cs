@@ -75,6 +75,8 @@ namespace BolaoNet.Domain.Entities.ValueObjects
         public string DescricaoTime1 { get; set; }
         public string DescricaoTime2 { get; set; }
 
+        public bool? IsDesempate { get; set; }
+
         #endregion
     }
 }

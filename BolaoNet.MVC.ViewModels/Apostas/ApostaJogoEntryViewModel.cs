@@ -37,6 +37,9 @@ namespace BolaoNet.MVC.ViewModels.Apostas
         public int? SalvarApostaTime1 { get; set; }
         public int? SalvarApostaTime2 { get; set; }
 
+        public bool? SalvarDependenciaTime1 { get; set; }
+        public bool? SalvarDependenciaTime2 { get; set; }
+
         public new string NomeTime1
         {
             get

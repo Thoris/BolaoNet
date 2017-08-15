@@ -962,6 +962,8 @@ namespace BolaoNet.Infra.Data.EF.Boloes
                     DescricaoTime1 = j.DescricaoTime1,
                     DescricaoTime2 = j.DescricaoTime2,
 
+                    IsDesempate = j.IsDesempate,
+
                 };
 
             //#endregion
@@ -1326,6 +1328,8 @@ namespace BolaoNet.Infra.Data.EF.Boloes
                     MultiploTime = u.MultiploTime,
 
                     Ganhador = u.Ganhador,
+
+                    IsDesempate = j.IsDesempate,
                 }).Take(totalRetorno);
            // #endregion
 
@@ -1428,6 +1432,8 @@ namespace BolaoNet.Infra.Data.EF.Boloes
                     MultiploTime = u.MultiploTime,
 
                     Ganhador = u.Ganhador,
+
+                    IsDesempate = j.IsDesempate,
                 }).Take(totalRetorno);
             //#endregion
 

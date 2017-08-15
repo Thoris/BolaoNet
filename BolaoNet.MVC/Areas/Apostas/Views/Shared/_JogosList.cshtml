@@ -77,7 +77,22 @@
             </td>
         }
         @Html.HiddenFor(x => x.Apostas[c].ApostaTime1)
-        <td>x</td>
+        <td>            
+            @*@Html.RadioButtonFor(model => model.imp_tx_tipo, "REDE", new { id = REDE, name = "imp_tx_tipo", value = "REDE", @class = "with-gap" })*@
+            <table>
+                <tr>
+                    @if (Model.Apostas[c].IsDesempate == true)
+                    { 
+                        <td>@Html.RadioButtonFor(model => model.Apostas[c].SalvarDependenciaTime1, new { @id = "rdo" + Model.Apostas[c].JogoId + "_time1" })</td>
+                    }
+                        <td>x</td>
+                    @if (Model.Apostas[c].IsDesempate == true)
+                    {
+                        <td>@Html.RadioButtonFor(model => model.Apostas[c].SalvarDependenciaTime2, new { @id = "rdo" + Model.Apostas[c].JogoId + "_time2" })</td>
+                    }
+                </tr>
+            </table>
+        </td>
         @Html.HiddenFor(x => x.Apostas[c].ApostaTime2)
         @if (Model.Apostas[c].IsLocked)
         {
