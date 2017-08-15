@@ -962,7 +962,7 @@ namespace BolaoNet.Infra.Data.EF.Boloes
                     DescricaoTime1 = j.DescricaoTime1,
                     DescricaoTime2 = j.DescricaoTime2,
 
-                    IsDesempate = j.IsDesempate,
+                    IsDesempate = j.IsDesempate,                    
 
                 };
 

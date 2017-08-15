@@ -110,13 +110,18 @@ namespace BolaoNet.MVC.Controllers
 
         public void ShowMessage(string message)
         {
-            //ViewBag.MessagePage = message;
-            TempData.Add("ShowMessage", message);
+            if (TempData.ContainsKey("ShowMessage"))
+                TempData["ShowMessage"] = message;
+            else
+                TempData.Add("ShowMessage", message);
         }
         public void ShowErrorMessage(string message)
         {
-            //ViewBag.MessageErrorPage = message;
-            TempData.Add("ShowErrorMessage", message);
+            if (TempData.ContainsKey("ShowErrorMessage"))
+                TempData["ShowErrorMessage"] = message;
+            else
+                TempData.Add("ShowErrorMessage", message);
+            //TempData.Add("ShowErrorMessage", message);
 
         }
 

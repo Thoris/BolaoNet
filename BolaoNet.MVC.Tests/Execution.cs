@@ -23,14 +23,14 @@ namespace BolaoNet.MVC.Tests
 
             //new HappyWay().TestGeneratePdfMembro();
 
-            Ninject.StandardKernel kernel = (StandardKernel)NinjectCommon.CreateKernel();
-            ICampeonatoApp campeonatoApp = kernel.Get<ICampeonatoApp>();
+            //Ninject.StandardKernel kernel = (StandardKernel)NinjectCommon.CreateKernel();
+            //ICampeonatoApp campeonatoApp = kernel.Get<ICampeonatoApp>();
 
-            campeonatoApp.GetRecords(new Domain.Entities.Campeonatos.Campeonato("Copa do Mundo 2014"), Domain.Interfaces.Services.Campeonatos.RecordTipoPesquisa.RecordQtdJogosSemGanhar);
+            //campeonatoApp.GetRecords(new Domain.Entities.Campeonatos.Campeonato("Copa do Mundo 2014"), Domain.Interfaces.Services.Campeonatos.RecordTipoPesquisa.RecordQtdJogosSemGanhar);
 
            
 
-            //new HappyWay().TestFullCycle();
+            new HappyWay().TestFullCycle();
         }
 
         #endregion

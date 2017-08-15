@@ -100,7 +100,8 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
                 PendenteTime2NomeGrupo = pendenteTime2NomeGrupo,
                 PendenteTime2PosGrupo = pendenteTime2PosGrupo,
                 DescricaoTime1 = pendenteTime1PosGrupo + pendenteTime1NomeGrupo,
-                DescricaoTime2 = pendenteTime2PosGrupo + pendenteTime2NomeGrupo
+                DescricaoTime2 = pendenteTime2PosGrupo + pendenteTime2NomeGrupo,
+                IsDesempate = isDesempate,
             };
         }
         public Entities.Campeonatos.Jogo CreateJogo(string nomeCampeonato, DateTime dataJogo, string nomeEstadio, string nomeFase, string nomeGrupo, int rodada, int id, int pendenteTime1, bool ganhadorTime1, int pendenteTime2, bool ganhadorTime2, bool isDesempate)
@@ -132,7 +133,7 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
                 PendenteTime2Ganhador = ganhadorTime2,
                 DescricaoTime1 = descricaoTime1,
                 DescricaoTime2 = descricaoTime2,
-
+                IsDesempate = isDesempate
             };
         }
         public Entities.Campeonatos.Jogo CreateJogo(string nomeCampeonato, DateTime dataJogo, string nomeEstadio, string nomeFase, string nomeGrupo, string nomeTime1, string nomeTime2, int rodada, int id, bool isDesempate)
@@ -146,7 +147,8 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
                 NomeGrupo = nomeGrupo,
                 NomeTime1 = nomeTime1,
                 NomeTime2 = nomeTime2,
-                Rodada = rodada
+                Rodada = rodada,
+                IsDesempate = isDesempate
             };
         }
 

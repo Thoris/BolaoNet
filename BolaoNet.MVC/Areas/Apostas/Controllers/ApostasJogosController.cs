@@ -328,6 +328,10 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
                     (list[c]);
 
 
+                int? ganhador = null;
+                if ((int)list[c].SalvarApostaTime1 == (int)list[c].SalvarApostaTime2)
+                    ganhador = list[c].SalvarGanhador;
+
                 bool res =_jogoUsuarioApp.ProcessAposta(
                     base.SelectedBolao,
                     base.UserLogged, 
@@ -337,7 +341,7 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
                     (int)list[c].SalvarApostaTime2,
                     null,
                     null,
-                    null);
+                    ganhador);
             }
 
 

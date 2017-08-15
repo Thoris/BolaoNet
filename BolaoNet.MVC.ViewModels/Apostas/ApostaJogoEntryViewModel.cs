@@ -16,6 +16,15 @@ namespace BolaoNet.MVC.ViewModels.Apostas
 
         #region Properties
 
+        public new int? Ganhador
+        {
+            get { return base.Ganhador; }
+            set
+            {
+                base.Ganhador = value;
+                this.SalvarGanhador = value;
+            }
+        }
         public new int? ApostaTime1
         {
             get { return base.ApostaTime1; }
@@ -36,9 +45,8 @@ namespace BolaoNet.MVC.ViewModels.Apostas
         }
         public int? SalvarApostaTime1 { get; set; }
         public int? SalvarApostaTime2 { get; set; }
-
-        public bool? SalvarDependenciaTime1 { get; set; }
-        public bool? SalvarDependenciaTime2 { get; set; }
+        
+        public int? SalvarGanhador { get; set; } 
 
         public new string NomeTime1
         {
@@ -103,6 +111,8 @@ namespace BolaoNet.MVC.ViewModels.Apostas
                 if (ApostaTime1 != SalvarApostaTime1)
                     return true;
                 else if (ApostaTime2 != SalvarApostaTime2)
+                    return true;
+                else if (Ganhador != SalvarGanhador)
                     return true;
 
                 return false;

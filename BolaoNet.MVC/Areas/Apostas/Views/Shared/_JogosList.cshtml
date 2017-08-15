@@ -78,21 +78,35 @@
         }
         @Html.HiddenFor(x => x.Apostas[c].ApostaTime1)
         <td>            
-            @*@Html.RadioButtonFor(model => model.imp_tx_tipo, "REDE", new { id = REDE, name = "imp_tx_tipo", value = "REDE", @class = "with-gap" })*@
             <table>
                 <tr>
                     @if (Model.Apostas[c].IsDesempate == true)
                     { 
-                        <td>@Html.RadioButtonFor(model => model.Apostas[c].SalvarDependenciaTime1, new { @id = "rdo" + Model.Apostas[c].JogoId + "_time1" })</td>
+                        if (Model.Apostas[c].SalvarApostaTime1 == Model.Apostas[c].SalvarApostaTime2)
+                        {
+                            <td>@Html.RadioButtonFor(model => model.Apostas[c].SalvarGanhador, 1, new { @id = "rdo" + Model.Apostas[c].JogoId + "_time1" })</td>
+                        }
+                        else
+                        {
+                            <td>@Html.RadioButtonFor(model => model.Apostas[c].SalvarGanhador, 1, new { @id = "rdo" + Model.Apostas[c].JogoId + "_time1", disabled = "disabled" })</td>
+                        }
                     }
                         <td>x</td>
                     @if (Model.Apostas[c].IsDesempate == true)
                     {
-                        <td>@Html.RadioButtonFor(model => model.Apostas[c].SalvarDependenciaTime2, new { @id = "rdo" + Model.Apostas[c].JogoId + "_time2" })</td>
+                        if (Model.Apostas[c].SalvarApostaTime1 == Model.Apostas[c].SalvarApostaTime2)
+                        {
+                            <td>@Html.RadioButtonFor(model => model.Apostas[c].SalvarGanhador, 2, new { @id = "rdo" + Model.Apostas[c].JogoId + "_time2" })</td>
+                        }
+                        else
+                        {
+                            <td>@Html.RadioButtonFor(model => model.Apostas[c].SalvarGanhador, 2, new { @id = "rdo" + Model.Apostas[c].JogoId + "_time2", disabled = "disabled" })</td>
+                        }                        
                     }
                 </tr>
             </table>
         </td>
+        @Html.HiddenFor(x => x.Apostas[c].Ganhador)
         @Html.HiddenFor(x => x.Apostas[c].ApostaTime2)
         @if (Model.Apostas[c].IsLocked)
         {
@@ -126,3 +140,51 @@
         }      
     </tbody>
 </table>
+
+ <script>
+    $(document).ready(function () {
+
+     @for (int c=0; c < Model.Apostas.Count; c++)
+     {
+        if(Model.Apostas[c].IsDesempate == true)
+        {
+        <text>
+        $('#@Html.IdFor(x => x.Apostas[c].SalvarApostaTime1)').keyup(function () {
+            var a1 = $("#@Html.IdFor(x => x.Apostas[c].SalvarApostaTime1)");
+            var a2 = $("#@Html.IdFor(x => x.Apostas[c].SalvarApostaTime2)");
+            var r1 = $("#@Html.Id("rdo" + Model.Apostas[c].JogoId + "_time1")");
+            var r2 = $("#@Html.Id("rdo" + Model.Apostas[c].JogoId + "_time2")");
+            verificarGanhador(a1, a2, r1, r2);
+        });
+        $('#@Html.IdFor(x => x.Apostas[c].SalvarApostaTime2)').keyup(function () {
+            var a1 = $("#@Html.IdFor(x => x.Apostas[c].SalvarApostaTime1)");
+            var a2 = $("#@Html.IdFor(x => x.Apostas[c].SalvarApostaTime2)");
+             var r1 = $("#@Html.Id("rdo" + Model.Apostas[c].JogoId + "_time1")");
+             var r2 = $("#@Html.Id("rdo" + Model.Apostas[c].JogoId + "_time2")");
+             verificarGanhador(a1, a2, r1, r2);
+         });
+         </text>
+        }
+     }
+    })
+    function verificarGanhador(a1, a2, r1, r2) {
+        var v1 = a1.val();
+        var v2 = a2.val();
+        if (v1 > v2) {
+            r1.prop("checked", true);
+            r2.prop("checked", false);
+            r1.attr('disabled', true);
+            r2.attr('disabled', true);
+        }
+        else if (v1 < v2) {
+            r1.prop("checked", false);
+            r2.prop("checked", true);
+            r1.attr('disabled', true);
+            r2.attr('disabled', true);
+        }
+        else {
+            r1.attr('disabled', false);
+            r2.attr('disabled', false);
+        }        
+    }
+</script>
