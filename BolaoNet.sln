@@ -27,6 +27,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Install", "Install", "{F9C31220-5060-4056-BEAD-FCAEE96C740D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sandcastle", "Sandcastle", "{9A0DDD42-C9F9-40A9-B6EF-B1E71D4000EC}"
+	ProjectSection(SolutionItems) = preProject
+		Info\Sandcastle\BolaoNet.shfbproj = Info\Sandcastle\BolaoNet.shfbproj
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{E89DEFD2-967E-4057-A4E7-87FE61107E4C}"
 EndProject
