@@ -1,4 +1,7 @@
-﻿using System;
+﻿//#define SAVE_DATA
+//#define SAVE_CLASSIFICACAO
+
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using BolaoNet.MVC.Tests.IoC;
 using Ninject;
@@ -15,12 +18,19 @@ using System.Web;
 using System.Collections.Generic;
 using System.IO;
 using System.Diagnostics;
+using System.Linq;
 
 namespace BolaoNet.MVC.Tests
 {
     [TestClass]
     public class HappyWay
     {
+        #region Variables
+
+        private Dictionary<string, int> _pontuacao;
+
+        #endregion
+
         [TestMethod]
         public void TestFullCycle()
         {
@@ -97,13 +107,20 @@ namespace BolaoNet.MVC.Tests
                 new int [] {2,2},                
             };
 
+            _pontuacao = new Dictionary<string, int>();
+            
+
             for (int u = 0; u < apostasList.Length; u++)
             {
+                
 
                 #region Criação de Usuário
 
                 int apostaTime1 = apostasList[u][0];
                 int apostaTime2 = apostasList[u][1];
+
+                _pontuacao.Add( "Usuario" + apostaTime1 + "x" + apostaTime2, 0);
+
                 MVC.Controllers.AccountController accountController =
                     new Controllers.AccountController(
                         userApp,
@@ -466,8 +483,11 @@ namespace BolaoNet.MVC.Tests
             jogoLabels.Add(63); time1.Add(3); time2.Add(0); penaltis1.Add(null); penaltis2.Add(null);
             jogoLabels.Add(64); time1.Add(0); time2.Add(0); penaltis1.Add(null); penaltis2.Add(null);
 
-
             #endregion
+
+#if (SAVE_CLASSIFICACAO)
+            StreamWriter writerClassificacao = new StreamWriter("classificacao.txt", false, System.Text.Encoding.UTF8);
+#endif
 
             for (int c= 0; c < jogoLabels.Count; c++)
             {
@@ -578,10 +598,70 @@ namespace BolaoNet.MVC.Tests
 
                 Assert.AreEqual(apostasList.Length, apostasJogoModel.Apostas.Count);
 
+
+                CheckClassificacao(
+                    (string.Compare(jogoResultadoView.NomeTime1, "Brasil", true) == 0 || 
+                    string.Compare(jogoResultadoView.NomeTime2, "Brasil", true) == 0),
+                    jogoResultadoView.JogoId, 
+                    jogoResultadoView.GolsTime1, 
+                    jogoResultadoView.GolsTime2,
+                    apostasJogoModel, 
+                    (ViewModels.Bolao.BolaoClassificacaoViewModel)classificacaoView.Model
+                    );
+
                 #endregion
+
+
+#if (SAVE_CLASSIFICACAO)
+                ViewModels.Bolao.BolaoClassificacaoViewModel model =
+                    (ViewModels.Bolao.BolaoClassificacaoViewModel)classificacaoView.Model;
+
+                writerClassificacao.WriteLine("Rodada: " + jogoResultadoView.JogoId);
+
+                writerClassificacao.WriteLine("//JOGO: " + apostasJogoModel.NomeTime1 + " " + jogoResultadoView.GolsTime1 + " x " + jogoResultadoView.GolsTime2 + " " + apostasJogoModel.NomeTime2);
+                writerClassificacao.WriteLine("------------------------");
+
+
+
+                writerClassificacao.Write("Po ");
+                writerClassificacao.Write("Usuário".PadRight(15, ' ') + " ");
+                writerClassificacao.Write("PTs" + " ");
+                writerClassificacao.Write("Ch" + " ");
+                writerClassificacao.Write("VD" + " ");
+                writerClassificacao.Write("De" + " ");
+                writerClassificacao.Write("Em" + " ");
+                writerClassificacao.Write("Vi" + " ");
+                writerClassificacao.Write("G1" + " ");
+                writerClassificacao.Write("G2" + " ");
+                writerClassificacao.Write("Ex" + " ");
+                writerClassificacao.WriteLine();     
+
+                for (int i = 0; i < model.Classificacao.Count; i++)
+                {
+                    writerClassificacao.Write(((int)(model.Classificacao[i].Posicao ?? 0)).ToString("00") + " ");
+                    writerClassificacao.Write(model.Classificacao[i].UserName.ToString().PadRight(15, ' ') + " ");
+                    writerClassificacao.Write(((int)(model.Classificacao[i].TotalPontos ?? 0)).ToString("000") + " ");
+                    writerClassificacao.Write(((int)(model.Classificacao[i].TotalPlacarCheio ?? 0)).ToString("00") + " ");
+                    writerClassificacao.Write(((int)(model.Classificacao[i].TotalVDE ?? 0)).ToString("00") + " ");
+                    writerClassificacao.Write(((int)(model.Classificacao[i].TotalDerrota ?? 0)).ToString("00") + " ");
+                    writerClassificacao.Write(((int)(model.Classificacao[i].TotalEmpate ?? 0)).ToString("00") + " ");
+                    writerClassificacao.Write(((int)(model.Classificacao[i].TotalVitoria ?? 0)).ToString("00") + " ");
+                    writerClassificacao.Write(((int)(model.Classificacao[i].TotalResultTime1 ?? 0)).ToString("00") + " ");
+                    writerClassificacao.Write(((int)(model.Classificacao[i].TotalResultTime2 ?? 0)).ToString("00") + " ");
+                    writerClassificacao.Write(((int)(model.Classificacao[i].TotalApostaExtra ?? 0)).ToString("00") + " ");
+                    writerClassificacao.WriteLine();     
+                }
+#endif
             }
 
+#if (SAVE_CLASSIFICACAO)
+            writerClassificacao.Close ();
+#endif
+
+
             #region Apostas Extras 
+
+
 
             MVC.Areas.Resultados.Controllers.ApostasExtrasResultadoController apostasExtrasResultadoController =
                 new Areas.Resultados.Controllers.ApostasExtrasResultadoController(
@@ -630,42 +710,889 @@ namespace BolaoNet.MVC.Tests
 
             #endregion
         }
-
-
-        public void TestGeneratePdfMembro()
+        private void CheckPosition(IOrderedEnumerable<KeyValuePair<string, int>> list, string userName, int posicao, int pontos, ViewModels.Bolao.BolaoClassificacaoViewModel bolaoClassificacaoModel)
         {
-
-            Ninject.StandardKernel kernel = (StandardKernel)NinjectCommon.CreateKernel();
-
-            IBolaoMembroApostasReportApp _bolaoMembroApostasReportApp = 
-                kernel.Get<IBolaoMembroApostasReportApp>();
-
-            IBolaoMembroApostasReportApp bolaoMembroApostasReportApp =
-                kernel.Get<IBolaoMembroApostasReportApp>();
-
-
-            Domain.Entities.ValueObjects.Reports.BolaoMembroApostasVO data =
-                _bolaoMembroApostasReportApp.GetData(
-                    new Domain.Entities.Boloes.Bolao("Copa do Mundo 2014"),
-                    new Domain.Entities.Users.User("usuario1x1"));
-
-            Stream streamReport = bolaoMembroApostasReportApp.Generate(
-                "gif",
-                @"..\..\..\BolaoNet.MVC\Content\img\database\profiles2",
-                @"..\..\..\BolaoNet.MVC\Content\img\database\times2", 
-                data);
-
-            if (System.IO.File.Exists("file.pdf"))
-                System.IO.File.Delete("file.pdf");
-
-            using (var fileStream = File.Create("file.pdf"))
+            int pos = 0;
+            int pt = -1;
+            int count = 1;
+            foreach (KeyValuePair<string, int> pair in list)
             {
-                streamReport.Seek(0, SeekOrigin.Begin);
-                streamReport.CopyTo(fileStream);
+                if (pt != pair.Value)
+                {
+                    pos = count;
+                    pt = pair.Value;
+                }
+
+
+                if (string.Compare (pair.Key, userName, true) == 0)
+                {
+                    Assert.AreEqual(posicao, pos );
+                    Assert.AreEqual(pontos, pt);
+                    break;
+                }
+                count++;
             }
 
-            Process.Start("file.pdf");
-             
+            for (int c=0; c < bolaoClassificacaoModel.Classificacao.Count; c++)
+            {
+                if (string.Compare (bolaoClassificacaoModel.Classificacao[c].UserName, userName, true) == 0)
+                {
+                    Assert.AreEqual(posicao, bolaoClassificacaoModel.Classificacao[c].Posicao);
+                    Assert.AreEqual(pontos, bolaoClassificacaoModel.Classificacao[c].TotalPontos);
+                    return;
+                }
+            }
+
         }
+        private void CheckClassificacao(bool isMultiploTime, int idJogo, int time1, int time2, ViewModels.Bolao.ApostasJogoViewModel apostasJogoModel, ViewModels.Bolao.BolaoClassificacaoViewModel bolaoClassificacaoModel)
+        {
+
+            for (int c = 0; c < apostasJogoModel.Apostas.Count; c++)
+            {
+                _pontuacao[apostasJogoModel.Apostas[c].UserName] += (int)apostasJogoModel.Apostas[c].Pontos;
+            }
+
+            var sortedDict = from entry in _pontuacao orderby entry.Value descending select entry;
+
+#if(SAVE_DATA)
+            StreamWriter writer = new StreamWriter("log.txt", true);
+            int pos = 0;
+            int pt = -1;
+            int count = 1;
+
+            writer.WriteLine("//JOGO: " + apostasJogoModel.NomeTime1 + " " + time1 + " x " +
+                time2 + " " + apostasJogoModel.NomeTime2);
+            writer.WriteLine("case " + idJogo + ":");
+
+            foreach (KeyValuePair<string, int> pair in sortedDict)
+            {
+                if (pt != pair.Value)
+                {
+                    pos = count;
+                    pt = pair.Value;
+                }
+
+                writer.WriteLine("CheckPosition(sortedDict, \"" + pair.Key + "\", " + pos + ", " + pt + ", bolaoClassificacaoModel);");
+                count++;
+            }
+
+            writer.WriteLine("break;");
+
+            writer.Close();
+#endif
+
+
+            //return;
+
+
+            switch(idJogo)
+            {
+                //JOGO: Brasil 3 x 1 Croácia
+                case 1:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 8, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 6, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 2, 6, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 4, 2, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 4, 2, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 6, 0, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 6, 0, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 6, 0, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 6, 0, bolaoClassificacaoModel);
+                    break;
+                //JOGO: México 1 x 0 Camarões
+                case 2:
+                    CheckPosition(sortedDict, "Usuario1x0", 1, 16, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x1", 2, 11, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 3, 10, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 4, 3, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 5, 2, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 6, 1, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 6, 1, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 8, 0, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 8, 0, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Espanha 1 x 5 Holanda
+                case 3:
+                    CheckPosition(sortedDict, "Usuario1x0", 1, 17, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x1", 2, 11, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 3, 10, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 4, 5, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 4, 5, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 6, 4, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 7, 3, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 8, 1, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 9, 0, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Chile 3 x 1 Austrália
+                case 4:
+                    CheckPosition(sortedDict, "Usuario1x0", 1, 20, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x1", 2, 15, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 3, 13, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 4, 6, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 5, 5, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 5, 5, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 7, 3, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 8, 1, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 9, 0, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Colômbia 3 x 0 Grécia
+                case 5:
+                    CheckPosition(sortedDict, "Usuario1x0", 1, 24, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x1", 2, 18, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 3, 17, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 4, 6, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 5, 5, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 5, 5, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 7, 3, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 8, 2, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 9, 0, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Costa do Marfim 2 x 1 Japão
+                case 6:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 28, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 27, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 3, 21, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 4, 7, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 5, 6, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 6, 5, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 7, 3, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 8, 2, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 9, 1, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Uruguai 1 x 3 Costa Rica
+                case 7:
+                    CheckPosition(sortedDict, "Usuario1x0", 1, 28, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 28, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 3, 21, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 4, 10, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 5, 9, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 6, 7, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 7, 6, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 8, 2, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 9, 1, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Inglaterra 1 x 2 Itália
+                case 8:
+                    CheckPosition(sortedDict, "Usuario1x0", 1, 29, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x1", 2, 28, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 3, 21, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 4, 19, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 5, 13, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 6, 10, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 7, 8, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 8, 2, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 8, 2, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Suíça 2 x 1 Equador
+                case 9:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 38, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 32, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 3, 25, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 4, 19, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 5, 14, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 6, 10, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 7, 9, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 8, 3, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 9, 2, bolaoClassificacaoModel);
+                    break;
+                //JOGO: França 3 x 0 Honduras
+                case 10:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 41, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 36, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 3, 29, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 4, 19, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 5, 14, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 6, 10, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 7, 9, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 8, 3, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 8, 3, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Argentina 2 x 1 Bósnia e Herzegovina
+                case 11:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 51, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 39, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 3, 33, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 4, 19, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 5, 15, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 6, 10, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 6, 10, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 8, 4, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 9, 3, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Irã 0 x 0 Nigéria
+                case 12:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 51, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 40, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 3, 34, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 4, 19, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 5, 16, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 6, 15, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 7, 13, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 8, 11, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 9, 9, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Alemanha 4 x 0 Portugal
+                case 13:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 54, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 44, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 3, 38, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 4, 19, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 5, 16, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 6, 15, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 7, 14, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 8, 11, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 9, 9, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Gana 1 x 2 Estados Unidos
+                case 14:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 54, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 45, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 3, 38, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 4, 29, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 5, 19, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 6, 16, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 7, 15, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 8, 14, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 9, 10, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Bélgica 2 x 1 Argélia
+                case 15:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 64, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 48, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 3, 42, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 4, 29, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 5, 20, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 6, 17, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 7, 15, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 8, 14, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 9, 11, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Rússia 1 x 1 Coreia do Sul
+                case 16:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 65, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 49, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 3, 42, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 4, 30, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 5, 27, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 6, 21, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 7, 19, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 8, 16, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 9, 15, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Brasil 0 x 0 México
+                case 17:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 65, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 51, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 3, 44, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 4, 39, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 5, 37, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 6, 30, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 7, 26, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 8, 23, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 9, 17, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Camarões 0 x 4 Croácia
+                case 18:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 65, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 51, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 3, 44, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 4, 40, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 5, 37, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 6, 33, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 7, 27, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 8, 26, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 9, 21, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Espanha 2 x 3 Chile
+                case 19:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 66, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 51, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 3, 45, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 4, 40, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 5, 37, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 6, 36, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 7, 30, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 8, 27, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 9, 24, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Austrália 0 x 2 Holanda
+                case 20:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 66, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 51, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 3, 45, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 4, 41, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 5, 40, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 6, 37, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 7, 34, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 7, 34, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 9, 28, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Colômbia 2 x 1 Costa do Marfim
+                case 21:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 76, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 54, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 3, 49, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 4, 41, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 5, 40, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 6, 38, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 7, 35, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 8, 34, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 9, 29, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Japão 0 x 0 Grécia
+                case 22:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 76, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 55, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 3, 51, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 4, 50, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 5, 43, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 6, 40, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 7, 36, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 8, 35, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 9, 34, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Uruguai 2 x 1 Inglaterra
+                case 23:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 86, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 58, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 3, 54, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 4, 51, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 5, 44, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 6, 40, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 7, 37, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 8, 35, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 8, 35, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Itália 0 x 1 Costa Rica
+                case 24:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 87, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 58, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 3, 54, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 4, 52, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 5, 47, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 6, 45, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 7, 43, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 8, 39, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 9, 35, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Suíça 2 x 5 França
+                case 25:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 88, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 58, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 3, 55, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 4, 52, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 5, 50, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 6, 46, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 7, 45, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 8, 42, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 9, 36, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Honduras 1 x 2 Equador
+                case 26:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 88, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 59, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 3, 56, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 4, 55, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 5, 53, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 6, 52, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 7, 46, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 7, 46, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 9, 37, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Argentina 1 x 0 Irã
+                case 27:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 91, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 69, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 3, 59, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 4, 57, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 5, 53, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 5, 53, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 7, 47, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 8, 46, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 9, 37, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Nigéria 1 x 0 Bósnia e Herzegovina
+                case 28:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 94, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 79, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 3, 63, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 4, 58, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 5, 54, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 6, 53, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 7, 48, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 8, 46, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 9, 37, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Alemanha 2 x 2 Gana
+                case 29:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 95, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 79, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 3, 64, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 4, 59, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 4, 59, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 6, 53, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 6, 53, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 8, 47, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 8, 47, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Estados Unidos 2 x 2 Portugal
+                case 30:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 96, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 79, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 3, 65, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 4, 64, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 5, 60, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 6, 58, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 7, 57, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 8, 53, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 9, 48, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Bélgica 1 x 0 Rússia
+                case 31:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 99, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 89, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 3, 69, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 4, 65, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 5, 61, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 6, 59, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 7, 57, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 8, 53, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 9, 48, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Coreia do Sul 2 x 4 Argélia
+                case 32:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 100, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 89, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 3, 70, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 4, 65, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 5, 64, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 6, 59, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 7, 58, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 8, 56, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 9, 51, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Camarões 1 x 4 Brasil
+                case 33:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 100, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 91, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 3, 72, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 4, 70, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 5, 65, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 6, 62, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 7, 61, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 8, 58, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 9, 57, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Croácia 1 x 3 México
+                case 34:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 100, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 92, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 3, 76, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 4, 70, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 5, 65, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 5, 65, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 7, 62, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 8, 60, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 9, 58, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Austrália 0 x 3 Espanha
+                case 35:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 100, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 92, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 3, 79, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 4, 70, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 5, 69, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 6, 66, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 7, 64, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 8, 62, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 9, 58, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Holanda 2 x 0 Chile
+                case 36:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 104, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 96, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 3, 80, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 4, 79, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 5, 69, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 6, 67, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 7, 64, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 8, 62, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 9, 59, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Japão 1 x 4 Colômbia
+                case 37:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 104, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 97, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 3, 83, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 4, 80, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 5, 72, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 6, 67, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 6, 67, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 8, 63, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 9, 59, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Grécia 2 x 1 Costa do Marfim
+                case 38:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 114, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 100, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 3, 84, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 4, 83, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 5, 73, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 6, 67, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 6, 67, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 8, 64, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 9, 60, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Itália 0 x 1 Uruguai
+                case 39:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 115, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 100, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 3, 86, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 4, 84, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 5, 83, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 6, 71, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 7, 68, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 8, 65, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 9, 60, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Costa Rica 0 x 0 Inglaterra
+                case 40:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 115, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 101, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 3, 86, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 4, 85, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 5, 84, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 6, 78, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 7, 72, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 8, 70, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 9, 65, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Honduras 0 x 3 Suíça
+                case 41:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 115, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 101, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 3, 89, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 4, 88, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 5, 85, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 6, 79, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 7, 76, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 8, 70, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 9, 65, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Equador 0 x 0 França
+                case 42:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 115, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 102, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 3, 89, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 3, 89, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 3, 89, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 6, 86, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 7, 77, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 8, 75, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 9, 70, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Nigéria 2 x 3 Argentina
+                case 43:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 116, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 102, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 3, 92, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 3, 92, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 5, 89, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 6, 87, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 7, 80, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 8, 75, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 9, 71, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Bósnia e Herzegovina 3 x 1 Irã
+                case 44:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 120, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 105, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 3, 93, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 4, 92, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 5, 90, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 6, 89, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 7, 80, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 8, 76, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 9, 71, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Estados Unidos 0 x 1 Alemanha
+                case 45:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 121, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 105, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 3, 103, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 4, 95, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 5, 90, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 5, 90, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 7, 84, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 8, 77, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 9, 71, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Portugal 2 x 1 Gana
+                case 46:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 131, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 108, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 3, 104, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 4, 95, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 5, 94, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 6, 90, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 7, 84, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 8, 78, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 9, 72, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Coreia do Sul 0 x 1 Bélgica
+                case 47:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 132, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 2, 114, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 3, 108, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 4, 98, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 5, 94, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 6, 91, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 7, 88, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 8, 79, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 9, 72, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Argélia 1 x 1 Rússia
+                case 48:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 133, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 2, 115, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 3, 109, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 4, 99, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 5, 96, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 6, 94, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 7, 89, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 8, 88, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 9, 77, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Brasil 1 x 1 Chile
+                case 49:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 135, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 2, 117, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 3, 111, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 4, 109, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 5, 106, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 6, 101, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 7, 94, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 8, 88, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 9, 87, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Colômbia 2 x 0 Uruguai
+                case 50:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 139, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 2, 117, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 3, 115, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 4, 109, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 5, 107, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 6, 104, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 7, 101, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 8, 88, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 8, 88, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Holanda 2 x 1 México
+                case 51:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 149, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 2, 118, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 118, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 4, 110, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 5, 108, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 6, 107, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 7, 101, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 8, 89, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 9, 88, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Costa Rica 1 x 1 Grécia
+                case 52:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 150, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 2, 120, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 3, 119, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 3, 119, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 5, 112, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 6, 108, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 7, 102, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 8, 94, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 9, 88, bolaoClassificacaoModel);
+                    break;
+                //JOGO: França 2 x 0 Nigéria
+                case 53:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 154, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 2, 123, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 3, 120, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 4, 119, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 5, 118, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 6, 113, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 7, 102, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 8, 95, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 9, 88, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Alemanha 0 x 0 Argélia
+                case 54:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 154, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 2, 125, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 3, 124, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 4, 123, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 5, 120, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 6, 119, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 7, 102, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 8, 100, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 9, 89, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Argentina 0 x 0 Suíça
+                case 55:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 154, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 2, 133, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 3, 130, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 4, 125, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 5, 121, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 6, 120, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 7, 105, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 8, 102, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 9, 90, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Bélgica 0 x 0 Estados Unidos
+                case 56:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 154, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 2, 143, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 3, 135, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 4, 126, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 5, 122, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 6, 121, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 7, 110, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 8, 102, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 9, 91, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Brasil 2 x 1 Colômbia
+                case 57:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 174, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 2, 143, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 3, 137, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 4, 132, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 5, 129, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 6, 124, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 7, 112, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 8, 102, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 9, 91, bolaoClassificacaoModel);
+                    break;
+                //JOGO: França 0 x 1 Alemanha
+                case 58:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 175, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 2, 144, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 3, 138, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 4, 134, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 5, 132, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 6, 129, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 7, 112, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 8, 105, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 9, 95, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Holanda 0 x 0 Costa Rica
+                case 59:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 175, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 2, 154, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 3, 143, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 4, 135, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 5, 133, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 6, 130, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 7, 117, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 8, 105, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 9, 96, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Argentina 1 x 0 Bélgica
+                case 60:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 178, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 2, 155, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 3, 144, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 4, 143, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 5, 135, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 6, 134, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 7, 117, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 8, 106, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 9, 96, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Brasil 1 x 7 Alemanha
+                case 61:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 178, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 2, 155, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 3, 146, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 4, 145, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 5, 141, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 6, 134, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 7, 117, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 8, 114, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 9, 102, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Holanda 0 x 0 Argentina
+                case 62:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 178, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 2, 165, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 3, 151, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 4, 146, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 5, 142, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 6, 135, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 7, 122, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 8, 114, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 9, 103, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Brasil 3 x 0 Holanda
+                case 63:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 184, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 2, 167, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 3, 154, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 4, 151, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 5, 143, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 6, 142, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 7, 122, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 8, 114, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 9, 103, bolaoClassificacaoModel);
+                    break;
+                //JOGO: Alemanha 0 x 0 Argentina
+                case 64:
+                    CheckPosition(sortedDict, "Usuario2x1", 1, 184, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x0", 2, 177, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x1", 3, 156, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x0", 4, 155, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x0", 5, 144, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x1", 6, 143, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario2x2", 7, 127, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario1x2", 8, 114, bolaoClassificacaoModel);
+                    CheckPosition(sortedDict, "Usuario0x2", 9, 104, bolaoClassificacaoModel);
+                    break;
+
+            }
+        }
+
+        //public void TestGeneratePdfMembro()
+        //{
+
+        //    Ninject.StandardKernel kernel = (StandardKernel)NinjectCommon.CreateKernel();
+
+        //    IBolaoMembroApostasReportApp _bolaoMembroApostasReportApp = 
+        //        kernel.Get<IBolaoMembroApostasReportApp>();
+
+        //    IBolaoMembroApostasReportApp bolaoMembroApostasReportApp =
+        //        kernel.Get<IBolaoMembroApostasReportApp>();
+
+
+        //    Domain.Entities.ValueObjects.Reports.BolaoMembroApostasVO data =
+        //        _bolaoMembroApostasReportApp.GetData(
+        //            new Domain.Entities.Boloes.Bolao("Copa do Mundo 2014"),
+        //            new Domain.Entities.Users.User("usuario1x1"));
+
+        //    Stream streamReport = bolaoMembroApostasReportApp.Generate(
+        //        "gif",
+        //        @"..\..\..\BolaoNet.MVC\Content\img\database\profiles2",
+        //        @"..\..\..\BolaoNet.MVC\Content\img\database\times2", 
+        //        data);
+
+        //    if (System.IO.File.Exists("file.pdf"))
+        //        System.IO.File.Delete("file.pdf");
+
+        //    using (var fileStream = File.Create("file.pdf"))
+        //    {
+        //        streamReport.Seek(0, SeekOrigin.Begin);
+        //        streamReport.CopyTo(fileStream);
+        //    }
+
+        //    Process.Start("file.pdf");
+             
+        //}
     }
 }
