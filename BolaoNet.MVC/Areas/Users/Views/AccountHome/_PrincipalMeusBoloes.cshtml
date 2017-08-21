@@ -12,7 +12,8 @@
                 <thead>
                     <tr>
                         <td>@Html.DisplayNameFor( x => x[0].NomeBolao)</td>
-                        <td>@Html.DisplayNameFor( x => x[0].NomeCampeonato)</td>
+                        <td class="hidden-xs">@Html.DisplayNameFor(x => x[0].NomeCampeonato)</td>
+
                         <td>@Html.DisplayNameFor(x => x[0].Membros)</td>
                         <td>@Html.DisplayNameFor(x => x[0].Position)</td>
                         <td>@Html.DisplayNameFor(x => x[0].ApostasRestantes)</td>
@@ -29,7 +30,7 @@
                                 </a>*@
                                 @Model[c].NomeBolao 
                             </td>
-                            <td>
+                            <td class="hidden-xs">
                                 @*<a href="#">
                                     @Model[c].NomeCampeonato
                                 </a>*@

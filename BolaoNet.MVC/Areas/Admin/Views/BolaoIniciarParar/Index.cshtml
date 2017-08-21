@@ -211,9 +211,9 @@
                                 <thead>
                                     <tr>
                                         <td>@Html.DisplayNameFor(x => x.StatusMembros[0].UserName)</td>
-                                        <td></td>
+                                        <td class="hidden-xs"></td>
                                         <td>@Html.DisplayNameFor(x => x.StatusMembros[0].FullName)</td>
-                                        <td>@Html.DisplayNameFor(x => x.StatusMembros[0].Email)</td>
+                                        <td class="hidden-xs">@Html.DisplayNameFor(x => x.StatusMembros[0].Email)</td>
                                         <td>@Html.DisplayNameFor(x => x.StatusMembros[0].Restantes)</td>
                                         <td>@Html.DisplayNameFor(x => x.StatusMembros[0].Pago)</td>
                                         <td></td>
@@ -234,11 +234,11 @@
                                             }
                                             >                               
                                             <td>@Html.DisplayFor(x=>x.StatusMembros[c].UserName)</td>
-                                            <td>
+                                            <td class="hidden-xs">
                                                 <img class="img-username" src="/Content/img/database/profiles/@(Model.StatusMembros[c].UserName).gif?time=@(DateTime.Now)" />
                                             </td>
                                             <td>@Model.StatusMembros[c].FullName</td>
-                                            <td>@Model.StatusMembros[c].Email</td>
+                                            <td class="hidden-xs">@Model.StatusMembros[c].Email</td>
                                             <td>@Model.StatusMembros[c].Restantes</td>
                                             <td>@Model.StatusMembros[c].Pago</td>                                            
                                             <td>

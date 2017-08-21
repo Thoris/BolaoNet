@@ -12,14 +12,13 @@
                     <thead>
                         <tr>
                             <td>@Html.DisplayNameFor(x => x[0].JogoId)</td>
-                            <td>@Html.DisplayNameFor(x => x[0].DataJogo)</td>
-                            <td>@Html.DisplayNameFor(x => x[0].NomeEstadio)</td>
-                            <td class="text-right">@Html.DisplayNameFor(x => x[0].NomeTime1)</td>
-                            @*<td>@Html.DisplayNameFor(x => x[0].ApostaTime1)</td>
+                            <td class="hidden-xs">@Html.DisplayNameFor(x => x[0].DataJogo)</td>
+                            <td class="hidden-xs">@Html.DisplayNameFor(x => x[0].NomeEstadio)</td>                            
+                            <td class="text-right hidden-xs">@Html.DisplayNameFor(x => x[0].NomeTime1)</td>
                             <td></td>
-                            <td>@Html.DisplayNameFor(x => x[0].ApostaTime2)</td>*@
                             <td colspan="3">Apostas</td>
-                            <td class="text-left">@Html.DisplayNameFor(x => x[0].NomeTime2)</td>
+                            <td></td>
+                            <td class="text-left hidden-xs">@Html.DisplayNameFor(x => x[0].NomeTime2)</td>                             
                             <td></td>
                         </tr>
                     </thead>
@@ -29,13 +28,15 @@
                         {
                             <tr>
                                 <th>@Model[c].JogoId</th>
-                                <td>@Model[c].DataJogo.ToString("dd/MM/yy HH:mm")</td>
-                                <td>@Model[c].NomeEstadio</td>
-                                <td class="text-right">@Model[c].NomeTime1 <img src=@Model[c].ImageTime1></td>
+                                <td class="hidden-xs">@Model[c].DataJogo.ToString("dd/MM/yy HH:mm")</td>
+                                <td class="hidden-xs">@Model[c].NomeEstadio</td>
+                                <td class="text-right hidden-xs">@Model[c].NomeTime1</td>
+                                <td><img src=@Model[c].ImageTime1></td>
                                 <td><strong>@Model[c].ApostaTime1</strong></td>
                                 <td>x</td>
                                 <td><strong>@Model[c].ApostaTime2</strong></td>
-                                <td class="text-left"><img src=@Model[c].ImageTime2> @Model[c].NomeTime2 </td>
+                                <td><img src=@Model[c].ImageTime2></td>
+                                <td class="text-left hidden-xs">@Model[c].NomeTime2</td> 
                                 <td>
                                     <a href="@Url.Action("Index", "ApostasJogo", new { area= "Boloes", id = @Model[c].JogoId})">                                       
                                         <span class="glyphicon glyphicon-list-alt fa-lg"></span>

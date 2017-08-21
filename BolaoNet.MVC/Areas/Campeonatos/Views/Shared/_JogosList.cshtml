@@ -59,8 +59,8 @@
 
         <th scope="row">@(Model.Jogos[c].JogoId)</th>
         <td>@(Model.Jogos[c].DataJogo.ToString("dd/MM/yy HH:mm"))</td>
-        <td>@(Model.Jogos[c].NomeEstadio)</td>
-        <td class="text-right">@(Model.Jogos[c].NomeTime1 ?? Model.Jogos[c].DescricaoTime1)</td>
+        <td class="hidden-xs">@(Model.Jogos[c].NomeEstadio)</td>
+        <td class="text-right hidden-xs">@(Model.Jogos[c].NomeTime1 ?? Model.Jogos[c].DescricaoTime1)</td>
         <td><img src="@(Model.Jogos[c].ImageTime1)" /></td>
 
         @if (Model.Jogos[c].IsLocked)
@@ -112,14 +112,14 @@
         }
 
         <td><img src="@(Model.Jogos[c].ImageTime2)" /></td>
-        <td class="text-left">@(Model.Jogos[c].NomeTime2 ?? Model.Jogos[c].DescricaoTime2)</td>
+        <td class="text-left hidden-xs">@(Model.Jogos[c].NomeTime2 ?? Model.Jogos[c].DescricaoTime2)</td>
         @*<td>
             @if (Model.Jogos[c].Automatico == 1)
             {
                 <span class="glyphicon glyphicon-flash" />
             }
         </td>*@
-        <td>@(Model.Jogos[c].DataValidacao)</td>
+        <td class="hidden-xs">@(Model.Jogos[c].DataValidacao)</td>
                 <td>
                     @*<button type="submit" class="btn" name="ButtonSelected" value="@Model.Jogos[c].JogoId">
                         <i class="icon-user"></i>

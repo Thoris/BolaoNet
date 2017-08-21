@@ -23,8 +23,8 @@
                                             <td></td>
                                             <td>Pontos</td>
                                             <td>Válido</td>
-                                            <td>Por</td>
-                                            <td>Data Validação</td>
+                                            <td class="hidden-xs">Por</td>
+                                            <td class="hidden-xs">Data Validação</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -60,8 +60,8 @@
                                                         @Html.Raw("<span class=\"glyphicon glyphicon-remove\">&nbsp;</span>");
                                                     }    
                                                 </td>
-                                                <td>@Model[c].ValidadoBy</td>
-                                                <td>@Model[c].DataValidacao</td>
+                                                <td class="hidden-xs">@Model[c].ValidadoBy</td>
+                                                <td class="hidden-xs">@Model[c].DataValidacao</td>
                                                 <td></td>
                                             </tr>
                                         }

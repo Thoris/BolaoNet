@@ -22,7 +22,7 @@
                                             <td>@Html.DisplayNameFor(x => x[0].Titulo)</td>
                                             <td>@Html.DisplayNameFor(x => x[0].NomeTime)</td>
                                             <td></td>
-                                            <td>@Html.DisplayNameFor(x => x[0].DataAposta)</td>
+                                            <td class="hidden-xs">@Html.DisplayNameFor(x => x[0].DataAposta)</td>
                                             <td>@Html.DisplayNameFor(x => x[0].TotalPontos)</td>
                                         </tr>
                                     </thead>
@@ -50,7 +50,7 @@
                                                               id="@("Image" + @Model[c].Posicao)" />
                                                     }
                                                 </td>
-                                                <td>@Model[c].DataAposta</td>
+                                                <td class="hidden-xs">@Model[c].DataAposta</td>
                                                 <td>@Model[c].TotalPontos</td>
                                             </tr>
                                         }

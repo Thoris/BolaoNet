@@ -207,13 +207,13 @@
                                             <td class="text-center">Pos</td>   
                                             <td></td>                                      
                                             <td class="text-center">PTG</td>   
-                                            <td></td>                                        
+                                            <td class="hidden-xs"></td>                                        
                                             <td class="text-center">Usuário</td>                                             
                                             <td colspan="3" class="text-center">Apostas</td>
                                             <td class="text-center">PT</td>
-                                            <td class="text-center">Extra</td>
+                                            <td class="text-center hidden-xs">Extra</td>
                                             <td class="text-center"></td>
-                                            <td class="text-center">%</td>
+                                            <td class="text-center hidden-xs">%</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -247,7 +247,7 @@
                                                     
                                                 </td>                                         
                                                 <td class="text-center">@Model.Apostas[c].TotalPontosClassificacao</td>
-                                                <td>
+                                                <td class="hidden-xs">
                                                     <img class="img-username" src="/Content/img/database/profiles/@(Model.Apostas[c].UserName).gif?time=@(DateTime.Now)" />
                                                 </td>
                                                 <td class="text-center">@Model.Apostas[c].UserName</td>
@@ -265,11 +265,11 @@
                                                         @(Model.Apostas[c].Pontos)
                                                     </strong>
                                                 </td>
-                                                <td class="text-center">
+                                                <td class="text-center hidden-xs">
                                                     @if (Model.Apostas[c].IsMultiploTime == true)
                                                     {
                                                         <span class="glyphicon glyphicon-asterisk" />
-                                                    }                                              
+                                                    }
                                                 </td>
                                                 <td class="text-center">
                                                     @if (Model.Apostas[c].Automatico == 1)
@@ -277,7 +277,7 @@
                                                         <span class="glyphicon glyphicon-flash" />
                                                     }
                                                 </td>
-                                                <td class="text-center">
+                                                <td class="text-center hidden-xs">
                                                     @Model.Apostas[c].TotalApostasResultado (@Model.Apostas[c].PercentualResultado.ToString("0.00") %)
                                                 </td>
                                             </tr>

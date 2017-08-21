@@ -14,7 +14,7 @@
                         <td>@Html.DisplayNameFor( x => x[0].PosicaoIndividual)</td>
                         <td>@Html.DisplayNameFor( x => x[0].Posicao)</td>
                         <td></td>
-                        <td></td>
+                        <td class="hidden-xs"></td>
                         <td>@Html.DisplayNameFor(x => x[0].UserName)</td>                        
                         <td>@Html.DisplayNameFor(x => x[0].TotalPontos)</td>                        
                     </tr>
@@ -43,7 +43,7 @@
                                 }
 
                             </td>
-                            <td>
+                            <td class="hidden-xs">
                                 <img class="img-username" src="/Content/img/database/profiles/@(Model[c].UserName).gif?time=@(DateTime.Now)" />
                             </td>
                             <td>@Model[c].UserName</td>                            

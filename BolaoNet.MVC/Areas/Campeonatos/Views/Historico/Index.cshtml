@@ -19,7 +19,7 @@
                                     <thead>
                                         <tr>
                                             <td>Ano</td>    
-                                            <td>Sede</td>                                        
+                                            <td class="hidden-xs">Sede</td>                                        
                                             <td>Campeão</td>
                                             <td></td>
                                             <td>Gols</td>
@@ -27,7 +27,7 @@
                                             <td>PT</td>
                                             <td>Gols</td>
                                             <td></td>
-                                            <td>Vice-Campeão</td>
+                                            <td class="hidden-xs">Vice-Campeão</td>
                                             @*<td></td>
                                             <td>Terceiro</td>*@                                            
                                         </tr>
@@ -37,7 +37,7 @@
                                         {
                                             <tr>
                                                 <td>@Model[c].Ano</td>
-                                                <td>@Model[c].Sede</td>
+                                                <td class="hidden-xs">@Model[c].Sede</td>
                                                 <td>@Model[c].NomeTimeCampeao</td>
                                                 <td><img src="@Model[c].ImageTimeCampeao" /></td>
                                                 <td>@Model[c].FinalTime1</td>
@@ -45,7 +45,7 @@
                                                 <td>@Model[c].FinalPenaltis2</td>
                                                 <td>@Model[c].FinalTime2</td>
                                                 <td><img src="@Model[c].ImageTimeVice" /></td>
-                                                <td>@Model[c].NomeTimeVice</td>
+                                                <td class="hidden-xs">@Model[c].NomeTimeVice</td>
                                                 @*<td><img src="@Model[c].ImageTimeTerceiro" /></td>
                                                 <td>@Model[c].NomeTimeTerceiro</td>*@
                                             </tr>

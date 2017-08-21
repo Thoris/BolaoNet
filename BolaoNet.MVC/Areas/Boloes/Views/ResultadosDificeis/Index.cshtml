@@ -77,8 +77,8 @@
 
                     <th scope="row">@(Model.Apostas[c].JogoId)</th>
                         <td>@(Model.Apostas[c].DataJogo.ToString("dd/MM/yy HH:mm"))</td>
-                        <td>@(Model.Apostas[c].NomeEstadio)</td>
-                        <td class="text-right">@(Model.Apostas[c].NomeTime1)</td>
+                        <td class="hidden-xs">@(Model.Apostas[c].NomeEstadio)</td>
+                        <td class="text-right hidden-xs">@(Model.Apostas[c].NomeTime1)</td>
                         <td><img src="@(Model.Apostas[c].ImageTime1)" /></td>
 
                         @if (Model.Apostas[c].IsLocked)
@@ -116,7 +116,7 @@
                         }
 
                         <td><img src="@(Model.Apostas[c].ImageTime2)" /></td>
-                        <td class="text-left">@(Model.Apostas[c].NomeTime2)</td>
+                        <td class="text-left hidden-xs">@(Model.Apostas[c].NomeTime2)</td>
 
 
                         <td>
@@ -125,7 +125,7 @@
                                 <span class="glyphicon glyphicon-flash" />
                             }
                         </td>
-                        <td>@(Model.Apostas[c].DataAposta)</td>
+                        <td class="hidden-xs">@(Model.Apostas[c].DataAposta)</td>
                         <td>
                 
                             @if(Model.Apostas[c].Pontos != 0)
@@ -139,7 +139,7 @@
                             </strong>
 
                         </td>
-                        <td>
+                        <td class="hidden-xs">
                             <img class="img-username" src="/Content/img/database/profiles/@(Model.Apostas[c].UserName).gif?time=@(DateTime.Now)" />
                         </td>
                         <td>

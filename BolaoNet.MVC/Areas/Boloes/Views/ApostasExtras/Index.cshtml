@@ -178,7 +178,7 @@
 
                                         @for (int c = 0; c < Model.ApostasExtras.Count; c++ )
                                         {
-                                            <td colspan="2">@Model.ApostasExtras[c].Titulo</td>
+                                            <td colspan="2" class="hidden-xs">@Model.ApostasExtras[c].Titulo</td>
                                         }
                                     </tr>
                                 </thead>
@@ -242,7 +242,7 @@
                                             {
                                                 
                                                 @*<td>@Model.ApostasUsuarios[c].Apostas[i].Pontos</td>*@
-                                                <td>
+                                                <td class="hidden-xs">
                                                     @if(Model.ApostasUsuarios[c].Apostas[i].Pontos != 0 && Model.ApostasUsuarios[c].Apostas[i].Pontos != null)
                                                     { 
                                                         <i class="fa fa-plus-circle" 
@@ -258,7 +258,7 @@
                                                         @Model.ApostasUsuarios[c].Apostas[i].Pontos
                                                     }
                                                 </td>
-                                                <td><img src="@Model.ApostasUsuarios[c].Apostas[i].ImageTime" title="@Model.ApostasUsuarios[c].Apostas[i].NomeTime" /></td>
+                                                <td class="hidden-xs"><img src="@Model.ApostasUsuarios[c].Apostas[i].ImageTime" title="@Model.ApostasUsuarios[c].Apostas[i].NomeTime" /></td>
                                             }
                                         </tr>
                                     }
