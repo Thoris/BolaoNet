@@ -236,6 +236,7 @@
     <Compile Include="Security\UserModelState.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Ajuda\pt-br\Default.html" />
     <Content Include="Content\css\animate.css" />
     <Content Include="Content\css\bootstrap-datepicker.css" />
     <Content Include="Content\css\bootstrap.css" />

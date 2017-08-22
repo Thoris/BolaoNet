@@ -283,7 +283,6 @@
     
     <property name="folder.config.env" value="dev" />
     <call target="createVersion" />
-    <!-- property name="CCNetLabel" value="0.0.0.1" / -->
     <call target="initializePaths" />
     <property name="tools.base.dir" value="${path::combine(base.path,'Tools')}" overwrite="true" />
     <call target="initializeTools" />
@@ -295,32 +294,89 @@
 
     <property name="db.servername" value="10.4.4.100\SQL2014" dynamic="true" />
     <property name="db.initialcatalog" value="BolaoNet" dynamic="true" />
-    <property name="db.credentials" value="User Id=sa;Password=tvt@dmin1;" dynamic="true" />
+    <property name="db.credentials" value="User Id=sa;Password=*****;" dynamic="true" />
     
 	<!-- IGNORANDO ITENS PARA COMPLETAR O BUILD -->
 	<!-- call target="runDatabaseScripts" />
     <call target="unitTestsReport" / -->
     
-    <call target="runSourceMonitor" />
+    <!-- call target="runSourceMonitor" / -->
     <call target="generateFxCopReporting" />
     <call target="createDistributionZipFile" />
     <call target="createDistributionZipFileWs" />
     <call target="createScriptsZipFile" />
     
-    <call target="calculate.partcover" />
+	
+	<property name="project.deployment.ftp.server" value="www.thoris.somee.com" />
+    <property name="project.deployment.ftp.user" value="thoris" />
+    <property name="project.deployment.ftp.password" value="@Thoris01" />
+    <property name="project.deployment.path.remote" value="www.thoris.somee.com" />
+    <!--call target="deployToFtp" / -->
+	
+	
+    <!-- call target="calculate.partcover" />
     <call target="generate.reportgenerator.report" />    
-    <call target="generateFxCopReporting" />
+    <call target="generateFxCopReporting" / -->
 
     
-    <property name="deployment.site" value="c:\netapps\DEV\BolaoNet.MVC" />
+    <!-- property name="deployment.site" value="c:\netapps\DEV\BolaoNet.MVC" />
     <call target="copyToDeploymentSite" />
 
     <property name="deployment.site.ws" value="c:\netapps\DEV\BolaoNet.WebApi" />
     <call target="copyToDeploymentSiteWs" />
 
-    <call target="unitTestsExploratoryReport" />
+    <call target="unitTestsExploratoryReport" / -->
 
     
+  </target>
+  
+  
+  
+  <target name="test">
+    
+    <property name="folder.config.env" value="test" />
+    <call target="createVersion" />
+    <call target="initializePaths" />
+    <property name="tools.base.dir" value="${path::combine(base.path,'Tools')}" overwrite="true" />
+    <call target="initializeTools" />
+
+    <call target="build" />
+    <call target="copyConfigs" />
+    <call target="copyConfigsWs" />
+    <call target="copyImageFiles" />
+
+    <!--property name="db.servername" value="10.4.4.100\SQL2014" dynamic="true" />
+    <property name="db.initialcatalog" value="BolaoNet" dynamic="true" />
+    <property name="db.credentials" value="User Id=sa;Password=*****;" dynamic="true" />	
+	<call target="runDatabaseScripts" />
+    <call target="unitTestsReport" / -->
+    
+    <!-- call target="runSourceMonitor" / -->
+    <call target="generateFxCopReporting" />
+    <call target="createDistributionZipFile" />
+    <call target="createDistributionZipFileWs" />
+    <call target="createScriptsZipFile" />
+    	
+    <!-- call target="calculate.partcover" />
+    <call target="generate.reportgenerator.report" />    
+    <call target="generateFxCopReporting" / -->
+
+    <!--call target="unitTestsExploratoryReport" / --> 
+    <call target="deleteSourceFolder" />
+	
+  </target>
+  
+  <target name="test_deploy">
+	<property name="folder.config.env" value="test" />
+    <call target="initializePaths" />
+    <property name="tools.base.dir" value="${path::combine(base.path,'Tools')}" overwrite="true" />
+    <call target="initializeTools" />
+	
+	<property name="project.deployment.ftp.server" value="www.thorisbolaonet.somee.com" />
+    <property name="project.deployment.ftp.user" value="bolaonet" />
+    <property name="project.deployment.ftp.password" value="@Thoris01" />
+    <property name="project.deployment.path.remote" value="www.thorisbolaonet.somee.com" />
+    <!--call target="deployToFtp" / -->
   </target>
   
   <target name="dev_exp">
