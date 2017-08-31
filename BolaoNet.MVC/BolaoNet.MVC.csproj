@@ -377,6 +377,7 @@
     <Content Include="Areas\Testes\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Testes\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Testes\Views\Connection\Index.cshtml" />
+    <Content Include="Areas\Users\Views\AccountHome\ReleaseNotes.cshtml" />
     <None Include="Content\js\jquery-1.10.2.intellisense.js" />
     <Content Include="Content\js\jquery-1.10.2.js" />
     <Content Include="Content\js\jquery-1.10.2.min.js" />
@@ -819,6 +820,7 @@
     <Content Include="Content\js\respond.min.js" />
     <Content Include="Content\js\respond.src.js" />
     <Content Include="Content\Site.css" />
+    <Content Include="ReleaseNotes.txt" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\RegistrationForm.cshtml" />

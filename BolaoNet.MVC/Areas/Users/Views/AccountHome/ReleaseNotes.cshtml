@@ -1,0 +1,26 @@
+﻿@model BolaoNet.MVC.ViewModels.Users.ReleaseNotesViewModel
+
+@{
+    //Layout = "~/Views/Shared/_LayoutBase.cshtml";
+}
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h3>Release Notes</h3>
+                </div>
+                <div class="ibox-content" style="display: block;">
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            @Html.Raw(@Model.Data)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

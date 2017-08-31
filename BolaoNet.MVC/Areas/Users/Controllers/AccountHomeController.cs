@@ -42,6 +42,29 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
 
         #endregion
 
+        #region Methods
+
+        private string LoadFile(string file)
+        {
+            if (!System.IO.File.Exists(file))
+                return "";
+
+
+            StreamReader reader = new StreamReader(file);
+
+            string fileString = reader.ReadToEnd();
+
+            fileString = fileString.Replace("\n", "<br/>");
+
+            reader.Close();
+
+            return fileString;
+
+        }
+
+        #endregion
+
+
         #region Actions
 
         [HttpGet]
@@ -294,6 +317,17 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
              return base.Logout();            
         }
 
+        public ActionResult ReleaseNotes()
+        {
+            string file = Server.MapPath(@"~\ReleaseNotes.txt");
+
+            string notes = LoadFile(file);
+
+            ViewModels.Users.ReleaseNotesViewModel model = new ViewModels.Users.ReleaseNotesViewModel();
+            model.Data = notes;
+
+            return View(model);
+        }
 
         #endregion
     }

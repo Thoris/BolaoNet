@@ -2,6 +2,7 @@
 using BolaoNet.Domain.Entities.Base.Common.Validation;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -42,6 +43,7 @@ namespace BolaoNet.MVC.Controllers
 
         #endregion
 
+ 
         #region Actions
 
         [HttpGet]
@@ -323,6 +325,7 @@ namespace BolaoNet.MVC.Controllers
             base.SetCulture(culture);
             return RedirectToAction("Login");
         }
+
 
         #endregion
     }
