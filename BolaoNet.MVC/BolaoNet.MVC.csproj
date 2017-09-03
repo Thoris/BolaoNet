@@ -194,6 +194,7 @@
     <Compile Include="Areas\Resultados\ResultadosAreaRegistration.cs" />
     <Compile Include="Areas\Testes\Controllers\BaseTestesAreaController.cs" />
     <Compile Include="Areas\Testes\Controllers\ConnectionController.cs" />
+    <Compile Include="Areas\Testes\Controllers\EmailController.cs" />
     <Compile Include="Areas\Testes\TestesAreaRegistration.cs" />
     <Compile Include="Areas\Users\Controllers\AccountHomeController.cs" />
     <Compile Include="Areas\Users\Controllers\AccountHomeProfileImageController.cs" />
@@ -378,6 +379,7 @@
     <Content Include="Areas\Testes\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Testes\Views\Connection\Index.cshtml" />
     <Content Include="Areas\Users\Views\AccountHome\ReleaseNotes.cshtml" />
+    <Content Include="Areas\Testes\Views\Email\Index.cshtml" />
     <None Include="Content\js\jquery-1.10.2.intellisense.js" />
     <Content Include="Content\js\jquery-1.10.2.js" />
     <Content Include="Content\js\jquery-1.10.2.min.js" />
@@ -1102,6 +1104,7 @@
     <Content Include="Views\Shared\Fragments\Menus\_BolaoMenu.cshtml" />
     <Content Include="Views\Shared\Fragments\Menus\_AdminMenu.cshtml" />
     <Content Include="Views\Shared\Fragments\Menus\_CampeonatoMenu.cshtml" />
+    <Content Include="Views\Account\RegistrationFormNoBolao.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

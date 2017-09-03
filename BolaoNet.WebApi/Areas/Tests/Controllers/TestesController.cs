@@ -46,8 +46,11 @@ namespace BolaoNet.WebApi.Areas.Tests.Controllers
         {
             return _service.GetCurrentDateTime();
         }
+        public bool TestNotifyWelcome(string password, string email)
+        {
+            return _service.TestNotifyWelcome(password, email);
+        }
 
         #endregion
-
     }
 }

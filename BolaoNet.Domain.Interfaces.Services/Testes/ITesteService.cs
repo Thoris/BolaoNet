@@ -10,5 +10,6 @@ namespace BolaoNet.Domain.Interfaces.Services.Testes
     {
         bool TestConnection();
         DateTime GetCurrentDateTime();
+        bool TestNotifyWelcome(string password, string email);
     }
 }

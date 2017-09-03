@@ -28,7 +28,6 @@ namespace BolaoNet.WebApi.Integration.Tests
 
         #endregion
 
-
         #region ITesteService members
 
         public bool TestConnection()
@@ -40,9 +39,11 @@ namespace BolaoNet.WebApi.Integration.Tests
         {
             throw new NotImplementedException();
         }
+        public bool TestNotifyWelcome(string password, string email)
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
-
-
     }
 }

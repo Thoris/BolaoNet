@@ -1,0 +1,21 @@
+﻿@model BolaoNet.MVC.ViewModels.Testes.TestesViewModel
+
+@{
+    ViewBag.Title = "Teste de Email";
+}
+
+<h2>Teste de Email</h2>
+@using (Html.BeginForm("TestNotification", "Email", FormMethod.Post, new { }))
+{
+    <br/>
+    @Html.Raw("Password: ")
+    @Html.TextBoxFor(x => x.Password)
+    @Html.Raw("Email")
+    @Html.TextBoxFor(x => x.Email)
+    <input type="submit" name="testar" value="testar" />
+    <br />
+}
+@Html.DisplayTextFor( x => x.ResultDescription)
+
+<p />
+

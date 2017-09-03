@@ -164,7 +164,25 @@ namespace BolaoNet.MVC.Controllers
         
         [HttpGet]
         public ActionResult RegistrationForm()
-        {           
+        {
+            IList<Domain.Entities.Boloes.Bolao> list = _bolaoApp.GetBoloesDisponiveis();
+
+            bool foundBolaoDisponivel = false;
+
+            for (int c = 0; c < list.Count; c++ )
+            {
+                if (list[c].IsIniciado == false || list[c].IsIniciado == null)
+                {
+                    foundBolaoDisponivel = true;
+                    break;
+                }
+            }
+
+            if (!foundBolaoDisponivel)
+            {
+                return RedirectToAction("RegistrationFormNoBolao");
+            }
+
             return View();
         }
         [HttpPost]
@@ -240,6 +258,10 @@ namespace BolaoNet.MVC.Controllers
         public ActionResult RegistrationFormSent(ViewModels.Account.RegistrationUserViewModel model)
         {
             return View(model);
+        }
+        public ActionResult RegistrationFormNoBolao()
+        {
+            return View();
         }
 
         [HttpGet]        

@@ -17,6 +17,27 @@ namespace BolaoNet.MVC.Controllers
 
         #endregion
 
+        #region Properties
+
+        public string Environment
+        {
+            get
+            {
+                string env = "";
+                if (Session["Environment"] == null)
+                {
+                    env = System.Configuration.ConfigurationManager.AppSettings["Environment"];
+                    Session["Environment"] = env;
+                }
+                else
+                    env = Session["Environment"].ToString();
+
+                return env;
+            }
+        }
+
+        #endregion
+
         #region Constructors/Destructors
 
         public BaseController ()

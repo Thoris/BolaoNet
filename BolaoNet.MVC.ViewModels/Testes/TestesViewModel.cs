@@ -12,6 +12,9 @@ namespace BolaoNet.MVC.ViewModels.Testes
 
         public bool ? ResultTestConnection { get; set; }
         public DateTime? ResultCurrentDateTime { get; set; }
+        public string Password { get; set; }
+        public string Email { get; set; }
+        public string ResultDescription { get; set; }
         
         #endregion
     }

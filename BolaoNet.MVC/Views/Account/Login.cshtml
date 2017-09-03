@@ -2,6 +2,8 @@
 @using Res = BolaoNet.MVC.Resources.Views.Account.Login
 @{
     ViewBag.Title = @Res.Title;
+    var baseController = ViewContext.Controller as BolaoNet.MVC.Controllers.BaseController;
+    string env = baseController.Environment;
 }
 
 <div class="gray-bg login">
@@ -55,6 +57,12 @@
 
                 }
                 <p class="m-t"> <small>@Res.CopyRight</small> </p>
+
+                @if (!string.IsNullOrEmpty(env))
+                {
+                    <br />
+                    <label style="font-size: large; color: red">@(env)</label>
+                }
             </div>
         </div>
     </div>
