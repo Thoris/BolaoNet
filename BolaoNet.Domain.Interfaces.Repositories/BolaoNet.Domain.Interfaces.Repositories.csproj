@@ -49,6 +49,7 @@
     <Compile Include="Boloes\IBolaoCriterioPontosDao.cs" />
     <Compile Include="Boloes\IBolaoCriterioPontosTimesDao.cs" />
     <Compile Include="Boloes\IBolaoDao.cs" />
+    <Compile Include="Boloes\IBolaoHistoricoDao.cs" />
     <Compile Include="Boloes\IBolaoMembroClassificacaoDao.cs" />
     <Compile Include="Boloes\IBolaoMembroDao.cs" />
     <Compile Include="Boloes\IBolaoMembroGrupoDao.cs" />

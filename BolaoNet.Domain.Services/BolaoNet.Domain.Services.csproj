@@ -47,6 +47,7 @@
     <Compile Include="Boloes\ApostaExtraUsuarioService.cs" />
     <Compile Include="Boloes\ApostaPontosService.cs" />
     <Compile Include="Boloes\ApostasRestantesService.cs" />
+    <Compile Include="Boloes\BolaoHistoricoService.cs" />
     <Compile Include="Boloes\BolaoMembroPontoService.cs" />
     <Compile Include="Boloes\BolaoService.cs" />
     <Compile Include="Boloes\BolaoCampeonatoClassificacaoUsuarioService.cs" />

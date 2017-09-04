@@ -57,6 +57,7 @@
     <Compile Include="Boloes\BolaoCampeonatoClassificacaoUsuarioIntegration.cs" />
     <Compile Include="Boloes\BolaoCriterioPontosIntegration.cs" />
     <Compile Include="Boloes\BolaoCriterioPontosTimesIntegration.cs" />
+    <Compile Include="Boloes\BolaoHistoricoIntegration.cs" />
     <Compile Include="Boloes\BolaoIntegration.cs" />
     <Compile Include="Boloes\BolaoMembroClassificacaoIntegration.cs" />
     <Compile Include="Boloes\BolaoMembroGrupoIntegration.cs" />

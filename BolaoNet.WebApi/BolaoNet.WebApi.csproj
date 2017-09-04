@@ -158,6 +158,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="Areas\Boloes\Controllers\BolaoHistoricoController.cs" />
     <Compile Include="Areas\Boloes\Controllers\BolaoMembroPontoController.cs" />
     <Compile Include="Areas\Tests\Controllers\TestesController.cs" />
     <Compile Include="Areas\Tests\TestsAreaRegistration.cs" />
