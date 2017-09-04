@@ -30,7 +30,7 @@
             <li @if (string.Compare(controllerName, "ApostasExtrasResultado", true) == 0 &&
                     string.Compare(controllerArea, "Resultados", true) == 0)
                 { @Html.Raw("class=\"active\"")  }>
-                <a href="/Resultados/ApostasExtrasResultado/Index" onclick="javascript:showWait();"><i class="fa fa-trophy"></i><span class="nav-label">Apostas Extras</span></a>
+                <a href="/Resultados/ApostasExtrasResultado/Index" onclick="javascript:showWait();"><i class="fa fa-trophy"></i><span class="nav-label">Apostas Extras</span><span class="visible-xs-inline">Extras</span></a>
             </li>
         }
         @*<li @if (string.Compare(controllerAction, "Index", true) == 0 && 
@@ -45,7 +45,7 @@
             <li @if (string.Compare(controllerName, "Gerenciamento", true) == 0 &&
                     string.Compare(controllerArea, "Pagamentos", true) == 0)
                 { @Html.Raw("class=\"active\"")  }>
-                <a href="/Pagamentos/Gerenciamento/Index" onclick="javascript:showWait();"><i class="fa fa-money"></i><span class="nav-label">Pagamentos</span></a>
+                <a href="/Pagamentos/Gerenciamento/Index" onclick="javascript:showWait();"><i class="fa fa-money"></i><span class="nav-label">Pagamentos</span><span class="visible-xs-inline">Pagamentos</span></a>
             </li>
         }
         @if(rolePontuacao)
@@ -53,7 +53,7 @@
             <li @if (string.Compare(controllerName, "BolaoCriteriosPontos", true) == 0 && 
                     string.Compare(controllerArea, "Pontuacao", true) == 0)
                 { @Html.Raw("class=\"active\"")  }>
-                <a href="/Pontuacao/BolaoCriteriosPontos" onclick="javascript:showWait();"><i class="fa fa-connectdevelop"></i><span class="nav-label">Critérios pontos</span></a>
+                <a href="/Pontuacao/BolaoCriteriosPontos" onclick="javascript:showWait();"><i class="fa fa-connectdevelop"></i><span class="nav-label">Critérios pontos</span><span class="visible-xs-inline">Critérios</span></a>
             </li>
         }        
         @*<li @if (string.Compare(controllerAction, "Index", true) == 0 && 
@@ -68,7 +68,7 @@
             <li @if (string.Compare(controllerName, "BolaoIniciarParar", true) == 0 && 
                     string.Compare(controllerArea, "Admin", true) == 0)
                 { @Html.Raw("class=\"active\"")  }>
-                <a href="/Admin/BolaoIniciarParar/Index" onclick="javascript:showWait();"><i class="fa fa-table"></i><span class="nav-label">Painel de Gerenciamento</span></a>
+                <a href="/Admin/BolaoIniciarParar/Index" onclick="javascript:showWait();"><i class="fa fa-table"></i><span class="nav-label">Painel de Gerenciamento</span><span class="visible-xs-inline">Painel</span></a>
             </li>
         }
         

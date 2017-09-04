@@ -41,13 +41,13 @@ else
 
                     <li @if (string.Compare(controllerAction, "Jogos" , true) == 0 && 
                             string.Compare(controllerName, "ApostasJogos", true) == 0) { @Html.Raw("class=\"active\"") }>
-                        <a href="/Apostas/ApostasJogos/Jogos" onclick="javascript:showWait();"><i class="fa fa-comments"></i><span class="nav-label">Inclusão de Apostas</span></a>
+                        <a href="/Apostas/ApostasJogos/Jogos" onclick="javascript:showWait();"><i class="fa fa-comments"></i><span class="nav-label">Inclusão de Apostas</span><span class="visible-xs-inline">Inclusão</span></a>
                     </li>
                     <li @if (string.Compare(controllerName, "ApostasAutomaticas", true) == 0) { @Html.Raw("class=\"active\"")  }>
-                        <a href="/Apostas/ApostasAutomaticas/Index" onclick="javascript:showWait();"><i class="fa fa-bars"></i><span class="nav-label">Apostas Automáticas</span></a>
+                        <a href="/Apostas/ApostasAutomaticas/Index" onclick="javascript:showWait();"><i class="fa fa-bars"></i><span class="nav-label">Apostas Automáticas</span><span class="visible-xs-inline">Automático</span></a>
                     </li>
                     <li @if (string.Compare(controllerName, "ApostasExtras", true) == 0) { @Html.Raw("class=\"active\"")   }>
-                        <a href="/Apostas/ApostasExtras/Index" onclick="javascript:showWait();"><i class="fa fa-trophy"></i><span class="nav-label">Apostas Extras</span></a>
+                        <a href="/Apostas/ApostasExtras/Index" onclick="javascript:showWait();"><i class="fa fa-trophy"></i><span class="nav-label">Apostas Extras</span><span class="visible-xs-inline">Extras</span></a>
                     </li>
                 </ul>
             </li>
@@ -64,42 +64,42 @@ else
                     <li @if (string.Compare(controllerName, "BolaoClassificacao", true) == 0 && 
                             string.Compare(controllerArea, "Boloes", true) == 0)
                         { @Html.Raw("class=\"active\"")  }>
-                        <a href="/Boloes/BolaoClassificacao/Index" onclick="javascript:showWait();"><i class="fa fa-line-chart"></i><span class="nav-label">Classificação</span></a>
+                        <a href="/Boloes/BolaoClassificacao/Index" onclick="javascript:showWait();"><i class="fa fa-line-chart"></i><span class="nav-label">Classificação</span><span class="visible-xs-inline">Classificação</span></a>
                     </li>
                     <li @if ((string.Compare(controllerName, "ApostasUsuarios", true) == 0 || string.Compare(controllerName, "ApostasJogo", true) == 0) && 
                             string.Compare(controllerArea, "Boloes", true) == 0)
                         { @Html.Raw("class=\"active\"")  }>
-                        <a href="/Boloes/ApostasUsuarios/Index" onclick="javascript:showWait();"><i class="fa fa-comments"></i><span class="nav-label">Apostas dos Usuários</span></a>
+                        <a href="/Boloes/ApostasUsuarios/Index" onclick="javascript:showWait();"><i class="fa fa-comments"></i><span class="nav-label">Apostas dos Usuários</span><span class="visible-xs-inline">Apostas</span></a>
                     </li>
                     <li @if (string.Compare(controllerName, "ApostasExtras", true) == 0 && 
                             string.Compare(controllerArea, "Boloes", true) == 0)
                         { @Html.Raw("class=\"active\"")  }>
-                        <a href="/Boloes/ApostasExtras/Index" onclick="javascript:showWait();"><i class="fa fa-trophy"></i><span class="nav-label">Apostas Extras</span></a>
+                        <a href="/Boloes/ApostasExtras/Index" onclick="javascript:showWait();"><i class="fa fa-trophy"></i><span class="nav-label">Apostas Extras</span><span class="visible-xs-inline">Extras</span></a>
                     </li>
                     <li @if (string.Compare(controllerName, "ClassificacaoApostas", true) == 0 && 
                             string.Compare(controllerArea, "Boloes", true) == 0)
                         { @Html.Raw("class=\"active\"")  }>
-                        <a href="/Boloes/ClassificacaoApostas/Index" onclick="javascript:showWait();"><i class="fa fa-bar-chart"></i><span class="nav-label">Classificação por Apostas</span></a>
+                        <a href="/Boloes/ClassificacaoApostas/Index" onclick="javascript:showWait();"><i class="fa fa-bar-chart"></i><span class="nav-label">Classificação por Apostas</span><span class="visible-xs-inline">Cl. Apostas</span></a>
                     </li>
                     <li @if (string.Compare(controllerName, "ResultadosDificeis", true) == 0 && 
                             string.Compare(controllerArea, "Boloes", true) == 0)
                         { @Html.Raw("class=\"active\"")  }>
-                        <a href="/Boloes/ResultadosDificeis/Index" onclick="javascript:showWait();"><i class="fa fa-thumbs-up"></i><span class="nav-label">Acertos de Resultados difíceis</span></a>
+                        <a href="/Boloes/ResultadosDificeis/Index" onclick="javascript:showWait();"><i class="fa fa-thumbs-up"></i><span class="nav-label">Acertos de Resultados difíceis</span><span class="visible-xs-inline">Difíceis</span></a>
                     </li>
                     <li @if (string.Compare(controllerName, "SemAcertos", true) == 0 && 
                             string.Compare(controllerArea, "Boloes", true) == 0)
                         { @Html.Raw("class=\"active\"")  }>
-                        <a href="/Boloes/SemAcertos/Index" onclick="javascript:showWait();"><i class="fa fa-minus-square"></i><span class="nav-label">Sem acertos</span></a>
+                        <a href="/Boloes/SemAcertos/Index" onclick="javascript:showWait();"><i class="fa fa-minus-square"></i><span class="nav-label">Sem acertos</span><span class="visible-xs-inline">Sem acertos</span></a>
                     </li>
                     <li @if (string.Compare(controllerName, "HistoricoPontos", true) == 0 && 
                             string.Compare(controllerArea, "Boloes", true) == 0)
                         { @Html.Raw("class=\"active\"")  }>
-                        <a href="/Boloes/HistoricoPontos/Index" onclick="javascript:showWait();"><i class="fa fa-spinner"></i><span class="nav-label">Histórico de pontos</span></a>
+                        <a href="/Boloes/HistoricoPontos/Index" onclick="javascript:showWait();"><i class="fa fa-spinner"></i><span class="nav-label">Histórico de pontos</span><span class="visible-xs-inline">Hist. Pontos</span></a>
                     </li>
                     <li @if (string.Compare(controllerName, "BolaoRegras", true) == 0 && 
                             string.Compare(controllerArea, "Regras", true) == 0)
                         { @Html.Raw("class=\"active\"")  }>
-                        <a href="/Regras/BolaoRegras/Index" onclick="javascript:showWait();"><i class="fa fa-envelope-o"></i><span class="nav-label">Regras</span></a>
+                        <a href="/Regras/BolaoRegras/Index" onclick="javascript:showWait();"><i class="fa fa-envelope-o"></i><span class="nav-label">Regras</span><span class="visible-xs-inline">Regras</span></a>
                     </li>
                 </ul>
             </li>
