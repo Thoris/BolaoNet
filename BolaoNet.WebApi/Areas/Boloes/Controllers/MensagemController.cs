@@ -41,5 +41,14 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
 
         #endregion
+
+        #region IMensagemService members
+
+        public IList<Domain.Entities.Boloes.Mensagem> GetMensagensUsuario(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
+        {
+            return Service.GetMensagensUsuario(bolao, user);
+        }
+
+        #endregion
     }
 }

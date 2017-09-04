@@ -32,5 +32,14 @@ namespace BolaoNet.WebApi.Integration.Boloes
         }
 
         #endregion
+
+        #region IMensagemService members
+
+        public IList<Domain.Entities.Boloes.Mensagem> GetMensagensUsuario(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

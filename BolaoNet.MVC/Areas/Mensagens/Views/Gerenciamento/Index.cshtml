@@ -1,7 +1,91 @@
-﻿
+﻿@model IList<BolaoNet.MVC.ViewModels.Mensagens.MensagemViewModel>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Mensagens";
 }
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
 
-<h2>Index</h2>
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h3>Caixa de Mensagens</h3>
+                </div>
+                <div class="ibox-content" style="display: block;">
 
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <div class="form-group">
+
+                                <a href="@Url.Action("Create")" class="btn btn-default btn-sm center-block">Criar Mensagem</a>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        @if (Model.Count > 0)
+                        {
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <td></td>
+                                        <td>@Html.DisplayNameFor(model => model[0].MessageID)</td>
+                                        <td>@Html.DisplayNameFor(model => model[0].CreationDate)</td>
+                                        <td>@Html.DisplayNameFor(model => model[0].FromUser)</td>
+                                        <td></td>
+                                        <td>@Html.DisplayNameFor(model => model[0].Title)</td>                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int c = 0; c < Model.Count; c++)
+                                    {
+                                        @Html.HiddenFor(model => model[c].NomeBolao)
+                                        @Html.HiddenFor(model => model[c].MessageID)
+
+                                        <tr>
+                                            <td>@Html.DisplayFor(model => model[c].MessageID)</td>
+                                            <td>@Html.DisplayFor(model => model[c].CreationDate)</td>
+                                            <td>@Html.DisplayFor(model => model[c].FromUser)</td>
+
+                                            <td>
+                                                <img class="img-username" src="/Content/img/database/profiles/@(Model[c].FromUser).gif" />
+                                            </td>
+                                            <td>@Html.DisplayFor(model => model[c].Title)</td>
+                                            
+                                            <td>
+
+                                                @*<a href="@Url.Action("Edit", "Gerenciamento", new
+                                                        {
+                                                            dataPagamento = Model[c].DataPagamento,
+                                                            nomeBolao = Model[c].NomeBolao,
+                                                            userName = Model[c].UserName
+                                                        })">
+                                                        <span class="glyphicon glyphicon-edit fa-lg"></span>
+                                                    </a>
+                                                    |*@
+                                                <a href="@Url.Action("Delete", "Gerenciamento", new
+                                                {
+                                                    nomeBolao = Model[c].NomeBolao,
+                                                    userName = Model[c].MessageID
+                                                })" onclick="return confirm('Deseja remover a mensagem selecionada?');">
+                                                    <span class="glyphicon glyphicon-remove fa-lg"></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            <h3>Não existem mensagens na caixa de entrada.</h3>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+ 

@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mensagens\MensagemViewModel.cs" />
     <Compile Include="Users\ReleaseNotesViewModel.cs" />
     <Compile Include="Admin\BolaoIniciarPararViewModel.cs" />
     <Compile Include="Admin\BolaoIniciarStatusMembroViewModel.cs" />
