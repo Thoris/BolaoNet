@@ -17,10 +17,11 @@ namespace BolaoNet.Domain.Entities.Boloes
         [ForeignKey("NomeBolao")]
         public Entities.Boloes.Bolao Bolao { get; set; }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key, Column(Order = 2)]
         public long MessageID { get; set; }
 
-        public string FromFullName { get; set; }
+        //public string FromFullName { get; set; }
         public long AnsweredMessageID { get; set; }
         public int TotalRead { get; set; }                
         public string FromUser { get; set; }

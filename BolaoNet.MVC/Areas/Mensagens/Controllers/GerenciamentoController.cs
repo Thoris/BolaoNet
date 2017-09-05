@@ -48,6 +48,99 @@ namespace BolaoNet.MVC.Areas.Mensagens.Controllers
 
             
         }
+        [HttpGet]
+        public ActionResult Create()
+        {
+            IList<Domain.Entities.Boloes.BolaoMembro> membros =
+                _bolaoMembroApp.GetListUsersInBolao(base.SelectedBolao);
+
+            ViewBag.Membros = membros;
+
+            ViewModels.Mensagens.MensagemViewModel model = new ViewModels.Mensagens.MensagemViewModel();
+
+            model.NomeBolao = base.SelectedNomeBolao;
+            model.FromUser = base.UserLogged.UserName;
+
+            return View(model);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(ViewModels.Mensagens.MensagemViewModel model)
+        {
+            bool invalid = false;
+            Domain.Entities.Boloes.Mensagem entity = null;
+
+            if (!ModelState.IsValid)
+            {
+                invalid = true;
+            }
+            else
+            {
+
+                entity =
+                    Mapper.Map<ViewModels.Mensagens.MensagemViewModel,
+                    Domain.Entities.Boloes.Mensagem>(model);
+
+                //if (_mensagemApp.Load(entity) != null)
+                //{
+                //    ModelState.AddModelError("", "Pagamento do usuário já existe.");
+                //    invalid = true;
+                //}
+            }
+
+
+            if (invalid)
+            {
+
+                IList<Domain.Entities.Boloes.BolaoMembro> membros =
+               _bolaoMembroApp.GetListUsersInBolao(base.SelectedBolao);
+
+                ViewBag.Membros = membros;
+
+                return View("Create", model);
+            }
+
+
+            entity.CreationDate = DateTime.Now;
+            entity.FromUser = base.UserLogged.UserName;
+                
+
+            _mensagemApp.Insert(entity);
+
+
+            base.ShowMessage("Mensagem enviada com sucesso.");
+
+
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult Delete(string nomeBolao, int messageID)
+        {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Index");
+            }
+
+            Domain.Entities.Boloes.Mensagem entity =
+                new Domain.Entities.Boloes.Mensagem(nomeBolao, messageID);
+ 
+
+
+            Domain.Entities.Boloes.Mensagem mensagemLoaded = _mensagemApp.Load(entity);
+
+
+            _mensagemApp.Delete(mensagemLoaded);
+
+
+            base.ShowMessage("Pagamento excluído com sucesso.");
+
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult View(string nomeBolao, int messageID)
+        {
+            return View();
+        }
 
         #endregion
     }

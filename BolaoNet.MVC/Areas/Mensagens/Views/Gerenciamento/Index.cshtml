@@ -28,12 +28,11 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <td></td>
-                                        <td>@Html.DisplayNameFor(model => model[0].MessageID)</td>
+                                        
                                         <td>@Html.DisplayNameFor(model => model[0].CreationDate)</td>
+                                        <td></td> 
                                         <td>@Html.DisplayNameFor(model => model[0].FromUser)</td>
-                                        <td></td>
-                                        <td>@Html.DisplayNameFor(model => model[0].Title)</td>                                        
+                                        <td>@Html.DisplayNameFor(model => model[0].Message)</td>                                        
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -43,30 +42,21 @@
                                         @Html.HiddenFor(model => model[c].MessageID)
 
                                         <tr>
-                                            <td>@Html.DisplayFor(model => model[c].MessageID)</td>
                                             <td>@Html.DisplayFor(model => model[c].CreationDate)</td>
-                                            <td>@Html.DisplayFor(model => model[c].FromUser)</td>
 
                                             <td>
                                                 <img class="img-username" src="/Content/img/database/profiles/@(Model[c].FromUser).gif" />
-                                            </td>
-                                            <td>@Html.DisplayFor(model => model[c].Title)</td>
+                                            </td> 
+
+                                            <td>@Html.DisplayFor(model => model[c].FromUser)</td>
+                                            <td>@Html.DisplayFor(model => model[c].Message)</td>
                                             
                                             <td>
-
-                                                @*<a href="@Url.Action("Edit", "Gerenciamento", new
-                                                        {
-                                                            dataPagamento = Model[c].DataPagamento,
-                                                            nomeBolao = Model[c].NomeBolao,
-                                                            userName = Model[c].UserName
-                                                        })">
-                                                        <span class="glyphicon glyphicon-edit fa-lg"></span>
-                                                    </a>
-                                                    |*@
+                                                 
                                                 <a href="@Url.Action("Delete", "Gerenciamento", new
                                                 {
                                                     nomeBolao = Model[c].NomeBolao,
-                                                    userName = Model[c].MessageID
+                                                    messageId = Model[c].MessageID
                                                 })" onclick="return confirm('Deseja remover a mensagem selecionada?');">
                                                     <span class="glyphicon glyphicon-remove fa-lg"></span>
                                                 </a>

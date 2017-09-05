@@ -380,6 +380,7 @@
     <Content Include="Areas\Testes\Views\Connection\Index.cshtml" />
     <Content Include="Areas\Users\Views\AccountHome\ReleaseNotes.cshtml" />
     <Content Include="Areas\Testes\Views\Email\Index.cshtml" />
+    <Content Include="Areas\Mensagens\Views\Gerenciamento\Create.cshtml" />
     <None Include="Content\js\jquery-1.10.2.intellisense.js" />
     <Content Include="Content\js\jquery-1.10.2.js" />
     <Content Include="Content\js\jquery-1.10.2.min.js" />
