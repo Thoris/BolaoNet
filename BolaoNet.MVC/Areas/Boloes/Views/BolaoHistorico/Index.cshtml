@@ -1,0 +1,130 @@
+﻿@model BolaoNet.MVC.ViewModels.Bolao.BolaoHistoricoListViewModel
+@{
+    ViewBag.Title = "Histórico de Classificação do Bolão";
+    BolaoNet.MVC.Controllers.AuthorizationController homeController =
+        ViewContext.Controller as BolaoNet.MVC.Controllers.AuthorizationController;
+    string userNameLogged = homeController.UserLogged.UserName;
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="wrapper wrapper-content animated fadeInRight">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox-title">
+                    <h5>Filtre o ano do bolão</h5>
+                </div>
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content" style="display: block;">
+                        <div class="text-center m-t-lg">
+                        
+   
+                            @Html.DropDownListFor(x => x.SelectedYear, new SelectList(ViewBag.Years, Model.SelectedYear), "-- Escolha --",
+                            new { @class = "form-control input-sm", @id = "Ano", @name = "Ano" })
+  
+                      
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content" style="display: block;">
+                        <div class="text-center m-t-lg">
+
+                            <div class="row">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <td>Pos</td>
+                                            <td></td>
+                                            <td>Membro</td>
+ 
+                                            <td>PT</td>
+                                            <td class="hidden-xs">E</td>
+                                            <td class="hidden-xs">VDE</td>
+                                            <td class="hidden-xs">GT1</td>
+                                            <td class="hidden-xs">GT2</td>
+                                            <td class="hidden-xs">C</td>
+                                            <td class="hidden-xs">EX</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (Model.Classificacao != null && Model.Classificacao.Count > 0)
+                                        { 
+                                        for (int c = 0; c < Model.Classificacao.Count; c++)
+                                        {
+                                            <tr @if (string.Compare(userNameLogged, Model.Classificacao[c].UserName, true) == 0) { @Html.Raw("class=\"info\"") ; }>
+ 
+                                                <td>
+                                                     
+                                                    @if (c == Model.Classificacao.Count - 1)
+                                                    {
+                                                        <i class="fa fa-ambulance" style="color:black" aria-hidden="true"></i>
+                                                        <strong style="color:black">@(Model.Classificacao[c].Posicao)</strong>
+
+                                                    }
+                                                    else
+                                                    {
+                                                        <strong>@Model.Classificacao[c].Posicao</strong>
+                                                    }
+                                                   
+                                                </td>
+
+                                                <td>                                                     
+                                                </td>
+                                                <td>@Model.Classificacao[c].UserName</td>
+
+                                                <td>@Model.Classificacao[c].Pontos</td>
+                                                <td class="hidden-xs">@Model.Classificacao[c].TotalEmpates</td>
+                                                <td class="hidden-xs">@Model.Classificacao[c].TotalVDE</td>
+                                                <td class="hidden-xs">@Model.Classificacao[c].TotalGolsTime1</td>
+                                                <td class="hidden-xs">@Model.Classificacao[c].TotalGolsTime2</td>
+                                                <td class="hidden-xs">@Model.Classificacao[c].TotalCheio</td>
+                                                <td class="hidden-xs">@Model.Classificacao[c].TotalExtras</td>
+                                            </tr>
+                                        }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox-title">
+                    <h5>Legenda</h5>
+                </div>
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content" style="display: block;">
+                        <div class="text-center m-t-lg">
+                            PT - pontos, E - Empates, V - Vitórias, VDE - Vitória/Empate/Derrota, GT1 - Gols time 1, GT2 - Gols Time 2, C - Placar em cheio, EX - Pontos em Apostas Extras
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+}
+@section scripts
+{
+    <script>
+        $(function () {
+            $('#Ano').change(function () {
+
+                //alert('teste');
+                $('form').submit();
+            });
+        });
+    </script>
+}

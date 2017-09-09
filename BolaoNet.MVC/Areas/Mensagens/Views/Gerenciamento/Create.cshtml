@@ -1,0 +1,107 @@
+﻿@model BolaoNet.MVC.ViewModels.Mensagens.MensagemViewModel
+@{
+    ViewBag.Title = "Envio de mensagem";
+}
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h3>Envio de mensagem</h3>
+                </div>
+                <div class="ibox-content" style="display: block;">
+                    <div class="row">
+                        @using (Html.BeginForm("Create", "Gerenciamento", FormMethod.Post, new { }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            @Html.HiddenFor(x => x.NomeBolao)
+                            
+
+                            <div class="col-md-10 col-sm-10">
+
+                                <div class="form-group col-md-12 col-sm-12">
+                                    @Html.LabelFor(a => a.ToUser)
+                                    @Html.DropDownListFor(x => x.ToUser,
+                                        new SelectList(ViewBag.Membros, "UserName", "UserName", 0),
+                                     "- Selecione -", new { @class = "form-control input-sm", @id = "Membro" })
+                                    @Html.ValidationMessageFor(m => m.ToUser)
+                                </div>
+ 
+
+                                @*<div class="form-group col-md-2 col-sm-2">
+                                    @Html.LabelFor(a => a.Private)
+                                    @Html.CheckBoxFor( a=> a.Private)
+                                    @Html.ValidationMessageFor(m => m.Private)
+                                </div>*@
+
+                            </div>
+
+                            <div class="col-md-2 col-sm-2">
+                                <div class="form-group col-md-12 col-sm-12" id="divImagem">
+                                    <img class="img-profile" id="MembroImagem"   />
+                                </div>
+                            </div>
+
+                            @*<div class="col-md-10 col-sm-10">
+
+                                <div class="form-group col-md-12 col-sm-12">
+                                    @Html.LabelFor(a => a.Title)
+                                    @Html.EditorFor(a => a.Title, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(m => m.Title)
+                                </div>
+                                
+                            </div>*@
+                            
+                            <div class="col-md-12 col-sm-12">
+                                <div class="form-group col-md-12 col-sm-12">
+                                    @Html.LabelFor(a => a.Message)
+                                    @Html.TextAreaFor(a => a.Message, new { @class = "form-control input-sm", @placeholder = "" })
+                                    @Html.ValidationMessageFor(m => m.Message)
+                                </div>
+
+                            </div>
+                            <div class="col-md-12 col-sm-12">
+                                <div class="login-erro">
+                                    @Html.ValidationSummary(true)
+                                </div>
+                                <div class="col-sm-offset-4 col-md-4 col-sm-4 centered-text">
+                                    @*<input onclick="javascript:showWait();" type="submit" class="btn btn-lg btn-success btn-block" value="Salvar" />*@
+                                    <input type="submit" class="btn btn-lg btn-success btn-block" value="Salvar" />
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts
+{
+    <script>
+
+        $(document).ready(function () {
+            $('#Membro').change(function () {
+
+                if ($(this).val() == null || $(this).val() == '') {
+
+                    $('#MembroImagem').attr('src', '');
+                    $('#divImagem').hide();
+                }
+                else {
+                    var img = "/Content/img/database/profiles/" + $(this).val() + ".gif?time=@(DateTime.Now)";
+                    $('#MembroImagem').attr('src', img);
+
+                    $('#divImagem').show();
+                }
+            });
+
+        })
+    </script>
+
+
+}
