@@ -152,5 +152,6 @@
     <None Include="build\0137.Create_Stored_Procedure_sp_CampeonatosRecords.sql" />
     <None Include="build\0138.Create_Stored_Procedure_sp_CampeonatosRecordGols.sql" />
     <None Include="build\0139.Create_Stored_Procedure_sp_CampeonatosRecordGolsFrequencia.sql" />
+    <None Include="build\0047.Create_Table_BoloesHistorico.sql" />
   </ItemGroup>
 </Project>

@@ -7,6 +7,7 @@ CREATE PROCEDURE [dbo].[sp_Clear_Database]
 AS
 BEGIN
 
+	DELETE FROM BoloesHistorico
 
 	DELETE FROM ApostasExtrasUsuarios
 	DELETE FROM ApostasExtras

@@ -35,8 +35,19 @@ namespace BolaoNet.WebApi.Integration.Boloes
     
         #region IBolaoHistoricoService members
 
-       
+        public IList<Domain.Entities.Boloes.BolaoHistorico> GetListFromBolao(Domain.Entities.Boloes.Bolao bolao, int ano)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<int> GetYearsFromBolao(Domain.Entities.Boloes.Bolao bolao)
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
+
+
+
     }
 }

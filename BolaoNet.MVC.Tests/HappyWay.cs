@@ -65,6 +65,7 @@ namespace BolaoNet.MVC.Tests
             IBolaoRegraApp bolaoRegraApp = kernel.Get<IBolaoRegraApp>();
             IBolaoPontuacaoApp bolaoPontuacaoApp = kernel.Get<IBolaoPontuacaoApp>();
             IBolaoMembroClassificacaoApp bolaoMembroClassificacaoApp = kernel.Get<IBolaoMembroClassificacaoApp>();
+            IBolaoHistoricoApp bolaoHistoricoApp = kernel.Get<IBolaoHistoricoApp>();
 
             //Mocks.HttpContextControllerMock mock = new Mocks.HttpContextControllerMock();
 
@@ -86,7 +87,8 @@ namespace BolaoNet.MVC.Tests
                 bolaoCriterioPontosApp,
                 bolaoCriterioPontosTimesApp,
                 bolaoRegraApp,
-                bolaoPontuacaoApp);
+                bolaoPontuacaoApp,
+                bolaoHistoricoApp);
 
 
             Domain.Entities.Boloes.Bolao bolao = bolaoHelper.CreateBolao(campeonato);

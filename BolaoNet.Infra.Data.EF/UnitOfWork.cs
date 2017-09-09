@@ -60,6 +60,8 @@ namespace BolaoNet.Infra.Data.EF
         public DbSet<Domain.Entities.Users.Role> Roles { get; set; }
         public DbSet<Domain.Entities.Users.UserInRole> UserInRole { get; set; }
 
+        public DbSet<Domain.Entities.Boloes.BolaoHistorico> BoloesHistorico { get; set; }
+
         #endregion
 
         #region Constructors/Destructors
@@ -168,6 +170,7 @@ namespace BolaoNet.Infra.Data.EF
             modelBuilder.Entity<Domain.Entities.Users.UserInRole>().ToTable("UserInRole");
 
 
+            modelBuilder.Entity<Domain.Entities.Boloes.BolaoHistorico>().ToTable("BoloesHistorico");
 
 
             //modelBuilder.Entity<Domain.Entities.Modalidade>().ToTable("Modalidades");

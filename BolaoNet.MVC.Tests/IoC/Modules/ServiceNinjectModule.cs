@@ -20,6 +20,8 @@ namespace BolaoNet.MVC.Tests.IoC.Modules
             Bind(typeof(Domain.Interfaces.Services.Base.IGenericService<>)).To(typeof(Domain.Services.Base.BaseGenericService<>)).WithConstructorArgument("userName", userName);
 
             Bind<Domain.Interfaces.Services.Facade.IInitializationFacadeService>().To<Domain.Services.Facade.InitializationFacadeService>().WithConstructorArgument("userName", userName);
+
+            Bind<Domain.Interfaces.Services.Boloes.IBolaoHistoricoService>().To<Domain.Services.Boloes.BolaoHistoricoService>().WithConstructorArgument("userName", userName);
             
 
             Bind<Domain.Interfaces.Services.Boloes.IApostaExtraService>().To<Domain.Services.Boloes.ApostaExtraService>().WithConstructorArgument("userName", userName);

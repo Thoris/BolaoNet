@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Domain.Entities.Boloes
 {
-    public class BolaoHistorico
+    public class BolaoHistorico : Base.AuditModel
     {
         #region Properties
 
@@ -32,6 +32,21 @@ namespace BolaoNet.Domain.Entities.Boloes
         public int TotalCheio { get; set; }
         public int TotalExtras { get; set; }
         
+
+        #endregion
+
+        #region Constructors/Destructors
+
+        public BolaoHistorico()
+        {
+
+        }
+        public BolaoHistorico(string nomeBolao, int ano, int posicao)
+        {
+            this.NomeBolao = nomeBolao;
+            this.Ano = ano;
+            this.Posicao = posicao;
+        }
 
         #endregion
     }

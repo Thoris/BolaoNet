@@ -101,6 +101,13 @@ else
                         { @Html.Raw("class=\"active\"")  }>
                         <a href="/Regras/BolaoRegras/Index" onclick="javascript:showWait();"><i class="fa fa-envelope-o"></i><span class="nav-label">Regras</span><span class="visible-xs-inline">Regras</span></a>
                     </li>
+
+                    <li @if (string.Compare(controllerName, "BolaoHistorico", true) == 0 && 
+                            string.Compare(controllerArea, "Boloes", true) == 0)
+                        { @Html.Raw("class=\"active\"")  }>
+                        <a href="/Boloes/BolaoHistorico/Index" onclick="javascript:showWait();"><i class="fa fa-trophy"></i><span class="nav-label">Histórico de Ganhadores</span><span class="visible-xs-inline">Ganhadores</span></a>
+                    </li>
+
                 </ul>
             </li>
         }

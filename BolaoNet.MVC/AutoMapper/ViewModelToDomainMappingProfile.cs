@@ -81,6 +81,7 @@ namespace BolaoNet.MVC.AutoMapper
             Mapper.CreateMap<Domain.Entities.ValueObjects.CampeonatoRecordVO, ViewModels.Campeonatos.CampeonatoRecordsViewModel>();
 
             Mapper.CreateMap<Domain.Entities.Boloes.Mensagem, ViewModels.Mensagens.MensagemViewModel>();
+            Mapper.CreateMap<Domain.Entities.Boloes.BolaoHistorico, ViewModels.Bolao.BolaoHistoricoViewModel>();
 
         }
     }
