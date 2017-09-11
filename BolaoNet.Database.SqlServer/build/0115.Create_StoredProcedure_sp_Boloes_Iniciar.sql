@@ -16,7 +16,12 @@ AS
 BEGIN
 
 	
-	IF (@CurrentDateTime IS NULL)
+	DECLARE @NomeCampeonato VARCHAR(50)
+	SELECT @NomeCampeonato = NomeCampeonato
+	  FROM Boloes 
+	 WHERE Nome = @NomeBolao
+	
+	IF (@CurrentDateTime = NULL)
 		SET @CurrentDateTime = GetDate()
 
 	SET @ErrorNumber = 0
@@ -61,13 +66,14 @@ BEGIN
 				   AND Jogos.NomeCampeonato		= JogosUsuarios.NomeCampeonato
 			
 			)			
+		  AND NomeCampeonato = @NomeCampeonato
 					
 		FETCH NEXT FROM curMembros INTO @UserName
 				
 	END				
 			
 				
-	RETURN @@RowCount	  	
+	RETURN @@RowCount		
 	
 	
 END
