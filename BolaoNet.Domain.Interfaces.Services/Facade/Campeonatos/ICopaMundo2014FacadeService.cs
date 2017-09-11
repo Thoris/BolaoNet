@@ -24,7 +24,7 @@ namespace BolaoNet.Domain.Interfaces.Services.Facade.Campeonatos
 
         //IList<Entities.Campeonatos.CampeonatoPosicao> GetCampeonatoPosicoes();
 
-        bool InsertResults(Entities.Users.User validatedBy);
+        bool InsertResults(string nomeCampeonato, Entities.Users.User validatedBy);
         
     }
 }

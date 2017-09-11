@@ -366,7 +366,7 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
         }
         public void TestInsertResultsCopaDoMundo2014()
         {
-            _copaMundo2014FacadeApp.InsertResults(new Domain.Entities.Users.User("thoris"));
+            _copaMundo2014FacadeApp.InsertResults("Copa do Mundo 2014", new Domain.Entities.Users.User("thoris"));
         }
         public void TestUserManagement()
         {

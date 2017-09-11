@@ -250,13 +250,15 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
 
             return base.GetJogosFinal(base.Campeonato, rodada, nomeGrupo, nomeFase, datas, estadios, ids, idsGanhadores);
         }
-        public bool InsertResults(Entities.Users.User validatedBy)
+        public bool InsertResults(string nomeCampeonato, Entities.Users.User validatedBy)
         {
             IList<int> jogoLabels = new List<int>();
             IList<int> time1 = new List<int>();
             IList<int> time2 = new List<int>();
             IList<int?> penaltis1 = new List<int?>();
             IList<int?> penaltis2 = new List<int?>();
+
+            base.Campeonato = new Entities.Campeonatos.Campeonato(nomeCampeonato);
 
             #region Resultados dos Jogos
 

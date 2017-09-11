@@ -41,7 +41,7 @@ namespace BolaoNet.WebApi.Integration.Facade.Campeonatos
             return base.HttpPostApi<Domain.Entities.Campeonatos.Campeonato>(parameters, "CreateCampeonato");
         }
 
-        public bool InsertResults(Domain.Entities.Users.User validatedBy)
+        public bool InsertResults(string nomeCampeonato, Domain.Entities.Users.User validatedBy)
         {
 
             return base.HttpPostApi<bool>(new Dictionary<string, string>(), validatedBy, "InsertResults");

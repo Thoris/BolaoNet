@@ -43,6 +43,7 @@ namespace BolaoNet.MVC.Tests
 
             MVC.AutoMapper.AutoMapperConfig.RegisterMappings();
 
+            ICopaMundo2010FacadeApp copaMundo2010FacadeApp = kernel.Get<ICopaMundo2010FacadeApp>();
             ICopaMundo2014FacadeApp copaMundo2014FacadeApp = kernel.Get<ICopaMundo2014FacadeApp>();
             ICampeonatoApp campeonatoApp = kernel.Get<ICampeonatoApp>();
             IJogoApp jogoApp = kernel.Get<IJogoApp>();            
@@ -76,6 +77,16 @@ namespace BolaoNet.MVC.Tests
             campeonatoApp.ClearDatabase();
 
             initializationFacadeApp.InitAll();
+
+
+            Domain.Entities.Campeonatos.Campeonato campeonato2010 =
+                copaMundo2010FacadeApp.CreateCampeonato("Copa do Mundo 2010", false);
+
+
+            copaMundo2010FacadeApp.InsertResults(campeonato2010.Nome, new Domain.Entities.Users.User("thoris"));
+
+
+
 
             Domain.Entities.Campeonatos.Campeonato campeonato =
                 copaMundo2014FacadeApp.CreateCampeonato("Copa do Mundo 2014", false);

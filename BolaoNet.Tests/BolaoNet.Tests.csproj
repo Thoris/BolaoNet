@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AllTests.cs" />
+    <Compile Include="CopaDoMundoTests\CopaDoMundo2014Tests\BolaoCopaMundo2010AppHelper.cs" />
     <Compile Include="CopaDoMundoTests\CopaDoMundo2014Tests\BolaoCopaMundo2014AppHelper.cs" />
     <Compile Include="CopaDoMundoTests\CopaDoMundo2014Tests\BolaoCopaMundo2014UserApostasAppTests.cs" />
     <Compile Include="NinjectCommon.cs" />

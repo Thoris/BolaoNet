@@ -44,6 +44,7 @@
     <Compile Include="Base\GenericApp.cs" />
     <Compile Include="Boloes\BolaoHistoricoApp.cs" />
     <Compile Include="Boloes\BolaoMembroPontoApp.cs" />
+    <Compile Include="Facade\Campeonatos\CopaMundo2010FacadeApp.cs" />
     <Compile Include="Facade\Campeonatos\CopaMundo2014FacadeApp.cs" />
     <Compile Include="Facade\Campeonatos\StructureCopaMundoFacadeApp.cs" />
     <Compile Include="Facade\InitializationFacadeApp.cs" />
@@ -130,6 +131,7 @@
     <Compile Include="Interfaces\DadosBasicos\IEstadioApp.cs" />
     <Compile Include="Interfaces\DadosBasicos\IPagamentoTipoApp.cs" />
     <Compile Include="Interfaces\DadosBasicos\ITimeApp.cs" />
+    <Compile Include="Interfaces\Facade\Campeonatos\ICopaMundo2010FacadeApp.cs" />
     <Compile Include="Interfaces\Facade\Campeonatos\ICopaMundo2014FacadeApp.cs" />
     <Compile Include="Interfaces\Facade\Campeonatos\IStructureCopaMundoFacadeApp.cs" />
     <Compile Include="Interfaces\Facade\IInitializationFacadeApp.cs" />

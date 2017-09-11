@@ -30,9 +30,9 @@ namespace BolaoNet.Application.Facade.Campeonatos
             return _service.CreateCampeonato(nomeCampeonato, isClube);
         }
 
-        public bool InsertResults(Domain.Entities.Users.User validatedBy)
+        public bool InsertResults(string nomeCampeonato, Domain.Entities.Users.User validatedBy)
         {
-            return _service.InsertResults(validatedBy);
+            return _service.InsertResults(nomeCampeonato, validatedBy);
         }
 
         #endregion

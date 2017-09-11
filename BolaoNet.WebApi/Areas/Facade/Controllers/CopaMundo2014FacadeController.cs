@@ -45,9 +45,9 @@ namespace BolaoNet.WebApi.Areas.Facade.Controllers
         }
 
         [HttpPost]
-        public bool InsertResults(Domain.Entities.Users.User validatedBy)
+        public bool InsertResults(string nomeCampeonato, Domain.Entities.Users.User validatedBy)
         {
-            return _service.InsertResults(validatedBy);
+            return _service.InsertResults(nomeCampeonato, validatedBy);
         }
 
         #endregion
