@@ -24,6 +24,10 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
         private Application.Interfaces.Boloes.IBolaoRegraApp _bolaoRegraApp;
         private Application.Interfaces.Boloes.IBolaoPontuacaoApp _bolaoPontuacaoApp;
         private Application.Interfaces.Boloes.IBolaoHistoricoApp _bolaoHistoricoApp;
+        private Application.Interfaces.Users.IUserApp _userApp;
+        private Application.Interfaces.Facade.IUserFacadeApp _userFacadeApp;
+        private Application.Interfaces.Boloes.IBolaoMembroApp _bolaoMembroApp;
+        private Application.Interfaces.Boloes.IJogoUsuarioApp _jogoUsuarioApp;
 
         #endregion
 
@@ -37,7 +41,11 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
             Application.Interfaces.Boloes.IBolaoCriterioPontosTimesApp bolaoCriterioPontosTimesApp,
             Application.Interfaces.Boloes.IBolaoRegraApp bolaoRegraApp,
             Application.Interfaces.Boloes.IBolaoPontuacaoApp bolaoPontuacaoApp,
-            Application.Interfaces.Boloes.IBolaoHistoricoApp bolaoHistoricoApp
+            Application.Interfaces.Boloes.IBolaoHistoricoApp bolaoHistoricoApp,
+            Application.Interfaces.Users.IUserApp userApp,
+            Application.Interfaces.Facade.IUserFacadeApp userFacadeApp,
+            Application.Interfaces.Boloes.IBolaoMembroApp bolaoMembroApp,
+            Application.Interfaces.Boloes.IJogoUsuarioApp jogoUsuarioApp
         )
         {
             _apostaExtraApp = apostaExtraApp;
@@ -48,6 +56,10 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
             _bolaoRegraApp = bolaoRegraApp;
             _bolaoPontuacaoApp = bolaoPontuacaoApp;
             _bolaoHistoricoApp = bolaoHistoricoApp;
+            _userApp = userApp;
+            _userFacadeApp = userFacadeApp;
+            _bolaoMembroApp = bolaoMembroApp;
+            _jogoUsuarioApp = jogoUsuarioApp;
         }
 
         #endregion
@@ -350,6 +362,52 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
 
         public bool ClearApostasMembros()
         {
+            return true;
+        }
+        public void CreateApostasUsuarios(string nomeBolao)
+        {
+
+        }
+        public bool CreateUserApostas(Domain.Entities.Users.User user, Domain.Entities.Boloes.Bolao bolao, IList<Domain.Entities.Boloes.JogoUsuario> jogos)
+        {
+            string activationCode = "";
+
+            Domain.Entities.Boloes.Bolao bolaoLoaded = _bolaoApp.Load(bolao);
+
+
+            Domain.Entities.Users.Role[] roles = {
+                                              new Domain.Entities.Users.Role("Apostador"),
+                                              new Domain.Entities.Users.Role("Convidado"),
+                                              new Domain.Entities.Users.Role("Visitante de Bolão"),
+                                              new Domain.Entities.Users.Role("Visitante de Campeonato"),
+                                           };
+
+            if (_userApp.Load(user) == null)
+            {
+                _userFacadeApp.CreateUser(user, roles);
+                _userFacadeApp.SendActivationCode(user);
+
+                Domain.Entities.Users.User loadedUser = _userApp.Load(user);
+                activationCode = loadedUser.ActivateKey;
+
+                _userFacadeApp.ActivateUser(user, activationCode);
+            }
+
+            Domain.Entities.Boloes.BolaoMembro membro = new Domain.Entities.Boloes.BolaoMembro(user.UserName, bolao.Nome) { FullName = user.FullName };
+
+            if (_bolaoMembroApp.Load(membro) == null)
+            {
+                _bolaoMembroApp.Insert(membro);
+            }
+
+            for (int c = 0; c < jogos.Count; c++)
+            {
+                Domain.Entities.Campeonatos.Jogo jogo = new Domain.Entities.Campeonatos.Jogo(bolaoLoaded.NomeCampeonato, jogos[c].JogoId);
+
+                _jogoUsuarioApp.ProcessAposta(bolao, user, jogo, 1, (int)jogos[c].ApostaTime1, (int)jogos[c].ApostaTime2,
+                    jogos[c].ApostaPenaltis1, jogos[c].ApostaPenaltis2, null);
+            }
+
             return true;
         }
 
