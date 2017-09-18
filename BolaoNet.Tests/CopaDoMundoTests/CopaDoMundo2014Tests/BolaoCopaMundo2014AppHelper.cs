@@ -245,6 +245,48 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
             #region Boloes Histórico
 
 
+
+
+
+            StoreBolaoHistorico(bolao.Nome, 2010, 1,	"Alberto",	237,	3,	36,	16,	25,	9,	30);
+            StoreBolaoHistorico(bolao.Nome, 2010,2,	"Thoris",	210,	7	,36	,16	,28	,8	,0);
+            StoreBolaoHistorico(bolao.Nome, 2010,3,	"andermoura",	199	,4	,35,	14	,24	,7	,0);
+            StoreBolaoHistorico(bolao.Nome, 2010,4,	"carlinhosbueno",	199,	3	,31,	20,	23,	8,	0);
+            StoreBolaoHistorico(bolao.Nome, 2010,5,	"luizen",	199	,4	,34	,16,	26	,3,	15);
+            StoreBolaoHistorico(bolao.Nome, 2010,6,	"TAQUARA"	,198	,4	,34	,12	,20,	3,	30);
+            StoreBolaoHistorico(bolao.Nome, 2010,7,	"Marcio",	197,	1,	30	,19,	26,	9,	0);
+            StoreBolaoHistorico(bolao.Nome, 2010,8,	"lucas_scremin"	,197,	0,	32	,16	,23,	7,	15);
+            StoreBolaoHistorico(bolao.Nome, 2010,9,	"afreita2"	,190	,4	,36	,18,	23,	5,	0);
+            StoreBolaoHistorico(bolao.Nome, 2010, 10,	"julia",	189	,5	,29	,18,	25,	9,	0);
+            StoreBolaoHistorico(bolao.Nome, 2010,11,	"Sara"	,188	,4	,28	,18	,23,	8,	0);
+            StoreBolaoHistorico(bolao.Nome, 2010,12,	"lgcarvalho",	187,	4,	32	,12	,32,	5	,0);
+            StoreBolaoHistorico(bolao.Nome, 2010,13,	"Alan",	177,	1	,26	,18	,23,	8,	0);
+            StoreBolaoHistorico(bolao.Nome, 2010,14,	"Carlos",	172	,2,	28,	15	,22	,6,	0);
+            StoreBolaoHistorico(bolao.Nome, 2010,15,	"fabiop",	172	,2,	25	,21,	25,	8	,0);
+            StoreBolaoHistorico(bolao.Nome, 2010,16,	"Juninho",	172,	3	,27	,18	,22,	6,	0);
+            StoreBolaoHistorico(bolao.Nome, 2010,17,	"TAQUARA2"	,169,	5,	32	,12	,20	,3	,0);
+            StoreBolaoHistorico(bolao.Nome, 2010,18,	"AndreBarboza",	169,	4,	30	,12,	23,	4,	0);
+            StoreBolaoHistorico(bolao.Nome, 2010,19,	"helton_hls",	166	,2,	28	,20	,23,	6	,0);
+            StoreBolaoHistorico(bolao.Nome, 2010,20,	"JulioCesar"	,166,	3,	28	,12	,20	,6,	0);
+            StoreBolaoHistorico(bolao.Nome, 2010,21,	"TAQUARA3",	165	,4,	31	,13,	20	,4	,0);
+            StoreBolaoHistorico(bolao.Nome, 2010,22,	"Serrano",	162,	2	,24,	16,	27,	7,	0);
+            StoreBolaoHistorico(bolao.Nome, 2010,23,	"Betovb"	,159	,3	,25,	17,	23	,6	,0);
+            StoreBolaoHistorico(bolao.Nome, 2010,24,	"dnlima",	158	,2,	30,	16,	23,	3,	0);
+            StoreBolaoHistorico(bolao.Nome, 2010,25	,"teles"	,150	,3,	26	,15,	24,	3	,0);
+            StoreBolaoHistorico(bolao.Nome, 2010,26,	"tharcius",	143,	1,	26	,10	,22	,3,	0);
+
+
+
+
+
+
+
+
+
+
+
+
+
             StoreBolaoHistorico(bolao.Nome, 2014, 1, "wfukuda", 224, 5, 36, 23, 17, 7, 10);
             StoreBolaoHistorico(bolao.Nome, 2014, 2, "Batista", 203, 4, 28, 17, 26, 9, 10);
             StoreBolaoHistorico(bolao.Nome, 2014, 3, "anunes81", 203, 2, 27, 26, 24, 8, 10);

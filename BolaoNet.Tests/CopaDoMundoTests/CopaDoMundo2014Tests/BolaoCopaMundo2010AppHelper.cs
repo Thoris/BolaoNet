@@ -367,6 +367,53 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
         public void CreateApostasUsuarios(string nomeBolao)
         {
 
+
+            CreateUserApostasFixo(nomeBolao, nomeBolao, "usuario0x0_2010", "teste@teste.com.br", 0, 0);
+            CreateUserApostasFixo(nomeBolao, nomeBolao, "usuario0x1_2010", "teste@teste.com.br", 0, 1);
+            CreateUserApostasFixo(nomeBolao, nomeBolao, "usuario1x0_2010", "teste@teste.com.br", 1, 0);
+            CreateUserApostasFixo(nomeBolao, nomeBolao, "usuario1x1_2010", "teste@teste.com.br", 1, 1);
+            CreateUserApostasFixo(nomeBolao, nomeBolao, "usuario0x2_2010", "teste@teste.com.br", 0, 2);
+            CreateUserApostasFixo(nomeBolao, nomeBolao, "usuario1x2_2010", "teste@teste.com.br", 1, 2);
+            CreateUserApostasFixo(nomeBolao, nomeBolao, "usuario2x0_2010", "teste@teste.com.br", 2, 0);
+            CreateUserApostasFixo(nomeBolao, nomeBolao, "usuario2x1_2010", "teste@teste.com.br", 2, 1);
+            CreateUserApostasFixo(nomeBolao, nomeBolao, "usuario2x2_2010", "teste@teste.com.br", 2, 2);
+
+
+
+        }
+        public Domain.Entities.Users.User CreateUserApostasFixo(string nomeBolao, string nomeCampeonato, string userName, string email, int time1, int time2)
+        {
+            Domain.Entities.Users.User user = new Domain.Entities.Users.User(userName)
+            {
+                Email = email
+            };
+
+            Domain.Entities.Boloes.Bolao bolao = new Domain.Entities.Boloes.Bolao(nomeBolao);
+            Domain.Entities.Campeonatos.Campeonato campeonato = new Domain.Entities.Campeonatos.Campeonato(nomeCampeonato);
+
+            //Domain.Entities.Boloes.Bolao bolaoLoaded = _bolaoApp.Load(bolao);
+            //Domain.Entities.Campeonatos.Campeonato campeonato = _campeonatoApp.Load(new Domain.Entities.Campeonatos.Campeonato(bolaoLoaded.NomeCampeonato));
+
+            IList<Domain.Entities.Boloes.JogoUsuario> jogos = new List<Domain.Entities.Boloes.JogoUsuario>();
+
+            for (int c = 0; c < 64; c++)
+            {
+                jogos.Add(CreateJogoUsuario(user, bolao, campeonato, c + 1, time1, time2, null, null));
+            }
+
+            CreateUserApostas(user, bolao, jogos);
+
+            return user;
+        }
+        public Domain.Entities.Boloes.JogoUsuario CreateJogoUsuario(Domain.Entities.Users.User user, Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Campeonatos.Campeonato campeonato, int jogoId, int time1, int time2, int? penaltis1, int? penaltis2)
+        {
+            return new Domain.Entities.Boloes.JogoUsuario(user.UserName, bolao.Nome, campeonato.Nome, jogoId)
+            {
+                ApostaTime1 = time1,
+                ApostaTime2 = time2,
+                ApostaPenaltis1 = penaltis1,
+                ApostaPenaltis2 = penaltis2
+            };
         }
         public bool CreateUserApostas(Domain.Entities.Users.User user, Domain.Entities.Boloes.Bolao bolao, IList<Domain.Entities.Boloes.JogoUsuario> jogos)
         {

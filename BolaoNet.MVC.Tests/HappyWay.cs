@@ -84,24 +84,30 @@ namespace BolaoNet.MVC.Tests
 
             #region Copa 2010
 
-            Domain.Entities.Campeonatos.Campeonato campeonato2010 =
-                copaMundo2010FacadeApp.CreateCampeonato("Copa do Mundo 2010", false);
+            //Domain.Entities.Campeonatos.Campeonato campeonato2010 =
+            //    copaMundo2010FacadeApp.CreateCampeonato("Copa do Mundo 2010", false);
 
-            BolaoCopaMundo2010AppHelper bolaoHelper2010 = new BolaoCopaMundo2010AppHelper(
-                apostaExtraApp,
-                bolaoApp,
-                bolaoPremioApp,
-                bolaoCriterioPontosApp,
-                bolaoCriterioPontosTimesApp,
-                bolaoRegraApp,
-                bolaoPontuacaoApp,
-                bolaoHistoricoApp, 
-                userApp, userFacadeApp, bolaoMembroApp, jogoUsuarioApp);
+            //BolaoCopaMundo2010AppHelper bolaoHelper2010 = new BolaoCopaMundo2010AppHelper(
+            //    apostaExtraApp,
+            //    bolaoApp,
+            //    bolaoPremioApp,
+            //    bolaoCriterioPontosApp,
+            //    bolaoCriterioPontosTimesApp,
+            //    bolaoRegraApp,
+            //    bolaoPontuacaoApp,
+            //    bolaoHistoricoApp, 
+            //    userApp, userFacadeApp, bolaoMembroApp, jogoUsuarioApp);
 
-            Domain.Entities.Boloes.Bolao bolao2010 = bolaoHelper2010.CreateBolao(campeonato2010);
-                        
+            //Domain.Entities.Boloes.Bolao bolao2010 = bolaoHelper2010.CreateBolao(campeonato2010);
 
-            copaMundo2010FacadeApp.InsertResults(campeonato2010.Nome, new Domain.Entities.Users.User("thoris"));
+            //bolaoHelper2010.CreateApostasUsuarios(bolao2010.Nome);
+
+            //bolaoApp.Iniciar(new Domain.Entities.Users.User("thoris"), bolao2010);
+
+
+            //bolaoHelper2010.CreateApostasUsuarios(bolao.Nome);
+
+            //copaMundo2010FacadeApp.InsertResults(campeonato2010.Nome, new Domain.Entities.Users.User("thoris"));
 
             #endregion
 
@@ -121,7 +127,6 @@ namespace BolaoNet.MVC.Tests
 
             Domain.Entities.Boloes.Bolao bolao = bolaoHelper.CreateBolao(campeonato);
 
-            bolaoHelper2010.CreateApostasUsuarios(bolao.Nome);
 
             #endregion
 
