@@ -171,10 +171,6 @@
       <Project>{a024a3ce-4926-47b0-8ea5-c1dd49df8907}</Project>
       <Name>BolaoNet.MVC</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BolaoNet.Tests\BolaoNet.Tests.csproj">
-      <Project>{9abe0f07-4a14-4364-95f8-5154275400db}</Project>
-      <Name>BolaoNet.Tests</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BolaoNet.WebApi.Integration\BolaoNet.WebApi.Integration.csproj">
       <Project>{2af5e54a-613c-4a7a-896c-9f946593c8f5}</Project>
       <Name>BolaoNet.WebApi.Integration</Name>

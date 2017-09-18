@@ -1,16 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9ABE0F07-4A14-4364-95F8-5154275400DB}</ProjectGuid>
+    <ProjectGuid>{AA6F45AB-8410-4A2B-9447-E8F95297E9CF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BolaoNet.Tests</RootNamespace>
-    <AssemblyName>BolaoNet.Tests</AssemblyName>
+    <RootNamespace>BolaoNet.Tests2</RootNamespace>
+    <AssemblyName>BolaoNet.Tests2</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,22 +33,25 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\BolaoNet.Tests.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\ReferencedComponents\Ninject\Ninject.dll</HintPath>
+    <Reference Include="Ninject">
+      <HintPath>..\ReferencedComponents\ninject\Ninject.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
   <ItemGroup>
     <Compile Include="AllTests.cs" />
     <Compile Include="CopaDoMundoTests\CopaDoMundo2014Tests\BolaoCopaMundo2010AppHelper.cs" />
@@ -52,6 +60,21 @@
     <Compile Include="NinjectCommon.cs" />
     <Compile Include="Pontuacao\CalculoPontuacaoTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ApplicationTests\" />
+    <Folder Include="EntitiesTests\" />
+    <Folder Include="InfraCrossCutting\CachingTests\" />
+    <Folder Include="InfraCrossCutting\IoCTests\" />
+    <Folder Include="InfraCrossCutting\LoggingTests\" />
+    <Folder Include="IntegrationTests\" />
+    <Folder Include="MvcTests\" />
+    <Folder Include="ServicesTests\" />
+    <Folder Include="WebApiIntegrationTests\" />
+    <Folder Include="WebApiTests\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BolaoNet.Application\BolaoNet.Application.csproj">
@@ -94,6 +117,10 @@
       <Project>{d0a5e0bf-24a1-40a3-ab36-603db298ceb3}</Project>
       <Name>BolaoNet.Infra.Data.EF</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Infra.Notification.Mail\BolaoNet.Infra.Notification.Mail.csproj">
+      <Project>{634e95f1-4f38-4bdb-ad16-8dfcd6c73ab5}</Project>
+      <Name>BolaoNet.Infra.Notification.Mail</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BolaoNet.Infra.Reports\BolaoNet.Infra.Reports.csproj">
       <Project>{5c3e6aa6-f8d2-4940-be65-3fc76db96b59}</Project>
       <Name>BolaoNet.Infra.Reports</Name>
@@ -119,24 +146,25 @@
       <Name>BolaoNet.WebApi</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ApplicationTests\" />
-    <Folder Include="EntitiesTests\" />
-    <Folder Include="InfraCrossCutting\CachingTests\" />
-    <Folder Include="InfraCrossCutting\IoCTests\" />
-    <Folder Include="InfraCrossCutting\LoggingTests\" />
-    <Folder Include="IntegrationTests\" />
-    <Folder Include="MvcTests\" />
-    <Folder Include="ServicesTests\" />
-    <Folder Include="WebApiIntegrationTests\" />
-    <Folder Include="WebApiTests\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
-  </ItemGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
