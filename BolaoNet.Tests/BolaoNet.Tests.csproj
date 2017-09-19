@@ -6,8 +6,8 @@
     <ProjectGuid>{AA6F45AB-8410-4A2B-9447-E8F95297E9CF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BolaoNet.Tests2</RootNamespace>
-    <AssemblyName>BolaoNet.Tests2</AssemblyName>
+    <RootNamespace>BolaoNet.Tests</RootNamespace>
+    <AssemblyName>BolaoNet.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -54,9 +54,13 @@
   </Choose>
   <ItemGroup>
     <Compile Include="AllTests.cs" />
+    <Compile Include="LayersTests\BaseLayerTests\BaseDadosBasicosTests\TimeLayerTests.cs" />
+    <Compile Include="LayersTests\BaseLayerTests\BaseGenericDataTests.cs" />
+    <Compile Include="LayersTests\BaseLayerTests\BasePreparingData.cs" />
     <Compile Include="CopaDoMundoTests\CopaDoMundo2014Tests\BolaoCopaMundo2010AppHelper.cs" />
     <Compile Include="CopaDoMundoTests\CopaDoMundo2014Tests\BolaoCopaMundo2014AppHelper.cs" />
     <Compile Include="CopaDoMundoTests\CopaDoMundo2014Tests\BolaoCopaMundo2014UserApostasAppTests.cs" />
+    <Compile Include="LayersTests\InfraDataEFTests\Base\BaseGenericInfraDataEFTests.cs" />
     <Compile Include="NinjectCommon.cs" />
     <Compile Include="Pontuacao\CalculoPontuacaoTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -71,6 +75,13 @@
     <Folder Include="InfraCrossCutting\IoCTests\" />
     <Folder Include="InfraCrossCutting\LoggingTests\" />
     <Folder Include="IntegrationTests\" />
+    <Folder Include="LayersTests\BaseLayerTests\BaseBoloesTests\" />
+    <Folder Include="LayersTests\BaseLayerTests\BaseCampeonatosTests\" />
+    <Folder Include="LayersTests\BaseLayerTests\BaseUsersTests\" />
+    <Folder Include="LayersTests\InfraDataEFTests\Boloes\" />
+    <Folder Include="LayersTests\InfraDataEFTests\Campeonatos\" />
+    <Folder Include="LayersTests\InfraDataEFTests\DadosBasicos\" />
+    <Folder Include="LayersTests\InfraDataEFTests\Users\" />
     <Folder Include="MvcTests\" />
     <Folder Include="ServicesTests\" />
     <Folder Include="WebApiIntegrationTests\" />
