@@ -35,6 +35,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.4.1.1\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.7.99\lib\net45\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject">
       <HintPath>..\ReferencedComponents\ninject\Ninject.dll</HintPath>
     </Reference>
@@ -60,6 +66,9 @@
     <Compile Include="CopaDoMundoTests\CopaDoMundo2014Tests\BolaoCopaMundo2010AppHelper.cs" />
     <Compile Include="CopaDoMundoTests\CopaDoMundo2014Tests\BolaoCopaMundo2014AppHelper.cs" />
     <Compile Include="CopaDoMundoTests\CopaDoMundo2014Tests\BolaoCopaMundo2014UserApostasAppTests.cs" />
+    <Compile Include="LayersTests\BaseLayerTests\MocksRepository\DadosBasicosMockRepository\TimeRepositoryDaoMock.cs" />
+    <Compile Include="LayersTests\BaseLayerTests\MocksRepository\GenericRepositoryDaoMock.cs" />
+    <Compile Include="LayersTests\BaseLayerTests\MocksRepository\IGenericRepositoryDaoMock.cs" />
     <Compile Include="LayersTests\InfraDataEFTests\Base\BaseGenericInfraDataEFTests.cs" />
     <Compile Include="NinjectCommon.cs" />
     <Compile Include="Pontuacao\CalculoPontuacaoTests.cs" />
@@ -67,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ApplicationTests\" />
@@ -82,6 +92,7 @@
     <Folder Include="LayersTests\InfraDataEFTests\Campeonatos\" />
     <Folder Include="LayersTests\InfraDataEFTests\DadosBasicos\" />
     <Folder Include="LayersTests\InfraDataEFTests\Users\" />
+    <Folder Include="LayersTests\ServiceLayerTests\DadosBasicosServiceLayerTests\" />
     <Folder Include="MvcTests\" />
     <Folder Include="ServicesTests\" />
     <Folder Include="WebApiIntegrationTests\" />
@@ -156,6 +167,9 @@
       <Project>{660c66ef-6adc-4f74-bac3-c05e12f5008f}</Project>
       <Name>BolaoNet.WebApi</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TextFile1.txt" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

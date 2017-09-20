@@ -12,7 +12,6 @@ namespace BolaoNet.Tests.LayersTests.BaseLayerTests
        
         #endregion
 
-
         #region Constructors/Destructors
 
         public BasePreparingData()
@@ -33,7 +32,7 @@ namespace BolaoNet.Tests.LayersTests.BaseLayerTests
             return null;
         }
 
-        private bool IsPropertiesTheSame(object obj, object another)
+        protected bool IsPropertiesTheSame(object obj, object another)
         {
             if (ReferenceEquals(obj, another)) return true;
             if ((obj == null) || (another == null)) return false;

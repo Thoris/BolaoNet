@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Tests.LayersTests.BaseLayerTests
 {
-    public class BaseGenericDataTests<T>
+    public class BaseGenericDataTests<T, L>
         : BasePreparingData<T> where T : class
     {
         #region Variables
 
-        private T _performer;
+        private L _performer;
 
         private MethodInfo _load;
         private MethodInfo _insert;
@@ -29,7 +29,7 @@ namespace BolaoNet.Tests.LayersTests.BaseLayerTests
 
         #region Constructors/Destructors
 
-        public BaseGenericDataTests(T performer)
+        public BaseGenericDataTests(L performer)
         {
             _performer = performer;
 
@@ -80,169 +80,166 @@ namespace BolaoNet.Tests.LayersTests.BaseLayerTests
 
         protected void TestLoad()
         {
+            //Preparing
+            T entityToTest = GenerateEntity();
+            object resPreparing = _insert.Invoke(_performer, new object[] { entityToTest });
 
-            
-            ////Preparing
-            //T entityToTest = GenerateEntity();
-            //object resPreparing = _insert.Invoke(_performer, new object[] { entityToTest });
+            Domain.Entities.Base.BaseEntity x = entityToTest as Domain.Entities.Base.BaseEntity;
 
-            //Domain.Entities.Base.BaseEntity x = entityToTest as Domain.Entities.Base.BaseEntity;
-
-            //try
-            //{
-            //    //Testing 
-            //    //T data = _load.Invoke (_performer, entityToTest);
-            //    object data = _load.Invoke(_performer, new object[] {entityToTest});
-            //    Assert.IsNotNull(data);
-            //    Assert.IsTrue(IsPropertiesTheSame(data, entityToTest));
-            //}
-            //finally
-            //{
-            //    //Cleaning
-            //    int resClean = _dao.Delete(entityToTest);
-            //}
+            try
+            {
+                //Testing 
+                object data = _load.Invoke(_performer, new object[] { entityToTest });
+                Assert.IsNotNull(data);
+                Assert.IsTrue(IsPropertiesTheSame(data, entityToTest));
+            }
+            finally
+            {
+                //Cleaning
+                object resClean = _delete.Invoke(_performer, new object[] {entityToTest});
+            }
         }
         protected void TestInsert()
         {
-            ////Preparing
-            //long countPreparing = _dao.Count();
-            //T entityToTest = GenerateEntity();
+            //Preparing
+            long countPreparing = (long)_count.Invoke (_performer, null);
+            T entityToTest = GenerateEntity();
 
-            //try
-            //{
-            //    long res = _dao.Insert(entityToTest);
-            //    //Assert.Greater(res, 0);
-            //    Assert.AreNotEqual(0, res);
-            //    long countInserted = _dao.Count();
-            //    Assert.AreEqual(countPreparing + 1, countInserted);
-            //    T entityCheck = _dao.Load(entityToTest);
-            //    Assert.IsNotNull(entityToTest);
+            try
+            {
+                object res = _insert.Invoke(_performer, new object[]{ entityToTest});
+                //Assert.Greater(res, 0);
+                Assert.AreNotEqual(0, res);
+                long countInserted = (long)_count.Invoke(_performer, null) ;
+                Assert.AreEqual(countPreparing + 1, countInserted);
+                T entityCheck = (T)_load.Invoke(_performer, new object[]{ entityToTest});
+                Assert.IsNotNull(entityToTest);
 
-            //}
-            //finally
-            //{
-            //    //Cleaning
-            //    int resClean = _dao.Delete(entityToTest);
-            //}
+            }
+            finally
+            {
+                //Cleaning
+                object resClean = _delete.Invoke(_performer, new object[] { entityToTest });
+            }
 
         }
         protected void TestUpdate()
         {
-            //T entityToTest = GenerateEntity();
-            //long resPrep = _dao.Insert(entityToTest);
-            //T entityToUpdate = GenerateEntityToUpdate();
+            T entityToTest = GenerateEntity();
+            long resPrep = (long) _insert.Invoke(_performer, new object[] {entityToTest});
+            T entityToUpdate = GenerateEntityToUpdate();
 
 
-            //Domain.Entities.Base.BaseEntity dataKey = entityToTest as Domain.Entities.Base.BaseEntity;
-            //IDictionary<string, object> keys = dataKey.GetPrimaryKey();
+            Domain.Entities.Base.BaseEntity dataKey = entityToTest as Domain.Entities.Base.BaseEntity;
+            IDictionary<string, object> keys = dataKey.GetPrimaryKey();
 
-            //PropertyInfo[] properties = entityToUpdate.GetType().GetProperties();
+            PropertyInfo[] properties = entityToUpdate.GetType().GetProperties();
 
-            //foreach (PropertyInfo property in properties)
-            //{
-            //    foreach (var key in keys)
-            //    {
-            //        if (string.Compare(property.Name, key.Key, true) == 0)
-            //        {
-            //            PropertyInfo propertyInfo = entityToUpdate.GetType().GetProperty(property.Name);
-            //            // make sure object has the property we are after
-            //            if (propertyInfo != null)
-            //            {
-            //                propertyInfo.SetValue(entityToUpdate, key.Value, null);
-            //            }
+            foreach (PropertyInfo property in properties)
+            {
+                foreach (var key in keys)
+                {
+                    if (string.Compare(property.Name, key.Key, true) == 0)
+                    {
+                        PropertyInfo propertyInfo = entityToUpdate.GetType().GetProperty(property.Name);
+                        // make sure object has the property we are after
+                        if (propertyInfo != null)
+                        {
+                            propertyInfo.SetValue(entityToUpdate, key.Value, null);
+                        }
 
-            //            break;
-            //        }
-            //    }
-            //}
+                        break;
+                    }
+                }
+            }
 
 
-            //try
-            //{
-            //    int res = _dao.Update(entityToUpdate);
-            //    Assert.AreNotEqual(0, res);
-            //    Assert.IsTrue(IsPropertiesTheSame(entityToTest, entityToUpdate));
-            //}
-            //finally
-            //{
-            //    //Cleaning
-            //    int resClean = _dao.Delete(entityToTest);
-            //}
+            try
+            {
+                object res = _update.Invoke(_performer, new object[] {entityToUpdate});
+                Assert.AreNotEqual(0, res);
+                Assert.IsTrue(IsPropertiesTheSame(entityToTest, entityToUpdate));
+            }
+            finally
+            {
+                //Cleaning
+                object resClean = _delete.Invoke(_performer, new object[] { entityToTest });
+            }
         }
         protected void TestDelete()
         {
-            //T entityToTest = GenerateEntity();
-            //long resPrep = _dao.Insert(entityToTest);
+            T entityToTest = GenerateEntity();
+            object resPrep = _insert.Invoke(_performer, new object [] {entityToTest});
 
-            //try
-            //{
-            //    int res = _dao.Delete(entityToTest);
-            //    Assert.AreNotEqual(0, res);
-            //    T entityCheck = _dao.Load(entityToTest);
-            //    Assert.IsNull(entityCheck);
+            try
+            {
+                object res = _delete.Invoke(_performer, new object[]{ entityToTest});
+                Assert.AreNotEqual(0, res);
+                T entityCheck = (T)_load.Invoke(_performer, new object[] {entityToTest});
+                Assert.IsNull(entityCheck);
 
-            //}
-            //finally
-            //{
+            }
+            finally
+            {
 
-            //}
+            }
         }
         protected void TestGetList()
         {
-            //T entityToTest = GenerateEntity();
-            //long countData = _dao.Count();
-            //long resPrep = _dao.Insert(entityToTest);
+            T entityToTest = GenerateEntity();
+            long countData = (long)_count.Invoke(_performer, null);
+            object resPrep = _insert.Invoke(_performer, new object[] {entityToTest});
 
-            //try
-            //{
-            //    ICollection<T> list = _dao.GetAll();
-            //    //ICollection<T> list = _dao.GetList((Entities.mo));
-            //    Assert.IsNotNull(list);
-            //    Assert.AreEqual(countData + 1, list.Count);
-            //}
-            //finally
-            //{
-            //    //Cleaning
-            //    int resClean = _dao.Delete(entityToTest);
+            try
+            {
+                ICollection<T> list = (ICollection<T>) _getAll.Invoke(_performer, null);
+                //ICollection<T> list = _dao.GetList((Entities.mo));
+                Assert.IsNotNull(list);
+                Assert.AreEqual(countData + 1, list.Count);
+            }
+            finally
+            {
+                //Cleaning
+                object resClean = _delete.Invoke(_performer, new object[] { entityToTest });
 
-            //}
+            }
         }
         protected void TestGetAll()
         {
-            //T entityToTest = GenerateEntity();
-            //long countData = _dao.Count();
-            //long resPrep = _dao.Insert(entityToTest);
+            T entityToTest = GenerateEntity();
+            long countData = (long)_count.Invoke(_performer, null);
+            object resPrep = _insert.Invoke(_performer, new object[] {entityToTest});
 
-            //try
-            //{
-            //    ICollection<T> list = _dao.GetAll();
-            //    Assert.IsNotNull(list);
-            //    Assert.AreEqual(countData + 1, list.Count);
-            //}
-            //finally
-            //{
-            //    //Cleaning
-            //    int resClean = _dao.Delete(entityToTest);
+            try
+            {
+                ICollection<T> list = (ICollection<T>)_getAll.Invoke(_performer, null);
+                Assert.IsNotNull(list);
+                Assert.AreEqual(countData + 1, list.Count);
+            }
+            finally
+            {
+                //Cleaning
+                object resClean = _delete.Invoke(_performer, new object[] { entityToTest });
 
-            //}
+            }
         }
         protected void TestCount()
         {
-            //T entityToTest = GenerateEntity();
-            //long countData = _dao.Count();
-            //long resPrep = _dao.Insert(entityToTest);
+            T entityToTest = GenerateEntity();
+            long countData = (long)_count.Invoke(_performer, null);
+            object resPrep = _insert.Invoke(_performer, new object[] { entityToTest });
 
-            //try
-            //{
-            //    long countVerify = _dao.Count();
-            //    Assert.AreEqual(countData + 1, countVerify);
-            //}
-            //finally
-            //{
-            //    //Cleaning
-            //    int resClean = _dao.Delete(entityToTest);
+            try
+            {
+                long countVerify = (long) _count.Invoke(_performer, null);
+                Assert.AreEqual(countData + 1, countVerify);
+            }
+            finally
+            {
+                //Cleaning
+                object resClean = _delete.Invoke(_performer, new object[] { entityToTest });
 
-            //}
+            }
         }
         protected void TestCountWhere()
         {
