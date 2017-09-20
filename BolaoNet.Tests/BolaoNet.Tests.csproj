@@ -39,7 +39,7 @@
       <HintPath>..\packages\Castle.Core.4.1.1\lib\net45\Castle.Core.dll</HintPath>
     </Reference>
     <Reference Include="Moq">
-      <HintPath>..\packages\Moq.4.7.99\lib\net45\Moq.dll</HintPath>
+      <HintPath>..\ReferencedComponents\Moq\Moq.dll</HintPath>
     </Reference>
     <Reference Include="Ninject">
       <HintPath>..\ReferencedComponents\ninject\Ninject.dll</HintPath>
@@ -76,7 +76,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ApplicationTests\" />

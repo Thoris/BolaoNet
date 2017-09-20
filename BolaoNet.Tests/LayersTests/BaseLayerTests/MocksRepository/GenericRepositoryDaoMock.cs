@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Tests.LayersTests.BaseLayerTests.MocksRepository
 {
-    public class GenericRepositoryDaoMock<L> 
+    public class GenericRepositoryDaoMock<T, L> 
         : IGenericRepositoryDaoMock<L> where L : class 
     { 
 
@@ -21,17 +21,17 @@ namespace BolaoNet.Tests.LayersTests.BaseLayerTests.MocksRepository
 
         #region Methods
 
-        public virtual void Setup(Mock<Domain.Interfaces.Repositories.Base.IGenericDao<L>> mock, IList<L> list)
+        public virtual void Setup(Mock  mock, IList<L> list)
         {
 
-            mock.Setup(mr => mr.GetAll()).Returns(list);
-
-            mock.Setup(mr => mr.Count()).Returns(list.Count);
-
-            mock.Setup(mr => mr.Load(It.IsAny<L>()))
+            mock.As<Domain.Interfaces.Repositories.Base.IGenericDao<L>>().Setup( m => m.GetAll()).Returns(list);
+            
+            mock.As<Domain.Interfaces.Repositories.Base.IGenericDao<L>>().Setup(m => m.Count()).Returns(list.Count);
+            
+            mock.As<Domain.Interfaces.Repositories.Base.IGenericDao<L>>().Setup(mr => mr.Load(It.IsAny<L>()))
                 .Returns((L s) => list.Where(GetPredicate(s)).Single());
-
-            mock.Setup(mr => mr.Insert(It.IsAny<L>())).Returns(
+            
+            mock.As<Domain.Interfaces.Repositories.Base.IGenericDao<L>>().Setup(mr => mr.Insert(It.IsAny<L>())).Returns(
                 (L target) =>
                 {
                     list.Add(target);
@@ -39,7 +39,7 @@ namespace BolaoNet.Tests.LayersTests.BaseLayerTests.MocksRepository
                     return 1;
                 });
 
-            mock.Setup(mr => mr.Update(It.IsAny<L>())).Returns(
+            mock.As<Domain.Interfaces.Repositories.Base.IGenericDao<L>>().Setup(mr => mr.Update(It.IsAny<L>())).Returns(
                 (L target) =>
                 {
                     var original = list.Where(GetPredicate(target)).Single();
@@ -55,7 +55,7 @@ namespace BolaoNet.Tests.LayersTests.BaseLayerTests.MocksRepository
                     }
                 });
 
-            mock.Setup(mr => mr.Delete(It.IsAny<L>())).Returns(
+            mock.As<Domain.Interfaces.Repositories.Base.IGenericDao<L>>().Setup(mr => mr.Delete(It.IsAny<L>())).Returns(
                 (L target) =>
                 {
                     var original = list.Where(GetPredicate(target)).Single();
