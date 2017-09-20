@@ -8,14 +8,13 @@ using System.Threading.Tasks;
 namespace BolaoNet.Tests.LayersTests.BaseLayerTests.MocksRepository.DadosBasicosMockRepository
 {
     public class TimeRepositoryDaoMock 
-        : GenericRepositoryDaoMock<Domain.Interfaces.Repositories.DadosBasicos.ITimeDao>
+        : GenericRepositoryDaoMock<Domain.Entities.DadosBasicos.Time>
     {
         #region Variables
 
         private Mock<Domain.Interfaces.Repositories.DadosBasicos.ITimeDao> _mock;
 
         #endregion
-
 
         #region Constructors/Destructors
 
@@ -27,9 +26,7 @@ namespace BolaoNet.Tests.LayersTests.BaseLayerTests.MocksRepository.DadosBasicos
 
         #endregion
 
-
         #region Methods
-
 
         public void Setup()
         {
@@ -38,9 +35,10 @@ namespace BolaoNet.Tests.LayersTests.BaseLayerTests.MocksRepository.DadosBasicos
             //base.Setup(_mock, list);
         }
 
-        public override Func<Domain.Interfaces.Repositories.DadosBasicos.ITimeDao, bool> GetPredicate(Domain.Interfaces.Repositories.DadosBasicos.ITimeDao entity)
+        public override Func<Domain.Interfaces.Repositories.DadosBasicos.ITimeDao, bool> GetPredicate(Domain.Entities.DadosBasicos.Time entity)
         {
-            return base.GetPredicate(entity);
+            return null;
+            //return base.GetPredicate(entity);
         }
 
         #endregion
