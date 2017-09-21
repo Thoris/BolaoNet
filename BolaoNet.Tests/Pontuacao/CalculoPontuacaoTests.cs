@@ -290,6 +290,7 @@ namespace BolaoNet.Tests.Pontuacao
         #region Jogo 0 x 0
         
         [TestMethod]
+        [Ignore]
         public void TestPontuacaoJogo0a0Aposta0a0()
         {
 
@@ -324,6 +325,7 @@ namespace BolaoNet.Tests.Pontuacao
 
         }
         [TestMethod]
+        [Ignore]
         public void TestPontuacaoJogo0a0Aposta1a0()
         {
             ClearInput();
@@ -356,6 +358,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(countCheio, false);
         }
         [TestMethod]
+        [Ignore]
         public void TestPontuacaoJogo0a0Aposta0a1()
         {
             ClearInput();
@@ -388,6 +391,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(countCheio, false);
         }
         [TestMethod]
+        [Ignore]
         public void TestPontuacaoJogo0a0Aposta1a1()
         {
             ClearInput();
@@ -420,6 +424,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(countCheio, false);
         }
         [TestMethod]
+        [Ignore]
         public void TestPontuacaoJogo0a0Aposta2a0()
         {
             ClearInput();
@@ -452,6 +457,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(countCheio, false);
         }
         [TestMethod]
+        [Ignore]
         public void TestPontuacaoJogo0a0Aposta2a1()
         {
             ClearInput();
@@ -484,6 +490,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(countCheio, false);
         }
         [TestMethod]
+        [Ignore]
         public void TestPontuacaoJogo0a0Aposta0a2()
         {
             ClearInput();
@@ -516,6 +523,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(countCheio, false);
         }
         [TestMethod]
+        [Ignore]
         public void TestPontuacaoJogo0a0Aposta1a2()
         {
             ClearInput();
@@ -548,6 +556,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(countCheio, false);
         }
         [TestMethod]
+        [Ignore]
         public void TestPontuacaoJogo0a0Aposta2a2()
         {
             ClearInput();
@@ -585,6 +594,7 @@ namespace BolaoNet.Tests.Pontuacao
         #region Jogo 1 x 0
 
         [TestMethod]
+        [Ignore]
         public void TestPontuacaoJogo1a0Aposta0a0()
         {
 
@@ -619,6 +629,7 @@ namespace BolaoNet.Tests.Pontuacao
 
         }
         [TestMethod]
+        [Ignore]
         public void TestPontuacaoJogo1a0Aposta1a0()
         {
             ClearInput();
@@ -651,6 +662,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(countCheio, true);
         }
         [TestMethod]
+        [Ignore]
         public void TestPontuacaoJogo1a0Aposta0a1()
         {
             ClearInput();
@@ -683,6 +695,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(countCheio, false);
         }
         [TestMethod]
+        [Ignore]
         public void TestPontuacaoJogo1a0Aposta1a1()
         {
             ClearInput();
@@ -715,6 +728,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(countCheio, false);
         }
         [TestMethod]
+        [Ignore]
         public void TestPontuacaoJogo1a0Aposta2a0()
         {
             ClearInput();
@@ -747,6 +761,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(countCheio, false);
         }
         [TestMethod]
+        [Ignore]
         public void TestPontuacaoJogo1a0Aposta2a1()
         {
             ClearInput();
@@ -779,6 +794,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(countCheio, false);
         }
         [TestMethod]
+        [Ignore]
         public void TestPontuacaoJogo1a0Aposta0a2()
         {
             ClearInput();
@@ -811,6 +827,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(countCheio, false);
         }
         [TestMethod]
+        [Ignore]
         public void TestPontuacaoJogo1a0Aposta1a2()
         {
             ClearInput();
@@ -843,6 +860,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(countCheio, false);
         }
         [TestMethod]
+        [Ignore]
         public void TestPontuacaoJogo1a0Aposta2a2()
         {
             ClearInput();
@@ -880,6 +898,7 @@ namespace BolaoNet.Tests.Pontuacao
         #region Jogo 0 x 1
 
         [TestMethod]
+        [Ignore]
         public void TestPontuacaoJogo0a1Aposta0a0()
         {
 
@@ -914,6 +933,7 @@ namespace BolaoNet.Tests.Pontuacao
 
         }
         [TestMethod]
+        [Ignore]
         public void TestPontuacaoJogo0a1Aposta1a0()
         {
             ClearInput();
@@ -946,6 +966,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(countCheio, false);
         }
         [TestMethod]
+        [Ignore]
         public void TestPontuacaoJogo0a1Aposta0a1()
         {
             ClearInput();
@@ -978,6 +999,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(countCheio, true);
         }
         [TestMethod]
+        [Ignore]
         public void TestPontuacaoJogo0a1Aposta1a1()
         {
             ClearInput();
@@ -1010,6 +1032,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(countCheio, false);
         }
         [TestMethod]
+        [Ignore]
         public void TestPontuacaoJogo0a1Aposta2a0()
         {
             ClearInput();
@@ -1042,6 +1065,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(countCheio, false);
         }
         [TestMethod]
+        [Ignore]
         public void TestPontuacaoJogo0a1Aposta2a1()
         {
             ClearInput();
@@ -1074,6 +1098,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(countCheio, false);
         }
         [TestMethod]
+        [Ignore]
         public void TestPontuacaoJogo0a1Aposta0a2()
         {
             ClearInput();
@@ -1106,6 +1131,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(countCheio, false);
         }
         [TestMethod]
+        [Ignore]
         public void TestPontuacaoJogo0a1Aposta1a2()
         {
             ClearInput();
@@ -1138,6 +1164,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(countCheio, false);
         }
         [TestMethod]
+        [Ignore]
         public void TestPontuacaoJogo0a1Aposta2a2()
         {
             ClearInput();
@@ -1175,6 +1202,7 @@ namespace BolaoNet.Tests.Pontuacao
         #region Copa 0 x 0
 
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a0Aposta0a0()
         {
             ClearInput();
@@ -1191,6 +1219,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(10, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a0Aposta1a0()
         {
             ClearInput();
@@ -1207,6 +1236,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(1, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a0Aposta0a1()
         {
             ClearInput();
@@ -1223,6 +1253,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(1, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a0Aposta1a1()
         {
             ClearInput();
@@ -1239,6 +1270,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(5, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a0Aposta2a0()
         {
             ClearInput();
@@ -1255,6 +1287,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(1, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a0Aposta2a1()
         {
             ClearInput();
@@ -1271,6 +1304,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(0, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a0Aposta0a2()
         {
             ClearInput();
@@ -1287,6 +1321,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(1, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a0Aposta1a2()
         {
             ClearInput();
@@ -1303,6 +1338,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(0, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a0Aposta2a2()
         {
             ClearInput();
@@ -1324,6 +1360,7 @@ namespace BolaoNet.Tests.Pontuacao
         #region Copa 1 x 0
 
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo1a0Aposta0a0()
         {
             ClearInput();
@@ -1340,6 +1377,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(1, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo1a0Aposta1a0()
         {
             ClearInput();
@@ -1356,6 +1394,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(10, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo1a0Aposta0a1()
         {
             ClearInput();
@@ -1372,6 +1411,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(0, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo1a0Aposta1a1()
         {
             ClearInput();
@@ -1388,6 +1428,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(1, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo1a0Aposta2a0()
         {
             ClearInput();
@@ -1404,6 +1445,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(4, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo1a0Aposta2a1()
         {
             ClearInput();
@@ -1420,6 +1462,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(3, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo1a0Aposta0a2()
         {
             ClearInput();
@@ -1436,6 +1479,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(0, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo1a0Aposta1a2()
         {
             ClearInput();
@@ -1452,6 +1496,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(1, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo1a0Aposta2a2()
         {
             ClearInput();
@@ -1473,6 +1518,7 @@ namespace BolaoNet.Tests.Pontuacao
         #region Copa 0 x 1
 
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a1Aposta0a0()
         {
             ClearInput();
@@ -1489,6 +1535,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(1, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a1Aposta1a0()
         {
             ClearInput();
@@ -1505,6 +1552,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(0, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a1Aposta0a1()
         {
             ClearInput();
@@ -1521,6 +1569,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(10, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a1Aposta1a1()
         {
             ClearInput();
@@ -1537,6 +1586,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(1, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a1Aposta2a0()
         {
             ClearInput();
@@ -1553,6 +1603,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(0, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a1Aposta2a1()
         {
             ClearInput();
@@ -1569,6 +1620,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(1, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a1Aposta0a2()
         {
             ClearInput();
@@ -1585,6 +1637,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(4, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a1Aposta1a2()
         {
             ClearInput();
@@ -1601,6 +1654,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(3, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a1Aposta2a2()
         {
             ClearInput();
@@ -1623,6 +1677,7 @@ namespace BolaoNet.Tests.Pontuacao
         #region Copa 0 x 0 - Brasil
 
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a0Aposta0a0Brasil()
         {
             ClearInput();
@@ -1639,6 +1694,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(20, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a0Aposta1a0Brasil()
         {
             ClearInput();
@@ -1655,6 +1711,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(2, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a0Aposta0a1Brasil()
         {
             ClearInput();
@@ -1671,6 +1728,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(2, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a0Aposta1a1Brasil()
         {
             ClearInput();
@@ -1687,6 +1745,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(10, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a0Aposta2a0Brasil()
         {
             ClearInput();
@@ -1703,6 +1762,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(2, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a0Aposta2a1Brasil()
         {
             ClearInput();
@@ -1719,6 +1779,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(0, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a0Aposta0a2Brasil()
         {
             ClearInput();
@@ -1735,6 +1796,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(2, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a0Aposta1a2Brasil()
         {
             ClearInput();
@@ -1751,6 +1813,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(0, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a0Aposta2a2Brasil()
         {
             ClearInput();
@@ -1772,6 +1835,7 @@ namespace BolaoNet.Tests.Pontuacao
         #region Copa 1 x 0 - Brasil
 
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo1a0Aposta0a0Brasil()
         {
             ClearInput();
@@ -1788,6 +1852,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(2, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo1a0Aposta1a0Brasil()
         {
             ClearInput();
@@ -1804,6 +1869,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(20, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo1a0Aposta0a1Brasil()
         {
             ClearInput();
@@ -1820,6 +1886,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(0, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo1a0Aposta1a1Brasil()
         {
             ClearInput();
@@ -1836,6 +1903,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(2, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo1a0Aposta2a0Brasil()
         {
             ClearInput();
@@ -1852,6 +1920,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(8, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo1a0Aposta2a1Brasil()
         {
             ClearInput();
@@ -1868,6 +1937,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(6, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo1a0Aposta0a2Brasil()
         {
             ClearInput();
@@ -1884,6 +1954,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(0, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo1a0Aposta1a2Brasil()
         {
             ClearInput();
@@ -1900,6 +1971,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(2, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo1a0Aposta2a2Brasil()
         {
             ClearInput();
@@ -1921,6 +1993,7 @@ namespace BolaoNet.Tests.Pontuacao
         #region Copa 0 x 1 - Brasil
 
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a1Aposta0a0Brasil()
         {
             ClearInput();
@@ -1937,6 +2010,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(2, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a1Aposta1a0Brasil()
         {
             ClearInput();
@@ -1953,6 +2027,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(0, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a1Aposta0a1Brasil()
         {
             ClearInput();
@@ -1969,6 +2044,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(20, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a1Aposta1a1Brasil()
         {
             ClearInput();
@@ -1985,6 +2061,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(2, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a1Aposta2a0Brasil()
         {
             ClearInput();
@@ -2001,6 +2078,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(0, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a1Aposta2a1Brasil()
         {
             ClearInput();
@@ -2017,6 +2095,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(2, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a1Aposta0a2Brasil()
         {
             ClearInput();
@@ -2033,6 +2112,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(8, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a1Aposta1a2Brasil()
         {
             ClearInput();
@@ -2049,6 +2129,7 @@ namespace BolaoNet.Tests.Pontuacao
             Assert.AreEqual(6, pontosResultados);
         }
         [TestMethod]
+        [Ignore]
         public void TestCampeonatoPontosJogo0a1Aposta2a2Brasil()
         {
             ClearInput();

@@ -37,20 +37,28 @@ namespace BolaoNet.WebApi.Integration.Campeonatos
 
         public IList<int> GetRodadasCampeonato(Domain.Entities.Campeonatos.Campeonato campeonato)
         {
-            throw new NotImplementedException();
+            return base.HttpPostApi<IList<int>>(
+            new Dictionary<string, string>(), campeonato, "GetRodadasCampeonato");
         }
         public void Reiniciar(Domain.Entities.Campeonatos.Campeonato campeonato)
         {
-            throw new NotImplementedException();
+             base.HttpPostApi<IList<int>>(
+              new Dictionary<string, string>(), campeonato, "Reiniciar");
         }
 
         public void ClearDatabase()
         {
-            throw new NotImplementedException();
+            base.HttpPostApi<IList<int>>(
+             new Dictionary<string, object>(), "ClearDatabase");
         }
         public IList<IList<Domain.Entities.ValueObjects.CampeonatoRecordVO>> GetRecords(Domain.Entities.Campeonatos.Campeonato campeonato, Domain.Interfaces.Services.Campeonatos.RecordTipoPesquisa tipo)
         {
-            throw new NotImplementedException();
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("campeonato", campeonato);
+            parameters.Add("tipo", tipo);
+
+            return base.HttpPostApi<IList<IList<Domain.Entities.ValueObjects.CampeonatoRecordVO>>>(parameters, "GetRecords");
         }
 
         #endregion

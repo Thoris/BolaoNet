@@ -37,7 +37,8 @@ namespace BolaoNet.WebApi.Integration.Boloes
         
         public IList<Domain.Entities.Boloes.BolaoPremio> GetPremiosBolao(Domain.Entities.Boloes.Bolao bolao)
         {
-            throw new NotImplementedException();
+            return base.HttpPostApi<IList<Domain.Entities.Boloes.BolaoPremio>>(
+                new Dictionary<string, string>(), bolao, "GetPremiosBolao");
         }
 
         #endregion

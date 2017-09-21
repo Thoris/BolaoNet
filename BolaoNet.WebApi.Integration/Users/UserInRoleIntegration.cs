@@ -37,7 +37,8 @@ namespace BolaoNet.WebApi.Integration.Users
 
         public IList<Domain.Entities.Users.Role> GetRolesInUser(Domain.Entities.Users.User user)
         {
-            throw new NotImplementedException();
+            return base.HttpPostApi<IList<Domain.Entities.Users.Role>>(
+              new Dictionary<string, string>(), user, "GetRolesInUser");
         }
 
         #endregion

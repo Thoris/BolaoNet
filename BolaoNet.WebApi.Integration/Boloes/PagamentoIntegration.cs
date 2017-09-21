@@ -37,12 +37,14 @@ namespace BolaoNet.WebApi.Integration.Boloes
 
         public IList<Domain.Entities.Boloes.Pagamento> GetPagamentosBolao(Domain.Entities.Boloes.Bolao bolao)
         {
-            throw new NotImplementedException();
+            return base.HttpPostApi<IList<Domain.Entities.Boloes.Pagamento>>(
+                 new Dictionary<string, string>(), bolao, "GetPagamentosBolao");
         }
 
         public IList<Domain.Entities.Boloes.Pagamento> GetPagamentosBolaoSoma(Domain.Entities.Boloes.Bolao bolao)
         {
-            throw new NotImplementedException();
+            return base.HttpPostApi<IList<Domain.Entities.Boloes.Pagamento>>(
+                 new Dictionary<string, string>(), bolao, "GetPagamentosBolaoSoma");
         }
         #endregion
     }

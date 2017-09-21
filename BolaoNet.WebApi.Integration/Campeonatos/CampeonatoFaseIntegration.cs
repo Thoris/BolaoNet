@@ -37,7 +37,8 @@ namespace BolaoNet.WebApi.Integration.Campeonatos
 
         public IList<Domain.Entities.Campeonatos.CampeonatoFase> GetFaseCampeonato(Domain.Entities.Campeonatos.Campeonato campeonato)
         {
-            throw new NotImplementedException();
+            return base.HttpPostApi<IList<Domain.Entities.Campeonatos.CampeonatoFase>>(
+                 new Dictionary<string, string>(), campeonato, "GetFaseCampeonato");
         }
 
         #endregion

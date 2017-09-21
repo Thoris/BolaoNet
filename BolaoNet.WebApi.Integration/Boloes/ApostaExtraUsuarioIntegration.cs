@@ -48,12 +48,14 @@ namespace BolaoNet.WebApi.Integration.Boloes
 
         public IList<Domain.Entities.Boloes.ApostaExtraUsuario> GetApostasBolao(Domain.Entities.Boloes.Bolao bolao)
         {
-            throw new NotImplementedException();
+            return base.HttpPostApi<ICollection<Domain.Entities.Boloes.ApostaExtraUsuario>>
+                (new Dictionary<string, string>(), bolao, "GetApostasBolao").ToList<Domain.Entities.Boloes.ApostaExtraUsuario>();
         }
 
         public IList<IList<Domain.Entities.Boloes.ApostaExtraUsuario>> GetApostasBolaoAgrupado(Domain.Entities.Boloes.Bolao bolao)
         {
-            throw new NotImplementedException();
+            return base.HttpPostApi<IList<IList<Domain.Entities.Boloes.ApostaExtraUsuario>>>
+                (new Dictionary<string, string>(), bolao, "GetApostasBolaoAgrupado").ToList();
         }
 
         #endregion

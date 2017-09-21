@@ -37,7 +37,12 @@ namespace BolaoNet.WebApi.Integration.Boloes
 
         public IList<Domain.Entities.ValueObjects.BolaoClassificacaoVO> LoadClassificacao(Domain.Entities.Boloes.Bolao bolao, int? rodada)
         {
-            throw new NotImplementedException();
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("bolao", bolao);
+            parameters.Add("rodada", rodada);
+
+            return base.HttpPostApi<IList<Domain.Entities.ValueObjects.BolaoClassificacaoVO>>(parameters, "LoadClassificacao");   
         }
 
         #endregion

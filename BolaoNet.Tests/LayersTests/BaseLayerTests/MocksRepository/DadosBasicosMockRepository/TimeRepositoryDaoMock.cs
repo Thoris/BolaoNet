@@ -28,16 +28,19 @@ namespace BolaoNet.Tests.LayersTests.BaseLayerTests.MocksRepository.DadosBasicos
 
         #region Methods
 
-        public void Setup()
+        public Domain.Interfaces.Repositories.DadosBasicos.ITimeDao Setup()
         {
             IList<Domain.Entities.DadosBasicos.Time> list = new List<Domain.Entities.DadosBasicos.Time>();
- 
-            base.Setup( _mock, list);
+            list.Add(new Domain.Entities.DadosBasicos.Time("XXXXXX"));
+            list.Add(new Domain.Entities.DadosBasicos.Time("YYYYYY"));
+            list.Add(new Domain.Entities.DadosBasicos.Time("ZZZZZZ"));
+              
+            return base.Setup( _mock, list);
         }
 
         public override Func<Domain.Entities.DadosBasicos.Time, bool> GetPredicate(Domain.Entities.DadosBasicos.Time entity)
         {
-            return x => x.Nome == entity.Nome;            
+            return x => string.Compare (x.Nome, entity.Nome, true) == 0;            
         }
 
         #endregion

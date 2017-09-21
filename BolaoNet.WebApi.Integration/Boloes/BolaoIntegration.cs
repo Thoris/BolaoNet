@@ -46,30 +46,28 @@ namespace BolaoNet.WebApi.Integration.Boloes
 
             return base.HttpPostApi<bool>(parameters, "Iniciar");            
         }
-
         public bool Aguardar(Domain.Entities.Boloes.Bolao bolao)
         {
             return base.HttpPostApi<bool>(new Dictionary<string, string>(), bolao, "Aguardar");
         }
         public IList<Domain.Entities.Boloes.Bolao> GetBoloesDisponiveis()
         {
-            //return base.HttpPostApi<IList<Domain.Entities.Boloes.Bolao>>(
-            //    new Dictionary<string, string>(), "GetBoloesDisponiveis");
-            return null;
+            return base.HttpPostApi<IList<Domain.Entities.Boloes.Bolao>>(new Dictionary<string, object>(), "GetBoloesDisponiveis");
         }
-
         public IList<Domain.Entities.ValueObjects.UserBoloesVO> GetBoloesUsuario(Domain.Entities.Users.User user)
         {
-            throw new NotImplementedException();
+            return base.HttpPostApi<IList<Domain.Entities.ValueObjects.UserBoloesVO>>(new Dictionary<string, string>(), user, "GetBoloesUsuario");
         }
-
         public IList<Domain.Entities.ValueObjects.UserSaldoBolaoVO> GetBoloesSaldoUsuario(Domain.Entities.Users.User user)
         {
-            throw new NotImplementedException();
+            return base.HttpPostApi<IList<Domain.Entities.ValueObjects.UserSaldoBolaoVO>>(new Dictionary<string, string>(), user, "GetBoloesSaldoUsuario");
+       
         }
         public bool IsIniciado(Domain.Entities.Boloes.Bolao bolao)
         {
-            throw new NotImplementedException();
+            return base.HttpPostApi<bool>(
+                new Dictionary<string, string>(), bolao, "IsIniciado");
+       
         }
 
         #endregion

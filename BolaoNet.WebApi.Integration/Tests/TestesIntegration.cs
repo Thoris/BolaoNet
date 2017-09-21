@@ -32,16 +32,24 @@ namespace BolaoNet.WebApi.Integration.Tests
 
         public bool TestConnection()
         {
-            throw new NotImplementedException();
+            return base.HttpPostApi<bool>(
+                 new Dictionary<string, object>(), "TestConnection");
         }
 
         public DateTime GetCurrentDateTime()
         {
-            throw new NotImplementedException();
+            return base.HttpPostApi<DateTime>(
+                 new Dictionary<string, object>(), "GetCurrentDateTime");
         }
         public bool TestNotifyWelcome(string password, string email)
         {
-            throw new NotImplementedException();
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("password", password);
+            parameters.Add("email", email); 
+
+            return HttpPostApi<bool>(
+                parameters, "TestNotifyWelcome");
         }
 
         #endregion

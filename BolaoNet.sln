@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReferencedComponents", "ReferencedComponents", "{0DD79E73-9DDE-475A-A7AC-DDE941D14543}"
 EndProject
@@ -149,8 +149,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.4 - Mail", "4.4 - Mail", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BolaoNet.Infra.Notification.Mail", "BolaoNet.Infra.Notification.Mail\BolaoNet.Infra.Notification.Mail.csproj", "{634E95F1-4F38-4BDB-AD16-8DFCD6C73AB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BolaoNet.Tests.Interface", "BolaoNet.Tests.Interface\BolaoNet.Tests.Interface.csproj", "{6A0F5416-AF00-458C-912C-B36EB12BC3F7}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BolaoNet.Infra.Reports", "BolaoNet.Infra.Reports\BolaoNet.Infra.Reports.csproj", "{5C3E6AA6-F8D2-4940-BE65-3FC76DB96B59}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BolaoNet.MVC.Tests", "BolaoNet.MVC.Tests\BolaoNet.MVC.Tests.csproj", "{0E555D9B-B7CA-4E98-8C23-96E5282042C5}"
@@ -161,6 +159,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharpZip", "SharpZip", "{FD
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BolaoNet.Tests", "BolaoNet.Tests\BolaoNet.Tests.csproj", "{AA6F45AB-8410-4A2B-9447-E8F95297E9CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BolaoNet.Tests.Exploratory", "BolaoNet.Tests.Exploratory\BolaoNet.Tests.Exploratory.csproj", "{03150E3E-4AC7-4F9A-9B32-1595297D378D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -238,10 +238,6 @@ Global
 		{634E95F1-4F38-4BDB-AD16-8DFCD6C73AB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{634E95F1-4F38-4BDB-AD16-8DFCD6C73AB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{634E95F1-4F38-4BDB-AD16-8DFCD6C73AB5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6A0F5416-AF00-458C-912C-B36EB12BC3F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6A0F5416-AF00-458C-912C-B36EB12BC3F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6A0F5416-AF00-458C-912C-B36EB12BC3F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6A0F5416-AF00-458C-912C-B36EB12BC3F7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5C3E6AA6-F8D2-4940-BE65-3FC76DB96B59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5C3E6AA6-F8D2-4940-BE65-3FC76DB96B59}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C3E6AA6-F8D2-4940-BE65-3FC76DB96B59}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -254,6 +250,10 @@ Global
 		{AA6F45AB-8410-4A2B-9447-E8F95297E9CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA6F45AB-8410-4A2B-9447-E8F95297E9CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA6F45AB-8410-4A2B-9447-E8F95297E9CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03150E3E-4AC7-4F9A-9B32-1595297D378D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03150E3E-4AC7-4F9A-9B32-1595297D378D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03150E3E-4AC7-4F9A-9B32-1595297D378D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03150E3E-4AC7-4F9A-9B32-1595297D378D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -307,10 +307,10 @@ Global
 		{8E9DE538-DED5-4B14-9405-501A2F6FC2C0} = {38671E94-5B6B-4572-BD61-F4D3F44DF5D9}
 		{6409FF15-ABAE-41F4-AB64-B03FC1D19390} = {684FCDA3-B961-401C-B192-6CD6D471693E}
 		{634E95F1-4F38-4BDB-AD16-8DFCD6C73AB5} = {6409FF15-ABAE-41F4-AB64-B03FC1D19390}
-		{6A0F5416-AF00-458C-912C-B36EB12BC3F7} = {80B65053-B40D-49BF-8881-F4CF52F0DE15}
 		{5C3E6AA6-F8D2-4940-BE65-3FC76DB96B59} = {8E9DE538-DED5-4B14-9405-501A2F6FC2C0}
 		{0E555D9B-B7CA-4E98-8C23-96E5282042C5} = {80B65053-B40D-49BF-8881-F4CF52F0DE15}
 		{FD68D9F6-79A8-4BFE-89CB-6F2316849C01} = {0DD79E73-9DDE-475A-A7AC-DDE941D14543}
 		{AA6F45AB-8410-4A2B-9447-E8F95297E9CF} = {80B65053-B40D-49BF-8881-F4CF52F0DE15}
+		{03150E3E-4AC7-4F9A-9B32-1595297D378D} = {80B65053-B40D-49BF-8881-F4CF52F0DE15}
 	EndGlobalSection
 EndGlobal

@@ -11,6 +11,30 @@ namespace BolaoNet.Tests.Debug
         static void Main(string[] args)
         {
 
+            BolaoNet.Tests.LayersTests.BaseLayerTests.MocksRepository.DadosBasicosMockRepository.TimeRepositoryDaoMock m = new LayersTests.BaseLayerTests.MocksRepository.DadosBasicosMockRepository.TimeRepositoryDaoMock();
+            Domain.Interfaces.Repositories.DadosBasicos.ITimeDao dao = m.Setup();
+
+            //long total = dao.Count();
+            //ICollection<Domain.Entities.DadosBasicos.Time> list = dao.GetAll();
+            //dao.Insert(new Domain.Entities.DadosBasicos.Time("T"));
+            //dao.Load(new Domain.Entities.DadosBasicos.Time("T"));
+            //dao.Delete(new Domain.Entities.DadosBasicos.Time("T"));
+
+
+            BolaoNet.Tests.LayersTests.BaseLayerTests.BaseDadosBasicosTests.TimeLayerTests<Domain.Interfaces.Repositories.DadosBasicos.ITimeDao> x = new LayersTests.BaseLayerTests.BaseDadosBasicosTests.TimeLayerTests<Domain.Interfaces.Repositories.DadosBasicos.ITimeDao>(dao);
+
+            x.TestInsert();
+            x.TestGetAll();
+            
+            x.TestDelete();
+            x.TestGetAll();
+            x.TestGetList();
+            x.TestLoad();
+            x.TestUpdate();
+
+            x.TestCount();
+            x.TestCountWhere();
+            
 
 
             //new Tests.AllTests().Execute();

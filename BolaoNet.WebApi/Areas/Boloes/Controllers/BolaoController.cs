@@ -57,7 +57,6 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
         [HttpPost]
         public bool Iniciar(int id, ArrayList data)
-        //public bool Iniciar(ArrayList data)
         {
             //Domain.Entities.Users.User iniciadoBy = parameters["iniciadoBy"].ToObject<Domain.Entities.Users.User>();
             //Domain.Entities.Boloes.Bolao bolao = parameters["bolao"].ToObject<Domain.Entities.Boloes.Bolao>();
@@ -121,19 +120,22 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
         {
             return Service.GetBoloesDisponiveis();
         }
+        [HttpPost]
         public IList<Domain.Entities.ValueObjects.UserBoloesVO> GetBoloesUsuario(Domain.Entities.Users.User user)
         {
             return Service.GetBoloesUsuario(user);
         }
-
+        [HttpPost]
         public IList<Domain.Entities.ValueObjects.UserSaldoBolaoVO> GetBoloesSaldoUsuario(Domain.Entities.Users.User user)
         {
             return Service.GetBoloesSaldoUsuario(user);
         }
+        [HttpPost]
         public bool IsIniciado(Domain.Entities.Boloes.Bolao bolao)
         {
             return Service.IsIniciado(bolao);
         }
+
         #endregion
 
     }

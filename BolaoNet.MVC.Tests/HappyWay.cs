@@ -32,6 +32,7 @@ namespace BolaoNet.MVC.Tests
         #endregion
 
         [TestMethod]
+        [Ignore]
         public void TestFullCycle()
         {
 

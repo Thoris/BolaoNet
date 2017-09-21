@@ -77,39 +77,68 @@ namespace BolaoNet.WebApi.Integration.Boloes
 
         public void InsertApostasAutomaticas(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user, Domain.Entities.ValueObjects.ApostasAutomaticasFilterVO filter)
         {
-            throw new NotImplementedException();
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("bolao", bolao);
+            parameters.Add("user", user);
+            parameters.Add("filter", filter);
+
+            HttpPostApi<bool>(
+                parameters, "InsertApostasAutomaticas");
         }
 
         public IList<Domain.Entities.Boloes.JogoUsuario> GetApostasJogo(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Campeonatos.Jogo jogo)
         {
-            throw new NotImplementedException();
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("bolao", bolao);
+            parameters.Add("jogo", jogo);
+
+            return HttpPostApi<ICollection<Domain.Entities.Boloes.JogoUsuario>>(
+                parameters, "GetApostasJogo").ToList<Domain.Entities.Boloes.JogoUsuario>();
         }
 
         public IList<Domain.Entities.ValueObjects.JogoUsuarioVO> LoadAcertosDificeis(Domain.Entities.Boloes.Bolao bolao, int totalMaximoAcertos)
         {
-            throw new NotImplementedException();
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("bolao", bolao);
+            parameters.Add("totalMaximoAcertos", totalMaximoAcertos);
+
+            return HttpPostApi<IList<Domain.Entities.ValueObjects.JogoUsuarioVO>>(
+                parameters, "LoadAcertosDificeis") ;
         }
 
         public IList<Domain.Entities.Campeonatos.Jogo> LoadSemAcertos(Domain.Entities.Boloes.Bolao bolao)
         {
-            throw new NotImplementedException();
+            return base.HttpPostApi<IList<Domain.Entities.Campeonatos.Jogo>>(
+                 new Dictionary<string, string>(), bolao, "LoadSemAcertos");
         }
 
         public IList<Domain.Entities.ValueObjects.JogoUsuarioVO> LoadPontosObtidos(Domain.Entities.Users.User user, int totalRetorno)
         {
-            throw new NotImplementedException();
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("user", user);
+            parameters.Add("totalRetorno", totalRetorno);
+
+            return HttpPostApi<IList<Domain.Entities.ValueObjects.JogoUsuarioVO>>(
+                parameters, "LoadPontosObtidos");
         }
 
         public IList<Domain.Entities.ValueObjects.JogoUsuarioVO> LoadProximosJogosUsuario(Domain.Entities.Users.User user, int totalRetorno)
         {
-            throw new NotImplementedException();
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("user", user);
+            parameters.Add("totalRetorno", totalRetorno);
+
+            return HttpPostApi<IList<Domain.Entities.ValueObjects.JogoUsuarioVO>>(
+                parameters, "LoadProximosJogosUsuario");
         }
 
         public int CalcularPontoSimulation(int gols1, int gols2, int aposta1, int aposta2, int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1, int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, bool isMultiploTime, int multiploTime)
         {
-
-
-
 
             throw new NotImplementedException();
         }

@@ -1,5 +1,7 @@
 ﻿using BolaoNet.Services.Controllers;
+using Newtonsoft.Json;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -48,7 +50,17 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
         {
             return Service.LoadClassificacao(bolao, fase, grupo, user);
         }
+        public IList<Domain.Entities.Boloes.BolaoCampeonatoClassificacaoUsuario> LoadClassificacao(int id, ArrayList data)
+        {
 
+            Domain.Entities.Boloes.Bolao bolao = JsonConvert.DeserializeObject<Domain.Entities.Boloes.Bolao>(data[0].ToString());
+            Domain.Entities.Campeonatos.CampeonatoFase fase = JsonConvert.DeserializeObject<Domain.Entities.Campeonatos.CampeonatoFase>(data[1].ToString());
+            Domain.Entities.Campeonatos.CampeonatoGrupo grupo = JsonConvert.DeserializeObject<Domain.Entities.Campeonatos.CampeonatoGrupo>(data[2].ToString());
+            Domain.Entities.Users.User user = JsonConvert.DeserializeObject<Domain.Entities.Users.User>(data[3].ToString());
+
+            return this.LoadClassificacao(bolao, fase, grupo, user);
+
+        }
         #endregion
     }
 }

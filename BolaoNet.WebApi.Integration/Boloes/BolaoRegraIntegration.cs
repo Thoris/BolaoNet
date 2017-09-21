@@ -37,7 +37,8 @@ namespace BolaoNet.WebApi.Integration.Boloes
 
         public IList<Domain.Entities.Boloes.BolaoRegra> GetRegrasBolao(Domain.Entities.Boloes.Bolao bolao)
         {
-            throw new NotImplementedException();
+            return base.HttpPostApi<IList<Domain.Entities.Boloes.BolaoRegra>>(
+                new Dictionary<string, string>(), bolao, "GetRegrasBolao");
         }
 
         #endregion

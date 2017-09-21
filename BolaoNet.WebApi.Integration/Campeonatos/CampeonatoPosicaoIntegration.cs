@@ -37,7 +37,12 @@ namespace BolaoNet.WebApi.Integration.Campeonatos
         
         public IList<Domain.Entities.Campeonatos.CampeonatoPosicao> GetPosicao(Domain.Entities.Campeonatos.Campeonato campeonato, Domain.Entities.Campeonatos.CampeonatoFase fase)
         {
-            throw new NotImplementedException();
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("campeonato", campeonato);
+            parameters.Add("fase", fase);
+
+            return base.HttpPostApi<IList<Domain.Entities.Campeonatos.CampeonatoPosicao>>(parameters, "GetPosicao");
         }
 
         #endregion

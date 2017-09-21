@@ -37,7 +37,15 @@ namespace BolaoNet.WebApi.Integration.Campeonatos
 
         public IList<Domain.Entities.Campeonatos.CampeonatoClassificacao> LoadClassificacao(Domain.Entities.Campeonatos.Campeonato campeonato, Domain.Entities.Campeonatos.CampeonatoFase fase, Domain.Entities.Campeonatos.CampeonatoGrupo grupo, int rodada)
         {
-            throw new NotImplementedException();
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("campeonato", campeonato);
+            parameters.Add("fase", fase);
+            parameters.Add("grupo", grupo);
+            parameters.Add("rodada", rodada);
+
+            return HttpPostApi<IList<Domain.Entities.Campeonatos.CampeonatoClassificacao>>(
+                parameters, "LoadClassificacao");
         }
 
         #endregion

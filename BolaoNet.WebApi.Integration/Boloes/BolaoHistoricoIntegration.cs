@@ -37,12 +37,20 @@ namespace BolaoNet.WebApi.Integration.Boloes
 
         public IList<Domain.Entities.Boloes.BolaoHistorico> GetListFromBolao(Domain.Entities.Boloes.Bolao bolao, int ano)
         {
-            throw new NotImplementedException();
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("bolao", bolao);
+            parameters.Add("ano", ano);
+
+            return base.HttpPostApi<IList<Domain.Entities.Boloes.BolaoHistorico>>(parameters, "GetListFromBolao");
+      
         }
 
         public IList<int> GetYearsFromBolao(Domain.Entities.Boloes.Bolao bolao)
         {
-            throw new NotImplementedException();
+            return base.HttpPostApi<IList<int>>(
+             new Dictionary<string, string>(), bolao, "GetYearsFromBolao").ToList<int>();
+        
         }
 
         #endregion

@@ -37,7 +37,8 @@ namespace BolaoNet.WebApi.Integration.Campeonatos
 
         public IList<Domain.Entities.Campeonatos.CampeonatoGrupo> GetGruposCampeonato(Domain.Entities.Campeonatos.Campeonato campeonato)
         {
-            throw new NotImplementedException();
+            return base.HttpPostApi<IList<Domain.Entities.Campeonatos.CampeonatoGrupo>>(
+                new Dictionary<string, string>(), campeonato, "GetGruposCampeonato");
         }
 
         #endregion

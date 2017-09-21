@@ -37,7 +37,8 @@ namespace BolaoNet.WebApi.Integration.Campeonatos
 
         public IList<Domain.Entities.Campeonatos.CampeonatoTime> GetTimesCampeonato(Domain.Entities.Campeonatos.Campeonato campeonato)
         {
-            return null;
+            return base.HttpPostApi<IList<Domain.Entities.Campeonatos.CampeonatoTime>>(
+                new Dictionary<string, string>(), campeonato, "GetTimesCampeonato");
         }
 
         #endregion

@@ -37,7 +37,12 @@ namespace BolaoNet.WebApi.Integration.Boloes
 
         public IList<Domain.Entities.Boloes.Mensagem> GetMensagensUsuario(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
         {
-            throw new NotImplementedException();
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("bolao", bolao);
+            parameters.Add("user", user); 
+
+            return base.HttpPostApi<IList<Domain.Entities.Boloes.Mensagem>>(parameters, "GetMensagensUsuario");
         }
 
         #endregion

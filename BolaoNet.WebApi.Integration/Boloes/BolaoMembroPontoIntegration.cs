@@ -39,7 +39,13 @@ namespace BolaoNet.WebApi.Integration.Boloes
 
         public IList<Domain.Entities.Boloes.BolaoMembroPonto> GetHistoricoClassificacao(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
         {
-            return null;
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("bolao", bolao);
+            parameters.Add("user", user);
+
+            return base.HttpPostApi<IList<Domain.Entities.Boloes.BolaoMembroPonto>>(parameters, "GetHistoricoClassificacao");   
+      
         }
 
         #endregion

@@ -54,9 +54,6 @@ namespace BolaoNet.Tests.LayersTests.BaseLayerTests
               .Single(m => m.Name == "Delete");
 
 
-            _getList = _performer.GetType()
-              .GetMethods()
-              .Single(m => m.Name == "GetList");
 
 
             _getAll = _performer.GetType()
@@ -64,21 +61,55 @@ namespace BolaoNet.Tests.LayersTests.BaseLayerTests
               .Single(m => m.Name == "GetAll");
 
 
-            //_count = _performer.GetType()
-            //  .GetMethods()
-            //  .Single(m => m.Name == "Count" && m.GetParameters().Count() != 0);
+
+            MethodInfo [] methods =_performer.GetType().GetMethods();
+
+            for (int c = 0; c < methods.Length; c++ )
+            {
+                if (string.Compare (methods[c].Name, "Count") == 0)
+                {
+                    ParameterInfo[] parameters = methods[c].GetParameters();
+
+                    if (parameters.Length == 0)
+                    {
+                        _count = methods[c];
+                    }
+                    else
+                    {
+                        _countWhere = methods[c];
+                    }
+                }
+                else if (string.Compare (methods[c].Name, "GetList") == 0)
+                {
+
+                    ParameterInfo[] parameters = methods[c].GetParameters();
+
+                    if (parameters.Length == 1 && parameters[0].ParameterType != typeof(string))
+                    {
+                        _getList = methods[c];
+                    }
+                    //_getList = _performer.GetType()
+                    //  .GetMethods()
+                    //  .Single(m => m.Name == "GetList");
+                }
+                //_count = _performer.GetType()
+                //  .GetMethods()
+                //  .Single(m => m.Name == "Count" && m.GetParameters().Count() != 0);
 
 
-            //_countWhere = _performer.GetType()
-            //  .GetMethods()
-            //  .Single(m => m.Name == "CountWhere" && m.GetParameters().Count() != 0);
+                //_countWhere = _performer.GetType()
+                //  .GetMethods()
+                //  .Single(m => m.Name == "CountWhere" && m.GetParameters().Count() != 0);
+
+            }
+
         }
 
         #endregion
 
         #region Methods
 
-        protected void TestLoad()
+        public void TestLoad()
         {
             //Preparing
             T entityToTest = GenerateEntity();
@@ -99,7 +130,7 @@ namespace BolaoNet.Tests.LayersTests.BaseLayerTests
                 object resClean = _delete.Invoke(_performer, new object[] {entityToTest});
             }
         }
-        protected void TestInsert()
+        public void TestInsert()
         {
             //Preparing
             long countPreparing = (long)_count.Invoke (_performer, null);
@@ -123,7 +154,7 @@ namespace BolaoNet.Tests.LayersTests.BaseLayerTests
             }
 
         }
-        protected void TestUpdate()
+        public void TestUpdate()
         {
             T entityToTest = GenerateEntity();
             long resPrep = (long) _insert.Invoke(_performer, new object[] {entityToTest});
@@ -166,7 +197,7 @@ namespace BolaoNet.Tests.LayersTests.BaseLayerTests
                 object resClean = _delete.Invoke(_performer, new object[] { entityToTest });
             }
         }
-        protected void TestDelete()
+        public void TestDelete()
         {
             T entityToTest = GenerateEntity();
             object resPrep = _insert.Invoke(_performer, new object [] {entityToTest});
@@ -184,7 +215,7 @@ namespace BolaoNet.Tests.LayersTests.BaseLayerTests
 
             }
         }
-        protected void TestGetList()
+        public void TestGetList()
         {
             T entityToTest = GenerateEntity();
             long countData = (long)_count.Invoke(_performer, null);
@@ -204,7 +235,7 @@ namespace BolaoNet.Tests.LayersTests.BaseLayerTests
 
             }
         }
-        protected void TestGetAll()
+        public void TestGetAll()
         {
             T entityToTest = GenerateEntity();
             long countData = (long)_count.Invoke(_performer, null);
@@ -223,7 +254,7 @@ namespace BolaoNet.Tests.LayersTests.BaseLayerTests
 
             }
         }
-        protected void TestCount()
+        public void TestCount()
         {
             T entityToTest = GenerateEntity();
             long countData = (long)_count.Invoke(_performer, null);
@@ -241,7 +272,7 @@ namespace BolaoNet.Tests.LayersTests.BaseLayerTests
 
             }
         }
-        protected void TestCountWhere()
+        public void TestCountWhere()
         {
             //T entityToTest = GenerateEntity();
             //long countData = _dao.Count();
