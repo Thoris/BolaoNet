@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 
 namespace BolaoNet.WebApi.Areas.Boloes.Controllers
 {
@@ -39,6 +40,7 @@ namespace BolaoNet.WebApi.Areas.Boloes.Controllers
 
         #region IBolaoMembroBO members
 
+        [HttpPost]
         public IList<Domain.Entities.Boloes.BolaoMembroPonto> GetHistoricoClassificacao(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
         {
             return Service.GetHistoricoClassificacao(bolao, user);

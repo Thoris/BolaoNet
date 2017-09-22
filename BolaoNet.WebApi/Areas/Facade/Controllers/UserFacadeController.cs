@@ -91,6 +91,7 @@ namespace BolaoNet.WebApi.Areas.Facade.Controllers
 
             return this.SendRequestUserBolao(user, bolao);
         }
+        [HttpPost]
         public bool SendRequestUserBolao(Domain.Entities.Users.User user, Domain.Entities.Boloes.Bolao bolao)
         {
             return _service.SendRequestUserBolao(user, bolao);

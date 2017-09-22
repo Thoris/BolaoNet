@@ -46,6 +46,7 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
         #region IBolaoCriterioPontosTimesService members
 
 
+        [HttpPost]
         public IList<Domain.Entities.Boloes.BolaoCriterioPontosTimes> GetCriterioPontosBolao(Domain.Entities.Boloes.Bolao bolao)
         {
             return Service.GetCriterioPontosBolao(bolao);

@@ -40,19 +40,23 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
         #region IBolaoMembroBO members
 
+        [HttpPost]
         public IList<Domain.Entities.Boloes.BolaoMembro> GetListUsersInBolao(Domain.Entities.Boloes.Bolao bolao)
         {
             return Service.GetListUsersInBolao(bolao);
         }
+        [HttpPost]
         public IList<Domain.Entities.Boloes.BolaoMembro> GetListBolaoInUsers(Domain.Entities.Users.User user)
         {
             return Service.GetListBolaoInUsers(user);
         }
+        [HttpPost]
         public IList<Domain.Entities.ValueObjects.UserMembroStatusVO> GetUserStatus(Domain.Entities.Boloes.Bolao bolao)
         {
             return Service.GetUserStatus(bolao);
         }
 
+        [HttpPost]
         public bool RemoverMembroBolao(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Boloes.BolaoMembro membro)
         {
             return Service.RemoverMembroBolao(bolao, membro);

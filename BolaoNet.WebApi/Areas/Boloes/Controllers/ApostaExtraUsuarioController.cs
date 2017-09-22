@@ -45,15 +45,18 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
         #region IApostaExtraUsuarioService members
 
+        [HttpPost]
         public IList<Domain.Entities.ValueObjects.ApostaExtraUsuarioVO> GetApostasUser(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
         {
             return Service.GetApostasUser(bolao, user);
         }
+        [HttpPost]
         public IList<Domain.Entities.Boloes.ApostaExtraUsuario> GetApostasBolao(Domain.Entities.Boloes.Bolao bolao)
         {
             return Service.GetApostasBolao(bolao);
         }
 
+        [HttpPost]
         public IList<IList<Domain.Entities.Boloes.ApostaExtraUsuario>> GetApostasBolaoAgrupado(Domain.Entities.Boloes.Bolao bolao)
         {
             return Service.GetApostasBolaoAgrupado(bolao);

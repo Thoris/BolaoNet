@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 
 namespace BolaoNet.Services.Areas.Users.Controllers
 {
@@ -44,9 +45,10 @@ namespace BolaoNet.Services.Areas.Users.Controllers
 
         #region IUserInRoleService members
 
+        [HttpPost]
         public IList<Domain.Entities.Users.Role> GetRolesInUser(Domain.Entities.Users.User user)
         {
-            throw new NotImplementedException();
+            return Service.GetRolesInUser(user);
         }
 
         #endregion

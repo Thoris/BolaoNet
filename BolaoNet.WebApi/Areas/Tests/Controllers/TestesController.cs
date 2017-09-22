@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 
 namespace BolaoNet.WebApi.Areas.Tests.Controllers
 {
@@ -37,15 +38,18 @@ namespace BolaoNet.WebApi.Areas.Tests.Controllers
 
         #region Methods
 
+        [HttpPost]
         public bool TestConnection()
         {
             return _service.TestConnection();
         }
 
+        [HttpPost]
         public DateTime GetCurrentDateTime()
         {
             return _service.GetCurrentDateTime();
         }
+        [HttpPost]
         public bool TestNotifyWelcome(string password, string email)
         {
             return _service.TestNotifyWelcome(password, email);

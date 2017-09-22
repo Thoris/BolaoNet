@@ -42,6 +42,7 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
         #region IJogoUsuarioBO members
 
+        [HttpPost]
         public bool ProcessAposta(int id, ArrayList data)
         {
             Domain.Entities.Boloes.Bolao bolao = JsonConvert.DeserializeObject<Domain.Entities.Boloes.Bolao>(data[0].ToString());
@@ -57,11 +58,13 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
             return this.ProcessAposta(bolao, user, jogo, automatico, apostaTime1, apostaTime2, penaltis1, penaltis2, ganhador);
         
         }
+        [HttpPost]
         public bool ProcessAposta(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user, Domain.Entities.Campeonatos.Jogo jogo, int automatico, int apostaTime1, int apostaTime2, int? penaltis1, int? penaltis2, int? ganhador)
         {
             return Service.ProcessAposta(bolao, user, jogo, automatico, apostaTime1, apostaTime2, penaltis1, penaltis2, ganhador);
         }
 
+        [HttpPost]
         public IList<Domain.Entities.Boloes.JogoUsuario> GetJogoByUser(int id, ArrayList data)
         {
             Domain.Entities.Boloes.Bolao bolao = JsonConvert.DeserializeObject<Domain.Entities.Boloes.Bolao>(data[0].ToString());
@@ -69,41 +72,73 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
             return this.GetJogosByUser(bolao, user);
         }
+        [HttpPost]
         public IList<Domain.Entities.Boloes.JogoUsuario> GetJogosByUser(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
         {
             return Service.GetJogosByUser(bolao, user);
         }
+        [HttpPost]
         public IList<Domain.Entities.ValueObjects.JogoUsuarioVO> GetJogosUser(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user, Domain.Entities.ValueObjects.FilterJogosVO filter)
         {
             return Service.GetJogosUser(bolao, user, filter);
         }
+        [HttpPost]
         public void InsertApostasAutomaticas(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user, Domain.Entities.ValueObjects.ApostasAutomaticasFilterVO filter)
         {
             Service.InsertApostasAutomaticas(bolao, user, filter);
         }
+        [HttpPost]
         public IList<Domain.Entities.Boloes.JogoUsuario> GetApostasJogo(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Campeonatos.Jogo jogo)
         {
             return Service.GetApostasJogo(bolao, jogo);
         }
+        [HttpPost]
         public IList<Domain.Entities.ValueObjects.JogoUsuarioVO> LoadAcertosDificeis(Domain.Entities.Boloes.Bolao bolao, int totalMaximoAcertos)
         {
             return Service.LoadAcertosDificeis(bolao, totalMaximoAcertos);
         }
 
+        [HttpPost]
         public IList<Domain.Entities.Campeonatos.Jogo> LoadSemAcertos(Domain.Entities.Boloes.Bolao bolao)
         {
             return Service.LoadSemAcertos(bolao);
         }
+        [HttpPost]
         public IList<Domain.Entities.ValueObjects.JogoUsuarioVO> LoadPontosObtidos(Domain.Entities.Users.User user, int totalRetorno)
         {
             return Service.LoadPontosObtidos(user, totalRetorno);
         }
+        [HttpPost]
+        public IList<Domain.Entities.ValueObjects.JogoUsuarioVO> LoadPontosObtidos(int id, ArrayList data)
+        {
+            Domain.Entities.Users.User user = null;
+            int totalRetorno = 0;
 
+            user = JsonConvert.DeserializeObject<Domain.Entities.Users.User>(data[0].ToString());
+            totalRetorno = JsonConvert.DeserializeObject<int>(data[1].ToString());
+
+            return Service.LoadPontosObtidos(user, totalRetorno);
+        }
+
+        [HttpPost]
         public IList<Domain.Entities.ValueObjects.JogoUsuarioVO> LoadProximosJogosUsuario(Domain.Entities.Users.User user, int totalRetorno)
         {
             return Service.LoadProximosJogosUsuario(user, totalRetorno);
         }
+        [HttpPost]
+        public IList<Domain.Entities.ValueObjects.JogoUsuarioVO> LoadProximosJogosUsuario(int id, ArrayList data)
+        {
+            Domain.Entities.Users.User user = null;
+            int totalRetorno = 0;
 
+            user = JsonConvert.DeserializeObject<Domain.Entities.Users.User>(data[0].ToString());
+            totalRetorno  = JsonConvert.DeserializeObject<int>(data[1].ToString());
+
+
+            return Service.LoadProximosJogosUsuario(user, totalRetorno);
+        }
+
+        [HttpPost]
         public int CalcularPontoSimulation(int gols1, int gols2, int aposta1, int aposta2, int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1, int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, bool isMultiploTime, int multiploTime)
         {
             return Service.CalcularPontoSimulation(gols1, gols2, aposta1, aposta2, pontosEmpate, pontosVitoria,
@@ -113,6 +148,7 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
        
         }
 
+        [HttpPost]
         public IList<Domain.Entities.Boloes.JogoUsuario> Simulate(IList<Domain.Entities.Boloes.JogoUsuario> apostas, int gols1, int gols2, int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1, int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, bool isMultiploTime, int multiploTime)
         {
             return Service.Simulate(apostas, gols1, gols2, pontosEmpate, pontosVitoria,

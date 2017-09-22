@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 
 namespace BolaoNet.Services.Areas.Boloes.Controllers
 {
@@ -39,6 +40,7 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
         #region Methods
 
+        [HttpPost]
         public IList<Domain.Entities.ValueObjects.BolaoClassificacaoVO> LoadClassificacao(Domain.Entities.Boloes.Bolao bolao, int? rodada)
         {
             return Service.LoadClassificacao(bolao, rodada);

@@ -15,7 +15,7 @@ namespace BolaoNet.WebApi.Integration.Users
         /// <summary>
         /// Nome do módulo usado para realizar a requisição.
         /// </summary>
-        private const string ModuleName = "User";
+        private const string ModuleName = "UserInRole";
 
         #endregion
 

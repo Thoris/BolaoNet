@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 
 namespace BolaoNet.Services.Areas.Boloes.Controllers
 {
@@ -44,11 +45,13 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
         #region IPagamentoService members
 
+        [HttpPost]
         public IList<Domain.Entities.Boloes.Pagamento> GetPagamentosBolao(Domain.Entities.Boloes.Bolao bolao)
         {
             return Service.GetPagamentosBolao(bolao);
         }
 
+        [HttpPost]
         public IList<Domain.Entities.Boloes.Pagamento> GetPagamentosBolaoSoma(Domain.Entities.Boloes.Bolao bolao)
         {
             return Service.GetPagamentosBolaoSoma(bolao);

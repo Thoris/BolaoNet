@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 
 namespace BolaoNet.Services.Areas.Boloes.Controllers
 {
@@ -46,10 +47,12 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
         #region IBolaoCampeonatoClassificacaoUsuarioService members
 
+        [HttpPost]
         public IList<Domain.Entities.Boloes.BolaoCampeonatoClassificacaoUsuario> LoadClassificacao(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Campeonatos.CampeonatoFase fase, Domain.Entities.Campeonatos.CampeonatoGrupo grupo, Domain.Entities.Users.User user)
         {
             return Service.LoadClassificacao(bolao, fase, grupo, user);
         }
+        [HttpPost]
         public IList<Domain.Entities.Boloes.BolaoCampeonatoClassificacaoUsuario> LoadClassificacao(int id, ArrayList data)
         {
 

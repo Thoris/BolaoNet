@@ -47,12 +47,13 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
         #region IApostaExtraService members
 
+        [HttpPost]
         public IList<Domain.Entities.Boloes.ApostaExtra> GetApostasBolao(Domain.Entities.Boloes.Bolao bolao)
         {
 
             return Service.GetApostasBolao(bolao);
-        }        
-
+        }
+        [HttpPost]       
         public bool InsertResult(int id, ArrayList data)
         {
 
@@ -64,6 +65,7 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
             return this.InsertResult(bolao, time, posicao, validadoBy);
 
         }
+        [HttpPost]        
         public bool InsertResult(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.DadosBasicos.Time time, int posicao, Domain.Entities.Users.User validadoBy)
         {
             return Service.InsertResult(bolao, time, posicao, validadoBy);

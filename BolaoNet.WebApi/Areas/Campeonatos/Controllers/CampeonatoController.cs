@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 
 namespace BolaoNet.Services.Areas.Campeonatos.Controllers
 {
@@ -44,19 +45,23 @@ namespace BolaoNet.Services.Areas.Campeonatos.Controllers
 
         #region ICampeonatoService members
 
+        [HttpPost]
         public IList<int> GetRodadasCampeonato(Domain.Entities.Campeonatos.Campeonato campeonato)
         {
             return Service.GetRodadasCampeonato(campeonato);
         }
+        [HttpPost]
         public void Reiniciar(Domain.Entities.Campeonatos.Campeonato campeonato)
         {
             Service.Reiniciar(campeonato);
         }
 
+        [HttpPost]
         public void ClearDatabase()
         {
             Service.ClearDatabase();
         }
+        [HttpPost]
         public IList<IList<Domain.Entities.ValueObjects.CampeonatoRecordVO>> GetRecords(Domain.Entities.Campeonatos.Campeonato campeonato, Domain.Interfaces.Services.Campeonatos.RecordTipoPesquisa tipo)
         {
             return Service.GetRecords(campeonato, tipo);

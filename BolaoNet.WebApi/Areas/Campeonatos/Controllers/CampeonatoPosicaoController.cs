@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 
 namespace BolaoNet.Services.Areas.Campeonatos.Controllers
 {
@@ -44,6 +45,7 @@ namespace BolaoNet.Services.Areas.Campeonatos.Controllers
 
         #region ICampeonatoPosicaoService members
 
+        [HttpPost]
         public IList<Domain.Entities.Campeonatos.CampeonatoPosicao> GetPosicao(Domain.Entities.Campeonatos.Campeonato campeonato, Domain.Entities.Campeonatos.CampeonatoFase fase)
         {
             return Service.GetPosicao(campeonato, fase);
