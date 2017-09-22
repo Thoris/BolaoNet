@@ -6,6 +6,15 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.WebApi.Integration.Users
 {
+    //update-package Newtonsoft.Json -reinstall
+    //Install-Package Newtonsoft.Json -Version 8.0.3
+
+
+    //uninstall-package newtonsoft.json -force
+    //install-package newtonsoft.json
+
+    //update-package Newtonsoft.Json -version 6.0.0 -reinstall
+    //update-package Newtonsoft.Json -version 8.0.3 -reinstall
     public class UserIntegration :
         Base.GenericIntegration<Domain.Entities.Users.User>, 
         Domain.Interfaces.Services.Users.IUserService
