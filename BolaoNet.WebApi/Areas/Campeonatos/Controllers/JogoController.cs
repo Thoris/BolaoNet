@@ -47,10 +47,21 @@ namespace BolaoNet.Services.Areas.Campeonatos.Controllers
         {
             Domain.Entities.Campeonatos.Jogo jogo = JsonConvert.DeserializeObject<Domain.Entities.Campeonatos.Jogo>(data[0].ToString());
             int gols1 = JsonConvert.DeserializeObject<int>(data[1].ToString());
-            int ? penaltis1 = JsonConvert.DeserializeObject<int ?>(data[2].ToString());
+
+            int ? penaltis1 = null;
+            if (data[2] != null)
+                penaltis1 = JsonConvert.DeserializeObject<int ?>(data[2].ToString());
             int gols2 = JsonConvert.DeserializeObject<int>(data[3].ToString());
-            int ? penaltis2 = JsonConvert.DeserializeObject<int?>(data[4].ToString());
-            bool setCurrentData = JsonConvert.DeserializeObject<bool>(data[5].ToString());
+            
+            int ? penaltis2 = null;
+            if (data[4] != null)
+                penaltis2 = JsonConvert.DeserializeObject<int?>(data[4].ToString());
+
+            bool setCurrentData = false;
+
+            if (data[5] != null)
+                setCurrentData = bool.Parse(data[5].ToString());
+            
             Domain.Entities.Users.User validadoBy = JsonConvert.DeserializeObject<Domain.Entities.Users.User>(data[6].ToString());
             
 
@@ -121,11 +132,37 @@ namespace BolaoNet.Services.Areas.Campeonatos.Controllers
         }
 
         [HttpPost]
+        public IList<Domain.Entities.Campeonatos.Jogo> GetJogos(int id, ArrayList data)
+        {
+            Domain.Entities.Campeonatos.Campeonato campeonato;
+            Domain.Entities.ValueObjects.FilterJogosVO filter;
+
+
+             campeonato = JsonConvert.DeserializeObject<Domain.Entities.Campeonatos.Campeonato>(data[0].ToString());
+             filter = JsonConvert.DeserializeObject<Domain.Entities.ValueObjects.FilterJogosVO>(data[1].ToString());
+
+
+            return Service.GetJogos(campeonato, filter);
+        }
+
+        [HttpPost]
         public IList<Domain.Entities.Campeonatos.Jogo> GetJogos(Domain.Entities.Campeonatos.Campeonato campeonato, Domain.Entities.ValueObjects.FilterJogosVO filter)
         {
             return Service.GetJogos(campeonato, filter);
         }
 
+        [HttpPost]
+        public IList<Domain.Entities.Campeonatos.Jogo> SelectGoleadas(int id, ArrayList data)
+        {
+            Domain.Entities.Campeonatos.Campeonato campeonato;
+            int maxGols;
+
+            campeonato = JsonConvert.DeserializeObject<Domain.Entities.Campeonatos.Campeonato>(data[0].ToString());
+            maxGols = JsonConvert.DeserializeObject<int>(data[1].ToString());
+
+
+            return Service.SelectGoleadas(campeonato, maxGols);
+        }
         [HttpPost]
         public IList<Domain.Entities.Campeonatos.Jogo> SelectGoleadas(Domain.Entities.Campeonatos.Campeonato campeonato, int maxGols)
         {

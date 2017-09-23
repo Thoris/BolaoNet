@@ -1,5 +1,7 @@
 ﻿using BolaoNet.Services.Controllers;
+using Newtonsoft.Json;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -60,6 +62,17 @@ namespace BolaoNet.Services.Areas.Campeonatos.Controllers
         public void ClearDatabase()
         {
             Service.ClearDatabase();
+        }
+        [HttpPost]
+        public IList<IList<Domain.Entities.ValueObjects.CampeonatoRecordVO>> GetRecords(int id, ArrayList data)
+        {
+            Domain.Entities.Campeonatos.Campeonato campeonato;
+            Domain.Interfaces.Services.Campeonatos.RecordTipoPesquisa tipo;
+
+            campeonato = JsonConvert.DeserializeObject<Domain.Entities.Campeonatos.Campeonato>(data[0].ToString());
+            tipo = JsonConvert.DeserializeObject<Domain.Interfaces.Services.Campeonatos.RecordTipoPesquisa>(data[1].ToString());
+            
+            return Service.GetRecords(campeonato, tipo);
         }
         [HttpPost]
         public IList<IList<Domain.Entities.ValueObjects.CampeonatoRecordVO>> GetRecords(Domain.Entities.Campeonatos.Campeonato campeonato, Domain.Interfaces.Services.Campeonatos.RecordTipoPesquisa tipo)

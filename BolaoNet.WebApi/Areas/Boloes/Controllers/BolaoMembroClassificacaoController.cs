@@ -1,5 +1,7 @@
 ﻿using BolaoNet.Services.Controllers;
+using Newtonsoft.Json;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -40,6 +42,19 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
         #region Methods
 
+        [HttpPost]
+        public IList<Domain.Entities.ValueObjects.BolaoClassificacaoVO> LoadClassificacao(int id, ArrayList data)
+        {
+            Domain.Entities.Boloes.Bolao bolao;
+            bolao = JsonConvert.DeserializeObject<Domain.Entities.Boloes.Bolao>(data[0].ToString());
+            int? rodada = null;
+            
+            if (data[1] != null)
+                rodada = JsonConvert.DeserializeObject<int>(data[1].ToString());
+            
+
+            return Service.LoadClassificacao(bolao, rodada);
+        }
         [HttpPost]
         public IList<Domain.Entities.ValueObjects.BolaoClassificacaoVO> LoadClassificacao(Domain.Entities.Boloes.Bolao bolao, int? rodada)
         {

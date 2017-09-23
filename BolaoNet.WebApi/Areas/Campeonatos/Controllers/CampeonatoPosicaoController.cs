@@ -1,5 +1,7 @@
 ﻿using BolaoNet.Services.Controllers;
+using Newtonsoft.Json;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -44,6 +46,20 @@ namespace BolaoNet.Services.Areas.Campeonatos.Controllers
         #endregion
 
         #region ICampeonatoPosicaoService members
+
+
+        [HttpPost]
+        public IList<Domain.Entities.Campeonatos.CampeonatoPosicao> GetPosicao(int id, ArrayList data)
+        {
+            Domain.Entities.Campeonatos.Campeonato campeonato;
+            Domain.Entities.Campeonatos.CampeonatoFase fase;
+             
+            campeonato = JsonConvert.DeserializeObject<Domain.Entities.Campeonatos.Campeonato>(data[0].ToString());
+            fase = JsonConvert.DeserializeObject<Domain.Entities.Campeonatos.CampeonatoFase>(data[1].ToString());
+            
+
+            return Service.GetPosicao(campeonato, fase);
+        }
 
         [HttpPost]
         public IList<Domain.Entities.Campeonatos.CampeonatoPosicao> GetPosicao(Domain.Entities.Campeonatos.Campeonato campeonato, Domain.Entities.Campeonatos.CampeonatoFase fase)

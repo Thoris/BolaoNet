@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -48,6 +49,16 @@ namespace BolaoNet.WebApi.Areas.Tests.Controllers
         public DateTime GetCurrentDateTime()
         {
             return _service.GetCurrentDateTime();
+        }
+        [HttpPost]
+        public bool TestNotifyWelcome(int id, ArrayList data)
+        {
+            string password= data[0].ToString ();
+            string email= data[1].ToString();
+
+
+
+            return _service.TestNotifyWelcome(password, email);
         }
         [HttpPost]
         public bool TestNotifyWelcome(string password, string email)

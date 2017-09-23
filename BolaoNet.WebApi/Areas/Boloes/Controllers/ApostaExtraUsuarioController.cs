@@ -1,5 +1,7 @@
 ﻿using BolaoNet.Services.Controllers;
+using Newtonsoft.Json;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -48,6 +50,14 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
         [HttpPost]
         public IList<Domain.Entities.ValueObjects.ApostaExtraUsuarioVO> GetApostasUser(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
         {
+            return Service.GetApostasUser(bolao, user);
+        }
+        [HttpPost]
+        public IList<Domain.Entities.ValueObjects.ApostaExtraUsuarioVO> GetApostasUser(int id, ArrayList data)
+        {
+            Domain.Entities.Boloes.Bolao bolao = JsonConvert.DeserializeObject<Domain.Entities.Boloes.Bolao>(data[0].ToString());
+            Domain.Entities.Users.User user = JsonConvert.DeserializeObject<Domain.Entities.Users.User>(data[1].ToString());
+            
             return Service.GetApostasUser(bolao, user);
         }
         [HttpPost]

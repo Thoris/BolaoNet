@@ -103,6 +103,17 @@ namespace BolaoNet.Services.Areas.Users.Controllers
         {
             return Service.ApproveUser(user, activationCode);
         }
+        [HttpPost]
+        public IList<Domain.Entities.Users.User> SearchByUserNameEmail(int id, ArrayList data)
+        {
+            string userName;
+            string email;
+
+            userName = data[0].ToString();
+            email = data[1].ToString();
+
+            return Service.SearchByUserNameEmail(userName, email);
+        }
 
         [HttpPost]
         public IList<Domain.Entities.Users.User> SearchByUserNameEmail(string userName, string email)

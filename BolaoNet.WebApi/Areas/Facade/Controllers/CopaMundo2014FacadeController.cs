@@ -45,6 +45,19 @@ namespace BolaoNet.WebApi.Areas.Facade.Controllers
         }
 
         [HttpPost]
+        public bool InsertResults(int id, ArrayList data)
+        {
+            string nomeCampeonato; 
+            Domain.Entities.Users.User validatedBy;
+
+            nomeCampeonato = data[0].ToString();
+            validatedBy = JsonConvert.DeserializeObject<Domain.Entities.Users.User>(data[1].ToString());
+            
+
+
+            return _service.InsertResults(nomeCampeonato, validatedBy);
+        }
+        [HttpPost]
         public bool InsertResults(string nomeCampeonato, Domain.Entities.Users.User validatedBy)
         {
             return _service.InsertResults(nomeCampeonato, validatedBy);

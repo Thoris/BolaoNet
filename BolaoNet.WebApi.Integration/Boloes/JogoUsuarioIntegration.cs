@@ -68,8 +68,9 @@ namespace BolaoNet.WebApi.Integration.Boloes
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>();
 
-            //parameters.Add("nomebolao", bolao);
-            //parameters.Add("userName", user);
+            parameters.Add("bolao", bolao);
+            parameters.Add("user", user);
+            parameters.Add("filter", filter);
 
             return HttpPostApi<ICollection<Domain.Entities.ValueObjects.JogoUsuarioVO>>(
                 parameters, "GetJogosUser").ToList<Domain.Entities.ValueObjects.JogoUsuarioVO>();
@@ -139,13 +140,70 @@ namespace BolaoNet.WebApi.Integration.Boloes
 
         public int CalcularPontoSimulation(int gols1, int gols2, int aposta1, int aposta2, int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1, int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, bool isMultiploTime, int multiploTime)
         {
+            
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
 
-            throw new NotImplementedException();
+            parameters.Add("gols1", gols1);
+            parameters.Add("gols2", gols2);
+            parameters.Add("aposta1", aposta1);
+            parameters.Add("aposta2", aposta2);
+            parameters.Add("pontosEmpate", pontosEmpate);
+            parameters.Add("pontosVitoria", pontosVitoria);
+            parameters.Add("pontosDerrota", pontosDerrota);
+            parameters.Add("pontosGanhador", pontosGanhador);
+            parameters.Add("pontosPerdedor", pontosPerdedor);
+            parameters.Add("pontosTime1", pontosTime1);
+            parameters.Add("pontosTime2", pontosTime2);
+            parameters.Add("pontosVDE", pontosVDE);
+            parameters.Add("pontosErro", pontosErro);
+            parameters.Add("pontosGanhadorFora", pontosGanhadorFora);
+            parameters.Add("pontosGanhadorDentro", pontosGanhadorDentro);
+            parameters.Add("pontosPerdedorFora",pontosPerdedorFora);
+            parameters.Add("pontosPerdedorDentro", pontosPerdedorDentro);
+            parameters.Add("pontosEmpateGols",pontosEmpateGols);
+            parameters.Add("pontosGolsTime1", pontosGolsTime1);
+            parameters.Add("pontosGolsTime2",pontosGolsTime2);
+            parameters.Add("pontosCheio", pontosCheio);
+            parameters.Add("isMultiploTime", isMultiploTime);
+            parameters.Add("multiploTime", multiploTime);
+             
+
+            return HttpPostApi<int>(
+                parameters, "CalcularPontoSimulation");
         }
 
         public IList<Domain.Entities.Boloes.JogoUsuario> Simulate(IList<Domain.Entities.Boloes.JogoUsuario> apostas, int gols1, int gols2, int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1, int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, bool isMultiploTime, int multiploTime)
         {
-            throw new NotImplementedException();
+
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("apostas", apostas);
+            
+            parameters.Add("gols1", gols1);
+            parameters.Add("gols2", gols2); 
+            parameters.Add("pontosEmpate", pontosEmpate);
+            parameters.Add("pontosVitoria", pontosVitoria);
+            parameters.Add("pontosDerrota", pontosDerrota);
+            parameters.Add("pontosGanhador", pontosGanhador);
+            parameters.Add("pontosPerdedor", pontosPerdedor);
+            parameters.Add("pontosTime1", pontosTime1);
+            parameters.Add("pontosTime2", pontosTime2);
+            parameters.Add("pontosVDE", pontosVDE);
+            parameters.Add("pontosErro", pontosErro);
+            parameters.Add("pontosGanhadorFora", pontosGanhadorFora);
+            parameters.Add("pontosGanhadorDentro", pontosGanhadorDentro);
+            parameters.Add("pontosPerdedorFora", pontosPerdedorFora);
+            parameters.Add("pontosPerdedorDentro", pontosPerdedorDentro);
+            parameters.Add("pontosEmpateGols", pontosEmpateGols);
+            parameters.Add("pontosGolsTime1", pontosGolsTime1);
+            parameters.Add("pontosGolsTime2", pontosGolsTime2);
+            parameters.Add("pontosCheio", pontosCheio);
+            parameters.Add("isMultiploTime", isMultiploTime);
+            parameters.Add("multiploTime", multiploTime);
+
+            return HttpPostApi<IList<Domain.Entities.Boloes.JogoUsuario>>(
+                parameters, "Simulate");
+
         }
 
         #endregion

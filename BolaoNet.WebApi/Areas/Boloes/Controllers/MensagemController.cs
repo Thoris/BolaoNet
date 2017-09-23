@@ -1,5 +1,7 @@
 ﻿using BolaoNet.Services.Controllers;
+using Newtonsoft.Json;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -45,6 +47,20 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
         #region IMensagemService members
 
+        [HttpPost]
+        public IList<Domain.Entities.Boloes.Mensagem> GetMensagensUsuario(int id, ArrayList data)
+        {
+
+
+            Domain.Entities.Boloes.Bolao bolao;
+            Domain.Entities.Users.User user;
+
+
+            bolao = JsonConvert.DeserializeObject<Domain.Entities.Boloes.Bolao>(data[0].ToString());
+            user = JsonConvert.DeserializeObject<Domain.Entities.Users.User>(data[1].ToString());
+
+            return Service.GetMensagensUsuario(bolao, user);
+        }
         [HttpPost]
         public IList<Domain.Entities.Boloes.Mensagem> GetMensagensUsuario(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
         {
