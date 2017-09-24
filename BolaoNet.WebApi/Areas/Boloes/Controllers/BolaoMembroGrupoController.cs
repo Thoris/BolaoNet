@@ -48,6 +48,23 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
         #region IBolaoMembroGrupoService members
 
         [HttpPost]
+        public override long Insert(Domain.Entities.Boloes.BolaoMembroGrupo entity)
+        {
+            long res = base.BaseBo.Insert(entity);
+
+            Domain.Entities.Base.BaseEntity baseEntity = entity as Domain.Entities.Base.BaseEntity;
+
+            string identityName = baseEntity.GetIdentifyName();
+
+            if (string.IsNullOrEmpty(identityName))
+                return res;
+
+            object resIdentity = baseEntity.GetIdentityValue();
+
+            return (long)1;
+        }
+
+        [HttpPost]
         public IList<Domain.Entities.ValueObjects.BolaoGrupoComparacaoClassificacaoVO> LoadClassificacao(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
         {
             return Service.LoadClassificacao(bolao, user);

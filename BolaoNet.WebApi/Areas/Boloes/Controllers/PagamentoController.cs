@@ -45,6 +45,21 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
         #region IPagamentoService members
 
+        public override long Insert(Domain.Entities.Boloes.Pagamento entity)
+        {
+            long res = base.BaseBo.Insert(entity);
+
+            Domain.Entities.Base.BaseEntity baseEntity = entity as Domain.Entities.Base.BaseEntity;
+
+            string identityName = baseEntity.GetIdentifyName();
+
+            if (string.IsNullOrEmpty(identityName))
+                return res;
+
+            object resIdentity = baseEntity.GetIdentityValue();
+
+            return  1;
+        }
         [HttpPost]
         public IList<Domain.Entities.Boloes.Pagamento> GetPagamentosBolao(Domain.Entities.Boloes.Bolao bolao)
         {

@@ -65,7 +65,7 @@ namespace BolaoNet.Services.Controllers
         /// <param name="entity">Dados da entidade a ser inserida.</param>
         /// <returns>Identificador do registro inserido, ou a quantidade de registros afetados no caso de identificador diferente de numérico.</returns>
         [HttpPost]
-        public long Insert(T entity)
+        public virtual long Insert(T entity)
         {
             long res = _bo.Insert(entity);
 
