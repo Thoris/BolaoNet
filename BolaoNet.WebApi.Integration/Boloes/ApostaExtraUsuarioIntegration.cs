@@ -43,7 +43,7 @@ namespace BolaoNet.WebApi.Integration.Boloes
             parameters.Add("user", user);
 
             return base.HttpPostApi<ICollection<Domain.Entities.ValueObjects.ApostaExtraUsuarioVO>>(
-                parameters, "InsertResult").ToList<Domain.Entities.ValueObjects.ApostaExtraUsuarioVO>();
+                parameters, "GetApostasUser").ToList<Domain.Entities.ValueObjects.ApostaExtraUsuarioVO>();
         }
 
         public IList<Domain.Entities.Boloes.ApostaExtraUsuario> GetApostasBolao(Domain.Entities.Boloes.Bolao bolao)
