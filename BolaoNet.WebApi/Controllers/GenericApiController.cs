@@ -89,7 +89,12 @@ namespace BolaoNet.Services.Controllers
         [HttpPost]
         public bool Delete(T entity)
         {
-            return _bo.Delete(entity);
+            //T loaded = Load(entity);
+
+            //if (loaded != null)
+                return _bo.Delete(entity);
+            //else
+            //    return false;
         }
         /// <summary>
         /// Método que atualiza os dados da entidade.
