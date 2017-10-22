@@ -66,7 +66,13 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
         {
             return Service.GetMensagensUsuario(bolao, user);
         }
+        [HttpPost]
+        public override bool Delete(Domain.Entities.Boloes.Mensagem entity)
+        {
+            Domain.Entities.Boloes.Mensagem entityLoaded = base.Load(entity);
 
+            return base.Delete(entityLoaded);
+        }
         #endregion
     }
 }

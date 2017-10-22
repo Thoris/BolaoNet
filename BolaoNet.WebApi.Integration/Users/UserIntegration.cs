@@ -34,8 +34,8 @@ namespace BolaoNet.WebApi.Integration.Users
         /// Inicializa nova instância da classe <see cref="UserIntegration" />.
         /// </summary>
         /// <param name="url">Url para chamada dos métodos de integração.</param>
-        public UserIntegration(string url)
-            : base (url, ModuleName)
+        public UserIntegration(string url, string token)
+            : base(url, ModuleName, token)
         {
 
         }

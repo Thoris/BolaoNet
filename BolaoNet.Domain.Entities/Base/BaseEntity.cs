@@ -74,7 +74,13 @@ namespace BolaoNet.Domain.Entities.Base
             foreach (PropertyInfo property in properties)
             {
 
-                if (property.PropertyType.IsLayoutSequential)
+                if (property.PropertyType.IsLayoutSequential 
+                    && string.Compare (property.Name, "CreatedDate") != 0 
+                    && string.Compare (property.Name, "ModifiedDate") != 0
+                    && string.Compare (property.Name, "ModifiedBy") != 0 
+                    && string.Compare (property.Name, "CreatedBy") != 0
+                    && string.Compare(property.Name, "ActiveFlag") != 0
+                    )
                 {
                     return property.Name;
                 }

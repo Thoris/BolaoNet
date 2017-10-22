@@ -25,8 +25,8 @@ namespace BolaoNet.WebApi.Integration.Campeonatos
         /// Inicializa nova instância da classe <see cref="JogoIntegration" />.
         /// </summary>
         /// <param name="url">Url para chamada dos métodos de integração.</param>
-        public JogoIntegration(string url)
-            : base (url, ModuleName)
+        public JogoIntegration(string url, string token)
+            : base(url, ModuleName, token)
         {
 
         }

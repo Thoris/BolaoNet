@@ -64,7 +64,6 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
 
         #endregion
 
-
         #region Actions
 
         [HttpGet]
@@ -306,8 +305,12 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
 
             userLoaded.Password = model.NewPassword;
 
-            _userApp.Update(userLoaded);
+            bool updated =_userApp.Update(userLoaded);
 
+            if (updated)
+                base.ShowMessage("Senha alterada.");
+            else
+                base.ShowErrorMessage("Erro ao alterar a senha");
 
             return RedirectToAction("Index");
         }

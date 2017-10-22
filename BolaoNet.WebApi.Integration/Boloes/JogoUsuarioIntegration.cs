@@ -25,8 +25,8 @@ namespace BolaoNet.WebApi.Integration.Boloes
         /// Inicializa nova instância da classe <see cref="JogoUsuarioIntegration" />.
         /// </summary>
         /// <param name="url">Url para chamada dos métodos de integração.</param>
-        public JogoUsuarioIntegration(string url)
-            : base (url, ModuleName)
+        public JogoUsuarioIntegration(string url, string token)
+            : base(url, ModuleName, token)
         {
 
         }

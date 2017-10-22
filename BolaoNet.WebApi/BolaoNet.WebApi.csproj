@@ -162,6 +162,7 @@
     <Compile Include="Areas\Boloes\Controllers\BolaoMembroPontoController.cs" />
     <Compile Include="Areas\Tests\Controllers\TestesController.cs" />
     <Compile Include="Areas\Tests\TestsAreaRegistration.cs" />
+    <Compile Include="Filters\AuthenticationAttribute.cs" />
     <Compile Include="Helpers\NinjectResolver.cs" />
     <Compile Include="Helpers\NinjectScope.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />

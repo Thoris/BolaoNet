@@ -63,6 +63,13 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
             return (long)1;
         }
+        public override bool Delete(Domain.Entities.Boloes.BolaoMembroGrupo entity)
+        {
+            Domain.Entities.Boloes.BolaoMembroGrupo entityLoaded = base.Load(entity);
+
+
+            return base.Delete(entityLoaded);
+        }
 
         [HttpPost]
         public IList<Domain.Entities.ValueObjects.BolaoGrupoComparacaoClassificacaoVO> LoadClassificacao(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)

@@ -26,6 +26,10 @@ namespace BolaoNet.WebApi.Integration.Base
         /// Controlador da chamada da api.
         /// </summary>
         private string _controller;
+        /// <summary>
+        /// Variável que armazena o token utilizado na requisição para gerenciamento de segurança.
+        /// </summary>
+        private string _token;
 
         #endregion
 
@@ -58,10 +62,12 @@ namespace BolaoNet.WebApi.Integration.Base
         /// </summary>
         /// <param name="url">Url que possui o caminho do servidor.</param>
         /// <param name="controller">Controlador da API a ser executado o comando.</param>
-        public JsonBase(string url, string controller)
+        /// <param name="token">Token utilizado para gerenciamento de segurança.</param>
+        public JsonBase(string url, string controller, string token)
         {
             _url = url;
             _controller = controller;
+            _token = token;
 
         }
 
@@ -80,6 +86,9 @@ namespace BolaoNet.WebApi.Integration.Base
             client.BaseAddress = new Uri(_url);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            if (!string.IsNullOrEmpty (_token))
+                client.DefaultRequestHeaders.Add("AuthenticationToken", _token);
 
 
             return client;
@@ -134,7 +143,7 @@ namespace BolaoNet.WebApi.Integration.Base
 
             var dataSerialized = JsonConvert.SerializeObject(data);
             StringContent content = new StringContent(dataSerialized, Encoding.UTF8, "application/json");
-
+            //SetStringContentToken(content);
 
             //Requesting the post
             var response = client.PostAsync(new Uri(this.UrlCommand) + method + "?" + queryString, content).Result;
@@ -184,7 +193,7 @@ namespace BolaoNet.WebApi.Integration.Base
                     queryString += pair.Key + "=" + pair.Value;
                 }
             }
-
+            
             //Requesting the post
             //var response = client.GetAsync(new Uri(this.UrlCommand) + method + "?" + queryString).Result;
 
@@ -400,7 +409,7 @@ namespace BolaoNet.WebApi.Integration.Base
 
             var dataSerialized = JsonConvert.SerializeObject(data);
             StringContent content = new StringContent(dataSerialized, Encoding.UTF8, "application/json");
-
+            
 
             //Requesting the post
             var response = client.PostAsync(new Uri(this.UrlCommand) + method + "?" + queryString, content).Result;
@@ -423,6 +432,10 @@ namespace BolaoNet.WebApi.Integration.Base
             }
         }
 
+        //private void SetStringContentToken(StringContent content)
+        //{
+        //    content.Headers.Add("AuthenticationToken", "teste");
+        //}
         #endregion
     }
 }

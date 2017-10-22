@@ -35,7 +35,7 @@ namespace BolaoNet.Tests.LayersTests.IntegrationTests.DadosBasicosIntegrationLay
         private BolaoNet.WebApi.Integration.DadosBasicos.TimeIntegration GetObjectToTest()
         {
             BolaoNet.WebApi.Integration.DadosBasicos.TimeIntegration integration =
-                new WebApi.Integration.DadosBasicos.TimeIntegration(Constants.UrlWebApi);
+                new WebApi.Integration.DadosBasicos.TimeIntegration(Constants.UrlWebApi, "");
 
 
 

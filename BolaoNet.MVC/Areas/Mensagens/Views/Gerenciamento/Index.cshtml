@@ -45,7 +45,7 @@
                                             <td>@Html.DisplayFor(model => model[c].CreationDate)</td>
 
                                             <td>
-                                                <img class="img-username" src="/Content/img/database/profiles/@(Model[c].FromUser).gif" />
+                                                <img class="img-username" src="/Content/img/database/profiles/@(Model[c].FromUser).gif?time=@(DateTime.Now)" />
                                             </td> 
 
                                             <td>@Html.DisplayFor(model => model[c].FromUser)</td>

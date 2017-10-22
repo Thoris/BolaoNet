@@ -22,8 +22,9 @@ namespace BolaoNet.WebApi.Integration.Base
         /// </summary>
         /// <param name="url">Url de conexão com o objeto de conexão com a base.</param>
         /// <param name="controller">Controlador da chamada da API</param>
-        public JsonManagement(string url, string controller)
-            : base(url, controller)
+        /// <param name="token">Token utilizado para gerenciamento de segurança nas requisições.</param>
+        public JsonManagement(string url, string controller, string token)
+            : base(url, controller, token)
         {
         }
 

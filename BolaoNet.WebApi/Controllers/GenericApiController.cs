@@ -87,7 +87,7 @@ namespace BolaoNet.Services.Controllers
         /// <param name="entity">Entidade a ser excluída.</param>
         /// <returns>True se o registro foi excluído com sucesso.</returns>
         [HttpPost]
-        public bool Delete(T entity)
+        public virtual bool Delete(T entity)
         {
             //T loaded = Load(entity);
 

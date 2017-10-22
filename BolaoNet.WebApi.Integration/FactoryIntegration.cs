@@ -25,216 +25,225 @@ namespace BolaoNet.WebApi.Integration
 
         #endregion
 
+        #region Methods
+
+        public static string GetToken()
+        {
+            return "";
+        }
+
+        #endregion
+
         #region IFactoryService members
 
         public Domain.Interfaces.Services.Boloes.IApostaExtraService CreateApostaExtraService()
         {
-            return new Boloes.ApostaExtraIntegration(_url);
+            return new Boloes.ApostaExtraIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Boloes.IApostaExtraUsuarioService CreateApostaExtraUsuarioService()
         {
-            return new Boloes.ApostaExtraUsuarioIntegration(_url);
+            return new Boloes.ApostaExtraUsuarioIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Boloes.IApostaPontosService CreateApostaPontosService()
         {
-            return new Boloes.ApostaPontosIntegration(_url);
+            return new Boloes.ApostaPontosIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Boloes.IApostasRestantesService CreateApostasRestantesService()
         {
-            return new Boloes.ApostasRestantesIntegration(_url);
+            return new Boloes.ApostasRestantesIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Boloes.IBolaoService CreateBolaoService()
         {
-            return new Boloes.BolaoIntegration(_url);
+            return new Boloes.BolaoIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Boloes.IBolaoCampeonatoClassificacaoUsuarioService CreateBolaoCampeonatoClassificacaoUsuarioService()
         {
-            return new Boloes.BolaoCampeonatoClassificacaoUsuarioIntegration(_url);
+            return new Boloes.BolaoCampeonatoClassificacaoUsuarioIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Boloes.IBolaoCriterioPontosService CreateBolaoCriterioPontosService()
         {
-            return new Boloes.BolaoCriterioPontosIntegration(_url);
+            return new Boloes.BolaoCriterioPontosIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Boloes.IBolaoCriterioPontosTimesService CreateBolaoCriterioPontosTimesService()
         {
-            return new Boloes.BolaoCriterioPontosTimesIntegration(_url);
+            return new Boloes.BolaoCriterioPontosTimesIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Boloes.IBolaoMembroService CreateBolaoMembroService()
         {
-            return new Boloes.BolaoMembroIntegration(_url);
+            return new Boloes.BolaoMembroIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Boloes.IBolaoMembroClassificacaoService CreateBolaoMembroClassificacaoService()
         {
-            return new Boloes.BolaoMembroClassificacaoIntegration(_url);
+            return new Boloes.BolaoMembroClassificacaoIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Boloes.IBolaoMembroGrupoService CreateBolaoMembroGrupoService()
         {
-            return new Boloes.BolaoMembroGrupoIntegration(_url);
+            return new Boloes.BolaoMembroGrupoIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Boloes.IBolaoPontoRodadaService CreateBolaoPontoRodadaService()
         {
-            return new Boloes.BolaoPontoRodadaIntegration(_url);
+            return new Boloes.BolaoPontoRodadaIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Boloes.IBolaoPontoRodadaUsuarioService CreateBolaoPontoRodadaUsuarioService()
         {
-            return new Boloes.BolaoPontoRodadaUsuarioIntegration(_url);
+            return new Boloes.BolaoPontoRodadaUsuarioIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Boloes.IBolaoPontuacaoService CreateBolaoPontuacaoService()
         {
-            return new Boloes.BolaoPontuacaoIntegration(_url);
+            return new Boloes.BolaoPontuacaoIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Boloes.IBolaoPremioService CreateBolaoPremioService()
         {
-            return new Boloes.BolaoPremioIntegration(_url);
+            return new Boloes.BolaoPremioIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Boloes.IBolaoRegraService CreateBolaoRegraService()
         {
-            return new Boloes.BolaoRegraIntegration(_url);
+            return new Boloes.BolaoRegraIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Boloes.IBolaoRequestService CreateBolaoRequestService()
         {
-            return new Boloes.BolaoRequestIntegration(_url);
+            return new Boloes.BolaoRequestIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Boloes.IBolaoRequestStatusService CreateBolaoRequestStatusService()
         {
-            return new Boloes.BolaoRequestStatusIntegration(_url);
+            return new Boloes.BolaoRequestStatusIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Boloes.ICriterioService CreateCriterioService()
         {
-            return new Boloes.CriterioIntegration(_url);
+            return new Boloes.CriterioIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Boloes.IJogoUsuarioService CreateJogoUsuarioService()
         {
-            return new Boloes.JogoUsuarioIntegration(_url);
+            return new Boloes.JogoUsuarioIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Boloes.IMensagemService CreateMensagemService()
         {
-            return new Boloes.MensagemIntegration(_url);
+            return new Boloes.MensagemIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Boloes.IPagamentoService CreatePagamentoService()
         {
-            return new Boloes.PagamentoIntegration(_url);
+            return new Boloes.PagamentoIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Boloes.IPontuacaoService CreatePontuacaoService()
         {
-            return new Boloes.PontuacaoIntegration(_url);
+            return new Boloes.PontuacaoIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Campeonatos.ICampeonatoService CreateCampeonatoService()
         {
-            return new Campeonatos.CampeonatoIntegration(_url);
+            return new Campeonatos.CampeonatoIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Campeonatos.ICampeonatoClassificacaoService CreateCampeonatoClassificacaoService()
         {
-            return new Campeonatos.CampeonatoClassificacaoIntegration(_url);
+            return new Campeonatos.CampeonatoClassificacaoIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Campeonatos.ICampeonatoFaseService CreateCampeonatoFaseService()
         {
-            return new Campeonatos.CampeonatoFaseIntegration(_url);
+            return new Campeonatos.CampeonatoFaseIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Campeonatos.ICampeonatoGrupoService CreateCampeonatoGrupoService()
         {
-            return new Campeonatos.CampeonatoGrupoIntegration(_url);
+            return new Campeonatos.CampeonatoGrupoIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Campeonatos.ICampeonatoGrupoTimeService CreateCampeonatoGrupoTimeService()
         {
-            return new Campeonatos.CampeonatoGrupoTimeIntegration(_url);
+            return new Campeonatos.CampeonatoGrupoTimeIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Campeonatos.ICampeonatoHistoricoService CreateCampeonatoHistoricoService()
         {
-            return new Campeonatos.CampeonatoHistoricoIntegration(_url);
+            return new Campeonatos.CampeonatoHistoricoIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Campeonatos.ICampeonatoPosicaoService CreateCampeonatoPosicaoService()
         {
-            return new Campeonatos.CampeonatoPosicaoIntegration(_url);
+            return new Campeonatos.CampeonatoPosicaoIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Campeonatos.ICampeonatoRecordService CreateCampeonatoRecordService()
         {
-            return new Campeonatos.CampeonatoRecordIntegration(_url);
+            return new Campeonatos.CampeonatoRecordIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Campeonatos.ICampeonatoTimeService CreateCampeonatoTimeService()
         {
-            return new Campeonatos.CampeonatoTimeIntegration(_url);
+            return new Campeonatos.CampeonatoTimeIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Campeonatos.IHistoricoService CreateHistoricoService()
         {
-            return new Campeonatos.HistoricoIntegration(_url);
+            return new Campeonatos.HistoricoIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Campeonatos.IJogoService CreateJogoService()
         {
-            return new Campeonatos.JogoIntegration(_url);
+            return new Campeonatos.JogoIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Campeonatos.IPontuacaoService CreateCampeonatoPontuacaoService()
         {
-            return new Campeonatos.PontuacaoIntegration(_url);
+            return new Campeonatos.PontuacaoIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.DadosBasicos.ICriterioFixoService CreateCriterioFixoService()
         {
-            return new DadosBasicos.CriterioFixoIntegration(_url);
+            return new DadosBasicos.CriterioFixoIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.DadosBasicos.IEstadioService CreateEstadioService()
         {
-            return new DadosBasicos.EstadioIntegration(_url);
+            return new DadosBasicos.EstadioIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.DadosBasicos.IPagamentoTipoService CreatePagamentoTipoService()
         {
-            return new DadosBasicos.PagamentoTipoIntegration(_url);
+            return new DadosBasicos.PagamentoTipoIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.DadosBasicos.ITimeService CreateTimeService()
         {
-            return new DadosBasicos.TimeIntegration(_url);
+            return new DadosBasicos.TimeIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Users.IRoleService CreateRoleService()
         {
-            return new Users.RoleIntegration(_url);
+            return new Users.RoleIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Users.IUserService CreateUserService()
         {
-            return new Users.UserIntegration(_url);
+            return new Users.UserIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Users.IUserInRoleService CreateUserInRoleService()
         {
-            return new Users.UserInRoleIntegration(_url);
+            return new Users.UserInRoleIntegration(_url, GetToken());
         }
 
         public Domain.Interfaces.Services.Facade.IBolaoFacadeService CreateBolaoFacadeService()

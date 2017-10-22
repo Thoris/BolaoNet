@@ -20,8 +20,8 @@ namespace BolaoNet.WebApi.Integration.Facade.Campeonatos
         
         #region Constructors/Destructors
 
-        public CopaMundo2014FacadeIntegration(string url)
-            : base(url, ModuleName)
+        public CopaMundo2014FacadeIntegration(string url, string token)
+            : base(url, ModuleName, token)
         {
 
         }

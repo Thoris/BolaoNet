@@ -25,8 +25,8 @@ namespace BolaoNet.WebApi.Integration.DadosBasicos
         /// Inicializa nova instância da classe <see cref="PagamentoTipoIntegration" />.
         /// </summary>
         /// <param name="url">Url para chamada dos métodos de integração.</param>
-        public PagamentoTipoIntegration(string url)
-            : base (url, ModuleName)
+        public PagamentoTipoIntegration(string url, string token)
+            : base(url, ModuleName, token)
         {
 
         }

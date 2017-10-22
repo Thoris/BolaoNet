@@ -20,8 +20,9 @@ namespace BolaoNet.WebApi.Integration.Base
         /// </summary>
         /// <param name="moduleName">Nome do módulo a ser enviada a requisição via rest.</param>
         /// <param name="url">Url de chamadas para a integração.</param>
-        public GenericIntegration(string url, string moduleName)
-            : base(url, moduleName)
+        /// <param name="token">Token utilizado para gerenciamento de segurança.</param>
+        public GenericIntegration(string url, string moduleName, string token)
+            : base(url, moduleName, token)
         {
         }
 

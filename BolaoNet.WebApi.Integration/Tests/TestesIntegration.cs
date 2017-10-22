@@ -20,8 +20,8 @@ namespace BolaoNet.WebApi.Integration.Tests
         
         #region Constructors/Destructors
 
-        public TestesIntegration(string url)
-            : base(url, ModuleName)
+        public TestesIntegration(string url, string token)
+            : base(url, ModuleName, token)
         {
 
         }

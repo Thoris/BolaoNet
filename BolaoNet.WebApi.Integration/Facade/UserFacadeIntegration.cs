@@ -20,8 +20,8 @@ namespace BolaoNet.WebApi.Integration.Facade
         
         #region Constructors/Destructors
 
-        public UserFacadeIntegration(string url)
-            : base(url, ModuleName)
+        public UserFacadeIntegration(string url, string token)
+            : base(url, ModuleName, token)
         {
 
         }
