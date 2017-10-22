@@ -132,6 +132,19 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
             return RedirectToAction("Index", "AccountHome", new { area="Users" });
             
         }
+
+        [HttpGet]
+        public ActionResult CaptureCam()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CaptureCam(string x)
+        {
+            return View();
+        }
+
+
         //[HttpPost]
         //public ActionResult Upload(ViewModels.Users.AccountHomeProfileImage model)
         //{
