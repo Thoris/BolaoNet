@@ -87,6 +87,7 @@
     <Compile Include="DadosBasicos\PagamentoTipo.cs" />
     <Compile Include="DadosBasicos\Time.cs" />
     <Compile Include="Base\Common\Interfaces\Validation\IValidationRule.cs" />
+    <Compile Include="LogReporting\LogEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Users\Role.cs" />
     <Compile Include="Users\User.cs" />

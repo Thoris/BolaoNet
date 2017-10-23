@@ -62,6 +62,8 @@ namespace BolaoNet.Infra.Data.EF
 
         public DbSet<Domain.Entities.Boloes.BolaoHistorico> BoloesHistorico { get; set; }
 
+        public DbSet<Domain.Entities.LogReporting.LogEvent> Logging { get; set; }
+
         #endregion
 
         #region Constructors/Destructors

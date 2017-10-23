@@ -149,6 +149,9 @@
     <Folder Include="Areas\Facade\Views\Shared\" />
     <Folder Include="Areas\Facade\Views\StructureCopaMundoFacade\" />
     <Folder Include="Areas\Facade\Views\UserFacade\" />
+    <Folder Include="Areas\LogReporting\Models\" />
+    <Folder Include="Areas\LogReporting\Views\LogReporting\" />
+    <Folder Include="Areas\LogReporting\Views\Shared\" />
     <Folder Include="Areas\Tests\Models\" />
     <Folder Include="Areas\Tests\Views\Shared\" />
     <Folder Include="Areas\Users\Models\" />
@@ -160,6 +163,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="Areas\Boloes\Controllers\BolaoHistoricoController.cs" />
     <Compile Include="Areas\Boloes\Controllers\BolaoMembroPontoController.cs" />
+    <Compile Include="Areas\LogReporting\Controllers\LogReportingController.cs" />
+    <Compile Include="Areas\LogReporting\LogReportingAreaRegistration.cs" />
     <Compile Include="Areas\Tests\Controllers\TestesController.cs" />
     <Compile Include="Areas\Tests\TestsAreaRegistration.cs" />
     <Compile Include="Filters\AuthenticationAttribute.cs" />
@@ -294,6 +299,7 @@
     <Content Include="packages.config" />
     <Content Include="Areas\Facade\Views\web.config" />
     <Content Include="Areas\Tests\Views\web.config" />
+    <Content Include="Areas\LogReporting\Views\web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

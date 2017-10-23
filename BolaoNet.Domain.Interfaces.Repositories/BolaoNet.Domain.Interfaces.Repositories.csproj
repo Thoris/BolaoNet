@@ -84,6 +84,7 @@
     <Compile Include="DadosBasicos\IPagamentoTipoDao.cs" />
     <Compile Include="DadosBasicos\ITimeDao.cs" />
     <Compile Include="IFactoryDao.cs" />
+    <Compile Include="LogReporting\ILogReportingDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Testes\ITesteDao.cs" />
     <Compile Include="Users\IRoleDao.cs" />

@@ -98,6 +98,7 @@
     <Compile Include="Facade\Campeonatos\StructureCopaMundoFacadeIntegration.cs" />
     <Compile Include="Facade\UserFacadeIntegration.cs" />
     <Compile Include="FactoryIntegration.cs" />
+    <Compile Include="LogReporting\LogReportingIntegration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SerializationUtil.cs" />
     <Compile Include="Tests\TestesIntegration.cs" />
