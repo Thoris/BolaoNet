@@ -33,16 +33,7 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
         #endregion
 
         #region Actions
-
-        public ActionResult Test()
-        {
-            return View();
-        }
-        [HttpGet]
-        public ActionResult Index()
-        {
-            return View();
-        }
+         
         public ActionResult Index(ViewModels.LogReporting.LogReportingViewModel model)
         {
             if (model == null)
@@ -61,6 +52,8 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
             if (model.TotalItemsPage == null)
                 model.TotalItemsPage = 100;
 
+            if (model.Level == null)
+                model.Level = "Error";
 
             var res =_logReportingApp.GetByDateRangeAndType((int)model.Page, (int)model.TotalItemsPage, 
                 (DateTime)model.StartDate, (DateTime)model.EndDate, "", model.Level);

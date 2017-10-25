@@ -47,6 +47,12 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
                 .WithConstructorArgument("url", url)
                 .WithConstructorArgument("token", token);
 
+            Bind<Domain.Interfaces.Services.LogReporting.ILogReportingService>().To<WebApi.Integration.LogReporting.LogReportingIntegration>()
+                .WhenInjectedExactlyInto(typeof(Application.LogReporting.LogReportingApp))
+                .WithConstructorArgument("url", url)
+                .WithConstructorArgument("token", token);
+
+
             Bind<Domain.Interfaces.Services.Boloes.IApostaExtraService>().To<WebApi.Integration.Boloes.ApostaExtraIntegration>()
                 .WhenInjectedExactlyInto(typeof(Application.Boloes.ApostaExtraApp))
                 .WithConstructorArgument("url", url)

@@ -25,8 +25,9 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
             Bind<Domain.Interfaces.Services.Testes.ITesteService>().To<Domain.Services.Testes.TestesService>().WithConstructorArgument("userName", userName);
 
             Bind<Domain.Interfaces.Services.Boloes.IBolaoHistoricoService>().To<Domain.Services.Boloes.BolaoHistoricoService>().WithConstructorArgument("userName", userName);
-            
 
+            Bind<Domain.Interfaces.Services.LogReporting.ILogReportingService>().To<Domain.Services.LogReporting.LogReportingService>().WithConstructorArgument("userName", userName);
+            
             Bind<Domain.Interfaces.Services.Boloes.IApostaExtraService>().To<Domain.Services.Boloes.ApostaExtraService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Boloes.IApostaExtraUsuarioService>().To<Domain.Services.Boloes.ApostaExtraUsuarioService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Boloes.IApostaPontosService>().To<Domain.Services.Boloes.ApostaPontosService>().WithConstructorArgument("userName", userName);
