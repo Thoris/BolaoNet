@@ -11,13 +11,14 @@
     }
 
 
+    bool roleAdmin = homeController.IsUserInRole(BolaoNet.MVC.Security.PermissionLevel.Administrador);
     bool rolePagamento = homeController.IsUserInRole(BolaoNet.MVC.Security.PermissionLevel.Administrador, BolaoNet.MVC.Security.PermissionLevel.GerenciadorPagamentos);
     bool roleResultados = homeController.IsUserInRole(BolaoNet.MVC.Security.PermissionLevel.Administrador, BolaoNet.MVC.Security.PermissionLevel.GerenciadorResultados);
     bool roleBolao = homeController.IsUserInRole(BolaoNet.MVC.Security.PermissionLevel.Administrador, BolaoNet.MVC.Security.PermissionLevel.GerenciadorBolao);
     bool rolePontuacao = homeController.IsUserInRole(BolaoNet.MVC.Security.PermissionLevel.Administrador, BolaoNet.MVC.Security.PermissionLevel.GerenciadorPontuacao);
 }
 
-@if (rolePagamento || roleResultados || roleBolao || rolePontuacao)
+@if (rolePagamento || roleResultados || roleBolao || rolePontuacao || roleAdmin)
 { 
 <li @if (string.Compare(controllerArea, "Resultados", true) == 0 || string.Compare(controllerArea, "Pagamentos", true) == 0 || 
         string.Compare(controllerArea, "Pontuacao", true) == 0 || string.Compare(controllerArea, "Admin", true) == 0)
@@ -72,6 +73,14 @@
             </li>
         }
         
+        @if (roleAdmin)
+        {
+            <li @if (string.Compare(controllerName, "LogViewer", true) == 0 && 
+                    string.Compare(controllerArea, "Admin", true) == 0)
+                { @Html.Raw("class=\"active\"")   }>
+                <a href="/Admin/LogViewer/Index" onclick="javascript:showWait();"><i class="fa fa-table"></i><span class="nav-label">Log Viewer</span><span class="visible-xs-inline">LogViwer</span></a>
+            </li>
+        }
     </ul>
 </li>
 }

@@ -47,8 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LogReporting\LogEventViewModel.cs" />
     <Compile Include="Bolao\BolaoHistoricoListViewModel.cs" />
     <Compile Include="Bolao\BolaoHistoricoViewModel.cs" />
+    <Compile Include="LogReporting\LogReportingViewModel.cs" />
     <Compile Include="Mensagens\MensagemViewModel.cs" />
     <Compile Include="Users\ReleaseNotesViewModel.cs" />
     <Compile Include="Admin\BolaoIniciarPararViewModel.cs" />
