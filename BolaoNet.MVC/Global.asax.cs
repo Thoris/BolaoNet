@@ -1,4 +1,6 @@
-﻿using BolaoNet.Domain.Interfaces.Services.Logging;
+﻿//#define DEBUG_SAVE_LOG_THROUGH_WEB
+
+using BolaoNet.Domain.Interfaces.Services.Logging;
 using BolaoNet.MVC.AutoMapper;
 using Newtonsoft.Json;
 using System;
@@ -23,9 +25,10 @@ namespace BolaoNet.MVC
 
             AutoMapperConfig.RegisterMappings();
 
-
-            //log4net.Config.XmlConfigurator.Configure();
-            //new Infra.CrossCutting.Logging.Logger().Configure("log4net.config");
+#if (DEBUG_SAVE_LOG_THROUGH_WEB)
+            log4net.Config.XmlConfigurator.Configure();
+            new Infra.CrossCutting.Logging.Logger().Configure("log4net.config");
+#endif
         }
 
         protected void Application_PostAuthenticateRequest(Object sender, EventArgs e)

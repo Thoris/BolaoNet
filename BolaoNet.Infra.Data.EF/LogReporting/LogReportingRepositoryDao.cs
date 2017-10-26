@@ -35,22 +35,10 @@ namespace BolaoNet.Infra.Data.EF.LogReporting
         /// <returns>A filtered list of log events</returns>
         public IQueryable<LogEvent> GetByDateRangeAndType(int pageIndex, int pageSize, DateTime start, DateTime end, string logLevel)
         {
-            IQueryable<LogEvent> list = (from b in base.DataContext.Logging
-                                         where b.LogDate >= start && b.LogDate <= end
+            IQueryable<LogEvent> list = (from b in base.DataContext.Log
+                                         where b.Date >= start && b.Date <= end
                                          && (b.Level == logLevel || logLevel == "All")
-                                         select new LogEvent
-                                         {
-                                             Id = b.Id.ToString (),
-                                             //IdAsGuid = Guid.NewGuid(),
-                                             LoggerProviderName = "Log4Net",
-                                             LogDate = b.LogDate,
-                                             MachineName = b.MachineName,
-                                             Message = b.Message,
-                                             Type = "",
-                                             Level = b.Level,
-                                             Source = b.Source,
-                                             StackTrace = ""
-                                         });
+                                         select b);
 
             return list;
         }
@@ -64,21 +52,9 @@ namespace BolaoNet.Infra.Data.EF.LogReporting
         {
             //int logEventId = Convert.ToInt32(id);
 
-            LogEvent logEvent = (from b in base.DataContext.Logging
+            LogEvent logEvent = (from b in base.DataContext.Log
                                  where b.Id == id
-                                 select new LogEvent
-                                 {
-                                     Id = b.Id.ToString (),
-                                     LoggerProviderName = "Log4Net",
-                                     LogDate = b.LogDate,
-                                     MachineName = b.MachineName,
-                                     Message = b.Message,
-                                     Type = "",
-                                     Level = b.Level,
-                                     Source = b.Source,
-                                     StackTrace = "",
-                                     AllXml = ""
-                                 })
+                                 select b)
                                 .SingleOrDefault();
 
             return logEvent;
@@ -102,7 +78,7 @@ namespace BolaoNet.Infra.Data.EF.LogReporting
                 logLevelList = logLevelList.Substring(1);
             }
             
-            string commandText = "delete from Logging WHERE [Date] >= @p0 and [Date] <= @p1 and Level in (@p2)";
+            string commandText = "delete from Log WHERE [Date] >= @p0 and [Date] <= @p1 and Level in (@p2)";
 
             SqlParameter paramStartDate = new SqlParameter 
                 { 

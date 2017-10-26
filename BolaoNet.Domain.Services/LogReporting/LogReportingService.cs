@@ -50,7 +50,7 @@ namespace BolaoNet.Domain.Services.LogReporting
 
             IQueryable<LogEvent> logList = Dao.GetByDateRangeAndType(pageIndex, pageSize, start, end, logLevel);
             
-            list = list.OrderByDescending(d => d.LogDate);
+            list = list.OrderByDescending(d => d.Date);
 
             return new PagedList<LogEvent>(list, pageIndex, pageSize);
         }
