@@ -46,13 +46,12 @@ namespace BolaoNet.Domain.Services.LogReporting
         /// <returns>A filtered list of log events</returns>
         public IPagedList<LogEvent> GetByDateRangeAndType(int pageIndex, int pageSize, DateTime start, DateTime end, string logProviderName, string logLevel)
         {
-            IQueryable<LogEvent> list = null;
-
+           
             IQueryable<LogEvent> logList = Dao.GetByDateRangeAndType(pageIndex, pageSize, start, end, logLevel);
-            
-            list = list.OrderByDescending(d => d.Date);
 
-            return new PagedList<LogEvent>(list, pageIndex, pageSize);
+            logList = logList.OrderByDescending(d => d.Date);
+            
+            return new PagedList<LogEvent>(logList, pageIndex, pageSize);
         }
 
         /// <summary>

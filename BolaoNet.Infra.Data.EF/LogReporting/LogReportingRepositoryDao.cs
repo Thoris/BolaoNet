@@ -35,6 +35,10 @@ namespace BolaoNet.Infra.Data.EF.LogReporting
         /// <returns>A filtered list of log events</returns>
         public IQueryable<LogEvent> GetByDateRangeAndType(int pageIndex, int pageSize, DateTime start, DateTime end, string logLevel)
         {
+            //return from b in base.DataContext.Log 
+            //    select b;
+
+
             IQueryable<LogEvent> list = (from b in base.DataContext.Log
                                          where b.Date >= start && b.Date <= end
                                          && (b.Level == logLevel || logLevel == "All")

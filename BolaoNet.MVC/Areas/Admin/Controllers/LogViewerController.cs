@@ -47,18 +47,18 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
                 model.EndDate = startDate.AddDays(1);
 
             if (model.Page == null)
-                model.Page = 1;
+                model.Page = 0;
 
             if (model.TotalItemsPage == null)
                 model.TotalItemsPage = 100;
 
             if (model.Level == null)
-                model.Level = "Error";
+                model.Level = "ALL";
 
             var res =_logReportingApp.GetByDateRangeAndType((int)model.Page, (int)model.TotalItemsPage, 
                 (DateTime)model.StartDate, (DateTime)model.EndDate, "", model.Level);
 
-            return View();
+            return View(model);
         }
         ///// <summary>
         ///// Returns the Index view

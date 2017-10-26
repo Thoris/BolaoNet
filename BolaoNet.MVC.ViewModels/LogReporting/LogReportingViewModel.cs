@@ -10,6 +10,8 @@ namespace BolaoNet.MVC.ViewModels.LogReporting
     {
         #region Properties
 
+        public string Identity { get; set; }
+        public string Period { get; set; }
         public string Level { get; set; }
         public DateTime ? StartDate { get; set; }
         public DateTime ? EndDate { get; set; }
