@@ -1,17 +1,73 @@
-﻿
+﻿@model BolaoNet.MVC.ViewModels.LogReporting.LogEventViewModel
 @{
-    Layout = null;
+    ViewBag.Title = "Log Viewer";
 }
 
-<!DOCTYPE html>
+@using (Html.BeginForm("Index", "LogViewer"))
+{
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
-    <div> 
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+
+            <div class="col-lg-12">
+                <div class="ibox-content" style="display: block;">
+                    <div class="row">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="col-md-11"><h3>Log ID : @Model.Id</h3></div>
+                                <div class="col-md-1">
+                                    <a href="/Admin/LogViewer/Index" class="btn btn-default">Back</a>
+                                </div>
+                            </div>
+                        </div>    
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+
+                                <div class="form-group col-md-4 col-sm-4">
+                                    @Html.LabelFor(a => a.Date)
+                                    @Html.TextBoxFor(a => a.Date, new { @class = "form-control", @readonly = "readonly" })
+                                </div>
+                                <div class="form-group col-md-3 col-sm-3">
+                                    @Html.LabelFor(a => a.Identity)
+                                    @Html.TextBoxFor(a => a.Identity, new { @class = "form-control", @readonly = "readonly" })
+                                </div>
+                                <div class="form-group col-md-3 col-sm-3">
+                                    @Html.LabelFor(a => a.Level)
+                                    @Html.TextBoxFor(a => a.Level, new { @class = "form-control", @readonly = "readonly" })
+                                </div>
+                                <div class="form-group col-md-2 col-sm-2">
+                                    @Html.LabelFor(a => a.Thread)
+                                    @Html.TextBoxFor(a => a.Thread, new { @class = "form-control", @readonly = "readonly" })
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-12 col-sm-12">
+                                <div class="form-group col-md-12 col-sm-12">
+                                    @Html.LabelFor(a => a.Logger)
+                                    @Html.TextBoxFor(a => a.Logger, new { @class = "form-control", @readonly = "readonly" })
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 col-sm-12">
+                                <div class="form-group col-md-12 col-sm-12">
+                                    @Html.LabelFor(a => a.Message)
+                                    @Html.TextAreaFor(a => a.Message, new { @class = "form-control", @readonly = "readonly", rows = 5 })
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 col-sm-12">
+                                <div class="form-group col-md-12 col-sm-12">
+                                    @Html.LabelFor(a => a.Exception)
+                                    @Html.TextAreaFor(a => a.Exception, new { @class = "form-control", @readonly = "readonly", rows= 5 })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</body>
-</html>
+
+
+}

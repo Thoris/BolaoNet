@@ -124,7 +124,12 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Details(int id)
         {
-            return View();
+            LogEvent log = _logReportingApp.GetById(id);
+
+            LogEventViewModel model = Mapper.Map<Domain.Entities.LogReporting.LogEvent,
+                ViewModels.LogReporting.LogEventViewModel>(log);
+
+            return View(model);
         } 
 
         ///// <summary>
