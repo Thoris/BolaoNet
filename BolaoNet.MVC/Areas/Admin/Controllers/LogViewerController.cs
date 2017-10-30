@@ -1,4 +1,8 @@
-﻿using System;
+﻿using AutoMapper;
+using BolaoNet.Domain.Entities.LogReporting;
+using BolaoNet.Domain.Interfaces.Services.Paging;
+using BolaoNet.MVC.ViewModels.LogReporting;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -34,32 +38,95 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
 
         #region Actions
          
-        public ActionResult Index(ViewModels.LogReporting.LogReportingViewModel model)
+        public ActionResult Index(ViewModels.LogReporting.LogReportingViewModel model, int ? newPage)
         {
-            if (model == null)
-                model = new ViewModels.LogReporting.LogReportingViewModel();
+            if (newPage != null)
+            {
+                model = (ViewModels.LogReporting.LogReportingViewModel)Session["ModelEntry"];
+                model.CurrentPageIndex = newPage;
+            }
+            else
+            {
+                model.CurrentPageIndex = 0;
+            }
 
-            DateTime startDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
+            DateTime currentDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0, 0, 0);
             if (model.StartDate == null)
-                model.StartDate = startDate;
+                model.StartDate = currentDate;
+            
+            model.EndDate = currentDate.AddDays(1);
+            
+            //if (model.CurrentPageIndex == null || model.CurrentPageIndex == 0)
+            //    model.CurrentPageIndex = 1;
 
-            if (model.EndDate == null)
-                model.EndDate = startDate.AddDays(1);
-
-            if (model.Page == null)
-                model.Page = 0;
-
-            if (model.TotalItemsPage == null)
-                model.TotalItemsPage = 100;
+            if (model.PageSize == null || model.PageSize == 0)
+                model.PageSize = 20;
 
             if (model.Level == null)
-                model.Level = "ALL";
+                model.Level = "FATAL";
 
-            var res =_logReportingApp.GetByDateRangeAndType((int)model.Page, (int)model.TotalItemsPage, 
-                (DateTime)model.StartDate, (DateTime)model.EndDate, "", model.Level);
 
+            switch(model.Period)
+            {
+                case "0":
+                    model.StartDate = currentDate.AddDays(-1);
+                    break;
+                case "1":
+                    model.EndDate = currentDate.AddDays(-1);
+                    model.StartDate = currentDate.AddDays(-2);
+                    break;
+                case "2":
+                    model.StartDate = currentDate.AddDays(-7);
+                    break;
+                case "3":
+                    model.StartDate = currentDate.AddDays(-7);
+                    model.StartDate = currentDate.AddDays(-14);
+                    break;
+                case "4": 
+                    model.StartDate = currentDate.AddDays(-30);
+                    break;
+                case "5":
+                    model.EndDate = currentDate.AddDays(-30);
+                    model.StartDate = currentDate.AddDays(-60);
+                    break;
+                case "6":
+                    model.StartDate = currentDate.AddDays(-30);
+                    break;
+                case "7":
+                    model.StartDate = currentDate.AddDays(-60);
+                    break;
+                case "8":
+                    model.StartDate = currentDate.AddDays(-90);
+                    break;
+            }
+
+            
+
+            Session["ModelEntry"] = model;
+
+
+            IPagedList<LogEvent> list = _logReportingApp.GetByDateRangeAndType((int)model.CurrentPageIndex, (int)model.PageSize,
+                 (DateTime)model.StartDate, (DateTime)model.EndDate, model.Level, model.Identity);
+
+            model.PageCount = list.PageCount;
+            model.Total = list.TotalItemCount;
+            model.IsFirstPage = 1 == model.CurrentPageIndex + 1;
+            model.IsLastPage = list.PageCount == model.CurrentPageIndex + 1;
+            
+
+
+            model.List = Mapper.Map<IList<Domain.Entities.LogReporting.LogEvent>,
+                IList<ViewModels.LogReporting.LogEventViewModel>>(list);
+             
             return View(model);
         }
+
+        [HttpGet]
+        public ActionResult Details(int id)
+        {
+            return View();
+        } 
+
         ///// <summary>
         ///// Returns the Index view
         ///// </summary>

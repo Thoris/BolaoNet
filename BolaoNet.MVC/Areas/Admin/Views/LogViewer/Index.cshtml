@@ -1,9 +1,10 @@
 ﻿@model BolaoNet.MVC.ViewModels.LogReporting.LogReportingViewModel
 @{
-    ViewBag.Title = "Visualização de Logs";
+    ViewBag.Title = ""; // "Visualização de Logs";
 } 
 
-
+@using (Html.BeginForm("Index", "LogViewer"))
+{
 
 <div class="wrapper wrapper-content animated fadeInRight">
 
@@ -25,6 +26,8 @@
         </div>
     </div>*@
 
+    @Html.HiddenFor(x => x.CurrentPageIndex)
+    
 
     <div class="row">
 
@@ -39,12 +42,12 @@
 
                             @Html.DropDownListFor(model => model.Level, new SelectList(
                           new List<Object>{
-                               new { value = 0, text = "FATAL"  },
-                               new { value = 1 , text = "ERROR" },
-                               new { value = 2 , text = "WARN" },
-                               new { value = 3 , text = "INFO" },
-                               new { value = 4 , text = "DEBUG" },
-                               new { value = 5 , text = "ALL" }
+                               new { value = "FATAL", text = "Fatal"  },
+                               new { value = "ERROR" , text = "Error" },
+                               new { value = "WARN" , text = "Warn" },
+                               new { value = "INFO" , text = "Info" },
+                               new { value = "DEBUG" , text = "Debug" },
+                               new { value = "ALL" , text = "ALL" }
                             }, "value", "text", "Level"), new { @id = "Level", @class = "form-control input-sm" })
 
                         </div>
@@ -63,50 +66,69 @@
                             }, "value", "text", "Period"), new { @id = "Period", @class = "form-control input-sm" })
                         </div>
                         <div class="col-lg-1">
-
-                            <input type="submit" onclick="javascript:showWait();" value="Filtrar" class="btn btn-default" />
+                            <input type="submit" onclick="javascript:showWait();" value="Filter" class="btn btn-default" />
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-3">
-                            Total items xxx
-
+                        <div class="col-lg-12">
+                            <table width="100%">
+                                <tr>
+                                    <td width="20%">@(Model.Total) records found</td>
+                                    <td width="20%">Page @(Model.CurrentPageIndex + 1) of @(Model.PageCount)</td>
+                                    <td></td>
+                                    <td width="5%">Show </td>
+                                    <td width="15%">@Html.DropDownListFor(model => model.PageSize, new SelectList(
+                                        new List<Object>{
+                                       new { value = 10, text = "10"  },
+                                       new { value = 15 , text = "15" },
+                                       new { value = 20 , text = "20" },
+                                       new { value = 25 , text = "25" },
+                                       new { value = 50 , text = "50" },
+                                       new { value = 100 , text = "100" },
+                                    }, "value", "text", "PageSize"), new { @id = "PageSize", @class = "form-control input-sm", @width = "10px" })
+                                    </td>
+                                    <td width="5%" align="right">
+                                        per page
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
-                        <div class="col-lg-9">
-
-                            @Html.DropDownListFor(model => model.TotalItemsPage, new SelectList(
-                                new List<Object>{
-                               new { value = 0, text = "10"  },
-                               new { value = 1 , text = "15" },
-                               new { value = 2 , text = "20" },
-                               new { value = 3 , text = "25" },
-                               new { value = 4 , text = "50" },
-                               new { value = 5 , text = "100" }, 
-                            }, "value", "text", "TotalItemsPage"), new { @id = "TotalItemsPage", @class = "form-control input-sm" })
-
-                        </div>
+                         
                     </div>
                 </div>
                 <div class="ibox-content" style="display: block;">
-
-                    <div class="row">
-                        <div class="col-xs-2">
-                            <div class="form-group">
-
-                                
-
-                            </div>
-                        </div>
-                    </div>
+                     
 
                     <div class="row">
                         @if (Model.List != null && Model.List.Count > 0)
                         {
+
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-end">
+                                    <li class="page-item @if(Model.IsFirstPage == true){ Html.Raw("disabled"); }">
+                                        <a class="page-link" href="/Admin/LogViewer/Index?newPage=@(Model.CurrentPageIndex-1)" tabindex="-1">Previous</a>
+                                    </li>
+                                    @for (int i = 0; i < Model.PageCount; i++)
+                                    { 
+                                        <li class="page-item"><a class="page-link" href="/Admin/LogViewer/Index?newPage=@(i)">@(i + 1)</a></li>
+                                    }
+                                    <li class="page-item">
+                                        <a class="page-link @if (Model.IsLastPage) { Html.Raw("disabled"); }" href="/Admin/LogViewer/Index?newPage=@(Model.CurrentPageIndex+1)">Next</a>
+                                    </li>
+                                </ul>
+                            </nav>
+
+
+
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
                                         <td></td>
-                                        <td>@Html.DisplayNameFor(model => model.List[0].Id)</td> 
+                                        <td>@Html.DisplayNameFor(model => model.List[0].Id)</td>
+                                        <td>@Html.DisplayNameFor(model => model.List[0].Date)</td>
+                                        <td>@Html.DisplayNameFor(model => model.List[0].Identity)</td>
+                                        <td>@Html.DisplayNameFor(model => model.List[0].Level)</td>
+                                        <td>@Html.DisplayNameFor(model => model.List[0].Message)</td>  
                                         <td></td>
                                     </tr>
                                 </thead>
@@ -115,16 +137,35 @@
                                     {
                                         <tr>
                                             <td></td>
-                                            <td>@Html.DisplayFor(model => model.List[c].Id)</td>                                            
+                                            <td>@Html.DisplayFor(model => model.List[c].Id)</td>   
+                                            <td>@Html.DisplayFor(model => model.List[c].Date)</td>
+                                            <td>@Html.DisplayFor(model => model.List[c].Identity)</td>
+                                            <td>@Html.DisplayFor(model => model.List[c].Level)</td>
+                                            <td>@Html.DisplayFor(model => model.List[c].Message)</td>                                       
                                             <td></td>
                                         </tr>
                                     }
                                 </tbody>
                             </table>
+
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-end">
+                                    <li class="page-item @if (Model.IsFirstPage) { Html.Raw("disabled"); }">
+                                        <a class="page-link" href="/Admin/LogViewer/Index?newPage=@(Model.CurrentPageIndex-1)" tabindex="-1">Previous</a>
+                                    </li>
+                                    @for (int i = 0; i < Model.PageCount; i++)
+                                    {
+                                        <li class="page-item"><a class="page-link" href="/Admin/LogViewer/Index?newPage=@(i)">@(i + 1)</a></li>
+                                    }
+                                    <li class="page-item">
+                                        <a class="page-link @if (Model.IsLastPage) { Html.Raw("disabled"); }" href="/Admin/LogViewer/Index?newPage=@(Model.CurrentPageIndex+1)">Next</a>
+                                    </li>
+                                </ul>
+                            </nav>
                         }
                         else
                         {
-                            <h3>Não foram encontrados logs</h3>
+                            <h3>No log found</h3>
                         }
                     </div>
                 </div>
@@ -133,7 +174,4 @@
     </div>
 </div>
 
-
-
-
- 
+}

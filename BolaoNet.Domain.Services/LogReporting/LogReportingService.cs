@@ -44,10 +44,10 @@ namespace BolaoNet.Domain.Services.LogReporting
         /// <param name="logProviderName">name of the log provider</param>
         /// <param name="logLevel">The level of the log messages</param>
         /// <returns>A filtered list of log events</returns>
-        public IPagedList<LogEvent> GetByDateRangeAndType(int pageIndex, int pageSize, DateTime start, DateTime end, string logProviderName, string logLevel)
+        public IPagedList<LogEvent> GetByDateRangeAndType(int pageIndex, int pageSize, DateTime start, DateTime end, string logLevel, string identity)
         {
            
-            IQueryable<LogEvent> logList = Dao.GetByDateRangeAndType(pageIndex, pageSize, start, end, logLevel);
+            IQueryable<LogEvent> logList = Dao.GetByDateRangeAndType(pageIndex, pageSize, start, end, logLevel, identity);
 
             logList = logList.OrderByDescending(d => d.Date);
             
@@ -60,7 +60,7 @@ namespace BolaoNet.Domain.Services.LogReporting
         /// <param name="logProviderName">name of the log provider</param>
         /// <param name="id">Id of the log event as a string</param>
         /// <returns>A single Log event</returns>
-        public LogEvent GetById(string logProviderName, string id)
+        public LogEvent GetById(int id)
         {
             LogEvent logEvent = Dao.GetById(id);
             return logEvent;
@@ -73,7 +73,7 @@ namespace BolaoNet.Domain.Services.LogReporting
         /// <param name="start">start date</param>
         /// <param name="end">end date</param>
         /// <param name="logLevels">string array of log levels</param>
-        public void ClearLog(string logProviderName, DateTime start, DateTime end, string[] logLevels)
+        public void ClearLog( DateTime start, DateTime end, string[] logLevels)
         {
             Dao.ClearLog (start, end, logLevels);
         }

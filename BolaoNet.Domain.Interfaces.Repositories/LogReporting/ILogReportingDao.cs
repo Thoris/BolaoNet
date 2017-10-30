@@ -18,14 +18,14 @@ namespace BolaoNet.Domain.Interfaces.Repositories.LogReporting
         /// <param name="end">end date</param>
         /// <param name="logLevel">The level of the log messages</param>
         /// <returns>A filtered list of log events</returns>
-        IQueryable<LogEvent> GetByDateRangeAndType(int pageIndex, int pageSize, DateTime start, DateTime end, string logLevel);
+        IQueryable<LogEvent> GetByDateRangeAndType(int pageIndex, int pageSize, DateTime start, DateTime end, string logLevel, string identity);
 
         /// <summary>
         /// Returns a single Log event
         /// </summary>
         /// <param name="id">Id of the log event as a string</param>
         /// <returns>A single Log event</returns>
-        LogEvent GetById(string id);
+        LogEvent GetById(int id);
 
         /// <summary>
         /// Clears log messages between a date range and for specified log levels

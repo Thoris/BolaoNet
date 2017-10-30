@@ -33,7 +33,7 @@ namespace BolaoNet.Infra.Data.EF.LogReporting
         /// <param name="end">end date</param>
         /// <param name="logLevel">The level of the log messages</param>
         /// <returns>A filtered list of log events</returns>
-        public IQueryable<LogEvent> GetByDateRangeAndType(int pageIndex, int pageSize, DateTime start, DateTime end, string logLevel)
+        public IQueryable<LogEvent> GetByDateRangeAndType(int pageIndex, int pageSize, DateTime start, DateTime end, string logLevel, string identity)
         {
             //return from b in base.DataContext.Log 
             //    select b;
@@ -41,7 +41,9 @@ namespace BolaoNet.Infra.Data.EF.LogReporting
 
             IQueryable<LogEvent> list = (from b in base.DataContext.Log
                                          where b.Date >= start && b.Date <= end
-                                         && (b.Level == logLevel || logLevel == "All")
+                                         && ((string.Compare (b.Level, logLevel, true) == 0) || string.Compare (logLevel , "ALL", true) == 0)
+                                         && ((string.Compare(b.Identity, identity, true) == 0) || string.IsNullOrEmpty(identity))
+                                         //&& (b.Identity == identity || string.IsNullOrEmpty (identity))
                                          select b);
 
             return list;
@@ -52,7 +54,7 @@ namespace BolaoNet.Infra.Data.EF.LogReporting
         /// </summary>
         /// <param name="id">Id of the log event as a string</param>
         /// <returns>A single Log event</returns>
-        public LogEvent GetById(string id)
+        public LogEvent GetById(int id)
         {
             //int logEventId = Convert.ToInt32(id);
 

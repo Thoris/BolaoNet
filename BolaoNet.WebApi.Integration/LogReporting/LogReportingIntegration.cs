@@ -36,17 +36,17 @@ namespace BolaoNet.WebApi.Integration.LogReporting
         #region ILogReportingService members
 
 
-        public Domain.Interfaces.Services.Paging.IPagedList<Domain.Entities.LogReporting.LogEvent> GetByDateRangeAndType(int pageIndex, int pageSize, DateTime start, DateTime end, string logProviderName, string logLevel)
+        public Domain.Interfaces.Services.Paging.IPagedList<Domain.Entities.LogReporting.LogEvent> GetByDateRangeAndType(int pageIndex, int pageSize, DateTime start, DateTime end, string logLevel, string identity)
         {
             throw new NotImplementedException();
         }
 
-        public Domain.Entities.LogReporting.LogEvent GetById(string logProviderName, string id)
+        public Domain.Entities.LogReporting.LogEvent GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void ClearLog(string logProviderName, DateTime start, DateTime end, string[] logLevels)
+        public void ClearLog(DateTime start, DateTime end, string[] logLevels)
         {
             throw new NotImplementedException();
         }

@@ -39,14 +39,14 @@ namespace BolaoNet.Application.LogReporting
             return Service.GetByDateRangeAndType(pageIndex, pageSize, start, end, logProviderName, logLevel);
         }
 
-        public Domain.Entities.LogReporting.LogEvent GetById(string logProviderName, string id)
+        public Domain.Entities.LogReporting.LogEvent GetById(int id)
         {
-            return Service.GetById(logProviderName, id);
+            return Service.GetById(id);
         }
 
-        public void ClearLog(string logProviderName, DateTime start, DateTime end, string[] logLevels)
+        public void ClearLog(DateTime start, DateTime end, string[] logLevels)
         {
-            Service.ClearLog(logProviderName, start, end, logLevels);
+            Service.ClearLog(start, end, logLevels);
         }
 
         #endregion
