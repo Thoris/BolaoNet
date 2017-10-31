@@ -120,7 +120,7 @@ namespace BolaoNet.MVC.Controllers
             if (!System.IO.File.Exists(caminhoCompleto))
                 caminhoCompleto = Server.MapPath("~/Ajuda/" + language + "/Default.html");
 
-
+            Response.Charset = "iso-8859-1";
             return new FilePathResult(caminhoCompleto, "text/html");
 
         }
