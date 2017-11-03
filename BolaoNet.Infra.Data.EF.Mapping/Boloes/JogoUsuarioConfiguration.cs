@@ -16,6 +16,30 @@ namespace BolaoNet.Infra.Data.EF.Mapping.Boloes
 
         public JogoUsuarioConfiguration()
         {
+            ToTable("JogosUsuarios");
+
+            Property(c => c.NomeBolao)
+                .HasMaxLength(BolaoConfiguration.NomeLen);
+
+
+            Property(c => c.UserName)
+                .HasMaxLength(Users.UserConfiguration.NomeLen);
+
+            Property(c => c.NomeCampeonato)
+                .HasMaxLength(Campeonatos.CampeonatoConfiguration.NomeLen);
+
+            Property(c => c.NomeTimeResult1)
+                .HasMaxLength(DadosBasicos.TimeConfiguration.NomeLen);
+
+            Property(c => c.NomeTimeResult2)
+                .HasMaxLength(DadosBasicos.TimeConfiguration.NomeLen);
+
+            
+
+
+
+
+
 
         }
 

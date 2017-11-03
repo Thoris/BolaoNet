@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Domain.Entities.Campeonatos
 {
-    public class Pontuacao : Base.AuditModel
+    public abstract class Pontuacao : Base.AuditModel
     {
         #region Properties
 

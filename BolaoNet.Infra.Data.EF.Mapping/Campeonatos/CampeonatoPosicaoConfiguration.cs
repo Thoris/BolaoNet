@@ -14,6 +14,26 @@ namespace BolaoNet.Infra.Data.EF.Mapping.Campeonatos
 
         public CampeonatoPosicaoConfiguration()
         {
+            ToTable("CampeonatosPosicoes");
+
+            Property(c => c.BackColorName)
+                .HasMaxLength(50);
+
+
+            Property(c => c.ForeColorName)
+                .HasMaxLength(50);
+
+            Property(c => c.NomeCampeonato)
+                .HasMaxLength(CampeonatoConfiguration.NomeLen);
+
+            Property(c => c.NomeFase)
+                .HasMaxLength(CampeonatoFaseConfiguration.NomeLen);
+
+            Property(c => c.NomeGrupo)
+                .HasMaxLength(CampeonatoGrupoConfiguration.NomeLen);
+
+            Property(c => c.Titulo)
+                .HasMaxLength(100);
 
         }
 

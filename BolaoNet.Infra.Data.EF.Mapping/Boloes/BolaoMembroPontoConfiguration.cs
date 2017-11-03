@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Infra.Data.EF.Mapping.Boloes
 {
-    public class BolaoCampeonatoClassificacaoUsuarioConfiguration : 
-        Base.BaseConfiguration<BolaoNet.Domain.Entities.Boloes.BolaoCampeonatoClassificacaoUsuario>   
+    public class BolaoMembroPontoConfiguration
+        : Base.BaseConfiguration<BolaoNet.Domain.Entities.Boloes.BolaoMembroPonto>
     {
-        
         #region Constructors/Destructors
 
-        public BolaoCampeonatoClassificacaoUsuarioConfiguration()
+        public BolaoMembroPontoConfiguration()
         {
-            ToTable("BoloesCampeonatosClassificacaoUsuarios");
+            ToTable("BoloesMembrosPontos");
 
             Property(c => c.NomeBolao)
                 .HasMaxLength(BolaoConfiguration.NomeLen);
@@ -28,11 +27,13 @@ namespace BolaoNet.Infra.Data.EF.Mapping.Boloes
             Property(c => c.NomeGrupo)
                 .HasMaxLength(Campeonatos.CampeonatoGrupoConfiguration.NomeLen);
 
-            Property(c => c.NomeTime)
-                .HasMaxLength(DadosBasicos.TimeConfiguration.NomeLen);
-
             Property(c => c.UserName)
                 .HasMaxLength(Users.UserConfiguration.NomeLen);
+             
+
+
+
+             
 
         }
 

@@ -91,11 +91,11 @@ else
                         { @Html.Raw("class=\"active\"")  }>
                         <a href="/Boloes/SemAcertos/Index" onclick="javascript:showWait();"><i class="fa fa-minus-square"></i><span class="nav-label">Sem acertos</span><span class="visible-xs-inline">Sem acertos</span></a>
                     </li>
-                    <li @if (string.Compare(controllerName, "HistoricoPontos", true) == 0 && 
+                    @*<li @if (string.Compare(controllerName, "HistoricoPontos", true) == 0 && 
                             string.Compare(controllerArea, "Boloes", true) == 0)
                         { @Html.Raw("class=\"active\"")  }>
                         <a href="/Boloes/HistoricoPontos/Index" onclick="javascript:showWait();"><i class="fa fa-spinner"></i><span class="nav-label">Histórico de pontos</span><span class="visible-xs-inline">Hist. Pontos</span></a>
-                    </li>
+                    </li>*@
                     <li @if (string.Compare(controllerName, "BolaoRegras", true) == 0 && 
                             string.Compare(controllerArea, "Regras", true) == 0)
                         { @Html.Raw("class=\"active\"")  }>

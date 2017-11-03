@@ -15,6 +15,8 @@ namespace BolaoNet.Infra.Data.EF.Mapping.Campeonatos
         public PontuacaoConfiguration()
         {
 
+            //Property(c => c.)
+            //    .HasMaxLength(100);
         }
 
         #endregion

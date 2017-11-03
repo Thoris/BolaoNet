@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BolaoNet.Infra.Data.EF.Mapping.DadosBasicos;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -14,6 +15,19 @@ namespace BolaoNet.Infra.Data.EF.Mapping.Campeonatos
 
         public CampeonatoClassificacaoConfiguration()
         {
+            ToTable("CampeonatosClassificacao");
+
+            Property(c => c.NomeCampeonato)
+                .HasMaxLength(CampeonatoConfiguration.NomeLen);
+
+            Property(c => c.NomeFase)
+                .HasMaxLength(CampeonatoFaseConfiguration.NomeLen);
+
+            Property(c => c.NomeGrupo)
+                .HasMaxLength(CampeonatoGrupoConfiguration.NomeLen);
+
+            Property(c => c.NomeTime)
+                .HasMaxLength(TimeConfiguration.NomeLen);
 
         }
 

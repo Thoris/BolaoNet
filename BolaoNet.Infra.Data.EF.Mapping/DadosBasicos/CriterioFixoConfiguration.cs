@@ -14,6 +14,10 @@ namespace BolaoNet.Infra.Data.EF.Mapping.DadosBasicos
 
         public CriterioFixoConfiguration()
         {
+            ToTable("CriteriosFixos");
+
+            Property(c => c.Descricao)
+                .HasMaxLength(255);
 
         }
 

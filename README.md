@@ -1,6 +1,6 @@
-# Project Title
+# BolaoNet
 
-One Paragraph of project description goes here
+Projeto que gerencia o bolão da copa do mundo.
 
 ## Getting Started
 

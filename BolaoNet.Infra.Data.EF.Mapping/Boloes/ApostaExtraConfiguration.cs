@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BolaoNet.Infra.Data.EF.Mapping.DadosBasicos;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -15,7 +16,23 @@ namespace BolaoNet.Infra.Data.EF.Mapping.Boloes
 
         public ApostaExtraConfiguration()
         {
-            
+            ToTable("ApostasExtras");
+
+            Property(c => c.Descricao)
+                .HasMaxLength(255);
+
+            Property(c => c.NomeBolao)
+                .HasMaxLength(BolaoConfiguration.NomeLen);
+
+            Property(c => c.NomeTimeValidado)
+                .HasMaxLength(TimeConfiguration.NomeLen);
+
+            Property(c => c.Titulo)
+                .HasMaxLength(150);
+
+            Property(c => c.ValidadoBy)
+                .HasMaxLength(Users.UserConfiguration.NomeLen);
+
         }
 
         #endregion

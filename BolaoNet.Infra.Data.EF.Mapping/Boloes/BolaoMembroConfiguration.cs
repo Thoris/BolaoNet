@@ -15,6 +15,20 @@ namespace BolaoNet.Infra.Data.EF.Mapping.Boloes
 
         public BolaoMembroConfiguration()
         {
+            ToTable("BoloesMembros");
+
+            Property(c => c.NomeBolao)
+                .HasMaxLength(BolaoConfiguration.NomeLen);
+
+
+            Property(c => c.UserName)
+                .HasMaxLength(Users.UserConfiguration.NomeLen);
+
+            Property(c => c.FullName)
+                .HasMaxLength(300);
+
+
+
 
         }
 

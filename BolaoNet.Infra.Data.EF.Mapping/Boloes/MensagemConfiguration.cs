@@ -14,6 +14,27 @@ namespace BolaoNet.Infra.Data.EF.Mapping.Boloes
 
         public MensagemConfiguration()
         {
+            ToTable("Mensagens");
+
+            Property(c => c.FromUser)
+                .HasMaxLength(Users.UserConfiguration.NomeLen);
+
+            Property(c => c.Message)
+                .HasMaxLength(255);
+
+            Property(c => c.NomeBolao)
+                .HasMaxLength(BolaoConfiguration.NomeLen);
+
+            Property(c => c.Title)
+                .HasMaxLength(150);
+
+            Property(c => c.ToUser)
+                .HasMaxLength(Users.UserConfiguration.NomeLen);
+
+
+
+
+
 
         }
 

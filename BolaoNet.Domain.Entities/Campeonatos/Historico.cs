@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +12,9 @@ namespace BolaoNet.Domain.Entities.Campeonatos
     {
         #region Properties
 
+        [Key, Column(Order = 1)]
         public string Nome { get; set; }
+        [Key, Column(Order = 2)]
         public int Ano { get; set; }
         public virtual DadosBasicos.Time NomeTimeCampeao { get; set; }
         public virtual DadosBasicos.Time NomeTimeVice { get; set; }

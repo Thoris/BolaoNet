@@ -14,7 +14,7 @@ namespace BolaoNet.Infra.Data.EF.Mapping.Campeonatos
 
         public CampeonatoRecordConfiguration()
         {
-
+ 
         }
 
         #endregion

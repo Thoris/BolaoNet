@@ -14,6 +14,9 @@ namespace BolaoNet.Infra.Data.EF.Mapping.Boloes
 
         public PontuacaoConfiguration()
         {
+             
+
+
 
         }
 

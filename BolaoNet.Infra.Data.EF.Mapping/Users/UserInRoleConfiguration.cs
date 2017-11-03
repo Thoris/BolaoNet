@@ -15,6 +15,16 @@ namespace BolaoNet.Infra.Data.EF.Mapping.Users
         public UserInRoleConfiguration()
         {
 
+            ToTable("UserInRole");
+
+            Property(c => c.RoleName)
+                .HasMaxLength(RoleConfiguration.NomeLen);
+
+            Property(c => c.UserName)
+                .HasMaxLength(UserConfiguration.NomeLen);
+
+
+
         }
 
         #endregion

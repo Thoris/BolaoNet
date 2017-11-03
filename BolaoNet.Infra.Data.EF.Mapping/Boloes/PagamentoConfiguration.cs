@@ -14,7 +14,18 @@ namespace BolaoNet.Infra.Data.EF.Mapping.Boloes
 
         public PagamentoConfiguration()
         {
+            ToTable("Pagamentos");
 
+            Property(c => c.NomeBolao)
+                .HasMaxLength(BolaoConfiguration.NomeLen);
+
+            Property(c => c.Descricao)
+                .HasMaxLength(255);
+
+            Property(c => c.UserName)
+                .HasMaxLength(Users.UserConfiguration.NomeLen);
+
+            
         }
 
         #endregion

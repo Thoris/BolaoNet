@@ -14,6 +14,14 @@ namespace BolaoNet.Infra.Data.EF.Mapping.Boloes
 
         public BolaoCriterioPontosTimesConfiguration()
         {
+            ToTable("BoloesCriteriosPontosTimes");
+
+            Property(c => c.NomeBolao)
+                .HasMaxLength(BolaoConfiguration.NomeLen);
+
+
+            Property(c => c.NomeTime)
+                .HasMaxLength(DadosBasicos.TimeConfiguration.NomeLen);
 
         }
 

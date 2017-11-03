@@ -14,6 +14,10 @@ namespace BolaoNet.Infra.Data.EF.Mapping.Boloes
 
         public BolaoRequestStatusConfiguration()
         {
+            ToTable("BoloesRequestsStatus");
+
+            Property(c => c.Descricao)
+                .HasMaxLength(255);
 
         }
 

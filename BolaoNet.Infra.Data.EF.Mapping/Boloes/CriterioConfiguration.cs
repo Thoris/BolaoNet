@@ -15,6 +15,10 @@ namespace BolaoNet.Infra.Data.EF.Mapping.Boloes
         public CriterioConfiguration()
         {
 
+            //Property(c => c.)
+            //    .HasMaxLength(BolaoConfiguration.NomeLen);
+
+
         }
 
         #endregion

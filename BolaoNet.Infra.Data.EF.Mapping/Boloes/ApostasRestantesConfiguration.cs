@@ -14,6 +14,8 @@ namespace BolaoNet.Infra.Data.EF.Mapping.Boloes
 
         public ApostasRestantesConfiguration()
         {
+            //Property(c => c.)
+            //    .HasMaxLength(255);
 
         }
 

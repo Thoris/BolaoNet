@@ -14,6 +14,20 @@ namespace BolaoNet.Infra.Data.EF.Mapping.Boloes
 
         public BolaoPremioConfiguration()
         {
+            ToTable("BoloesPremios");
+
+            Property(c => c.NomeBolao)
+                .HasMaxLength(BolaoConfiguration.NomeLen);
+
+
+            Property(c => c.BackColorName)
+                .HasMaxLength(30);
+
+            Property(c => c.ForeColorName)
+                .HasMaxLength(30);
+
+            Property(c => c.Titulo)
+                .HasMaxLength(150);
 
         }
 

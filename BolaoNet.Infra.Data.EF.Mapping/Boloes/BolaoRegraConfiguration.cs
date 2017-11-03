@@ -14,6 +14,15 @@ namespace BolaoNet.Infra.Data.EF.Mapping.Boloes
 
         public BolaoRegraConfiguration()
         {
+            ToTable("BoloesRegras");
+
+            Property(c => c.NomeBolao)
+                .HasMaxLength(BolaoConfiguration.NomeLen);
+
+
+            Property(c => c.Descricao)
+                .HasMaxLength(255);
+
 
         }
 

@@ -55,9 +55,11 @@
     <Compile Include="Boloes\BolaoCampeonatoClassificacaoUsuarioConfiguration.cs" />
     <Compile Include="Boloes\BolaoCriterioPontosConfiguration.cs" />
     <Compile Include="Boloes\BolaoCriterioPontosTimesConfiguration.cs" />
+    <Compile Include="Boloes\BolaoHistoricoConfiguration.cs" />
     <Compile Include="Boloes\BolaoMembroClassificacaoConfiguration.cs" />
     <Compile Include="Boloes\BolaoMembroGrupoConfiguration.cs" />
     <Compile Include="Boloes\BolaoMembroConfiguration.cs" />
+    <Compile Include="Boloes\BolaoMembroPontoConfiguration.cs" />
     <Compile Include="Boloes\BolaoPontoRodadaConfiguration.cs" />
     <Compile Include="Boloes\BolaoPontoRodadaUsuarioConfiguration.cs" />
     <Compile Include="Boloes\BolaoPontuacaoConfiguration.cs" />

@@ -14,6 +14,24 @@ namespace BolaoNet.Infra.Data.EF.Mapping.Boloes
 
         public BolaoPontoRodadaUsuarioConfiguration()
         {
+            ToTable("BoloesPontosRodadasUsuarios");
+
+            Property(c => c.NomeBolao)
+                .HasMaxLength(BolaoConfiguration.NomeLen);
+
+            Property(c => c.NomeCampeonato)
+                .HasMaxLength(Campeonatos.CampeonatoConfiguration.NomeLen);
+
+            Property(c => c.NomeFase)
+                .HasMaxLength(Campeonatos.CampeonatoFaseConfiguration.NomeLen);
+
+            Property(c => c.NomeGrupo)
+                .HasMaxLength(Campeonatos.CampeonatoGrupoConfiguration.NomeLen);
+
+            Property(c => c.UserName)
+                .HasMaxLength(Users.UserConfiguration.NomeLen);
+
+
 
         }
 

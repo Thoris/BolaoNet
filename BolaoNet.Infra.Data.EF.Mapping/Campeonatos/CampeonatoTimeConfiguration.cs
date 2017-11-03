@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BolaoNet.Infra.Data.EF.Mapping.DadosBasicos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,13 @@ namespace BolaoNet.Infra.Data.EF.Mapping.Campeonatos
 
         public CampeonatoTimeConfiguration()
         {
+            ToTable("CampeonatosTimes");
+
+            Property(c => c.NomeCampeonato)
+                .HasMaxLength(CampeonatoConfiguration.NomeLen);
+
+            Property(c => c.NomeTime)
+                .HasMaxLength(TimeConfiguration.NomeLen);
 
         }
 

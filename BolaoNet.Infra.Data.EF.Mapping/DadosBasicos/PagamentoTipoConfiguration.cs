@@ -14,6 +14,10 @@ namespace BolaoNet.Infra.Data.EF.Mapping.DadosBasicos
 
         public PagamentoTipoConfiguration()
         {
+            ToTable("PagamentosTipo");
+
+            Property(c => c.Descricao)
+                .HasMaxLength(255);
 
         }
 
