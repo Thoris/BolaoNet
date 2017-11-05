@@ -55,6 +55,12 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
         //http://www.dotnettricks.com/learn/webapi/passing-multiple-complex-type-parameters-to-aspnet-web-api
 
+        /// <summary>
+        /// Método que efetua o ínicio do bolão.
+        /// </summary>
+        /// <param name="id">Identificador (Não utilizado).</param>
+        /// <param name="data">Lista de objetos a serem manipulados.</param>
+        /// <returns>true se conseguiu iniciar o bolão.</returns>
         [HttpPost]
         public bool Iniciar(int id, ArrayList data)
         {
