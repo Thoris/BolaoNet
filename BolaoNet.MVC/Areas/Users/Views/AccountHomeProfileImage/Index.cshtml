@@ -25,11 +25,18 @@
                         </div>
 
 
-                        @*<div class="col-md-12">
+                        <div class="col-md-12">
+                            <br />
                             <div>
                                 <input type="button" id="btnCapture" value="Capturar foto" onclick="ShowPopUp();" />
                             </div>
-                        </div>*@
+
+                            <p class="help-block">
+                                
+                                @Html.ActionLink("regras", "#", new { }, new { @data_toggle = "modal", @data_target = "#DialogWebCam" })
+                                de uso.
+                            </p>
+                        </div>
 
                     </div>                    
                     <div class="row">
@@ -83,12 +90,12 @@
 </div>
 
 
-
+@Html.Partial("CaptureCam")
 
 @section scripts{
     @Scripts.Render("~/bundles/jcrop")
 
-    <script type="text/javascript">
+    @*<script type="text/javascript">
 
         function ShowPopUp() {
 
@@ -96,7 +103,7 @@
 
         }
 
-    </script>
+    </script>*@
 
 
 

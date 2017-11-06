@@ -114,6 +114,7 @@
     <Compile Include="Users\UserChangePasswordViewModel.cs" />
     <Compile Include="Users\UserGrupoComparacaoViewModel.cs" />
     <Compile Include="Users\UserProfileViewModel.cs" />
+    <Compile Include="Users\WebCamCapture.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BolaoNet.Domain.Entities\BolaoNet.Domain.Entities.csproj">
