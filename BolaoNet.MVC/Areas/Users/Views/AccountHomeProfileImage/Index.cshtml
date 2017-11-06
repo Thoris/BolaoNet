@@ -24,18 +24,10 @@
                             </div>
                         </div>
 
-
                         <div class="col-md-12">
-                            <br />
-                            <div>
-                                <input type="button" id="btnCapture" value="Capturar foto" onclick="ShowPopUp();" />
-                            </div>
-
-                            <p class="help-block">
-                                
-                                @Html.ActionLink("regras", "#", new { }, new { @data_toggle = "modal", @data_target = "#DialogWebCam" })
-                                de uso.
-                            </p>
+                            <br />                                                            
+                            @Html.ActionLink("Capturar Foto", "#", new { name="capturarFoto", id="capturarFoto" }, new { @data_toggle = "modal", @data_target = "#DialogWebCam", @onclick = "startWebcam();" })
+                           
                         </div>
 
                     </div>                    
@@ -90,7 +82,7 @@
 </div>
 
 
-@Html.Partial("CaptureCam")
+@Html.Partial("CaptureCam", Model)
 
 @section scripts{
     @Scripts.Render("~/bundles/jcrop")
@@ -120,7 +112,6 @@
         var context;
         var image;
 
-
         jQuery(function($){
             
             var jcrop_api,
@@ -134,6 +125,8 @@
             $("#AttachedFile").change(function () {
                 loadImage(this);
             });
+
+
 
             function loadImage(input) {
                 if (input.files && input.files[0]) {
@@ -224,8 +217,117 @@
             }
 
 
+            $("#btnSave").click(function () {
+
+                alert('ok3');
+
+                var canvasWebCam = document.getElementById("canvasWebCam");
+                loadImageWebCam(canvasWebCam);
+
+                //var imageData = canvas.toDataURL();
+                //document.getElementsByName("ImageData")[0].setAttribute("value", imageData);
+                //loadWebCam(canvasWebCam);
+
+                alert('ok4');
+            });
+
+
+
+            //function loadWebCam(canvasLocal) {
+
+            //    alert('0');
+
+            //    image = new Image();
+            //    //image.onload = this;
+            //    image.src = canvasLocal.toDataURL();
+
+            //    if (jcrop_api != null) {
+            //        jcrop_api.destroy();
+            //    }
+
+            //    alert('1');
+
+            //    $("#views").empty();
+            //    $("#views").append("<canvas id=\"canvas\">");
+
+            //    //alert('2');
+            //    canvas = canvasLocal; //$("#canvas")[0];
+
+            //    //alert('3');
+            //    context = canvas.getContext("2d");
+
+            //    //alert('4');
+            //    canvas.width = image.width;
+            //    canvas.height = image.height;
+            //    context.drawImage(image, 0, 0);
+
+            //    alert('5');
+            //    $("#canvas").Jcrop({
+            //        onChange: selectcanvas,
+            //        onSelect: selectcanvas,
+            //        boxWidth: crop_max_width,
+            //        boxHeight: crop_max_height,
+            //        aspectRatio: 1,
+            //        setSelect: [10, 100, 100, 100],
+            //    }, function () {
+            //        jcrop_api = this;
+            //    });
+
+            //}
+
+
+
+
+            function loadImageWebCam(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    canvas = null;
+                    reader.onload = function (e) {
+                        image = new Image();
+                        image.onload = validateImageWebCam;
+                        image.src = e.target.result;
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            function validateImageWebCam() {
+                if (canvas != null) {
+                    image = new Image();
+                    image.onload = restartJcropWebCam;
+                    image.src = canvas.toDataURL('image/png');
+                } else restartJcropWebCam();
+            }
+
+
+            function restartJcropWebCam() {
+
+                if (jcrop_api != null) {
+                    jcrop_api.destroy();
+                }
+                $("#views").empty();
+                $("#views").append("<canvas id=\"canvas\">");
+                canvas = $("#canvas")[0];
+                context = canvas.getContext("2d");
+                canvas.width = image.width;
+                canvas.height = image.height;
+                context.drawImage(image, 0, 0);
+                $("#canvas").Jcrop({
+                    onChange: selectcanvas,
+                    onSelect: selectcanvas,
+                    boxWidth: crop_max_width,
+                    boxHeight: crop_max_height,
+                    aspectRatio: 1,
+                    setSelect: [10, 100, 100, 100],
+                }, function () {
+                    jcrop_api = this;
+                });
+            }
+
         });
 
+
        
+
     </script>
 }

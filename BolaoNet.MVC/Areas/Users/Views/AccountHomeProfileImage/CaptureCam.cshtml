@@ -1,6 +1,7 @@
-﻿@*@model BolaoNet.MVC.ViewModels.Users.WebCamCapture*@
+﻿@model BolaoNet.MVC.ViewModels.Users.AccountHomeProfileImage
 
-
+@using (Html.BeginForm("LoadWebCam", "AccountHomeProfileImage", FormMethod.Post, new { }))
+{
 <!-- Modal -->
 <div class="modal fade" id="DialogWebCam" role="dialog">
     <div class="modal-dialog">
@@ -12,8 +13,8 @@
                 <h4 class="modal-title">Captura de foto</h4>
             </div>
             <div class="modal-body">
-                 teste
-
+ 
+                @Html.HiddenFor(m => m.ImageData, new { id = "ImageData" })
                 <div class="form-group row center-block text-center">
                     <div id="CameraView" class="col-sm-12">
                         <video id="video" width="320" height="240" autoplay></video>
@@ -25,117 +26,60 @@
                     </div>
 
                     <div id="PhotoView" class="col-sm-12">
-                        <canvas id="canvas" width="320" height="240"></canvas>
+                        <canvas id="canvasWebCam" width="320" height="240"></canvas>
                         <p />
                         <button id="btnRetakePhoto" onclick="retakePhoto()" class="btn btn-default">
                             <span class="glyphicon glyphicon-repeat"></span> Repetir
                         </button>
+                         
+                        <button id="btnSave" type="submit" name="btnSave" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-save"></span> Salvar
+                        </button>
+
                         <p />
                     </div>
                 </div>
-
-
+ 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="stopWebcam();">Cancelar</button>
             </div>
         </div>
 
     </div>
 </div>
-
-
-
-@*@{
-    Layout = null;
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>CaptureCam</title>
-</head>
-<body>
-    <div> 
-
-
-        <div class="container">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Captura de foto</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="form-group row center-block text-center">
-                        <div id="CameraView" class="col-sm-12">
-                            <video id="video" width="@Model.CameraWidth" height="@Model.CameraHeight" autoplay></video>
-                            <p />
-                            <button id="btnTakePhoto" onclick="takePhoto()" class="btn btn-default">
-                                <span class="glyphicon glyphicon-camera"></span> Tirar Foto
-                            </button>
-                            <p />
-                        </div>
-
-                        <div id="PhotoView" class="col-sm-12">
-                            <canvas id="canvas" width="@Model.CameraWidth" height="@Model.CameraHeight"></canvas>
-                            <p />
-                            <button id="btnRetakePhoto" onclick="retakePhoto()" class="btn btn-default">
-                                <span class="glyphicon glyphicon-repeat"></span> Retirar Foto
-                            </button>
-                            <p />
-                        </div>
-                    </div>
-
-                    @using (Html.BeginForm(new { role = "form", id = "form_control", name = "form_control" }))
-                    {
-
-                        @Html.AntiForgeryToken() 
-                         
-
-                        @Html.HiddenFor(m => m.ImageData, new { id = "ImageData" })
-                        @Html.HiddenFor(m => m.CameraWidth)
-                        @Html.HiddenFor(m => m.CameraHeight)
-
-    
-                        <div class="form-group row">
-                            <div class="offset-sm-2 col-sm-10">
-                                <button id="btnSave" type="submit" name="btnSave" class="btn btn-primary">
-                                    <span class="glyphicon glyphicon-save"></span> Aplicar
-                                </button>
-                            </div>
-                        </div>
-                    }
-                     
-                </div>
-            </div>
-
-        </div>
-
-
-    </div>
-</body>
-</html>*@
-
-
 
 <script>
 
-    $(document).ready(function () {
-         
-    });
-
-    var canvas, context, video, videoObj;
-
+    
     $(function () {
 
+        // different browsers provide getUserMedia() in differnt ways, so we need to consolidate
+        navigator.getUserMedia = navigator.getUserMedia ||
+                                navigator.webkitGetUserMedia ||
+                                navigator.mozGetUserMedia ||
+                                navigator.msGetUserMedia;
+
+        $('#capturarFoto').attr('disabled', true);
+
+    });
+     
+    var canvasWebCam, context, video, videoObj, webcamStream;
+
+    
+    function startWebcam() {
+
+        
         $('#btnSave').attr("disabled", true);
         $("#PhotoView").hide();
         $("#CameraView").show();
 
-        canvas = document.getElementById("canvas");
-        context = canvas.getContext("2d");
+        canvasWebCam = document.getElementById("canvasWebCam");
+        context = canvasWebCam.getContext("2d");
         video = document.getElementById("video");
+
+
 
         // different browsers provide getUserMedia() in differnt ways, so we need to consolidate
         navigator.getUserMedia = navigator.getUserMedia ||
@@ -147,19 +91,27 @@
             navigator.getUserMedia
             (
                 {
-                    video: true
+                    video: {
+                        width: { min: 320, ideal: 320, max: 320 },
+                        height: { min: 240, ideal: 240, max: 240 }
+                    },
+                    audio: false
                 }, // which media
 
                 function (stream)   // success function
                 {
                     video.src = window.URL.createObjectURL(stream);
+                    webcamStream = stream;
                     video.onloadedmetadata = function (e) {
                         video.play();
                     };
                 },
                 function (err) {  // error function
                     //console.log("The following error occured: " + err.name);
-                    $.ajax({
+
+                    $('#capturarFoto').attr('disabled', true);
+
+                    @*$.ajax({
                         type: "POST",
                         url: "/Capture/CheckFailToCapturePhoto/",
                         data: { error: err.name },
@@ -171,14 +123,25 @@
                         error: function (result) {
                             alert('Error: ' + err.name + ' - ' + result);
                         }
-                    });
+                    });*@
                 }
             );
         }
         else {
-            window.location = "@Url.Content("~/Capture/FailToLoadDriver")/";
+            //window.location = "@Url.Content("~/Capture/FailToLoadDriver")/";
+            $('#capturarFoto').attr('disabled', true);
+
         }
-    });
+    };
+    
+    function stopWebcam() {        
+        video.pause();
+        webcamStream.getVideoTracks()[0].stop();
+        video.src = "";
+        video.src = null;
+        webcamStream = null;
+
+    }
 
     function retakePhoto() {
 
@@ -193,27 +156,20 @@
         $("#CameraView").hide();
 
         $('#btnSave').attr("disabled", false);
-        //context.drawImage(video, 0, 0, @Model.CameraWidth, @Model.CameraHeight);
 
-        var canvas = document.getElementById('video');
-        var width = canvas.width;
-        var height = canvas.height;
+        var canvasWebCam = document.getElementById('video');
+        var width = canvasWebCam.width;
+        var height = canvasWebCam.height;
 
         context.drawImage(video, 0, 0, width, height);
 
-    }
+    } 
+    jQuery(function ($) {
 
-    $("#btnSave").click(function () {
-        var imageData = canvas.toDataURL();
-        document.getElementsByName("ImageData")[0].setAttribute("value", imageData);
+
+
     });
 
-    function setPictureHiddenField() {
-        var imageData = canvas.toDataURL();
-        document.getElementsByName("ImageData")[0].setAttribute("value", imageData);
-    }
-      
-      
 
     function showWait() {
         $('#myPleaseWait').modal('show');

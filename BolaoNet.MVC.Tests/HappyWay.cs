@@ -22,7 +22,7 @@ using System.Linq;
 
 namespace BolaoNet.MVC.Tests
 {
-    [TestClass]
+    [TestClass]    
     public class HappyWay
     {
         #region Variables

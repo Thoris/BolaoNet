@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace BolaoNet.Tests.LayersTests.ApiServiceLayerTests.DadosBasicosServiceLayerTests
 { 
     [TestClass]
+    [Ignore]
     public class TimeApiServiceLayerTests
     {
         #region Variables
