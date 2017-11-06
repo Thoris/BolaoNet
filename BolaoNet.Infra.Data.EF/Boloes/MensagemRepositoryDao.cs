@@ -28,7 +28,25 @@ namespace BolaoNet.Infra.Data.EF.Boloes
                 && string.Compare (x.ToUser, user.UserName, true) == 0)
                 .OrderByDescending(x => x.CreationDate).ToList();
         }
+        public int GetTotalMensagensNaoLidas(string currentUserName, DateTime currentDateTime, Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
+        {
+            return GetList(x => string.Compare(x.NomeBolao, bolao.Nome, true) == 0
+                && string.Compare(x.ToUser, user.UserName, true) == 0
+                && x.TotalRead == 0).Count;
+        }
 
+        public void SetMensagensLidas(string currentUserName, DateTime currentDateTime, Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
+        {
+            
+            base.DataContext.Mensagens
+                .Where(p => p.TotalRead == 0 && 
+                    string.Compare(p.ToUser, user.UserName, true) == 0 && 
+                    string.Compare(p.NomeBolao, bolao.Nome, true) == 0)
+                .ToList()
+                .ForEach(x => x.TotalRead = 1);
+
+            base.DataContext.SaveChanges();
+        }
         #endregion
     }
 }

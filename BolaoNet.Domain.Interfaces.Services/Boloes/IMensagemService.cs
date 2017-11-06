@@ -10,6 +10,8 @@ namespace BolaoNet.Domain.Interfaces.Services.Boloes
         : Base.IGenericService<Entities.Boloes.Mensagem>
     {
         IList<Entities.Boloes.Mensagem> GetMensagensUsuario(Entities.Boloes.Bolao bolao, Entities.Users.User user);
+        int GetTotalMensagensNaoLidas(Entities.Boloes.Bolao bolao, Entities.Users.User user);
+        void SetMensagensLidas(Entities.Boloes.Bolao bolao, Entities.Users.User user);
 
     }
 }

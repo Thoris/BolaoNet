@@ -9,7 +9,7 @@
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                @*<button type="button" class="close" data-dismiss="modal">&times;</button>*@
                 <h4 class="modal-title">Captura de foto</h4>
             </div>
             <div class="modal-body">
@@ -136,7 +136,12 @@
     
     function stopWebcam() {        
         video.pause();
-        webcamStream.getVideoTracks()[0].stop();
+        //webcamStream.getVideoTracks()[0].stop();
+         
+        webcamStream.getVideoTracks().forEach(function (track) {
+            track.stop();
+        });
+
         video.src = "";
         video.src = null;
         webcamStream = null;

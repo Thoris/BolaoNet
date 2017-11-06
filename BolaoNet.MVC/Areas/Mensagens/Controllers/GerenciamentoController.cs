@@ -34,6 +34,8 @@ namespace BolaoNet.MVC.Areas.Mensagens.Controllers
 
         public ActionResult Index()
         {
+            _mensagemApp.SetMensagensLidas(base.SelectedBolao, base.UserLogged);
+
             IList<Domain.Entities.Boloes.Mensagem> list =
                _mensagemApp.GetMensagensUsuario(base.SelectedBolao, base.UserLogged);
 

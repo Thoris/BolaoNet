@@ -44,7 +44,32 @@ namespace BolaoNet.WebApi.Integration.Boloes
 
             return base.HttpPostApi<IList<Domain.Entities.Boloes.Mensagem>>(parameters, "GetMensagensUsuario");
         }
+        public int GetTotalMensagensNaoLidas(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("bolao", bolao);
+            parameters.Add("user", user);
+
+            return base.HttpPostApi<int>(parameters, "GetTotalMensagensNaoLidas");
+     
+        }
+
+        public void SetMensagensLidas(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("bolao", bolao);
+            parameters.Add("user", user);
+
+            string message;
+            base.HttpPostApi(parameters, "SetMensagensLidas", out message);
+     
+        }
 
         #endregion
+
+
+
     }
 }

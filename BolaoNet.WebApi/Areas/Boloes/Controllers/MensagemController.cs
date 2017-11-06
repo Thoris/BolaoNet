@@ -73,6 +73,42 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
             return base.Delete(entityLoaded);
         }
+        [HttpPost]
+        public int GetTotalMensagensNaoLidas(int id, ArrayList data)
+        {
+            Domain.Entities.Boloes.Bolao bolao;
+            Domain.Entities.Users.User user;
+
+
+            bolao = JsonConvert.DeserializeObject<Domain.Entities.Boloes.Bolao>(data[0].ToString());
+            user = JsonConvert.DeserializeObject<Domain.Entities.Users.User>(data[1].ToString());
+
+            return Service.GetTotalMensagensNaoLidas(bolao, user);
+        }
+        [HttpPost]
+        public int GetTotalMensagensNaoLidas(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
+        {
+            return Service.GetTotalMensagensNaoLidas(bolao, user);
+        }
+        [HttpPost]
+        public void SetMensagensLidas(int id, ArrayList data)
+        {
+            Domain.Entities.Boloes.Bolao bolao;
+            Domain.Entities.Users.User user;
+
+
+            bolao = JsonConvert.DeserializeObject<Domain.Entities.Boloes.Bolao>(data[0].ToString());
+            user = JsonConvert.DeserializeObject<Domain.Entities.Users.User>(data[1].ToString());
+
+            Service.SetMensagensLidas(bolao, user);
+        }
+        [HttpPost]
+        public void SetMensagensLidas(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
+        {
+            Service.SetMensagensLidas(bolao, user);
+        }
         #endregion
+
+
     }
 }

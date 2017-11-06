@@ -38,7 +38,18 @@ namespace BolaoNet.Application.Boloes
         {
             return Service.GetMensagensUsuario(bolao, user);
         }
+        public int GetTotalMensagensNaoLidas(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
+        {
+            return Service.GetTotalMensagensNaoLidas(bolao, user);
+        }
+
+        public void SetMensagensLidas(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
+        {
+            Service.SetMensagensLidas(bolao, user);
+        }
 
         #endregion
+
+
     }
 }
