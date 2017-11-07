@@ -16,7 +16,10 @@
                 </span>
                 <span class="text-muted text-xs block">@Res.MyProfile<b class="caret"></b>
                     
-                    @*&nbsp;<i class="fa fa-envelope fa-2x" style="color:yellow"></i>*@
+                    @if (Session["MensagemPendente"] != null && (int)Session["MensagemPendente"] > 0)
+                    { 
+                        @Html.Raw("&nbsp;<i class=\"fa fa-envelope fa-1x\" style=\"color:yellow\"></i> ");                       
+                    }
                       
                 </span>
             </span>
@@ -25,7 +28,14 @@
             <li><a href="/Users/AccountHome/Profile">Meu Perfil</a></li>
             <li><a href="/Users/AccountHomeProfileImage/Index">Alterar Foto</a></li>
             @*<li><a href="#">Contatos</a></li>*@
-            <li><a href="/Mensagens/Gerenciamento/Index">Caixa de Entrada</a></li>
+            
+            <li><a href="/Mensagens/Gerenciamento/Index">Caixa de Entrada   
+                    @if (Session["MensagemPendente"] != null && (int)Session["MensagemPendente"] > 0)
+                    {
+                        @Html.Raw("&nbsp;<i class=\"fa fa-envelope\" style=\"color:red\"></i> ");
+                    } 
+            </a></li>
+            
             @*<li><a href="/Users/AccountHome/ChangePassword">Alterar Senha</a></li>*@
             <li class="divider"></li>
             <li><a href="/Users/AccountHome/Logoff">@Res.Exit</a></li>

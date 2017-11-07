@@ -46,6 +46,8 @@ namespace BolaoNet.MVC.Areas.Mensagens.Controllers
                 IList<ViewModels.Mensagens.MensagemViewModel>>
                 (list);
 
+            Session["MensagemPendente"] = null;
+
             return View(model);
 
             
@@ -134,7 +136,7 @@ namespace BolaoNet.MVC.Areas.Mensagens.Controllers
             _mensagemApp.Delete(mensagemLoaded);
 
 
-            base.ShowMessage("Pagamento excluído com sucesso.");
+            base.ShowMessage("Mensagem excluída com sucesso.");
 
             return RedirectToAction("Index");
         }

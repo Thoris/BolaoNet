@@ -20,6 +20,7 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
         private Application.Interfaces.Boloes.IBolaoMembroGrupoApp _bolaoMembroGrupoApp;
         private Application.Interfaces.Boloes.IJogoUsuarioApp _jogoUsuarioApp;
         private Application.Interfaces.Users.IUserApp _userApp;
+        private Application.Interfaces.Boloes.IMensagemApp _mensagemApp;
 
         #endregion
 
@@ -30,7 +31,8 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
             Application.Interfaces.Users.IUserApp userApp,
             Application.Interfaces.Boloes.IBolaoApp bolaoApp, 
             Application.Interfaces.Boloes.IBolaoMembroGrupoApp bolaoMembroGrupoApp,
-            Application.Interfaces.Boloes.IJogoUsuarioApp jogoUsuarioApp
+            Application.Interfaces.Boloes.IJogoUsuarioApp jogoUsuarioApp,
+            Application.Interfaces.Boloes.IMensagemApp mensagemApp
             )
             : base(bolaoApp, bolaoMembroApp)
         {
@@ -38,6 +40,7 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
             _bolaoMembroGrupoApp = bolaoMembroGrupoApp;
             _jogoUsuarioApp = jogoUsuarioApp;
             _userApp = userApp;
+            _mensagemApp = mensagemApp;
         }
 
         #endregion
@@ -166,6 +169,10 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
                     IList<Domain.Entities.ValueObjects.JogoUsuarioVO>,
                     IList<ViewModels.Users.PaginaPrincipal.PaginaPrincipalPontosObtidosViewModel>
                     >(obtidos);
+
+
+
+            Session["MensagemPendente"] = _mensagemApp.GetTotalMensagensNaoLidas(base.SelectedBolao, base.UserLogged);
 
             
             return View(model);
