@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("BolaoNet.Tests.Exploratory")]
+[assembly: AssemblyTitle("BolaoNet.Feed.Rss")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("BolaoNet.Tests.Exploratory")]
+[assembly: AssemblyProduct("BolaoNet.Feed.Rss")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("4e9d1d86-f966-42af-8676-57f9a3458b96")]
+[assembly: Guid("e2fe3cc4-7a09-4543-a248-5f3120668ef9")]
 
 // Version information for an assembly consists of the following four values:
 //

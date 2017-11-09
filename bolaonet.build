@@ -311,7 +311,7 @@
     <property name="project.deployment.ftp.user" value="thoris" />
     <property name="project.deployment.ftp.password" value="@Thoris01" />
     <property name="project.deployment.path.remote" value="www.thoris.somee.com" />
-    <!--call target="deployToFtp" / -->
+    <call target="deployToFtp" />
 	
 	
     <!-- call target="calculate.partcover" />

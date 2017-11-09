@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReferencedComponents", "ReferencedComponents", "{0DD79E73-9DDE-475A-A7AC-DDE941D14543}"
 EndProject
@@ -160,6 +160,43 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharpZip", "SharpZip", "{FD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BolaoNet.Tests", "BolaoNet.Tests\BolaoNet.Tests.csproj", "{AA6F45AB-8410-4A2B-9447-E8F95297E9CF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BolaoNet.Tests.Exploratory", "BolaoNet.Tests.Exploratory\BolaoNet.Tests.Exploratory.csproj", "{9D4621CF-0614-461A-8291-FF77A62D5632}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.5 - RSS", "4.5 - RSS", "{8E873901-A6D6-4E5E-8810-D6D6FC421F7A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BolaoNet.Feed.Rss", "BolaoNet.Feed.Rss\BolaoNet.Feed.Rss.csproj", "{3C78B795-D0B7-4F7C-945D-194C9F132221}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Selenium", "Selenium", "{90C601B6-0466-447D-8D90-FEED6CEDAE20}"
+	ProjectSection(SolutionItems) = preProject
+		ReferencedComponents\Selenium\Selenium.WebDriverBackedSelenium.dll = ReferencedComponents\Selenium\Selenium.WebDriverBackedSelenium.dll
+		ReferencedComponents\Selenium\Selenium.WebDriverBackedSelenium.pdb = ReferencedComponents\Selenium\Selenium.WebDriverBackedSelenium.pdb
+		ReferencedComponents\Selenium\Selenium.WebDriverBackedSelenium.xml = ReferencedComponents\Selenium\Selenium.WebDriverBackedSelenium.xml
+		ReferencedComponents\Selenium\ThoughtWorks.Selenium.Core.dll = ReferencedComponents\Selenium\ThoughtWorks.Selenium.Core.dll
+		ReferencedComponents\Selenium\ThoughtWorks.Selenium.Core.pdb = ReferencedComponents\Selenium\ThoughtWorks.Selenium.Core.pdb
+		ReferencedComponents\Selenium\ThoughtWorks.Selenium.Core.xml = ReferencedComponents\Selenium\ThoughtWorks.Selenium.Core.xml
+		ReferencedComponents\Selenium\WebDriver.dll = ReferencedComponents\Selenium\WebDriver.dll
+		ReferencedComponents\Selenium\WebDriver.pdb = ReferencedComponents\Selenium\WebDriver.pdb
+		ReferencedComponents\Selenium\WebDriver.Support.dll = ReferencedComponents\Selenium\WebDriver.Support.dll
+		ReferencedComponents\Selenium\WebDriver.Support.pdb = ReferencedComponents\Selenium\WebDriver.Support.pdb
+		ReferencedComponents\Selenium\WebDriver.Support.xml = ReferencedComponents\Selenium\WebDriver.Support.xml
+		ReferencedComponents\Selenium\WebDriver.xml = ReferencedComponents\Selenium\WebDriver.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "iTextsharp", "iTextsharp", "{EE930578-DCD1-4D46-9EB8-EA1E79F78CF5}"
+	ProjectSection(SolutionItems) = preProject
+		ReferencedComponents\iTextsharp\itextsharp.dll = ReferencedComponents\iTextsharp\itextsharp.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Moq", "Moq", "{317EA6F0-1642-4687-B759-51D0DE68B9ED}"
+	ProjectSection(SolutionItems) = preProject
+		ReferencedComponents\Moq\Moq.dll = ReferencedComponents\Moq\Moq.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ninject", "Ninject", "{196F5AC2-61B9-4DE7-9556-E103C971678C}"
+	ProjectSection(SolutionItems) = preProject
+		ReferencedComponents\ninject\Ninject.dll = ReferencedComponents\ninject\Ninject.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -248,6 +285,14 @@ Global
 		{AA6F45AB-8410-4A2B-9447-E8F95297E9CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA6F45AB-8410-4A2B-9447-E8F95297E9CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA6F45AB-8410-4A2B-9447-E8F95297E9CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D4621CF-0614-461A-8291-FF77A62D5632}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D4621CF-0614-461A-8291-FF77A62D5632}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D4621CF-0614-461A-8291-FF77A62D5632}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D4621CF-0614-461A-8291-FF77A62D5632}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C78B795-D0B7-4F7C-945D-194C9F132221}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C78B795-D0B7-4F7C-945D-194C9F132221}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C78B795-D0B7-4F7C-945D-194C9F132221}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C78B795-D0B7-4F7C-945D-194C9F132221}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -305,5 +350,12 @@ Global
 		{0E555D9B-B7CA-4E98-8C23-96E5282042C5} = {80B65053-B40D-49BF-8881-F4CF52F0DE15}
 		{FD68D9F6-79A8-4BFE-89CB-6F2316849C01} = {0DD79E73-9DDE-475A-A7AC-DDE941D14543}
 		{AA6F45AB-8410-4A2B-9447-E8F95297E9CF} = {80B65053-B40D-49BF-8881-F4CF52F0DE15}
+		{9D4621CF-0614-461A-8291-FF77A62D5632} = {80B65053-B40D-49BF-8881-F4CF52F0DE15}
+		{8E873901-A6D6-4E5E-8810-D6D6FC421F7A} = {684FCDA3-B961-401C-B192-6CD6D471693E}
+		{3C78B795-D0B7-4F7C-945D-194C9F132221} = {8E873901-A6D6-4E5E-8810-D6D6FC421F7A}
+		{90C601B6-0466-447D-8D90-FEED6CEDAE20} = {0DD79E73-9DDE-475A-A7AC-DDE941D14543}
+		{EE930578-DCD1-4D46-9EB8-EA1E79F78CF5} = {0DD79E73-9DDE-475A-A7AC-DDE941D14543}
+		{317EA6F0-1642-4687-B759-51D0DE68B9ED} = {0DD79E73-9DDE-475A-A7AC-DDE941D14543}
+		{196F5AC2-61B9-4DE7-9556-E103C971678C} = {0DD79E73-9DDE-475A-A7AC-DDE941D14543}
 	EndGlobalSection
 EndGlobal

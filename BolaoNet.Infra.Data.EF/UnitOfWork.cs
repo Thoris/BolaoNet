@@ -167,7 +167,7 @@ namespace BolaoNet.Infra.Data.EF
             //modelBuilder.Entity<Domain.Entities.Users.UserInRole>().ToTable("UserInRole");
 
             //modelBuilder.Entity<Domain.Entities.Boloes.BolaoHistorico>().ToTable("BoloesHistorico");
-            //modelBuilder.Entity<Domain.Entities.LogReporting.LogEvent>().ToTable("Log");
+            modelBuilder.Entity<Domain.Entities.LogReporting.LogEvent>().ToTable("Log");
 
 
 
