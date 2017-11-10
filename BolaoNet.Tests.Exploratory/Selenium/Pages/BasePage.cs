@@ -39,8 +39,8 @@ namespace BolaoNet.Tests.Exploratory.Selenium.Pages
                 string data = ConfigurationManager.AppSettings["WebTestPortal"];
 
                 if (string.IsNullOrEmpty(data))
-                { 
-                    return "http://10.92.132.200:8024";
+                {
+                    return "http://thorisbolaonet.somee.com";
                 }
 
                 return data;

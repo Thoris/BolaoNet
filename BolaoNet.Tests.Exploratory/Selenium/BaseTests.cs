@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +11,13 @@ namespace BolaoNet.Tests.Exploratory.Selenium
     public class BaseTests
     {
 
-        #region Variáveis
+        #region Variables
 
         private IWebDriver _driver;
 
         #endregion
 
-        #region Propriedades
+        #region Properties
 
         protected IWebDriver Driver
         {
@@ -32,7 +33,7 @@ namespace BolaoNet.Tests.Exploratory.Selenium
 
         #endregion
 
-        #region Construtores/Destrutores
+        #region Constructors/Destructors
 
 
 
@@ -40,6 +41,8 @@ namespace BolaoNet.Tests.Exploratory.Selenium
         /// Inicializa dados da instância.
         /// </summary>
         //[TestFixtureSetUp]
+        //[ClassInitialize]
+        [TestInitialize]
         public void Init()
         {
             //_driver = new DriverFactory().CreateDriver();
@@ -56,6 +59,8 @@ namespace BolaoNet.Tests.Exploratory.Selenium
         /// Finaliza objetos da classe.
         /// </summary>
         //[TestFixtureTearDown]
+        //[ClassCleanup]
+        [TestCleanup]
         public void End()
         {
             if (_driver != null)
@@ -73,7 +78,7 @@ namespace BolaoNet.Tests.Exploratory.Selenium
 
         #endregion
 
-        #region Métodos
+        #region Methods
 
         protected Pages.Users.HomePage LogOn()
         {
