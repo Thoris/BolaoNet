@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using BolaoNet.Tests.Exploratory.Watin.Tests;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -7,31 +8,17 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WatiN.Core;
+using WatiN.Core.Constraints;
 
 namespace BolaoNet.Tests.Exploratory.Watin.Pages
 {
-    public class BasePage
+    public class BasePage : WatiN.Core.Page
     {
-        #region Variables
-
-        private IWebDriver _driver;
-
-        #endregion
 
         #region Properties
 
-        protected IWebDriver Driver
-        {
-            get { return _driver; }
-        }
-
-        protected string SiteBaseLogin
-        {
-            get
-            {
-                return SiteBase + "/Account/Login";
-            }
-        }
+        private string _controllerName;
         protected string SiteBase
         {
             get
@@ -40,100 +27,57 @@ namespace BolaoNet.Tests.Exploratory.Watin.Pages
 
                 if (string.IsNullOrEmpty(data))
                 {
-                    return "http://thorisbolaonet.somee.com";
+                    return Constants.SiteUrl;
                 }
 
                 return data;
             }
         }
-        protected string UserName
+        public virtual string ControllerSite
         {
             get
             {
-                string data = ConfigurationManager.AppSettings["WebTestUserName"];
-
-                if (string.IsNullOrEmpty(data))
-                {
-                    return "usuario0x0";
-                }
-
-                return data;
+                return SiteBase + _controllerName;
             }
         }
-        protected string Password
-        {
-            get
-            {
-                string data = ConfigurationManager.AppSettings["WebTestPassword"];
-
-                if (string.IsNullOrEmpty(data))
-                {
-                    return "thoris";
-                }
-
-                return data;
-            }
-        } 
-
+        
         #endregion
-
+         
         #region Constructors/Destructors
 
-        public BasePage(IWebDriver driver)
+        public BasePage(string controllerName)
         {
-            _driver = driver;
-
-            PageFactory.InitElements(driver, this);
+            _controllerName = controllerName;
         }
 
         #endregion
 
-        #region Métodos
+        #region Methods
 
-        public BasePage OpenPortal()
-        {
-            Driver.Navigate().GoToUrl(this.SiteBase);
-
-            return new BasePage(_driver);
-        }
-        public void Check(IWebElement element)
-        {
-            element.Click();
-        }
-        public string GetText(IWebElement element)
-        {
-            return element.Text;
-        }
-        public void EnterText(IWebElement element, string text)
-        {
-            element.SendKeys(text);
-        }
-        public bool PageContains(string text)
-        {
-            return _driver.PageSource.Contains(text);
-        }
-        public void WaitForElementLoad(By by, int timeoutInSeconds)
-        {
-            if (timeoutInSeconds > 0)
-            {
-                WebDriverWait wait = new WebDriverWait(this.Driver, TimeSpan.FromSeconds(timeoutInSeconds));
-                wait.Until(ExpectedConditions.ElementIsVisible(by));
-            }
-        }
-
-        protected virtual bool IsValid()
+        public virtual bool IsValidPage()
         {
             return true;
         }
-        protected virtual void OpenPage(string controller, string action, string parameters)
-        {
-            this.Driver.Navigate().GoToUrl(this.SiteBase + "/" + controller + "/" + action + "?" + parameters);
-            
-        }
-        protected virtual void OpenPage(string area, string controller, string action, string parameters)
-        {
-            this.Driver.Navigate().GoToUrl(this.SiteBase + "/" + area + "/" + controller + "/" + action + "?" + parameters);            
-        }
+
+        //public Element FindElementContaining(IElementsContainer ie, string text)
+        //{
+        //    Element matchingElement = null;
+
+        //    foreach (Element element in ie.Elements)
+        //    {
+        //        if (element.Text == null) continue;
+
+        //        if (!element.Text.ToLower().Contains(text.ToLower())) continue;
+
+        //        // If the element found has more inner html than the one we've already matched, it can't be the immediate parent!
+        //        if (matchingElement != null && element.InnerHtml.Length > matchingElement.InnerHtml.Length) continue;
+
+        //        matchingElement = element;
+        //    }
+
+        //    return matchingElement;
+        //}
+
         #endregion
     }
 }

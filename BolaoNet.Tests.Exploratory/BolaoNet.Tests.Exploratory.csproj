@@ -37,6 +37,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
+    <Reference Include="WatiN.Core">
+      <HintPath>..\ReferencedComponents\WatiN\WatiN.Core.dll</HintPath>
+    </Reference>
     <Reference Include="WebDriver">
       <HintPath>..\ReferencedComponents\Selenium\WebDriver.dll</HintPath>
     </Reference>
@@ -58,67 +61,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Selenium\BaseTests.cs" />
-    <Compile Include="Selenium\DriverFactory.cs" />
-    <Compile Include="Selenium\Pages\ActivateCodePage.cs" />
-    <Compile Include="Selenium\Pages\ActivateCodeSucessfulPage.cs" />
-    <Compile Include="Selenium\Pages\Admin\BolaoIniciarPararPage.cs" />
-    <Compile Include="Selenium\Pages\Admin\LogViewerDetailsPage.cs" />
-    <Compile Include="Selenium\Pages\Admin\LogViewerIndexPage.cs" />
-    <Compile Include="Selenium\Pages\Apostas\AcessoBolaoIniciadoPage.cs" />
-    <Compile Include="Selenium\Pages\Apostas\ApostasAutomaticasIndexPage.cs" />
-    <Compile Include="Selenium\Pages\Apostas\ApostasExtrasIndexPage.cs" />
-    <Compile Include="Selenium\Pages\Apostas\ApostasJogosPage.cs" />
-    <Compile Include="Selenium\Pages\BasePage.cs" />
-    <Compile Include="Selenium\Pages\Boloes\AcessoBolaoNaoIniciadoPage.cs" />
-    <Compile Include="Selenium\Pages\Boloes\ApostasExtrasIndexPage.cs" />
-    <Compile Include="Selenium\Pages\Boloes\ApostasJogoIndexPage.cs" />
-    <Compile Include="Selenium\Pages\Boloes\ApostasUsuariosIndexPage.cs" />
-    <Compile Include="Selenium\Pages\Boloes\BolaoClassificacaoIndexPage.cs" />
-    <Compile Include="Selenium\Pages\Boloes\BolaoHistoricoIndexPage.cs" />
-    <Compile Include="Selenium\Pages\Boloes\ClassificacaoApostasIndexPage.cs" />
-    <Compile Include="Selenium\Pages\Boloes\HistoricoPontosIndexPage.cs" />
-    <Compile Include="Selenium\Pages\Boloes\ResultadosDificeisIndexPage.cs" />
-    <Compile Include="Selenium\Pages\Boloes\SemAcertosIndexPage.cs" />
-    <Compile Include="Selenium\Pages\Campeonatos\CampeoesIndexPage.cs" />
-    <Compile Include="Selenium\Pages\Campeonatos\ChancesIndexPage.cs" />
-    <Compile Include="Selenium\Pages\Campeonatos\ClassificacaoIndexPage.cs" />
-    <Compile Include="Selenium\Pages\Campeonatos\EstatisticasIndexPage.cs" />
-    <Compile Include="Selenium\Pages\Campeonatos\GoleadasIndexPage.cs" />
-    <Compile Include="Selenium\Pages\Campeonatos\GraficoRodadasIndexPage.cs" />
-    <Compile Include="Selenium\Pages\Campeonatos\HistoricoIndexPage.cs" />
-    <Compile Include="Selenium\Pages\Campeonatos\JogosIndexPage.cs" />
-    <Compile Include="Selenium\Pages\Campeonatos\JogosTimesIndexPage.cs" />
-    <Compile Include="Selenium\Pages\Campeonatos\RecordGolsIndexPage.cs" />
-    <Compile Include="Selenium\Pages\Campeonatos\RecordsTimesIndexPage.cs" />
-    <Compile Include="Selenium\Pages\Campeonatos\RodadasIndexPage.cs" />
-    <Compile Include="Selenium\Pages\ForgotPasswordPage.cs" />
-    <Compile Include="Selenium\Pages\ForgotPasswordSentPage.cs" />
-    <Compile Include="Selenium\Pages\LoginPage.cs" />
-    <Compile Include="Selenium\Pages\Mensagens\GerenciamentoCreatePage.cs" />
-    <Compile Include="Selenium\Pages\Mensagens\GerenciamentoIndexPage.cs" />
-    <Compile Include="Selenium\Pages\Pagamentos\GerenciamentoCreatePage.cs" />
-    <Compile Include="Selenium\Pages\Pagamentos\GerenciamentoEditPage.cs" />
-    <Compile Include="Selenium\Pages\Pagamentos\GerenciamentoIndexPage.cs" />
-    <Compile Include="Selenium\Pages\Pontuacao\BolaoCriterioPontosIndexPage.cs" />
-    <Compile Include="Selenium\Pages\RegistrationFormNoBolaoPage.cs" />
-    <Compile Include="Selenium\Pages\RegistrationFormPage.cs" />
-    <Compile Include="Selenium\Pages\RegistrationFormSentPage.cs" />
-    <Compile Include="Selenium\Pages\Regras\BolaoRegrasIndexPage.cs" />
-    <Compile Include="Selenium\Pages\Resultados\ApostasExtrasResultadoIndexPage.cs" />
-    <Compile Include="Selenium\Pages\Resultados\JogoResultadoIndexPage.cs" />
-    <Compile Include="Selenium\Pages\Users\AccountHomeChangePasswordPage.cs" />
-    <Compile Include="Selenium\Pages\Users\AccountHomeChangeProfileImagePage.cs" />
-    <Compile Include="Selenium\Pages\Users\AccountHomeIndexPage.cs" />
-    <Compile Include="Selenium\Pages\Users\AccountHomeProfileImageCaptureCamPage.cs" />
-    <Compile Include="Selenium\Pages\Users\AccountHomeProfileImageIndexPage.cs" />
-    <Compile Include="Selenium\Pages\Users\AccountHomeProfilePage.cs" />
-    <Compile Include="Selenium\Pages\Users\AccountHomeReleaseNotesPage.cs" />
-    <Compile Include="Selenium\Pages\Users\BolaoClassificacaoGrupoGerenciamentoIndexPage.cs" />
-    <Compile Include="Selenium\Pages\Users\HomePage.cs" />
-    <Compile Include="Selenium\Pages\Users\UserBoloesIndexPage.cs" />
-    <Compile Include="Selenium\Pages\Users\UserCampeonatoIndexPage.cs" />
-    <Compile Include="Selenium\Tests\LogonTests.cs" />
+    <Compile Include="Watin\Tests\AuthenticationBaseTests.cs" />
+    <Compile Include="Watin\BrowserFactory.cs" />
     <Compile Include="Watin\Pages\ActivateCodePage.cs" />
     <Compile Include="Watin\Pages\ActivateCodeSucessfulPage.cs" />
     <Compile Include="Watin\Pages\Admin\BolaoIniciarPararPage.cs" />
@@ -128,6 +72,7 @@
     <Compile Include="Watin\Pages\Apostas\ApostasAutomaticasIndexPage.cs" />
     <Compile Include="Watin\Pages\Apostas\ApostasExtrasIndexPage.cs" />
     <Compile Include="Watin\Pages\Apostas\ApostasJogosPage.cs" />
+    <Compile Include="Watin\Pages\AuthenticationPage.cs" />
     <Compile Include="Watin\Pages\BasePage.cs" />
     <Compile Include="Watin\Pages\Boloes\AcessoBolaoNaoIniciadoPage.cs" />
     <Compile Include="Watin\Pages\Boloes\ApostasExtrasIndexPage.cs" />
@@ -177,10 +122,11 @@
     <Compile Include="Watin\Pages\Users\HomePage.cs" />
     <Compile Include="Watin\Pages\Users\UserBoloesIndexPage.cs" />
     <Compile Include="Watin\Pages\Users\UserCampeonatoIndexPage.cs" />
+    <Compile Include="Watin\Tests\BaseTests.cs" />
+    <Compile Include="Watin\Tests\Constants.cs" />
+    <Compile Include="Watin\Tests\LoginLogoutTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Selenium\Pages\Criterios\" />
-    <Folder Include="Selenium\Pages\Visitante\" />
     <Folder Include="Watin\Pages\Criterios\" />
     <Folder Include="Watin\Pages\Visitante\" />
   </ItemGroup>

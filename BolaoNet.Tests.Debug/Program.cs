@@ -2,14 +2,37 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using WatiN.Core;
 
 namespace BolaoNet.Tests.Debug
 {
+     
     class Program
     {
+
         static void Main(string[] args)
         {
+            //ApartmentState state  = Thread.CurrentThread.GetApartmentState();
+            //Thread t = new Thread(new ThreadStart(delegate()
+            //{
+            //    using (var browser = new IE())
+            //    {
+            //        browser.GoTo("http://thorisbolaonet.somee.com/Account/Login");
+            //        browser.Page<Exploratory.Watin.Pages.LoginPage>().Logon("usuario0x0", "thoris", false);
+            //        //Assert.IsTrue(browser.ContainsText("WatiN"));
+            //    }
+            //}));
+            //t.ApartmentState = ApartmentState.STA;
+            //t.Start();
+            //t.Join();
+
+
+
+
+
+
 
             BolaoNet.Tests.LayersTests.BaseLayerTests.MocksRepository.DadosBasicosMockRepository.TimeRepositoryDaoMock m = new LayersTests.BaseLayerTests.MocksRepository.DadosBasicosMockRepository.TimeRepositoryDaoMock();
             Domain.Interfaces.Repositories.DadosBasicos.ITimeDao dao = m.Setup();
