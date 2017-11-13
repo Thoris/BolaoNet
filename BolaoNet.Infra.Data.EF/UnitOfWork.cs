@@ -241,6 +241,8 @@ namespace BolaoNet.Infra.Data.EF
             modelBuilder.Configurations.Add(new Mapping.Users.UserConfiguration());
             modelBuilder.Configurations.Add(new Mapping.Users.UserInRoleConfiguration());
 
+            modelBuilder.Configurations.Add(new Mapping.LogReporting.LogConfiguration());
+            modelBuilder.Configurations.Add(new Mapping.Feed.RssConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }
