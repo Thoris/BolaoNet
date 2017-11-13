@@ -16,8 +16,14 @@ namespace BolaoNet.Infra.Data.EF.Mapping.Feed
         {
             ToTable("Rss");
 
-            //Property(c => c.Descricao)
-            //    .HasMaxLength(255);
+            Property(c => c.CreatedBy)
+                .HasMaxLength(255);
+
+            Property(c => c.Description)
+                .HasMaxLength(4000);
+
+            Property(c => c.Title)
+                .HasMaxLength(500);
 
         }
 

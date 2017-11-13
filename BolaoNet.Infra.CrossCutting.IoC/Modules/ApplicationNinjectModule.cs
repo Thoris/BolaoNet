@@ -24,7 +24,10 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
             Bind<Application.Interfaces.Boloes.IBolaoHistoricoApp>().To<Application.Boloes.BolaoHistoricoApp>();
 
             Bind<Application.Interfaces.LogReporting.ILogReportingApp>().To<Application.LogReporting.LogReportingApp>();
-            
+
+
+            Bind<Application.Interfaces.Feed.IRssApp>().To<Application.Feed.RssApp>();
+
             Bind<Application.Interfaces.Boloes.IApostaExtraApp>().To<Application.Boloes.ApostaExtraApp>();
             Bind<Application.Interfaces.Boloes.IApostaExtraUsuarioApp>().To<Application.Boloes.ApostaExtraUsuarioApp>();
             Bind<Application.Interfaces.Boloes.IApostaPontosApp>().To<Application.Boloes.ApostaPontosApp>();

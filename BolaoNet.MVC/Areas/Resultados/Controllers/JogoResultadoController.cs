@@ -13,6 +13,7 @@ namespace BolaoNet.MVC.Areas.Resultados.Controllers
         #region Variables
 
         private Application.Interfaces.Campeonatos.IJogoApp _jogoApp;
+        private Application.Interfaces.Feed.IRssApp _rssApp;
 
         #endregion
 
@@ -25,12 +26,14 @@ namespace BolaoNet.MVC.Areas.Resultados.Controllers
             Application.Interfaces.Campeonatos.ICampeonatoApp campeonatoApp,
             Application.Interfaces.Campeonatos.ICampeonatoFaseApp campeonatoFaseApp,
             Application.Interfaces.Campeonatos.ICampeonatoGrupoApp campeonatoGrupoApp,
-            Application.Interfaces.Campeonatos.ICampeonatoTimeApp campeonatoTimeApp
+            Application.Interfaces.Campeonatos.ICampeonatoTimeApp campeonatoTimeApp,
+            Application.Interfaces.Feed.IRssApp rssApp
             )
             : base (bolaoMembroApp, bolaoApp, campeonatoApp, campeonatoFaseApp, 
             campeonatoGrupoApp, campeonatoTimeApp)
         {
             _jogoApp = jogoApp;
+            _rssApp = rssApp;
         }
 
         #endregion
@@ -108,7 +111,25 @@ namespace BolaoNet.MVC.Areas.Resultados.Controllers
             else
             {
                 base.ShowMessage("Resultados do jogo inserido com sucesso.");
-                
+
+
+                Domain.Entities.Campeonatos.Jogo jogoView =
+                   _jogoApp.Load(new Domain.Entities.Campeonatos.Jogo(base.SelectedNomeCampeonato, model.JogoId));
+
+                string title = "ID " + jogoView.JogoId + ", Data: " + jogoView.DataJogo.ToString("dd/MM/yyyy HH:mm") +
+                    ", " + jogoView.NomeTime1 + " " + model.GolsTime1 + " x " + model.GolsTime2 + " " + jogoView.NomeTime2;
+                string description = title + " => Fase " +
+                    jogoView.NomeFase + ", Grupo: " + jogoView.NomeGrupo + ", Estádio: " + jogoView.Estadio + ", Rodada: " + jogoView.Rodada;
+
+
+                //Adicionando a inserção do resultado no feed de notícias
+                new Feed.Rss.FeedRepository(_rssApp).AddEntry(new Feed.Rss.EntryFeedItem()
+                    {
+                        CreatedBy = base.UserLogged.UserName,
+                        DateAdded = DateTime.Now,
+                        Description = description,
+                        Title = title 
+                    });
 
             }
 

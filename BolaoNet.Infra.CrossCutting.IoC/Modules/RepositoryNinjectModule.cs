@@ -23,7 +23,9 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
             Bind<Domain.Interfaces.Repositories.Boloes.IBolaoHistoricoDao>().To<Infra.Data.EF.Boloes.BolaoHistoricoRepositoryDao>();
 
             Bind<Domain.Interfaces.Repositories.LogReporting.ILogReportingDao>().To<Infra.Data.EF.LogReporting.LogReportingRepositoryDao>();
-            
+
+            Bind<Domain.Interfaces.Repositories.Feed.IRssDao>().To<Infra.Data.EF.Feed.RssRepositoryDao>();
+
             Bind<Domain.Interfaces.Repositories.Boloes.IApostaExtraDao>().To<Infra.Data.EF.Boloes.ApostaExtraRepositoryDao>();
             Bind<Domain.Interfaces.Repositories.Boloes.IApostaExtraUsuarioDao>().To<Infra.Data.EF.Boloes.ApostaExtraUsuarioRepositoryDao>();
             Bind<Domain.Interfaces.Repositories.Boloes.IApostaPontosDao>().To<Infra.Data.EF.Boloes.ApostaPontosRepositoryDao>();

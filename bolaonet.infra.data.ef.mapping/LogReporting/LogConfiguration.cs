@@ -16,8 +16,23 @@ namespace BolaoNet.Infra.Data.EF.Mapping.LogReporting
         {
             ToTable("Log");
 
-            //Property(c => c.Descricao)
-            //    .HasMaxLength(255);
+            Property(c => c.Identity)
+                .HasMaxLength(255);
+
+            Property(c => c.Thread)
+                .HasMaxLength(255);
+
+            Property(c => c.Level)
+                .HasMaxLength(50);
+
+            Property(c => c.Logger)
+                .HasMaxLength(255);
+
+            Property(c => c.Message)
+                .HasMaxLength(4000);
+
+            Property(c => c.Exception)
+                .HasMaxLength(2000);
 
         }
 

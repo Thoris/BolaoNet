@@ -22,7 +22,7 @@ namespace BolaoNet.Domain.Services.Feed
 
         #region Constructors/Destructors
 
-        public RssService(string userName, Interfaces.Repositories.LogReporting.ILogReportingDao dao, ILogging logging)
+        public RssService(string userName, Interfaces.Repositories.Feed.IRssDao dao, ILogging logging)
             : base(userName, (Interfaces.Repositories.Base.IGenericDao<Entities.Feed.RssEntry>)dao, logging)
         {
 

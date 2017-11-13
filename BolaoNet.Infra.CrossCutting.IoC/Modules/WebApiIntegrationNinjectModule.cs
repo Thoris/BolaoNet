@@ -53,6 +53,12 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
                 .WithConstructorArgument("token", token);
 
 
+            Bind<Domain.Interfaces.Services.Feed.IRssService>().To<WebApi.Integration.Feed.RssIntegration>()
+                .WhenInjectedExactlyInto(typeof(Application.Feed.RssApp))
+                .WithConstructorArgument("url", url)
+                .WithConstructorArgument("token", token);
+
+
             Bind<Domain.Interfaces.Services.Boloes.IApostaExtraService>().To<WebApi.Integration.Boloes.ApostaExtraIntegration>()
                 .WhenInjectedExactlyInto(typeof(Application.Boloes.ApostaExtraApp))
                 .WithConstructorArgument("url", url)

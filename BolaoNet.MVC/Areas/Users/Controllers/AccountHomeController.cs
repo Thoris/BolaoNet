@@ -354,7 +354,9 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
                         select new Feed.Rss.EntryFeedItem
                         {
                             Title = feed.Element("title").Value,
+                            DateAdded = DateTime.Parse(feed.Element("pubDate").Value),
                             Description = Regex.Match(feed.Element("description").Value, @"^.{1,180}\b(?<!\s)").Value
+
                         };
 
 
