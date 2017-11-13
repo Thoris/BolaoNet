@@ -93,6 +93,7 @@
     <Compile Include="DadosBasicos\PagamentoTipoRepositoryDao.cs" />
     <Compile Include="DadosBasicos\TimeRepositoryDao.cs" />
     <Compile Include="FactoryDaoEF.cs" />
+    <Compile Include="Feed\RssRepositoryDao.cs" />
     <Compile Include="Initializers\SqlDataContextInitializer.cs" />
     <Compile Include="LogReporting\LogReportingRepositoryDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

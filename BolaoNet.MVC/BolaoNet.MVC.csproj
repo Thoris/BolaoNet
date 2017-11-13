@@ -72,12 +72,24 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.1.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.1.2\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.1.2\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -139,6 +151,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseAdminAreaController.cs" />
     <Compile Include="Areas\Admin\Controllers\BolaoIniciarPararController.cs" />
@@ -193,6 +206,8 @@
     <Compile Include="Areas\Resultados\Controllers\BaseResultadosAreaController.cs" />
     <Compile Include="Areas\Resultados\Controllers\JogoResultadoController.cs" />
     <Compile Include="Areas\Resultados\ResultadosAreaRegistration.cs" />
+    <Compile Include="Areas\Rss\Controllers\FeedController.cs" />
+    <Compile Include="Areas\Rss\RssAreaRegistration.cs" />
     <Compile Include="Areas\Testes\Controllers\BaseTestesAreaController.cs" />
     <Compile Include="Areas\Testes\Controllers\ConnectionController.cs" />
     <Compile Include="Areas\Testes\Controllers\EmailController.cs" />
@@ -386,6 +401,11 @@
     <Content Include="Areas\Users\Views\AccountHomeProfileImage\CaptureCam.cshtml" />
     <Content Include="Areas\Admin\Views\LogViewer\Index.cshtml" />
     <Content Include="Areas\Admin\Views\LogViewer\Details.cshtml" />
+    <Content Include="Areas\Rss\Views\web.config" />
+    <Content Include="Areas\Rss\Views\Feed\Index.cshtml" />
+    <Content Include="Areas\Rss\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Rss\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Users\Views\AccountHome\RssFeed.cshtml" />
     <None Include="Content\js\jquery-1.10.2.intellisense.js" />
     <Content Include="Content\js\jquery-1.10.2.js" />
     <Content Include="Content\js\jquery-1.10.2.min.js" />
@@ -1127,6 +1147,7 @@
     <Folder Include="Areas\Pontuacao\Models\" />
     <Folder Include="Areas\Regras\Models\" />
     <Folder Include="Areas\Resultados\Models\" />
+    <Folder Include="Areas\Rss\Models\" />
     <Folder Include="Areas\Testes\Models\" />
     <Folder Include="Areas\Users\Models\" />
     <Folder Include="Areas\Visitante\Controllers\" />
@@ -1160,6 +1181,10 @@
     <ProjectReference Include="..\BolaoNet.Domain.Services\BolaoNet.Domain.Services.csproj">
       <Project>{a75056e8-0a9d-47aa-a4ed-a521329610bf}</Project>
       <Name>BolaoNet.Domain.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Feed.Rss\BolaoNet.Feed.Rss.csproj">
+      <Project>{3c78b795-d0b7-4f7c-945d-194c9f132221}</Project>
+      <Name>BolaoNet.Feed.Rss</Name>
     </ProjectReference>
     <ProjectReference Include="..\BolaoNet.Infra.CrossCutting.Caching\BolaoNet.Infra.CrossCutting.Caching.csproj">
       <Project>{a4bbdac0-8fa4-49e0-93a8-b225f6a34cf4}</Project>

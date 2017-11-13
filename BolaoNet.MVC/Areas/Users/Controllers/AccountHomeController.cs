@@ -6,8 +6,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
+using System.Xml.Linq;
 
 namespace BolaoNet.MVC.Areas.Users.Controllers
 {
@@ -338,6 +340,29 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
 
             return View(model);
         }
+
+        public ActionResult RssFeed()
+        {
+            string strPathAndQuery = HttpContext.Request.Url.PathAndQuery;
+            string strUrl = HttpContext.Request.Url.AbsoluteUri.Replace(strPathAndQuery, "/");
+
+            string feedUrl = strUrl + "/" + "rss/feed/rssindex";
+
+
+            XDocument feedXml = XDocument.Load(feedUrl);
+            var feeds = from feed in feedXml.Descendants("item")
+                        select new Feed.Rss.EntryFeedItem
+                        {
+                            Title = feed.Element("title").Value,
+                            Description = Regex.Match(feed.Element("description").Value, @"^.{1,180}\b(?<!\s)").Value
+                        };
+
+
+            List<Feed.Rss.EntryFeedItem> list = feeds.ToList();
+
+            return View(list);
+        }
+
 
         #endregion
     }

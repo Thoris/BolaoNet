@@ -90,6 +90,7 @@
     <Compile Include="Facade\ICampeonatoFacadeService.cs" />
     <Compile Include="Facade\IInitializationFacadeService.cs" />
     <Compile Include="Facade\IUserFacadeService.cs" />
+    <Compile Include="Feed\IRssService.cs" />
     <Compile Include="IBolaoRegraService.cs" />
     <Compile Include="IFactoryService.cs" />
     <Compile Include="Logging\ILogging.cs" />

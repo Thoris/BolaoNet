@@ -96,6 +96,7 @@
     <Compile Include="Facade\InitializationFacadeService.cs" />
     <Compile Include="Facade\UserFacadeService.cs" />
     <Compile Include="FactoryService.cs" />
+    <Compile Include="Feed\RssService.cs" />
     <Compile Include="LogReporting\LogReportingService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reports\BolaoApostasFimReportService.cs" />

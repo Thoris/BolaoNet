@@ -49,6 +49,7 @@
     <Compile Include="Facade\Campeonatos\StructureCopaMundoFacadeApp.cs" />
     <Compile Include="Facade\InitializationFacadeApp.cs" />
     <Compile Include="Facade\UserFacadeApp.cs" />
+    <Compile Include="Feed\RssApp.cs" />
     <Compile Include="Interfaces\Base\IGenericApp.cs" />
     <Compile Include="Boloes\ApostaExtraApp.cs" />
     <Compile Include="Boloes\ApostaExtraUsuarioApp.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="Interfaces\Facade\Campeonatos\IStructureCopaMundoFacadeApp.cs" />
     <Compile Include="Interfaces\Facade\IInitializationFacadeApp.cs" />
     <Compile Include="Interfaces\Facade\IUserFacadeApp.cs" />
+    <Compile Include="Interfaces\Feed\IRssApp.cs" />
     <Compile Include="Interfaces\LogReporting\ILogReportingApp.cs" />
     <Compile Include="Interfaces\Notification\INotificationApp.cs" />
     <Compile Include="Interfaces\Reports\IBolaoApostasFimReportApp.cs" />
