@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Diagnostics;
 using System.Linq;
+using BolaoNet.Application.Interfaces.Feed;
 
 namespace BolaoNet.MVC.Tests
 {
@@ -68,6 +69,8 @@ namespace BolaoNet.MVC.Tests
             IBolaoPontuacaoApp bolaoPontuacaoApp = kernel.Get<IBolaoPontuacaoApp>();
             IBolaoMembroClassificacaoApp bolaoMembroClassificacaoApp = kernel.Get<IBolaoMembroClassificacaoApp>();
             IBolaoHistoricoApp bolaoHistoricoApp = kernel.Get<IBolaoHistoricoApp>();
+            IRssApp rssApp = kernel.Get<IRssApp>();
+
 
             IUserFacadeApp userFacadeApp = kernel.Get<IUserFacadeApp>();
 
@@ -555,7 +558,8 @@ namespace BolaoNet.MVC.Tests
                         campeonatoApp, 
                         campeonatoFaseApp, 
                         campeonatoGrupoApp, 
-                        campeonatoTimeApp
+                        campeonatoTimeApp,
+                        rssApp
                         );
 
                 Mocks.MvcMockHelpers.SetMockControllerContext(jogoResultadoController, userAdmin);
