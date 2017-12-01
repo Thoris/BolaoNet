@@ -13,14 +13,19 @@ namespace BolaoNet.MVC.Tests.IoC.Modules
 
         public override void Load()
         {
+            Bind<Application.Interfaces.Facade.Campeonatos.ICopaMundo2018FacadeApp>().To<Application.Facade.Campeonatos.CopaMundo2018FacadeApp>();
+
+
+
             Bind<Application.Interfaces.Facade.IInitializationFacadeApp>().To<Application.Facade.InitializationFacadeApp>();
 
 
             Bind<Application.Interfaces.Notification.INotificationApp>().To<Application.Notification.NotificationApp>();
 
             Bind<Application.Interfaces.Boloes.IBolaoHistoricoApp>().To<Application.Boloes.BolaoHistoricoApp>();
-            
 
+
+            
             Bind<Application.Interfaces.Boloes.IApostaExtraApp>().To<Application.Boloes.ApostaExtraApp>();
             Bind<Application.Interfaces.Boloes.IApostaExtraUsuarioApp>().To<Application.Boloes.ApostaExtraUsuarioApp>();
             Bind<Application.Interfaces.Boloes.IApostaPontosApp>().To<Application.Boloes.ApostaPontosApp>();
@@ -71,6 +76,8 @@ namespace BolaoNet.MVC.Tests.IoC.Modules
             Bind<Application.Interfaces.Facade.IUserFacadeApp>().To<Application.Facade.UserFacadeApp>();
             Bind<Application.Interfaces.Facade.Campeonatos.ICopaMundo2014FacadeApp>().To<Application.Facade.Campeonatos.CopaMundo2014FacadeApp>();
             Bind<Application.Interfaces.Facade.Campeonatos.ICopaMundo2010FacadeApp>().To<Application.Facade.Campeonatos.CopaMundo2010FacadeApp>();
+            Bind<Application.Interfaces.Facade.Campeonatos.ICopaMundo2018FacadeApp>().To<Application.Facade.Campeonatos.CopaMundo2018FacadeApp>();
+
             Bind<Application.Interfaces.Facade.Campeonatos.IStructureCopaMundoFacadeApp>().To<Application.Facade.Campeonatos.StructureCopaMundoFacadeApp>();
 
 

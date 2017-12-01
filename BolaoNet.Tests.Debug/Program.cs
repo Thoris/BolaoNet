@@ -14,6 +14,10 @@ namespace BolaoNet.Tests.Debug
 
         static void Main(string[] args)
         {
+
+
+
+
             //ApartmentState state  = Thread.CurrentThread.GetApartmentState();
             //Thread t = new Thread(new ThreadStart(delegate()
             //{
@@ -27,7 +31,11 @@ namespace BolaoNet.Tests.Debug
             //t.ApartmentState = ApartmentState.STA;
             //t.Start();
             //t.Join();
+            BolaoNet.MVC.Tests.BolaoCopa2018 t = new MVC.Tests.BolaoCopa2018();
+            t.TestFullCycle();
 
+
+            return;
 
 
 

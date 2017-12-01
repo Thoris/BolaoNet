@@ -22,6 +22,9 @@ namespace BolaoNet.MVC.Tests.IoC.Modules
             Bind<Domain.Interfaces.Services.Facade.IInitializationFacadeService>().To<Domain.Services.Facade.InitializationFacadeService>().WithConstructorArgument("userName", userName);
 
             Bind<Domain.Interfaces.Services.Boloes.IBolaoHistoricoService>().To<Domain.Services.Boloes.BolaoHistoricoService>().WithConstructorArgument("userName", userName);
+
+
+            Bind<Domain.Interfaces.Services.Facade.Campeonatos.ICopaMundo2018FacadeService>().To<Domain.Services.Facade.Campeonatos.CopaMundo2018FacadeService>().WithConstructorArgument("userName", userName);
             
 
             Bind<Domain.Interfaces.Services.Boloes.IApostaExtraService>().To<Domain.Services.Boloes.ApostaExtraService>().WithConstructorArgument("userName", userName);
@@ -75,6 +78,7 @@ namespace BolaoNet.MVC.Tests.IoC.Modules
             Bind<Domain.Interfaces.Services.Facade.Campeonatos.IStructureCopaMundoFacadeService>().To<Domain.Services.Facade.Campeonatos.StructureCopaMundoFacadeService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Facade.Campeonatos.ICopaMundo2014FacadeService>().To<Domain.Services.Facade.Campeonatos.CopaMundo2014FacadeService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Facade.Campeonatos.ICopaMundo2010FacadeService>().To<Domain.Services.Facade.Campeonatos.CopaMundo2010FacadeService>().WithConstructorArgument("userName", userName);
+            Bind<Domain.Interfaces.Services.Facade.Campeonatos.ICopaMundo2018FacadeService>().To<Domain.Services.Facade.Campeonatos.CopaMundo2018FacadeService>().WithConstructorArgument("userName", userName);
 
             Bind<Domain.Interfaces.Services.Reports.IBolaoMembroApostasReportService>().To<Domain.Services.Reports.BolaoMembroApostasReportService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Reports.IBolaoApostasInicioReportService>().To<Domain.Services.Reports.BolaoApostasInicioReportService>().WithConstructorArgument("userName", userName);

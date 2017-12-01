@@ -240,6 +240,10 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
                 .WhenInjectedExactlyInto(typeof(Application.Facade.Campeonatos.CopaMundo2014FacadeApp))
                 .WithConstructorArgument("url", url)
                 .WithConstructorArgument("token", token);
+            //Bind<Domain.Interfaces.Services.Facade.Campeonatos.ICopaMundo2018FacadeService>().To<WebApi.Integration.Facade.Campeonatos.CopaMundo2018FacadeIntegration>()
+            //    .WhenInjectedExactlyInto(typeof(Application.Facade.Campeonatos.CopaMundo2014FacadeApp))
+            //    .WithConstructorArgument("url", url)
+            //    .WithConstructorArgument("token", token);
 
         }
 

@@ -79,6 +79,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="AllTests.cs" />
+    <Compile Include="CopaDoMundoTests\CopaDoMundo2014Tests\BolaoCopaMundo2018AppHelper.cs" />
     <Compile Include="LayersTests\ApiServiceLayerTests\DadosBasicosServiceLayerTests\TimeApiServiceLayerTests.cs" />
     <Compile Include="LayersTests\ApplicationLayerTests\DadosBasicosApplicationLayerTests\TimeApplicationLayerTests.cs" />
     <Compile Include="LayersTests\BaseLayerTests\BaseDadosBasicosTests\TimeLayerTests.cs" />
