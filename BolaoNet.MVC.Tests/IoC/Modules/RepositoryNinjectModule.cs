@@ -18,6 +18,7 @@ namespace BolaoNet.MVC.Tests.IoC.Modules
 
             Bind(typeof(Domain.Interfaces.Repositories.Base.IGenericDao<>)).To(typeof(Infra.Data.EF.Base.BaseRepositoryDao<>));
 
+            Bind<Domain.Interfaces.Repositories.Feed.IRssDao>().To<Infra.Data.EF.Feed.RssRepositoryDao>();
 
             
 

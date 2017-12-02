@@ -16,6 +16,7 @@ namespace BolaoNet.MVC.Tests.IoC.Modules
             Bind<Application.Interfaces.Facade.Campeonatos.ICopaMundo2018FacadeApp>().To<Application.Facade.Campeonatos.CopaMundo2018FacadeApp>();
 
 
+            Bind<Application.Interfaces.Feed.IRssApp>().To<Application.Feed.RssApp>();
 
             Bind<Application.Interfaces.Facade.IInitializationFacadeApp>().To<Application.Facade.InitializationFacadeApp>();
 

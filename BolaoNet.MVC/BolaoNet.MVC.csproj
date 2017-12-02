@@ -405,7 +405,9 @@
     <Content Include="Areas\Users\Views\AccountHomeProfileImage\CaptureCam.cshtml" />
     <Content Include="Areas\Admin\Views\LogViewer\Index.cshtml" />
     <Content Include="Areas\Admin\Views\LogViewer\Details.cshtml" />
-    <Content Include="Areas\Rss\Views\web.config" />
+    <Content Include="Areas\Rss\Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Areas\Rss\Views\Feed\Index.cshtml" />
     <Content Include="Areas\Rss\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Rss\Views\_ViewStart.cshtml" />
@@ -1135,7 +1137,7 @@
     <Content Include="Views\Shared\Fragments\Menus\_AdminMenu.cshtml" />
     <Content Include="Views\Shared\Fragments\Menus\_CampeonatoMenu.cshtml" />
     <Content Include="Views\Account\RegistrationFormNoBolao.cshtml" />
-    <None Include="Properties\PublishProfiles\Pack.pubxml" />
+    <None Include="Properties\PublishProfiles\teste.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

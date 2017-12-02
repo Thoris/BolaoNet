@@ -15,6 +15,11 @@ namespace BolaoNet.Tests.Debug
         static void Main(string[] args)
         {
 
+            new MVC.Tests.Execution().Execute();
+            return;
+
+
+
             //BolaoNet.Tests.AllTests t1 = new AllTests();
             //t1.Execute();
 
