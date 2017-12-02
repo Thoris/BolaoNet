@@ -15,8 +15,8 @@ namespace BolaoNet.Tests.Debug
         static void Main(string[] args)
         {
 
-            new MVC.Tests.Execution().Execute();
-            return;
+            //new MVC.Tests.Execution().Execute();
+            //return;
 
 
 
@@ -43,8 +43,8 @@ namespace BolaoNet.Tests.Debug
 
 
 
-            //BolaoNet.MVC.Tests.BolaoCopa2018 t = new MVC.Tests.BolaoCopa2018();
-            //t.TestFullCycle();
+            BolaoNet.MVC.Tests.BolaoCopa2018 t = new MVC.Tests.BolaoCopa2018();
+            t.TestFullCycle();
 
 
             //return;
