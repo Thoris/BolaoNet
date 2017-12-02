@@ -31,11 +31,11 @@
                                 <td class="hidden-xs">@Model[c].DataJogo.ToString("dd/MM/yy HH:mm")</td>
                                 <td class="hidden-xs">@Model[c].NomeEstadio</td>
                                 <td class="text-right hidden-xs">@Model[c].NomeTime1</td>
-                                <td><img src=@Model[c].ImageTime1></td>
+                                <td><img class="img-time" src="@Model[c].ImageTime1"></td>
                                 <td><strong>@Model[c].ApostaTime1</strong></td>
                                 <td>x</td>
                                 <td><strong>@Model[c].ApostaTime2</strong></td>
-                                <td><img src=@Model[c].ImageTime2></td>
+                                <td><img class="img-time" src="@Model[c].ImageTime2"></td>
                                 <td class="text-left hidden-xs">@Model[c].NomeTime2</td> 
                                 <td>
                                     <a href="@Url.Action("Index", "ApostasJogo", new { area= "Boloes", id = @Model[c].JogoId})">                                       

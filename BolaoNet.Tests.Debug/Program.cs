@@ -15,6 +15,8 @@ namespace BolaoNet.Tests.Debug
         static void Main(string[] args)
         {
 
+            //BolaoNet.Tests.AllTests t1 = new AllTests();
+            //t1.Execute();
 
 
 
@@ -31,11 +33,16 @@ namespace BolaoNet.Tests.Debug
             //t.ApartmentState = ApartmentState.STA;
             //t.Start();
             //t.Join();
-            BolaoNet.MVC.Tests.BolaoCopa2018 t = new MVC.Tests.BolaoCopa2018();
-            t.TestFullCycle();
 
 
-            return;
+
+
+
+            //BolaoNet.MVC.Tests.BolaoCopa2018 t = new MVC.Tests.BolaoCopa2018();
+            //t.TestFullCycle();
+
+
+            //return;
 
 
 

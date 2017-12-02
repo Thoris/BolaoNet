@@ -87,7 +87,11 @@ namespace BolaoNet.MVC.Tests
 
             Domain.Entities.Boloes.Bolao bolao2018 = bolaoHelper2018.CreateBolao(campeonato2018);
 
-            //bolaoHelper2010.CreateApostasUsuarios(bolao2010.Nome);
+
+
+
+
+            //bolaoHelper2018.(bolao2018.Nome);
 
             //bolaoApp.Iniciar(new Domain.Entities.Users.User("thoris"), bolao2010);
 

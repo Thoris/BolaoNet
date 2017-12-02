@@ -56,7 +56,7 @@
             <td>@(Model.Apostas[c].DataJogo.ToString("dd/MM/yy HH:mm"))</td>
             <td class="hidden-xs">@(Model.Apostas[c].NomeEstadio)</td>
             <td class="text-right hidden-xs">@(Model.Apostas[c].NomeTime1)</td>
-            <td><img src="@(Model.Apostas[c].ImageTime1)" title="@(Model.Apostas[c].NomeTime1)" /></td>
+            <td><img class="img-time" src="@(Model.Apostas[c].ImageTime1)" title="@(Model.Apostas[c].NomeTime1)" /></td>
 
             @if (Model.Apostas[c].IsLocked)
             {
@@ -92,7 +92,7 @@
                 <td>@(Model.Apostas[c].GolsTime2)</td>   
             }
 
-            <td><img src="@(Model.Apostas[c].ImageTime2)" title="@(Model.Apostas[c].NomeTime2)" /></td>
+            <td><img class="img-time" src="@(Model.Apostas[c].ImageTime2)" title="@(Model.Apostas[c].NomeTime2)" /></td>
             <td class="text-left hidden-xs">@(Model.Apostas[c].NomeTime2)</td>
 
 

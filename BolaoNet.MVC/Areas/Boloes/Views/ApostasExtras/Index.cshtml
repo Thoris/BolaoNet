@@ -53,9 +53,9 @@
                                                 }
                                                 </td>
                                                 <td>
-                                                    @if(!string.IsNullOrEmpty (Model.ApostasExtras[c].NomeTimeValidado))
+                                                    @if (!string.IsNullOrEmpty(Model.ApostasExtras[c].NomeTimeValidado))
                                                     {
-                                                        <img src="/Content/img/database/times/@(Model.ApostasExtras[c].NomeTimeValidado).gif" />
+                                                        <img class="img-time" src="/Content/img/database/times/@(Model.ApostasExtras[c].NomeTimeValidado).gif" />
                                                     }
                                                 </td>
                                                 <td>@Model.ApostasExtras[c].TotalPontos</td>
@@ -124,18 +124,18 @@
                                             <td>
                                                 @if (Model.ApostasExtras[c].IsValido == true)
                                                 {
-                                                     <img src="~/Content/img/database/times/@(Model.ApostasExtras[c].NomeTimeValidado).gif"
-                                                             id="@("Image" + @Model.ApostasExtras[c].Posicao)" />
+                                                    <img class="img-time" src="~/Content/img/database/times/@(Model.ApostasExtras[c].NomeTimeValidado).gif"
+                                                         id="@("Image" + @Model.ApostasExtras[c].Posicao)" />
                                                 }
                                                 else
-                                                { 
+                                                {
                                                     if (Model.Simulacao[c].NomeTimeValidado == null)
                                                     {
-                                                        <img src="" id="@("Image" + @Model.Simulacao[c].Posicao)"/>
+                                                        <img class="img-time" src="" id="@("Image" + @Model.Simulacao[c].Posicao)" />
                                                     }
                                                     else
                                                     {
-                                                        <img src="~/Content/img/database/times/@(Model.Simulacao[c].NomeTimeValidado).gif"
+                                                        <img class="img-time" src="~/Content/img/database/times/@(Model.Simulacao[c].NomeTimeValidado).gif"
                                                              id="@("Image" + @Model.Simulacao[c].Posicao)" />
                                                     }
                                                 }
@@ -258,7 +258,7 @@
                                                         @Model.ApostasUsuarios[c].Apostas[i].Pontos
                                                     }
                                                 </td>
-                                                <td class="hidden-xs"><img src="@Model.ApostasUsuarios[c].Apostas[i].ImageTime" title="@Model.ApostasUsuarios[c].Apostas[i].NomeTime" /></td>
+                                                <td class="hidden-xs"><img class="img-time" src="@Model.ApostasUsuarios[c].Apostas[i].ImageTime" title="@Model.ApostasUsuarios[c].Apostas[i].NomeTime" /></td>
                                             }
                                         </tr>
                                     }

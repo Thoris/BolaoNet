@@ -40,14 +40,14 @@
                                                 <td>@Html.DropDownListFor(x => x[c].NomeTime, new SelectList(ViewBag.Times, Model[c].NomeTime), "-- Escolha --", 
                                                     new { @class = "form-control input-sm", @id="Time" + (c+1).ToString(), @name="Time" + (c+1).ToString() })</td>
                                                 <td>
-                                                    @if(Model[c].SalvarNomeTime == null)
+                                                    @if (Model[c].SalvarNomeTime == null)
                                                     {
-                                                        <img src="" />
+                                                        <img class="img-time" src="" />
                                                     }
                                                     else
-                                                    { 
-                                                        <img src="~/Content/img/database/times/@(Model[c].SalvarNomeTime).gif"
-                                                              id="@("Image" + @Model[c].Posicao)" />
+                                                    {
+                                                        <img class="img-time" src="~/Content/img/database/times/@(Model[c].SalvarNomeTime).gif"
+                                                             id="@("Image" + @Model[c].Posicao)" />
                                                     }
                                                 </td>
                                                 <td class="hidden-xs">@Model[c].DataAposta</td>

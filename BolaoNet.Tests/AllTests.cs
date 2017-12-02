@@ -27,6 +27,35 @@ namespace BolaoNet.Tests
         {
             Ninject.StandardKernel kernel = (StandardKernel)NinjectCommon.CreateKernel();
 
+
+
+
+
+
+            Domain.Services.Reports.BolaoMembroApostasReportService report = new Domain.Services.Reports.BolaoMembroApostasReportService(
+                "thoris",
+                kernel.Get<ILogging>(),
+                kernel.Get<IBolaoService>(),
+                kernel.Get<IApostaExtraUsuarioService>(),
+                kernel.Get<IJogoUsuarioService>(),
+                kernel.Get<IUserService>(),
+                kernel.Get<IBolaoCampeonatoClassificacaoUsuarioService>(),
+                new Infra.Reports.Pdf.PdfBolaoMembroApostasReport()
+                );
+
+            Stream res =
+                report.Generate("", "", "",
+                report.GetData(new Domain.Entities.Boloes.Bolao("Copa do Mundo 2018"),
+                new Domain.Entities.Users.User("thoris")));
+
+
+            StreamWriter writer = new StreamWriter(res);
+            
+
+
+
+
+
             CopaDoMundoTests.CopaDoMundo2014Tests.BolaoCopaMundo2014UserApostasAppTests test;
 
             test = new CopaDoMundoTests.CopaDoMundo2014Tests.BolaoCopaMundo2014UserApostasAppTests(

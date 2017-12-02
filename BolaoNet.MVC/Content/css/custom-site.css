@@ -11,8 +11,14 @@
 }
 
 .img-time {
-    width: 50px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
+}
+
+.img-time-resultado {
+    border-radius: 10px 10px 10px 10px;
+    width: 35px;
+    height: 35px;
 }
 
  

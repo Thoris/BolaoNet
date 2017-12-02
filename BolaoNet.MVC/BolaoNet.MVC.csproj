@@ -254,6 +254,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Ajuda\pt-br\Default.html" />
+    <Content Include="Ajuda\pt-br\Images\image001.jpg" />
+    <Content Include="Ajuda\pt-br\Images\image002.jpg" />
+    <Content Include="Ajuda\pt-br\Images\image003.jpg" />
+    <Content Include="Ajuda\pt-br\Images\image004.jpg" />
     <Content Include="Content\css\animate.css" />
     <Content Include="Content\css\bootstrap-datepicker.css" />
     <Content Include="Content\css\bootstrap.css" />

@@ -61,7 +61,7 @@
         <td>@(Model.Jogos[c].DataJogo.ToString("dd/MM/yy HH:mm"))</td>
         <td class="hidden-xs">@(Model.Jogos[c].NomeEstadio)</td>
         <td class="text-right hidden-xs">@(Model.Jogos[c].NomeTime1 ?? Model.Jogos[c].DescricaoTime1)</td>
-        <td><img src="@(Model.Jogos[c].ImageTime1)" /></td>
+        <td><img class="img-time" src="@(Model.Jogos[c].ImageTime1)" /></td>
 
         @if (Model.Jogos[c].IsLocked)
         {
@@ -111,7 +111,7 @@
             }
         }
 
-        <td><img src="@(Model.Jogos[c].ImageTime2)" /></td>
+        <td><img class="img-time" src="@(Model.Jogos[c].ImageTime2)" /></td>
         <td class="text-left hidden-xs">@(Model.Jogos[c].NomeTime2 ?? Model.Jogos[c].DescricaoTime2)</td>
         @*<td>
             @if (Model.Jogos[c].Automatico == 1)

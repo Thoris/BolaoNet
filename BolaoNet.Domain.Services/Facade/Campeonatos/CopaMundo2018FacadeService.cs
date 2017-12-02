@@ -114,8 +114,8 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             datas.Add(new DateTime(2018, 6, 16, 13, 0, 0, 0)); estadios.Add("Arena Mordovia"); ids.Add(6);
             datas.Add(new DateTime(2018, 6, 21, 9, 0, 0, 0)); estadios.Add("Ekaterninburg Arena"); ids.Add(21);
             datas.Add(new DateTime(2018, 6, 21, 12, 0, 0, 0)); estadios.Add("Estádio de Samara"); ids.Add(22);
-            datas.Add(new DateTime(2018, 6, 26, 11, 0, 0, 0)); estadios.Add("Fisht Olympic"); ids.Add(37);
-            datas.Add(new DateTime(2018, 6, 26, 11, 0, 0, 0)); estadios.Add("Luzhniki"); ids.Add(38);
+            datas.Add(new DateTime(2018, 6, 26, 11, 0, 0, 0)); estadios.Add("Luzhniki"); ids.Add(37);
+            datas.Add(new DateTime(2018, 6, 26, 11, 0, 0, 0)); estadios.Add("Fisht Olympic"); ids.Add(38);
             list = Merge(list, base.GetJogosGrupo(base.Campeonato, "C", nomeFase, grupoC.ToList<string>(), datas, estadios, ids));
 
             //string[] grupoD = { "Argentina", "Croácia", "Islândia", "Nigéria" };
@@ -123,7 +123,7 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             datas = new List<DateTime>(); estadios = new List<string>(); ids = new List<int>();
             datas.Add(new DateTime(2018, 6, 16, 10, 0, 0, 0)); estadios.Add("Otkrytiye Arena"); ids.Add(7);
             datas.Add(new DateTime(2018, 6, 16, 16, 0, 0, 0)); estadios.Add("Estádio de Kaliningrado"); ids.Add(8);
-            datas.Add(new DateTime(2018, 6, 21, 15, 0, 0, 0)); estadios.Add("Nizhny Novgorod"); ids.Add(23);
+            datas.Add(new DateTime(2018, 6, 21, 15, 0, 0, 0)); estadios.Add("Novgorod"); ids.Add(23);
             datas.Add(new DateTime(2018, 6, 22, 12, 0, 0, 0)); estadios.Add("Arena Volgogrado"); ids.Add(24);
             datas.Add(new DateTime(2018, 6, 26, 15, 0, 0, 0)); estadios.Add("Krestovsky"); ids.Add(39);
             datas.Add(new DateTime(2018, 6, 26, 15, 0, 0, 0)); estadios.Add("Arena Rosov"); ids.Add(40);
@@ -137,18 +137,18 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             datas.Add(new DateTime(2018, 6, 22, 9, 0, 0, 0)); estadios.Add("Krestovsky"); ids.Add(25);
             datas.Add(new DateTime(2018, 6, 22, 15, 0, 0, 0)); estadios.Add("Estádio de Kaliningrado"); ids.Add(26);
             datas.Add(new DateTime(2018, 6, 27, 15, 0, 0, 0)); estadios.Add("Otkrytiye Arena"); ids.Add(41);
-            datas.Add(new DateTime(2018, 6, 27, 15, 0, 0, 0)); estadios.Add("Nizhny Novgorod"); ids.Add(42);
+            datas.Add(new DateTime(2018, 6, 27, 15, 0, 0, 0)); estadios.Add("Novgorod"); ids.Add(42);
             list = Merge(list, base.GetJogosGrupo(base.Campeonato, "E", nomeFase, grupoE.ToList<string>(), datas, estadios, ids));
 
             //string[] grupoF = { "Alemanha", "Coreia do Sul", "México", "Suécia" };
             string[] grupoF = { "Alemanha", "México", "Suécia", "Coreia do Sul" };
             datas = new List<DateTime>(); estadios = new List<string>(); ids = new List<int>();
             datas.Add(new DateTime(2018, 6, 17, 12, 0, 0, 0)); estadios.Add("Luzhniki"); ids.Add(11);
-            datas.Add(new DateTime(2018, 6, 18, 9, 0, 0, 0)); estadios.Add("Nizhny Novgorod"); ids.Add(12);
+            datas.Add(new DateTime(2018, 6, 18, 9, 0, 0, 0)); estadios.Add("Novgorod"); ids.Add(12);
             datas.Add(new DateTime(2018, 6, 23, 12, 0, 0, 0)); estadios.Add("Fisht Olympic"); ids.Add(27);
             datas.Add(new DateTime(2018, 6, 23, 15, 0, 0, 0)); estadios.Add("Arena Rostov"); ids.Add(28);
-            datas.Add(new DateTime(2018, 6, 27, 11, 0, 0, 0)); estadios.Add("Kazan Arena"); ids.Add(43);
-            datas.Add(new DateTime(2018, 6, 27, 11, 0, 0, 0)); estadios.Add("Ekaterninburg Arena"); ids.Add(44);
+            datas.Add(new DateTime(2018, 6, 27, 11, 0, 0, 0)); estadios.Add("Ekaterninburg Arena"); ids.Add(43);
+            datas.Add(new DateTime(2018, 6, 27, 11, 0, 0, 0)); estadios.Add("Kazan Arena"); ids.Add(44);
             list = Merge(list, base.GetJogosGrupo(base.Campeonato, "F", nomeFase, grupoF.ToList<string>(), datas, estadios, ids));
 
             //string[] grupoG = { "Bélgica", "Inglaterra", "Panamá", "Tunísia" };
@@ -157,9 +157,9 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             datas.Add(new DateTime(2018, 6, 18, 12, 0, 0, 0)); estadios.Add("Fisht Olympic"); ids.Add(13);
             datas.Add(new DateTime(2018, 6, 18, 15, 0, 0, 0)); estadios.Add("Arena Volgogrado"); ids.Add(14);
             datas.Add(new DateTime(2018, 6, 23, 9, 0, 0, 0)); estadios.Add("Otkrytiye Arena"); ids.Add(29);
-            datas.Add(new DateTime(2018, 6, 24, 9, 0, 0, 0)); estadios.Add("Nizhny Novgorod"); ids.Add(30);
-            datas.Add(new DateTime(2018, 6, 28, 15, 0, 0, 0)); estadios.Add("Estádio de Kaliningrado"); ids.Add(45);
-            datas.Add(new DateTime(2018, 6, 28, 15, 0, 0, 0)); estadios.Add("Arena Mordovia"); ids.Add(46);
+            datas.Add(new DateTime(2018, 6, 24, 9, 0, 0, 0)); estadios.Add("Novgorod"); ids.Add(30);
+            datas.Add(new DateTime(2018, 6, 28, 15, 0, 0, 0)); estadios.Add("Arena Mordovia"); ids.Add(45);
+            datas.Add(new DateTime(2018, 6, 28, 15, 0, 0, 0)); estadios.Add("Estádio de Kaliningrado"); ids.Add(46);
             list = Merge(list, base.GetJogosGrupo(base.Campeonato, "G", nomeFase, grupoG.ToList<string>(), datas, estadios, ids));
 
             //string[] grupoH = { "Colômbia", "Japão", "Polônia", "Senegal" };
@@ -185,9 +185,9 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             datas.Add(new DateTime(2018, 6, 30, 15, 0, 0, 0)); estadios.Add("Fisht Olympic"); ids.Add(49);
             datas.Add(new DateTime(2018, 6, 30, 11, 0, 0, 0)); estadios.Add("Kazan Arena"); ids.Add(50);
             datas.Add(new DateTime(2018, 7, 1, 11, 0, 0, 0)); estadios.Add("Luzhniki"); ids.Add(51);
-            datas.Add(new DateTime(2018, 7, 1, 15, 0, 0, 0)); estadios.Add("Nizhny Novgorod"); ids.Add(52);
+            datas.Add(new DateTime(2018, 7, 1, 15, 0, 0, 0)); estadios.Add("Novgorod"); ids.Add(52);
             datas.Add(new DateTime(2018, 7, 2, 11, 0, 0, 0)); estadios.Add("Estádio de Samara"); ids.Add(53);
-            datas.Add(new DateTime(2018, 7, 2, 17, 0, 0, 0)); estadios.Add("Arena Rostov"); ids.Add(54);
+            datas.Add(new DateTime(2018, 7, 2, 15, 0, 0, 0)); estadios.Add("Arena Rostov"); ids.Add(54);
             datas.Add(new DateTime(2018, 7, 3, 11, 0, 0, 0)); estadios.Add("Krestovsky"); ids.Add(55);
             datas.Add(new DateTime(2018, 7, 3, 15, 0, 0, 0)); estadios.Add("Otkrytiye Arena"); ids.Add(56);
 
@@ -204,7 +204,7 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             IList<int> idsGanhadores = new List<int>();
             IList<string> estadios = new List<string>();
 
-            datas.Add(new DateTime(2018, 7, 6, 11, 0, 0, 0)); estadios.Add("Nizhny Novgorod"); ids.Add(57);
+            datas.Add(new DateTime(2018, 7, 6, 11, 0, 0, 0)); estadios.Add("Novgorod"); ids.Add(57);
             idsGanhadores.Add(49); idsGanhadores.Add(50);
             datas.Add(new DateTime(2018, 7, 6, 15, 0, 0, 0)); estadios.Add("Kazan Arena"); ids.Add(58);
             idsGanhadores.Add(53); idsGanhadores.Add(54);
@@ -227,9 +227,9 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             IList<int> idsGanhadores = new List<int>();
             IList<string> estadios = new List<string>();
 
-            datas.Add(new DateTime(2018, 7, 10, 17, 0, 0, 0)); estadios.Add("Krestovsky"); ids.Add(61);
+            datas.Add(new DateTime(2018, 7, 10, 15, 0, 0, 0)); estadios.Add("Krestovsky"); ids.Add(61);
             idsGanhadores.Add(57); idsGanhadores.Add(58);
-            datas.Add(new DateTime(2018, 7, 11, 17, 0, 0, 0)); estadios.Add("Luzhniki"); ids.Add(62);
+            datas.Add(new DateTime(2018, 7, 11, 15, 0, 0, 0)); estadios.Add("Luzhniki"); ids.Add(62);
             idsGanhadores.Add(59); idsGanhadores.Add(60);
 
 
