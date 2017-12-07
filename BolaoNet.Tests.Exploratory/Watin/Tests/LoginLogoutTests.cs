@@ -54,6 +54,45 @@ namespace BolaoNet.Tests.Exploratory.Watin.Tests
 
         }
 
+
+        [TestMethod]
+        public void Test_Check_Classificacao_Jogo_Stress()
+        {
+            for (int c = 0; c < 100; c++)
+            {
+                Browser.GoTo(Browser.Page<Exploratory.Watin.Pages.LoginPage>().ControllerSite);
+                Assert.IsTrue(Browser.Page<Exploratory.Watin.Pages.LoginPage>().IsValidPage());
+
+
+                Browser.Page<Exploratory.Watin.Pages.LoginPage>().Logon(this.UserName, this.Password, false);
+                Assert.IsTrue(Browser.Page<Exploratory.Watin.Pages.Users.HomePage>().IsValidPage());
+
+
+                //Verificação de classificação
+                Browser.GoTo(Browser.Page<Exploratory.Watin.Pages.Boloes.BolaoClassificacaoIndexPage>().ControllerSite);
+                Assert.IsTrue(Browser.Page<Exploratory.Watin.Pages.Boloes.BolaoClassificacaoIndexPage>().IsValidPage());
+                Assert.IsTrue(Browser.Page<Exploratory.Watin.Pages.Boloes.BolaoClassificacaoIndexPage>().ContainsLogin(this.UserName));
+
+                //Carregamento de um jogo
+                Browser.GoTo(Browser.Page<Exploratory.Watin.Pages.Boloes.ApostasUsuariosIndexPage>().ControllerSite);
+                Assert.IsTrue(Browser.Page<Exploratory.Watin.Pages.Boloes.ApostasUsuariosIndexPage>().IsValidPage());
+
+                //Verificação de pontuação do jogo
+                Browser.GoTo(Browser.Page<Exploratory.Watin.Pages.Boloes.ApostasJogoIndexPage>().ControllerSite + "/Index/1");
+                Assert.IsTrue(Browser.Page<Exploratory.Watin.Pages.Boloes.ApostasJogoIndexPage>().IsValidPage());
+                Assert.IsTrue(Browser.Page<Exploratory.Watin.Pages.Boloes.ApostasJogoIndexPage>().ContainsLogin(this.UserName));
+
+
+
+                Browser.Page<Exploratory.Watin.Pages.Users.HomePage>().SairButton.Click();
+                Assert.IsTrue(Browser.Page<Exploratory.Watin.Pages.LoginPage>().IsValidPage());
+
+
+                Assert.IsFalse(Browser.Page<Exploratory.Watin.Pages.Users.HomePage>().IsValidPage());
+
+            }
+        }
+
         #endregion
     }
 }
