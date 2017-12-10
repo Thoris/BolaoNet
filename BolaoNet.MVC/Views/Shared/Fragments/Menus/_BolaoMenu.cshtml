@@ -49,6 +49,11 @@ else
                     <li @if (string.Compare(controllerName, "ApostasExtras", true) == 0) { @Html.Raw("class=\"active\"")   }>
                         <a href="/Apostas/ApostasExtras/Index" onclick="javascript:showWait();"><i class="fa fa-trophy"></i><span class="nav-label">Apostas Extras</span><span class="visible-xs-inline">Extras</span></a>
                     </li>
+
+                    <li @if (string.Compare(controllerName, "BolaoRegras", true) == 0 && string.Compare(controllerArea, "Regras", true) == 0) { @Html.Raw("class=\"active\"")   }>
+                        <a href="/Regras/BolaoRegras/Index" onclick="javascript:showWait();"><i class="fa fa-envelope-o"></i><span class="nav-label">Regras</span><span class="visible-xs-inline">Regras</span></a>
+                    </li>
+
                 </ul>
             </li>
         }

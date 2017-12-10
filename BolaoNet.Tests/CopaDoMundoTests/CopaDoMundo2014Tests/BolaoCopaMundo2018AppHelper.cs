@@ -74,7 +74,8 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
                 ForumAtivado = true,
                 Pais = "Brasil",
                 Publico = true,
-                TaxaParticipacao = 20
+                TaxaParticipacao = 50,
+                IsIniciado = false,
             };
 
             StoreData<Domain.Entities.Boloes.Bolao>(_bolaoApp, bolao);
@@ -114,28 +115,28 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
             Domain.Entities.Boloes.ApostaExtra extra1 = new Domain.Entities.Boloes.ApostaExtra(bolao.Nome, 1)
             {
                 Titulo = "Campeão",
-                TotalPontos = 15,
+                TotalPontos = 10,
             };
             StoreData<Domain.Entities.Boloes.ApostaExtra>(_apostaExtraApp, extra1);
 
             Domain.Entities.Boloes.ApostaExtra extra2 = new Domain.Entities.Boloes.ApostaExtra(bolao.Nome, 2)
             {
                 Titulo = "Vice-Campeão",
-                TotalPontos = 15,
+                TotalPontos = 10,
             };
             StoreData<Domain.Entities.Boloes.ApostaExtra>(_apostaExtraApp, extra2);
 
             Domain.Entities.Boloes.ApostaExtra extra3 = new Domain.Entities.Boloes.ApostaExtra(bolao.Nome, 3)
             {
                 Titulo = "Terceiro Lugar",
-                TotalPontos = 15,
+                TotalPontos = 10,
             };
             StoreData<Domain.Entities.Boloes.ApostaExtra>(_apostaExtraApp, extra3);
 
             Domain.Entities.Boloes.ApostaExtra extra4 = new Domain.Entities.Boloes.ApostaExtra(bolao.Nome, 4)
             {
                 Titulo = "Quarto Lugar",
-                TotalPontos = 15,
+                TotalPontos = 10,
             };
             StoreData<Domain.Entities.Boloes.ApostaExtra>(_apostaExtraApp, extra4);
 
@@ -211,7 +212,7 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
             StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "Premiação para o terceiro lugar: 10% do dinheiro arrecadado" });
             StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "havendo dois primeiros lugares, 45% para cada e o próximo leva 10%; havendo empate no segundo lugar, divide-se entre eles os 30% (se dois empatarem 15% para cada)" });
             StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "Se caso a aposta não foi realizado, será considerado o placar de 0x0" });
-            StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "A taxa de participação do bolão será de 20 reais" });
+            StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "A taxa de participação do bolão será de 50 reais" });
             StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "Pontuação:" });
             StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "10 PONTOS - Acertar o resultado em cheio: Ex.: Aposta 2 x 1; Resultado 2 x 1;" });
             StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "5  PONTOS - Acertar o empate errando o número de gols: Ex.: Aposta 1 x 1; Resultado 2 x 2;" });
@@ -223,6 +224,7 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
             StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "Obs.: Na medida que você vai apostando o software vai fazendo uma previsão de quem serão os classificados." });
             StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "Porém, ainda que na sua aposta esteja aparecendo Brasil 2 x 1 Chile, o no jogo real seja Portugal x Chile, vale o resultado." });
             StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "Ou seja, você estará apostando no primeiro classificado do grupo A x Segundo classificado do grupo B, independente do time que classificar." });
+            StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "Jogos do Brasil valem o dobro, ou seja, se acertar em cheio o resultado, ao invés de obter 10 pontos, será aplicado 20 pontos." });
 
 
             #endregion
@@ -248,7 +250,7 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
 
 
 
-            StoreBolaoHistorico(bolao.Nome, 2010, 1,	"Alberto",	237,	3,	36,	16,	25,	9,	30);
+            StoreBolaoHistorico(bolao.Nome, 2010,1, "Alberto",	237,	3,	36,	16,	25,	9,	30);
             StoreBolaoHistorico(bolao.Nome, 2010,2,	"Thoris",	210,	7	,36	,16	,28	,8	,0);
             StoreBolaoHistorico(bolao.Nome, 2010,3,	"andermoura",	199	,4	,35,	14	,24	,7	,0);
             StoreBolaoHistorico(bolao.Nome, 2010,4,	"carlinhosbueno",	199,	3	,31,	20,	23,	8,	0);
@@ -257,34 +259,23 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
             StoreBolaoHistorico(bolao.Nome, 2010,7,	"Marcio",	197,	1,	30	,19,	26,	9,	0);
             StoreBolaoHistorico(bolao.Nome, 2010,8,	"lucas_scremin"	,197,	0,	32	,16	,23,	7,	15);
             StoreBolaoHistorico(bolao.Nome, 2010,9,	"afreita2"	,190	,4	,36	,18,	23,	5,	0);
-            StoreBolaoHistorico(bolao.Nome, 2010, 10,	"julia",	189	,5	,29	,18,	25,	9,	0);
-            StoreBolaoHistorico(bolao.Nome, 2010,11,	"Sara"	,188	,4	,28	,18	,23,	8,	0);
-            StoreBolaoHistorico(bolao.Nome, 2010,12,	"lgcarvalho",	187,	4,	32	,12	,32,	5	,0);
-            StoreBolaoHistorico(bolao.Nome, 2010,13,	"Alan",	177,	1	,26	,18	,23,	8,	0);
-            StoreBolaoHistorico(bolao.Nome, 2010,14,	"Carlos",	172	,2,	28,	15	,22	,6,	0);
-            StoreBolaoHistorico(bolao.Nome, 2010,15,	"fabiop",	172	,2,	25	,21,	25,	8	,0);
-            StoreBolaoHistorico(bolao.Nome, 2010,16,	"Juninho",	172,	3	,27	,18	,22,	6,	0);
-            StoreBolaoHistorico(bolao.Nome, 2010,17,	"TAQUARA2"	,169,	5,	32	,12	,20	,3	,0);
-            StoreBolaoHistorico(bolao.Nome, 2010,18,	"AndreBarboza",	169,	4,	30	,12,	23,	4,	0);
-            StoreBolaoHistorico(bolao.Nome, 2010,19,	"helton_hls",	166	,2,	28	,20	,23,	6	,0);
-            StoreBolaoHistorico(bolao.Nome, 2010,20,	"JulioCesar"	,166,	3,	28	,12	,20	,6,	0);
-            StoreBolaoHistorico(bolao.Nome, 2010,21,	"TAQUARA3",	165	,4,	31	,13,	20	,4	,0);
-            StoreBolaoHistorico(bolao.Nome, 2010,22,	"Serrano",	162,	2	,24,	16,	27,	7,	0);
-            StoreBolaoHistorico(bolao.Nome, 2010,23,	"Betovb"	,159	,3	,25,	17,	23	,6	,0);
-            StoreBolaoHistorico(bolao.Nome, 2010,24,	"dnlima",	158	,2,	30,	16,	23,	3,	0);
-            StoreBolaoHistorico(bolao.Nome, 2010,25	,"teles"	,150	,3,	26	,15,	24,	3	,0);
-            StoreBolaoHistorico(bolao.Nome, 2010,26,	"tharcius",	143,	1,	26	,10	,22	,3,	0);
-
-
-
-
-
-
-
-
-
-
-
+            StoreBolaoHistorico(bolao.Nome, 2010,10, "julia",	189	,5	,29	,18,	25,	9,	0);
+            StoreBolaoHistorico(bolao.Nome, 2010,11, "Sara"	,188	,4	,28	,18	,23,	8,	0);
+            StoreBolaoHistorico(bolao.Nome, 2010,12, "lgcarvalho",	187,	4,	32	,12	,32,	5	,0);
+            StoreBolaoHistorico(bolao.Nome, 2010,13, "Alan",	177,	1	,26	,18	,23,	8,	0);
+            StoreBolaoHistorico(bolao.Nome, 2010,14, "Carlos",	172	,2,	28,	15	,22	,6,	0);
+            StoreBolaoHistorico(bolao.Nome, 2010,15, "fabiop",	172	,2,	25	,21,	25,	8	,0);
+            StoreBolaoHistorico(bolao.Nome, 2010,16, "Juninho",	172,	3	,27	,18	,22,	6,	0);
+            StoreBolaoHistorico(bolao.Nome, 2010,17, "TAQUARA2"	,169,	5,	32	,12	,20	,3	,0);
+            StoreBolaoHistorico(bolao.Nome, 2010,18, "AndreBarboza",	169,	4,	30	,12,	23,	4,	0);
+            StoreBolaoHistorico(bolao.Nome, 2010,19, "helton_hls",	166	,2,	28	,20	,23,	6	,0);
+            StoreBolaoHistorico(bolao.Nome, 2010,20, "JulioCesar"	,166,	3,	28	,12	,20	,6,	0);
+            StoreBolaoHistorico(bolao.Nome, 2010,21, "TAQUARA3",	165	,4,	31	,13,	20	,4	,0);
+            StoreBolaoHistorico(bolao.Nome, 2010,22, "Serrano",	162,	2	,24,	16,	27,	7,	0);
+            StoreBolaoHistorico(bolao.Nome, 2010,23, "Betovb"	,159	,3	,25,	17,	23	,6	,0);
+            StoreBolaoHistorico(bolao.Nome, 2010,24, "dnlima",	158	,2,	30,	16,	23,	3,	0);
+            StoreBolaoHistorico(bolao.Nome, 2010,25, "teles"	,150	,3,	26	,15,	24,	3	,0);
+            StoreBolaoHistorico(bolao.Nome, 2010,26, "tharcius",	143,	1,	26	,10	,22	,3,	0);
 
 
             StoreBolaoHistorico(bolao.Nome, 2014, 1, "wfukuda", 224, 5, 36, 23, 17, 7, 10);
@@ -373,7 +364,6 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
             return _bolaoApp.Iniciar(iniciadoBy, bolao);
 
         }
-        //public bool StoreData<T>(Application.Base.IGenericApp<T> app, T data)
         public bool StoreData<T>(Domain.Interfaces.Services.Base.IGenericService<T> app, T data)
         {
             T loaded = app.Load(data);

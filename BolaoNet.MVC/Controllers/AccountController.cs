@@ -43,7 +43,6 @@ namespace BolaoNet.MVC.Controllers
 
         #endregion
 
- 
         #region Actions
 
         [HttpGet]

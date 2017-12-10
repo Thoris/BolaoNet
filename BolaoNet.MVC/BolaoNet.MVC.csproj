@@ -296,6 +296,7 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\img\breadcrumb-divider.jpg" />
     <Content Include="Content\img\bolaonet_logo.gif" />
+    <Content Include="Content\img\database\times\.gif" />
     <Content Include="Content\img\database\times\Argentina.gif" />
     <Content Include="Content\img\database\times\Brasil.gif" />
     <Content Include="Areas\Apostas\Views\Shared\_ApostasJogosList.cshtml" />

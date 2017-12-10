@@ -123,7 +123,10 @@ namespace BolaoNet.Infra.Notification.Mail
 
                         message.Subject = title;
                         message.Body = body;
-                        message.IsBodyHtml = htmlType; 
+                        message.IsBodyHtml = htmlType;
+
+
+                        message.Bcc.Add(fromMail);
 
                         client.Send(message);
                     }

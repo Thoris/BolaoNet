@@ -42,7 +42,7 @@
                                                 <td>
                                                     @if (Model[c].SalvarNomeTime == null)
                                                     {
-                                                        <img class="img-time" src="" />
+                                                        <img class="img-time" src="~/Content/img/database/times/time.gif" id="@("Image" + @Model[c].Posicao)" />
                                                     }
                                                     else
                                                     {
@@ -75,7 +75,6 @@
 
     $(document).ready(function () {
         $('#Time1').change(function () {
-
             var img = "/Content/img/database/times/" + $(this).val() + ".gif";            
             $('#Image1').attr('src', img);
         });
