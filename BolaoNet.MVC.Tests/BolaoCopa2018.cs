@@ -83,7 +83,8 @@ namespace BolaoNet.MVC.Tests
                 bolaoCriterioPontosTimesApp,
                 bolaoRegraApp,
                 bolaoPontuacaoApp,
-                bolaoHistoricoApp);
+                bolaoHistoricoApp,
+                bolaoMembroApp);
 
             Domain.Entities.Boloes.Bolao bolao2018 = bolaoHelper2018.CreateBolao(campeonato2018);
 

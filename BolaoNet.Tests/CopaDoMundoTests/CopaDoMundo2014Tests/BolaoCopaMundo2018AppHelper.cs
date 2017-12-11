@@ -24,6 +24,7 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
         private Application.Interfaces.Boloes.IBolaoRegraApp _bolaoRegraApp;
         private Application.Interfaces.Boloes.IBolaoPontuacaoApp _bolaoPontuacaoApp;
         private Application.Interfaces.Boloes.IBolaoHistoricoApp _bolaoHistoricoApp;
+        private Application.Interfaces.Boloes.IBolaoMembroApp _bolaoMembroApp;
 
         #endregion
 
@@ -37,7 +38,8 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
             Application.Interfaces.Boloes.IBolaoCriterioPontosTimesApp bolaoCriterioPontosTimesApp,
             Application.Interfaces.Boloes.IBolaoRegraApp bolaoRegraApp,
             Application.Interfaces.Boloes.IBolaoPontuacaoApp bolaoPontuacaoApp,
-            Application.Interfaces.Boloes.IBolaoHistoricoApp bolaoHistoricoApp
+            Application.Interfaces.Boloes.IBolaoHistoricoApp bolaoHistoricoApp,
+            Application.Interfaces.Boloes.IBolaoMembroApp bolaoMembroApp
         )
         {
             _apostaExtraApp = apostaExtraApp;
@@ -48,6 +50,7 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
             _bolaoRegraApp = bolaoRegraApp;
             _bolaoPontuacaoApp = bolaoPontuacaoApp;
             _bolaoHistoricoApp = bolaoHistoricoApp;
+            _bolaoMembroApp = bolaoMembroApp;
         }
 
         #endregion
@@ -221,7 +224,7 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
             StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "   * Premiação para o terceiro lugar: 9% do dinheiro arrecadado" });
             StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "   * Premiação para o último lugar: 1% do dinheiro arrecadado" });
             StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "   Obs.: Havendo dois primeiros lugares, 45% para cada e o próximo leva 9%; havendo empate no segundo lugar, divide-se entre eles os 29% (se dois empatarem, 14,5% para cada)" });
-            StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "Se caso a aposta não foi realizado, será considerado o placar de 0x0" });
+            StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "Se caso a aposta não foi realizada, será considerado o placar de 0x0" });
             StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "A taxa de participação do bolão será de 50,00 reais" });
             StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "Pontuação:" });
             StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "   * 10 PONTOS - Acertar o resultado em cheio: Ex.: Aposta 2 x 1; Resultado 2 x 1;" });
@@ -230,12 +233,13 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
             StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "   * 3  PONTOS - Acertar apenas o vencedor e errar os placares: Ex.: Aposta 2 x 1; Resultado 1 x 0;" });
             StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "   * 1  PONTO  - Errar o resultado jogo e acertar apenas um dos placares: Ex.: Aposta 2 x 1; Resultado 0 x 1 ou 1 x 1;" });
             StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "   * 0  PONTO  - Para as outras situações." });
+            StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "Jogos do Brasil valem o dobro, seguindo a pontuação de 20, 10, 8, 6 e 2 pontos, respectivamente. Se acertar em cheio o resultado, ao invés de obter 10 pontos, será aplicado 20 pontos." });            
             StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "Com relação ao resultado dos 4 primeiros: Valerá apenas 10 pontos cada acerto." });
             StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "Obs.: Na medida que você vai apostando o software vai fazendo uma previsão de quem serão os classificados." });
-            StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "Porém, ainda que na sua aposta esteja aparecendo Brasil 2 x 1 Chile, o no jogo real seja Portugal x Chile, vale o resultado." });
+            StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "Porém, ainda que na sua aposta esteja aparecendo Brasil 2 x 1 Chile, o no jogo real seja Portugal x Chile, vale o resultado. " });
+            StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "Na fase eliminatória, vale o dobro de pontos apenas para o jogo real e não pelo cruzamento da aposta. " });
             StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "Ou seja, você estará apostando no primeiro classificado do grupo A x Segundo classificado do grupo B, independente do time que classificar." });
-            StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "Jogos do Brasil valem o dobro, ou seja, se acertar em cheio o resultado, ao invés de obter 10 pontos, será aplicado 20 pontos." });
-
+            
 
             #endregion
 
@@ -338,6 +342,13 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
             StoreBolaoHistorico(bolao.Nome, 2014, 48, "bolacha", 113, 2, 17, 16, 15, 3, 0);
             StoreBolaoHistorico(bolao.Nome, 2014, 49, "Helio", 109, 5, 14, 16, 20, 2, 0);
 
+
+            #endregion
+
+            #region Usuários do Bolão
+
+            StoreData<Domain.Entities.Boloes.BolaoMembro>(_bolaoMembroApp, new Domain.Entities.Boloes.BolaoMembro("admin", NomeBolao));
+            
 
             #endregion
 
