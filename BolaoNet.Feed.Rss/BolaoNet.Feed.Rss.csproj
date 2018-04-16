@@ -84,9 +84,6 @@
     <Compile Include="SyndicationFeedOptions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\BolaoNet.Application\BolaoNet.Application.csproj">
       <Project>{ed9e722a-a4f1-4774-9325-7057c17284ef}</Project>
       <Name>BolaoNet.Application</Name>
