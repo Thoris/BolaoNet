@@ -854,6 +854,7 @@
     <Content Include="Content\js\respond.min.js" />
     <Content Include="Content\js\respond.src.js" />
     <Content Include="Content\Site.css" />
+    <Content Include="parameters.xml" />
     <Content Include="ReleaseNotes.txt" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />
@@ -1137,7 +1138,7 @@
     <Content Include="Views\Shared\Fragments\Menus\_AdminMenu.cshtml" />
     <Content Include="Views\Shared\Fragments\Menus\_CampeonatoMenu.cshtml" />
     <Content Include="Views\Account\RegistrationFormNoBolao.cshtml" />
-    <None Include="Properties\PublishProfiles\teste.pubxml" />
+    <None Include="Properties\PublishProfiles\ReleaseWebPackage.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -24,13 +24,13 @@ namespace BolaoNet.MVC.Controllers
             get
             {
                 string env = "";
-                if (Session["Environment"] == null)
+                if (Session["EnvironmentDescription"] == null)
                 {
-                    env = System.Configuration.ConfigurationManager.AppSettings["Environment"];
-                    Session["Environment"] = env;
+                    env = System.Configuration.ConfigurationManager.AppSettings["EnvironmentDescription"];
+                    Session["EnvironmentDescription"] = env;
                 }
                 else
-                    env = Session["Environment"].ToString();
+                    env = Session["EnvironmentDescription"].ToString();
 
                 return env;
             }
