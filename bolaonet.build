@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <project name="BolaoNet" default="build">
-
+  <include buildfile="config.include" />
   <!-- ****************************************************************************************-->
   <!--                                   Properties                                            -->
   <!-- ****************************************************************************************-->
@@ -79,7 +79,6 @@
     <property name="reportgenerator.exe" value="${reportgenerator.base.dir}\ReportGenerator.exe" dynamic="true"/>
     <echo message="ReportGenerator: ${reportgenerator.base.dir}" />
 
-
     <!-- =============================================================== -->
     <!--                          NUNIT PROPERTIES                       -->
     <property name="nunit.base.dir" value="${tools.base.dir}\NUnit" dynamic="true" />
@@ -90,9 +89,8 @@
     <property name="file.tests.application" value="BolaoNet.Tests.dll" />
     <property name="file.tests.application.summary" value="BolaoNet.Tests.xml" />
     
-    <property name="file.tests.exploratory" value="BolaoNet.Tests.Interface.dll" />
-    <property name="file.tests.exploratory.summary" value="BolaoNet.Tests.Interface.xml" />
-
+    <property name="file.tests.exploratory" value="BolaoNet.Tests.Exploratory.dll" />
+    <property name="file.tests.exploratory.summary" value="BolaoNet.Tests.Exploratory.xml" />
 
     <!-- =============================================================== -->
     <!--                          COVERAGE PROPERTIES                    -->
@@ -102,37 +100,30 @@
     <property name="include.coverage.assembly" value="*" overwrite="true" dynamic="true" />
     <echo message="Coverage: ${coverage.reports.dir.root}" />
 
-
     <!-- =============================================================== -->
     <!--                          NUNIT REPORT                           -->
     <property name="file.tests.results" value="${file.tests.application}-Results.xml" />
     <property name="file.tests.results.fullpath" value="${path::combine(base.path.build.nunit, file.tests.results)}" />
     <property name="tests.results.html.output" value="${base.path.build.nunit}\NUnitReport.html" />
 
-
     <property name="file.tests.exploratory.results" value="${file.tests.exploratory}-Results.xml" />
     <property name="file.tests.exploratory.results.fullpath" value="${path::combine(base.path.build.nunit, file.tests.exploratory.results)}" />
     <property name="tests.exploratory.results.html.output" value="${base.path.build.nunit}\NExpReport.html" />
 
-
     <!-- =============================================================== -->
     <!--                      MSDEPLOY PROPERTIES                        -->
-
     <property name="msdeploy.base.dir" value="C:\Program Files\IIS\Microsoft Web Deploy V3" dynamic="true" />
     <property name="msdeploy.exe" value="${msdeploy.base.dir}\msdeploy.exe" />
     <echo message="MsDeploy: ${msdeploy.base.dir}" />
-
-
 
     <!-- =============================================================== -->
     <!--                          SANDCASTLE                             -->
     <property name="sandcastle.build" value="C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\MsBuild.exe" />
     <property name="sandcastle.working" value="${path::combine(base.path.build.source, 'WorkingFolder')}" />
-    <property name="sandcastle.project.folder" value="${path::combine(base.path.build.source, 'Sandcastle')}" />
+    <property name="sandcastle.project.folder" value="${path::combine(base.path.build.source, 'info\Sandcastle')}" />
     <property name="sandcastle.project.folder.file" value="${path::combine(sandcastle.project.folder, 'BolaoNet.shfbproj')}" />
     <property name="sandcastle.target.folder" value="${path::combine(base.path.build, 'Documentation')}" />
     <echo message="SandCastle Build: ${sandcastle.build}" />
-
 
     <!-- =============================================================== -->
     <!--                          FXCOP                                  -->
@@ -150,7 +141,6 @@
     <property name="sourcemonitor.command" value="${path::combine(sourcemonitor.base.dir,'CommandCs.xml')}" dynamic="true"/>
     <property name="sourcemonitor.output.dir" value="${base.path.build}\SourceMonitor" />
     <echo message="Sourcemonitor: ${sourcemonitor.base.dir}" />
-
 
     <!-- =============================================================== -->
     <!--                          FITNESSE                               -->
@@ -172,15 +162,11 @@
     <property name="simian.output.dir" value="${base.path.build}\Simian" />
     <echo message="Simian: ${simian.base.dir}" />
 
-
-
     <!-- =============================================================== -->
     <!--                      DBDEPLOY PROPERTIES                        -->
     <property name="dbdeploy.base.dir" value="${tools.base.dir}\dbDeploy" dynamic="true" />
     <property name="database.scripts.path" value="./BolaoNet.Database.SqlServerDao/build" />
     <property name="database.scripts.changeLogTable" value="changelog" />
-
-
 
     <!-- =============================================================== -->
     <!--                           DATA                               -->
@@ -195,7 +181,6 @@
     <property name="atomiq.output.file" value="${atomiq.output.dir}\AtomiqResult.html" />
 	
 	
-
     <echo message="Properties Initialized" />
 
     <!-- ***************************************************************************************-->
@@ -214,8 +199,6 @@
     <echo message="Libraries Loaded" />
 
   </target>
-
-
 
   <!-- /////////////////////////////  VERSION ///////////////////////    -->
 
@@ -257,19 +240,38 @@
   
   <target name="createVersion">
 	
-	<property name="CCNetLabelMajor" value="1" />
-	<property name="CCNetLabelMinor" value="0" />
+	<property name="CCNetLabelMajor" value="${version.major}" />
+	<property name="CCNetLabelMinor" value="${version.minor}" />
+	<property name="CCNetLabelRevision" value="${version.build}" />
 	<property name="CCNetLabelBuild" value="0" />
 	
-	<call target="find-svnrevision" />
+	<property name="repository.version" value="1.0" dynamic="true" />
 	
-	<property name="CCNetLabelRevision" value="${svn.revision}" />	
+	<!-- call target="git.revision" / -->
+	<!-- call target="find-svnrevision" / -->	
+	<!-- property name="CCNetLabelRevision" value="${svn.revision}" / -->
+	
     <property name="CCNetLabel" value="${CCNetLabelMajor}.${CCNetLabelMinor}.${CCNetLabelRevision}.${CCNetLabelBuild}" />
 	<echo message="Version: ${CCNetLabel}" />
   
   </target>
 
-
+  <target name="git.revision"  >
+    <exec executable="git" outputproperty="git.revision" failifexecutionfails="false" errorproperty="">
+        <arg value="describe"/>
+        <arg value="--tags"/>
+        <arg value="--always"/>
+        <arg value="HEAD"/>
+    </exec>
+    <condition property="repository.version" value="${git.revision}" else="unknown">
+        <and>
+            <isset property="git.revision"/>
+            <length string="${git.revision}" trim="yes" length="0" when="greater"/>
+        </and>
+    </condition>
+   </target>
+  
+  
   <target name="createTagVersion">
     <echo message="Creating tag version: ${CCNetLabel}" />
     <exec program="svn" commandline='copy ${svn.trunkFolder}  ${svn.tagFolder} -m Version #{CCNetLabel}' />    
@@ -278,9 +280,7 @@
 
 
   <!-- /////////////////////////////  TARGETS ///////////////////////    -->
-
-  <target name="dev">
-    
+  <target name="dev">    
     <property name="folder.config.env" value="dev" />
     <call target="createVersion" />
     <call target="initializePaths" />
@@ -292,48 +292,33 @@
     <call target="copyConfigsWs" />
     <call target="copyImageFiles" />
 
+	<!--
     <property name="db.servername" value="10.4.4.100\SQL2014" dynamic="true" />
     <property name="db.initialcatalog" value="BolaoNet" dynamic="true" />
-    <property name="db.credentials" value="User Id=sa;Password=*****;" dynamic="true" />
-    
-	<!-- IGNORANDO ITENS PARA COMPLETAR O BUILD -->
-	<!-- call target="runDatabaseScripts" />
-    <call target="unitTestsReport" / -->
+    <property name="db.credentials" value="User Id=sa;Password=*****;" dynamic="true" />    	
+	<call target="runDatabaseScripts" />
+	-->
+    <call target="unitTestsReport" />
     
     <!-- call target="runSourceMonitor" / -->
-    <call target="generateFxCopReporting" />
+    <!-- call target="generateFxCopReporting" / -->
     <call target="createDistributionZipFile" />
     <call target="createDistributionZipFileWs" />
     <call target="createScriptsZipFile" />
-    
-	
-	<property name="project.deployment.ftp.server" value="www.thoris.somee.com" />
-    <property name="project.deployment.ftp.user" value="thoris" />
-    <property name="project.deployment.ftp.password" value="@Thoris01" />
-    <property name="project.deployment.path.remote" value="www.thoris.somee.com" />
-    <call target="deployToFtp" />
-	
-	
-    <!-- call target="calculate.partcover" />
+    			
+    <call target="calculate.partcover" />
     <call target="generate.reportgenerator.report" />    
-    <call target="generateFxCopReporting" / -->
 
-    
-    <!-- property name="deployment.site" value="c:\netapps\DEV\BolaoNet.MVC" />
+    <property name="deployment.site" value="c:\netapps\DEV\BolaoNet.MVC" />
     <call target="copyToDeploymentSite" />
 
     <property name="deployment.site.ws" value="c:\netapps\DEV\BolaoNet.WebApi" />
     <call target="copyToDeploymentSiteWs" />
 
-    <call target="unitTestsExploratoryReport" / -->
-
-    
+    <!--call target="unitTestsExploratoryReport" / -->    
   </target>
   
-  
-  
-  <target name="test">
-    
+  <target name="test">    
     <property name="folder.config.env" value="test" />
     <call target="createVersion" />
     <call target="initializePaths" />
@@ -345,14 +330,10 @@
     <call target="copyConfigsWs" />
     <call target="copyImageFiles" />
 
-    <!--property name="db.servername" value="10.4.4.100\SQL2014" dynamic="true" />
-    <property name="db.initialcatalog" value="BolaoNet" dynamic="true" />
-    <property name="db.credentials" value="User Id=sa;Password=*****;" dynamic="true" />	
-	<call target="runDatabaseScripts" />
-    <call target="unitTestsReport" / -->
+    <!-- <call target="unitTestsReport" / -->
     
     <!-- call target="runSourceMonitor" / -->
-    <call target="generateFxCopReporting" />
+    <!-- call target="generateFxCopReporting" / -->
     <call target="createDistributionZipFile" />
     <call target="createDistributionZipFileWs" />
     <call target="createScriptsZipFile" />
@@ -362,22 +343,144 @@
     <call target="generateFxCopReporting" / -->
 
     <!--call target="unitTestsExploratoryReport" / --> 
-    <call target="deleteSourceFolder" />
-	
+    <call target="deleteSourceFolder" />	
   </target>
   
   <target name="test_deploy">
-	<property name="folder.config.env" value="test" />
+	<property name="folder.config.env" value="test" />	
     <call target="initializePaths" />
     <property name="tools.base.dir" value="${path::combine(base.path,'Tools')}" overwrite="true" />
     <call target="initializeTools" />
 	
-	<property name="project.deployment.ftp.server" value="www.thorisbolaonet.somee.com" />
-    <property name="project.deployment.ftp.user" value="bolaonet" />
-    <property name="project.deployment.ftp.password" value="@Thoris01" />
-    <property name="project.deployment.path.remote" value="www.thorisbolaonet.somee.com" />
-    <!--call target="deployToFtp" / -->
+	<property name="db.servername" value="${test.db.servername}" dynamic="true" />
+    <property name="db.initialcatalog" value="${test.db.initialcatalog}" dynamic="true" />
+    <property name="db.credentials" value="${test.db.credentials}" dynamic="true" />	
+	<call target="runDatabaseScripts" />
+    	
+	<property name="project.deployment.ftp.server" value="${test.project.deployment.ftp.server}" />
+    <property name="project.deployment.ftp.user" value="${test.project.deployment.ftp.user}" />
+    <property name="project.deployment.ftp.password" value="${test.project.deployment.ftp.password}" />
+    <property name="project.deployment.path.remote" value="${test.project.deployment.path.remote}" />
+    <call target="deployToFtp" />
   </target>
+  
+  <target name="prod"> 
+    <property name="folder.config.env" value="prod" />
+    <call target="createVersion" />
+    <call target="initializePaths" />
+    <property name="tools.base.dir" value="${path::combine(base.path,'Tools')}" overwrite="true" />
+    <call target="initializeTools" />
+
+    <call target="build" />
+    <call target="copyConfigs" />
+    <call target="copyConfigsWs" />
+    <call target="copyImageFiles" />
+	
+    <call target="createDistributionZipFile" />
+    <call target="createDistributionZipFileWs" />
+    <call target="createScriptsZipFile" />
+    	 
+    <call target="deleteSourceFolder" />	
+  </target>
+  
+  <target name="prod_deploy">
+	<property name="folder.config.env" value="prod" />	
+    <call target="initializePaths" />
+    <property name="tools.base.dir" value="${path::combine(base.path,'Tools')}" overwrite="true" />
+    <call target="initializeTools" />
+	
+	<property name="db.servername" value="${prod.db.servername}" dynamic="true" />
+    <property name="db.initialcatalog" value="${prod.db.initialcatalog}" dynamic="true" />
+    <property name="db.credentials" value="${prod.db.credentials}" dynamic="true" />	
+	<call target="runDatabaseScripts" />
+    	
+	<property name="project.deployment.ftp.server" value="${prod.project.deployment.ftp.server}" />
+    <property name="project.deployment.ftp.user" value="${prod.project.deployment.ftp.user}" />
+    <property name="project.deployment.ftp.password" value="${prod.project.deployment.ftp.password}" />
+    <property name="project.deployment.path.remote" value="${prod.project.deployment.path.remote}" />
+    <call target="deployToFtp" />
+  </target>
+  
+  
+  <target name="prod_bkp1"> 
+    <property name="folder.config.env" value="prod_bkp1" />
+    <call target="createVersion" />
+    <call target="initializePaths" />
+    <property name="tools.base.dir" value="${path::combine(base.path,'Tools')}" overwrite="true" />
+    <call target="initializeTools" />
+
+    <call target="build" />
+    <call target="copyConfigs" />
+    <call target="copyConfigsWs" />
+    <call target="copyImageFiles" />
+	
+    <call target="createDistributionZipFile" />
+    <call target="createDistributionZipFileWs" />
+    <call target="createScriptsZipFile" />
+    	 
+    <call target="deleteSourceFolder" />	
+  </target>
+  
+  <target name="prod_bkp1_deploy">
+	<property name="folder.config.env" value="prod" />	
+    <call target="initializePaths" />
+    <property name="tools.base.dir" value="${path::combine(base.path,'Tools')}" overwrite="true" />
+    <call target="initializeTools" />
+	
+	<property name="db.servername" value="${prod_bkp1.db.servername}" dynamic="true" />
+    <property name="db.initialcatalog" value="${prod_bkp1.db.initialcatalog}" dynamic="true" />
+    <property name="db.credentials" value="${prod_bkp1.db.credentials}" dynamic="true" />	
+	<call target="runDatabaseScripts" />
+    	
+	<property name="project.deployment.ftp.server" value="${prod_bkp1.project.deployment.ftp.server}" />
+    <property name="project.deployment.ftp.user" value="${prod_bkp1.project.deployment.ftp.user}" />
+    <property name="project.deployment.ftp.password" value="${prod_bkp1.project.deployment.ftp.password}" />
+    <property name="project.deployment.path.remote" value="${prod_bkp1.project.deployment.path.remote}" />
+    <call target="deployToFtp" />
+  </target>
+  
+  
+  <target name="prod_bkp2"> 
+    <property name="folder.config.env" value="prod_bkp2" />
+    <call target="createVersion" />
+    <call target="initializePaths" />
+    <property name="tools.base.dir" value="${path::combine(base.path,'Tools')}" overwrite="true" />
+    <call target="initializeTools" />
+
+    <call target="build" />
+    <call target="copyConfigs" />
+    <call target="copyConfigsWs" />
+    <call target="copyImageFiles" />
+	
+    <call target="createDistributionZipFile" />
+    <call target="createDistributionZipFileWs" />
+    <call target="createScriptsZipFile" />
+    	 
+    <call target="deleteSourceFolder" />	
+  </target>
+  
+  <target name="prod_bkp2_deploy">
+	<property name="folder.config.env" value="prod" />	
+    <call target="initializePaths" />
+    <property name="tools.base.dir" value="${path::combine(base.path,'Tools')}" overwrite="true" />
+    <call target="initializeTools" />
+	
+	<property name="db.servername" value="${prod_bkp2.db.servername}" dynamic="true" />
+    <property name="db.initialcatalog" value="${prod_bkp2.db.initialcatalog}" dynamic="true" />
+    <property name="db.credentials" value="${prod_bkp2.db.credentials}" dynamic="true" />	
+	<call target="runDatabaseScripts" />
+    	
+	<property name="project.deployment.ftp.server" value="${prod_bkp2.project.deployment.ftp.server}" />
+    <property name="project.deployment.ftp.user" value="${prod_bkp2.project.deployment.ftp.user}" />
+    <property name="project.deployment.ftp.password" value="${prod_bkp2.project.deployment.ftp.password}" />
+    <property name="project.deployment.path.remote" value="${prod_bkp2.project.deployment.path.remote}" />
+    <call target="deployToFtp" />
+  </target>
+  
+  
+  
+  
+  
   
   <target name="dev_exp">
     <property name="folder.config.env" value="dev" />
@@ -399,8 +502,6 @@
     <property name="db.credentials" value="User Id=sa;Password=tvt@dmin1;" dynamic="true" />
     <call target="runDatabaseScripts" />
   </target>
-
-
 
   <target name="devqa">
 
@@ -441,20 +542,7 @@
     <call target="deployToNetworkServerWs" />-->
 
   </target>
-
-  <target name="devqadb">
-    <property name="folder.config.env" value="devqa" />
-    <call target="createVersion" />
-    <call target="initializePaths" />
-    <property name="tools.base.dir" value="${path::combine(base.path,'Tools')}" overwrite="true" />
-    <call target="initializeTools" />
-    <property name="db.servername" value="10.93.3.176" dynamic="true" />
-    <property name="db.initialcatalog" value="BolaoNet" dynamic="true" />
-    <property name="db.credentials" value="User Id=bolaonet;Password=thoris;" dynamic="true" />
-    <call target="runDatabaseScripts" />
-  </target>
  
-  
   <target name="doc">
 
     <property name="folder.config.env" value="doc" />
@@ -468,8 +556,7 @@
     
     <call target="createDocumentation" />
     <call target="deleteSourceFolder" />
-    
-  
+      
     <call target="deleteReleaseFolder" />
     <call target="deleteReleaseFolderWs" />
     <call target="deleteZipFolder" />
@@ -609,9 +696,14 @@
         <include name="${base.path.build.release}\**.pdb" />
         <include name="${base.path.build.release}\bin\**.pdb" />
         <include name="${base.path.build.release}\bin\**.xml" />
-      </fileset>
+        <include name="${base.path.build.source}\*\bin\**" />
+        <include name="${base.path.build.source}\*\obj\**" />
+        <include name="${base.path.build.source}\config.include" />
+        
+	  </fileset>
     </delete>
-    <delete dir="${base.path.build.source}\packages" if="${directory::exists(path::combine(base.path.build.source, 'packages'))}" />
+	
+	<delete dir="${base.path.build.source}\packages" if="${directory::exists(path::combine(base.path.build.source, 'packages'))}" />
     <delete dir="${base.path.build.release}\packages" if="${directory::exists(path::combine(base.path.build.release, 'packages'))}" />    
     <delete dir="${base.path.build.release}\obj" if="${directory::exists(path::combine(base.path.build.release, 'obj'))}" />
     <delete dir="${base.path.build.release}\Properties" if="${directory::exists(path::combine(base.path.build.release, 'Properties'))}" />
