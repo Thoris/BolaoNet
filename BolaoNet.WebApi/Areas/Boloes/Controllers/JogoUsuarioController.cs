@@ -288,8 +288,23 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
                pontosErro, pontosGanhadorFora, pontosGanhadorDentro, pontosPerdedorFora, pontosPerdedorDentro,
                pontosEmpateGols, pontosGolsTime1, pontosGolsTime2, pontosCheio, isMultiploTime, multiploTime);
         }
-        #endregion        
-    
 
+        [HttpPost]
+        public bool CorrecaoEliminatorias(int id, ArrayList data)
+        {
+            Domain.Entities.Boloes.Bolao bolao = JsonConvert.DeserializeObject<Domain.Entities.Boloes.Bolao>(data[0].ToString());
+            Domain.Entities.Users.User user = JsonConvert.DeserializeObject<Domain.Entities.Users.User>(data[1].ToString());
+
+            return this.CorrecaoEliminatorias(bolao, user);
+
+        }
+
+        [HttpPost]
+        public bool CorrecaoEliminatorias(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
+        {
+            return Service.CorrecaoEliminatorias(bolao, user);
+        }
+
+        #endregion        
     }
 }

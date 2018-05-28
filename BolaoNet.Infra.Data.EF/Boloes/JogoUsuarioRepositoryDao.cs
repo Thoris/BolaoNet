@@ -1775,6 +1775,57 @@ namespace BolaoNet.Infra.Data.EF.Boloes
             return (int)pPontosTotal.Value;
 
         }
+        public bool CorrecaoEliminatorias(string currentUserName, DateTime currentDateTime, Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
+        {
+            string command = "exec sp_JogosUsuarios_CorrecaoEliminatorias " +
+              "@CurrentLogin " +
+              ", @CurrentDateTime" +
+              ", @NomeCampeonato" +
+              ", @NomeBolao" +
+              ", @UserName" +
+              ", @ErrorNumber out" +
+              ", @ErrorDescription out";
+
+            var errorNumber = new SqlParameter
+            {
+                ParameterName = "@ErrorNumber",
+                SqlDbType = System.Data.SqlDbType.Int,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var errorDescription = new SqlParameter
+            {
+                ParameterName = "@ErrorDescription",
+                SqlDbType = System.Data.SqlDbType.VarChar,
+                Size = 255,
+                Direction = System.Data.ParameterDirection.Output
+            };
+
+            IList<object> res = base.DataContext.Database.SqlQuery<object>(command,
+                                                        new SqlParameter("CurrentLogin", currentUserName),
+                                                        new SqlParameter("CurrentDateTime", currentDateTime),
+                                                        new SqlParameter("NomeCampeonato", bolao.NomeCampeonato),
+                                                        new SqlParameter("NomeBolao", bolao.Nome),
+                                                        new SqlParameter("UserName", user.UserName),
+                                                        errorNumber,
+                                                        errorDescription
+                                                    ).ToList();
+
+            int error = 0;
+            try
+            {
+                error = (int)errorNumber.Value;
+            }
+            catch
+            {
+
+            }
+
+            if (error == 0)
+                return true;
+            else
+                return false;
+        }
 
         #endregion
 

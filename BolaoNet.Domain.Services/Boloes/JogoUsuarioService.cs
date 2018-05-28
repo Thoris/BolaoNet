@@ -677,7 +677,35 @@ namespace BolaoNet.Domain.Services.Boloes
 
             return apostas;
         }
-    
+        public bool CorrecaoEliminatorias(Entities.Boloes.Bolao bolao, Entities.Users.User user)
+        {
+            if (bolao == null)
+                throw new ArgumentException("bolao");
+            if (string.IsNullOrEmpty(bolao.Nome))
+                throw new ArgumentException("bolao.Nome");
+            if (user == null)
+                throw new ArgumentException("user");
+            if (string.IsNullOrEmpty(user.UserName))
+                throw new ArgumentException("user.UserName");
+
+
+            if (IsSaveLog)
+                CheckStart();
+
+            bool res = this.Dao.CorrecaoEliminatorias(base.CurrentUserName, DateTime.Now, bolao, user);
+
+
+            if (IsSaveLog)
+            {
+                if (res)
+                    _logging.Info(this, GetMessageTotalTime("Correção de eliminatórias: [" + bolao.Nome + "] do usuário [" + user.UserName + "] :" + res));
+                else
+                    _logging.Warn(this, GetMessageTotalTime("Correção de eliminatórias: [" + bolao.Nome + "] do usuário [" + user.UserName + "] :" + res));
+            }
+
+            return res;
+        }
+
         #endregion    
     }
 }

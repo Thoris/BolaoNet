@@ -114,5 +114,7 @@ namespace BolaoNet.Domain.Interfaces.Repositories.Boloes
 
         IList<Entities.ValueObjects.JogoUsuarioVO> LoadProximosJogosUsuario(string currentUserName, DateTime currentDateTime, Entities.Users.User user, int totalRetorno);
 
+        bool CorrecaoEliminatorias(string currentUserName, DateTime currentDateTime, Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user);
+        
     }
 }

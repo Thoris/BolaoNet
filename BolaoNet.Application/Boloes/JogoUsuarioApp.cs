@@ -91,8 +91,11 @@ namespace BolaoNet.Application.Boloes
                 pontosEmpateGols, pontosGolsTime1, pontosGolsTime2, pontosCheio, isMultiploTime, multiploTime);
         }
 
+        public bool CorrecaoEliminatorias(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
+        {
+            return Service.CorrecaoEliminatorias(bolao, user);       
+        }
+
         #endregion
-
-
     }
 }

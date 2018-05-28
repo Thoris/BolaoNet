@@ -205,9 +205,17 @@ namespace BolaoNet.WebApi.Integration.Boloes
                 parameters, "Simulate");
 
         }
+        
+        public bool CorrecaoEliminatorias(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("bolao", bolao);
+            parameters.Add("user", user);
+
+            return base.HttpPostApi<bool>(parameters, "CorrecaoEliminatorias");
+        }
 
         #endregion
-
-
     }
 }

@@ -62,7 +62,6 @@
   <ItemGroup>
     <Build Include="build\0001.Cleaning_Up.sql" />
     <Build Include="build\0046.Create_Table_Log.sql" />
-    <Build Include="build\0048.Create_Table_Rss.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="build\0008.Create_Table_UserMaritalStatus.sql" />
@@ -154,5 +153,7 @@
     <None Include="build\0138.Create_Stored_Procedure_sp_CampeonatosRecordGols.sql" />
     <None Include="build\0139.Create_Stored_Procedure_sp_CampeonatosRecordGolsFrequencia.sql" />
     <None Include="build\0047.Create_Table_BoloesHistorico.sql" />
+    <None Include="build\0140.Create_Stored_Procedure_sp_JogosUsuarios_CorrecaoEliminatorias.sql" />
+    <None Include="build\0048.Create_Table_Rss.sql" />
   </ItemGroup>
 </Project>

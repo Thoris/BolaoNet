@@ -63,5 +63,8 @@ namespace BolaoNet.Domain.Interfaces.Services.Boloes
             int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro,
             int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1,
             int pontosGolsTime2, int pontosCheio, bool isMultiploTime, int multiploTime);
+
+        bool CorrecaoEliminatorias(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user);
+        
     }
 }

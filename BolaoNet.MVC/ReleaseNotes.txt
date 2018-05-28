@@ -1,4 +1,8 @@
-﻿[2.0.0.0] - 01/01/2018
+﻿[2.0.1.0] - 27/05/2018
+* Correção de dependência de jogos na fase eliminatória para apostas dos usuários.
+* Remoção do link de ativação.
+
+[2.0.0.0] - 01/01/2018
 * Refatoração do código para utilização das tecnologias e métodos abaixo:
 	- Bootstrap
 	- Ninject

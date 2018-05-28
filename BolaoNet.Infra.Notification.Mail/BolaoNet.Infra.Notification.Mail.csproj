@@ -70,6 +70,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="TemplatesHtml\Activation_old.htm" />
     <Content Include="TemplatesHtml\Activation.htm" />
     <Content Include="TemplatesHtml\ApostasBolaoFinal.htm" />
     <Content Include="TemplatesHtml\ApostasBolaoInicial.htm" />

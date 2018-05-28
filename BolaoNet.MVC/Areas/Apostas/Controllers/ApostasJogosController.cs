@@ -347,6 +347,8 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
 
             if (list.Count > 0)
             {
+                _jogoUsuarioApp.CorrecaoEliminatorias(base.SelectedBolao, base.UserLogged);
+
                 base.ShowMessage("Apostas inseridas com sucesso.");
             }
 
