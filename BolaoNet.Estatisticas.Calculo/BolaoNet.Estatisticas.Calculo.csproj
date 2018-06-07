@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A0078687-F36C-4241-9268-B3C410463654}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BolaoNet.Estatisticas.Calculo</RootNamespace>
+    <AssemblyName>BolaoNet.Estatisticas.Calculo</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ReferencedComponents\ninject\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApostaJogoUsuario.cs" />
+    <Compile Include="ApostaPontos.cs" />
+    <Compile Include="Execute.cs" />
+    <Compile Include="JogoInfo.cs" />
+    <Compile Include="JogoPossibilidade.cs" />
+    <Compile Include="NinjectCommon.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BolaoNet.Application\BolaoNet.Application.csproj">
+      <Project>{ed9e722a-a4f1-4774-9325-7057c17284ef}</Project>
+      <Name>BolaoNet.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Domain.Entities\BolaoNet.Domain.Entities.csproj">
+      <Project>{862efb06-ac74-4b8d-b338-37d52c90410a}</Project>
+      <Name>BolaoNet.Domain.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Domain.Interfaces.Repositories\BolaoNet.Domain.Interfaces.Repositories.csproj">
+      <Project>{87e9d03a-e8fc-48f6-8f44-c66d569d4fe8}</Project>
+      <Name>BolaoNet.Domain.Interfaces.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Domain.Interfaces.Services\BolaoNet.Domain.Interfaces.Services.csproj">
+      <Project>{c5c21c55-243a-4eae-927a-a10b3b4b7ff4}</Project>
+      <Name>BolaoNet.Domain.Interfaces.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Domain.Services\BolaoNet.Domain.Services.csproj">
+      <Project>{a75056e8-0a9d-47aa-a4ed-a521329610bf}</Project>
+      <Name>BolaoNet.Domain.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Feed.Rss\BolaoNet.Feed.Rss.csproj">
+      <Project>{3c78b795-d0b7-4f7c-945d-194c9f132221}</Project>
+      <Name>BolaoNet.Feed.Rss</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Infra.CrossCutting.Caching\BolaoNet.Infra.CrossCutting.Caching.csproj">
+      <Project>{a4bbdac0-8fa4-49e0-93a8-b225f6a34cf4}</Project>
+      <Name>BolaoNet.Infra.CrossCutting.Caching</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Infra.CrossCutting.IoC\BolaoNet.Infra.CrossCutting.IoC.csproj">
+      <Project>{1bbac3a3-b5eb-49eb-8200-574a99c5b060}</Project>
+      <Name>BolaoNet.Infra.CrossCutting.IoC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Infra.CrossCutting.Logging\BolaoNet.Infra.CrossCutting.Logging.csproj">
+      <Project>{d5662387-a5aa-46a5-bcc2-ef728c777edf}</Project>
+      <Name>BolaoNet.Infra.CrossCutting.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Infra.Data.EF.Mapping\BolaoNet.Infra.Data.EF.Mapping.csproj">
+      <Project>{ff32f8b8-0bbd-48ae-ac10-e23d989ce562}</Project>
+      <Name>BolaoNet.Infra.Data.EF.Mapping</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Infra.Data.EF\BolaoNet.Infra.Data.EF.csproj">
+      <Project>{d0a5e0bf-24a1-40a3-ab36-603db298ceb3}</Project>
+      <Name>BolaoNet.Infra.Data.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Infra.Notification.Mail\BolaoNet.Infra.Notification.Mail.csproj">
+      <Project>{634e95f1-4f38-4bdb-ad16-8dfcd6c73ab5}</Project>
+      <Name>BolaoNet.Infra.Notification.Mail</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Infra.Reports\BolaoNet.Infra.Reports.csproj">
+      <Project>{5c3e6aa6-f8d2-4940-be65-3fc76db96b59}</Project>
+      <Name>BolaoNet.Infra.Reports</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.WebApi.Integration\BolaoNet.WebApi.Integration.csproj">
+      <Project>{2af5e54a-613c-4a7a-896c-9f946593c8f5}</Project>
+      <Name>BolaoNet.WebApi.Integration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.WebApi\BolaoNet.WebApi.csproj">
+      <Project>{660c66ef-6adc-4f74-bac3-c05e12f5008f}</Project>
+      <Name>BolaoNet.WebApi</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

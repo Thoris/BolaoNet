@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReferencedComponents", "ReferencedComponents", "{0DD79E73-9DDE-475A-A7AC-DDE941D14543}"
 EndProject
@@ -197,6 +197,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ninject", "Ninject", "{196F
 		ReferencedComponents\ninject\Ninject.dll = ReferencedComponents\ninject\Ninject.dll
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utils", "Utils", "{D0979436-AB19-40FC-AE69-F86B06F934FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BolaoNet.Estatisticas.Calculo", "BolaoNet.Estatisticas.Calculo\BolaoNet.Estatisticas.Calculo.csproj", "{A0078687-F36C-4241-9268-B3C410463654}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -292,6 +296,10 @@ Global
 		{3C78B795-D0B7-4F7C-945D-194C9F132221}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C78B795-D0B7-4F7C-945D-194C9F132221}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C78B795-D0B7-4F7C-945D-194C9F132221}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0078687-F36C-4241-9268-B3C410463654}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0078687-F36C-4241-9268-B3C410463654}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0078687-F36C-4241-9268-B3C410463654}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0078687-F36C-4241-9268-B3C410463654}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -356,5 +364,6 @@ Global
 		{EE930578-DCD1-4D46-9EB8-EA1E79F78CF5} = {0DD79E73-9DDE-475A-A7AC-DDE941D14543}
 		{317EA6F0-1642-4687-B759-51D0DE68B9ED} = {0DD79E73-9DDE-475A-A7AC-DDE941D14543}
 		{196F5AC2-61B9-4DE7-9556-E103C971678C} = {0DD79E73-9DDE-475A-A7AC-DDE941D14543}
+		{A0078687-F36C-4241-9268-B3C410463654} = {D0979436-AB19-40FC-AE69-F86B06F934FA}
 	EndGlobalSection
 EndGlobal
