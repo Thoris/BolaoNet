@@ -53,6 +53,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApostaExtraAposta.cs" />
+    <Compile Include="ApostaExtraInfo.cs" />
+    <Compile Include="ApostaExtraPontos.cs" />
+    <Compile Include="ApostaExtraPossibilidade.cs" />
     <Compile Include="ApostaJogoUsuario.cs" />
     <Compile Include="ApostaPontos.cs" />
     <Compile Include="Execute.cs" />

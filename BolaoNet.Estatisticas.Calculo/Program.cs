@@ -12,7 +12,7 @@ namespace BolaoNet.Estatisticas.Calculo
         {
 
             Execute exe = new Execute();
-            exe.Run("Copa do Mundo 2014");
+            exe.Run("Copa do Mundo 2018");
         }
     }
 }

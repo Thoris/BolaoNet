@@ -12,6 +12,8 @@ namespace BolaoNet.Estatisticas.Calculo
 
         public string UserName { get; set; }
         public int Pontos { get; set; }
+        public int Gols1 { get; set; }
+        public int Gols2 { get; set; }
         
         #endregion
 
@@ -21,9 +23,11 @@ namespace BolaoNet.Estatisticas.Calculo
         {
 
         }
-        public ApostaPontos(string userName)
+        public ApostaPontos(string userName, int gols1, int gols2)
         {
             this.UserName = userName;
+            this.Gols1 = gols1;
+            this.Gols2 = gols2;
         }
 
         #endregion

@@ -1,10 +1,11 @@
-﻿#define DEBUG_EXTRACTION
+﻿//#define DEBUG_EXTRACTION
 
 using BolaoNet.Application.Interfaces.Boloes;
 using BolaoNet.Application.Interfaces.Campeonatos;
 using Ninject;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +27,7 @@ namespace BolaoNet.Estatisticas.Calculo
         /// Constante que define a quantidade de gols que nunca pode ocorrer.
         /// </summary>
         private const short GolsSemApostaMenor = 888;
+        private const string NomeTimeDesconhecido = "Desconhecido";
 
         #endregion
 
@@ -36,6 +38,8 @@ namespace BolaoNet.Estatisticas.Calculo
         private BolaoNet.Application.Interfaces.Boloes.IJogoUsuarioApp _jogoUsuarioApp;
         private BolaoNet.Application.Interfaces.Boloes.IBolaoCriterioPontosApp _bolaoCriterioPontosApp;
         private BolaoNet.Application.Interfaces.Boloes.IBolaoCriterioPontosTimesApp _bolaoCriterioPontosTimesApp;
+        private BolaoNet.Application.Interfaces.Boloes.IApostaExtraApp _apostaExtraApp;
+        private BolaoNet.Application.Interfaces.Boloes.IApostaExtraUsuarioApp _apostaExtraUsuarioApp;
 
         #endregion
 
@@ -53,6 +57,8 @@ namespace BolaoNet.Estatisticas.Calculo
             _jogoUsuarioApp = kernel.Get<IJogoUsuarioApp>();
             _bolaoCriterioPontosApp = kernel.Get<IBolaoCriterioPontosApp>();
             _bolaoCriterioPontosTimesApp = kernel.Get<IBolaoCriterioPontosTimesApp>();
+            _apostaExtraApp = kernel.Get<IApostaExtraApp>();
+            _apostaExtraUsuarioApp = kernel.Get<IApostaExtraUsuarioApp>();
         }
 
         #endregion
@@ -67,6 +73,7 @@ namespace BolaoNet.Estatisticas.Calculo
         {
             int [] pontuacao = null;
             IList<JogoInfo> list = null;
+            IList<ApostaExtraInfo> extras = null;
             IList<Domain.Entities.Boloes.BolaoCriterioPontosTimes> pontosTimes = null;
 
             bool debug = false;
@@ -85,6 +92,9 @@ namespace BolaoNet.Estatisticas.Calculo
             }
             else
             {
+                extras = ExtractApostasExtras(nomeBolao);
+
+
                 pontosTimes = _bolaoCriterioPontosTimesApp.GetCriterioPontosBolao(new Domain.Entities.Boloes.Bolao(nomeBolao));
                 pontuacao = _bolaoCriterioPontosApp.GetCriteriosPontos(new Domain.Entities.Boloes.Bolao(nomeBolao));
 
@@ -92,8 +102,13 @@ namespace BolaoNet.Estatisticas.Calculo
             }
 
             DefinirPossibilidades(list);
+            DefinirPossibilidades(extras);
 
             CalcularPontuacao(list, pontuacao, pontosTimes);
+            CalcularPontuacao(extras);
+
+            SaveLogJogos("log.log", list, extras);
+
         }
 
         /// <summary>
@@ -320,7 +335,8 @@ namespace BolaoNet.Estatisticas.Calculo
                     jogo.Apostas[i].ApostaTime1, jogo.Apostas[i].ApostaTime2,
                     pontosTimes);
 
-                possibilidade.Pontuacao.Add(new ApostaPontos(jogo.Apostas[i].UserName)
+                possibilidade.Pontuacao.Add(new ApostaPontos(jogo.Apostas[i].UserName, 
+                    jogo.Apostas[i].ApostaTime1, jogo.Apostas[i].ApostaTime2)
                     {
                         Pontos = res
                     });
@@ -368,7 +384,7 @@ namespace BolaoNet.Estatisticas.Calculo
 
             for (int c = 0; c < pontos.Length; c++)
             {
-                switch ((Domain.Entities.Boloes.BolaoCriterioPontos.CriteriosID)pontos[c])
+                switch ((Domain.Entities.Boloes.BolaoCriterioPontos.CriteriosID)c)
                 {
                     case Domain.Entities.Boloes.BolaoCriterioPontos.CriteriosID.Empate:
                         countEmpate = pontos[c];
@@ -445,6 +461,185 @@ namespace BolaoNet.Estatisticas.Calculo
             return resultado;
         }
 
+        /// <summary>
+        /// Método que efetua a extração das apostas extras dos usuários.
+        /// </summary>
+        /// <param name="nomeBolao"></param>
+        /// <returns></returns>
+        private IList<ApostaExtraInfo> ExtractApostasExtras(string nomeBolao)
+        {
+            IList<ApostaExtraInfo> list = new List<ApostaExtraInfo>();
+
+
+            IList<Domain.Entities.Boloes.ApostaExtra> extras =
+                _apostaExtraApp.GetApostasBolao(new Domain.Entities.Boloes.Bolao(nomeBolao));
+            
+            IList<IList<Domain.Entities.Boloes.ApostaExtraUsuario>> apostas =
+                   _apostaExtraUsuarioApp.GetApostasBolaoAgrupado(new Domain.Entities.Boloes.Bolao(nomeBolao));
+
+            for (int c = 0; c < extras.Count; c++ )
+            {
+                ApostaExtraInfo info = new ApostaExtraInfo(extras[c]);
+
+                for (int i = 0; i < apostas.Count; i++ )
+                {
+                    for (int l = 0; l < apostas[i].Count; l ++)
+                    {
+                        if (apostas[i][l].Posicao == info.Posicao)
+                        {
+                            info.Apostas.Add(new ApostaExtraAposta(apostas[i][l]));
+                        }
+                    }
+                }
+
+                list.Add(info);
+            }
+
+            return list;
+        }
+
+        private void DefinirPossibilidades(IList<ApostaExtraInfo> extras)
+        {
+            for (int c = 0; c < extras.Count; c++)
+            {
+                IdentificarPossibilidades(extras[c]);
+            }
+        }
+
+        private void IdentificarPossibilidades(ApostaExtraInfo extra)
+        {
+            extra.Possibilidades = new List<ApostaExtraPossibilidade>();
+
+            //Para todas as apostas do jogo
+            for (int c = 0; c < extra.Apostas.Count; c++)
+            {
+                //Buscando se a aposta já existe na lista
+                int pos = BuscarPossibilidade(extra.Possibilidades, extra.Apostas[c]);
+
+                //Se não encontrou a aposta
+                if (pos == -1)
+                {
+                    //Inclui na lista de possibilidades
+                    extra.Possibilidades.Add(new ApostaExtraPossibilidade(extra.Apostas[c]));
+                }
+                else
+                {
+                    //Inclui no total de apostas
+                    extra.Possibilidades[pos].TotalApostas++;
+
+                }//end if encontrou a aposta
+            }//end for apostas
+
+            extra.Possibilidades.Add(new ApostaExtraPossibilidade() { NomeTime = NomeTimeDesconhecido, TotalApostas = 1 });
+            
+        }
+
+        private int BuscarPossibilidade(IList<ApostaExtraPossibilidade> list, ApostaExtraAposta aposta)
+        {
+            for (int c = 0; c < list.Count; c++)
+            {
+                if (string.Compare (list[c].NomeTime, aposta.NomeTime, true) == 0)
+                {
+                    return c;
+                }
+            }
+
+            return -1;
+        }
+
+        private void CalcularPontuacao(IList<ApostaExtraInfo> extras)
+        {
+            for (int c=0; c < extras.Count; c++)
+            {
+                CalcularPontuacao(extras[c]);
+            }
+        }
+
+        private void CalcularPontuacao(ApostaExtraInfo extra)
+        {
+            for (int c=0; c < extra.Possibilidades.Count; c++)
+            {
+                extra.Possibilidades[c].Pontos = new List<ApostaExtraPontos>();
+                for (int i = 0; i < extra.Apostas.Count; i++)
+                {
+                    int pontos = 0;
+                    if (string.Compare(extra.Apostas[i].NomeTime, extra.Possibilidades[c].NomeTime, true) == 0)
+                    {
+                        pontos = extra.Pontuacao;
+                    }
+
+                    extra.Possibilidades[c].Pontos.Add(new ApostaExtraPontos()
+                        {
+                            NomeTime = extra.Apostas[i].NomeTime,
+                            Pontos = pontos,
+                            UserName = extra.Apostas[i].UserName
+                        });
+                }
+
+            }
+        }
+
+        /// <summary>
+        /// Método que armzena em log os resultados calculados.
+        /// </summary>
+        /// <param name="file"></param>
+        /// <param name="jogos"></param>
+        private void SaveLogJogos(string file, IList<JogoInfo> jogos, IList<ApostaExtraInfo> extras)
+        {
+            StreamWriter writer = new StreamWriter(file);
+
+            for (int c = 0; c < extras.Count; c++)
+            {
+                writer.WriteLine("==============================================================================");
+                writer.WriteLine("Posição: " + extras[c].Posicao + " Pontuação: " + extras[c].Pontuacao);
+
+
+                if (extras[c].Possibilidades != null)
+                {
+                    for (int i = 0; i < extras[c].Possibilidades.Count; i++)
+                    {
+                        writer.WriteLine("\t-------------------------------------");
+                        writer.WriteLine("\t" + extras[c].Possibilidades[i].NomeTime);
+                        writer.WriteLine("\t-------------------------------------");
+
+                        for (int l = 0; l < extras[c].Possibilidades[i].Pontos.Count; l ++)
+                        {
+                            writer.WriteLine("\t\t" + extras[c].Possibilidades[i].Pontos[l].UserName + " : " +
+                           extras[c].Possibilidades[i].Pontos[l].Pontos +
+                           "\t[" + extras[c].Possibilidades[i].Pontos[l].NomeTime + "]");
+                        }
+                    }
+                }
+            }
+
+            writer.WriteLine("*****************************************************************************");
+
+            for (int c = 0; c < jogos.Count; c++)
+            {
+                writer.WriteLine("==============================================================================");
+                writer.WriteLine("JOGO: " + jogos[c].JogoId + " - " + jogos[c].NomeTime1 + " x " + jogos[c].NomeTime2);
+
+                for (int i = 0; i < jogos[c].Possibilidades.Count; i++)
+                {
+                    writer.WriteLine("\t-------------------------------------");
+                    writer.WriteLine("\t" + jogos[c].Possibilidades[i].GolsTime1 + " x " +
+                        jogos[c].Possibilidades[i].GolsTime2);
+                    writer.WriteLine("\t-------------------------------------");
+
+                    for (int l = 0; l < jogos[c].Possibilidades[i].Pontuacao.Count; l++)
+                    {
+                        writer.WriteLine("\t\t" + jogos[c].Possibilidades[i].Pontuacao[l].UserName + " : " +
+                            jogos[c].Possibilidades[i].Pontuacao[l].Pontos +
+                            "\t[" +
+                            jogos[c].Possibilidades[i].Pontuacao[l].Gols1 +
+                            " x " +
+                            jogos[c].Possibilidades[i].Pontuacao[l].Gols2 + "]");
+                    }
+                }
+            }
+
+            writer.Close();
+        }
 
         #endregion
     }

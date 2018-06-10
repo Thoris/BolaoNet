@@ -29,8 +29,8 @@ namespace BolaoNet.Estatisticas.Calculo
         }
         public ApostaJogoUsuario(Domain.Entities.Boloes.JogoUsuario jogoUsuario)
         {
-            this.ApostaTime1 = (int)jogoUsuario.ApostaTime1;
-            this.ApostaTime2 = (int)jogoUsuario.ApostaTime2;
+            this.ApostaTime1 = jogoUsuario.ApostaTime1 ?? 0;
+            this.ApostaTime2 = jogoUsuario.ApostaTime2 ?? 0;
             this.UserName = jogoUsuario.UserName;
         }
 
