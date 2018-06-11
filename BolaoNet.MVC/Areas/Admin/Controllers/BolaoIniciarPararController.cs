@@ -141,9 +141,9 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
         }
         public ActionResult RemoverMembro(ViewModels.Admin.BolaoIniciarStatusMembroViewModel model)
         {
-            if (string.IsNullOrEmpty(model.UserName))
+            if (!string.IsNullOrEmpty(model.UserName))
             {
-                _bolaoMembroApp.RemoverMembroBolao(base.SelectedBolao, new Domain.Entities.Boloes.BolaoMembro(base.SelectedNomeBolao, model.UserName));
+                _bolaoMembroApp.RemoverMembroBolao(base.SelectedBolao, new Domain.Entities.Boloes.BolaoMembro(model.UserName, base.SelectedNomeBolao));
             }
             return RedirectToAction("Index");
         }
