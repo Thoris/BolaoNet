@@ -60,6 +60,14 @@
     <Compile Include="ApostaJogoUsuario.cs" />
     <Compile Include="ApostaPontos.cs" />
     <Compile Include="Execute.cs" />
+    <Compile Include="Grafo\Domain\ArestaJogo.cs" />
+    <Compile Include="Grafo\Domain\GrafoDomain.cs" />
+    <Compile Include="Grafo\Domain\Identifier.cs" />
+    <Compile Include="Grafo\Domain\VerticeAposta.cs" />
+    <Compile Include="Grafo\IAresta.cs" />
+    <Compile Include="Grafo\IGrafo.cs" />
+    <Compile Include="Grafo\IIdentifier.cs" />
+    <Compile Include="Grafo\IVertice.cs" />
     <Compile Include="JogoInfo.cs" />
     <Compile Include="JogoPossibilidade.cs" />
     <Compile Include="NinjectCommon.cs" />
@@ -134,6 +142,9 @@
       <Project>{660c66ef-6adc-4f74-bac3-c05e12f5008f}</Project>
       <Name>BolaoNet.WebApi</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Grafo\Dijkstra\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

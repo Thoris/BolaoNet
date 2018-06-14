@@ -40,6 +40,7 @@ namespace BolaoNet.Estatisticas.Calculo
         private BolaoNet.Application.Interfaces.Boloes.IBolaoCriterioPontosTimesApp _bolaoCriterioPontosTimesApp;
         private BolaoNet.Application.Interfaces.Boloes.IApostaExtraApp _apostaExtraApp;
         private BolaoNet.Application.Interfaces.Boloes.IApostaExtraUsuarioApp _apostaExtraUsuarioApp;
+        private BolaoNet.Application.Interfaces.Boloes.IBolaoMembroClassificacaoApp _bolaoMembroClassificacaoApp;
 
         #endregion
 
@@ -59,6 +60,7 @@ namespace BolaoNet.Estatisticas.Calculo
             _bolaoCriterioPontosTimesApp = kernel.Get<IBolaoCriterioPontosTimesApp>();
             _apostaExtraApp = kernel.Get<IApostaExtraApp>();
             _apostaExtraUsuarioApp = kernel.Get<IApostaExtraUsuarioApp>();
+            _bolaoMembroClassificacaoApp = kernel.Get<IBolaoMembroClassificacaoApp>();
         }
 
         #endregion
@@ -75,31 +77,34 @@ namespace BolaoNet.Estatisticas.Calculo
             IList<JogoInfo> list = null;
             IList<ApostaExtraInfo> extras = null;
             IList<Domain.Entities.Boloes.BolaoCriterioPontosTimes> pontosTimes = null;
+            IList<Domain.Entities.Boloes.BolaoMembroClassificacao> bolaoMembros = null;
 
-            bool debug = false;
+//            bool debug = false;
 
 
 
-#if (DEBUG_EXTRACTION)
-            debug = true;
-#endif
-            if (debug)
-            {
-                pontuacao = SimulateCriterioPontosBolao();
-                pontosTimes = SimulateExtractPontosTimes(nomeBolao);
+//#if (DEBUG_EXTRACTION)
+//            debug = true;
+//#endif
+//            if (debug)
+//            {
+//                pontuacao = SimulateCriterioPontosBolao();
+//                pontosTimes = SimulateExtractPontosTimes(nomeBolao);
 
-                list = SimulateExtractJogos(nomeBolao, 10, 4);
-            }
-            else
-            {
+//                list = SimulateExtractJogos(nomeBolao, 10, 4);
+//            }
+//            else
+//            {
                 extras = ExtractApostasExtras(nomeBolao);
 
 
                 pontosTimes = _bolaoCriterioPontosTimesApp.GetCriterioPontosBolao(new Domain.Entities.Boloes.Bolao(nomeBolao));
                 pontuacao = _bolaoCriterioPontosApp.GetCriteriosPontos(new Domain.Entities.Boloes.Bolao(nomeBolao));
 
+                bolaoMembros = _bolaoMembroClassificacaoApp.GetAll().ToList();
+
                 list = ExtractJogos(nomeBolao);
-            }
+            //}
 
             DefinirPossibilidades(list);
             DefinirPossibilidades(extras);
