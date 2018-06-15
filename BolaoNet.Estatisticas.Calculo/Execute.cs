@@ -27,6 +27,7 @@ namespace BolaoNet.Estatisticas.Calculo
         /// Constante que define a quantidade de gols que nunca pode ocorrer.
         /// </summary>
         private const short GolsSemApostaMenor = 888;
+        private const short GolsSemApostaNegativa = -777;
         private const string NomeTimeDesconhecido = "Desconhecido";
 
         #endregion
@@ -111,6 +112,11 @@ namespace BolaoNet.Estatisticas.Calculo
 
             CalcularPontuacao(list, pontuacao, pontosTimes);
             CalcularPontuacao(extras);
+
+
+            Grafo.Domain.GrafoDomain grafo = new Grafo.Domain.GrafoDomain();
+
+            grafo.CreateGrafo(list);
 
             SaveLogJogos("log.log", list, extras);
 
@@ -254,6 +260,10 @@ namespace BolaoNet.Estatisticas.Calculo
         {
             jogo.Possibilidades = new List<JogoPossibilidade>();
 
+            IList<short> golsTime1 = new List<short>();
+            IList<short> golsTime2 = new List<short>();
+
+
             //Para todas as apostas do jogo
             for (int c=0; c < jogo.Apostas.Count; c++)
             {
@@ -265,6 +275,14 @@ namespace BolaoNet.Estatisticas.Calculo
                 {
                     //Inclui na lista de possibilidades
                     jogo.Possibilidades.Add(new JogoPossibilidade(jogo.Apostas[c]));
+
+                    short gols1 = (short)jogo.Apostas[c].ApostaTime1;
+                    short gols2 = (short)jogo.Apostas[c].ApostaTime2;
+
+                    if (!golsTime1.Contains(gols1))
+                        golsTime1.Add(gols1);
+                    if (!golsTime2.Contains(gols2))
+                        golsTime2.Add(gols2);
                 }
                 else
                 {
@@ -273,6 +291,21 @@ namespace BolaoNet.Estatisticas.Calculo
 
                 }//end if encontrou a aposta
             }//end for apostas
+
+
+            for (int c = 0; c < golsTime1.Count; c++ )
+            {
+                jogo.Possibilidades.Add(new JogoPossibilidade(golsTime1[c], GolsSemApostaMaior));   
+                if (golsTime1[c] > 0)
+                    jogo.Possibilidades.Add(new JogoPossibilidade(golsTime1[c], GolsSemApostaNegativa));   
+            }
+            for (int c = 0; c < golsTime2.Count; c++)
+            {
+                jogo.Possibilidades.Add(new JogoPossibilidade(golsTime2[c], GolsSemApostaMaior));
+                if (golsTime2[c] > 0)
+                    jogo.Possibilidades.Add(new JogoPossibilidade(golsTime2[c], GolsSemApostaNegativa));
+            }
+
 
             jogo.Possibilidades.Add(new JogoPossibilidade(GolsSemApostaMaior, GolsSemApostaMenor));
             jogo.Possibilidades.Add(new JogoPossibilidade(GolsSemApostaMaior, GolsSemApostaMaior));

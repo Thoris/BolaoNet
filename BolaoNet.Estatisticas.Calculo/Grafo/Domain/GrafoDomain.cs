@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BolaoNet.Estatisticas.Calculo.Grafo.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,147 +7,103 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Estatisticas.Calculo.Grafo.Domain
 {
-    public class GrafoDomain : IGrafo
+    public class GrafoDomain : GrafoBase, IGrafo
     {
-        #region Variables
-
-        private IList<IVertice> _vertices;
-
-        #endregion
-
-        #region Properties
-        
-        public IList<IVertice> Vertices
-        {
-            get
-            {
-                return _vertices;
-            }
-            set
-            {
-                _vertices = value;
-            }
-        }
-        
-        #endregion
 
         #region Constructors/Destructors
 
         public GrafoDomain()
+            : base(new List<IVertice>())
         {
-            _vertices = new List<IVertice>();
         }
 
         #endregion
 
         #region Methods
-
-        public IVertice CreateVertice(int jogoId, int possibilidadeId)
-        {
-            return VerticeAposta.Create(Identifier.Create(_vertices.Count + 1, jogoId, possibilidadeId));
-        }
-
-        public IAresta CreateAresta()
-        {
-            return ArestaJogo.Create();
-        }
-
-        public void Add(IVertice vertice)
-        {
-            for (int c=0; c < _vertices.Count; c++)
-            {
-                if (IsAlreadyExists(_vertices, vertice))
-                    throw new Exception("Vertice is already in the list");
-            }
-
-            _vertices.Add(vertice);
-        }
-
-        private bool IsAlreadyExists(IList<IVertice> list, IVertice vertice)
-        {
-            for (int c=0; c < list.Count; c++)
-            {
-                if (list[c].Identifier.IsEqual(vertice.Identifier))
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        public void Clear()
-        {
-            _vertices.Clear();
-        }
-
-        public void Add(IVertice vertice, IAresta aresta)
-        {
-            int pos = SearchVertice(_vertices, vertice);
-
-            if (pos == -1)
-                throw new Exception("Vertice is not found");
-
-
-        }
-        
-        private int SearchVertice(IList<IVertice> vertices, IVertice vertice)
-        {
-            for (int c=0; c < vertices.Count; c++)
-            {
-                if (vertices[c].Identifier.IsEqual(vertice.Identifier))
-                {
-                    return c;
-                }
-            }
-
-            return -1;
-        }
+ 
 
         public void CreateGrafo(IList<JogoInfo> jogos)
         {
+            Console.WriteLine("Montando o grafo dos jogos... Total: " + jogos.Count);
+
+            int totalArestas = 0;
+            int totalVertices = 0;
+
+            this.Clear();
+
+            IIdentifier mainId = Identifier.Create(GetTotalVertices() + 1, 0, 0);
+            IVertice mainVertice = this.CreateVertice(mainId);
+            Add(mainVertice);
+            totalVertices++;
+
+            //Buscando todas as vértices (Possibilidade de jogos)
             for (int c=0; c < jogos.Count; c++)
-            {
-                for (int i = 0; i  <jogos[c].Possibilidades.Count; i++)
-                {
-                    IVertice vertice = this.CreateVertice(jogos[c].JogoId, i);
-
-                    this.Add(vertice);
-                }
-            }
-
-
-            for (int c = 0; c < jogos.Count; c++)
             {
                 for (int i = 0; i < jogos[c].Possibilidades.Count; i++)
                 {
-                    for (int l = c + 1; l < jogos.Count; l ++)
-                    {
-                        for (int x = 0; x < jogos[l].Possibilidades.Count; x++)
-                        {
-                            IAresta aresta = this.CreateAresta();
+                    IIdentifier identifier = Identifier.Create(GetTotalVertices() + 1, jogos[c].JogoId, i);
 
-                            int posVertice = -1;
+                    IVertice vertice = this.CreateVertice(identifier);
+                    ((VerticeAposta)vertice).SetPossibilidade(jogos[c].Possibilidades[i]);
 
-                             
-                            //for (int u = 0; u  < _vertices.Count; u ++)
-                            //{
-                            //    if (_vertices[u].Identifier.)
-                            //}
-                            
-                        }
-                    }
+                    this.Add(vertice);
+
+                    totalVertices++;
                 }
-            }
+            }//end for c
+
+
+            //Criando as arestas dos primeiros jogos associados ao vértice principal
+            for (int i = 0; i < jogos[0].Possibilidades.Count; i++)
+            {
+                IIdentifier idTarget = Identifier.Create(0, jogos[0].JogoId, i);
+                IAresta aresta = this.CreateAresta(mainId, idTarget);
+                Add(mainId, aresta);
+
+                totalArestas++;
+
+            }//end for i
+            
+
+
+            //Criando as arestas das possibilidades dos jogos
+            for (int c = 0; c < jogos.Count - 1; c++)
+            {
+                for (int i = 0; i < jogos[c].Possibilidades.Count; i++)
+                {
+                    for (int x = 0; x < jogos[c + 1].Possibilidades.Count; x++)
+                    {
+                        IIdentifier idSource = Identifier.Create(0, jogos[c].JogoId, i);
+                        IIdentifier idTarget = Identifier.Create(0, jogos[c + 1].JogoId, x);
+
+                        IAresta aresta = this.CreateAresta(idSource, idTarget);
+                        //((ArestaJogo)aresta).SetPontuacao(jogos[c+1].Possibilidades)
+
+                        Add(idSource, aresta);
+                        totalArestas++;
+
+                    }//end for x
+                }//end for i
+            }//end for c
+
+
+            Console.WriteLine("Total de Vértices: " + totalVertices + " ... Total de Arestas: " + totalArestas);
 
         }
 
         #endregion
 
+        #region IGrafo members
 
-        public IVertice CreateVertice(int jogoId)
+        public override IVertice CreateVertice(IIdentifier identifier)
         {
-            throw new NotImplementedException();
+            return VerticeAposta.Create(identifier);
         }
+        public override IAresta CreateAresta(IIdentifier source, IIdentifier target)
+        {
+            return ArestaJogo.Create(target);
+        }
+
+        #endregion
     }
 }

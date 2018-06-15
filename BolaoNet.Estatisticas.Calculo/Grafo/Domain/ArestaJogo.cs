@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Estatisticas.Calculo.Grafo.Domain
 {
-    public class ArestaJogo : IAresta
+    public class ArestaJogo :  IAresta
     {
         #region Variables
 
         private IIdentifier _verticeId;
-        private IList<ApostaPontos> _apostas;
+        private IDictionary<string, int> _apostas;
 
         #endregion
 
@@ -22,26 +22,38 @@ namespace BolaoNet.Estatisticas.Calculo.Grafo.Domain
             get
             {
                 return _verticeId;
-            }             
+            }
+            set
+            {
+                _verticeId = value;
+            }
         }
 
         #endregion
 
         #region Constructors/Destructors
-         
-        public ArestaJogo(JogoPossibilidade possibilidade)
+        
+        public ArestaJogo(IIdentifier targetId)
         {
-            _apostas = possibilidade.Pontuacao;
-             
+            _verticeId = targetId;
+            _apostas = new Dictionary<string, int>();
         }
-
+         
         #endregion
 
         #region Methods
 
-        public static ArestaJogo Create()
+        public void SetPontuacao(IList<ApostaPontos> apostas)
         {
-            return new ArestaJogo(null);
+            for (int c=0; c < apostas.Count; c++)
+            {                
+                _apostas.Add(apostas[c].UserName, apostas[c].Pontos);
+            }
+        }
+
+        public static IAresta Create(IIdentifier targetId)
+        {
+            return new ArestaJogo(targetId);
         }
 
         #endregion

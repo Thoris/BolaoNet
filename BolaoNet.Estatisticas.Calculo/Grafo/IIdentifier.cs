@@ -8,8 +8,9 @@ namespace BolaoNet.Estatisticas.Calculo.Grafo
 {
     public interface IIdentifier
     {
-        int Id { get; }
+        int Index { get; }
 
         bool IsEqual(IIdentifier identifier);
+     
     }
 }

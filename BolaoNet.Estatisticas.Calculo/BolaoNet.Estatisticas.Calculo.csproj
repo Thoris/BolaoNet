@@ -60,9 +60,12 @@
     <Compile Include="ApostaJogoUsuario.cs" />
     <Compile Include="ApostaPontos.cs" />
     <Compile Include="Execute.cs" />
+    <Compile Include="Grafo\Base\GrafoBase.cs" />
     <Compile Include="Grafo\Domain\ArestaJogo.cs" />
     <Compile Include="Grafo\Domain\GrafoDomain.cs" />
     <Compile Include="Grafo\Domain\Identifier.cs" />
+    <Compile Include="Grafo\Domain\PossibilidadeJogos.cs" />
+    <Compile Include="Grafo\Domain\PossibilidadesGenerator.cs" />
     <Compile Include="Grafo\Domain\VerticeAposta.cs" />
     <Compile Include="Grafo\IAresta.cs" />
     <Compile Include="Grafo\IGrafo.cs" />
@@ -70,7 +73,9 @@
     <Compile Include="Grafo\IVertice.cs" />
     <Compile Include="JogoInfo.cs" />
     <Compile Include="JogoPossibilidade.cs" />
+    <Compile Include="JogosPossibilidadesGenerator.cs" />
     <Compile Include="NinjectCommon.cs" />
+    <Compile Include="PontuacaoJogos.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="Validations\Update_Extras_Usuario.sql" />

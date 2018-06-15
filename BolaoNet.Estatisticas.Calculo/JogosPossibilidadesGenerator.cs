@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BolaoNet.Estatisticas.Calculo.Grafo
+namespace BolaoNet.Estatisticas.Calculo
 {
-    public interface IAresta
+    class JogosPossibilidadesGenerator
     {
-        IIdentifier VerticeId { get; set; }
     }
 }

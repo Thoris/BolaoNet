@@ -10,7 +10,7 @@ namespace BolaoNet.Estatisticas.Calculo.Grafo.Domain
     {
         #region Variables
 
-        private int _id;
+        private int _index;
         private int _jogoId;
         private int _possibilidadeId;
 
@@ -18,18 +18,18 @@ namespace BolaoNet.Estatisticas.Calculo.Grafo.Domain
 
         #region Properties
 
-        public int Id
+        public int Index
         {
-            get { return _id; }
+            get { return _index; }
         }
 
         #endregion
 
         #region Constructors/Destructors
 
-        public Identifier(int id, int jogoId, int possibilidadeId)
+        public Identifier(int index, int jogoId, int possibilidadeId)
         {
-            _id = id;
+            _index = index;
             _jogoId = jogoId;
             _possibilidadeId = possibilidadeId;
         }
@@ -45,7 +45,7 @@ namespace BolaoNet.Estatisticas.Calculo.Grafo.Domain
 
             Identifier entry = identifier as Identifier;
 
-            if (entry._id == _id && entry._jogoId == _jogoId)
+            if (entry._possibilidadeId == _possibilidadeId && entry._jogoId == _jogoId)
                 return true;
 
             return false;
@@ -54,8 +54,16 @@ namespace BolaoNet.Estatisticas.Calculo.Grafo.Domain
         public static Identifier Create(int id, int jogoId, int possibilidadeId)
         {
             return new Identifier(id, jogoId, possibilidadeId);
+        } 
+
+        public override string ToString()
+        {
+            return _index + " : JogoId [" + _jogoId + "] Possibilidade [" + _possibilidadeId + "]"; 
         }
 
         #endregion
+
+
+
     }
 }

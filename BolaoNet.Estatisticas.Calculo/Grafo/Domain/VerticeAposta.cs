@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Estatisticas.Calculo.Grafo.Domain
 {
-    public class VerticeAposta : IVertice
+    public class VerticeAposta : JogoPossibilidade, IVertice
     {
         #region Variables
 
@@ -40,16 +40,15 @@ namespace BolaoNet.Estatisticas.Calculo.Grafo.Domain
 
         #region Methods
 
-        public void AddAresta(IAresta aresta)
+        public void SetPossibilidade(JogoPossibilidade possibilidade)
         {
-            for (int c=0; c < _arestas.Count;c ++)
-            {
-                if (_arestas[c].VerticeId.IsEqual(aresta.VerticeId))
-                {
-                    throw new Exception("Aresta is already in the list");
-                }
-            }
+            base.GolsTime1 = possibilidade.GolsTime1;
+            base.GolsTime2 = possibilidade.GolsTime2;
+            base.TotalApostas = possibilidade.TotalApostas;
+        }
 
+        public void AddAresta(IAresta aresta)
+        {           
             _arestas.Add(aresta);
         }
 
@@ -58,7 +57,7 @@ namespace BolaoNet.Estatisticas.Calculo.Grafo.Domain
             _arestas.Clear();
         }
 
-        public static VerticeAposta Create(IIdentifier identifier)
+        public static IVertice Create(IIdentifier identifier)
         {
             return new VerticeAposta(identifier);
         }
