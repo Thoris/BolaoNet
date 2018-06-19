@@ -22,6 +22,14 @@ namespace BolaoNet.Estatisticas.Calculo.Grafo.Domain
         {
             get { return _index; }
         }
+        public int JogoId
+        {
+            get { return _jogoId; }
+        }
+        public int PossibilidadeId
+        {
+            get { return _possibilidadeId; }
+        }
 
         #endregion
 

@@ -78,6 +78,11 @@
     <Compile Include="PontuacaoJogos.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReadValidate\FileIdReader.cs" />
+    <Compile Include="ReadValidate\JogoReader.cs" />
+    <Compile Include="ReadValidate\ResultadoAgrupamento.cs" />
+    <Compile Include="ReadValidate\ResultadoJogo.cs" />
+    <Compile Include="ReadValidate\ResultadoPosicao.cs" />
     <Content Include="Validations\Update_Extras_Usuario.sql" />
     <Content Include="Validations\Remocao_Usuario_Base.sql" />
     <Content Include="Validations\Validacao_Pontuacao_Extras.sql" />

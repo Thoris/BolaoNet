@@ -10,6 +10,12 @@ namespace BolaoNet.Estatisticas.Calculo.Grafo.Domain
     public class GrafoDomain : GrafoBase, IGrafo
     {
 
+        #region Variables
+
+         
+
+        #endregion
+
         #region Constructors/Destructors
 
         public GrafoDomain()
@@ -31,17 +37,19 @@ namespace BolaoNet.Estatisticas.Calculo.Grafo.Domain
 
             this.Clear();
 
-            IIdentifier mainId = Identifier.Create(GetTotalVertices() + 1, 0, 0);
+            IIdentifier mainId = Identifier.Create(GetTotalVertices() , 0, 0);
             IVertice mainVertice = this.CreateVertice(mainId);
             Add(mainVertice);
             totalVertices++;
+
+            _mainVertice = mainVertice; 
 
             //Buscando todas as vértices (Possibilidade de jogos)
             for (int c=0; c < jogos.Count; c++)
             {
                 for (int i = 0; i < jogos[c].Possibilidades.Count; i++)
                 {
-                    IIdentifier identifier = Identifier.Create(GetTotalVertices() + 1, jogos[c].JogoId, i);
+                    IIdentifier identifier = Identifier.Create(GetTotalVertices()  , jogos[c].JogoId, i);
 
                     IVertice vertice = this.CreateVertice(identifier);
                     ((VerticeAposta)vertice).SetPossibilidade(jogos[c].Possibilidades[i]);
@@ -77,7 +85,7 @@ namespace BolaoNet.Estatisticas.Calculo.Grafo.Domain
                         IIdentifier idTarget = Identifier.Create(0, jogos[c + 1].JogoId, x);
 
                         IAresta aresta = this.CreateAresta(idSource, idTarget);
-                        //((ArestaJogo)aresta).SetPontuacao(jogos[c+1].Possibilidades)
+                        ((ArestaJogo)aresta).SetPontuacao(jogos[c + 1].Possibilidades[x]);
 
                         Add(idSource, aresta);
                         totalArestas++;

@@ -28,6 +28,10 @@ namespace BolaoNet.Estatisticas.Calculo.Grafo.Domain
                 _verticeId = value;
             }
         }
+        public IDictionary<string, int> Apostas
+        {
+            get { return _apostas; }
+        }
 
         #endregion
 
@@ -43,11 +47,17 @@ namespace BolaoNet.Estatisticas.Calculo.Grafo.Domain
 
         #region Methods
 
-        public void SetPontuacao(IList<ApostaPontos> apostas)
+        public void SetPontuacao(JogoPossibilidade apostas)
         {
-            for (int c=0; c < apostas.Count; c++)
-            {                
-                _apostas.Add(apostas[c].UserName, apostas[c].Pontos);
+            for (int c=0; c < apostas.Pontuacao.Count; c++)
+            {     
+                string userName = apostas.Pontuacao[c].UserName;
+                int pontos = apostas.Pontuacao[c].Pontos;
+
+                //if (_apostas.ContainsKey(userName))
+                //    _apostas[userName] += pontos;
+
+                _apostas.Add(userName, pontos);
             }
         }
 

@@ -8,6 +8,8 @@ namespace BolaoNet.Estatisticas.Calculo.Grafo
 {
     public interface IGrafo
     {
+        IVertice MainVertice { get; }
+
         IList<IVertice> Vertices { get; }
 
         IVertice CreateVertice(IIdentifier identifier);

@@ -1,4 +1,6 @@
 ﻿//#define DEBUG_EXTRACTION
+//#define DEBUG_FAST_POSSIBILIDADES
+#define DEBUG_ELIMINATORIAS
 
 using BolaoNet.Application.Interfaces.Boloes;
 using BolaoNet.Application.Interfaces.Campeonatos;
@@ -79,33 +81,32 @@ namespace BolaoNet.Estatisticas.Calculo
             IList<ApostaExtraInfo> extras = null;
             IList<Domain.Entities.Boloes.BolaoCriterioPontosTimes> pontosTimes = null;
             IList<Domain.Entities.Boloes.BolaoMembroClassificacao> bolaoMembros = null;
-
-//            bool debug = false;
-
-
-
-//#if (DEBUG_EXTRACTION)
-//            debug = true;
-//#endif
-//            if (debug)
-//            {
-//                pontuacao = SimulateCriterioPontosBolao();
-//                pontosTimes = SimulateExtractPontosTimes(nomeBolao);
-
-//                list = SimulateExtractJogos(nomeBolao, 10, 4);
-//            }
-//            else
-//            {
-                extras = ExtractApostasExtras(nomeBolao);
+ 
+ 
+            extras = ExtractApostasExtras(nomeBolao);
 
 
-                pontosTimes = _bolaoCriterioPontosTimesApp.GetCriterioPontosBolao(new Domain.Entities.Boloes.Bolao(nomeBolao));
-                pontuacao = _bolaoCriterioPontosApp.GetCriteriosPontos(new Domain.Entities.Boloes.Bolao(nomeBolao));
+            pontosTimes = _bolaoCriterioPontosTimesApp.GetCriterioPontosBolao(new Domain.Entities.Boloes.Bolao(nomeBolao));
+            pontuacao = _bolaoCriterioPontosApp.GetCriteriosPontos(new Domain.Entities.Boloes.Bolao(nomeBolao));
 
-                bolaoMembros = _bolaoMembroClassificacaoApp.GetAll().ToList();
+            bolaoMembros = _bolaoMembroClassificacaoApp.GetAll().ToList();
 
-                list = ExtractJogos(nomeBolao);
-            //}
+            list = ExtractJogos(nomeBolao);
+        
+#if (DEBUG_ELIMINATORIAS)
+
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i].JogoId < 61)
+                {
+                    list.RemoveAt(i);
+                    i--;
+                }
+            }
+
+#endif
+
+
 
             DefinirPossibilidades(list);
             DefinirPossibilidades(extras);
@@ -115,8 +116,26 @@ namespace BolaoNet.Estatisticas.Calculo
 
 
             Grafo.Domain.GrafoDomain grafo = new Grafo.Domain.GrafoDomain();
-
             grafo.CreateGrafo(list);
+
+            Grafo.Domain.PossibilidadesGenerator generator = new Grafo.Domain.PossibilidadesGenerator();
+
+            //Passo 1, armazenar ID do jogo
+            generator.SaveIdFile(grafo.Vertices);
+
+            //Passo 2, gerar o arquivo com todas as possibilidades            
+            //generator.Generate(grafo.Vertices, grafo.MainVertice);
+
+            //Passo 3, carregar o arquivo com as possibilidades e substitui-las pelos resultados
+            ReadValidate.FileIdReader idReader = new ReadValidate.FileIdReader();
+            IList<ReadValidate.ResultadoJogo> listIds = idReader.ReadIds("idFile.txt");
+
+            //Passo 4, ler arquivo e calcular resultados
+            ReadValidate.JogoReader reader = new ReadValidate.JogoReader();
+            reader.ReadCalcule(grafo.Vertices, listIds, "result.txt");
+
+            //JogosPossibilidadesGenerator generator = new JogosPossibilidadesGenerator();
+            //IList<PontuacaoJogos> possibilidades = generator.Generate(list);
 
             SaveLogJogos("log.log", list, extras);
 
@@ -290,6 +309,12 @@ namespace BolaoNet.Estatisticas.Calculo
                     jogo.Possibilidades[pos].TotalApostas++;
 
                 }//end if encontrou a aposta
+
+
+#if (DEBUG_FAST_POSSIBILIDADES)
+                if (c > 2)
+                    break;
+#endif
             }//end for apostas
 
 

@@ -10,12 +10,17 @@ namespace BolaoNet.Estatisticas.Calculo.Grafo.Base
     {
         #region Variables
 
+        protected IVertice _mainVertice;
         private IList<IVertice> _vertices;
 
         #endregion
 
         #region Properties
 
+        public IVertice MainVertice
+        {
+            get { return _mainVertice; }
+        }
         public IList<IVertice> Vertices
         {
             get { return _vertices; }
@@ -114,6 +119,8 @@ namespace BolaoNet.Estatisticas.Calculo.Grafo.Base
 
         
         #endregion
+
+
 
     }
 }
