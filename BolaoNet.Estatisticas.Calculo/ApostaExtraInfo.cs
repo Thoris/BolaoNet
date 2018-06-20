@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Estatisticas.Calculo
 {
+    [Serializable]
     public class ApostaExtraInfo
     {
         #region Properties
 
         public int Posicao { get; set; }
         public int Pontuacao { get; set; }
-        public IList<ApostaExtraAposta> Apostas { get; set; }
-        public IList<ApostaExtraPossibilidade> Possibilidades { get; set; }
+        public List<ApostaExtraAposta> Apostas { get; set; }
+        public List<ApostaExtraPossibilidade> Possibilidades { get; set; }
         
-
         #endregion
 
         #region Constructors/Destructors

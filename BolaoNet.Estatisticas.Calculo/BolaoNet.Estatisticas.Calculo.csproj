@@ -59,6 +59,7 @@
     <Compile Include="ApostaExtraPossibilidade.cs" />
     <Compile Include="ApostaJogoUsuario.cs" />
     <Compile Include="ApostaPontos.cs" />
+    <Compile Include="CriterioPontosTimes.cs" />
     <Compile Include="Execute.cs" />
     <Compile Include="Grafo\Base\GrafoBase.cs" />
     <Compile Include="Grafo\Domain\ArestaJogo.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="JogoInfo.cs" />
     <Compile Include="JogoPossibilidade.cs" />
     <Compile Include="JogosPossibilidadesGenerator.cs" />
+    <Compile Include="MembroClassificacao.cs" />
     <Compile Include="NinjectCommon.cs" />
     <Compile Include="PontuacaoJogos.cs" />
     <Compile Include="Program.cs" />
@@ -83,6 +85,8 @@
     <Compile Include="ReadValidate\ResultadoAgrupamento.cs" />
     <Compile Include="ReadValidate\ResultadoJogo.cs" />
     <Compile Include="ReadValidate\ResultadoPosicao.cs" />
+    <Compile Include="Serialization.cs" />
+    <Compile Include="SimulateJogos.cs" />
     <Content Include="Validations\Update_Extras_Usuario.sql" />
     <Content Include="Validations\Remocao_Usuario_Base.sql" />
     <Content Include="Validations\Validacao_Pontuacao_Extras.sql" />

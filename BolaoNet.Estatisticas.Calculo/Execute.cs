@@ -1,6 +1,6 @@
 ﻿//#define DEBUG_EXTRACTION
 //#define DEBUG_FAST_POSSIBILIDADES
-#define DEBUG_ELIMINATORIAS
+//#define DEBUG_ELIMINATORIAS
 
 using BolaoNet.Application.Interfaces.Boloes;
 using BolaoNet.Application.Interfaces.Campeonatos;
@@ -74,25 +74,77 @@ namespace BolaoNet.Estatisticas.Calculo
         /// Método que executa o cálculo estatístico de verificação dos jogos.
         /// </summary>
         /// <param name="nomeBolao">Nome do bolão a ser verificado.</param>
-        public void Run(string nomeBolao)
+        public void Run(string nomeBolao, bool reloadDatabase)
         {
+            #region Variables
+
             int [] pontuacao = null;
-            IList<JogoInfo> list = null;
-            IList<ApostaExtraInfo> extras = null;
-            IList<Domain.Entities.Boloes.BolaoCriterioPontosTimes> pontosTimes = null;
-            IList<Domain.Entities.Boloes.BolaoMembroClassificacao> bolaoMembros = null;
- 
- 
-            extras = ExtractApostasExtras(nomeBolao);
+            List<JogoInfo> list = null;
+            List<ApostaExtraInfo> extras = null;
+            List<Domain.Entities.Boloes.BolaoCriterioPontosTimes> pontosTimes = null;
+            List<Domain.Entities.Boloes.BolaoMembroClassificacao> bolaoMembros = null;
 
+            List<CriterioPontosTimes> criterioTimes = new List<CriterioPontosTimes>();
+            List<MembroClassificacao> membros = new List<MembroClassificacao>();
 
-            pontosTimes = _bolaoCriterioPontosTimesApp.GetCriterioPontosBolao(new Domain.Entities.Boloes.Bolao(nomeBolao));
-            pontuacao = _bolaoCriterioPontosApp.GetCriteriosPontos(new Domain.Entities.Boloes.Bolao(nomeBolao));
+            #endregion
 
-            bolaoMembros = _bolaoMembroClassificacaoApp.GetAll().ToList();
+            #region Loading database
 
-            list = ExtractJogos(nomeBolao);
-        
+            if (reloadDatabase)
+            {
+                extras = ExtractApostasExtras(nomeBolao);
+                pontosTimes = (List<Domain.Entities.Boloes.BolaoCriterioPontosTimes>)_bolaoCriterioPontosTimesApp.GetCriterioPontosBolao(new Domain.Entities.Boloes.Bolao(nomeBolao));
+                pontuacao = _bolaoCriterioPontosApp.GetCriteriosPontos(new Domain.Entities.Boloes.Bolao(nomeBolao));
+                bolaoMembros = _bolaoMembroClassificacaoApp.GetAll().ToList();
+                list = ExtractJogos(nomeBolao);
+            }
+
+            #endregion
+
+            #region  Copying data
+
+            if (reloadDatabase)
+            {
+                for (int c = 0; c < pontosTimes.Count; c++)
+                {
+                    criterioTimes.Add(new CriterioPontosTimes(pontosTimes[c]));
+                }
+
+                for (int c = 0; c < bolaoMembros.Count; c++)
+                {
+                    membros.Add(new MembroClassificacao(bolaoMembros[c]));
+                }
+            }
+             
+            #endregion
+
+            #region Serialization
+
+            string folder = ".\\Serialization";
+            
+            if (reloadDatabase)
+            {
+                if (!System.IO.Directory.Exists(folder))
+                    System.IO.Directory.CreateDirectory(folder);
+
+                Serialization.Serialize<List<ApostaExtraInfo>>(extras, System.IO.Path.Combine(folder, "extras.xml"));
+                Serialization.Serialize<List<JogoInfo>>(list, System.IO.Path.Combine(folder, "list.xml"));
+                Serialization.Serialize<List<CriterioPontosTimes>>(criterioTimes, System.IO.Path.Combine(folder, "criterioTimes.xml"));
+                Serialization.Serialize<List<MembroClassificacao>>(membros, System.IO.Path.Combine(folder, "membros.xml"));
+                Serialization.Serialize<int[]>(pontuacao, System.IO.Path.Combine(folder, "pontuacao.xml"));
+            }
+            else
+            {
+                extras = Serialization.DeserializeFromFile<List<ApostaExtraInfo>>(System.IO.Path.Combine(folder, "extras.xml"));
+                list = Serialization.DeserializeFromFile<List<JogoInfo>>(System.IO.Path.Combine(folder, "list.xml"));
+                criterioTimes = Serialization.DeserializeFromFile<List<CriterioPontosTimes>>(System.IO.Path.Combine(folder, "criterioTimes.xml"));
+                membros= Serialization.DeserializeFromFile<List<MembroClassificacao>>( System.IO.Path.Combine(folder, "membros.xml"));
+                pontuacao = Serialization.DeserializeFromFile<int[]>(System.IO.Path.Combine(folder, "pontuacao.xml"));
+            }
+
+            #endregion
+
 #if (DEBUG_ELIMINATORIAS)
 
             for (int i = 0; i < list.Count; i++)
@@ -106,39 +158,70 @@ namespace BolaoNet.Estatisticas.Calculo
 
 #endif
 
-
+            #region Calcular possibilidades com base nas apostas
 
             DefinirPossibilidades(list);
             DefinirPossibilidades(extras);
 
-            CalcularPontuacao(list, pontuacao, pontosTimes);
+            CalcularPontuacao(list, pontuacao, criterioTimes);
             CalcularPontuacao(extras);
 
+            ValidarJogosResultado(list, pontuacao, criterioTimes);
 
-            Grafo.Domain.GrafoDomain grafo = new Grafo.Domain.GrafoDomain();
-            grafo.CreateGrafo(list);
+            #endregion
 
-            Grafo.Domain.PossibilidadesGenerator generator = new Grafo.Domain.PossibilidadesGenerator();
+            if (reloadDatabase)
+            {
+                Serialization.Serialize<List<ApostaExtraInfo>>(extras, System.IO.Path.Combine(folder, "extras_final.xml"));
+                Serialization.Serialize<List<JogoInfo>>(list, System.IO.Path.Combine(folder, "list_final.xml"));
+                
+            }
 
-            //Passo 1, armazenar ID do jogo
-            generator.SaveIdFile(grafo.Vertices);
 
-            //Passo 2, gerar o arquivo com todas as possibilidades            
-            //generator.Generate(grafo.Vertices, grafo.MainVertice);
+            SimulateJogos simulation = new SimulateJogos();
+            //simulation.Calcular(bolaoMembros, list, extras, null);
 
-            //Passo 3, carregar o arquivo com as possibilidades e substitui-las pelos resultados
-            ReadValidate.FileIdReader idReader = new ReadValidate.FileIdReader();
-            IList<ReadValidate.ResultadoJogo> listIds = idReader.ReadIds("idFile.txt");
+            #region Grafo
+            //Grafo.Domain.GrafoDomain grafo = new Grafo.Domain.GrafoDomain();
+            //grafo.CreateGrafo(list);
 
-            //Passo 4, ler arquivo e calcular resultados
-            ReadValidate.JogoReader reader = new ReadValidate.JogoReader();
-            reader.ReadCalcule(grafo.Vertices, listIds, "result.txt");
+            //Grafo.Domain.PossibilidadesGenerator generator = new Grafo.Domain.PossibilidadesGenerator();
+
+            ////Passo 1, armazenar ID do jogo
+            //generator.SaveIdFile(grafo.Vertices);
+
+            ////Passo 2, gerar o arquivo com todas as possibilidades            
+            //////////generator.Generate(grafo.Vertices, grafo.MainVertice);
+
+            ////Passo 3, carregar o arquivo com as possibilidades e substitui-las pelos resultados
+            //ReadValidate.FileIdReader idReader = new ReadValidate.FileIdReader();
+            //IList<ReadValidate.ResultadoJogo> listIds = idReader.ReadIds("idFile.txt");
+
+            ////Passo 4, ler arquivo e calcular resultados
+            //ReadValidate.JogoReader reader = new ReadValidate.JogoReader();
+            //reader.ReadCalcule(grafo.Vertices, listIds, "result.txt");
 
             //JogosPossibilidadesGenerator generator = new JogosPossibilidadesGenerator();
             //IList<PontuacaoJogos> possibilidades = generator.Generate(list);
 
+            #endregion
+
             SaveLogJogos("log.log", list, extras);
 
+        }
+
+        private void ValidarJogosResultado(List<JogoInfo> list, int[] pontuacao, List<CriterioPontosTimes> pontosTimes)
+        {
+            for (int c=0; c < list.Count; c++)
+            {
+                if (list[c].IsValid)
+                {
+                    list[c].Possibilidades.Clear();
+                    list[c].Possibilidades.Add(new JogoPossibilidade((short)list[c].GolsTime1, (short)list[c].GolsTime2));
+
+                    CalcularPontuacao(list[c], pontuacao, pontosTimes);
+                }
+            }
         }
 
         /// <summary>
@@ -146,9 +229,9 @@ namespace BolaoNet.Estatisticas.Calculo
         /// </summary>
         /// <param name="nomeBolao">Nome do bolão a serem extraídos os jogos e apostas.</param>
         /// <returns>Lista de objeto que possui dados extraídos da aposta e jogos.</returns>
-        private IList<JogoInfo> ExtractJogos(string nomeBolao)
+        private List<JogoInfo> ExtractJogos(string nomeBolao)
         {
-            IList<JogoInfo> list = new List<JogoInfo>();
+            List<JogoInfo> list = new List<JogoInfo>();
 
             //Buscando os dados do bolão
             Domain.Entities.Boloes.Bolao bolao = _bolaoApp.Load(new Domain.Entities.Boloes.Bolao(nomeBolao));
@@ -188,9 +271,9 @@ namespace BolaoNet.Estatisticas.Calculo
         /// <param name="totalUsuarios">Total de usuários para incluir nas apostas.</param>
         /// <param name="maxGols">Máximo de gols permitido para cada aposta.</param>
         /// <returns>Lista de jogos.</returns>
-        private IList<JogoInfo> SimulateExtractJogos(string nomeBolao, int totalUsuarios, int maxGols)
+        private List<JogoInfo> SimulateExtractJogos(string nomeBolao, int totalUsuarios, int maxGols)
         {
-            IList<JogoInfo> list = new List<JogoInfo>();
+            List<JogoInfo> list = new List<JogoInfo>();
 
             Random rnd = new Random();
 
@@ -225,9 +308,9 @@ namespace BolaoNet.Estatisticas.Calculo
         /// </summary>
         /// <param name="nomeBolao">Nome do bolão</param>
         /// <returns>Lista de pontos a serem utilizados no cálculo de pontos.</returns>
-        private IList<Domain.Entities.Boloes.BolaoCriterioPontosTimes> SimulateExtractPontosTimes(string nomeBolao)
+        private List<Domain.Entities.Boloes.BolaoCriterioPontosTimes> SimulateExtractPontosTimes(string nomeBolao)
         {
-            IList<Domain.Entities.Boloes.BolaoCriterioPontosTimes> pontuacaoTimes =
+            List<Domain.Entities.Boloes.BolaoCriterioPontosTimes> pontuacaoTimes =
                 new List<Domain.Entities.Boloes.BolaoCriterioPontosTimes>();
 
             pontuacaoTimes.Add(new Domain.Entities.Boloes.BolaoCriterioPontosTimes()
@@ -360,7 +443,7 @@ namespace BolaoNet.Estatisticas.Calculo
         /// Método que efetua o cálculo de pontos com base nas possibilidades existentes.
         /// </summary>
         /// <param name="jogos">Lista de jogos.</param>
-        private void CalcularPontuacao(IList<JogoInfo> jogos, int[] pontuacao, IList<Domain.Entities.Boloes.BolaoCriterioPontosTimes> pontosTimes)
+        private void CalcularPontuacao(IList<JogoInfo> jogos, int[] pontuacao, List<CriterioPontosTimes> pontosTimes)
         {
             for (int c = 0; c < jogos.Count; c++)
             {
@@ -372,7 +455,7 @@ namespace BolaoNet.Estatisticas.Calculo
         /// Método que efetua o cálculo de pontos de um jogo específico com base nas possibilidades existentes.
         /// </summary>
         /// <param name="jogo">Jogo a ser calculado.</param>
-        private void CalcularPontuacao(JogoInfo jogo, int[] pontuacao, IList<Domain.Entities.Boloes.BolaoCriterioPontosTimes> pontosTimes)
+        private void CalcularPontuacao(JogoInfo jogo, int[] pontuacao, List<CriterioPontosTimes> pontosTimes)
         {
             for (int c=0; c < jogo.Possibilidades.Count; c++)
             {
@@ -386,7 +469,7 @@ namespace BolaoNet.Estatisticas.Calculo
         /// <param name="jogo">Dados do jogo.</param>
         /// <param name="possibilidade">possibilidade de jogo para análise.</param>
         /// <param name="pontuacao">Pontuação para cálculo.</param>
-        private void CalcularPontuacao(JogoInfo jogo, JogoPossibilidade possibilidade, int[] pontuacao, IList<Domain.Entities.Boloes.BolaoCriterioPontosTimes> pontosTimes)
+        private void CalcularPontuacao(JogoInfo jogo, JogoPossibilidade possibilidade, int[] pontuacao, List<CriterioPontosTimes> pontosTimes)
         {
 
             possibilidade.Pontuacao = new List<ApostaPontos>();
@@ -419,7 +502,7 @@ namespace BolaoNet.Estatisticas.Calculo
         /// <param name="aposta1"></param>
         /// <param name="aposta2"></param>
         /// <returns></returns>
-        private int CalcularPontos(int [] pontos, string nomeTime1, string nomeTime2, int gols1, int gols2, int aposta1, int aposta2, IList<Domain.Entities.Boloes.BolaoCriterioPontosTimes> pontosTimes)
+        private int CalcularPontos(int[] pontos, string nomeTime1, string nomeTime2, int gols1, int gols2, int aposta1, int aposta2, List<CriterioPontosTimes> pontosTimes)
         {
             int resultado = 0;
 
@@ -529,9 +612,9 @@ namespace BolaoNet.Estatisticas.Calculo
         /// </summary>
         /// <param name="nomeBolao"></param>
         /// <returns></returns>
-        private IList<ApostaExtraInfo> ExtractApostasExtras(string nomeBolao)
+        private List<ApostaExtraInfo> ExtractApostasExtras(string nomeBolao)
         {
-            IList<ApostaExtraInfo> list = new List<ApostaExtraInfo>();
+            List<ApostaExtraInfo> list = new List<ApostaExtraInfo>();
 
 
             IList<Domain.Entities.Boloes.ApostaExtra> extras =

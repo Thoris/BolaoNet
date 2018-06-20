@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Estatisticas.Calculo
 {
+    [Serializable]
     public class PontuacaoJogos
     {
         #region Properties

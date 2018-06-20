@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Estatisticas.Calculo
 {
+    [Serializable]
     public class JogoInfo
     {
         #region Properties
@@ -15,8 +16,9 @@ namespace BolaoNet.Estatisticas.Calculo
         public string NomeTime2 { get; set; }
         public int GolsTime1 { get; set; }
         public int GolsTime2 { get; set; }
-        public IList<ApostaJogoUsuario> Apostas { get; set; }
-        public IList<JogoPossibilidade> Possibilidades { get; set; }
+        public List<ApostaJogoUsuario> Apostas { get; set; }
+        public List<JogoPossibilidade> Possibilidades { get; set; }
+        public bool IsValid { get; set; }
 
         #endregion
 
@@ -33,6 +35,7 @@ namespace BolaoNet.Estatisticas.Calculo
             this.NomeTime2 = jogo.NomeTime2;
             this.GolsTime1 = jogo.GolsTime1;
             this.GolsTime2 = jogo.GolsTime2;
+            this.IsValid = jogo.IsValido;
             this.Apostas = new List<ApostaJogoUsuario>();
         }
 

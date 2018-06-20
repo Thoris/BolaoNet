@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Estatisticas.Calculo
 {
+    [Serializable]
     public class JogoPossibilidade
     {
         #region Properties
@@ -13,7 +14,7 @@ namespace BolaoNet.Estatisticas.Calculo
         public short GolsTime1 { get; set; }
         public short GolsTime2 { get; set; }
         public int TotalApostas { get; set; }
-        public IList<ApostaPontos> Pontuacao {get; set;}
+        public List<ApostaPontos> Pontuacao {get; set;}
 
         #endregion
 

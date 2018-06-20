@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Estatisticas.Calculo
 {
+    [Serializable]
     public class ApostaExtraPossibilidade
     {
         #region Properties
 
         public string NomeTime { get; set; }
-        public IList<ApostaExtraPontos> Pontos { get; set; }
+        public List<ApostaExtraPontos> Pontos { get; set; }
         public int TotalApostas { get; set; }
 
         #endregion
