@@ -61,6 +61,7 @@
     <Compile Include="ApostaPontos.cs" />
     <Compile Include="CriterioPontosTimes.cs" />
     <Compile Include="Execute.cs" />
+    <Compile Include="FileStructureManager.cs" />
     <Compile Include="Grafo\Base\GrafoBase.cs" />
     <Compile Include="Grafo\Domain\ArestaJogo.cs" />
     <Compile Include="Grafo\Domain\GrafoDomain.cs" />
@@ -72,8 +73,10 @@
     <Compile Include="Grafo\IGrafo.cs" />
     <Compile Include="Grafo\IIdentifier.cs" />
     <Compile Include="Grafo\IVertice.cs" />
+    <Compile Include="JogoIdAgrupamento.cs" />
     <Compile Include="JogoInfo.cs" />
     <Compile Include="JogoPossibilidade.cs" />
+    <Compile Include="JogoPossibilidadeAgrupamento.cs" />
     <Compile Include="JogosPossibilidadesGenerator.cs" />
     <Compile Include="MembroClassificacao.cs" />
     <Compile Include="NinjectCommon.cs" />

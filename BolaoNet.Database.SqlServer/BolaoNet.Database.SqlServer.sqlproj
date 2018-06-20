@@ -155,5 +155,6 @@
     <None Include="build\0047.Create_Table_BoloesHistorico.sql" />
     <None Include="build\0140.Create_Stored_Procedure_sp_JogosUsuarios_CorrecaoEliminatorias.sql" />
     <None Include="build\0048.Create_Table_Rss.sql" />
+    <None Include="build\0141.Insert_Result_Copa_2018.sql" />
   </ItemGroup>
 </Project>

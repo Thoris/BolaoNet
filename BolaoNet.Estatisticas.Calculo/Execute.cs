@@ -178,6 +178,19 @@ namespace BolaoNet.Estatisticas.Calculo
             }
 
 
+            FileStructureManager manager = new FileStructureManager();
+
+            for (int c=0 ; c < list[list.Count - 1].Possibilidades.Count; c++)
+            {
+                JogoPossibilidadeAgrupamento agrupamento = new JogoPossibilidadeAgrupamento(list[list.Count - 1].Possibilidades[c]);
+
+                manager.SaveFile("test.txt", agrupamento);
+
+                IList<JogoPossibilidadeAgrupamento> listAgrupamento = manager.ReadFile("text.txt");
+
+            } 
+
+
             SimulateJogos simulation = new SimulateJogos();
             //simulation.Calcular(bolaoMembros, list, extras, null);
 
