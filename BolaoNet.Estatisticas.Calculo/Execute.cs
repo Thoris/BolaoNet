@@ -177,18 +177,96 @@ namespace BolaoNet.Estatisticas.Calculo
                 
             }
 
+            string outputPath = "Jogos";
 
             FileStructureManager manager = new FileStructureManager();
 
+            #region Apostas BASE
+
+            if (!System.IO.Directory.Exists(outputPath))
+                System.IO.Directory.CreateDirectory(outputPath);
+
+            string indexFile = System.IO.Path.Combine(outputPath, "Index.txt");
+            JogoPossibilidadeAgrupamento agrIndex = new JogoPossibilidadeAgrupamento(list[list.Count - 1].Possibilidades[0]);
+            manager.SaveIndex(indexFile, agrIndex);
+
+
             for (int c=0 ; c < list[list.Count - 1].Possibilidades.Count; c++)
             {
+                string path = System.IO.Path.Combine(outputPath, list[list.Count - 1].JogoId.ToString());
+
+                if (!System.IO.Directory.Exists(path))
+                    System.IO.Directory.CreateDirectory(path);
+
+                string file = System.IO.Path.Combine(path,
+                    list[list.Count - 1].Possibilidades[c].GolsTime1 + "_" +
+                    list[list.Count - 1].Possibilidades[c].GolsTime2 + ".txt");
+
+
                 JogoPossibilidadeAgrupamento agrupamento = new JogoPossibilidadeAgrupamento(list[list.Count - 1].Possibilidades[c]);
+                agrupamento.Jogos.Add(new JogoIdAgrupamento()
+                {
+                    Gols1 = list[list.Count - 1].Possibilidades[c].GolsTime1,
+                    Gols2 = list[list.Count - 1].Possibilidades[c].GolsTime2,
+                    JogoId = list[list.Count - 1].JogoId
+                });
 
-                manager.SaveFile("test.txt", agrupamento);
+                manager.SaveFile(file, agrupamento);
 
-                IList<JogoPossibilidadeAgrupamento> listAgrupamento = manager.ReadFile("text.txt");
+                //IList<JogoPossibilidadeAgrupamento> listAgrupamento = manager.ReadFile("test.txt");
+            }
 
-            } 
+            #endregion
+
+            #region Cálculo de Apostas
+
+            //Todas as apostas
+            for (int i= list.Count - 2; i >= 0; i--)
+            {
+                Console.WriteLine(DateTime.Now.ToString() + " - " + list[i].JogoId + " - Análise de Apostas do jogo");
+                #region Atribuindo as possibilidades
+
+                for (int c = 0; c < list[i].Possibilidades.Count; c++)
+                {
+
+                    Console.WriteLine(DateTime.Now.ToString() + " - Possibilidade : [" + 
+                        list[i].Possibilidades.Count + " / " + (c+1) + "] : " +
+                        list[i].Possibilidades[c].GolsTime1 + " x " + list[i].Possibilidades[c].GolsTime2);
+
+                    string path = System.IO.Path.Combine(outputPath, list[i].JogoId.ToString());
+
+                    if (!System.IO.Directory.Exists(path))
+                        System.IO.Directory.CreateDirectory(path);
+
+                    string file = System.IO.Path.Combine(path,
+                        list[i].Possibilidades[c].GolsTime1 + "_" +
+                        list[i].Possibilidades[c].GolsTime2 + ".txt");
+
+                    string pathBase = System.IO.Path.Combine (outputPath, list[i+1].JogoId.ToString());
+
+                    JogoPossibilidadeAgrupamento agrupamento = new JogoPossibilidadeAgrupamento(list[i].Possibilidades[c]);
+                    agrupamento.Jogos.Add(new JogoIdAgrupamento()
+                    {
+                        Gols1 = list[i].Possibilidades[c].GolsTime1,
+                        Gols2 = list[i].Possibilidades[c].GolsTime2,
+                        JogoId = list[i].JogoId
+                    });
+                    agrupamento.JogoId = list[i].JogoId;
+
+                    manager.ReadAppendSave(file, pathBase, agrupamento);
+
+
+                }
+
+                #endregion
+
+                Console.WriteLine(DateTime.Now.ToString() + " - " + list[i].JogoId + " - Fim da análise");
+
+                if (i == 55)
+                    break;
+            }//end for jogos
+
+            #endregion
 
 
             SimulateJogos simulation = new SimulateJogos();
