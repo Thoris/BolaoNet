@@ -19,6 +19,10 @@ namespace BolaoNet.Estatisticas.Calculo
         public List<ApostaJogoUsuario> Apostas { get; set; }
         public List<JogoPossibilidade> Possibilidades { get; set; }
         public bool IsValid { get; set; }
+        public int PendenteIdTime1 { get; set; }
+        public int PendenteIdTime2 { get; set; }
+        public bool PendenteTime1Ganhador { get; set; }
+        public bool PendenteTime2Ganhador { get; set; }
 
         #endregion
 
@@ -37,6 +41,11 @@ namespace BolaoNet.Estatisticas.Calculo
             this.GolsTime2 = jogo.GolsTime2;
             this.IsValid = jogo.IsValido;
             this.Apostas = new List<ApostaJogoUsuario>();
+
+            this.PendenteIdTime1 = jogo.PendenteIdTime1;
+            this.PendenteIdTime2 = jogo.PendenteIdTime2;
+            this.PendenteTime1Ganhador = jogo.PendenteTime1Ganhador;
+            this.PendenteTime2Ganhador = jogo.PendenteTime2Ganhador;
         }
 
         #endregion

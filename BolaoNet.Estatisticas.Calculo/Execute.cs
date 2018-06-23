@@ -181,6 +181,13 @@ namespace BolaoNet.Estatisticas.Calculo
 
             FileStructureManager manager = new FileStructureManager();
 
+            #region Apostas Extras
+
+            string outputExtras = System.IO.Path.Combine (outputPath, "Extras");
+            manager.SaveApostasExtras(outputExtras, extras);
+
+            #endregion
+
             #region Apostas BASE
 
             if (!System.IO.Directory.Exists(outputPath))
@@ -190,6 +197,11 @@ namespace BolaoNet.Estatisticas.Calculo
             JogoPossibilidadeAgrupamento agrIndex = new JogoPossibilidadeAgrupamento(list[list.Count - 1].Possibilidades[0]);
             manager.SaveIndex(indexFile, agrIndex);
 
+
+            string outputPontos = System.IO.Path.Combine (outputPath, "Pontos");
+
+            if (!System.IO.Directory.Exists(outputPontos))
+                System.IO.Directory.CreateDirectory(outputPontos);
 
             for (int c=0 ; c < list[list.Count - 1].Possibilidades.Count; c++)
             {
@@ -202,6 +214,9 @@ namespace BolaoNet.Estatisticas.Calculo
                     list[list.Count - 1].Possibilidades[c].GolsTime1 + "_" +
                     list[list.Count - 1].Possibilidades[c].GolsTime2 + ".txt");
 
+
+                if (System.IO.File.Exists(file))
+                    continue;
 
                 JogoPossibilidadeAgrupamento agrupamento = new JogoPossibilidadeAgrupamento(list[list.Count - 1].Possibilidades[c]);
                 agrupamento.Jogos.Add(new JogoIdAgrupamento()
@@ -216,6 +231,11 @@ namespace BolaoNet.Estatisticas.Calculo
                 //IList<JogoPossibilidadeAgrupamento> listAgrupamento = manager.ReadFile("test.txt");
             }
 
+            string newFile = System.IO.Path.Combine (outputPontos, list[list.Count-1].JogoId + ".txt");
+
+            if (!System.IO.File.Exists(newFile))
+                manager.SaveJogoPossibilidades(newFile, list[list.Count - 1]);
+
             #endregion
 
             #region Cálculo de Apostas
@@ -224,6 +244,7 @@ namespace BolaoNet.Estatisticas.Calculo
             for (int i= list.Count - 2; i >= 0; i--)
             {
                 Console.WriteLine(DateTime.Now.ToString() + " - " + list[i].JogoId + " - Análise de Apostas do jogo");
+
                 #region Atribuindo as possibilidades
 
                 for (int c = 0; c < list[i].Possibilidades.Count; c++)
@@ -258,42 +279,82 @@ namespace BolaoNet.Estatisticas.Calculo
 
                 }
 
+
+                newFile = System.IO.Path.Combine(outputPontos, list[i].JogoId + ".txt");
+
+                if (!System.IO.File.Exists(newFile))
+                    manager.SaveJogoPossibilidades(newFile, list[i]);
+
                 #endregion
 
                 Console.WriteLine(DateTime.Now.ToString() + " - " + list[i].JogoId + " - Fim da análise");
 
-                if (i == 55)
+                if (i == 59)
                     break;
             }//end for jogos
 
             #endregion
 
+            #region Times Jogos
 
-            SimulateJogos simulation = new SimulateJogos();
-            //simulation.Calcular(bolaoMembros, list, extras, null);
+            string fileTimes = System.IO.Path.Combine(outputPath, "times.txt");
 
-            #region Grafo
-            //Grafo.Domain.GrafoDomain grafo = new Grafo.Domain.GrafoDomain();
-            //grafo.CreateGrafo(list);
+            if (!System.IO.File.Exists(fileTimes))
+                manager.SaveTimesJogos(fileTimes, list);
 
-            //Grafo.Domain.PossibilidadesGenerator generator = new Grafo.Domain.PossibilidadesGenerator();
+            #endregion
 
-            ////Passo 1, armazenar ID do jogo
-            //generator.SaveIdFile(grafo.Vertices);
+            #region Classificacao
 
-            ////Passo 2, gerar o arquivo com todas as possibilidades            
-            //////////generator.Generate(grafo.Vertices, grafo.MainVertice);
+            string fileClassificacao = System.IO.Path.Combine(outputPath, "Classificacao.txt");
+            
+            if (!System.IO.File.Exists(fileClassificacao))
+                manager.SaveClassificacao(fileClassificacao, membros);
 
-            ////Passo 3, carregar o arquivo com as possibilidades e substitui-las pelos resultados
-            //ReadValidate.FileIdReader idReader = new ReadValidate.FileIdReader();
-            //IList<ReadValidate.ResultadoJogo> listIds = idReader.ReadIds("idFile.txt");
+            manager.UpdateClassificacao(fileClassificacao, membros);
 
-            ////Passo 4, ler arquivo e calcular resultados
-            //ReadValidate.JogoReader reader = new ReadValidate.JogoReader();
-            //reader.ReadCalcule(grafo.Vertices, listIds, "result.txt");
+            #endregion
 
-            //JogosPossibilidadesGenerator generator = new JogosPossibilidadesGenerator();
-            //IList<PontuacaoJogos> possibilidades = generator.Generate(list);
+            #region Possibilidades de usuários
+
+            string apostas = System.IO.Path.Combine(outputPath, "Usuarios");
+            if (!System.IO.Directory.Exists(apostas))
+                System.IO.Directory.CreateDirectory(apostas);
+
+
+            for (int c = 0; c < agrIndex.Pontuacao.Count; c++ )
+            {
+                for (int i = list.Count - 1; i >= 0; i--)
+                {
+                    int jogoId = list[i].JogoId;
+
+
+                    string userName = agrIndex.Pontuacao[c].UserName;
+                    string file = System.IO.Path.Combine(apostas, userName);
+
+
+                    Console.WriteLine(DateTime.Now.ToString() + " - Jogo[" + jogoId + "] - Análise de Apostas do Usuário: " + userName);
+
+                    string jogoPath = System.IO.Path.Combine(outputPath, jogoId.ToString());
+                    string apostasPath = System.IO.Path.Combine(apostas, jogoId.ToString());
+                    string outputApostas = System.IO.Path.Combine(apostasPath, userName + ".txt");
+
+                    if (System.IO.Directory.Exists(apostasPath))
+                    {
+                        System.IO.Directory.Delete(apostasPath, true);
+                    }
+
+                    System.IO.Directory.CreateDirectory(apostasPath);
+
+                    manager.CheckPossibilidades(outputApostas, indexFile, jogoPath, membros, userName, true, 1, 2, 3);
+
+
+                    Console.WriteLine(DateTime.Now.ToString() + " - Jogo[" + jogoId + "] - Análise de Apostas do Usuário: " + userName + ". FIM");
+
+                    if (i == 59)
+                        break;
+                }
+            }
 
             #endregion
 

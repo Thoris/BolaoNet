@@ -31,7 +31,160 @@ namespace BolaoNet.Estatisticas.Calculo
 
         #region Methods
 
-        public IList<JogoIdAgrupamento> CheckPossibilidades(string indexFile, string path, List<MembroClassificacao> classificacao, string userName, bool ultimo, params int [] posicoes)
+        public void SaveJogoPossibilidades(string file, JogoInfo info)
+        {
+            if (System.IO.File.Exists(file))
+                System.IO.File.Delete(file);
+
+            StreamWriter writer = new StreamWriter(file);
+
+            for (int c=0; c < info.Possibilidades.Count; c++)
+            {
+                writer.WriteLine(info.JogoId + "=" + info.Possibilidades[c].GolsTime1 + "x" + info.Possibilidades[c].GolsTime2);
+
+                for (int i = 0; i < info.Possibilidades[c].Pontuacao.Count; i++)
+                {
+                    writer.WriteLine(info.Possibilidades[c].Pontuacao[i].Pontos);
+                }
+            }
+
+            writer.Close();
+        } 
+
+        private bool CheckUsuarioPontuacao(string outputFile, JogoPossibilidadeAgrupamento jogo, List<MembroClassificacao> classificacao, string userName, bool ultimo, params int [] posicao)
+        {
+
+            //if (System.IO.File.Exists(outputFile))
+            //    System.IO.File.Delete(outputFile);
+
+            List<ApostaPontos> listSoma = jogo.Pontuacao;
+            int posFound = 0;
+
+            for (int c=0; c < classificacao.Count; c++)
+            {
+                listSoma[c].Pontos += classificacao[c].Pontuacao ?? 0;
+            }
+
+            List<ApostaPontos> list = listSoma.OrderByDescending(x => x.Pontos).ToList<ApostaPontos>();
+
+            int currentPosicao = 0;
+            int currentPontos = -1;
+
+            for (int c = 0; c < list.Count; c++ )
+            {
+                if (list[c].Pontos != currentPontos)
+                {
+                    currentPosicao++;
+                    list[c].Posicao = currentPosicao;
+                    currentPontos = list[c].Pontos;
+                }
+                else
+                {
+                    list[c].Posicao = currentPosicao;                    
+                }
+            }
+            bool found = false;
+
+            if (ultimo)
+            {
+                currentPontos = list[list.Count - 1].Pontos;
+                currentPosicao = list[list.Count - 1].Posicao;
+                for (int i = list.Count - 1; i >= 0; i--)
+                {
+                    if (list[i].Posicao != currentPosicao)
+                        break;
+
+                    if (string.Compare(list[i].UserName, userName, true) == 0)
+                    {
+                        found = true;
+                        posFound = list[i].Posicao;
+                        break;
+                    }
+                }
+            }
+
+            if (!found)
+            {
+
+                for (int i = 0; i < list.Count; i++)
+                {
+                    bool exists = false;
+                    for (int c = 0; c < posicao.Length; c++)
+                    {
+                        if (list[i].Posicao == posicao[c])
+                            exists = true;
+                    }
+                    if (!exists)
+                        break;
+
+                    if (string.Compare(list[i].UserName, userName, true) == 0)
+                    {
+                        found = true;
+                        posFound = list[i].Posicao;
+                        break;
+                    }
+                }
+            }
+
+            if (found)
+            {
+                SaveUsuarioPontuacao(outputFile, jogo, list, currentPosicao, ultimo, posicao);
+            }
+
+            return found;
+        }
+        private void SaveUsuarioPontuacao(string file, JogoPossibilidadeAgrupamento jogo, List<ApostaPontos> list, int currentPosicao, bool ultimo, params int[] posicao)
+        {
+            StreamWriter writer = null;
+
+            if (System.IO.File.Exists(file))
+                writer = new StreamWriter(file, true);
+            else
+                writer = new StreamWriter(file);
+
+            writer.Write("*");
+            for (int c = 0; c < jogo.Jogos.Count; c++)
+            {
+                if (c > 0)
+                    writer.Write(";");
+                writer.Write(jogo.Jogos[c].JogoId + "=" + jogo.Jogos[c].Gols1 + "x" + jogo.Jogos[c].Gols2);
+            }
+            writer.WriteLine();
+
+            for (int c = 0; c < list.Count; c++)
+            {
+                bool found = false;
+                for (int i = 0; i < posicao.Length; i++)
+                {
+                    if (list[c].Posicao == posicao[i])
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found)
+                    break;
+
+                writer.WriteLine(list[c].Posicao + "|" + list[c].UserName + "=" + list[c].Pontos);
+            }
+
+            if (ultimo)
+            {
+
+                int pos = list[list.Count - 1].Posicao;
+                for (int c = list.Count - 1; c >= 0; c--)
+                {
+                    if (pos != list[c].Posicao)
+                        break;
+
+                    writer.WriteLine(list[c].Posicao + "|" + list[c].UserName + "=" + list[c].Pontos);
+                }
+            }
+
+            writer.Close();
+        }
+        public IList<JogoIdAgrupamento> CheckPossibilidades(string outputFile, string indexFile, string path, List<MembroClassificacao> classificacao, string userName, bool ultimo, params int [] posicoes)
         {
             IList<JogoIdAgrupamento> list = new List<JogoIdAgrupamento>();
 
@@ -39,6 +192,9 @@ namespace BolaoNet.Estatisticas.Calculo
 
             if (id == -1)
                 return null;
+
+            IList<string> indexList = LoadIndexFile(indexFile);
+
 
 #if (COMPRESS_FILE)
             string[] files = System.IO.Directory.GetFiles(path, "*.zip");
@@ -50,7 +206,7 @@ namespace BolaoNet.Estatisticas.Calculo
             {
                 string fullFile = files[c];
 
-                int countUserName = 0;
+                 
 
 #if (COMPRESS_FILE)
                 FileInfo info = new FileInfo(fullFile);
@@ -67,7 +223,9 @@ namespace BolaoNet.Estatisticas.Calculo
                 StreamReader reader = new StreamReader(fullFile);
 #endif
 
+                JogoPossibilidadeAgrupamento jogoCurrent = null;
 
+                int currentIdUser = 0;
 #if(WRITE_BINARY)
                 while (reader.PeekChar() >= 0)
 #else
@@ -91,13 +249,36 @@ namespace BolaoNet.Estatisticas.Calculo
                     if (string.IsNullOrEmpty(line))
                         continue;
                      
+                    if (line.StartsWith("*"))
+                    {
+                        if (jogoCurrent != null)
+                        {
+                            CheckUsuarioPontuacao(outputFile, jogoCurrent, classificacao, userName, ultimo, posicoes);                            
+                        }
 
-                    //TODO: Realizar tratamento para análise de jogo
+                        jogoCurrent = new JogoPossibilidadeAgrupamento();
+                        jogoCurrent.Jogos = ReadAgrupamento(line);
 
+                        currentIdUser = 0;
+                    }
+                    else
+                    {
+
+                        int idUser = currentIdUser++;
+                        int pt = int.Parse (line);
+                        jogoCurrent.Pontuacao.Add(new ApostaPontos()
+                        {
+                            UserName = indexList[idUser],
+                            Pontos = pt
+                        });
+                    }
 
                 }//end while 
 
-                //writer.WriteLine();
+                if (jogoCurrent != null)
+                {
+                    CheckUsuarioPontuacao(outputFile, jogoCurrent, classificacao, userName, ultimo, posicoes);                     
+                }
 
                 reader.Close();
 #if(WRITE_BINARY)
@@ -112,7 +293,25 @@ namespace BolaoNet.Estatisticas.Calculo
 
             return list;
         }
+        public IList<string> LoadIndexFile(string indexFile)
+        {
+            IList<string> list = new List<string>();
+            StreamReader reader = new StreamReader(indexFile);
 
+            while (reader.Peek() >= 0)
+            {
+                string line = reader.ReadLine();
+
+                if (string.IsNullOrEmpty(line))
+                    continue;
+
+                string[] info = line.Split(new char[] { '=' });
+                list.Add(info[1]);
+            }
+
+            reader.Close();
+            return list;
+        }
         public int GetIndexUserName (string indexFile, string userName)
         {
             int res = -1;
@@ -138,6 +337,122 @@ namespace BolaoNet.Estatisticas.Calculo
             reader.Close();
 
             return res;
+        }
+
+        public void UpdateClassificacao(string file, List<MembroClassificacao> membros)
+        {
+            if (!System.IO.File.Exists(file))
+                return;
+
+            for (int c=0; c < membros.Count; c++)
+            {
+                membros[c].Posicao = 0;
+                membros[c].Pontuacao = 0;
+            }
+
+            StreamReader reader = new StreamReader(file);
+
+            while (reader.Peek()>=0)
+            {
+                string line = reader.ReadLine();
+
+                string[] data = line.Split(new char[] { '=' });
+
+                string userName = data[0];
+                int pontos = int.Parse(data[1]);
+
+                for (int c=0; c < membros.Count; c++)
+                {
+                    if(string.Compare (membros[c].UserName, userName, true) == 0)
+                    {
+                        membros[c].Pontuacao = pontos;
+                        break;
+                    }
+                }
+            }
+
+            reader.Close();
+                
+        }
+
+        public void SaveClassificacao(string file, List<MembroClassificacao> membros)
+        {
+            if (System.IO.File.Exists(file))
+                System.IO.File.Delete(file);
+
+            StreamWriter writer = new StreamWriter(file);
+
+            for (int c=0; c < membros.Count; c++)
+            {
+                writer.WriteLine(membros[c].UserName + "=" + membros[c].Pontuacao);
+            }
+
+            writer.Close();
+        }
+
+        public bool LoadTimeJogo(string file, int jogoId, out string nomeTime1, out string nomeTime2)
+        {
+            nomeTime1 = "";
+            nomeTime2 = "";
+            bool found = false;
+
+            StreamReader reader = new StreamReader(file);
+
+            while (reader.Peek () >= 0)
+            {
+                string line = reader.ReadLine();
+
+                if (string.IsNullOrEmpty(line))
+                    continue;
+
+                string[] info = line.Split(new char[] { '[', '|', ']' });
+
+                int id = int.Parse (info[0]);
+
+                if (jogoId == id)
+                {
+                    nomeTime1 = info[1];
+                    nomeTime2 = info[2];
+                    found = true;
+                    break;
+                }
+                //"1[Rússia|Arábia Saudita]0|False|0|False"
+            }
+
+            reader.Close();
+
+            return found;
+        }
+
+        public void SaveTimesJogos(string file, IList<JogoInfo> list)
+        {
+            if (System.IO.File.Exists(file))
+                System.IO.File.Delete(file);
+
+            StreamWriter writer = new StreamWriter(file);
+
+            for (int c = 0; c < list.Count; c++ )
+            {
+                writer.Write(list[c].JogoId);
+                writer.Write("[");
+                if (string.IsNullOrEmpty(list[c].NomeTime1))
+                    writer.Write("-");
+                else
+                    writer.Write(list[c].NomeTime1);
+
+                writer.Write("|");
+                if (string.IsNullOrEmpty(list[c].NomeTime2))
+                    writer.Write("-");
+                else
+                    writer.Write(list[c].NomeTime2);
+
+                writer.Write("]");
+
+                writer.WriteLine(list[c].PendenteIdTime1 + "|" + list[c].PendenteTime1Ganhador + "|" +
+                    list[c].PendenteIdTime2 + "|" + list[c].PendenteTime2Ganhador);
+            }
+
+            writer.Close();
         }
 
         private IList<JogoIdAgrupamento> ReadAgrupamento(string line)
@@ -225,6 +540,41 @@ namespace BolaoNet.Estatisticas.Calculo
             writer.Close();
         }
         
+        public void SaveApostasExtras(string path, List<ApostaExtraInfo> list)
+        {
+            if (!System.IO.Directory.Exists(path))
+                System.IO.Directory.CreateDirectory(path);
+
+
+
+            
+            for (int c=0; c < list.Count; c++)
+            {
+
+                string file = System.IO.Path.Combine(path, list[c].Posicao+ ".txt");
+                
+                if (System.IO.File.Exists(file))
+                    System.IO.File.Delete(file);
+
+                StreamWriter writer = new StreamWriter(file);
+
+                for (int i = 0; i < list[c].Possibilidades.Count; i++ )
+                {
+                    writer.WriteLine("*" + list[c].Possibilidades[i].NomeTime);
+
+                    for (int x = 0; x < list[c].Possibilidades[i].Pontos.Count; x++)
+                    {
+                        writer.WriteLine(list[c].Possibilidades[i].Pontos[x].Pontos);
+                    }
+                }
+
+                writer.Close();
+
+            }//end for posições
+
+            
+        }
+
         public void ReadAppendSave(string file, string folderBase, JogoPossibilidadeAgrupamento entry)
         {
 

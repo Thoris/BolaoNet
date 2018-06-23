@@ -15,6 +15,7 @@ namespace BolaoNet.Estatisticas.Calculo
         public int Pontos { get; set; }
         public int Gols1 { get; set; }
         public int Gols2 { get; set; }
+        public int Posicao { get; set; }
         
         #endregion
 
