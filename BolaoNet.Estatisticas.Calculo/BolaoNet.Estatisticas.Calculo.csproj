@@ -65,6 +65,8 @@
     <Compile Include="ApostaPontos.cs" />
     <Compile Include="CriterioPontosTimes.cs" />
     <Compile Include="Execute.cs" />
+    <Compile Include="ExtraJogoTime.cs" />
+    <Compile Include="ExtraJogoTimePossibilidade.cs" />
     <Compile Include="FileStructureManager.cs" />
     <Compile Include="Grafo\Base\GrafoBase.cs" />
     <Compile Include="Grafo\Domain\ArestaJogo.cs" />

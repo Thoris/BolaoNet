@@ -49,13 +49,656 @@ namespace BolaoNet.Estatisticas.Calculo
             }
 
             writer.Close();
-        } 
+        }
 
-        private bool CheckUsuarioPontuacao(string outputFile, JogoPossibilidadeAgrupamento jogo, List<MembroClassificacao> classificacao, string userName, bool ultimo, params int [] posicao)
+        public IList<ExtraJogoTime> GetPossibilidadeTimes(List<ApostaExtraInfo> extras, List<JogoInfo> jogos)
+        {
+            IList<ExtraJogoTime> res = new List<ExtraJogoTime>();
+            IList<string> times = new List<string>();
+
+            for (int c=0; c < extras.Count; c++)
+            {
+                for (int i = 0; i < extras[c].Possibilidades.Count; i++)
+                {
+                    string time = extras[c].Possibilidades[i].NomeTime;
+
+                    if (!times.Contains(time))
+                        times.Add(time);
+                }
+            }
+
+            for (int c = 0; c < times.Count; c++ )
+            {
+                IList<ExtraJogoTime> temp = GetPossibilidadeTimes(extras, jogos, times[c]);
+
+                for (int i = 0; i < temp.Count; i++)
+                {
+                    res.Add(temp[i]);
+                }      
+            }
+
+            return res;
+        }
+
+        public IList<ExtraJogoTime> GetPossibilidadeTimes(List<ApostaExtraInfo> extras, List<JogoInfo> jogos, string nomeTime)
         {
 
-            //if (System.IO.File.Exists(outputFile))
-            //    System.IO.File.Delete(outputFile);
+
+            IList<ExtraJogoTime> res = new List<ExtraJogoTime>();
+            
+            int idFinal = 64;
+            int idTerceiro = 63;
+            int id;
+            //61[Brasil|Argentina]57|True|58|True
+            //62[Alemanha|Espanha]59|True|60|True
+            //63[-|-]61|False|62|False
+            //64[-|-]61|True|62|True
+
+
+            //Final - Time 1
+            if (!string.IsNullOrEmpty(jogos[idFinal - 1].NomeTime1))
+            {
+                if (string.Compare(jogos[idFinal - 1].NomeTime1, nomeTime, true) == 0)
+                {
+                    #region Final
+                    ExtraJogoTime entry = new ExtraJogoTime();
+                    entry.Posicao = 1;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal, GanhadorTime1 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 1;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 2;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal, GanhadorTime2 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 2;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal });
+                    res.Add(entry);
+                    #endregion
+                }
+            }
+            else
+            {
+                id = 61;
+                if (string.Compare(jogos[id-1].NomeTime1, nomeTime, true) == 0)
+                {
+                    #region Campeão e Vice
+                    ExtraJogoTime entry = new ExtraJogoTime();
+                    entry.Posicao = 1;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id, GanhadorTime1 = true });                    
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal, GanhadorTime1 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 1;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id, GanhadorTime1 = true });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 2;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id, GanhadorTime1 = true });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal, GanhadorTime2 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 2;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id, GanhadorTime1 = true });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal });
+                    res.Add(entry);
+
+                    //----------------------------------
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 1;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal, GanhadorTime1 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 1;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 2;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal, GanhadorTime2 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 2;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal });
+                    res.Add(entry);
+
+                    #endregion
+
+                    #region Terceiro e Quarto
+                    
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 3;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id, GanhadorTime2 = true });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro, GanhadorTime1 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 3;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id, GanhadorTime2 = true });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 4;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id, GanhadorTime2 = true });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro, GanhadorTime2 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 4;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id, GanhadorTime2 = true });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro });
+                    res.Add(entry);
+
+
+
+                    //----------------------------------
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 3;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro, GanhadorTime1 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao =3;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 4;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro, GanhadorTime2 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 4;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro });
+                    res.Add(entry);
+
+                    #endregion
+                }
+
+                if (string.Compare(jogos[id - 1].NomeTime2, nomeTime, true) == 0)
+                {
+                    #region Campeão e Vice
+                    ExtraJogoTime entry = new ExtraJogoTime();
+                    entry.Posicao = 1;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id, GanhadorTime2 = true });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal, GanhadorTime1 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 1;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id, GanhadorTime2 = true });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 2;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id, GanhadorTime2 = true });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal, GanhadorTime2 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 2;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id, GanhadorTime2 = true });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal });
+                    res.Add(entry);
+
+                    //----------------------------------
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 1;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal, GanhadorTime1 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 1;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 2;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal, GanhadorTime2 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 2;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal });
+                    res.Add(entry);
+
+                    #endregion
+
+                    #region Terceiro e Quarto
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 3;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id, GanhadorTime1 = true });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro, GanhadorTime1 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 3;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id, GanhadorTime1 = true });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 4;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id, GanhadorTime1 = true });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro, GanhadorTime2 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 4;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id, GanhadorTime1 = true });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro });
+                    res.Add(entry);
+
+
+
+                    //----------------------------------
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 3;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro, GanhadorTime1 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 3;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 4;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro, GanhadorTime2 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 4;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro });
+                    res.Add(entry);
+
+                    #endregion
+                }
+            }
+
+
+
+
+            //Final - Time 2
+            if (!string.IsNullOrEmpty(jogos[idFinal - 1].NomeTime2))
+            {
+                if (string.Compare(jogos[idFinal - 1].NomeTime2, nomeTime, true) == 0)
+                {
+                    #region Final
+                    ExtraJogoTime entry = new ExtraJogoTime();
+                    entry.Posicao = 1;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal, GanhadorTime2 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 1;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 2;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal, GanhadorTime1 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 2;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal });
+                    res.Add(entry);
+                    #endregion
+                }
+            }
+            else
+            {
+                id = 62;
+                if (string.Compare(jogos[id - 1].NomeTime1, nomeTime, true) == 0)
+                {
+                    #region Campeão e Vice
+                    ExtraJogoTime entry = new ExtraJogoTime();
+                    entry.Posicao = 1;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id, GanhadorTime1 = true });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal, GanhadorTime2 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 1;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id, GanhadorTime1 = true });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 2;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id, GanhadorTime1 = true });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal, GanhadorTime1 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 2;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id, GanhadorTime1 = true });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal });
+                    res.Add(entry);
+
+                    //----------------------------------
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 1;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal, GanhadorTime2 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 1;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 2;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal, GanhadorTime1 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 2;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal });
+                    res.Add(entry);
+
+                    #endregion
+
+                    #region Terceiro e Quarto
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 3;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id, GanhadorTime2 = true });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro, GanhadorTime2 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 3;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id, GanhadorTime2 = true });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 4;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id, GanhadorTime2 = true });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro, GanhadorTime1 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 4;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id, GanhadorTime2 = true });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro });
+                    res.Add(entry);
+
+
+
+                    //----------------------------------
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 3;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro, GanhadorTime2 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 3;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 4;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro, GanhadorTime1 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 4;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro });
+                    res.Add(entry);
+
+                    #endregion
+                }
+
+                if (string.Compare(jogos[id - 1].NomeTime2, nomeTime, true) == 0)
+                {
+                    #region Campeão e Vice
+                    ExtraJogoTime entry = new ExtraJogoTime();
+                    entry.Posicao = 1;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id, GanhadorTime2 = true });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal, GanhadorTime2 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 1;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id, GanhadorTime2 = true });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 2;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id, GanhadorTime2 = true });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal, GanhadorTime1 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 2;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id, GanhadorTime2 = true });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal });
+                    res.Add(entry);
+
+                    //----------------------------------
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 1;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal, GanhadorTime2 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 1;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 2;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal, GanhadorTime1 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 2;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idFinal });
+                    res.Add(entry);
+
+                    #endregion
+
+                    #region Terceiro e Quarto
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 3;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id, GanhadorTime1 = true });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro, GanhadorTime2 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 3;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id, GanhadorTime1 = true });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 4;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id, GanhadorTime1 = true });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro, GanhadorTime1 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 4;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id, GanhadorTime1 = true });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro });
+                    res.Add(entry);
+
+
+
+                    //----------------------------------
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 3;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro, GanhadorTime2 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 3;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 4;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro, GanhadorTime1 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 4;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = id });
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro });
+                    res.Add(entry);
+
+                    #endregion
+                }
+            }
+
+            res = res.OrderBy(x => x.Posicao).ToList();
+
+
+
+            return res;
+        }
+
+        private bool CheckUsuarioPontuacao(string outputFile, JogoPossibilidadeAgrupamento jogo, List<MembroClassificacao> classificacao, string userName, IList<ExtraJogoTime> extrasCheck, List<ApostaExtraInfo> extras, List<JogoInfo> jogos, bool ultimo, params int[] posicao)
+        {
+
+            List<ApostaExtraInfo> info = extras.ToList();
+
+            IList<string> times = new List<string>();
+
+            
+            int jogoIndex = jogos.Count -1; 
+            string time1 = jogos[jogoIndex].NomeTime1;
+            string time2 = jogos[jogoIndex].NomeTime2;
+
+ 
+            #region Atribuição de pontos
 
             List<ApostaPontos> listSoma = jogo.Pontuacao;
             int posFound = 0;
@@ -65,7 +708,11 @@ namespace BolaoNet.Estatisticas.Calculo
                 listSoma[c].Pontos += classificacao[c].Pontuacao ?? 0;
             }
 
+            #endregion
+
             List<ApostaPontos> list = listSoma.OrderByDescending(x => x.Pontos).ToList<ApostaPontos>();
+
+            #region Calculando posições
 
             int currentPosicao = 0;
             int currentPontos = -1;
@@ -83,8 +730,11 @@ namespace BolaoNet.Estatisticas.Calculo
                     list[c].Posicao = currentPosicao;                    
                 }
             }
+            #endregion
+
             bool found = false;
 
+            #region Verificação do último
             if (ultimo)
             {
                 currentPontos = list[list.Count - 1].Pontos;
@@ -102,6 +752,9 @@ namespace BolaoNet.Estatisticas.Calculo
                     }
                 }
             }
+            #endregion
+
+            #region Verificação das primeiras posições
 
             if (!found)
             {
@@ -125,6 +778,8 @@ namespace BolaoNet.Estatisticas.Calculo
                     }
                 }
             }
+
+            #endregion
 
             if (found)
             {
@@ -186,7 +841,7 @@ namespace BolaoNet.Estatisticas.Calculo
             writer.Close();
         }
         
-        public IList<JogoIdAgrupamento> CheckPossibilidades(string outputFile, string indexFile, string path, List<MembroClassificacao> classificacao, string userName, bool ultimo, params int [] posicoes)
+        public IList<JogoIdAgrupamento> CheckPossibilidades(string outputFile, string indexFile, string path, List<MembroClassificacao> classificacao, string userName,List<ApostaExtraInfo> extras, List<JogoInfo> jogos, IList<ExtraJogoTime> extrasCheck, bool ultimo, params int [] posicoes)
         {
             IList<JogoIdAgrupamento> list = new List<JogoIdAgrupamento>();
 
@@ -255,7 +910,7 @@ namespace BolaoNet.Estatisticas.Calculo
                     {
                         if (jogoCurrent != null)
                         {
-                            CheckUsuarioPontuacao(outputFile, jogoCurrent, classificacao, userName, ultimo, posicoes);                            
+                            CheckUsuarioPontuacao(outputFile, jogoCurrent, classificacao, userName, extrasCheck, extras, jogos, ultimo, posicoes);                            
                         }
 
                         jogoCurrent = new JogoPossibilidadeAgrupamento();
@@ -279,7 +934,7 @@ namespace BolaoNet.Estatisticas.Calculo
 
                 if (jogoCurrent != null)
                 {
-                    CheckUsuarioPontuacao(outputFile, jogoCurrent, classificacao, userName, ultimo, posicoes);                     
+                    CheckUsuarioPontuacao(outputFile, jogoCurrent, classificacao, userName, extrasCheck, extras, jogos, ultimo, posicoes);                     
                 }
 
                 reader.Close();
@@ -715,8 +1370,64 @@ namespace BolaoNet.Estatisticas.Calculo
 
             writer.Close();
         }
+
         public void SaveApostasExtrasPossibilidade(string baseFolder, string file, int posicao, string nomeTime, ApostaExtraPossibilidade entry)
         {
+            string[] files = System.IO.Directory.GetFiles(baseFolder);
+
+            if (System.IO.File.Exists(file))
+                System.IO.File.Delete(file);
+
+            StreamWriter writer = new StreamWriter(file);
+
+            for (int c = 0; c < files.Length; c++ )
+            {
+                string fileBase = files[c];
+
+                StreamReader reader = new StreamReader(fileBase);
+                bool ignore = false;
+                int currentId = 0;
+                while(reader.Peek () >= 0)
+                {
+                    string line = reader.ReadLine();
+
+                    if (string.IsNullOrEmpty(line))
+                        continue;
+
+                    if (line.StartsWith("*"))
+                    {
+                        if (string.Compare(Execute.NomeTimeDesconhecido, nomeTime,true) != 0 && line.Contains(nomeTime))
+                        {
+                            ignore = true;
+                        }
+                        else
+                        {
+                            ignore = false;
+                            currentId = 0;
+                            writer.WriteLine(line + ";" + posicao + "=" + nomeTime);
+                        }
+
+                    }
+                    else
+                    {
+                        if (ignore)
+                            continue;
+
+                        int pontos = int.Parse(line);
+                        int total = entry.Pontos[currentId].Pontos + pontos;
+                        currentId++;
+
+                        writer.WriteLine(total);
+                    }
+
+                }//end while
+
+                reader.Close();
+
+            }//end for c
+
+
+            writer.Close();
 
         }
 

@@ -30,7 +30,7 @@ namespace BolaoNet.Estatisticas.Calculo
         /// </summary>
         private const short GolsSemApostaMenor = 888;
         private const short GolsSemApostaNegativa = -777;
-        private const string NomeTimeDesconhecido = "Desconhecido";
+        public const string NomeTimeDesconhecido = "Desconhecido";
 
         #endregion
 
@@ -216,7 +216,6 @@ namespace BolaoNet.Estatisticas.Calculo
 
             #endregion
 
-
             #region Apostas BASE
 
              if (!System.IO.Directory.Exists(outputPath))
@@ -326,10 +325,24 @@ namespace BolaoNet.Estatisticas.Calculo
 
             #region Times Jogos
 
+            ///////////////////////////////
+            //// DEBUG
+            ///////////////////////////////
+
+            list[61 - 1].NomeTime2 = "Brasil";
+            list[61 - 1].NomeTime1 = "Espanha";
+            list[62 - 1].NomeTime1 = "Alemanha";
+            list[62 - 1].NomeTime2 = "Portugal";
+
+            
+            list[63 - 1].NomeTime1 = "Brasil";
+            list[63 - 1].NomeTime2 = "Alemanha";
+
             string fileTimes = System.IO.Path.Combine(outputPath, "times.txt");
 
             if (!System.IO.File.Exists(fileTimes))
                 manager.SaveTimesJogos(fileTimes, list);
+
 
             #endregion
 
@@ -344,7 +357,11 @@ namespace BolaoNet.Estatisticas.Calculo
 
             #endregion
 
+            #region Possibilidade de Apostas Extras para times
 
+            IList<ExtraJogoTime> possibilidadeExtras = manager.GetPossibilidadeTimes(extras, list);
+
+            #endregion
 
             #region Possibilidades de usuários
 
@@ -374,7 +391,7 @@ namespace BolaoNet.Estatisticas.Calculo
 
                     string outputApostas = System.IO.Path.Combine(apostasPath, userName + ".txt");
 
-                    manager.CheckPossibilidades(outputApostas, indexFile, jogoPath, membros, userName, true, 1, 2, 3);
+                    manager.CheckPossibilidades(outputApostas, indexFile, jogoPath, membros, userName, extras, list, possibilidadeExtras, true, 1, 2, 3);
 
 
                     Console.WriteLine(DateTime.Now.ToString() + " - Jogo[" + jogoId + "] - Análise de Apostas do Usuário: " + userName + ". FIM");
