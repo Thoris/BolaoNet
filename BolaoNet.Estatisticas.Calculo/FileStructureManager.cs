@@ -133,6 +133,7 @@ namespace BolaoNet.Estatisticas.Calculo
 
             return found;
         }
+        
         private void SaveUsuarioPontuacao(string file, JogoPossibilidadeAgrupamento jogo, List<ApostaPontos> list, int currentPosicao, bool ultimo, params int[] posicao)
         {
             StreamWriter writer = null;
@@ -184,6 +185,7 @@ namespace BolaoNet.Estatisticas.Calculo
 
             writer.Close();
         }
+        
         public IList<JogoIdAgrupamento> CheckPossibilidades(string outputFile, string indexFile, string path, List<MembroClassificacao> classificacao, string userName, bool ultimo, params int [] posicoes)
         {
             IList<JogoIdAgrupamento> list = new List<JogoIdAgrupamento>();
@@ -293,6 +295,7 @@ namespace BolaoNet.Estatisticas.Calculo
 
             return list;
         }
+        
         public IList<string> LoadIndexFile(string indexFile)
         {
             IList<string> list = new List<string>();
@@ -312,6 +315,7 @@ namespace BolaoNet.Estatisticas.Calculo
             reader.Close();
             return list;
         }
+        
         public int GetIndexUserName (string indexFile, string userName)
         {
             int res = -1;
@@ -693,6 +697,27 @@ namespace BolaoNet.Estatisticas.Calculo
 #if(WRITE_BINARY)
             fsWriter.Close();
 #endif
+        }
+
+        public void SaveApostasExtrasPossibilidade(string file, int posicao, string nomeTime, ApostaExtraPossibilidade list)
+        {
+            if (System.IO.File.Exists(file))
+                System.IO.File.Delete(file);
+
+            StreamWriter writer = new StreamWriter(file);
+
+            writer.WriteLine("*" + posicao + "=" + nomeTime);
+            
+            for (int c = 0; c < list.Pontos.Count; c++ )
+            {
+                writer.WriteLine(list.Pontos[c].Pontos);
+            }
+
+            writer.Close();
+        }
+        public void SaveApostasExtrasPossibilidade(string baseFolder, string file, int posicao, string nomeTime, ApostaExtraPossibilidade entry)
+        {
+
         }
 
         private void CompressFile(string sourceFile, string targetFile)

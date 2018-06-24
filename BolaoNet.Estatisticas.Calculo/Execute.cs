@@ -186,12 +186,41 @@ namespace BolaoNet.Estatisticas.Calculo
             string outputExtras = System.IO.Path.Combine (outputPath, "Extras");
             manager.SaveApostasExtras(outputExtras, extras);
 
+
+
+            for (int c = 0; c < extras.Count; c++)
+            {
+                string outputExtrasOpcao = System.IO.Path.Combine(outputPath, "Extras_" + extras[c].Posicao);
+
+                if (!System.IO.Directory.Exists(outputExtrasOpcao))
+                    System.IO.Directory.CreateDirectory(outputExtrasOpcao);
+
+                for (int i = 0; i < extras[c].Possibilidades.Count; i++)
+                {
+                    if (!System.IO.File.Exists(outputExtrasOpcao))
+                    {
+
+                        string fileExtraOpcao = System.IO.Path.Combine(outputExtrasOpcao, extras[c].Possibilidades[i].NomeTime + ".txt");
+
+                        if (c == 0)
+                            manager.SaveApostasExtrasPossibilidade(fileExtraOpcao, extras[c].Posicao, extras[c].Possibilidades[i].NomeTime, extras[c].Possibilidades[i]);
+                        else
+                        {
+                            string basePath = System.IO.Path.Combine(outputPath, "Extras_" + extras[c - 1].Posicao);
+                            manager.SaveApostasExtrasPossibilidade(basePath, fileExtraOpcao, extras[c].Posicao, extras[c].Possibilidades[i].NomeTime, extras[c].Possibilidades[i]);                            
+                        }
+                    }
+                }
+            }
+
+
             #endregion
+
 
             #region Apostas BASE
 
-            if (!System.IO.Directory.Exists(outputPath))
-                System.IO.Directory.CreateDirectory(outputPath);
+             if (!System.IO.Directory.Exists(outputPath))
+                    System.IO.Directory.CreateDirectory(outputPath);
 
             string indexFile = System.IO.Path.Combine(outputPath, "Index.txt");
             JogoPossibilidadeAgrupamento agrIndex = new JogoPossibilidadeAgrupamento(list[list.Count - 1].Possibilidades[0]);
@@ -315,36 +344,35 @@ namespace BolaoNet.Estatisticas.Calculo
 
             #endregion
 
+
+
             #region Possibilidades de usuários
 
             string apostas = System.IO.Path.Combine(outputPath, "Usuarios");
             if (!System.IO.Directory.Exists(apostas))
                 System.IO.Directory.CreateDirectory(apostas);
 
-
-            for (int c = 0; c < agrIndex.Pontuacao.Count; c++ )
+            for (int i = list.Count - 1; i >= 0; i--)
             {
-                for (int i = list.Count - 1; i >= 0; i--)
+                int jogoId = list[i].JogoId;
+                string jogoPath = System.IO.Path.Combine(outputPath, jogoId.ToString());
+                string apostasPath = System.IO.Path.Combine(apostas, jogoId.ToString());
+
+                if (System.IO.Directory.Exists(apostasPath))
                 {
-                    int jogoId = list[i].JogoId;
+                    System.IO.Directory.Delete(apostasPath, true);
+                }
 
+                System.IO.Directory.CreateDirectory(apostasPath);
 
+                for (int c = 0; c < agrIndex.Pontuacao.Count; c++)
+                {
                     string userName = agrIndex.Pontuacao[c].UserName;
                     string file = System.IO.Path.Combine(apostas, userName);
 
-
                     Console.WriteLine(DateTime.Now.ToString() + " - Jogo[" + jogoId + "] - Análise de Apostas do Usuário: " + userName);
 
-                    string jogoPath = System.IO.Path.Combine(outputPath, jogoId.ToString());
-                    string apostasPath = System.IO.Path.Combine(apostas, jogoId.ToString());
                     string outputApostas = System.IO.Path.Combine(apostasPath, userName + ".txt");
-
-                    if (System.IO.Directory.Exists(apostasPath))
-                    {
-                        System.IO.Directory.Delete(apostasPath, true);
-                    }
-
-                    System.IO.Directory.CreateDirectory(apostasPath);
 
                     manager.CheckPossibilidades(outputApostas, indexFile, jogoPath, membros, userName, true, 1, 2, 3);
 
