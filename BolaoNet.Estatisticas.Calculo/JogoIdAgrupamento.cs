@@ -24,5 +24,14 @@ namespace BolaoNet.Estatisticas.Calculo
         }
 
         #endregion
+
+        #region Methods
+
+        public override string ToString()
+        {
+            return JogoId + " : " + Gols1 + " x " + Gols2;
+        }
+
+        #endregion
     }
 }

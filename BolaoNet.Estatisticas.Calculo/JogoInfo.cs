@@ -82,6 +82,24 @@ namespace BolaoNet.Estatisticas.Calculo
 
             return res;
         }
+        public JogoInfo Clone()
+        {
+            JogoInfo info = new JogoInfo();
+            info.JogoId = this.JogoId;
+            info.NomeTime1 = this.NomeTime1 ;
+            info.NomeTime2 = this.NomeTime2;
+            info.GolsTime1 = this.GolsTime1;
+            info.GolsTime2 = this.GolsTime2;
+            info.Apostas = this.Apostas.ToList ();
+            info.Possibilidades = this.Possibilidades.ToList();
+            info.IsValid = this.IsValid;
+            info.PendenteIdTime1 = this.PendenteIdTime1;
+            info.PendenteIdTime2 = this.PendenteIdTime2;
+            info.PendenteTime1Ganhador = this.PendenteTime1Ganhador;
+            info.PendenteTime2Ganhador = this.PendenteTime2Ganhador;
+
+            return info;
+        }
 
         #endregion
     }
