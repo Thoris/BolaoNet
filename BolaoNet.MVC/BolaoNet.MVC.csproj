@@ -170,7 +170,9 @@
     <Compile Include="Areas\Boloes\Controllers\BaseBolaoAreaController.cs" />
     <Compile Include="Areas\Boloes\Controllers\ApostasUsuariosController.cs" />
     <Compile Include="Areas\Boloes\Controllers\BolaoClassificacaoController.cs" />
+    <Compile Include="Areas\Boloes\Controllers\BolaoComparacaoApostasController.cs" />
     <Compile Include="Areas\Boloes\Controllers\BolaoHistoricoController.cs" />
+    <Compile Include="Areas\Boloes\Controllers\BolaoPremiacaoController.cs" />
     <Compile Include="Areas\Boloes\Controllers\ClassificacaoApostasController.cs" />
     <Compile Include="Areas\Boloes\Controllers\HistoricoPontosController.cs" />
     <Compile Include="Areas\Boloes\Controllers\ResultadosDificeisController.cs" />
@@ -473,6 +475,8 @@
     <Content Include="Areas\Rss\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Rss\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Users\Views\AccountHome\RssFeed.cshtml" />
+    <Content Include="Areas\Boloes\Views\BolaoComparacaoApostas\Index.cshtml" />
+    <Content Include="Areas\Boloes\Views\BolaoPremiacao\Index.cshtml" />
     <None Include="Content\js\jquery-1.10.2.intellisense.js" />
     <Content Include="Content\js\jquery-1.10.2.js" />
     <Content Include="Content\js\jquery-1.10.2.min.js" />

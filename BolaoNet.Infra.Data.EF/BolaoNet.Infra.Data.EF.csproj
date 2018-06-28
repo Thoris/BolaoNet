@@ -56,6 +56,7 @@
     <Compile Include="Boloes\ApostaPontosRepositoryDao.cs" />
     <Compile Include="Boloes\ApostasRestantesUserRepositoryDao.cs" />
     <Compile Include="Boloes\BolaoCampeonatoClassificacaoUsuarioRepositoryDao.cs" />
+    <Compile Include="Boloes\BolaoPremiacaoRepositoryDao.cs" />
     <Compile Include="Boloes\BolaoCriterioPontosRepositoryDao.cs" />
     <Compile Include="Boloes\BolaoCriterioPontosTimesRepositoryDao.cs" />
     <Compile Include="Boloes\BolaoHistoricoRepositoryDao.cs" />

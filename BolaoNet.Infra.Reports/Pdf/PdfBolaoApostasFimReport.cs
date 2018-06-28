@@ -1284,11 +1284,22 @@ namespace BolaoNet.Infra.Reports.Pdf
 
                 document.NewPage();
 
+                int p = -1;
+                for (int i = 0; i < data.Classificacao.Count;i ++)
+                {
+                    if (string.Compare (data.Classificacao[i].UserName.Trim(), data.Membros[c].UserName.Trim(), true) == 0)
+                    {
+                        p = i;
+                        break;
+                    }
+                }
+
+
                 Domain.Entities.Users.User user = new Domain.Entities.Users.User(data.Membros[c].UserName);
                 user.FullName = data.Membros[c].FullName;
                 user.Email = data.Membros[c].Email;
 
-                CreatePage(false, true, 0, 0, writer, extension, "", folderProfiles, folderTimes,
+                CreatePage(false, true, (int)data.Classificacao[p].Posicao, (int)data.Classificacao[p].TotalPontos, writer, extension, "", folderProfiles, folderTimes,
                     user, data.Membros[c].JogosUsuarios, data.Membros[c].ApostasExtras);
             }
             document.Close();

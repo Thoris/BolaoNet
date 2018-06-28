@@ -75,6 +75,11 @@ else
                             string.Compare(controllerArea, "Boloes", true) == 0)
                         { @Html.Raw("class=\"active\"")  }>
                         <a href="/Boloes/ApostasUsuarios/Index" onclick="javascript:showWait();"><i class="fa fa-comments"></i><span class="nav-label">Apostas dos Usuários</span><span class="visible-xs-inline">Apostas</span></a>
+                    </li>                    
+                    <li @if (string.Compare(controllerName, "BolaoComparacaoApostas", true) == 0 && 
+                            string.Compare(controllerArea, "Boloes", true) == 0)
+                        { @Html.Raw("class=\"active\"")  }>
+                        <a href="/Boloes/BolaoComparacaoApostas/Index" onclick="javascript:showWait();"><i class="fa fa-user-plus"></i><span class="nav-label">Comparação</span><span class="visible-xs-inline">Comparação</span></a>
                     </li>
                     <li @if (string.Compare(controllerName, "ApostasExtras", true) == 0 && 
                             string.Compare(controllerArea, "Boloes", true) == 0)
@@ -84,12 +89,12 @@ else
                     <li @if (string.Compare(controllerName, "ClassificacaoApostas", true) == 0 && 
                             string.Compare(controllerArea, "Boloes", true) == 0)
                         { @Html.Raw("class=\"active\"")  }>
-                        <a href="/Boloes/ClassificacaoApostas/Index" onclick="javascript:showWait();"><i class="fa fa-bar-chart"></i><span class="nav-label">Classificação por Apostas</span><span class="visible-xs-inline">Cl. Apostas</span></a>
+                        <a href="/Boloes/ClassificacaoApostas/Index" onclick="javascript:showWait();"><i class="fa fa-bar-chart"></i><span class="nav-label">Classificação Apostas</span><span class="visible-xs-inline">Cl. Apostas</span></a>
                     </li>
                     <li @if (string.Compare(controllerName, "ResultadosDificeis", true) == 0 && 
                             string.Compare(controllerArea, "Boloes", true) == 0)
                         { @Html.Raw("class=\"active\"")  }>
-                        <a href="/Boloes/ResultadosDificeis/Index" onclick="javascript:showWait();"><i class="fa fa-thumbs-up"></i><span class="nav-label">Acertos de Resultados difíceis</span><span class="visible-xs-inline">Difíceis</span></a>
+                        <a href="/Boloes/ResultadosDificeis/Index" onclick="javascript:showWait();"><i class="fa fa-thumbs-up"></i><span class="nav-label">Resultados difíceis</span><span class="visible-xs-inline">Difíceis</span></a>
                     </li>
                     <li @if (string.Compare(controllerName, "SemAcertos", true) == 0 && 
                             string.Compare(controllerArea, "Boloes", true) == 0)
@@ -106,11 +111,16 @@ else
                         { @Html.Raw("class=\"active\"")  }>
                         <a href="/Regras/BolaoRegras/Index" onclick="javascript:showWait();"><i class="fa fa-envelope-o"></i><span class="nav-label">Regras</span><span class="visible-xs-inline">Regras</span></a>
                     </li>
+                    <li @if (string.Compare(controllerName, "BolaoPremiacao", true) == 0 && 
+                            string.Compare(controllerArea, "Boloes", true) == 0)
+                        { @Html.Raw("class=\"active\"")  }>
+                        <a href="/Boloes/BolaoPremiacao/Index" onclick="javascript:showWait();"><i class="fa fa-money"></i><span class="nav-label">Premiação</span><span class="visible-xs-inline">Premiação</span></a>
+                    </li>
 
                     <li @if (string.Compare(controllerName, "BolaoHistorico", true) == 0 && 
                             string.Compare(controllerArea, "Boloes", true) == 0)
                         { @Html.Raw("class=\"active\"")  }>
-                        <a href="/Boloes/BolaoHistorico/Index" onclick="javascript:showWait();"><i class="fa fa-trophy"></i><span class="nav-label">Histórico de Ganhadores</span><span class="visible-xs-inline">Ganhadores</span></a>
+                        <a href="/Boloes/BolaoHistorico/Index" onclick="javascript:showWait();"><i class="fa fa-trophy"></i><span class="nav-label">Histórico Ganhadores</span><span class="visible-xs-inline">Ganhadores</span></a>
                     </li>
 
                 </ul>

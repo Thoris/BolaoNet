@@ -164,6 +164,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="Areas\Boloes\Controllers\BolaoPremiacaoController.cs" />
     <Compile Include="Areas\Boloes\Controllers\BolaoHistoricoController.cs" />
     <Compile Include="Areas\Boloes\Controllers\BolaoMembroPontoController.cs" />
     <Compile Include="Areas\Feed\Controllers\RssController.cs" />

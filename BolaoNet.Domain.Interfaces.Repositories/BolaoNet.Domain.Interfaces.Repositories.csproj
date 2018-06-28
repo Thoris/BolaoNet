@@ -46,6 +46,7 @@
     <Compile Include="Boloes\IApostaPontosDao.cs" />
     <Compile Include="Boloes\IApostasRestantesUserDao.cs" />
     <Compile Include="Boloes\IBolaoCampeonatoClassificacaoUsuarioDao.cs" />
+    <Compile Include="Boloes\IBolaoPremiacaoDao.cs" />
     <Compile Include="Boloes\IBolaoCriterioPontosDao.cs" />
     <Compile Include="Boloes\IBolaoCriterioPontosTimesDao.cs" />
     <Compile Include="Boloes\IBolaoDao.cs" />

@@ -1,0 +1,64 @@
+﻿@model BolaoNet.MVC.ViewModels.Bolao.BolaoPremiacaoViewModelInfo
+@{
+    ViewBag.Title = "Premiação do Bolão";
+    BolaoNet.MVC.Controllers.AuthorizationController homeController =
+        ViewContext.Controller as BolaoNet.MVC.Controllers.AuthorizationController;
+    string userNameLogged = homeController.UserLogged.UserName;
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="wrapper wrapper-content animated fadeInRight">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content" style="display: block;">
+                        <div class="text-center m-t-lg">
+
+                            <div class="row">
+                                <strong>Premiação total: R$ @Model.ValorTotal.ToString(".00")</strong>
+                            </div>
+
+                            <div class="row">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <td>Colocação</td>
+                                            <td>Percentual</td>
+                                            <td>Valor</td>
+                                             
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (Model.Premiacoes != null && Model.Premiacoes.Count > 0)
+                                        {
+                                            for (int c = 0; c < Model.Premiacoes.Count; c++)
+                                            {
+                                                <tr>
+
+                                                    <td>@Model.Premiacoes[c].Posicao º</td>
+                                                    <td>@Model.Premiacoes[c].Percentual.ToString(".00") %</td>
+                                                    <td>R$ @Model.Premiacoes[c].Valor.ToString(".00")</td>
+
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+}
+@section scripts
+{
+    <script> 
+    </script>
+}

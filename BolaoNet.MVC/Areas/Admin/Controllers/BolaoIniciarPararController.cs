@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -149,8 +150,11 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
         }
         public ActionResult DownloadApostas(string userName)
         {
+            byte[] bytes = Encoding.GetEncoding(1252).GetBytes(userName);
+            string userNameFix = Encoding.UTF8.GetString(bytes);
+
             Domain.Entities.ValueObjects.Reports.BolaoMembroApostasVO data =
-                _bolaoMembroApostasReportApp.GetData(base.SelectedBolao, new Domain.Entities.Users.User(userName));
+                _bolaoMembroApostasReportApp.GetData(base.SelectedBolao, new Domain.Entities.Users.User(userNameFix));
 
             Stream streamReport = _bolaoMembroApostasReportApp.Generate(
                 "gif",
@@ -158,7 +162,7 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
                 Server.MapPath("~/Content/img/database/times"), data);
 
 
-            return base.DownloadStream(streamReport, "text/plain", userName + ".pdf");
+            return base.DownloadStream(streamReport, "text/plain", userNameFix + ".pdf");
         }
         public ActionResult GerarApostas()
         {

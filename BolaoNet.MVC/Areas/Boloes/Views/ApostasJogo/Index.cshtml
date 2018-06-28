@@ -208,8 +208,16 @@
                                             <td></td>                                      
                                             <td class="text-center">PTG</td>   
                                             <td class="hidden-xs"></td>                                        
-                                            <td class="text-center">Usuário</td>                                             
+                                            <td class="text-center">Usuário</td>  
+                                            @if (Model.Apostas.Count > 0 && !string.IsNullOrEmpty(Model.Apostas[0].NomeTimeResult1))
+                                            {
+                                                <td class="hidden-xs"></td>
+                                            }
                                             <td colspan="3" class="text-center">Apostas</td>
+                                            @if (Model.Apostas.Count > 0 && !string.IsNullOrEmpty(Model.Apostas[0].NomeTimeResult2))
+                                            {
+                                                <td class="hidden-xs"></td>
+                                            }                                            
                                             <td class="text-center">PT</td>
                                             <td class="text-center hidden-xs">Extra</td>
                                             <td class="text-center"></td>
@@ -246,14 +254,28 @@
                                                     }
                                                     
                                                 </td>                                         
-                                                <td class="text-center">@Model.Apostas[c].TotalPontosClassificacao</td>
+                                                <td class="text-center"><strong>@Model.Apostas[c].TotalPontosClassificacao</strong></td>
                                                 <td class="hidden-xs">
                                                     <img class="img-username" src="/Content/img/database/profiles/@(Model.Apostas[c].UserName).gif?time=@(DateTime.Now)" />
                                                 </td>
                                                 <td class="text-center">@Model.Apostas[c].UserName</td>
+
+                                                @if (!string.IsNullOrEmpty (Model.Apostas[c].NomeTimeResult1))
+                                                {
+                                                    <td class="hidden-xs">
+                                                        <img class="img-time" src="/Content/img/database/times/@(Model.Apostas[c].NomeTimeResult1).gif" />
+                                                    </td>
+                                                }
                                                 <td class="text-center"><strong>@Model.Apostas[c].ApostaTime1</strong></td>
                                                 <td class="text-center">x</td>
                                                 <td class="text-center"><strong>@Model.Apostas[c].ApostaTime2</strong></td>
+
+                                                @if (!string.IsNullOrEmpty (Model.Apostas[c].NomeTimeResult2))
+                                                {
+                                                    <td class="hidden-xs">
+                                                        <img class="img-time" src="/Content/img/database/times/@(Model.Apostas[c].NomeTimeResult2).gif" />
+                                                    </td>
+                                                }
                                                 <td class="text-center">
                                                     @if(Model.Apostas[c].Pontos != 0 && Model.Apostas[c].Pontos != null)
                                                     { 

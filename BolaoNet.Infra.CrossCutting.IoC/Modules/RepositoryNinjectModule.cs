@@ -49,7 +49,8 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
             Bind<Domain.Interfaces.Repositories.Boloes.IMensagemDao>().To<Infra.Data.EF.Boloes.MensagemRepositoryDao>();
             Bind<Domain.Interfaces.Repositories.Boloes.IPagamentoDao>().To<Infra.Data.EF.Boloes.PagamentoRepositoryDao>();
             Bind<Domain.Interfaces.Repositories.Boloes.IPontuacaoDao>().To<Infra.Data.EF.Boloes.PontuacaoRepositoryDao>();
-
+            Bind<Domain.Interfaces.Repositories.Boloes.IBolaoPremiacaoDao>().To<Infra.Data.EF.Boloes.BolaoPremiacaoRepositoryDao>();
+            
             Bind<Domain.Interfaces.Repositories.Campeonatos.ICampeonatoDao>().To<Infra.Data.EF.Campeonatos.CampeonatoRepositoryDao>();
             Bind<Domain.Interfaces.Repositories.Campeonatos.ICampeonatoClassificacaoDao>().To<Infra.Data.EF.Campeonatos.CampeonatoClassificacaoRepositoryDao>();
             Bind<Domain.Interfaces.Repositories.Campeonatos.ICampeonatoFaseDao>().To<Infra.Data.EF.Campeonatos.CampeonatoFaseRepositoryDao>();

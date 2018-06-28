@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -220,8 +221,18 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
 
         public ActionResult DownloadApostas(ViewModels.Bolao.ApostasUsuariosListViewModel model)
         {
+            //ASCIIEncoding ascii = new ASCIIEncoding();
+            //byte[] byteArray = Encoding.UTF8.GetBytes(model.UserName);
+            //byte[] asciiArray = Encoding.Convert(Encoding.UTF8, Encoding.Default, byteArray);
+            //model.UserName = ascii.GetString(asciiArray);
+
+            byte[] bytes = Encoding.GetEncoding(1252).GetBytes(model.UserName);
+            model.UserName = Encoding.UTF8.GetString(bytes);
+
             Domain.Entities.ValueObjects.Reports.BolaoMembroApostasVO data =
                 _bolaoMembroApostasReportApp.GetData(base.SelectedBolao, new Domain.Entities.Users.User (model.UserName));
+
+
 
             Stream streamReport = _bolaoMembroApostasReportApp.Generate(
                 "gif",

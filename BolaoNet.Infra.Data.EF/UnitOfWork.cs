@@ -42,6 +42,7 @@ namespace BolaoNet.Infra.Data.EF
         public DbSet<Domain.Entities.Boloes.BolaoRegra> BoloesRegras { get; set; }
         public DbSet<Domain.Entities.Boloes.BolaoRequest> BoloesRequests { get; set; }
         public DbSet<Domain.Entities.Boloes.BolaoRequestStatus> BoloesRequestsStatus { get; set; }
+        public DbSet<Domain.Entities.Boloes.BolaoPremiacao> BoloesPremiacao { get; set; }
 
         public DbSet<Domain.Entities.Boloes.BolaoPontuacao> BoloesPontuacao { get; set; }
         public DbSet<Domain.Entities.Boloes.BolaoPontoRodada> BoloesPontosRodadas { get; set; }
@@ -217,7 +218,7 @@ namespace BolaoNet.Infra.Data.EF
             modelBuilder.Configurations.Add(new Mapping.Boloes.JogoUsuarioConfiguration());
             modelBuilder.Configurations.Add(new Mapping.Boloes.MensagemConfiguration());
             modelBuilder.Configurations.Add(new Mapping.Boloes.PagamentoConfiguration());
-            
+            modelBuilder.Configurations.Add(new Mapping.Boloes.BolaoPremiacaoConfiguration());
 
             modelBuilder.Configurations.Add(new Mapping.Campeonatos.CampeonatoClassificacaoConfiguration());
             modelBuilder.Configurations.Add(new Mapping.Campeonatos.CampeonatoConfiguration());

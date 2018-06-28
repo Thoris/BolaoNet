@@ -147,6 +147,10 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
                 .WhenInjectedExactlyInto(typeof(Application.Boloes.PontuacaoApp))
                 .WithConstructorArgument("url", url)
                 .WithConstructorArgument("token", token);
+            Bind<Domain.Interfaces.Services.Boloes.IBolaoPremiacaoService>().To<WebApi.Integration.Boloes.BolaoPremiacaoIntegration>()
+                .WhenInjectedExactlyInto(typeof(Application.Boloes.BolaoPremiacaoApp))
+                .WithConstructorArgument("url", url)
+                .WithConstructorArgument("token", token);
 
             Bind<Domain.Interfaces.Services.Campeonatos.ICampeonatoService>().To<WebApi.Integration.Campeonatos.CampeonatoIntegration>()
                 .WhenInjectedExactlyInto(typeof(Application.Campeonatos.CampeonatoApp))

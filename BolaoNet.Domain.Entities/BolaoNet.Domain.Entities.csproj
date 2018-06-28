@@ -50,6 +50,7 @@
     <Compile Include="Boloes\BolaoPontoRodada.cs" />
     <Compile Include="Boloes\BolaoPontoRodadaUsuario.cs" />
     <Compile Include="Boloes\BolaoPontuacao.cs" />
+    <Compile Include="Boloes\BolaoPremiacao.cs" />
     <Compile Include="Boloes\BolaoPremio.cs" />
     <Compile Include="Boloes\BolaoRegra.cs" />
     <Compile Include="Boloes\BolaoRequest.cs" />

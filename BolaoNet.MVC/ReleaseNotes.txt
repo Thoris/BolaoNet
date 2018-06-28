@@ -1,4 +1,14 @@
-﻿[2.0.1.0] - 27/05/2018
+﻿[2.1.0.0] - 27/06/2018
+* Apresentação das bandeiras nos jogos dos usuários para a fase eliminatória.
+* Criação do módulo de comparação de resultados entre 2 participantes.
+* Apresentação da pontuação em negrito para a classificação e apostas dos usuários.
+* Correção de download de jogos nas apostas dos usuários para logins com espaços e caracteres especiais.
+* Apresentação do ícone do último lugar para mais de um participante quando estiverem empatados.
+* Correção de geração de posição e pontos no relatório final.
+* Correção de apresentação das imagens de times que não foram computados na tela de jogos.
+* Inclusão da página de premiação.
+
+[2.0.1.0] - 27/05/2018
 * Correção de dependência de jogos na fase eliminatória para apostas dos usuários.
 * Remoção do link de ativação.
 

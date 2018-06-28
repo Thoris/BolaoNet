@@ -317,7 +317,7 @@ namespace BolaoNet.Estatisticas.Calculo
 
                 Console.WriteLine(DateTime.Now.ToString() + " - " + list[i].JogoId + " - Fim da análise");
 
-                if (i == 59)
+                if (i == 58)
                     break;
             }//end for jogos
 

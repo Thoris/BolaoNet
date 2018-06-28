@@ -85,6 +85,12 @@ namespace BolaoNet.MVC.AutoMapper
             Mapper.CreateMap<ViewModels.Mensagens.MensagemViewModel, Domain.Entities.Boloes.Mensagem>();
             Mapper.CreateMap<ViewModels.Bolao.BolaoHistoricoViewModel, Domain.Entities.Boloes.BolaoHistorico>();
             Mapper.CreateMap<ViewModels.LogReporting.LogEventViewModel, Domain.Entities.LogReporting.LogEvent>();
+
+            Mapper.CreateMap<ViewModels.Bolao.BolaoComparacaoApostaJogoViewModel, Domain.Entities.ValueObjects.JogoUsuarioVO>();
+
+            Mapper.CreateMap<ViewModels.Bolao.BolaoPremiacaoViewModel, Domain.Entities.Boloes.BolaoPremiacao>();
+ 
+
         }
     }
 }

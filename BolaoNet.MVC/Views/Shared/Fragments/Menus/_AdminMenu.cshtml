@@ -69,7 +69,7 @@
             <li @if (string.Compare(controllerName, "BolaoIniciarParar", true) == 0 && 
                     string.Compare(controllerArea, "Admin", true) == 0)
                 { @Html.Raw("class=\"active\"")  }>
-                <a href="/Admin/BolaoIniciarParar/Index" onclick="javascript:showWait();"><i class="fa fa-table"></i><span class="nav-label">Painel de Gerenciamento</span><span class="visible-xs-inline">Painel</span></a>
+                <a href="/Admin/BolaoIniciarParar/Index" onclick="javascript:showWait();"><i class="fa fa-table"></i><span class="nav-label">Painel</span><span class="visible-xs-inline">Painel</span></a>
             </li>
         }
         
@@ -78,7 +78,7 @@
             <li @if (string.Compare(controllerName, "LogViewer", true) == 0 && 
                     string.Compare(controllerArea, "Admin", true) == 0)
                 { @Html.Raw("class=\"active\"")   }>
-                <a href="/Admin/LogViewer/Index" onclick="javascript:showWait();"><i class="fa fa-table"></i><span class="nav-label">Log Viewer</span><span class="visible-xs-inline">LogViwer</span></a>
+                <a href="/Admin/LogViewer/Index" onclick="javascript:showWait();"><i class="fa fa-keyboard-o"></i><span class="nav-label">Log Viewer</span><span class="visible-xs-inline">LogViwer</span></a>
             </li>
         }
     </ul>

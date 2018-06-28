@@ -55,6 +55,7 @@
     <Compile Include="Boloes\ApostaPontosIntegration.cs" />
     <Compile Include="Boloes\ApostasRestantesIntegration.cs" />
     <Compile Include="Boloes\BolaoCampeonatoClassificacaoUsuarioIntegration.cs" />
+    <Compile Include="Boloes\BolaoPremiacaoIntegration.cs" />
     <Compile Include="Boloes\BolaoCriterioPontosIntegration.cs" />
     <Compile Include="Boloes\BolaoCriterioPontosTimesIntegration.cs" />
     <Compile Include="Boloes\BolaoHistoricoIntegration.cs" />

@@ -57,7 +57,8 @@
                                                      }
                                                      else
                                                      {
-                                                         if (c == Model.Classificacao.Count - 1)
+                                                         //if (c == Model.Classificacao.Count - 1)
+                                                         if (Model.Classificacao[c].Posicao == Model.Classificacao[Model.Classificacao.Count - 1].Posicao)
                                                          {
                                                             <i class="fa fa-ambulance" style="color:black" aria-hidden="true"></i>
                                                             <strong style="color:black">@(Model.Classificacao[c].Posicao)</strong>
@@ -92,7 +93,7 @@
                                                     <img class="img-username" src="/Content/img/database/profiles/@(Model.Classificacao[c].UserName).gif?time=@(DateTime.Now)" />
                                                 </td>
                                                 <td>@Model.Classificacao[c].FullName</td>
-                                                <td>@Model.Classificacao[c].TotalPontos</td>
+                                                <td><strong>@Model.Classificacao[c].TotalPontos</strong></td>
                                                 <td class="hidden-xs">@Model.Classificacao[c].TotalEmpate</td>
                                                 <td class="hidden-xs">@Model.Classificacao[c].TotalVDE</td>
                                                 <td class="hidden-xs">@Model.Classificacao[c].TotalGolsTime1</td>

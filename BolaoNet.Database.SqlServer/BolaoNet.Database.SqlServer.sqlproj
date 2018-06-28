@@ -62,6 +62,8 @@
   <ItemGroup>
     <Build Include="build\0001.Cleaning_Up.sql" />
     <Build Include="build\0046.Create_Table_Log.sql" />
+    <Build Include="build\0049.Create_Table_BoloesPremiacao.sql" />
+    <None Include="build\0067.Insert_Result_Premiacao.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="build\0008.Create_Table_UserMaritalStatus.sql" />

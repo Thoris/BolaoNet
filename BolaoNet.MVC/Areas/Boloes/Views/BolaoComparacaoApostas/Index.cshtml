@@ -1,0 +1,359 @@
+﻿@model BolaoNet.MVC.ViewModels.Bolao.BolaoComparacaoApostasViewModel
+@{
+    ViewBag.Title = "Comparação de Apostas ";
+    string currentGrupo = "";
+    string currentFase = "";
+    bool isGrouped = false;
+    bool isShowedImage = false;
+}
+
+@*@Html.HiddenFor(x => x.UserName)*@
+
+@using (Html.BeginForm("Filtrar", "BolaoComparacaoApostas", FormMethod.Post, new { }))
+{
+    @*@Html.HiddenFor(x => x.Filtros.UserName)*@
+    @*@Html.HiddenFor(x => x.UserNameBase)
+    @Html.HiddenFor(x => x.UserNameComparacao)*@
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+
+        <div class="col-ld-12">
+
+
+            <div class="col-xs-3">
+                <div class="form-group">
+                    <div class="input-group">
+                        @Html.DropDownListFor(x => x.UserNameBase, (SelectList)ViewBag.Membros, new { @class = "form-control input-sm" })
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="input-group">
+                        @Html.DropDownListFor(x => x.UserNameComparacao, (SelectList)ViewBag.Membros, new { @class = "form-control input-sm" })
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-3">
+                <div class="form-group">
+                    <div class="input-group">
+
+                        @Html.DropDownListFor(model => model.Filtros.FilterSelected, new SelectList(
+                          new List<Object>{
+                               new { value = 0, text = "Ontem, Hoje, Amanhã"  },
+                               new { value = 1 , text = "Últimos 7 dias" },
+                               new { value = 2 , text = "Próximos 7 dias" },
+                               new { value = 3 , text = "Último Mês" },
+                               new { value = 4 , text = "Próximo mês" },
+                               new { value = 5 , text = "Este mês" },
+                               //new { value = 6 , text = "Período" },
+                               new { value = 7 , text = "Rodada" },
+                               new { value = 8 , text = "Time" },
+                               new { value = 9 , text = "Fase" },
+                               new { value = 10 , text = "Grupo" }
+                            }, "value", "text", "Fase"), new { @id = "filtros", @class = "form-control input-sm" })
+
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="form-group">
+
+                    <div class="input-group" id="filtroRodadas"
+                         @if (Model.Filtros.FilterSelected != (int)BolaoNet.MVC.ViewModels.Bolao.FilterJogosViewModel.FilterJogoType.Rodada) { @Html.Raw("style=\"display: none;\"")  ; }>
+                        @Html.DropDownListFor(x => x.Filtros.Rodada, (SelectList)ViewBag.Rodadas, new { @class = "form-control input-sm" })
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+
+                    <div class="input-group" id="filtroFases"
+                         @if (Model.Filtros.FilterSelected != (int)BolaoNet.MVC.ViewModels.Bolao.FilterJogosViewModel.FilterJogoType.Fase) { @Html.Raw("style=\"display: none;\"")  ; }>
+                        @Html.DropDownListFor(x => x.Filtros.NomeFase, (SelectList)ViewBag.Fases, new { @class = "form-control input-sm" })
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+
+                    <div class="input-group" id="filtroTimes"
+                         @if (Model.Filtros.FilterSelected != (int)BolaoNet.MVC.ViewModels.Bolao.FilterJogosViewModel.FilterJogoType.Time) { @Html.Raw("style=\"display: none;\"")  ; }>
+                        @Html.DropDownListFor(x => x.Filtros.NomeTime, (SelectList)ViewBag.Times, new { @class = "form-control input-sm" })
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+
+                    <div class="input-group" id="filtroGrupos"
+                         @if (Model.Filtros.FilterSelected != (int)BolaoNet.MVC.ViewModels.Bolao.FilterJogosViewModel.FilterJogoType.Grupo) { @Html.Raw("style=\"display: none;\"")  ; }>
+                        @Html.DropDownListFor(x => x.Filtros.NomeGrupo, (SelectList)ViewBag.Grupos, new { @class = "form-control input-sm" })
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+
+                    <div class="input-group" id="filtroPeriodo"
+                         @if (Model.Filtros.FilterSelected != (int)BolaoNet.MVC.ViewModels.Bolao.FilterJogosViewModel.FilterJogoType.Periodo) { @Html.Raw("style=\"display: none;\"")  ; }>
+                        @Html.EditorFor(x => x.Filtros.DataInicial, new { htmlAttributes = new { @class = "form-control" } })
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+
+                        @Html.EditorFor(x => x.Filtros.DataFinal, new { htmlAttributes = new { @class = "form-control" } })
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <div class="form-group">
+                    <input type="submit" onclick="javascript:showWait();" value="Filtrar" class="btn btn-default" />
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+}
+
+@using (Html.BeginForm("SelectJogo", "ApostasUsuarios", FormMethod.Post, new { }))
+{
+    @Html.AntiForgeryToken()
+
+
+    @Html.HiddenFor(x => x.Filtros.DataFinal)
+    @Html.HiddenFor(x => x.Filtros.DataInicial)
+    @Html.HiddenFor(x => x.Filtros.FilterSelected)
+    @Html.HiddenFor(x => x.Filtros.NomeFase)
+    @Html.HiddenFor(x => x.Filtros.NomeGrupo)
+    @Html.HiddenFor(x => x.Filtros.NomeTime)
+    @Html.HiddenFor(x => x.Filtros.Rodada)
+
+
+
+    <div class="row">
+        <div class="col-ld-12">
+
+            
+            <table class="table table-hover">
+                <tbody>
+        
+                    @for (int c = 0; c < Model.Apostas.Count; c++)
+                    {
+                        @Html.HiddenFor(x => x.Apostas[c].NomeCampeonato)
+                        @Html.HiddenFor(x => x.Apostas[c].JogoId)
+
+                        isGrouped = false;
+                        if (string.Compare(Model.Apostas[c].NomeGrupo, currentGrupo, true) != 0)
+                        {
+                            if (!string.IsNullOrEmpty(Model.Apostas[c].NomeGrupo.Trim()))
+                            {
+                                <tr>                                   
+                                    <th scope="rowgroup" colspan="4">Grupo @(Model.Apostas[c].NomeGrupo)</th>                                                                          
+                                    <th scope="rowgroup" colspan="5" class="hidden-xs"></th>
+
+                                    <th scope="rowgroup" colspan="4">@Model.UserNameBase</th>
+                                    <th scope="rowgroup" colspan="1"></th>
+                                    <th scope="rowgroup" colspan="4">@Model.UserNameComparacao</th>
+                                </tr>
+                                isGrouped = true;
+                            }
+                            currentGrupo = Model.Apostas[c].NomeGrupo;
+                        }
+                        if (!isGrouped && string.IsNullOrEmpty(Model.Apostas[c].NomeGrupo.Trim()) &&
+                            string.Compare(Model.Apostas[c].NomeFase, currentFase, true) != 0)
+                        {                
+                            <tr>
+                                <th scope="rowgroup" colspan="4">Fase @(Model.Apostas[c].NomeFase)</th>
+                                <th scope="rowgroup" colspan="5" class="hidden-xs"></th>
+
+                                <th scope="rowgroup" colspan="4">@Model.UserNameBase</th>
+                                <th scope="rowgroup" colspan="1"></th>
+                                <th scope="rowgroup" colspan="4">@Model.UserNameComparacao</th>
+                            </tr>
+                            currentFase = Model.Apostas[c].NomeFase;
+                        } 
+                    <tr
+                        @if (Model.Apostas[c].ApostaTime1 == Model.Apostas[c].GolsTime1Usuario2 && 
+                            Model.Apostas[c].ApostaTime2 == Model.Apostas[c].GolsTime2Usuario2)
+                        {
+                            @Html.Raw("class=\"active\"");
+                        }
+                        else if (Model.Apostas[c].ApostaTime1 > Model.Apostas[c].ApostaTime2 && 
+                            Model.Apostas[c].GolsTime1Usuario2 > Model.Apostas[c].GolsTime2Usuario2 ||
+                            Model.Apostas[c].ApostaTime1 < Model.Apostas[c].ApostaTime2 &&
+                            Model.Apostas[c].GolsTime1Usuario2 < Model.Apostas[c].GolsTime2Usuario2)
+                        {
+                                @Html.Raw("class=\"warning\"");
+                        }                
+                        else
+                        { 
+                            @Html.Raw("class=\"success\"");
+                        }    
+                    >
+
+                    <th scope="row">@(Model.Apostas[c].JogoId)</th>
+                        <td class="text-center hidden-xs">@(Model.Apostas[c].DataJogo.ToString("dd/MM/yy HH:mm"))</td> 
+
+
+                        
+
+                        <td class="text-right hidden-xs">@(Model.Apostas[c].NomeTime1)</td>
+                        <td><img class="img-time" src="@(Model.Apostas[c].ImageTime1)" /></td>
+
+                        @if (Model.Apostas[c].IsLocked)
+                        {
+                            if (Model.Apostas[c].GolsTime1 != null)
+                            {
+                                <td class="text-center hidden-xs">@(Model.Apostas[c].GolsTime1)</td>
+                            }
+                            else
+                            {
+                                <td class="text-center hidden-xs">-</td>
+                            }
+                        }
+                        else
+                        {
+                            if (Model.Apostas[c].IsValido)
+                            {
+                                <td class="text-center hidden-xs">@(Model.Apostas[c].GolsTime1)</td>
+                            }
+                            else
+                            {
+                                <td class="text-center hidden-xs">-</td>
+                            }
+                        }
+                        @Html.HiddenFor(x => x.Apostas[c].GolsTime1)
+                        <td>x</td>
+                        @Html.HiddenFor(x => x.Apostas[c].GolsTime2)
+                        @if (Model.Apostas[c].IsLocked)
+                        {
+                            if (Model.Apostas[c].GolsTime2 != null)
+                            {
+                                <td class="text-center hidden-xs">@(Model.Apostas[c].GolsTime2)</td>
+                            }
+                            else
+                            {
+                                <td class="text-center hidden-xs">-</td>
+                            }
+                        }
+                        else
+                        {
+                            if (Model.Apostas[c].IsValido)
+                            {
+                                <td class="text-center hidden-xs">@(Model.Apostas[c].GolsTime2)</td>
+                            }
+                            else
+                            {
+                                <td class="text-center hidden-xs">-</td>
+                            }
+                        }
+
+                        <td><img class="img-time" src="@(Model.Apostas[c].ImageTime2)" /></td>
+                        <td class="text-left hidden-xs">@(Model.Apostas[c].NomeTime2)</td>
+
+                         
+
+
+                        <td>
+                            <strong>@Model.Apostas[c].ApostaTime1</strong>
+                        </td>
+                        <td><strong>x</strong></td>
+                        <td>
+                            <strong>@Model.Apostas[c].ApostaTime2</strong>
+                        </td>
+
+                        <td>
+
+                            @if (Model.Apostas[c].Pontos != null && Model.Apostas[c].Pontos != 0)
+                            {
+                                <i class="fa fa-plus-circle"
+                                   style="color:@BolaoNet.MVC.Helpers.ColorPontosHelper.GetColorPontos(Model.Apostas[c].Pontos)"
+                                   aria-hidden="true"></i>
+                            }
+                            <strong style="color:@BolaoNet.MVC.Helpers.ColorPontosHelper.GetColorPontos(Model.Apostas[c].Pontos)">
+                                @(Model.Apostas[c].Pontos)
+                            </strong>
+
+                        </td>
+
+                        <td>
+                            <a href="@Url.Action("Index", "ApostasJogo", new { area= "Boloes", id = @Model.Apostas[c].JogoId})">
+                                <span class="glyphicon glyphicon-list-alt fa-lg"></span>
+                            </a>
+                        </td>
+
+
+
+                        <td>
+                            <strong>@Model.Apostas[c].GolsTime1Usuario2</strong>
+                        </td>
+                        <td><strong>x</strong></td>
+                        <td>
+                            <strong>@Model.Apostas[c].GolsTime2Usuario2</strong>
+                        </td>
+
+                        <td>
+
+                            @if (Model.Apostas[c].PontosUsuario2 != null && Model.Apostas[c].PontosUsuario2 != 0)
+                            {
+                                <i class="fa fa-plus-circle"
+                                   style="color:@BolaoNet.MVC.Helpers.ColorPontosHelper.GetColorPontos(Model.Apostas[c].PontosUsuario2)"
+                                   aria-hidden="true"></i>
+                            }
+                            <strong style="color:@BolaoNet.MVC.Helpers.ColorPontosHelper.GetColorPontos(Model.Apostas[c].PontosUsuario2)">
+                                @(Model.Apostas[c].PontosUsuario2)
+                            </strong>
+
+                        </td>
+
+
+
+                        @*<td class="hidden-xs">
+                            <img class="img-username" src="/Content/img/database/profiles/@(Model.Apostas[c].UserName).gif?time=@(DateTime.Now)" />
+                        </td>
+                        <td>
+                            @Model.Apostas[c].UserName
+                        </td>*@
+
+
+                    </tr>
+                    }      
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+
+}
+
+
+@section scripts
+{
+    <script>
+
+        $(document).ready(function () {
+            $('#filtros').change(function () {
+
+                $("#filtroRodadas").hide();
+                $("#filtroFases").hide();
+                $("#filtroTimes").hide();
+                $("#filtroGrupos").hide();
+                $("#filtroPeriodo").hide();
+
+                if ($(this).val() == 6) {//Periodo
+                    $("#filtroPeriodo").show();
+                }
+                else if ($(this).val() == 7) {//Rodada
+                    $("#filtroRodadas").show();
+                }
+                else if ($(this).val() == 8) {//Time
+                    $("#filtroTimes").show();
+                }
+                else if ($(this).val() == 9) {//Fase
+                    $("#filtroFases").show();
+                }
+                else if ($(this).val() == 10) {//Grupo
+                    $("#filtroGrupos").show();
+                }
+                //alert("value: " + $(this).val() + "   Text: " + $(this).find('option:selected').text());
+            });
+        })
+    </script>
+}
