@@ -8,7 +8,7 @@
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BolaoNet.Estatisticas.Calculo</RootNamespace>
-    <AssemblyName>BolaoNet.Estatisticas.Calculo</AssemblyName>
+    <AssemblyName>BolaoNet.Estatisticas.Calculo_</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

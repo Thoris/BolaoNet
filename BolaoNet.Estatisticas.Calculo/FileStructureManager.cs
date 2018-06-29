@@ -31,6 +31,7 @@ namespace BolaoNet.Estatisticas.Calculo
 
         #region Methods
 
+
         public void SaveJogoPossibilidades(string file, JogoInfo info)
         {
             if (System.IO.File.Exists(file))
@@ -709,99 +710,141 @@ namespace BolaoNet.Estatisticas.Calculo
 
             return res;
         }
+         
+        public List<ApostaPontos> CalculoJogoMultiplo(List<ApostaPontos> membros, List<JogoInfo> list, List<CriterioPontosTimes> criterioTimes, JogoPossibilidadeAgrupamento jogos, List<string> extras)
+        { 
+            List<ApostaPontos> pontos = new List<ApostaPontos>();
 
-        private List<ApostaPontos> GetPontosExtras2(List<ApostaPontos> membros, JogoPossibilidadeAgrupamento jogo, IList<ExtraJogoTime> extrasCheck, List<ApostaExtraInfo> extras, out Dictionary<int, int> posicoesExtrasFound)
-        {
-            List<ApostaPontos> res = membros.ToList();
-            for (int c = 0; c < res.Count; c++)
+            List<JogoInfo> jogosSimulacao = new List<JogoInfo>();
+
+            for (int c = 0; c < membros.Count; c++ )
             {
-                res[c].Pontos = 0;
+                ApostaPontos pt = membros[c].Clone();
+                pt.Pontos = 0;
+                pontos.Add(pt);
+            }
+             
+
+            List<JogoInfo> listJogos = new List<JogoInfo>();
+
+            //Calculo apenas a partir da semifinal
+            for (int c = 0; c < 4; c ++ )
+            {
+                listJogos.Add(list[list.Count - 1 - c].Clone());
             }
 
-
-            //Dictionary<int, int> posicoesExtrasFound = new Dictionary<int, int>();
-             posicoesExtrasFound = new Dictionary<int, int>();
-
-            //Para todas as possibilidades de ganhadores 
-            for (int i = 0; i < extrasCheck.Count; i++)
+            for (int c = 0; c < jogos.Jogos.Count; c++ )
             {
-                IList<JogoIdAgrupamento> agrupamento = new List<JogoIdAgrupamento>();
-
-                //Para os jogos que formam a possibilidade
-                for (int c = 0; c < extrasCheck[i].Possibilidades.Count; c++)
+                for (int i = 0; i < listJogos.Count; i ++)
                 {
-                    //Para as possibilidades do jogo analisado
-                    for (int l = 0; l < jogo.Jogos.Count; l++)
+                    if (jogos.Jogos[c].JogoId == listJogos[i].JogoId)
                     {
-                        //Se encontrou o jogo
-                        if (extrasCheck[i].Possibilidades[c].JogoId == jogo.Jogos[l].JogoId)
-                        {
-                            agrupamento.Add(jogo.Jogos[l]);
-                            break;
-                        }
+                        listJogos[i].GolsTime1 = jogos.Jogos[c].Gols1;
+                        listJogos[i].GolsTime2 = jogos.Jogos[c].Gols2;
+                        jogosSimulacao.Add(listJogos[i]);
+                         
+                        break;
+                    }
+                }
+            }
 
-                    }//end for l
+            ApplyNomeTime(listJogos, extras[0], 64, true);
+            ApplyNomeTime(listJogos, extras[1], 64, false);
+            ApplyNomeTime(listJogos, extras[2], 63, true);
+            ApplyNomeTime(listJogos, extras[3], 63, false);
 
-                }//end for c
+            return pontos;
+        }
 
-                bool found = true;
-                if (extrasCheck[i].Possibilidades.Count == agrupamento.Count)
+
+        private List<string> ApplyNomeTime(List<JogoInfo> list, string nomeTime, int jogoId, bool ganhador)
+        {
+            List<string> res = new List<string>();
+
+            for (int c = 0; c < list.Count; c++)
+            {
+                if (jogoId == list[c].JogoId)
                 {
-                    for (int c = 0; c < agrupamento.Count; c++)
+                    if (list[c].IsValid)
+                        break;
+
+                    if (ganhador)
                     {
-                        if (extrasCheck[i].Possibilidades[c].GanhadorTime1)
+                        if (list[c].GolsTime1 > list[c].GolsTime2)
                         {
-                            if (agrupamento[c].Gols1 <= agrupamento[c].Gols2)
+                            if (string.IsNullOrEmpty(list[c].NomeTime1))
                             {
-                                found = false;
-                                break;
+                                list[c].NomeTime1 = nomeTime;
+                                res.AddRange(ApplyNomeTime(list, nomeTime, list[c].PendenteIdTime1, list[c].PendenteTime1Ganhador));
                             }
                         }
-                        else if (extrasCheck[i].Possibilidades[c].GanhadorTime2)
+                        else if (list[c].GolsTime1 < list[c].GolsTime2)
                         {
-                            if (agrupamento[c].Gols1 >= agrupamento[c].Gols2)
+                            if (string.IsNullOrEmpty(list[c].NomeTime2))
                             {
-                                found = false;
-                                break;
-                            }
-                        }
-                        else
-                        {
-                            if (agrupamento[c].Gols1 != agrupamento[c].Gols2)
-                            {
-                                found = false;
-                                break;
+                                list[c].NomeTime2 = nomeTime;
+                                res.AddRange(ApplyNomeTime(list, nomeTime, list[c].PendenteIdTime2, list[c].PendenteTime2Ganhador));
                             }
                         }
                     }
-                }
-
-                if (found)
-                {
-                    for (int c = 0; c < extras.Count; c++)
+                    else
                     {
-                        if (extras[c].Posicao == extrasCheck[i].Posicao && !posicoesExtrasFound.ContainsKey(extras[c].Posicao))
+                        if (list[c].GolsTime1 < list[c].GolsTime2)
                         {
-                            for (int x = 0; x < extras[c].Possibilidades.Count; x++)
+                            if (string.IsNullOrEmpty(list[c].NomeTime1))
                             {
-                                if (string.Compare(extras[c].Possibilidades[x].NomeTime, extrasCheck[i].NomeTime, true) == 0)
-                                {
-                                    for (int l = 0; l < extras[c].Possibilidades[x].Pontos.Count; l++)
-                                    {
-                                        res[l].Pontos += extras[c].Possibilidades[x].Pontos[l].Pontos;
-                                    }
+                                list[c].NomeTime1 = nomeTime;
+                                res.AddRange(ApplyNomeTime(list, nomeTime, list[c].PendenteIdTime1, list[c].PendenteTime1Ganhador));
+                            }
+                        }
+                        else if (list[c].GolsTime1 > list[c].GolsTime2)
+                        {
+                            if (string.IsNullOrEmpty(list[c].NomeTime2))
+                            {
+                                list[c].NomeTime2 = nomeTime;
+                                res.AddRange(ApplyNomeTime(list, nomeTime, list[c].PendenteIdTime2, list[c].PendenteTime2Ganhador));
+                            }
+                        }
+                    }
 
-                                    posicoesExtrasFound.Add(extras[c].Posicao, i);
+                    if (list[c].GolsTime1 == list[c].GolsTime2)
+                    {
+                        if (!string.IsNullOrEmpty(list[c].NomeTime1))
+                            res.Add(list[c].NomeTime1);
+                        if (!string.IsNullOrEmpty(list[c].NomeTime2))
+                            res.Add(list[c].NomeTime2);
+
+                       
+                        List<string> temp1 = ApplyNomeTime(list, nomeTime, list[c].PendenteIdTime1, list[c].PendenteTime1Ganhador);
+                        if (string.IsNullOrEmpty(list[c].NomeTime1))
+                        {
+                            for (int i = 0; i < temp1.Count; i++)
+                            {
+                                if (string.Compare(temp1[i], nomeTime, true) == 0)
+                                {
+                                    list[c].NomeTime1 = nomeTime;
+                                    return new List<string>();
+                                }
+                            }
+                        }
+
+                        List<string> temp2 = ApplyNomeTime(list, nomeTime, list[c].PendenteIdTime2, list[c].PendenteTime2Ganhador);
+                        if (string.IsNullOrEmpty(list[c].NomeTime1))
+                        {
+                            for (int i = 0; i < temp2.Count; i++)
+                            {
+                                if (string.Compare(temp2[i], nomeTime, true) == 0)
+                                {
+                                    list[c].NomeTime2 = nomeTime;
+                                    return new List<string>();
                                 }
                             }
                         }
                     }
+
+                    break;
                 }
-
-            }//end for i
-
-
-
+            }
 
             return res;
         }
@@ -1118,7 +1161,16 @@ namespace BolaoNet.Estatisticas.Calculo
             #endregion
 
 
-            
+
+            //TODO: CALCULO DE POSICOES
+            for(int c=0; c < 4; c++)
+            {
+
+            }
+
+
+
+
             List<string> current = new List<string>();
             for (int c = 1; c <= 4; c++)
             {
@@ -1151,56 +1203,56 @@ namespace BolaoNet.Estatisticas.Calculo
             output.Add(current);
 
 
-                #region Comments
+            #region Comments
 
-                //List<int> ContadorPosicao = new List<int>();
-                //for (int c = 0; c < 4; c++)
-                //    ContadorPosicao.Add(-1);
+            //List<int> ContadorPosicao = new List<int>();
+            //for (int c = 0; c < 4; c++)
+            //    ContadorPosicao.Add(-1);
 
-                //List<string> timesValidacao = new List<string>();
-                //List<string> current = new List<string>();
+            //List<string> timesValidacao = new List<string>();
+            //List<string> current = new List<string>();
 
-                //int count = 0;
-                //int found = -1;
-                //do
-                //{
-                //    count = 0;
-                //    foreach (KeyValuePair<int, List<string>> entry in input)
-                //    {
-                //        if (entry.Value.Count > 1 && found < count)
-                //        {
-                //            found = count;
-                //        }
+            //int count = 0;
+            //int found = -1;
+            //do
+            //{
+            //    count = 0;
+            //    foreach (KeyValuePair<int, List<string>> entry in input)
+            //    {
+            //        if (entry.Value.Count > 1 && found < count)
+            //        {
+            //            found = count;
+            //        }
 
 
-                //        if (!current.Contains(entry.Value[0]))
-                //        {
-                //            current.Add(entry.Value[0]);
-                //        }
-                //        else
-                //        {
-                //            bool f = false;
-                //            for (int c = 0; c < entry.Value.Count; c++)
-                //            {
-                //                if (!current.Contains(entry.Value[c]))
-                //                {
-                //                    current.Add(entry.Value[c]);
-                //                    f = true;
-                //                    break;
-                //                }
-                //            }
-                //            if (!f)
-                //                current.Add("");
-                //        }
+            //        if (!current.Contains(entry.Value[0]))
+            //        {
+            //            current.Add(entry.Value[0]);
+            //        }
+            //        else
+            //        {
+            //            bool f = false;
+            //            for (int c = 0; c < entry.Value.Count; c++)
+            //            {
+            //                if (!current.Contains(entry.Value[c]))
+            //                {
+            //                    current.Add(entry.Value[c]);
+            //                    f = true;
+            //                    break;
+            //                }
+            //            }
+            //            if (!f)
+            //                current.Add("");
+            //        }
 
-                //        count++;
-                //    }
-                //}
-                //while (found >= 0 && count < 4);
+            //        count++;
+            //    }
+            //}
+            //while (found >= 0 && count < 4);
 
-                #endregion
+            #endregion
 
-                return output;
+            return output;
         }
 
         private List<ApostaPontos> GetPontuacao(List<ApostaPontos> classificacao, List<string> posicoes, List<ApostaExtraInfo> extras)
@@ -1264,11 +1316,17 @@ namespace BolaoNet.Estatisticas.Calculo
 
             for (int y = 0; y < extrasPosicoes.Count; y++)
             {
+                //Console.WriteLine(DateTime.Now.ToString() + " - " + "\t\t\t\t[" + (y + 1) + "/" + extrasPosicoes.Count + "]");
+
                 List<ApostaPontos> listExtra = listSoma.ToList();
                 for (int i = 0; i < extrasPosicoes[y].Count; i++)
                 {
                     listExtra[i].Pontos = listExtra[y].Pontos;
                 }
+
+                List<ApostaPontos> tempApostas = CalculoJogoMultiplo(listExtra, jogos, null, jogo, extrasPosicoes[y]);
+
+
 
                 List<ApostaPontos> list = listExtra.OrderByDescending(x => x.Pontos).ToList<ApostaPontos>();
 
@@ -1438,7 +1496,7 @@ namespace BolaoNet.Estatisticas.Calculo
             {
                 string fullFile = files[c];
 
-                 
+                Console.WriteLine(DateTime.Now.ToString() + " - \t\t[" +  + (c+1) + " / " + files.Length + "]"); 
 
 #if (COMPRESS_FILE)
                 FileInfo info = new FileInfo(fullFile);
@@ -1485,6 +1543,8 @@ namespace BolaoNet.Estatisticas.Calculo
                     {
                         if (jogoCurrent != null)
                         {
+                            //Console.WriteLine(DateTime.Now.ToString() + " - " + "\t\t\t\t[" + jogoCurrent.Jogos[0].Gols1 + "x" + jogoCurrent.Jogos[0].Gols2 + "]");
+
                             CheckUsuarioPontuacao(outputFile, jogoCurrent, classificacao, userName, extrasCheck, extras, jogos, ultimo, posicoes);                            
                         }
 
@@ -1832,6 +1892,8 @@ namespace BolaoNet.Estatisticas.Calculo
 
             for (int c = 0; c < files.Length; c++ )
             {
+
+                Console.WriteLine(DateTime.Now.ToString() +"\t\t\t[" + (c + 1) + " / " + files.Length + "]");
                 string fullFile = files[c];
 
                 int countUserName = 0;

@@ -606,3 +606,50 @@ EXEC	sp_Jogos_ResultInsert
 		@ValidadoBy = @ValidadoBy,
 		@ErrorNumber = @ErrorNumber OUTPUT,
 		@ErrorDescription = @ErrorDescription OUTPUT
+
+EXEC	sp_Jogos_ResultInsert 
+		@CurrentLogin = @ValidadoBy,
+		@CurrentDateTime = NULL,
+		@IdJogo = 43,
+		@NomeCampeonato = @NomeCampeonato,
+		@Gols1 = 2,
+		@Penaltis1 = NULL,
+		@Gols2 = 0,
+		@Penaltis2 = NULL,
+		@SetCurrentData = 1,
+		@ValidadoBy = @ValidadoBy,
+		@ErrorNumber = @ErrorNumber OUTPUT,
+		@ErrorDescription = @ErrorDescription OUTPUT
+
+EXEC	sp_Jogos_ResultInsert 
+		@CurrentLogin = @ValidadoBy,
+		@CurrentDateTime = NULL,
+		@IdJogo = 47,
+		@NomeCampeonato = @NomeCampeonato,
+		@Gols1 = 0,
+		@Penaltis1 = NULL,
+		@Gols2 = 1,
+		@Penaltis2 = NULL,
+		@SetCurrentData = 1,
+		@ValidadoBy = @ValidadoBy,
+		@ErrorNumber = @ErrorNumber OUTPUT,
+		@ErrorDescription = @ErrorDescription OUTPUT
+		
+EXEC	sp_Jogos_ResultInsert 
+		@CurrentLogin = @ValidadoBy,
+		@CurrentDateTime = NULL,
+		@IdJogo = 48,
+		@NomeCampeonato = @NomeCampeonato,
+		@Gols1 = 0,
+		@Penaltis1 = NULL,
+		@Gols2 = 1,
+		@Penaltis2 = NULL,
+		@SetCurrentData = 1,
+		@ValidadoBy = @ValidadoBy,
+		@ErrorNumber = @ErrorNumber OUTPUT,
+		@ErrorDescription = @ErrorDescription OUTPUT
+
+
+
+
+update jogos set nometime2 = 'Japão' where jogoid = 54

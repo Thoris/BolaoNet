@@ -36,6 +36,16 @@ namespace BolaoNet.Estatisticas.Calculo
 
         #region Methods
 
+        public ApostaPontos Clone()
+        {
+            ApostaPontos entry = new ApostaPontos();
+            entry.UserName = this.UserName;
+            entry.Pontos = this.Pontos;
+            entry.Gols1 = this.Gols1;
+            entry.Gols2 = this.Gols2;
+            entry.Posicao = this.Posicao;
+            return entry;
+        }
         public override string ToString()
         {
             string res = "[";

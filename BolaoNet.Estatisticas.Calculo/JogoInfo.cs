@@ -23,6 +23,7 @@ namespace BolaoNet.Estatisticas.Calculo
         public int PendenteIdTime2 { get; set; }
         public bool PendenteTime1Ganhador { get; set; }
         public bool PendenteTime2Ganhador { get; set; }
+        public DateTime DataJogo { get; set; }
 
         #endregion
 
@@ -46,6 +47,8 @@ namespace BolaoNet.Estatisticas.Calculo
             this.PendenteIdTime2 = jogo.PendenteIdTime2;
             this.PendenteTime1Ganhador = jogo.PendenteTime1Ganhador;
             this.PendenteTime2Ganhador = jogo.PendenteTime2Ganhador;
+
+            this.DataJogo = jogo.DataJogo;
         }
 
         #endregion
@@ -97,6 +100,7 @@ namespace BolaoNet.Estatisticas.Calculo
             info.PendenteIdTime2 = this.PendenteIdTime2;
             info.PendenteTime1Ganhador = this.PendenteTime1Ganhador;
             info.PendenteTime2Ganhador = this.PendenteTime2Ganhador;
+            info.DataJogo = this.DataJogo;
 
             return info;
         }
