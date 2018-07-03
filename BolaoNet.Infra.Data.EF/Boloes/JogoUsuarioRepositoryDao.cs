@@ -1827,7 +1827,29 @@ namespace BolaoNet.Infra.Data.EF.Boloes
                 return false;
         }
 
+        public IList<Domain.Entities.ValueObjects.StatClassificacaoVO> LoadEstatistica(string currentUserName, DateTime currentDateTime, Domain.Entities.Boloes.Bolao bolao)
+        {
+
+            var q =
+                from j in base.DataContext.Jogos                 
+                join ju in base.DataContext.JogosUsuarios 
+                  on j.JogoId equals ju.JogoId
+               where string.Compare (ju.NomeBolao, bolao.Nome, true) == 0
+                 && j.IsValido == true
+                orderby j.DataJogo, j.JogoId, ju.UserName
+                select new Domain.Entities.ValueObjects.StatClassificacaoVO()
+                {
+                     JogoId = j.JogoId,
+                     Pontos = ju.Pontos ?? 0,
+                     UserName = ju.UserName
+                };
+
+            return q.ToList();
+        }
+
         #endregion
+
+
 
     }
 }

@@ -106,6 +106,7 @@
     <Compile Include="ValueObjects\Reports\BolaoFinalVO.cs" />
     <Compile Include="ValueObjects\Reports\BolaoIniciarVO.cs" />
     <Compile Include="ValueObjects\Reports\BolaoMembroApostasVO.cs" />
+    <Compile Include="ValueObjects\StatClassificacaoVO.cs" />
     <Compile Include="ValueObjects\UserBoloesVO.cs" />
     <Compile Include="ValueObjects\UserMembroStatusVO.cs" />
     <Compile Include="ValueObjects\UserSaldoBolaoVO.cs" />

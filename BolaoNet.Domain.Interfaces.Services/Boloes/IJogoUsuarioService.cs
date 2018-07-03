@@ -65,6 +65,8 @@ namespace BolaoNet.Domain.Interfaces.Services.Boloes
             int pontosGolsTime2, int pontosCheio, bool isMultiploTime, int multiploTime);
 
         bool CorrecaoEliminatorias(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user);
-        
+
+        IList<Entities.ValueObjects.StatClassificacaoVO> LoadEstatistica(Domain.Entities.Boloes.Bolao bolao);
+        IList<List<Entities.ValueObjects.StatClassificacaoVO>> LoadIndiceEstatistica(Domain.Entities.Boloes.Bolao bolao);
     }
 }

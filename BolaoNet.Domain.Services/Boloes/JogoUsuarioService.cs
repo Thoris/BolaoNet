@@ -705,7 +705,119 @@ namespace BolaoNet.Domain.Services.Boloes
 
             return res;
         }
+        public IList<Entities.ValueObjects.StatClassificacaoVO> LoadEstatistica(Entities.Boloes.Bolao bolao)
+        {
+            if (bolao == null)
+                throw new ArgumentException("bolao");
+            if (string.IsNullOrEmpty(bolao.Nome))
+                throw new ArgumentException("bolao.Nome");
 
+
+            if (IsSaveLog)
+                CheckStart();
+
+            IList<Entities.ValueObjects.StatClassificacaoVO> res = Dao.LoadEstatistica(base.CurrentUserName, DateTime.Now, bolao);
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Carregamento de pontuação dos jogos para estatística [" + bolao.Nome + "] total: " + res.Count));
+            }
+
+            return res;
+        }
+        public IList<List<Entities.ValueObjects.StatClassificacaoVO>> LoadIndiceEstatistica(Entities.Boloes.Bolao bolao)
+        {
+            if (bolao == null)
+                throw new ArgumentException("bolao");
+            if (string.IsNullOrEmpty(bolao.Nome))
+                throw new ArgumentException("bolao.Nome");
+
+            IList<List<Entities.ValueObjects.StatClassificacaoVO>> res = new List<List<Entities.ValueObjects.StatClassificacaoVO>>();
+            if (IsSaveLog)
+                CheckStart();
+
+            IList<Entities.ValueObjects.StatClassificacaoVO> list = Dao.LoadEstatistica(base.CurrentUserName, DateTime.Now, bolao);
+
+            List<Entities.ValueObjects.StatClassificacaoVO> acumulativo = new List<Entities.ValueObjects.StatClassificacaoVO>();
+
+            List<Entities.ValueObjects.StatClassificacaoVO> current = new List<Entities.ValueObjects.StatClassificacaoVO>();
+
+            bool inicio = true;
+            int currentJogoId = -1;
+            int currentUserName = -1;
+            for (int c = 0; c < list.Count; c++)
+            {
+                if (list[c].JogoId != currentJogoId)
+                { 
+                    if (current.Count > 0)
+                    {
+                        OrganizarList(current);
+                        res.Add(current);
+                        inicio = false;
+                    }
+                    current = new List<Entities.ValueObjects.StatClassificacaoVO>();
+                    currentJogoId = list[c].JogoId;
+                    currentUserName = 0;
+                }
+
+                Entities.ValueObjects.StatClassificacaoVO entry = new Entities.ValueObjects.StatClassificacaoVO()
+                {
+                    UserName = list[c].UserName,
+                    Pontos = list[c].Pontos
+                };
+
+                if (!inicio)
+                {
+                    entry.Pontos += acumulativo[currentUserName].Pontos;
+                    acumulativo[currentUserName].Pontos += list[c].Pontos;
+                }
+                else
+                {
+                    acumulativo.Add(new Entities.ValueObjects.StatClassificacaoVO() { UserName = list[c].UserName, Pontos = list[c].Pontos });
+                }
+                current.Add(entry);
+
+                currentUserName++;
+
+            }
+
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Carregamento de índice de estatística [" + bolao.Nome + "] total: " + res.Count));
+            }
+
+            return res;
+        }
         #endregion    
+    
+        #region Methods
+
+        private void OrganizarList(List<Entities.ValueObjects.StatClassificacaoVO> list)
+        {
+            List<Entities.ValueObjects.StatClassificacaoVO> org = list.OrderByDescending(x => x.Pontos).ToList();
+
+            int currentPontos = -1;
+            int currentPosicao = 0;
+            for (int c=0; c< org.Count; c++)
+            {
+                if (org[c].Pontos != currentPontos)
+                {
+                    currentPontos = org[c].Pontos;
+                    currentPosicao++;
+                    org[c].Posicao = currentPosicao;
+                }
+                else
+                {
+                    org[c].Posicao = currentPosicao;
+                }
+            }
+
+            list = org.OrderBy( x => x.UserName).ToList();
+
+        }
+
+        #endregion
     }
 }

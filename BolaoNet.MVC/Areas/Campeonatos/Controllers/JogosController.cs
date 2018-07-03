@@ -183,7 +183,8 @@ namespace BolaoNet.MVC.Areas.Campeonatos.Controllers
             IList<Domain.Entities.Campeonatos.Jogo> list = Bind(
                 new Domain.Entities.ValueObjects.FilterJogosVO()
                 {
-                    Rodada = 1,
+                    DataInicial = DateTime.Now.AddDays(-1),
+                    DataFinal = DateTime.Now.AddDays(1),
                 });
             
 

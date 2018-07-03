@@ -89,7 +89,7 @@ else
                     <li @if (string.Compare(controllerName, "ClassificacaoApostas", true) == 0 && 
                             string.Compare(controllerArea, "Boloes", true) == 0)
                         { @Html.Raw("class=\"active\"")  }>
-                        <a href="/Boloes/ClassificacaoApostas/Index" onclick="javascript:showWait();"><i class="fa fa-bar-chart"></i><span class="nav-label">Classificação Apostas</span><span class="visible-xs-inline">Cl. Apostas</span></a>
+                        <a href="/Boloes/ClassificacaoApostas/Index" onclick="javascript:showWait();"><i class="fa fa-pie-chart"></i><span class="nav-label">Classificação Apostas</span><span class="visible-xs-inline">Cl. Apostas</span></a>
                     </li>
                     <li @if (string.Compare(controllerName, "ResultadosDificeis", true) == 0 && 
                             string.Compare(controllerArea, "Boloes", true) == 0)
@@ -116,7 +116,11 @@ else
                         { @Html.Raw("class=\"active\"")  }>
                         <a href="/Boloes/BolaoPremiacao/Index" onclick="javascript:showWait();"><i class="fa fa-money"></i><span class="nav-label">Premiação</span><span class="visible-xs-inline">Premiação</span></a>
                     </li>
-
+                    <li @if (string.Compare(controllerName, "IndiceEstatistico", true) == 0 && 
+                            string.Compare(controllerArea, "Boloes", true) == 0)
+                        { @Html.Raw("class=\"active\"")  }>
+                        <a href="/Boloes/IndiceEstatistico/Index" onclick="javascript:showWait();"><i class="fa fa-area-chart"></i><span class="nav-label">Colocações</span><span class="visible-xs-inline">Colocações</span></a>
+                    </li>
                     <li @if (string.Compare(controllerName, "BolaoHistorico", true) == 0 && 
                             string.Compare(controllerArea, "Boloes", true) == 0)
                         { @Html.Raw("class=\"active\"")  }>

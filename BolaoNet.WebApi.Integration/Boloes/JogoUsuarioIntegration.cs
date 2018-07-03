@@ -216,6 +216,18 @@ namespace BolaoNet.WebApi.Integration.Boloes
             return base.HttpPostApi<bool>(parameters, "CorrecaoEliminatorias");
         }
 
+        public IList<Domain.Entities.ValueObjects.StatClassificacaoVO> LoadEstatistica(Domain.Entities.Boloes.Bolao bolao)
+        {
+            return base.HttpPostApi<IList<Domain.Entities.ValueObjects.StatClassificacaoVO>>(
+                new Dictionary<string, string>(), bolao, "LoadEstatistica");
+        }
+
+        public IList<List<Domain.Entities.ValueObjects.StatClassificacaoVO>> LoadIndiceEstatistica(Domain.Entities.Boloes.Bolao bolao)
+        {
+            return base.HttpPostApi<IList<List<Domain.Entities.ValueObjects.StatClassificacaoVO>>>(
+                new Dictionary<string, string>(), bolao, "LoadIndiceEstatistica");
+        }
         #endregion
+
     }
 }

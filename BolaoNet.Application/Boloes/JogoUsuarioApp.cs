@@ -96,6 +96,18 @@ namespace BolaoNet.Application.Boloes
             return Service.CorrecaoEliminatorias(bolao, user);       
         }
 
+        public IList<Domain.Entities.ValueObjects.StatClassificacaoVO> LoadEstatistica(Domain.Entities.Boloes.Bolao bolao)
+        {
+            return Service.LoadEstatistica(bolao);   
+        }
+
+        public IList<List<Domain.Entities.ValueObjects.StatClassificacaoVO>> LoadIndiceEstatistica(Domain.Entities.Boloes.Bolao bolao)
+        {
+            return Service.LoadIndiceEstatistica(bolao);
+        }
+
         #endregion
+
+
     }
 }

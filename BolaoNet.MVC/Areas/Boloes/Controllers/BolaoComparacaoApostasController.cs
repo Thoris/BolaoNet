@@ -190,15 +190,16 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
             IList<BolaoComparacaoApostaJogoViewModel> list = Bind(
                 new Domain.Entities.ValueObjects.FilterJogosVO()
                 {
-                    Rodada = 1
+                    DataInicial = DateTime.Now.AddDays(-1),
+                    DataFinal = DateTime.Now.AddDays(1),
                 },
                 base.UserLogged.UserName,
                 base.UserLogged.UserName);
 
              
 
-            model.Filtros.FilterSelected = (int)ViewModels.Bolao.FilterJogosViewModel.FilterJogoType.Rodada;
-            model.Filtros.Rodada = 1;
+            model.Filtros.FilterSelected = (int)ViewModels.Bolao.FilterJogosViewModel.FilterJogoType.Ontem_Hoje_Amanha;
+            //model.Filtros.Rodada = 1;
             model.Apostas = list;
             model.UserNameComparacao = base.UserLogged.UserName;
 

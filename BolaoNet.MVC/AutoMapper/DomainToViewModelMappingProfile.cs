@@ -63,6 +63,7 @@ namespace BolaoNet.MVC.AutoMapper
 
 
             Mapper.CreateMap<ViewModels.Users.PaginaPrincipal.PaginaPrincipalGrupoComparacaoModelView, Domain.Entities.ValueObjects.BolaoGrupoComparacaoClassificacaoVO>();
+            Mapper.CreateMap<ViewModels.Bolao.IndiceEstatisticoSelecionadoViewModel, Domain.Entities.ValueObjects.BolaoGrupoComparacaoClassificacaoVO>();
 
 
             Mapper.CreateMap<ViewModels.Users.PaginaPrincipal.PaginaPrincipalProximaApostaViewModel, Domain.Entities.ValueObjects.JogoUsuarioVO>();

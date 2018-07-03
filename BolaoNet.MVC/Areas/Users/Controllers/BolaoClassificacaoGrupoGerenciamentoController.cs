@@ -3,6 +3,7 @@ using BolaoNet.MVC.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -84,9 +85,12 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
         {
             if (!string.IsNullOrEmpty(userName))
             {
+                byte[] bytes = Encoding.GetEncoding(1252).GetBytes(userName);
+                string userNameFix = Encoding.UTF8.GetString(bytes);
+
                 Domain.Entities.Boloes.BolaoMembroGrupo entry =
                     new Domain.Entities.Boloes.BolaoMembroGrupo(
-                        base.UserLogged.UserName, base.SelectedNomeBolao, userName);
+                        base.UserLogged.UserName, base.SelectedNomeBolao, userNameFix);
 
                 if (_bolaoMembroGrupoApp.Load(entry) == null)
                     _bolaoMembroGrupoApp.Insert(entry);
@@ -99,9 +103,12 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
 
             if (!string.IsNullOrEmpty(userName))
             {
+                byte[] bytes = Encoding.GetEncoding(1252).GetBytes(userName);
+                string userNameFix = Encoding.UTF8.GetString(bytes);
+
                 Domain.Entities.Boloes.BolaoMembroGrupo entry =
                     new Domain.Entities.Boloes.BolaoMembroGrupo(
-                        base.UserLogged.UserName, base.SelectedNomeBolao, userName);
+                        base.UserLogged.UserName, base.SelectedNomeBolao, userNameFix);
 
                 Domain.Entities.Boloes.BolaoMembroGrupo dataLoaded = _bolaoMembroGrupoApp.Load(entry);
                 if (dataLoaded != null)

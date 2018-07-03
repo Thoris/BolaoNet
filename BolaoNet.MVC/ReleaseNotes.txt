@@ -1,4 +1,10 @@
-﻿[2.1.0.0] - 27/06/2018
+﻿[2.1.0.1] - 02/07/2018
+* Correção da inclusão do resultado do jogo, sem a necessidade de penaltis quando não houver empates na fase eliminatória.
+* Nas páginas de jogos, comparação de resultados e apostas dos usuários, carregar os jogos usando o filtro : ontem, hoje e amanhã.
+* Correção de inclusão e exclusão dos usuários com caracteres especiais no grupo de comparação.
+* Inclusão da página de índice de colocação por jogo.
+
+[2.1.0.0] - 27/06/2018
 * Apresentação das bandeiras nos jogos dos usuários para a fase eliminatória.
 * Criação do módulo de comparação de resultados entre 2 participantes.
 * Apresentação da pontuação em negrito para a classificação e apostas dos usuários.

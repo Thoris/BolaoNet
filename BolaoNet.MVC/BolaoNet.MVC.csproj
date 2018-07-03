@@ -175,6 +175,7 @@
     <Compile Include="Areas\Boloes\Controllers\BolaoPremiacaoController.cs" />
     <Compile Include="Areas\Boloes\Controllers\ClassificacaoApostasController.cs" />
     <Compile Include="Areas\Boloes\Controllers\HistoricoPontosController.cs" />
+    <Compile Include="Areas\Boloes\Controllers\IndiceEstatisticoController.cs" />
     <Compile Include="Areas\Boloes\Controllers\ResultadosDificeisController.cs" />
     <Compile Include="Areas\Boloes\Controllers\SemAcertosController.cs" />
     <Compile Include="Areas\Campeonatos\CampeonatosAreaRegistration.cs" />
@@ -280,6 +281,8 @@
     <Content Include="Content\css\Jcrop.gif" />
     <Content Include="Content\css\jquery.Jcrop.css" />
     <Content Include="Content\css\jquery.Jcrop.min.css" />
+    <Content Include="Content\css\nv.d3.css" />
+    <Content Include="Content\css\nv.d3.min.css" />
     <Content Include="Content\css\open-sans.css" />
     <Content Include="Content\css\patterns\header-profile-skin-1.png" />
     <Content Include="Content\css\patterns\header-profile-skin-2.png" />
@@ -379,6 +382,8 @@
     <Content Include="Content\js\bootstrap.js" />
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\css3-mediaqueries.js" />
+    <Content Include="Content\js\d3.js" />
+    <Content Include="Content\js\d3.min.js" />
     <Content Include="Content\js\demo\chartjs-demo.js" />
     <Content Include="Content\js\demo\dashboard-demo.js" />
     <Content Include="Content\js\demo\flot-demo.js" />
@@ -477,6 +482,8 @@
     <Content Include="Areas\Users\Views\AccountHome\RssFeed.cshtml" />
     <Content Include="Areas\Boloes\Views\BolaoComparacaoApostas\Index.cshtml" />
     <Content Include="Areas\Boloes\Views\BolaoPremiacao\Index.cshtml" />
+    <Content Include="Areas\Boloes\Views\IndiceEstatistico\Index.cshtml" />
+    <Content Include="Content\css\nv.d3.min.css.map" />
     <None Include="Content\js\jquery-1.10.2.intellisense.js" />
     <Content Include="Content\js\jquery-1.10.2.js" />
     <Content Include="Content\js\jquery-1.10.2.min.js" />
@@ -502,6 +509,8 @@
     <Content Include="Content\js\modernizr.tivit.js" />
     <Content Include="Content\js\modernizr.tivit2.js" />
     <Content Include="Content\js\modernizr.tivit3.js" />
+    <Content Include="Content\js\nv.d3.js" />
+    <Content Include="Content\js\nv.d3.min.js" />
     <Content Include="Content\js\plugins\blueimp\jquery.blueimp-gallery.min.js" />
     <Content Include="Content\js\plugins\chartist\._chartist.min.js" />
     <Content Include="Content\js\plugins\chartist\chartist.min.js" />
@@ -1087,6 +1096,8 @@
     <Content Include="Content\js\plugins\chartist\chartist.min.js.map" />
     <Content Include="Content\js\plugins\diff_match_patch\COPYING" />
     <Content Include="Content\js\plugins\justified-gallery\README.md" />
+    <Content Include="Content\js\nv.d3.js.map" />
+    <Content Include="Content\js\nv.d3.min.js.map" />
     <None Include="Content\vendor\jquery\jquery-1.10.2.intellisense.js" />
     <Content Include="Content\vendor\jquery\jquery-1.10.2.js" />
     <Content Include="Content\vendor\jquery\jquery-1.10.2.min.js" />
@@ -1203,7 +1214,9 @@
     <Content Include="Views\Shared\Fragments\Menus\_AdminMenu.cshtml" />
     <Content Include="Views\Shared\Fragments\Menus\_CampeonatoMenu.cshtml" />
     <Content Include="Views\Account\RegistrationFormNoBolao.cshtml" />
-    <None Include="Properties\PublishProfiles\Release.pubxml" />
+    <None Include="Properties\PublishProfiles\Release.pubxml">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

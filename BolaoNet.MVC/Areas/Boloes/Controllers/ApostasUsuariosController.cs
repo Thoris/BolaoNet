@@ -190,7 +190,8 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
             IList<Domain.Entities.ValueObjects.JogoUsuarioVO> list = Bind(
                 new Domain.Entities.ValueObjects.FilterJogosVO ()
                 {
-                    Rodada = 1
+                    DataInicial = DateTime.Now.AddDays(-1),
+                    DataFinal = DateTime.Now.AddDays(1),
                 },
                 base.UserLogged.UserName) ;
             
@@ -200,8 +201,8 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
                 IList<ViewModels.Bolao.ApostaJogoUsuarioEntryViewModel>>
                 (list);
 
-            model.Filtros.FilterSelected = (int)ViewModels.Bolao.FilterJogosViewModel.FilterJogoType.Rodada;
-            model.Filtros.Rodada = 1;
+            model.Filtros.FilterSelected = (int)ViewModels.Bolao.FilterJogosViewModel.FilterJogoType.Ontem_Hoje_Amanha;
+            //model.Filtros.Rodada = 1;
             model.Apostas = data;
             model.UserName = base.UserLogged.UserName;
 

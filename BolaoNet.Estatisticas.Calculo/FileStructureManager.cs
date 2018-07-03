@@ -753,7 +753,27 @@ namespace BolaoNet.Estatisticas.Calculo
             ApplyNomeTime(listJogos, extras[2], 63, true);
             ApplyNomeTime(listJogos, extras[3], 63, false);
 
-            return pontos;
+
+            for (int c = 0; c < jogos.Jogos.Count; c++ )
+            {
+                if (string.Compare (listJogos[c].NomeTime1, "Brasil", true) == 0 || string.Compare (listJogos[c].NomeTime2, "Brasil", true) == 0)
+                {
+                    for (int i = 0; i < listJogos[c].Possibilidades.Count; i++)
+                    {
+                        if (listJogos[c].Possibilidades[i].GolsTime1 == listJogos[c].GolsTime1 && 
+                            listJogos[c].Possibilidades[i].GolsTime2 == listJogos[c].GolsTime2)
+                        {
+                            for (int y = 0; y < pontos.Count; y++ )
+                            {
+                                pontos[y].Pontos += listJogos[c].Possibilidades[i].Pontuacao[y].Pontos;
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+
+                return pontos;
         }
 
 
@@ -1111,13 +1131,117 @@ namespace BolaoNet.Estatisticas.Calculo
             return res;
         }
 
-        private List<List<string>> GetPossibilidades(Dictionary<int, List<string>> input)
+        public List<List<string>> GetPossibilidades(List<List<string>> outList, List<List<string>> input, int pos, List<string> current)
+        {
+            List<List<string>> output = new List<List<string>>();
+
+            List<string> currentNew = new List<string>();
+
+            if (pos > 0)
+            {
+                for (int c = 0; c < current.Count; c++)
+                    currentNew.Add(current[c]);
+            }
+
+            int i = pos;
+            //for (int i = pos; i < input.Count; i++)
+            {
+                for (int c = 0; c < input[i].Count; c++)
+                {
+
+                    //#region Debug
+
+                    //for (int h = 0; h < i; h++)
+                    //{
+                    //    Console.Write("\t");
+                    //}
+                    //Console.Write("[" + pos + "][" + i + "][" + c + "]  ");
+                    ////Console.Write("[" + i + "][" + c + "] ");
+                    //Console.Write(input[i][c]);
+                    //Console.WriteLine();
+
+                    //#endregion
+
+
+                    if (!currentNew.Contains(input[i][c]))
+                    {
+                        currentNew.Add(input[i][c]);
+
+                        if (currentNew.Count < input.Count)
+                        {
+                            List<List<string>> temp = GetPossibilidades(outList, input, pos + 1, currentNew);
+
+                            currentNew.RemoveAt(currentNew.Count - 1);
+                        }
+                        else
+                        {
+                            List<string> list = new List<string>();
+                            for (int x = 0; x < currentNew.Count; x++)
+                                list.Add(currentNew[x]);
+
+
+                            bool found = false;
+
+                            #region Procurando se o item já está na lista
+                            for (int x = 0; x < outList.Count; x++)
+                            {
+                                bool f = true;
+                                for (int l = 0; l < outList[x].Count; l++)
+                                {
+                                    if (outList[x][l] != list[l])
+                                    {
+                                        f = false;
+                                        break;
+                                    }
+                                }
+
+                                if (f)
+                                {
+                                    found = true;
+                                    break;
+                                }
+                            }
+                            #endregion
+
+                            if (!found)
+                            {
+                                outList.Add(list);
+
+
+                                //#region Debug
+                                //Console.Write("*****************************");
+                                //for (int y = 0; y < list.Count; y++)
+                                //{
+                                //    Console.Write("(" + list[y] + ")");
+                                //}
+                                //Console.WriteLine("*****************************\n");
+                                //#endregion
+                            }
+
+                            currentNew.RemoveAt(currentNew.Count - 1);
+                        }
+
+                    }
+                }
+            }
+            return output;
+        }
+
+        public List<List<string>> GetPossibilidades(Dictionary<int, List<string>> input)
         {
             List<List<string>> output = new List<List<string>>();
             //List<int> posicoes = new List<int>();
 
             //List<List<string>> possibilidades = new List<List<string>>();
 
+            List<List<string>> inData = new List<List<string>>();
+            List<List<string>> outData = new List<List<string>>();
+            foreach (KeyValuePair<int, List<string>> entry in input)
+            {
+                inData.Add(entry.Value);
+            }
+            output = GetPossibilidades(outData, inData, 0, new List<string>());
+            return outData;
 
             bool duplicacao = false;
 
@@ -1284,6 +1408,63 @@ namespace BolaoNet.Estatisticas.Calculo
 
         }
 
+        public void CalcularPercentual (string outputFile, string basePath)
+        {
+            if (System.IO.File.Exists(outputFile))
+                System.IO.File.Delete(outputFile);
+
+
+            StreamWriter writer = new StreamWriter(outputFile);
+
+            string[] files = System.IO.Directory.GetFiles(basePath);
+
+            for (int c = 0; c < files.Length; c++ )
+            {
+            
+                int[] total = new int[4];
+                FileInfo info = new FileInfo(files[c]);
+                string userName = info.Name.Replace(info.Extension, "");
+
+                StreamReader reader = new StreamReader(files[c]);
+
+                while (reader.Peek()>=0)
+                {
+                    string line = reader.ReadLine();
+
+                    string[] split = line.Split(new char[] { '|', '=' });
+
+                    if (string.Compare (split[1], userName, true) == 0)
+                    {
+                        int posicao = int.Parse (split[0]);
+                        if (posicao <= 3)
+                        {
+                            total[posicao - 1]++;
+                        }
+                        else
+                        {
+                            total[total.Length - 1]++;
+                        }
+                    }
+                }
+
+
+                writer.WriteLine("*" + userName);
+                for (int i = 0; i < total.Length; i++ )
+                {
+                    writer.WriteLine((i+1).ToString() + ":" + total[i]);
+                    
+                    if (i == total.Length - 1)
+                    {
+                        writer.WriteLine("Ultimo:" + total[total.Length - 1]);
+                    }
+                }
+
+                reader.Close();
+            }
+
+            writer.Close();
+        }
+
         private bool CheckUsuarioPontuacao(string outputFile, JogoPossibilidadeAgrupamento jogo, List<MembroClassificacao> classificacao, string userName, IList<ExtraJogoTime> extrasCheck, List<ApostaExtraInfo> extras, List<JogoInfo> jogos, bool ultimo, params int[] posicao)
         { 
             Dictionary<int, int> posicoesExtrasFound = null;
@@ -1318,15 +1499,35 @@ namespace BolaoNet.Estatisticas.Calculo
             {
                 //Console.WriteLine(DateTime.Now.ToString() + " - " + "\t\t\t\t[" + (y + 1) + "/" + extrasPosicoes.Count + "]");
 
-                List<ApostaPontos> listExtra = listSoma.ToList();
-                for (int i = 0; i < extrasPosicoes[y].Count; i++)
+                #region Cálculo de múltiplo de times
+                List<ApostaPontos> tempApostas = CalculoJogoMultiplo(listSoma, jogos, null, jogo, extrasPosicoes[y]);
+                  
+                List<ApostaPontos> listExtra = new List<ApostaPontos>();
+                for (int i = 0; i < listSoma.Count; i++ )
                 {
-                    listExtra[i].Pontos = listExtra[y].Pontos;
+                    listExtra.Add(listSoma[i].Clone());
+                    listExtra[i].Pontos += tempApostas[i].Pontos;
                 }
+                #endregion
 
-                List<ApostaPontos> tempApostas = CalculoJogoMultiplo(listExtra, jogos, null, jogo, extrasPosicoes[y]);
+                #region Cálculo de pontos extras
 
+                for (int i = 0; i < extras.Count; i++)
+                {
+                    for (int l = 0; l < extras[i].Possibilidades.Count; l++)
+                    {
+                        if (string.Compare (extras[i].Possibilidades[l].NomeTime, extrasPosicoes[y][i], true) == 0)
+                        {
+                            for (int u = 0; u < extras[i].Possibilidades[l].Pontos.Count; u++ )
+                            {
+                                listExtra[u].Pontos += extras[i].Possibilidades[l].Pontos[u].Pontos;
+                            }
 
+                            break;
+                        }
+                    }
+                }
+                #endregion
 
                 List<ApostaPontos> list = listExtra.OrderByDescending(x => x.Pontos).ToList<ApostaPontos>();
 

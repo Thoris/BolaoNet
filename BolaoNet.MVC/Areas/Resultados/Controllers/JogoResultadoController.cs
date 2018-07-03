@@ -63,10 +63,13 @@ namespace BolaoNet.MVC.Areas.Resultados.Controllers
             isError = !ModelState.IsValid;
             if (model.IsDesempate == true)
             {
-                if (model.PenaltisTime1 == model.PenaltisTime2)
+                if (model.GolsTime1 == model.GolsTime2)
                 {
-                    ModelState.AddModelError("", "Precisa haver um desempate dos penaltis.");
-                    isError = true;
+                    if (model.PenaltisTime1 == model.PenaltisTime2)
+                    {
+                        ModelState.AddModelError("", "Precisa haver um desempate dos penaltis.");
+                        isError = true;
+                    }
                 }
             }
 

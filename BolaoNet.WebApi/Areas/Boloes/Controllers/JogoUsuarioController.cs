@@ -305,6 +305,22 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
             return Service.CorrecaoEliminatorias(bolao, user);
         }
 
+        [HttpPost]
+        public IList<Domain.Entities.ValueObjects.StatClassificacaoVO> LoadEstatistica(Domain.Entities.Boloes.Bolao bolao)
+        {
+            return Service.LoadEstatistica(bolao );
+        }
+
+        [HttpPost]
+        public IList<List<Domain.Entities.ValueObjects.StatClassificacaoVO>> LoadIndiceEstatistica(Domain.Entities.Boloes.Bolao bolao)
+        {
+            return Service.LoadIndiceEstatistica(bolao);
+        }
+
         #endregion        
+    
+
+    
+
     }
 }

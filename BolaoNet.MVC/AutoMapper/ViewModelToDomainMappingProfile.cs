@@ -62,6 +62,8 @@ namespace BolaoNet.MVC.AutoMapper
             Mapper.CreateMap<Domain.Entities.ValueObjects.UserSaldoBolaoVO, ViewModels.Users.PaginaPrincipal.PaginaPrincipalBolaoSaldoDevedorViewModel>();
 
             Mapper.CreateMap<Domain.Entities.ValueObjects.BolaoGrupoComparacaoClassificacaoVO, ViewModels.Users.PaginaPrincipal.PaginaPrincipalGrupoComparacaoModelView>();
+            Mapper.CreateMap<Domain.Entities.ValueObjects.BolaoGrupoComparacaoClassificacaoVO, ViewModels.Bolao.IndiceEstatisticoSelecionadoViewModel>();
+
 
             Mapper.CreateMap<Domain.Entities.ValueObjects.JogoUsuarioVO, ViewModels.Users.PaginaPrincipal.PaginaPrincipalProximaApostaViewModel>();
             Mapper.CreateMap<Domain.Entities.ValueObjects.JogoUsuarioVO, ViewModels.Users.PaginaPrincipal.PaginaPrincipalPontosObtidosViewModel>();

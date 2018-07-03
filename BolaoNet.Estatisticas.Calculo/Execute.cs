@@ -327,7 +327,6 @@ namespace BolaoNet.Estatisticas.Calculo
 
             #endregion
 
-            #region Times Jogos
 
             ///////////////////////////////
             //// DEBUG
@@ -336,11 +335,9 @@ namespace BolaoNet.Estatisticas.Calculo
             list[61 - 1].NomeTime1 = "França";
             list[61 - 1].NomeTime2 = "Brasil";
             list[62 - 1].NomeTime1 = "Espanha";
-            list[62 - 1].NomeTime2 = "Alemanha";
+            list[62 - 1].NomeTime2 = "Croácia";
 
-
-            // list[63 - 1].NomeTime1 = "Brasil";
-            //list[63 - 1].NomeTime2 = "Alemanha";
+            #region Times Jogos
 
             string fileTimes = System.IO.Path.Combine(outputPath, "times.txt");
 
@@ -349,6 +346,24 @@ namespace BolaoNet.Estatisticas.Calculo
 
 
             #endregion
+
+            //List<List<string>> d = new List<List<string>>();
+            //List<List<string>> outData = new List<List<string>>();
+            //d.Add(new List<string>());
+            //d.Add(new List<string>());
+            //d.Add(new List<string>());
+            //d.Add(new List<string>());
+            //d[0].Add("A");
+            //d[0].Add("B");
+            //d[1].Add("A");
+            //d[1].Add("B");
+            //d[2].Add("C");
+            //d[2].Add("D");
+            //d[3].Add("C");
+            //d[3].Add("D");
+            //d[3].Add("E");
+            //manager.GetPossibilidades(outData, d, 0, new List<string>());
+            //List<List<string>> o = outData;
 
             #region Classificacao
 
@@ -376,18 +391,17 @@ namespace BolaoNet.Estatisticas.Calculo
 
             #region Simulação de Jogo
 
-            int jogoIdSimul = 59;
-            List<JogoIdAgrupamento> jogosSimulacao = new List<JogoIdAgrupamento>();
-            jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 59, Gols1 = 1, Gols2 = 2 });
-            jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 61, Gols1 = 1, Gols2 = 2 });
-            jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 62, Gols1 = 1, Gols2 = 2 });
-            jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 63, Gols1 = 1, Gols2 = 2 });
-            jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 64, Gols1 = 1, Gols2 = 2 });
+            //int jogoIdSimul = 59;
+            //List<JogoIdAgrupamento> jogosSimulacao = new List<JogoIdAgrupamento>();
+            //jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 59, Gols1 = 1, Gols2 = 2 });
+            //jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 61, Gols1 = 1, Gols2 = 2 });
+            //jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 62, Gols1 = 1, Gols2 = 2 });
+            //jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 63, Gols1 = 1, Gols2 = 2 });
+            //jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 64, Gols1 = 1, Gols2 = 2 });
 
 
 
             #endregion
-
 
             #region Possibilidades de usuários
 
@@ -440,6 +454,13 @@ namespace BolaoNet.Estatisticas.Calculo
                     //    break;
                 }
             }
+
+            #endregion
+
+            #region Percentual
+
+            string percentualFile = System.IO.Path.Combine(outputPath, "percentual.txt");
+            manager.CalcularPercentual(percentualFile, System.IO.Path.Combine( apostas, jogoIdCheck.ToString()));
 
             #endregion
 
