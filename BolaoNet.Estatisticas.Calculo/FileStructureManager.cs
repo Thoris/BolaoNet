@@ -1485,12 +1485,16 @@ namespace BolaoNet.Estatisticas.Calculo
  
             #region Atribuição de pontos
 
-            List<ApostaPontos> listSoma = jogo.Pontuacao;
+            //List<ApostaPontos> listSoma = jogo.Pontuacao;
+            List<ApostaPontos> listSoma = new List<ApostaPontos>();
             int posFound = 0;
 
             for (int c=0; c < classificacao.Count; c++)
             {
-                listSoma[c].Pontos += classificacao[c].Pontuacao ?? 0;
+                ApostaPontos pt = jogo.Pontuacao[c].Clone();
+                pt.Pontos += classificacao[c].Pontuacao ?? 0;
+                //listSoma[c].Pontos += classificacao[c].Pontuacao ?? 0;
+                listSoma.Add(pt);
             }
 
             #endregion
@@ -1535,12 +1539,14 @@ namespace BolaoNet.Estatisticas.Calculo
 
                 int currentPosicao = 0;
                 int currentPontos = -1;
+                int countPosicao = 0;
 
                 for (int c = 0; c < list.Count; c++)
                 {
+                    countPosicao++;
                     if (list[c].Pontos != currentPontos)
                     {
-                        currentPosicao++;
+                        currentPosicao = countPosicao;
                         list[c].Posicao = currentPosicao;
                         currentPontos = list[c].Pontos;
                     }

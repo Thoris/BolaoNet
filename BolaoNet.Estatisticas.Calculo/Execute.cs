@@ -332,10 +332,10 @@ namespace BolaoNet.Estatisticas.Calculo
             //// DEBUG
             ///////////////////////////////
 
-            list[61 - 1].NomeTime1 = "França";
-            list[61 - 1].NomeTime2 = "Brasil";
-            list[62 - 1].NomeTime1 = "Espanha";
-            list[62 - 1].NomeTime2 = "Croácia";
+            //list[61 - 1].NomeTime1 = "França";
+            //list[61 - 1].NomeTime2 = "Brasil";
+            //list[62 - 1].NomeTime1 = "Espanha";
+            //list[62 - 1].NomeTime2 = "Croácia";
 
             #region Times Jogos
 
@@ -1102,12 +1102,14 @@ namespace BolaoNet.Estatisticas.Calculo
 
             int currentPosicao = 0;
             int currentPontos = -1;
+            int countPosicao = 0;
 
             for (int c = 0; c < pt.Count; c++)
             {
+                countPosicao++;
                 if (pt[c].Pontos != currentPontos)
                 {
-                    currentPosicao++;
+                    currentPosicao = countPosicao;
                     pt[c].Posicao = currentPosicao;
                     currentPontos = pt[c].Pontos;
                 }
@@ -1122,7 +1124,7 @@ namespace BolaoNet.Estatisticas.Calculo
 
             for (int c = 0; c < pt.Count; c++)
             {
-                writer.WriteLine(pt[c].UserName + "=" + pt[c].Pontos);
+                writer.WriteLine(pt[c].Posicao + "|" + pt[c].UserName + "=" + pt[c].Pontos);
             }
 
             writer.Close();

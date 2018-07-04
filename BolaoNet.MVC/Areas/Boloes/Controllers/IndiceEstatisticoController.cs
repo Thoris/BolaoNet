@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿//#define DEBUG_LIST
+
+using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -128,9 +130,26 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
                _bolaoMembroClassificacaoApp.LoadClassificacao(base.SelectedBolao, null);
 
 
+#if DEBUG_LIST
+
+            System.IO.StreamWriter writer = new System.IO.StreamWriter(@"C:\temp\list.txt");
+            for (int c = 0; c < rodadas[0].Count; c++ )
+            {
+                writer.WriteLine();
+                writer.Write(rodadas[0][c].UserName);
+                for (int i = 0; i < rodadas.Count; i++)
+                {
+                    writer.Write("|" + rodadas[i][c].Pontos + "," + rodadas[i][c].Posicao);
+                }
+            }
+            writer.Close();
+
+#endif
+
+
             model.Classificacao =
                 Mapper.Map<
-                IList<Domain.Entities.ValueObjects.BolaoClassificacaoVO>, 
+                IList<Domain.Entities.ValueObjects.BolaoClassificacaoVO>,
                 IList<ViewModels.Bolao.ClassificacaoViewModel>>
                 (list);
 

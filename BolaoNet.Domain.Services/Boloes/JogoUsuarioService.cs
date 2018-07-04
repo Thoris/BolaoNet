@@ -781,7 +781,11 @@ namespace BolaoNet.Domain.Services.Boloes
 
             }
 
-
+            if (current.Count > 0 )
+            {
+                OrganizarList(current);
+                res.Add(current);
+            }
 
             if (IsSaveLog)
             {
@@ -800,12 +804,14 @@ namespace BolaoNet.Domain.Services.Boloes
 
             int currentPontos = -1;
             int currentPosicao = 0;
+            int countPosicao = 0;
             for (int c=0; c< org.Count; c++)
             {
+                countPosicao++;
                 if (org[c].Pontos != currentPontos)
                 {
                     currentPontos = org[c].Pontos;
-                    currentPosicao++;
+                    currentPosicao = countPosicao;
                     org[c].Posicao = currentPosicao;
                 }
                 else
