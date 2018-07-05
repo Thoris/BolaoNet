@@ -368,7 +368,7 @@ namespace BolaoNet.Estatisticas.Calculo
             #region Classificacao
 
             //TODO: Retirar o comentário para efetuar o cálculo correto dos pontos
-            //SavePontuacaoClassificacao(System.IO.Path.Combine(outputPath, "Classificacao_Pontos"), list);
+            SavePontuacaoClassificacao(System.IO.Path.Combine(outputPath, "Classificacao_Pontos"), list);
 
             string fileClassificacaoValidacao = System.IO.Path.Combine(outputPath, "ClassValidacao.txt");
             SaveClassificacao(fileClassificacaoValidacao, list);
@@ -409,7 +409,7 @@ namespace BolaoNet.Estatisticas.Calculo
             if (!System.IO.Directory.Exists(apostas))
                 System.IO.Directory.CreateDirectory(apostas);
 
-
+            
             //TODO: Alterar o identificador do jogo para buscar as possibilidades
             int jogoIdCheck = 61;
 
@@ -422,19 +422,24 @@ namespace BolaoNet.Estatisticas.Calculo
                     break;
                 }
             }
-            
+            #region Cálculo de pontos dos usuários
             //for (int i = listBase.Count - 1; i >= 0; i--)
             {
                 int jogoId = listBase[posId].JogoId;
                 string jogoPath = System.IO.Path.Combine(outputPath, jogoId.ToString());
                 string apostasPath = System.IO.Path.Combine(apostas, jogoId.ToString());
 
-                if (System.IO.Directory.Exists(apostasPath))
-                {
-                    System.IO.Directory.Delete(apostasPath, true);
-                }
 
+                string baseApostas = System.IO.Path.Combine(outputPath, "TempApostas");
+
+                if (System.IO.Directory.Exists(apostasPath))                
+                    System.IO.Directory.Delete(apostasPath, true);               
                 System.IO.Directory.CreateDirectory(apostasPath);
+
+
+                if (System.IO.Directory.Exists(baseApostas))
+                    System.IO.Directory.Delete(baseApostas, true);                
+                System.IO.Directory.CreateDirectory(baseApostas);
 
                 for (int c = 0; c < agrIndex.Pontuacao.Count; c++)
                 {
@@ -445,7 +450,7 @@ namespace BolaoNet.Estatisticas.Calculo
 
                     string outputApostas = System.IO.Path.Combine(apostasPath, userName + ".txt");
 
-                    manager.CheckPossibilidades(outputApostas, indexFile, jogoPath, membros, userName, extras, listBase, possibilidadeExtras, true, 1, 2, 3);
+                    manager.CheckPossibilidades(baseApostas, outputApostas, indexFile, jogoPath, membros, userName, extras, listBase, possibilidadeExtras, true, 1, 2, 3);
 
 
                     Console.WriteLine(DateTime.Now.ToString() + " - Jogo[" + jogoId + "] - Análise de Apostas do Usuário: " + userName + ". FIM");
@@ -454,13 +459,19 @@ namespace BolaoNet.Estatisticas.Calculo
                     //    break;
                 }
             }
+            #endregion
 
             #endregion
 
+            Console.WriteLine (DateTime.Now.ToString() + " - Iniciando análise de quantidade de possibilidades.");
             #region Percentual
 
-            string percentualFile = System.IO.Path.Combine(outputPath, "percentual.txt");
-            manager.CalcularPercentual(percentualFile, System.IO.Path.Combine( apostas, jogoIdCheck.ToString()));
+            string percentualFile = System.IO.Path.Combine(outputPath, "contagem.txt");
+            manager.CalcularQuantidade(percentualFile, System.IO.Path.Combine( apostas, jogoIdCheck.ToString()));
+
+            Console.WriteLine (DateTime.Now.ToString() + " - Iniciando análise de quantidade de possibilidades. FIM");
+            string percFile = System.IO.Path.Combine(outputPath, "percentual.txt");
+            manager.CalcularPercentual(percFile, percentualFile);
 
             #endregion
 
@@ -1157,6 +1168,26 @@ namespace BolaoNet.Estatisticas.Calculo
                         writer.Write(jogos[c].JogoId + "|" + jogos[c].NomeTime1 + " [ " + jogos[c].GolsTime1 + " ]x[ " + jogos[c].GolsTime2 + " ] " + jogos[c].NomeTime2 +
                             " [" + jogos[c].Possibilidades[0].Pontuacao[i].Gols1 + " x " + jogos[c].Possibilidades[0].Pontuacao[i].Gols2 + "] => " + 
                             jogos[c].Possibilidades[0].Pontuacao[i].Pontos);
+
+                        writer.WriteLine();
+
+                        writer.Close();
+
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < jogos[c].Possibilidades[0].Pontuacao.Count; i++)
+                    {
+                        string file = System.IO.Path.Combine(folder, jogos[c].Possibilidades[0].Pontuacao[i].UserName + ".txt");
+                        StreamWriter writer = null;
+                        if (System.IO.File.Exists(file))
+                            writer = new StreamWriter(file, true);
+                        else
+                            writer = new StreamWriter(file);
+
+                        writer.Write(jogos[c].JogoId + "|" + jogos[c].NomeTime1 + " [ "  + " ]x[ " +  " ] " + jogos[c].NomeTime2 +
+                            " [" + jogos[c].Possibilidades[0].Pontuacao[i].Gols1 + " x " + jogos[c].Possibilidades[0].Pontuacao[i].Gols2 + "]  ");
 
                         writer.WriteLine();
 

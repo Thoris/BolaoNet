@@ -1,5 +1,7 @@
-﻿//#define WRITE_BINARY
+﻿//#define DEBUG_PONTOS_USUARIOS
+//#define WRITE_BINARY
 #define COMPRESS_FILE
+
 
 using ICSharpCode.SharpZipLib.Core;
 using ICSharpCode.SharpZipLib.Zip;
@@ -756,24 +758,27 @@ namespace BolaoNet.Estatisticas.Calculo
 
             for (int c = 0; c < jogos.Jogos.Count; c++ )
             {
-                if (string.Compare (listJogos[c].NomeTime1, "Brasil", true) == 0 || string.Compare (listJogos[c].NomeTime2, "Brasil", true) == 0)
+                if (jogos.Jogos[c].JogoId == 63 || jogos.Jogos[c].JogoId == 64)
                 {
-                    for (int i = 0; i < listJogos[c].Possibilidades.Count; i++)
+                    if (string.Compare(listJogos[c].NomeTime1, "Brasil", true) == 0 || string.Compare(listJogos[c].NomeTime2, "Brasil", true) == 0)
                     {
-                        if (listJogos[c].Possibilidades[i].GolsTime1 == listJogos[c].GolsTime1 && 
-                            listJogos[c].Possibilidades[i].GolsTime2 == listJogos[c].GolsTime2)
+                        for (int i = 0; i < listJogos[c].Possibilidades.Count; i++)
                         {
-                            for (int y = 0; y < pontos.Count; y++ )
+                            if (listJogos[c].Possibilidades[i].GolsTime1 == listJogos[c].GolsTime1 &&
+                                listJogos[c].Possibilidades[i].GolsTime2 == listJogos[c].GolsTime2)
                             {
-                                pontos[y].Pontos += listJogos[c].Possibilidades[i].Pontuacao[y].Pontos;
+                                for (int y = 0; y < pontos.Count; y++)
+                                {
+                                    pontos[y].Pontos += listJogos[c].Possibilidades[i].Pontuacao[y].Pontos;
+                                }
+                                break;
                             }
-                            break;
                         }
                     }
                 }
             }
 
-                return pontos;
+            return pontos;
         }
 
 
@@ -1408,7 +1413,7 @@ namespace BolaoNet.Estatisticas.Calculo
 
         }
 
-        public void CalcularPercentual (string outputFile, string basePath)
+        public void CalcularQuantidade (string outputFile, string basePath)
         {
             if (System.IO.File.Exists(outputFile))
                 System.IO.File.Delete(outputFile);
@@ -1453,10 +1458,10 @@ namespace BolaoNet.Estatisticas.Calculo
                 {
                     writer.WriteLine((i+1).ToString() + ":" + total[i]);
                     
-                    if (i == total.Length - 1)
-                    {
-                        writer.WriteLine("Ultimo:" + total[total.Length - 1]);
-                    }
+                    //if (i == total.Length - 1)
+                    //{
+                    //    writer.WriteLine("Ultimo:" + total[total.Length - 1]);
+                    //}
                 }
 
                 reader.Close();
@@ -1465,7 +1470,96 @@ namespace BolaoNet.Estatisticas.Calculo
             writer.Close();
         }
 
-        private bool CheckUsuarioPontuacao(string outputFile, JogoPossibilidadeAgrupamento jogo, List<MembroClassificacao> classificacao, string userName, IList<ExtraJogoTime> extrasCheck, List<ApostaExtraInfo> extras, List<JogoInfo> jogos, bool ultimo, params int[] posicao)
+        public void CalcularPercentual (string outputFile, string baseCount)
+        {
+            if (System.IO.File.Exists(outputFile))
+                System.IO.File.Delete(outputFile);
+
+            List<string> userName = new List<string>();
+            List<long> pt1 = new List<long>();
+            List<long> pt2 = new List<long>();
+            List<long> pt3 = new List<long>();
+            List<long> ult = new List<long>();
+
+            long tot1 = 0;
+            long tot2 = 0;
+            long tot3 = 0;
+            long totUlt = 0;
+
+            StreamWriter writer = new StreamWriter(outputFile);
+            StreamReader reader = new StreamReader(baseCount);
+
+            
+            while (reader.Peek () >= 0)
+            {
+                string line = reader.ReadLine();
+
+                if (string.IsNullOrEmpty(line))
+                    continue;
+
+                //Username
+                if (line.StartsWith("*"))
+                {
+                    string usr = line.Substring(1);
+                    userName.Add(usr);
+                }
+                else
+                {
+                    string[] split = line.Split(new char[] { ':' });
+                    long totl = long.Parse(split[1]);
+                    if (split[0] == "1")
+                    {
+                        pt1.Add(totl);
+                        tot1 += totl;
+                    }
+                    else if (split[0] == "2")
+                    {
+                        pt2.Add(totl);
+                        tot2 += totl;
+                    }
+                    else if (split[0] == "3")
+                    {
+
+                        pt3.Add(totl);
+                        tot3 += totl;
+                    }
+                    else
+                    {
+                        ult.Add(totl);
+                        totUlt += totl;
+                    }
+                    
+                }
+            }
+
+            for (int c = 0; c < userName.Count; c++ )
+            {
+                writer.Write(userName[c] + "|");
+                double calc_1 = 0;
+                if (tot1 > 0)
+                    calc_1 = (double)((double)pt1[c] / (double)tot1 * (double)100);
+                writer.Write(calc_1.ToString("0.0000") + " %|");
+                double calc_2 = 0;
+                if (tot2 > 0)
+                    calc_2 = (double)((double)pt2[c] / (double)tot2 * (double)100);
+                writer.Write(calc_2.ToString("0.0000") + " %|");
+                double calc_3 = 0;
+                if (tot3 > 0)
+                    calc_3 = (double)((double)pt3[c] / (double)tot3 * (double)100);
+                writer.Write(calc_3.ToString("0.0000") + " %|");
+                double calc_ult = 0;
+                if (totUlt > 0)
+                    calc_ult = (double)((double)ult[c] / (double)totUlt * (double)100);
+                writer.Write(calc_ult.ToString("0.0000") + "%");
+                writer.WriteLine();
+            }
+
+
+                reader.Close();
+            writer.Close();
+        }
+
+        private bool CheckUsuarioPontuacao(StreamWriter writerUsuario, string outputFolder, string outputFile, JogoPossibilidadeAgrupamento jogo, List<MembroClassificacao> classificacao, string userName, IList<ExtraJogoTime> extrasCheck, List<ApostaExtraInfo> extras, List<JogoInfo> jogos, bool ultimo, params int[] posicao)
         { 
             Dictionary<int, int> posicoesExtrasFound = null;
             //List<ApostaExtraInfo> info = extras.ToList();
@@ -1492,7 +1586,7 @@ namespace BolaoNet.Estatisticas.Calculo
             for (int c=0; c < classificacao.Count; c++)
             {
                 ApostaPontos pt = jogo.Pontuacao[c].Clone();
-                pt.Pontos += classificacao[c].Pontuacao ?? 0;
+                //pt.Pontos += classificacao[c].Pontuacao ?? 0;
                 //listSoma[c].Pontos += classificacao[c].Pontuacao ?? 0;
                 listSoma.Add(pt);
             }
@@ -1501,72 +1595,233 @@ namespace BolaoNet.Estatisticas.Calculo
 
             for (int y = 0; y < extrasPosicoes.Count; y++)
             {
-                //Console.WriteLine(DateTime.Now.ToString() + " - " + "\t\t\t\t[" + (y + 1) + "/" + extrasPosicoes.Count + "]");
-
-                #region Cálculo de múltiplo de times
-                List<ApostaPontos> tempApostas = CalculoJogoMultiplo(listSoma, jogos, null, jogo, extrasPosicoes[y]);
-                  
-                List<ApostaPontos> listExtra = new List<ApostaPontos>();
-                for (int i = 0; i < listSoma.Count; i++ )
+                List<ApostaPontos> list = null;
+                string jogoBaseId = outputFolder + "\\";
+                for (int p = 0; p < jogo.Jogos.Count; p++)
                 {
-                    listExtra.Add(listSoma[i].Clone());
-                    listExtra[i].Pontos += tempApostas[i].Pontos;
+                    jogoBaseId += "_" + jogo.Jogos[p].JogoId + "-" + jogo.Jogos[p].Gols1 + "x" + jogo.Jogos[p].Gols2 + "";
                 }
-                #endregion
+                jogoBaseId += "_" + y + ".txt";
 
-                #region Cálculo de pontos extras
-
-                for (int i = 0; i < extras.Count; i++)
+                if (System.IO.File.Exists(jogoBaseId))
                 {
-                    for (int l = 0; l < extras[i].Possibilidades.Count; l++)
-                    {
-                        if (string.Compare (extras[i].Possibilidades[l].NomeTime, extrasPosicoes[y][i], true) == 0)
-                        {
-                            for (int u = 0; u < extras[i].Possibilidades[l].Pontos.Count; u++ )
-                            {
-                                listExtra[u].Pontos += extras[i].Possibilidades[l].Pontos[u].Pontos;
-                            }
+                    list = LoadClassificacaoJogo(jogoBaseId);
+                }
+                else
+                {
+                    //Console.WriteLine(DateTime.Now.ToString() + " - " + "\t\t\t\t[" + (y + 1) + "/" + extrasPosicoes.Count + "]");
 
-                            break;
+                    #region Cálculo de múltiplo de times
+                    List<ApostaPontos> tempApostas = CalculoJogoMultiplo(listSoma, jogos, null, jogo, extrasPosicoes[y]);
+
+
+                    List<ApostaPontos> listExtra = tempApostas;
+                    //List<ApostaPontos> listExtra = new List<ApostaPontos>();
+                    //for (int i = 0; i < tempApostas.Count; i++)
+                    //{
+                    //    listExtra.Add(listSoma[i].Clone());
+                    //    listExtra[i].Pontos += tempApostas[i].Pontos;
+                    //    //listExtra.Add(tempApostas[i].Clone());
+                    //}
+                    #endregion
+
+                    #region Debug
+#if (DEBUG_PONTOS_USUARIOS)
+                    string jogoFileId = @"C:\temp\tempApostas\";
+                    for (int p = 0; p < jogo.Jogos.Count; p++)
+                    {
+                        jogoFileId += "_" + jogo.Jogos[p].JogoId + "-" + jogo.Jogos[p].Gols1 + "x" + jogo.Jogos[p].Gols2 + "";
+                    }
+                    jogoFileId += "_" + y + ".txt";
+
+                    if (System.IO.File.Exists(jogoFileId))
+                        System.IO.File.Delete(jogoFileId);
+
+                    StreamWriter debugPontos = new StreamWriter(jogoFileId);
+
+                    List<List<int>> ptJogos = new List<List<int>>();
+                    List<int> ptJogosMultiplo = new List<int>();
+                    List<List<int>> ptExtras = new List<List<int>>();
+
+                    List<List<int>> gols1 = new List<List<int>>();
+                    List<List<int>> gols2 = new List<List<int>>();
+
+                    List<int> ptTotal = new List<int>();
+
+                    for (int p = 0; p < jogo.Jogos.Count; p++)
+                    {
+                        ptJogos.Add(new List<int>());
+
+                        gols1.Add(new List<int>());
+                        gols2.Add(new List<int>());
+
+                        int pos = -1;
+                        for (int h = 0; h < jogos.Count; h++)
+                        {
+                            if (jogo.Jogos[p].JogoId == jogos[h].JogoId)
+                            {
+                                pos = h;
+                                break;
+                            }
+                        }
+                        for (int h = 0; h < jogos[pos].Possibilidades.Count; h++)
+                        {
+                            if (jogos[pos].Possibilidades[h].GolsTime1 == jogo.Jogos[p].Gols1 &&
+                                jogos[pos].Possibilidades[h].GolsTime2 == jogo.Jogos[p].Gols2)
+                            {
+                                for (int a = 0; a < jogos[pos].Possibilidades[h].Pontuacao.Count; a++)
+                                {
+                                    ptJogos[ptJogos.Count - 1].Add(jogos[pos].Possibilidades[h].Pontuacao[a].Pontos);
+
+                                    gols1[gols1.Count - 1].Add(jogos[pos].Possibilidades[h].Pontuacao[a].Gols1);
+                                    gols2[gols2.Count - 1].Add(jogos[pos].Possibilidades[h].Pontuacao[a].Gols2);
+
+                                    if (p == 0)
+                                    {
+                                        ptTotal.Add(jogos[pos].Possibilidades[h].Pontuacao[a].Pontos);
+                                    }
+                                    else
+                                    {
+                                        ptTotal[a] += jogos[pos].Possibilidades[h].Pontuacao[a].Pontos;
+                                    }
+                                }
+
+
+                                break;
+                            }
                         }
                     }
-                }
-                #endregion
-
-                List<ApostaPontos> list = listExtra.OrderByDescending(x => x.Pontos).ToList<ApostaPontos>();
-
-                #region Calculando posições
-
-                int currentPosicao = 0;
-                int currentPontos = -1;
-                int countPosicao = 0;
-
-                for (int c = 0; c < list.Count; c++)
-                {
-                    countPosicao++;
-                    if (list[c].Pontos != currentPontos)
+                    for (int p = 0; p < tempApostas.Count; p++)
                     {
-                        currentPosicao = countPosicao;
-                        list[c].Posicao = currentPosicao;
-                        currentPontos = list[c].Pontos;
+                        ptJogosMultiplo.Add(tempApostas[p].Pontos);
+                        ptTotal[p] += tempApostas[p].Pontos;
                     }
-                    else
-                    {
-                        list[c].Posicao = currentPosicao;
-                    }
-                }
-                #endregion
+#endif
+                    #endregion
 
+                    #region Cálculo de pontos extras
+
+                    for (int i = 0; i < extras.Count; i++)
+                    {
+#if (DEBUG_PONTOS_USUARIOS)
+                        ptExtras.Add(new List<int>());
+#endif
+
+                        for (int l = 0; l < extras[i].Possibilidades.Count; l++)
+                        {
+                            if (string.Compare(extras[i].Possibilidades[l].NomeTime, extrasPosicoes[y][i], true) == 0)
+                            {
+                                for (int u = 0; u < extras[i].Possibilidades[l].Pontos.Count; u++)
+                                {
+                                    listExtra[u].Pontos += extras[i].Possibilidades[l].Pontos[u].Pontos;
+
+#if (DEBUG_PONTOS_USUARIOS)
+                                    ptExtras[ptExtras.Count - 1].Add(extras[i].Possibilidades[l].Pontos[u].Pontos);
+                                    ptTotal[u] += extras[i].Possibilidades[l].Pontos[u].Pontos;
+#endif
+                                }
+
+                                break;
+                            }
+                        }
+                    }
+                    #endregion
+
+                    #region Debug
+#if (DEBUG_PONTOS_USUARIOS)
+
+                    debugPontos.Write("*");
+                    for (int p = 0; p < jogo.Jogos.Count; p++)
+                    {
+                        debugPontos.Write(jogo.Jogos[p].JogoId + "=" + jogo.Jogos[p].Gols1 + "x" + jogo.Jogos[p].Gols2 + "|");
+                    }
+                    debugPontos.WriteLine();
+
+                    debugPontos.Write("#");
+                    for (int p = 0; p < extrasPosicoes[y].Count; p++)
+                    {
+                        debugPontos.Write(extrasPosicoes[y][p] + "|");
+                    }
+                    debugPontos.WriteLine();
+
+                    for (int p = 0; p < ptJogosMultiplo.Count; p++)
+                    {
+                        debugPontos.Write(tempApostas[p].UserName);
+                        for (int a = 0; a < ptJogos.Count; a++)
+                        {
+                            debugPontos.Write("|" + jogo.Jogos[a].JogoId + "] " + ptJogos[a][p].ToString() + " (" + gols1[a][p] + "x" + gols2[a][p] + ") ");
+                        }
+                        debugPontos.Write("-");
+                        for (int a = 0; a < ptExtras.Count; a++)
+                        {
+                            if (ptExtras[a].Count > p)
+                                debugPontos.Write("| " + ptExtras[a][p] + "");
+                            else
+                                debugPontos.Write("| " + "0");
+                        }
+                        //debugPontos.Write(" # " + ptJogosMultiplo[p] + " => " + (listExtra[p].Pontos - listSoma[p].Pontos + jogo.Pontuacao[p].Pontos));
+                        debugPontos.Write(" # " + ptJogosMultiplo[p] + " => [ " + ptTotal[p] + " ] <=> " + (listExtra[p].Pontos + listSoma[p].Pontos) +
+                            " [" + listExtra[p].Pontos + "]-[" + listSoma[p].Pontos + "] " + classificacao[p].Pontuacao); // + classificacao[p].UserName);
+
+                        debugPontos.WriteLine();
+                    }
+#endif
+                    #endregion
+
+                    #region Computando pontuação final
+
+                    for (int c = 0; c < listExtra.Count; c++)
+                    {
+                        listExtra[c].Pontos += listSoma[c].Pontos + (classificacao[c].Pontuacao ?? 0);
+                    }
+
+                    #endregion
+
+                    list = listExtra.OrderByDescending(x => x.Pontos).ToList<ApostaPontos>();
+
+                    #region Calculando posições
+
+                    int currentPosicao = 0;
+                    int currentPontos = -1;
+                    int countPosicao = 0;
+
+                    for (int c = 0; c < list.Count; c++)
+                    {
+                        countPosicao++;
+                        if (list[c].Pontos != currentPontos)
+                        {
+                            currentPosicao = countPosicao;
+                            list[c].Posicao = currentPosicao;
+                            currentPontos = list[c].Pontos;
+                        }
+                        else
+                        {
+                            list[c].Posicao = currentPosicao;
+                        }
+                    }
+                    #endregion
+
+#if (DEBUG_PONTOS_USUARIOS)
+                    debugPontos.Close();
+                    SaveClassificacaoJogo(jogoBaseId, jogo, extrasPosicoes[y], list);
+#endif
+                }
                 bool found = false;
 
+                
                 #region Verificação do último
+
+
+                int currentPos = 0;
+                int currentPon = -1;
+                
                 if (ultimo)
                 {
-                    currentPontos = list[list.Count - 1].Pontos;
-                    currentPosicao = list[list.Count - 1].Posicao;
+                    currentPon = list[list.Count - 1].Pontos;
+                    currentPos = list[list.Count - 1].Posicao;
                     for (int i = list.Count - 1; i >= 0; i--)
                     {
-                        if (list[i].Posicao != currentPosicao)
+                        if (list[i].Posicao != currentPos)
                             break;
 
                         if (string.Compare(list[i].UserName, userName, true) == 0)
@@ -1608,21 +1863,87 @@ namespace BolaoNet.Estatisticas.Calculo
 
                 if (found)
                 {
-                    SaveUsuarioPontuacao(outputFile, jogo, list, currentPosicao, extrasCheck, extrasPosicoes[y], ultimo, posicao);
+                    SaveUsuarioPontuacao(writerUsuario, outputFile, jogo, list, currentPos, extrasCheck, extrasPosicoes[y], ultimo, posicao);
                 }
+                 
+
+
             }
 
             return true;
         }
-        
-        private void SaveUsuarioPontuacao(string file, JogoPossibilidadeAgrupamento jogo, List<ApostaPontos> list, int currentPosicao, IList<ExtraJogoTime> extrasCheck, List<string> posicoesExtrasFound, bool ultimo, params int[] posicao)
-        {
-            StreamWriter writer = null;
 
-            if (System.IO.File.Exists(file))
-                writer = new StreamWriter(file, true);
-            else
-                writer = new StreamWriter(file);
+        private List<ApostaPontos> LoadClassificacaoJogo(string file)
+        {
+            List<ApostaPontos> res = new List<ApostaPontos>();
+            StreamReader reader = new StreamReader(file);
+
+            while (reader.Peek() >= 0)
+            {
+                string line = reader.ReadLine();
+
+                if (string.IsNullOrEmpty(line))
+                    continue;
+
+                if (line.StartsWith("*") || line.StartsWith("#"))
+                    continue;
+
+                string[] split = line.Split(new char[] { '|' });
+
+                ApostaPontos pt = new ApostaPontos();
+                pt.Posicao = int.Parse(split[0]);
+                pt.UserName = split[1];
+                pt.Pontos = int.Parse (split[2]);
+
+                res.Add(pt);
+            }
+
+
+            reader.Close();
+            return res;
+        }
+
+        private void SaveClassificacaoJogo(string file, JogoPossibilidadeAgrupamento jogo, List<string> posicoesExtrasFound, List<ApostaPontos> list)
+        {
+            StreamWriter writer = new StreamWriter(file);
+
+            writer.Write("#");
+            for (int c = 0; c < posicoesExtrasFound.Count; c++ )
+            {
+                writer.Write(posicoesExtrasFound[c] + "|");
+            }
+            writer.WriteLine();
+
+            writer.Write("*");
+            for (int c = 0; c < jogo.Jogos.Count; c++ )
+            {
+                if (c > 0)
+                    writer.Write(";");
+                writer.Write(jogo.Jogos[c].JogoId + "=" + jogo.Jogos[c].Gols1 + "x" + jogo.Jogos[c].Gols2);
+            }
+            writer.WriteLine();
+
+            for (int c = 0; c < list.Count; c++ )
+            {
+                writer.WriteLine(list[c].Posicao + "|" + list[c].UserName + "|" + list[c].Pontos);
+            }
+
+            writer.Close();
+
+        }
+
+        private void SaveUsuarioPontuacao(StreamWriter writer, string file, JogoPossibilidadeAgrupamento jogo, List<ApostaPontos> list, int currentPosicao, IList<ExtraJogoTime> extrasCheck, List<string> posicoesExtrasFound, bool ultimo, params int[] posicao)
+        {
+            //StreamWriter writer = null;
+            bool loadWriter = true;
+            if (writer == null)
+            {
+                loadWriter = false;
+                if (System.IO.File.Exists(file))
+                    writer = new StreamWriter(file, true);
+                else
+                    writer = new StreamWriter(file);
+            }
 
             writer.Write("*");
             for (int c = 0; c < jogo.Jogos.Count; c++)
@@ -1633,19 +1954,14 @@ namespace BolaoNet.Estatisticas.Calculo
             }
 
             writer.Write(" |");
-            for (int c = 0; c < posicoesExtrasFound.Count; c++ )
+            for (int c = 0; c < posicoesExtrasFound.Count; c++)
             {
                 writer.Write(" " + (c + 1) + " : " + posicoesExtrasFound[c] + " |");
             }
 
-                //writer.Write(" |");
-                //foreach (KeyValuePair<int, int> entry in posicoesExtrasFound)
-                //{
-                //    writer.Write(" " + extrasCheck[entry.Value].Posicao + " : " + extrasCheck[entry.Value].NomeTime + " |");
-                //}
 
 
-                writer.WriteLine();
+            writer.WriteLine();
 
             for (int c = 0; c < list.Count; c++)
             {
@@ -1678,10 +1994,11 @@ namespace BolaoNet.Estatisticas.Calculo
                 }
             }
 
-            writer.Close();
+            if (!loadWriter)
+                writer.Close();
         }
         
-        public IList<JogoIdAgrupamento> CheckPossibilidades(string outputFile, string indexFile, string path, List<MembroClassificacao> classificacao, string userName,List<ApostaExtraInfo> extras, List<JogoInfo> jogos, IList<ExtraJogoTime> extrasCheck, bool ultimo, params int [] posicoes)
+        public IList<JogoIdAgrupamento> CheckPossibilidades(string outputPath, string outputFile, string indexFile, string path, List<MembroClassificacao> classificacao, string userName,List<ApostaExtraInfo> extras, List<JogoInfo> jogos, IList<ExtraJogoTime> extrasCheck, bool ultimo, params int [] posicoes)
         {
             IList<JogoIdAgrupamento> list = new List<JogoIdAgrupamento>();
 
@@ -1691,6 +2008,13 @@ namespace BolaoNet.Estatisticas.Calculo
                 return null;
 
             IList<string> indexList = LoadIndexFile(indexFile);
+
+
+            StreamWriter writerUsuario = null;
+            if (System.IO.File.Exists(outputFile))
+                writerUsuario = new StreamWriter(outputFile, true);
+            else
+                writerUsuario = new StreamWriter(outputFile);
 
 
 #if (COMPRESS_FILE)
@@ -1752,7 +2076,7 @@ namespace BolaoNet.Estatisticas.Calculo
                         {
                             //Console.WriteLine(DateTime.Now.ToString() + " - " + "\t\t\t\t[" + jogoCurrent.Jogos[0].Gols1 + "x" + jogoCurrent.Jogos[0].Gols2 + "]");
 
-                            CheckUsuarioPontuacao(outputFile, jogoCurrent, classificacao, userName, extrasCheck, extras, jogos, ultimo, posicoes);                            
+                            CheckUsuarioPontuacao(writerUsuario, outputPath, outputFile, jogoCurrent, classificacao, userName, extrasCheck, extras, jogos, ultimo, posicoes);                            
                         }
 
                         jogoCurrent = new JogoPossibilidadeAgrupamento();
@@ -1776,7 +2100,7 @@ namespace BolaoNet.Estatisticas.Calculo
 
                 if (jogoCurrent != null)
                 {
-                    CheckUsuarioPontuacao(outputFile, jogoCurrent, classificacao, userName, extrasCheck, extras, jogos, ultimo, posicoes);                     
+                    CheckUsuarioPontuacao(writerUsuario, outputPath, outputFile, jogoCurrent, classificacao, userName, extrasCheck, extras, jogos, ultimo, posicoes);                     
                 }
 
                 reader.Close();
@@ -1788,7 +2112,9 @@ namespace BolaoNet.Estatisticas.Calculo
                 System.IO.File.Delete(fullFile);
 #endif
             }//end for files
-             
+
+
+            writerUsuario.Close();
 
             return list;
         }
@@ -2357,6 +2683,21 @@ namespace BolaoNet.Estatisticas.Calculo
             }
         }
          
+        private void SimulateJogos(string outputFile,  JogoPossibilidadeAgrupamento jogos, List<ApostaExtraInfo> extras, IList<JogoInfo> list)
+        {
+            if (System.IO.File.Exists(outputFile))
+            {
+                System.IO.File.Delete(outputFile);
+            }
+
+            StreamWriter writer = new StreamWriter(outputFile);
+
+
+
+            writer.Close();
+
+        }
+
         #endregion
     }
 }
