@@ -1,0 +1,117 @@
+﻿@model BolaoNet.MVC.ViewModels.Bolao.ApostasExtrasViewModel
+@{
+    ViewBag.Title = "Possibilidades de Apostas Extras";
+
+    BolaoNet.MVC.Controllers.AuthorizationController homeController =
+        ViewContext.Controller as BolaoNet.MVC.Controllers.AuthorizationController;
+    string userNameLogged = homeController.UserLogged.UserName;
+}
+
+@using (Html.BeginForm("Simular", "ApostasExtras", FormMethod.Post, new { }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>Apostas Extras</h5>
+                    </div>
+                    <div class="ibox-content" style="display: block;">
+                        <div class="row">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <td>Posição</td>
+                                        <td></td>
+                                        <td>GPT</td>
+                                        <td></td>
+                                        <td>Usuário</td>
+                                        @*<td>PT</td>*@
+
+                                        @for (int c = 0; c < Model.ApostasExtras.Count; c++)
+                                        {
+                                            <td colspan="2" class="hidden-xs">@Model.ApostasExtras[c].Titulo</td>
+                                        }
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int c = 0; c < Model.ApostasUsuarios.Count; c++)
+                                    {
+                                        <tr @if (string.Compare(userNameLogged, Model.ApostasUsuarios[c].UserName, true) == 0) { @Html.Raw("class=\"info\"") ; }>
+                                            <td>@Model.ApostasUsuarios[c].Posicao</td>
+
+                                            <td>
+                                                @if (Model.ApostasUsuarios[c].LastPosicao != 0)
+                                                {
+                                                    if (Model.ApostasUsuarios[c].Posicao == Model.ApostasUsuarios[c].LastPosicao)
+                                                    {
+                                                        @Html.Raw("<span class=\"glyphicon glyphicon-stop black\">&nbsp;&nbsp;</span>");
+                                                    }
+                                                    else if (Model.ApostasUsuarios[c].Posicao < Model.ApostasUsuarios[c].LastPosicao)
+                                                    {
+                                                        @Html.Raw("<span class=\"glyphicon glyphicon-arrow-up blue\">&nbsp;" + (Model.ApostasUsuarios[c].LastPosicao - Model.ApostasUsuarios[c].Posicao) + "</span>");
+
+                                                    }
+                                                    else
+                                                    {
+                                                        @*<span class="glyphicon glyphicon-arrow-down ">*@
+                                                        @Html.Raw("<span style=\"color:red\" class=\"glyphicon glyphicon-arrow-down \">&nbsp;" + (Model.ApostasUsuarios[c].Posicao - Model.ApostasUsuarios[c].LastPosicao) + "</span>");
+                                                    }
+                                                }
+
+                                            </td>
+
+                                            <td>@Model.ApostasUsuarios[c].TotalPontosClassificacao</td>
+                                            <td>
+                                                <img class="img-username" src="/Content/img/database/profiles/@(Model.ApostasUsuarios[c].UserName).gif?time=@(DateTime.Now)" />
+                                            </td>
+                                            <td>@Model.ApostasUsuarios[c].UserName</td>
+
+                                            @*<td>@Model.ApostasUsuarios[c].Pontos</td>*@
+
+                                            @for (int i = 0; i < Model.ApostasUsuarios[c].Apostas.Count; i++)
+                                            {
+
+                                                @*<td>@Model.ApostasUsuarios[c].Apostas[i].Pontos</td>*@
+                                                <td class="hidden-xs">
+                                                    @if (Model.ApostasUsuarios[c].Apostas[i].Pontos != 0 && Model.ApostasUsuarios[c].Apostas[i].Pontos != null)
+                                                    {
+                                                        <i class="fa fa-plus-circle"
+                                                           style="color:@BolaoNet.MVC.Helpers.ColorPontosHelper.GetColorPontos(10)"
+                                                           aria-hidden="true"></i>
+
+                                                        <strong style="color:@BolaoNet.MVC.Helpers.ColorPontosHelper.GetColorPontos(10)">
+                                                            @(Model.ApostasUsuarios[c].Apostas[i].Pontos)
+                                                        </strong>
+                                                    }
+                                                    else
+                                                    {
+                                                        @Model.ApostasUsuarios[c].Apostas[i].Pontos
+                                                    }
+                                                </td>
+                                                <td class="hidden-xs"><img class="img-time" src="@Model.ApostasUsuarios[c].Apostas[i].ImageTime" title="@Model.ApostasUsuarios[c].Apostas[i].NomeTime" /></td>
+                                            }
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+}
+
+
+@section scripts
+{ 
+
+
+}

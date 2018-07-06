@@ -202,8 +202,27 @@ namespace BolaoNet.Domain.Services.Campeonatos
 
             return res;
         }
+        public IList<Entities.Campeonatos.Jogo> GetJogosTimesPossibilidades(Entities.Campeonatos.Campeonato campeonato)
+        {
+            if (campeonato == null)
+                throw new ArgumentException("campeonato");
+            if (string.IsNullOrEmpty(campeonato.Nome))
+                throw new ArgumentException("campeonato.Nome");
+
+            if (IsSaveLog)
+                CheckStart();
+
+            IList<Entities.Campeonatos.Jogo> res = Dao.GetJogosTimesPossibilidades(base.CurrentUserName, DateTime.Now, campeonato);
+
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Buscando jogos do campeonato [" + campeonato.Nome + "] que não foram concluídos e que estão em fase de eliminação: " + res.Count));
+            }
+
+            return res;
+        }
 
         #endregion
-
     }
 }

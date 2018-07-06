@@ -41,10 +41,10 @@ namespace BolaoNet.MVC.ViewModels.Bolao
         {
             get
             {
-                if (!string.IsNullOrEmpty(this.NomeTimeResult1))
-                    return this.NomeTimeResult1;
-                else if (!string.IsNullOrEmpty(base.NomeTime1))
+                if (!string.IsNullOrEmpty(base.NomeTime1))
                     return base.NomeTime1;
+                else if (!string.IsNullOrEmpty(this.NomeTimeResult1))
+                    return this.NomeTimeResult1;                
                 else
                     return "";
             }
@@ -53,10 +53,10 @@ namespace BolaoNet.MVC.ViewModels.Bolao
         {
             get
             {
-                if (!string.IsNullOrEmpty(this.NomeTimeResult2))
-                    return this.NomeTimeResult2;
-                else if (!string.IsNullOrEmpty(base.NomeTime2))
+                if (!string.IsNullOrEmpty(base.NomeTime2))
                     return base.NomeTime2;
+                else if (!string.IsNullOrEmpty(this.NomeTimeResult2))
+                    return this.NomeTimeResult2;                
                 else
                     return "";
             }

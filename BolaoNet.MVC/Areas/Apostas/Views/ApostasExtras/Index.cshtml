@@ -37,8 +37,9 @@
                                             <tr>
                                                 <td>@Model[c].Posicao</td>
                                                 <td>@Model[c].Titulo</td>
-                                                <td>@Html.DropDownListFor(x => x[c].NomeTime, new SelectList(ViewBag.Times, Model[c].NomeTime), "-- Escolha --", 
-                                                    new { @class = "form-control input-sm", @id="Time" + (c+1).ToString(), @name="Time" + (c+1).ToString() })</td>
+                                                <td>@Model[c].NomeTime</td>
+                                                @*<td>@Html.DropDownListFor(x => x[c].NomeTime, new SelectList(ViewBag.Times, Model[c].NomeTime), "-- Escolha --", 
+                                                    new { @class = "form-control input-sm", @id="Time" + (c+1).ToString(), @name="Time" + (c+1).ToString() })</td>*@
                                                 <td>
                                                     @if (Model[c].SalvarNomeTime == null)
                                                     {
@@ -57,11 +58,11 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="row">
+                            @*<div class="row">
                                 <div class="col-sm-offset-5 col-sm-2 text-center">
                                     <input type="submit" onclick="javascript:showWait();" class="btn btn-primary btn-lg center-block " value="Salvar" />
                                 </div>
-                            </div>
+                            </div>*@
                         </div>
                     </div>
                 </div>

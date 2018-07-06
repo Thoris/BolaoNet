@@ -119,8 +119,8 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
                     break;
                 case ViewModels.Apostas.FilterJogosViewModel.FilterJogoType.Ultimos_7_dias:
 
-                    res.DataInicial = DateTime.Now;
-                    res.DataFinal = DateTime.Now.AddDays(-7);
+                    res.DataInicial = DateTime.Now.AddDays(-7);
+                    res.DataFinal = DateTime.Now;
 
                     break;
 

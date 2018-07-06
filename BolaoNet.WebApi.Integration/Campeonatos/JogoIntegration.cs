@@ -55,7 +55,6 @@ namespace BolaoNet.WebApi.Integration.Campeonatos
             return base.HttpPostApi<ICollection<Domain.Entities.Campeonatos.Jogo>>(
                 new Dictionary<string, string>(), campeonato, "GetJogosByCampeonato").ToList<Domain.Entities.Campeonatos.Jogo>();
         }
-
         public IList<Domain.Entities.Campeonatos.Jogo> LoadJogos(int rodada, DateTime dataInicial, DateTime dataFinal, Domain.Entities.Campeonatos.CampeonatoFase fase, Domain.Entities.Campeonatos.Campeonato campeonato, Domain.Entities.Campeonatos.CampeonatoGrupo grupo, string condition)
         {
 
@@ -72,7 +71,6 @@ namespace BolaoNet.WebApi.Integration.Campeonatos
             return HttpPostApi<ICollection<Domain.Entities.Campeonatos.Jogo>>(parameters, "LoadJogos").ToList<Domain.Entities.Campeonatos.Jogo>();
 
         }
-
         public IList<Domain.Entities.Campeonatos.Jogo> LoadFinishedJogos(Domain.Entities.Campeonatos.Campeonato campeonato, int totalJogos)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>();
@@ -84,7 +82,6 @@ namespace BolaoNet.WebApi.Integration.Campeonatos
 
 
         }
-
         public IList<Domain.Entities.Campeonatos.Jogo> LoadNextJogos(Domain.Entities.Campeonatos.Campeonato campeonato, int totalJogos)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>();
@@ -95,7 +92,6 @@ namespace BolaoNet.WebApi.Integration.Campeonatos
             return HttpPostApi<ICollection<Domain.Entities.Campeonatos.Jogo>>(parameters, "LoadNextJogos").ToList<Domain.Entities.Campeonatos.Jogo>();
 
         }
-
         public IList<Domain.Entities.Campeonatos.Jogo> GetJogos(Domain.Entities.Campeonatos.Campeonato campeonato, Domain.Entities.ValueObjects.FilterJogosVO filter)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>();
@@ -116,8 +112,13 @@ namespace BolaoNet.WebApi.Integration.Campeonatos
             return HttpPostApi<ICollection<Domain.Entities.Campeonatos.Jogo>>(parameters, "SelectGoleadas").ToList<Domain.Entities.Campeonatos.Jogo>();
 
         }
+        public IList<Domain.Entities.Campeonatos.Jogo> GetJogosTimesPossibilidades(Domain.Entities.Campeonatos.Campeonato campeonato)
+        {
+            return base.HttpPostApi<ICollection<Domain.Entities.Campeonatos.Jogo>>(
+            new Dictionary<string, string>(), campeonato, "GetJogosTimesPossibilidades").ToList<Domain.Entities.Campeonatos.Jogo>();
+       
+        }
 
         #endregion
-
-    }
+     }
 }

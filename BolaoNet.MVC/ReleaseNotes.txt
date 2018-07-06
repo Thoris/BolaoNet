@@ -1,4 +1,10 @@
-﻿[2.1.0.1] - 02/07/2018
+﻿[2.2.0.0] - 06/07/2018
+* Inclusão da página de possibilidade de pontuação extra.
+* Ao apresentar o jogo, se houver a definição real do jogo, utiliza-se esta, caso contrário, apresenta-se o da aposta.
+* Correção do filtro de últimos 7 dias.
+* Removido a edição de apostas extras.
+
+[2.1.0.1] - 02/07/2018
 * Correção da inclusão do resultado do jogo, sem a necessidade de penaltis quando não houver empates na fase eliminatória.
 * Nas páginas de jogos, comparação de resultados e apostas dos usuários, carregar os jogos usando o filtro : ontem, hoje e amanhã.
 * Correção de inclusão e exclusão dos usuários com caracteres especiais no grupo de comparação.

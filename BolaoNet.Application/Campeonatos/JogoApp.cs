@@ -62,8 +62,11 @@ namespace BolaoNet.Application.Campeonatos
         {
             return Service.SelectGoleadas(campeonato, maxGols);
         }
+        public IList<Domain.Entities.Campeonatos.Jogo> GetJogosTimesPossibilidades(Domain.Entities.Campeonatos.Campeonato campeonato)
+        {
+            return Service.GetJogosTimesPossibilidades(campeonato);
+        }
 
         #endregion
-
     }
 }

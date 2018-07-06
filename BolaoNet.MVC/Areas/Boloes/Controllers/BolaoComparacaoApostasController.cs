@@ -131,8 +131,8 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
                     break;
                 case ViewModels.Bolao.FilterJogosViewModel.FilterJogoType.Ultimos_7_dias:
 
-                    res.DataInicial = DateTime.Now;
-                    res.DataFinal = DateTime.Now.AddDays(-7);
+                    res.DataInicial = DateTime.Now.AddDays(-7);
+                    res.DataFinal = DateTime.Now;
 
                     break;
 

@@ -320,8 +320,16 @@ namespace BolaoNet.Infra.Data.EF.Campeonatos
 
             return q.ToList();
         }
-
+        public IList<Domain.Entities.Campeonatos.Jogo> GetJogosTimesPossibilidades(string currentUserName, DateTime currentDateTime, Domain.Entities.Campeonatos.Campeonato campeonato)
+        {
+            return base.GetList(x =>
+                string.Compare(x.NomeCampeonato, campeonato.Nome, true) == 0 &&
+                !x.IsValido &&
+                !string.IsNullOrEmpty(x.NomeTime1) &&
+                !string.IsNullOrEmpty(x.NomeTime2) &&
+                x.IsDesempate == true).OrderByDescending( x=> x.JogoId).ToList<Domain.Entities.Campeonatos.Jogo>();
+        }
+  
         #endregion
-
-    }
+     }
 }

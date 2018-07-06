@@ -25,6 +25,8 @@ namespace BolaoNet.Domain.Interfaces.Services.Campeonatos
         IList<Entities.Campeonatos.Jogo> GetJogos(Entities.Campeonatos.Campeonato campeonato, Entities.ValueObjects.FilterJogosVO filter);
 
         IList<Entities.Campeonatos.Jogo> SelectGoleadas(Entities.Campeonatos.Campeonato campeonato, int maxGols);
-    
+
+        IList<Domain.Entities.Campeonatos.Jogo> GetJogosTimesPossibilidades(Domain.Entities.Campeonatos.Campeonato campeonato);
+        
     }
 }
