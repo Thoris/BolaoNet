@@ -1,4 +1,8 @@
-﻿[2.2.0.0] - 06/07/2018
+﻿[2.3.0.0] - 08/07/2018
+* Melhorando a responsividade da tela principal.
+* Inclusão da página para visualização de chances de premiação.
+
+[2.2.0.0] - 06/07/2018
 * Inclusão da página de possibilidade de pontuação extra.
 * Ao apresentar o jogo, se houver a definição real do jogo, utiliza-se esta, caso contrário, apresenta-se o da aposta.
 * Correção do filtro de últimos 7 dias.

@@ -13,7 +13,7 @@
                     <tr>
                         <td>@Html.DisplayNameFor( x => x[0].PosicaoIndividual)</td>
                         <td>@Html.DisplayNameFor( x => x[0].Posicao)</td>
-                        <td></td>
+                        @*<td></td>*@
                         <td class="hidden-xs"></td>
                         <td>@Html.DisplayNameFor(x => x[0].UserName)</td>                        
                         <td>@Html.DisplayNameFor(x => x[0].TotalPontos)</td>                        
@@ -26,7 +26,7 @@
                         <tr>
                             <td>@Model[c].PosicaoIndividual</td>
                             <td>@Model[c].Posicao</td>
-                            <td>
+                            @*<td>
                                 @if (Model[c].Posicao == Model[c].LastPosicao)
                                 {
                                     @Html.Raw("<span class=\"glyphicon glyphicon-stop black\">&nbsp;&nbsp;</span>");
@@ -37,12 +37,11 @@
 
                                 }
                                 else
-                                {
-                                    @*<span class="glyphicon glyphicon-arrow-down ">*@
+                                { 
                                     @Html.Raw("<span style=\"color:red\" class=\"glyphicon glyphicon-arrow-down \">&nbsp;" + (Model[c].Posicao - Model[c].LastPosicao) + "</span>");
                                 }
 
-                            </td>
+                            </td>*@
                             <td class="hidden-xs">
                                 <img class="img-username" src="/Content/img/database/profiles/@(Model[c].UserName).gif?time=@(DateTime.Now)" />
                             </td>

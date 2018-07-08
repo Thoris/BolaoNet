@@ -177,6 +177,7 @@
     <Compile Include="Areas\Boloes\Controllers\ClassificacaoApostasController.cs" />
     <Compile Include="Areas\Boloes\Controllers\HistoricoPontosController.cs" />
     <Compile Include="Areas\Boloes\Controllers\IndiceEstatisticoController.cs" />
+    <Compile Include="Areas\Boloes\Controllers\PercentualChancesController.cs" />
     <Compile Include="Areas\Boloes\Controllers\ResultadosDificeisController.cs" />
     <Compile Include="Areas\Boloes\Controllers\SemAcertosController.cs" />
     <Compile Include="Areas\Campeonatos\CampeonatosAreaRegistration.cs" />
@@ -262,6 +263,8 @@
     <Content Include="Ajuda\pt-br\Images\image002.jpg" />
     <Content Include="Ajuda\pt-br\Images\image003.jpg" />
     <Content Include="Ajuda\pt-br\Images\image004.jpg" />
+    <Content Include="App_Data\61\contagem.txt" />
+    <Content Include="App_Data\61\percentual.txt" />
     <Content Include="Content\css\animate.css" />
     <Content Include="Content\css\bootstrap-datepicker.css" />
     <Content Include="Content\css\bootstrap.css" />
@@ -486,6 +489,7 @@
     <Content Include="Areas\Boloes\Views\IndiceEstatistico\Index.cshtml" />
     <Content Include="Content\css\nv.d3.min.css.map" />
     <Content Include="Areas\Boloes\Views\ApostasExtrasPossibilidades\Index.cshtml" />
+    <Content Include="Areas\Boloes\Views\PercentualChances\Index.cshtml" />
     <None Include="Content\js\jquery-1.10.2.intellisense.js" />
     <Content Include="Content\js\jquery-1.10.2.js" />
     <Content Include="Content\js\jquery-1.10.2.min.js" />
@@ -1221,7 +1225,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Apostas\Models\" />
     <Folder Include="Areas\Boloes\Models\" />

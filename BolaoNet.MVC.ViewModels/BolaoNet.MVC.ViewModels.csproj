@@ -53,6 +53,7 @@
     <Compile Include="Bolao\BolaoPremiacaoViewModel.cs" />
     <Compile Include="Bolao\IndiceEstatisticoSelecionadoViewModel.cs" />
     <Compile Include="Bolao\IndiceEstatisticoViewModel.cs" />
+    <Compile Include="Bolao\PercentualChanceViewModel.cs" />
     <Compile Include="Chart\EntryXyValueModelView.cs" />
     <Compile Include="Chart\SerieValueModelView.cs" />
     <Compile Include="LogReporting\LogEventViewModel.cs" />
