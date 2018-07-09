@@ -473,7 +473,8 @@ namespace BolaoNet.Infra.Reports.Pdf
                 if (fim)
                 {
 
-                    PdfPCell cellPontos = new PdfPCell(new Phrase(aposta.TotalPontos.ToString(), new Font(Font.HELVETICA, 7f, Font.BOLD, Color.BLACK)));
+                    //PdfPCell cellPontos = new PdfPCell(new Phrase(aposta.TotalPontos.ToString(), new Font(Font.HELVETICA, 7f, Font.BOLD, Color.BLACK)));
+                    PdfPCell cellPontos = new PdfPCell(new Phrase(aposta.Pontos.ToString(), new Font(Font.HELVETICA, 7f, Font.BOLD, Color.BLACK)));
                     cellPontos.HorizontalAlignment = Element.ALIGN_CENTER;
                     cellPontos.VerticalAlignment = Element.ALIGN_MIDDLE;
                     table.AddCell(cellPontos);

@@ -47,6 +47,8 @@ namespace BolaoNet.Infra.Data.EF.Boloes
                     Posicao = j.Posicao,
                     Titulo = j.Titulo,
                     TotalPontos = j.TotalPontos,
+
+                    Pontos = p.Pontos,
                     IsValido = j.IsValido,
                     DataValidacao = j.DataValidacao,
                     ValidadoBy = j.ValidadoBy,

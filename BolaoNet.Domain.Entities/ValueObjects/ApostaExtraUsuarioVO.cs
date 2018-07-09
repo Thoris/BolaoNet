@@ -14,6 +14,7 @@ namespace BolaoNet.Domain.Entities.ValueObjects
         public int Posicao { get; set; }
         public string Titulo { get; set; }
         public int? TotalPontos { get; set; }
+        public int? Pontos { get; set; }
         public bool? IsValido { get; set; }
         public DateTime? DataValidacao { get; set; }
         public string ValidadoBy { get; set; }
