@@ -768,4 +768,102 @@ EXEC	sp_Jogos_ResultInsert
 		@ErrorNumber = @ErrorNumber OUTPUT,
 		@ErrorDescription = @ErrorDescription OUTPUT
 
+		
+EXEC	sp_Jogos_ResultInsert 
+		@CurrentLogin = @ValidadoBy,
+		@CurrentDateTime = NULL,
+		@IdJogo = 54,
+		@NomeCampeonato = @NomeCampeonato,
+		@Gols1 = 3,
+		@Penaltis1 = NULL,
+		@Gols2 = 2,
+		@Penaltis2 = NULL,
+		@SetCurrentData = 1,
+		@ValidadoBy = @ValidadoBy,
+		@ErrorNumber = @ErrorNumber OUTPUT,
+		@ErrorDescription = @ErrorDescription OUTPUT
+		
+EXEC	sp_Jogos_ResultInsert 
+		@CurrentLogin = @ValidadoBy,
+		@CurrentDateTime = NULL,
+		@IdJogo = 55,
+		@NomeCampeonato = @NomeCampeonato,
+		@Gols1 = 1,
+		@Penaltis1 = NULL,
+		@Gols2 = 0,
+		@Penaltis2 = NULL,
+		@SetCurrentData = 1,
+		@ValidadoBy = @ValidadoBy,
+		@ErrorNumber = @ErrorNumber OUTPUT,
+		@ErrorDescription = @ErrorDescription OUTPUT
 
+EXEC	sp_Jogos_ResultInsert 
+		@CurrentLogin = @ValidadoBy,
+		@CurrentDateTime = NULL,
+		@IdJogo = 56,
+		@NomeCampeonato = @NomeCampeonato,
+		@Gols1 = 1,
+		@Penaltis1 = 2,
+		@Gols2 = 1,
+		@Penaltis2 = 3,
+		@SetCurrentData = 1,
+		@ValidadoBy = @ValidadoBy,
+		@ErrorNumber = @ErrorNumber OUTPUT,
+		@ErrorDescription = @ErrorDescription OUTPUT
+
+EXEC	sp_Jogos_ResultInsert 
+		@CurrentLogin = @ValidadoBy,
+		@CurrentDateTime = NULL,
+		@IdJogo = 57,
+		@NomeCampeonato = @NomeCampeonato,
+		@Gols1 = 0,
+		@Penaltis1 = NULL,
+		@Gols2 = 2,
+		@Penaltis2 = NULL,
+		@SetCurrentData = 1,
+		@ValidadoBy = @ValidadoBy,
+		@ErrorNumber = @ErrorNumber OUTPUT,
+		@ErrorDescription = @ErrorDescription OUTPUT
+		
+EXEC	sp_Jogos_ResultInsert 
+		@CurrentLogin = @ValidadoBy,
+		@CurrentDateTime = NULL,
+		@IdJogo = 58,
+		@NomeCampeonato = @NomeCampeonato,
+		@Gols1 = 1,
+		@Penaltis1 = NULL,
+		@Gols2 = 2,
+		@Penaltis2 = NULL,
+		@SetCurrentData = 1,
+		@ValidadoBy = @ValidadoBy,
+		@ErrorNumber = @ErrorNumber OUTPUT,
+		@ErrorDescription = @ErrorDescription OUTPUT
+		
+EXEC	sp_Jogos_ResultInsert 
+		@CurrentLogin = @ValidadoBy,
+		@CurrentDateTime = NULL,
+		@IdJogo = 59,
+		@NomeCampeonato = @NomeCampeonato,
+		@Gols1 = 1,
+		@Penaltis1 = 2,
+		@Gols2 = 1,
+		@Penaltis2 = 3,
+		@SetCurrentData = 1,
+		@ValidadoBy = @ValidadoBy,
+		@ErrorNumber = @ErrorNumber OUTPUT,
+		@ErrorDescription = @ErrorDescription OUTPUT
+
+		
+EXEC	sp_Jogos_ResultInsert 
+		@CurrentLogin = @ValidadoBy,
+		@CurrentDateTime = NULL,
+		@IdJogo = 60,
+		@NomeCampeonato = @NomeCampeonato,
+		@Gols1 = 0,
+		@Penaltis1 = NULL,
+		@Gols2 = 2,
+		@Penaltis2 = NULL,
+		@SetCurrentData = 1,
+		@ValidadoBy = @ValidadoBy,
+		@ErrorNumber = @ErrorNumber OUTPUT,
+		@ErrorDescription = @ErrorDescription OUTPUT
