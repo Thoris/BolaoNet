@@ -266,6 +266,10 @@
     <Content Include="Ajuda\pt-br\Images\image004.jpg" />
     <Content Include="App_Data\61\contagem.txt" />
     <Content Include="App_Data\61\percentual.txt" />
+    <Content Include="App_Data\62\contagem.txt" />
+    <Content Include="App_Data\62\percentual.txt" />
+    <Content Include="App_Data\63\contagem.txt" />
+    <Content Include="App_Data\63\percentual.txt" />
     <Content Include="Content\css\animate.css" />
     <Content Include="Content\css\bootstrap-datepicker.css" />
     <Content Include="Content\css\bootstrap.css" />

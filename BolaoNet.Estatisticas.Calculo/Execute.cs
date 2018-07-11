@@ -321,7 +321,7 @@ namespace BolaoNet.Estatisticas.Calculo
 
                 Console.WriteLine(DateTime.Now.ToString() + " - " + listBase[i].JogoId + " - Fim da análise");
 
-                if (i == 59)
+                if (i == 60)
                     break;
             }//end for jogos
 
@@ -411,7 +411,7 @@ namespace BolaoNet.Estatisticas.Calculo
 
             
             //TODO: Alterar o identificador do jogo para buscar as possibilidades
-            int jogoIdCheck = 59;
+            int jogoIdCheck = 63;
 
             int posId = -1;
             for (int c = listBase.Count - 1; c >= 0; c-- )
