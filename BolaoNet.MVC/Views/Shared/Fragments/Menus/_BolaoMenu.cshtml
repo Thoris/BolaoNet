@@ -126,6 +126,11 @@ else
                         { @Html.Raw("class=\"active\"")  }>
                         <a href="/Boloes/IndiceEstatistico/Index" onclick="javascript:showWait();"><i class="fa fa-area-chart"></i><span class="nav-label">Colocações</span><span class="visible-xs-inline">Colocações</span></a>
                     </li>
+                    <li @if (string.Compare(controllerName, "IndicePontos", true) == 0 && 
+                            string.Compare(controllerArea, "Boloes", true) == 0)
+                        { @Html.Raw("class=\"active\"")  }>
+                        <a href="/Boloes/IndicePontos/Index" onclick="javascript:showWait();"><i class="fa fa-area-chart"></i><span class="nav-label">Pontuação</span><span class="visible-xs-inline">Pontuação</span></a>
+                    </li>
                     <li @if (string.Compare(controllerName, "BolaoHistorico", true) == 0 && 
                             string.Compare(controllerArea, "Boloes", true) == 0)
                         { @Html.Raw("class=\"active\"")  }>

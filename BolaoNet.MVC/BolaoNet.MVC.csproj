@@ -176,6 +176,7 @@
     <Compile Include="Areas\Boloes\Controllers\BolaoPremiacaoController.cs" />
     <Compile Include="Areas\Boloes\Controllers\ClassificacaoApostasController.cs" />
     <Compile Include="Areas\Boloes\Controllers\HistoricoPontosController.cs" />
+    <Compile Include="Areas\Boloes\Controllers\IndicePontosController.cs" />
     <Compile Include="Areas\Boloes\Controllers\IndiceEstatisticoController.cs" />
     <Compile Include="Areas\Boloes\Controllers\PercentualChancesController.cs" />
     <Compile Include="Areas\Boloes\Controllers\ResultadosDificeisController.cs" />
@@ -490,6 +491,7 @@
     <Content Include="Content\css\nv.d3.min.css.map" />
     <Content Include="Areas\Boloes\Views\ApostasExtrasPossibilidades\Index.cshtml" />
     <Content Include="Areas\Boloes\Views\PercentualChances\Index.cshtml" />
+    <Content Include="Areas\Boloes\Views\IndicePontos\Index.cshtml" />
     <None Include="Content\js\jquery-1.10.2.intellisense.js" />
     <Content Include="Content\js\jquery-1.10.2.js" />
     <Content Include="Content\js\jquery-1.10.2.min.js" />

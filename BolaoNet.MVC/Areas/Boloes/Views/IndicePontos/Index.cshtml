@@ -1,0 +1,312 @@
+﻿@model BolaoNet.MVC.ViewModels.Bolao.IndiceEstatisticoViewModel
+@{
+    ViewBag.Title = "Gráfico de Histórico de Pontuação";
+}
+
+
+@section header
+{
+    <link href="~/Content/css/nv.d3.css" rel="stylesheet" type="text/css">
+    <script src="~/Content/js/d3.min.js" charset="utf-8"></script>
+    <script src="~/Content/js/nv.d3.js"></script>
+    <style>
+        text {
+            font: 12px sans-serif;
+        }
+
+        svg {
+            display: block;
+        }
+
+        html, body, #chart1, svg {
+            margin: 0px;
+            padding: 0px;
+            height: 100%;
+            width: 100%;
+        }
+
+        .dashed {
+            stroke-dasharray: 5,5;
+        }
+    </style>
+
+}
+
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content" style="display: block;">
+                    <div id="chart1" style="height: 300px"></div>                     
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-5">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h3>Usuários Selecionados</h3>
+                </div>
+                <div class="ibox-content" style="display: block;">
+                    <div class="row">
+
+                        <div class="col-lg-12">
+                            @if (Model.Selecionado != null && Model.Selecionado.Count > 0)
+                            {
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <td></td>
+                                            <td>@Html.DisplayNameFor(x => x.Selecionado[0].UserName)</td>
+                                            <td>@Html.DisplayNameFor(x => x.Selecionado[0].FullName)</td>
+                                            <td></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @for (int c = 0; c < Model.Selecionado.Count; c++)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <img class="img-username" src="/Content/img/database/profiles/@(Model.Selecionado[c].UserName).gif" />
+                                                </td>
+                                                <td>@Model.Selecionado[c].UserName</td>
+                                                <td>@Model.Selecionado[c].FullName</td>
+                                                <td>
+                                                    <a href="@Url.Action("Remove", "IndicePontos", new { UserName = Model.Selecionado[c].UserName })">
+                                                        <span class="glyphicon glyphicon-remove fa-lg"></span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-7">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h3>Membros do Campeonato</h3>
+                </div>
+                <div class="ibox-content" style="display: block;">
+                    <div class="row">
+
+                        <div class="col-lg-12">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <td></td>
+                                        <td>Pos</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Membro</td>
+                                        <td>Nome</td>
+                                        <td>PT</td>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @for (int c = 0; c < Model.Classificacao.Count; c++)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <a href="@Url.Action("Add", "IndicePontos", new { UserName = Model.Classificacao[c].UserName })">
+                                                    <span class="glyphicon glyphicon-plus fa-lg"></span>
+                                                </a>
+                                            </td>
+                                            <td>@Model.Classificacao[c].Posicao</td>
+                                            <td>
+                                                @if (Model.Classificacao[c].Posicao == Model.Classificacao[c].LastPosicao)
+                                                {
+                                                    @Html.Raw("<span class=\"glyphicon glyphicon-stop black\">&nbsp;&nbsp;</span>");
+                                                }
+                                                else if (Model.Classificacao[c].Posicao < Model.Classificacao[c].LastPosicao)
+                                                {
+                                                    @Html.Raw("<span class=\"glyphicon glyphicon-arrow-up blue\">&nbsp;" + (Model.Classificacao[c].LastPosicao - Model.Classificacao[c].Posicao) + "</span>");
+
+                                                }
+                                                else
+                                                {
+                                                    @Html.Raw("<span style=\"color:red\" class=\"glyphicon glyphicon-arrow-down \">&nbsp;" + (Model.Classificacao[c].Posicao - Model.Classificacao[c].LastPosicao) + "</span>");
+                                                }
+
+                                            </td>
+                                            <td>
+                                                <img class="img-username" src="/Content/img/database/profiles/@(Model.Classificacao[c].UserName).gif" />
+                                            </td>
+                                            <td>@Model.Classificacao[c].UserName</td>
+                                            <td>@Model.Classificacao[c].FullName</td>
+                                            <td>@Model.Classificacao[c].TotalPontos</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts
+{
+    <script>
+
+    // Wrapping in nv.addGraph allows for '0 timeout render', stores rendered charts in nv.graphs, and may do more in the future... it's NOT required
+    var chart;
+    var data;
+    var legendPosition = "top";
+
+    var randomizeFillOpacity = function () {
+        var rand = Math.random(0, 1);
+        for (var i = 0; i < 100; i++) { // modify sine amplitude
+            data[4].values[i].y = Math.sin(i / (5 + rand)) * .4 * rand - .25;
+        }
+        data[4].fillOpacity = rand;
+        chart.update();
+    };
+
+    var toggleLegend = function () {
+        if (legendPosition == "top") {
+            legendPosition = "bottom";
+        } else {
+            legendPosition = "top";
+        }
+        chart.legendPosition(legendPosition);
+        chart.update();
+    };
+
+    nv.addGraph(function () {
+        chart = nv.models.lineChart()
+            .options({
+                duration: 300,
+                useInteractiveGuideline: true
+            })
+        ;
+
+        // chart sub-models (ie. xAxis, yAxis, etc) when accessed directly, return themselves, not the parent chart, so need to chain separately
+        chart.xAxis
+            .axisLabel("Jogo/dia")
+            //.tickFormat(d3.format(',.1f'))
+            .staggerLabels(true)
+        ;
+
+        chart.yAxis
+            .axisLabel('Pontos')
+
+            .tickFormat(function (d) {
+                if (d == null) {
+                    return 'N/A';
+                }
+                return d3.format(',.0f')(d);
+            })
+        ;
+
+        //chart.forceY([1, 40]);
+
+        data = @Html.Raw(Json.Encode(Model.Series))
+
+        d3.select('#chart1').append('svg')
+            .datum(data)
+            .call(chart);
+
+        nv.utils.windowResize(chart.update);
+
+        return chart;
+    });
+
+    function dataGraph() {
+
+        var user1 = [],
+            user2 = []
+        ;
+
+        for (var i = 0; i < 64; i++) {
+            user1.push({ x: i, y: 64 - i });
+            user2.push({ x: i, y: i });
+        }
+
+        return [
+            {
+                area: true,
+                values: user1,
+                key: "Sine Wave",
+                strokeWidth: 4
+            },
+            {
+                area: true,
+                values: user2,
+                key: "Fill opacity"
+            }
+        ];
+    }
+
+    function sinAndCos() {
+        var sin = [],
+            sin2 = [],
+            cos = [],
+            rand = [],
+            rand2 = []
+        ;
+
+        for (var i = 0; i < 100; i++) {
+            sin.push({ x: i, y: i % 10 == 5 ? null : Math.sin(i / 10) }); //the nulls are to show how defined works
+            sin2.push({ x: i, y: Math.sin(i / 5) * 0.4 - 0.25 });
+            cos.push({ x: i, y: .5 * Math.cos(i / 10) });
+            rand.push({ x: i, y: Math.random() / 10 });
+            rand2.push({ x: i, y: Math.cos(i / 10) + Math.random() / 10 })
+        }
+
+        return [
+            {
+                area: true,
+                values: sin,
+                key: "Sine Wave",
+                color: "#ff7f0e",
+                strokeWidth: 4,
+                classed: 'dashed'
+            },
+            {
+                values: cos,
+                key: "Cosine Wave",
+                color: "#2ca02c"
+            },
+            {
+                values: rand,
+                key: "Random Points",
+                color: "#2222ff"
+            },
+            {
+                values: rand2,
+                key: "Random Cosine",
+                color: "#667711",
+                strokeWidth: 3.5
+            },
+            {
+                area: true,
+                values: sin2,
+                key: "Fill opacity",
+                color: "#EF9CFB",
+                fillOpacity: .1
+            }
+        ];
+    }
+    </script>
+
+}
