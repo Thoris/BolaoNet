@@ -13,7 +13,7 @@ using BolaoNet.Application.Interfaces.Facade.Campeonatos;
 using BolaoNet.Application.Interfaces.Facade;
 using System.Web.Mvc;
 using BolaoNet.Application.Interfaces.Reports;
-using BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests;
+using BolaoNet.Tests.CopaDoMundoTests.BolaoCopaDoMundoTests;
 using System.Web;
 using System.Collections.Generic;
 using System.IO;

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
+namespace BolaoNet.Tests.CopaDoMundoTests.BolaoCopaDoMundoTests
 {
     public class BolaoCopaMundo2014UserApostasAppTests
     {

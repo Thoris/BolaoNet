@@ -7,7 +7,7 @@ using BolaoNet.Application.Interfaces.Notification;
 using BolaoNet.Application.Interfaces.Reports;
 using BolaoNet.Application.Interfaces.Users;
 using BolaoNet.Tests;
-using BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests;
+using BolaoNet.Tests.CopaDoMundoTests.BolaoCopaDoMundoTests;
 using Ninject;
 using System;
 using System.Collections.Generic;

@@ -270,6 +270,8 @@
     <Content Include="App_Data\62\percentual.txt" />
     <Content Include="App_Data\63\contagem.txt" />
     <Content Include="App_Data\63\percentual.txt" />
+    <Content Include="App_Data\64\contagem.txt" />
+    <Content Include="App_Data\64\percentual.txt" />
     <Content Include="Content\css\animate.css" />
     <Content Include="Content\css\bootstrap-datepicker.css" />
     <Content Include="Content\css\bootstrap.css" />
@@ -1255,7 +1257,9 @@
     <Folder Include="Content\img\database\temp\uploaded\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="log4net.config">
       <SubType>Designer</SubType>
     </Content>

@@ -411,7 +411,7 @@ namespace BolaoNet.Estatisticas.Calculo
 
             
             //TODO: Alterar o identificador do jogo para buscar as possibilidades
-            int jogoIdCheck = 63;
+            int jogoIdCheck = 64;
 
             int posId = -1;
             for (int c = listBase.Count - 1; c >= 0; c-- )

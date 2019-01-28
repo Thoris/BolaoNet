@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
+namespace BolaoNet.Tests.CopaDoMundoTests.BolaoCopaDoMundoTests
 {
-    public class BolaoCopaMundo2014AppHelper
+    public class BolaoCopaMundo2010AppHelper
     {
         #region Constants
 
-        public const string NomeBolao = "Copa do Mundo 2014";
+        public const string NomeBolao = "Copa do Mundo 2010";
 
         #endregion
 
@@ -24,12 +24,16 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
         private Application.Interfaces.Boloes.IBolaoRegraApp _bolaoRegraApp;
         private Application.Interfaces.Boloes.IBolaoPontuacaoApp _bolaoPontuacaoApp;
         private Application.Interfaces.Boloes.IBolaoHistoricoApp _bolaoHistoricoApp;
+        private Application.Interfaces.Users.IUserApp _userApp;
+        private Application.Interfaces.Facade.IUserFacadeApp _userFacadeApp;
+        private Application.Interfaces.Boloes.IBolaoMembroApp _bolaoMembroApp;
+        private Application.Interfaces.Boloes.IJogoUsuarioApp _jogoUsuarioApp;
 
         #endregion
 
         #region Constructors/Destructors
 
-        public BolaoCopaMundo2014AppHelper(
+        public BolaoCopaMundo2010AppHelper(
             Application.Interfaces.Boloes.IApostaExtraApp apostaExtraApp,
             Application.Interfaces.Boloes.IBolaoApp bolaoApp,
             Application.Interfaces.Boloes.IBolaoPremioApp bolaoPremioApp,
@@ -37,7 +41,11 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
             Application.Interfaces.Boloes.IBolaoCriterioPontosTimesApp bolaoCriterioPontosTimesApp,
             Application.Interfaces.Boloes.IBolaoRegraApp bolaoRegraApp,
             Application.Interfaces.Boloes.IBolaoPontuacaoApp bolaoPontuacaoApp,
-            Application.Interfaces.Boloes.IBolaoHistoricoApp bolaoHistoricoApp
+            Application.Interfaces.Boloes.IBolaoHistoricoApp bolaoHistoricoApp,
+            Application.Interfaces.Users.IUserApp userApp,
+            Application.Interfaces.Facade.IUserFacadeApp userFacadeApp,
+            Application.Interfaces.Boloes.IBolaoMembroApp bolaoMembroApp,
+            Application.Interfaces.Boloes.IJogoUsuarioApp jogoUsuarioApp
         )
         {
             _apostaExtraApp = apostaExtraApp;
@@ -48,6 +56,10 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
             _bolaoRegraApp = bolaoRegraApp;
             _bolaoPontuacaoApp = bolaoPontuacaoApp;
             _bolaoHistoricoApp = bolaoHistoricoApp;
+            _userApp = userApp;
+            _userFacadeApp = userFacadeApp;
+            _bolaoMembroApp = bolaoMembroApp;
+            _jogoUsuarioApp = jogoUsuarioApp;
         }
 
         #endregion
@@ -68,7 +80,7 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
                 NomeCampeonato = campeonato.Nome,
                 ApostasApenasAntes = true,
                 Cidade = "São José dos Campos",
-                DataInicio = new DateTime(2014, 6, 1),
+                DataInicio = new DateTime(2010, 6, 1),
                 Descricao = "Bolão da Copa do Mundo",
                 Estado = "São Paulo",
                 ForumAtivado = true,
@@ -245,97 +257,55 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
             #region Boloes Histórico
 
 
-
-
-
-            StoreBolaoHistorico(bolao.Nome, 2010, 1,	"Alberto",	237,	3,	36,	16,	25,	9,	30);
-            StoreBolaoHistorico(bolao.Nome, 2010,2,	"Thoris",	210,	7	,36	,16	,28	,8	,0);
-            StoreBolaoHistorico(bolao.Nome, 2010,3,	"andermoura",	199	,4	,35,	14	,24	,7	,0);
-            StoreBolaoHistorico(bolao.Nome, 2010,4,	"carlinhosbueno",	199,	3	,31,	20,	23,	8,	0);
-            StoreBolaoHistorico(bolao.Nome, 2010,5,	"luizen",	199	,4	,34	,16,	26	,3,	15);
-            StoreBolaoHistorico(bolao.Nome, 2010,6,	"TAQUARA"	,198	,4	,34	,12	,20,	3,	30);
-            StoreBolaoHistorico(bolao.Nome, 2010,7,	"Marcio",	197,	1,	30	,19,	26,	9,	0);
-            StoreBolaoHistorico(bolao.Nome, 2010,8,	"lucas_scremin"	,197,	0,	32	,16	,23,	7,	15);
-            StoreBolaoHistorico(bolao.Nome, 2010,9,	"afreita2"	,190	,4	,36	,18,	23,	5,	0);
-            StoreBolaoHistorico(bolao.Nome, 2010, 10,	"julia",	189	,5	,29	,18,	25,	9,	0);
-            StoreBolaoHistorico(bolao.Nome, 2010,11,	"Sara"	,188	,4	,28	,18	,23,	8,	0);
-            StoreBolaoHistorico(bolao.Nome, 2010,12,	"lgcarvalho",	187,	4,	32	,12	,32,	5	,0);
-            StoreBolaoHistorico(bolao.Nome, 2010,13,	"Alan",	177,	1	,26	,18	,23,	8,	0);
-            StoreBolaoHistorico(bolao.Nome, 2010,14,	"Carlos",	172	,2,	28,	15	,22	,6,	0);
-            StoreBolaoHistorico(bolao.Nome, 2010,15,	"fabiop",	172	,2,	25	,21,	25,	8	,0);
-            StoreBolaoHistorico(bolao.Nome, 2010,16,	"Juninho",	172,	3	,27	,18	,22,	6,	0);
-            StoreBolaoHistorico(bolao.Nome, 2010,17,	"TAQUARA2"	,169,	5,	32	,12	,20	,3	,0);
-            StoreBolaoHistorico(bolao.Nome, 2010,18,	"AndreBarboza",	169,	4,	30	,12,	23,	4,	0);
-            StoreBolaoHistorico(bolao.Nome, 2010,19,	"helton_hls",	166	,2,	28	,20	,23,	6	,0);
-            StoreBolaoHistorico(bolao.Nome, 2010,20,	"JulioCesar"	,166,	3,	28	,12	,20	,6,	0);
-            StoreBolaoHistorico(bolao.Nome, 2010,21,	"TAQUARA3",	165	,4,	31	,13,	20	,4	,0);
-            StoreBolaoHistorico(bolao.Nome, 2010,22,	"Serrano",	162,	2	,24,	16,	27,	7,	0);
-            StoreBolaoHistorico(bolao.Nome, 2010,23,	"Betovb"	,159	,3	,25,	17,	23	,6	,0);
-            StoreBolaoHistorico(bolao.Nome, 2010,24,	"dnlima",	158	,2,	30,	16,	23,	3,	0);
-            StoreBolaoHistorico(bolao.Nome, 2010,25	,"teles"	,150	,3,	26	,15,	24,	3	,0);
-            StoreBolaoHistorico(bolao.Nome, 2010,26,	"tharcius",	143,	1,	26	,10	,22	,3,	0);
-
-
-
-
-
-
-
-
-
-
-
-
-
-            StoreBolaoHistorico(bolao.Nome, 2014, 1, "wfukuda", 224, 5, 36, 23, 17, 7, 10);
-            StoreBolaoHistorico(bolao.Nome, 2014, 2, "Batista", 203, 4, 28, 17, 26, 9, 10);
-            StoreBolaoHistorico(bolao.Nome, 2014, 3, "anunes81", 203, 2, 27, 26, 24, 8, 10);
-            StoreBolaoHistorico(bolao.Nome, 2014, 4, "Lucas", 202, 2, 34, 25, 15, 5, 10);
-            StoreBolaoHistorico(bolao.Nome, 2014, 5, "lmpaiva", 201, 0, 32, 19, 22, 7, 10);
-            StoreBolaoHistorico(bolao.Nome, 2014, 6, "ldporto", 199, 0, 31, 20, 26, 6, 10);
-            StoreBolaoHistorico(bolao.Nome, 2014, 7, "edioneto", 193, 3, 32, 22, 17, 5, 10);
-            StoreBolaoHistorico(bolao.Nome, 2014, 8, "trebelo", 193, 4, 27, 18, 18, 5, 10);
-            StoreBolaoHistorico(bolao.Nome, 2014, 9, "MASKARA", 188, 1, 33, 18, 18, 7, 0);
-            StoreBolaoHistorico(bolao.Nome, 2014, 10, "lfernandojac", 188, 0, 35, 19, 21, 6, 0);
-            StoreBolaoHistorico(bolao.Nome, 2014, 11, "Mis", 187, 4, 25, 26, 20, 9, 0);
-            StoreBolaoHistorico(bolao.Nome, 2014, 12, "tharcius", 186, 1, 28, 21, 23, 8, 0);
-            StoreBolaoHistorico(bolao.Nome, 2014, 13, "dma01", 183, 4, 31, 19, 21, 4, 10);
-            StoreBolaoHistorico(bolao.Nome, 2014, 14, "kelly", 182, 6, 22, 18, 20, 6, 20);
-            StoreBolaoHistorico(bolao.Nome, 2014, 15, "teles", 181, 1, 29, 20, 20, 7, 0);
-            StoreBolaoHistorico(bolao.Nome, 2014, 16, "carlos", 181, 2, 30, 19, 18, 6, 0);
-            StoreBolaoHistorico(bolao.Nome, 2014, 17, "lg_sjc", 179, 3, 23, 20, 25, 6, 20);
-            StoreBolaoHistorico(bolao.Nome, 2014, 18, "marcio_fv", 178, 3, 29, 18, 18, 4, 20);
-            StoreBolaoHistorico(bolao.Nome, 2014, 19, "pauloamorim", 175, 0, 26, 20, 24, 6, 10);
-            StoreBolaoHistorico(bolao.Nome, 2014, 20, "M9", 173, 1, 30, 21, 18, 4, 10);
-            StoreBolaoHistorico(bolao.Nome, 2014, 21, "Beto", 172, 1, 32, 24, 13, 5, 0);
-            StoreBolaoHistorico(bolao.Nome, 2014, 22, "romulosjc", 172, 2, 31, 19, 14, 3, 10);
-            StoreBolaoHistorico(bolao.Nome, 2014, 23, "luizhrs", 171, 3, 28, 20, 21, 6, 0);
-            StoreBolaoHistorico(bolao.Nome, 2014, 24, "Edmilson", 171, 2, 32, 10, 15, 4, 10);
-            StoreBolaoHistorico(bolao.Nome, 2014, 25, "barbosaalr", 169, 1, 30, 24, 15, 4, 0);
-            StoreBolaoHistorico(bolao.Nome, 2014, 26, "andinho", 169, 4, 30, 20, 12, 5, 0);
-            StoreBolaoHistorico(bolao.Nome, 2014, 27, "paulo.vrs", 165, 4, 29, 16, 21, 4, 0);
-            StoreBolaoHistorico(bolao.Nome, 2014, 28, "reinaldo", 164, 5, 31, 11, 14, 3, 10);
-            StoreBolaoHistorico(bolao.Nome, 2014, 29, "RZ", 163, 3, 26, 15, 17, 6, 0);
-            StoreBolaoHistorico(bolao.Nome, 2014, 30, "Thoris", 162, 2, 27, 23, 19, 5, 0);
-            StoreBolaoHistorico(bolao.Nome, 2014, 31, "fabiops91", 162, 4, 33, 15, 20, 1, 0);
-            StoreBolaoHistorico(bolao.Nome, 2014, 32, "gianluca", 160, 5, 28, 13, 18, 3, 0);
-            StoreBolaoHistorico(bolao.Nome, 2014, 33, "fcarvalho", 160, 1, 28, 24, 12, 3, 10);
-            StoreBolaoHistorico(bolao.Nome, 2014, 34, "Alvaro", 159, 5, 22, 21, 15, 6, 0);
-            StoreBolaoHistorico(bolao.Nome, 2014, 35, "Samuel", 159, 2, 26, 18, 13, 4, 0);
-            StoreBolaoHistorico(bolao.Nome, 2014, 36, "alcastro", 159, 2, 28, 18, 19, 3, 10);
-            StoreBolaoHistorico(bolao.Nome, 2014, 37, "denis", 156, 1, 26, 16, 16, 4, 0);
-            StoreBolaoHistorico(bolao.Nome, 2014, 38, "lise", 156, 1, 28, 12, 15, 4, 0);
-            StoreBolaoHistorico(bolao.Nome, 2014, 39, "Vieira Junior", 151, 4, 26, 13, 16, 4, 0);
-            StoreBolaoHistorico(bolao.Nome, 2014, 40, "palpiteiro", 151, 2, 25, 14, 21, 3, 0);
-            StoreBolaoHistorico(bolao.Nome, 2014, 41, "Gustavo", 150, 0, 27, 16, 16, 3, 0);
-            StoreBolaoHistorico(bolao.Nome, 2014, 42, "rafaelmcesar", 148, 2, 29, 15, 19, 2, 0);
-            StoreBolaoHistorico(bolao.Nome, 2014, 43, "carlfrei", 148, 3, 28, 21, 16, 2, 0);
-            StoreBolaoHistorico(bolao.Nome, 2014, 44, "Thais", 147, 0, 30, 20, 17, 1, 0);
-            StoreBolaoHistorico(bolao.Nome, 2014, 45, "toninha", 146, 7, 24, 17, 7, 3, 0);
-            StoreBolaoHistorico(bolao.Nome, 2014, 46, "veronbom", 145, 0, 26, 18, 15, 2, 10);
-            StoreBolaoHistorico(bolao.Nome, 2014, 47, "AlbertoFlu", 131, 0, 29, 11, 17, 1, 0);
-            StoreBolaoHistorico(bolao.Nome, 2014, 48, "bolacha", 113, 2, 17, 16, 15, 3, 0);
-            StoreBolaoHistorico(bolao.Nome, 2014, 49, "Helio", 109, 5, 14, 16, 20, 2, 0);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 1, "wfukuda", 224, 5, 36, 23, 17, 7, 10);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 2, "Batista", 203, 4, 28, 17, 26, 9, 10);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 3, "anunes81", 203, 2, 27, 26, 24, 8, 10);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 4, "Lucas", 202, 2, 34, 25, 15, 5, 10);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 5, "lmpaiva", 201, 0, 32, 19, 22, 7, 10);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 6, "ldporto", 199, 0, 31, 20, 26, 6, 10);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 7, "edioneto", 193, 3, 32, 22, 17, 5, 10);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 8, "trebelo", 193, 4, 27, 18, 18, 5, 10);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 9, "MASKARA", 188, 1, 33, 18, 18, 7, 0);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 10, "lfernandojac", 188, 0, 35, 19, 21, 6, 0);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 11, "Mis", 187, 4, 25, 26, 20, 9, 0);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 12, "tharcius", 186, 1, 28, 21, 23, 8, 0);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 13, "dma01", 183, 4, 31, 19, 21, 4, 10);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 14, "kelly", 182, 6, 22, 18, 20, 6, 20);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 15, "teles", 181, 1, 29, 20, 20, 7, 0);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 16, "carlos", 181, 2, 30, 19, 18, 6, 0);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 17, "lg_sjc", 179, 3, 23, 20, 25, 6, 20);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 18, "marcio_fv", 178, 3, 29, 18, 18, 4, 20);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 19, "pauloamorim", 175, 0, 26, 20, 24, 6, 10);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 20, "M9", 173, 1, 30, 21, 18, 4, 10);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 21, "Beto", 172, 1, 32, 24, 13, 5, 0);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 22, "romulosjc", 172, 2, 31, 19, 14, 3, 10);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 23, "luizhrs", 171, 3, 28, 20, 21, 6, 0);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 24, "Edmilson", 171, 2, 32, 10, 15, 4, 10);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 25, "barbosaalr", 169, 1, 30, 24, 15, 4, 0);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 26, "andinho", 169, 4, 30, 20, 12, 5, 0);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 27, "paulo.vrs", 165, 4, 29, 16, 21, 4, 0);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 28, "reinaldo", 164, 5, 31, 11, 14, 3, 10);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 29, "RZ", 163, 3, 26, 15, 17, 6, 0);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 30, "Thoris", 162, 2, 27, 23, 19, 5, 0);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 31, "fabiops91", 162, 4, 33, 15, 20, 1, 0);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 32, "gianluca", 160, 5, 28, 13, 18, 3, 0);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 33, "fcarvalho", 160, 1, 28, 24, 12, 3, 10);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 34, "Alvaro", 159, 5, 22, 21, 15, 6, 0);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 35, "Samuel", 159, 2, 26, 18, 13, 4, 0);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 36, "alcastro", 159, 2, 28, 18, 19, 3, 10);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 37, "denis", 156, 1, 26, 16, 16, 4, 0);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 38, "lise", 156, 1, 28, 12, 15, 4, 0);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 39, "Vieira Junior", 151, 4, 26, 13, 16, 4, 0);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 40, "palpiteiro", 151, 2, 25, 14, 21, 3, 0);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 41, "Gustavo", 150, 0, 27, 16, 16, 3, 0);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 42, "rafaelmcesar", 148, 2, 29, 15, 19, 2, 0);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 43, "carlfrei", 148, 3, 28, 21, 16, 2, 0);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 44, "Thais", 147, 0, 30, 20, 17, 1, 0);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 45, "toninha", 146, 7, 24, 17, 7, 3, 0);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 46, "veronbom", 145, 0, 26, 18, 15, 2, 10);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 47, "AlbertoFlu", 131, 0, 29, 11, 17, 1, 0);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 48, "bolacha", 113, 2, 17, 16, 15, 3, 0);
+            //StoreBolaoHistorico(bolao.Nome, 2014, 49, "Helio", 109, 5, 14, 16, 20, 2, 0);
 
 
             #endregion
@@ -358,7 +328,7 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
         }
         public bool InsertFinalResult()
         {
-            Domain.Entities.Boloes.Bolao bolao = new Domain.Entities.Boloes.Bolao("Copa do Mundo 2014");
+            Domain.Entities.Boloes.Bolao bolao = new Domain.Entities.Boloes.Bolao("Copa do Mundo 2010");
 
             _apostaExtraApp.InsertResult(bolao, new Domain.Entities.DadosBasicos.Time("Alemanha"), 1, new Domain.Entities.Users.User("thoris"));
             _apostaExtraApp.InsertResult(bolao, new Domain.Entities.DadosBasicos.Time("Argentina"), 2, new Domain.Entities.Users.User("thoris"));
@@ -372,8 +342,7 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
         {
             return _bolaoApp.Iniciar(iniciadoBy, bolao);
 
-        }
-        //public bool StoreData<T>(Application.Base.IGenericApp<T> app, T data)
+        } 
         public bool StoreData<T>(Domain.Interfaces.Services.Base.IGenericService<T> app, T data)
         {
             T loaded = app.Load(data);
@@ -393,6 +362,99 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
 
         public bool ClearApostasMembros()
         {
+            return true;
+        }
+        public void CreateApostasUsuarios(string nomeBolao)
+        {
+
+
+            CreateUserApostasFixo(nomeBolao, nomeBolao, "usuario0x0_2010", "teste@teste.com.br", 0, 0);
+            CreateUserApostasFixo(nomeBolao, nomeBolao, "usuario0x1_2010", "teste@teste.com.br", 0, 1);
+            CreateUserApostasFixo(nomeBolao, nomeBolao, "usuario1x0_2010", "teste@teste.com.br", 1, 0);
+            CreateUserApostasFixo(nomeBolao, nomeBolao, "usuario1x1_2010", "teste@teste.com.br", 1, 1);
+            CreateUserApostasFixo(nomeBolao, nomeBolao, "usuario0x2_2010", "teste@teste.com.br", 0, 2);
+            CreateUserApostasFixo(nomeBolao, nomeBolao, "usuario1x2_2010", "teste@teste.com.br", 1, 2);
+            CreateUserApostasFixo(nomeBolao, nomeBolao, "usuario2x0_2010", "teste@teste.com.br", 2, 0);
+            CreateUserApostasFixo(nomeBolao, nomeBolao, "usuario2x1_2010", "teste@teste.com.br", 2, 1);
+            CreateUserApostasFixo(nomeBolao, nomeBolao, "usuario2x2_2010", "teste@teste.com.br", 2, 2);
+
+
+
+        }
+        public Domain.Entities.Users.User CreateUserApostasFixo(string nomeBolao, string nomeCampeonato, string userName, string email, int time1, int time2)
+        {
+            Domain.Entities.Users.User user = new Domain.Entities.Users.User(userName)
+            {
+                Email = email
+            };
+
+            Domain.Entities.Boloes.Bolao bolao = new Domain.Entities.Boloes.Bolao(nomeBolao);
+            Domain.Entities.Campeonatos.Campeonato campeonato = new Domain.Entities.Campeonatos.Campeonato(nomeCampeonato);
+
+            //Domain.Entities.Boloes.Bolao bolaoLoaded = _bolaoApp.Load(bolao);
+            //Domain.Entities.Campeonatos.Campeonato campeonato = _campeonatoApp.Load(new Domain.Entities.Campeonatos.Campeonato(bolaoLoaded.NomeCampeonato));
+
+            IList<Domain.Entities.Boloes.JogoUsuario> jogos = new List<Domain.Entities.Boloes.JogoUsuario>();
+
+            for (int c = 0; c < 64; c++)
+            {
+                jogos.Add(CreateJogoUsuario(user, bolao, campeonato, c + 1, time1, time2, null, null));
+            }
+
+            CreateUserApostas(user, bolao, jogos);
+
+            return user;
+        }
+        public Domain.Entities.Boloes.JogoUsuario CreateJogoUsuario(Domain.Entities.Users.User user, Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Campeonatos.Campeonato campeonato, int jogoId, int time1, int time2, int? penaltis1, int? penaltis2)
+        {
+            return new Domain.Entities.Boloes.JogoUsuario(user.UserName, bolao.Nome, campeonato.Nome, jogoId)
+            {
+                ApostaTime1 = time1,
+                ApostaTime2 = time2,
+                ApostaPenaltis1 = penaltis1,
+                ApostaPenaltis2 = penaltis2
+            };
+        }
+        public bool CreateUserApostas(Domain.Entities.Users.User user, Domain.Entities.Boloes.Bolao bolao, IList<Domain.Entities.Boloes.JogoUsuario> jogos)
+        {
+            string activationCode = "";
+
+            Domain.Entities.Boloes.Bolao bolaoLoaded = _bolaoApp.Load(bolao);
+
+
+            Domain.Entities.Users.Role[] roles = {
+                                              new Domain.Entities.Users.Role("Apostador"),
+                                              new Domain.Entities.Users.Role("Convidado"),
+                                              new Domain.Entities.Users.Role("Visitante de Bolão"),
+                                              new Domain.Entities.Users.Role("Visitante de Campeonato"),
+                                           };
+
+            if (_userApp.Load(user) == null)
+            {
+                _userFacadeApp.CreateUser(user, roles);
+                _userFacadeApp.SendActivationCode(user);
+
+                Domain.Entities.Users.User loadedUser = _userApp.Load(user);
+                activationCode = loadedUser.ActivateKey;
+
+                _userFacadeApp.ActivateUser(user, activationCode);
+            }
+
+            Domain.Entities.Boloes.BolaoMembro membro = new Domain.Entities.Boloes.BolaoMembro(user.UserName, bolao.Nome) { FullName = user.FullName };
+
+            if (_bolaoMembroApp.Load(membro) == null)
+            {
+                _bolaoMembroApp.Insert(membro);
+            }
+
+            for (int c = 0; c < jogos.Count; c++)
+            {
+                Domain.Entities.Campeonatos.Jogo jogo = new Domain.Entities.Campeonatos.Jogo(bolaoLoaded.NomeCampeonato, jogos[c].JogoId);
+
+                _jogoUsuarioApp.ProcessAposta(bolao, user, jogo, 1, (int)jogos[c].ApostaTime1, (int)jogos[c].ApostaTime2,
+                    jogos[c].ApostaPenaltis1, jogos[c].ApostaPenaltis2, null);
+            }
+
             return true;
         }
 

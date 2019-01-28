@@ -56,9 +56,9 @@ namespace BolaoNet.Tests
 
 
 
-            CopaDoMundoTests.CopaDoMundo2014Tests.BolaoCopaMundo2014UserApostasAppTests test;
+            CopaDoMundoTests.BolaoCopaDoMundoTests.BolaoCopaMundo2014UserApostasAppTests test;
 
-            test = new CopaDoMundoTests.CopaDoMundo2014Tests.BolaoCopaMundo2014UserApostasAppTests(
+            test = new CopaDoMundoTests.BolaoCopaDoMundoTests.BolaoCopaMundo2014UserApostasAppTests(
                 kernel.Get<IUserApp>(),
                 kernel.Get<IJogoUsuarioApp>(),
                 kernel.Get<IJogoApp>(),

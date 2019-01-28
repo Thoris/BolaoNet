@@ -79,15 +79,16 @@
   </Choose>
   <ItemGroup>
     <Compile Include="AllTests.cs" />
-    <Compile Include="CopaDoMundoTests\CopaDoMundo2014Tests\BolaoCopaMundo2018AppHelper.cs" />
+    <Compile Include="CopaAmericaTests\BolaoCopaAmericaTests\BolaoCopaAmerica2019AppHelper.cs" />
+    <Compile Include="CopaDoMundoTests\BolaoCopaDoMundoTests\BolaoCopaMundo2018AppHelper.cs" />
     <Compile Include="LayersTests\ApiServiceLayerTests\DadosBasicosServiceLayerTests\TimeApiServiceLayerTests.cs" />
     <Compile Include="LayersTests\ApplicationLayerTests\DadosBasicosApplicationLayerTests\TimeApplicationLayerTests.cs" />
     <Compile Include="LayersTests\BaseLayerTests\BaseDadosBasicosTests\TimeLayerTests.cs" />
     <Compile Include="LayersTests\BaseLayerTests\BaseGenericDataTests.cs" />
     <Compile Include="LayersTests\BaseLayerTests\BasePreparingData.cs" />
-    <Compile Include="CopaDoMundoTests\CopaDoMundo2014Tests\BolaoCopaMundo2010AppHelper.cs" />
-    <Compile Include="CopaDoMundoTests\CopaDoMundo2014Tests\BolaoCopaMundo2014AppHelper.cs" />
-    <Compile Include="CopaDoMundoTests\CopaDoMundo2014Tests\BolaoCopaMundo2014UserApostasAppTests.cs" />
+    <Compile Include="CopaDoMundoTests\BolaoCopaDoMundoTests\BolaoCopaMundo2010AppHelper.cs" />
+    <Compile Include="CopaDoMundoTests\BolaoCopaDoMundoTests\BolaoCopaMundo2014AppHelper.cs" />
+    <Compile Include="CopaDoMundoTests\BolaoCopaDoMundoTests\BolaoCopaMundo2014UserApostasAppTests.cs" />
     <Compile Include="LayersTests\BaseLayerTests\MocksRepository\DadosBasicosMockRepository\TimeRepositoryDaoMock.cs" />
     <Compile Include="LayersTests\BaseLayerTests\MocksRepository\GenericRepositoryDaoMock.cs" />
     <Compile Include="LayersTests\BaseLayerTests\MocksRepository\IGenericRepositoryDaoMock.cs" />

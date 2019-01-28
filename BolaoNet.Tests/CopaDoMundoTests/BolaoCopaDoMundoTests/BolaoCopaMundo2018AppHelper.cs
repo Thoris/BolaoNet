@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
+namespace BolaoNet.Tests.CopaDoMundoTests.BolaoCopaDoMundoTests
 {
     public class BolaoCopaMundo2018AppHelper
     {
@@ -376,9 +376,15 @@ namespace BolaoNet.Tests.CopaDoMundoTests.CopaDoMundo2014Tests
             //_apostaExtraApp.InsertResult(bolao, new Domain.Entities.DadosBasicos.Time("Argentina"), 2, new Domain.Entities.Users.User("thoris"));
             //_apostaExtraApp.InsertResult(bolao, new Domain.Entities.DadosBasicos.Time("Holanda"), 3, new Domain.Entities.Users.User("thoris"));
             //_apostaExtraApp.InsertResult(bolao, new Domain.Entities.DadosBasicos.Time("Brasil"), 4, new Domain.Entities.Users.User("thoris"));
+             
+            _apostaExtraApp.InsertResult(bolao, new Domain.Entities.DadosBasicos.Time("França"), 1, new Domain.Entities.Users.User("thoris"));
+            _apostaExtraApp.InsertResult(bolao, new Domain.Entities.DadosBasicos.Time("Croácia"), 2, new Domain.Entities.Users.User("thoris"));
+            _apostaExtraApp.InsertResult(bolao, new Domain.Entities.DadosBasicos.Time("Bélgica"), 3, new Domain.Entities.Users.User("thoris"));
+            _apostaExtraApp.InsertResult(bolao, new Domain.Entities.DadosBasicos.Time("Inglaterra"), 4, new Domain.Entities.Users.User("thoris"));
 
 
             return true;
+             
         }
         public bool StartBolao(Domain.Entities.Users.User iniciadoBy, Domain.Entities.Boloes.Bolao bolao)
         {
