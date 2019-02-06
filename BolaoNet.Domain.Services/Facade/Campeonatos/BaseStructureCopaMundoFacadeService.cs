@@ -152,7 +152,7 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             };
         }
 
-        public IList<Entities.Campeonatos.Jogo> GetJogosOitavas(Entities.Campeonatos.Campeonato campeonato, int rodada, string nomeGrupo, string nomeFase, IList<DateTime> datas, IList<string> estadios, IList<int> ids)
+        public virtual IList<Entities.Campeonatos.Jogo> GetJogosOitavas(Entities.Campeonatos.Campeonato campeonato, int rodada, string nomeGrupo, string nomeFase, IList<DateTime> datas, IList<string> estadios, IList<int> ids)
         {
             if (campeonato == null)
                 throw new ArgumentException("campeonato");
@@ -197,7 +197,7 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             return list;
 
         }
-        public IList<Entities.Campeonatos.Jogo> GetJogosQuartas(Entities.Campeonatos.Campeonato campeonato, int rodada, string nomeGrupo, string nomeFase, IList<DateTime> datas, IList<string> estadios, IList<int> ids, IList<int> idsGanhadores)
+        public virtual IList<Entities.Campeonatos.Jogo> GetJogosQuartas(Entities.Campeonatos.Campeonato campeonato, int rodada, string nomeGrupo, string nomeFase, IList<DateTime> datas, IList<string> estadios, IList<int> ids, IList<int> idsGanhadores)
         {
             if (campeonato == null)
                 throw new ArgumentException("campeonato");
@@ -239,7 +239,7 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             return list;
 
         }
-        public IList<Entities.Campeonatos.Jogo> GetJogosSemi(Entities.Campeonatos.Campeonato campeonato, int rodada, string nomeGrupo, string nomeFase, IList<DateTime> datas, IList<string> estadios, IList<int> ids, IList<int> idsGanhadores)
+        public virtual IList<Entities.Campeonatos.Jogo> GetJogosSemi(Entities.Campeonatos.Campeonato campeonato, int rodada, string nomeGrupo, string nomeFase, IList<DateTime> datas, IList<string> estadios, IList<int> ids, IList<int> idsGanhadores)
         {
             if (campeonato == null)
                 throw new ArgumentException("campeonato");
@@ -277,7 +277,7 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             return list;
 
         }
-        public IList<Entities.Campeonatos.Jogo> GetJogosFinal(Entities.Campeonatos.Campeonato campeonato, int rodada, string nomeGrupo, string nomeFase, IList<DateTime> datas, IList<string> estadios, IList<int> ids, IList<int> idsGanhadores)
+        public virtual IList<Entities.Campeonatos.Jogo> GetJogosFinal(Entities.Campeonatos.Campeonato campeonato, int rodada, string nomeGrupo, string nomeFase, IList<DateTime> datas, IList<string> estadios, IList<int> ids, IList<int> idsGanhadores)
         {
             if (campeonato == null)
                 throw new ArgumentException("campeonato");
@@ -316,7 +316,7 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
 
         }
 
-        public IList<Entities.Campeonatos.Jogo> GetJogosGrupo(Entities.Campeonatos.Campeonato campeonato, string nomeGrupo, string nomeFase, IList<string> times, IList<DateTime> datas, IList<string> estadios, IList<int> ids)
+        public virtual IList<Entities.Campeonatos.Jogo> GetJogosGrupo(Entities.Campeonatos.Campeonato campeonato, string nomeGrupo, string nomeFase, IList<string> times, IList<DateTime> datas, IList<string> estadios, IList<int> ids)
         {
             if (campeonato == null)
                 throw new ArgumentException("campeonato");

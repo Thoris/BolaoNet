@@ -79,6 +79,8 @@ namespace BolaoNet.Domain.Entities.Campeonatos
         public string PendenteTime2NomeGrupo { get; set; }
         public int PendenteTime1PosGrupo { get; set; }
         public int PendenteTime2PosGrupo { get; set; }
+        public bool? PendenteTime1MelhorGrupos { get; set; }
+        public bool? PendenteTime2MelhorGrupos { get; set; }
 
         public bool? IsDesempate { get; set; }
 

@@ -25,12 +25,14 @@
 	[NomeEstadio] [varchar](30) NULL,
 	[PendenteTime1NomeGrupo] [varchar](20) NULL,
 	[PendenteTime1PosGrupo] [int] NULL,
+	[PendenteTime1MelhorGrupos] [bit] NULL,
 	[PendenteTime1JogoID] [int] NULL,
 	[PendenteTime1Ganhador] [bit] NULL,
 	[PendenteTime2NomeGrupo] [varchar](20) NULL,
 	[PendenteTime2PosGrupo] [int] NULL,
 	[PendenteTime2JogoID] [int] NULL,
 	[PendenteTime2Ganhador] [bit] NULL,
+	[PendenteTime2MelhorGrupos] [bit] NULL,
 	[JogoLabel] [varchar](5) NULL,
 PRIMARY KEY CLUSTERED 
 (

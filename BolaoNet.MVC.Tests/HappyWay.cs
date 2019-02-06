@@ -20,6 +20,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Linq;
 using BolaoNet.Application.Interfaces.Feed;
+using BolaoNet.Tests.CopaAmericaTests.BolaoCopaAmericaTests;
 
 namespace BolaoNet.MVC.Tests
 {
@@ -767,6 +768,7 @@ namespace BolaoNet.MVC.Tests
 
             ICopaMundo2010FacadeApp copaMundo2010FacadeApp = kernel.Get<ICopaMundo2010FacadeApp>();
             ICopaMundo2014FacadeApp copaMundo2018FacadeApp = kernel.Get<ICopaMundo2014FacadeApp>();
+            ICopaAmerica2019FacadeApp copaAmerica2019FacadeApp = kernel.Get<ICopaAmerica2019FacadeApp>();
             ICampeonatoApp campeonatoApp = kernel.Get<ICampeonatoApp>();
             IJogoApp jogoApp = kernel.Get<IJogoApp>();
             IUserApp userApp = kernel.Get<IUserApp>();
@@ -835,10 +837,31 @@ namespace BolaoNet.MVC.Tests
 
             #endregion
 
-            Domain.Entities.Campeonatos.Campeonato campeonato =
-                copaMundo2018FacadeApp.CreateCampeonato("Copa do Mundo 2018", false);
+            #region Copa 2018
 
-            BolaoCopaMundo2014AppHelper bolaoHelper = new BolaoCopaMundo2014AppHelper(
+            //Domain.Entities.Campeonatos.Campeonato campeonato =
+            //    copaMundo2018FacadeApp.CreateCampeonato("Copa do Mundo 2018", false);
+
+            //BolaoCopaMundo2014AppHelper bolaoHelper = new BolaoCopaMundo2014AppHelper(
+            //    apostaExtraApp,
+            //    bolaoApp,
+            //    bolaoPremioApp,
+            //    bolaoCriterioPontosApp,
+            //    bolaoCriterioPontosTimesApp,
+            //    bolaoRegraApp,
+            //    bolaoPontuacaoApp,
+            //    bolaoHistoricoApp);
+
+
+            //Domain.Entities.Boloes.Bolao bolao = bolaoHelper.CreateBolao(campeonato);
+            #endregion
+
+            #region Copa America 2019
+
+            Domain.Entities.Campeonatos.Campeonato campeonato =
+                copaAmerica2019FacadeApp.CreateCampeonato("Copa América 2019", false);
+
+            BolaoCopaAmerica2019AppHelper bolaoHelper = new BolaoCopaAmerica2019AppHelper(
                 apostaExtraApp,
                 bolaoApp,
                 bolaoPremioApp,
@@ -846,11 +869,14 @@ namespace BolaoNet.MVC.Tests
                 bolaoCriterioPontosTimesApp,
                 bolaoRegraApp,
                 bolaoPontuacaoApp,
-                bolaoHistoricoApp);
+                bolaoHistoricoApp,
+                bolaoMembroApp
+                );
 
 
             Domain.Entities.Boloes.Bolao bolao = bolaoHelper.CreateBolao(campeonato);
-
+            
+            #endregion
 
             #endregion
 

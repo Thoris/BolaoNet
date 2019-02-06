@@ -99,6 +99,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="BolaoCopa2018.cs" />
+    <Compile Include="BolaoCopaAmerica2019.cs" />
     <Compile Include="Execution.cs" />
     <Compile Include="HappyWay.cs" />
     <Compile Include="IoC\IoC.cs" />

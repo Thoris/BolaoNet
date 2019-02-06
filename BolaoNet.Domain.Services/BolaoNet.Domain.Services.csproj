@@ -90,6 +90,7 @@
     <Compile Include="Facade\CampeonatoFacadeService.cs" />
     <Compile Include="Facade\Campeonatos\BaseCopaMundoFacadeService.cs" />
     <Compile Include="Facade\Campeonatos\BaseStructureCopaMundoFacadeService.cs" />
+    <Compile Include="Facade\Campeonatos\CopaAmerica2019FacadeService.cs" />
     <Compile Include="Facade\Campeonatos\CopaMundo2010FacadeService.cs" />
     <Compile Include="Facade\Campeonatos\CopaMundo2014DataFacadeService.cs" />
     <Compile Include="Facade\Campeonatos\CopaMundo2018FacadeService.cs" />
