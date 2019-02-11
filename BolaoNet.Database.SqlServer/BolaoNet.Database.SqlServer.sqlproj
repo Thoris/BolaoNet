@@ -64,6 +64,7 @@
     <Build Include="build\0046.Create_Table_Log.sql" />
     <Build Include="build\0049.Create_Table_BoloesPremiacao.sql" />
     <None Include="build\0067.Insert_Result_Premiacao.sql" />
+    <Build Include="build\0099.Create_StoredProcedure_sp_Jogos_Calcule_Grupo_Melhores.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="build\0008.Create_Table_UserMaritalStatus.sql" />

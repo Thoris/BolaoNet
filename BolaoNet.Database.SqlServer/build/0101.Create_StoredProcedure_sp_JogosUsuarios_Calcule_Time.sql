@@ -98,6 +98,34 @@ BEGIN
 	GROUP BY JogosUsuarios.NomeBolao, Jogos.NomeCampeonato, Jogos.NomeFase, Jogos.NomeGrupo, JogosUsuarios.UserName
 
 
+	
+	
+	
+	
+	
+	
+	-- TODO: Verificar a inclusão de dados na tabela 	BoloesCampeonatosClassificacaoUsuarios
+	-- Atualizando as posições das apostas dos usuários no grupo do time especificado
+	UPDATE a
+	   SET Posicao = newPos
+	  FROM ( 
+		select ROW_NUMBER() OVER(
+			ORDER BY TotalPontos DESC, TotalGolsPro-TotalGolsContra DESC, TotalGolsPro DESC) as newPos,
+			* 
+	     from BoloesCampeonatosClassificacaoUsuarios 
+	    where NomeCampeonato = @NomeCampeonato
+		  AND NomeFase = @NomeFase
+		  AND NomeGrupo = @NomeGrupo
+		  AND NomeBolao = @NomeBolao
+		  AND UserName = @UserName
+		) a
+	
+	
+	
+	
+	
+	
+	
 
 
 	-- Verificando se terminou os jogos do grupo

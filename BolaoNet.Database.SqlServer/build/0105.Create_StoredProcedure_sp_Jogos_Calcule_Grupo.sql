@@ -137,6 +137,18 @@ BEGIN
 	
 	PRINT 'Termino da verificação do grupo ' + @NomeGrupo
 
+	
+	
+	-- TODO: Verificar a execução do processo
+	EXECUTE  [sp_Jogos_Calcule_Grupo_Melhores] 
+	   @CurrentLogin
+	  ,@CurrentDateTime
+	  ,@NomeCampeonato
+	  ,@NomeFase
+	  ,@NomeGrupo
+	  ,@Rodada
+	  ,@ErrorNumber OUTPUT
+	  ,@ErrorDescription OUTPUT
 
 END
 
