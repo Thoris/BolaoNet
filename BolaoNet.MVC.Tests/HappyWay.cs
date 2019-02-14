@@ -856,7 +856,7 @@ namespace BolaoNet.MVC.Tests
             //Domain.Entities.Boloes.Bolao bolao = bolaoHelper.CreateBolao(campeonato);
             #endregion
 
-            #region Copa America 2019
+            #region Copa América 2019
 
             Domain.Entities.Campeonatos.Campeonato campeonato =
                 copaAmerica2019FacadeApp.CreateCampeonato("Copa América 2019", false);

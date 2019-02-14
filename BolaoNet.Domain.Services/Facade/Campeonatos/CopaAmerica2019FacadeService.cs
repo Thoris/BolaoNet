@@ -69,7 +69,8 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             }
 
             string nomeFase = FaseClassificatoria;
-            IList<Entities.Campeonatos.CampeonatoPosicao> listPosicao = base.GetCampeonatoPosicoes(campeonato, nomeFase);
+
+            IList<Entities.Campeonatos.CampeonatoPosicao> listPosicao = this.GetCampeonatoPosicoes(campeonato, nomeFase);
 
             for (int c = 0; c < listPosicao.Count; c++)
             {
@@ -77,7 +78,7 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             }
 
             return campeonato;
-        }
+        }        
         public IList<Entities.Campeonatos.Jogo> GetJogosGrupo()
         {
             IList<Entities.Campeonatos.Jogo> list = new List<Entities.Campeonatos.Jogo>();
@@ -130,20 +131,36 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             IList<int> idsGanhadores = new List<int>();
             IList<string> estadios = new List<string>();
 
-            datas.Add(new DateTime(2018, 7, 6, 11, 0, 0, 0)); estadios.Add("Novgorod"); ids.Add(57);
-            idsGanhadores.Add(49); idsGanhadores.Add(50);
-            datas.Add(new DateTime(2018, 7, 6, 15, 0, 0, 0)); estadios.Add("Kazan Arena"); ids.Add(58);
-            idsGanhadores.Add(53); idsGanhadores.Add(54);
-            datas.Add(new DateTime(2018, 7, 7, 15, 0, 0, 0)); estadios.Add("Fisht Olympic"); ids.Add(59);
-            idsGanhadores.Add(51); idsGanhadores.Add(52);
-            datas.Add(new DateTime(2018, 7, 7, 11, 0, 0, 0)); estadios.Add("Estádio de Samara"); ids.Add(60);
-            idsGanhadores.Add(55); idsGanhadores.Add(56);
+
+            datas.Add(new DateTime(2019, 6, 27, 21, 30, 0, 0)); estadios.Add("Arena do Grêmio"); ids.Add(19); 
+            datas.Add(new DateTime(2019, 6, 28, 16, 0, 0, 0)); estadios.Add("Maracanã"); ids.Add(20);
+            datas.Add(new DateTime(2019, 6, 28, 20, 0, 0, 0)); estadios.Add("Arena Corinthians"); ids.Add(21);
+            datas.Add(new DateTime(2019, 6, 29, 16, 0, 0, 0)); estadios.Add("Fonte Nova"); ids.Add(22);
 
 
-            int rodada = 5;
+            int rodada = 4;
             string nomeGrupo = " ";
 
-            return base.GetJogosQuartas(base.Campeonato, rodada, nomeGrupo, nomeFase, datas, estadios, ids, idsGanhadores);
+
+            //IList<Entities.Campeonatos.Jogo> list = new List<Entities.Campeonatos.Jogo>();
+            //int c = 0;
+            //int l = 0;
+
+            //list.Add(CreateJogo(nomeCampeonato, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], "A", 1, "B", 2, true, null));
+            //c++;
+            //list.Add(CreateJogo(nomeCampeonato, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], "C", 1, "D", 2, true, null));
+            //c++;
+            //list.Add(CreateJogo(nomeCampeonato, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], "B", 1, "A", 2, true, null));
+            //c++;
+            //list.Add(CreateJogo(nomeCampeonato, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], "D", 1, "C", 2, true, null));
+
+     
+
+            //string nomeGrupo = " ";
+
+            return this.GetJogosQuartas(base.Campeonato, rodada, nomeGrupo, nomeFase, datas, estadios, ids, idsGanhadores);
+
+            //return list;
         }
         public IList<Entities.Campeonatos.Jogo> GetSemiFinal()
         {
@@ -153,13 +170,13 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             IList<int> idsGanhadores = new List<int>();
             IList<string> estadios = new List<string>();
 
-            datas.Add(new DateTime(2018, 7, 10, 15, 0, 0, 0)); estadios.Add("Krestovsky"); ids.Add(61);
-            idsGanhadores.Add(57); idsGanhadores.Add(58);
-            datas.Add(new DateTime(2018, 7, 11, 15, 0, 0, 0)); estadios.Add("Luzhniki"); ids.Add(62);
-            idsGanhadores.Add(59); idsGanhadores.Add(60);
+            datas.Add(new DateTime(2018, 7, 2, 21,30, 0, 0)); estadios.Add("Mineirão"); ids.Add(23);
+            idsGanhadores.Add(19); idsGanhadores.Add(20);
+            datas.Add(new DateTime(2018, 7, 3, 21, 30, 0, 0)); estadios.Add("Arena do Grêmio"); ids.Add(24);
+            idsGanhadores.Add(21); idsGanhadores.Add(22);
 
 
-            int rodada = 6;
+            int rodada = 5;
             string nomeGrupo = " ";
 
             return base.GetJogosSemi(base.Campeonato, rodada, nomeGrupo, nomeFase, datas, estadios, ids, idsGanhadores);
@@ -172,13 +189,13 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             IList<int> idsGanhadores = new List<int>();
             IList<string> estadios = new List<string>();
 
-            datas.Add(new DateTime(2018, 7, 14, 11, 0, 0, 0)); estadios.Add("Krestovsky"); ids.Add(63);
-            idsGanhadores.Add(61); idsGanhadores.Add(62);
-            datas.Add(new DateTime(2018, 7, 15, 12, 0, 0, 0)); estadios.Add("Luzhniki"); ids.Add(64);
-            idsGanhadores.Add(61); idsGanhadores.Add(62);
+            datas.Add(new DateTime(2019, 7, 6, 16, 0, 0, 0)); estadios.Add("Arena Corinthians"); ids.Add(25);
+            idsGanhadores.Add(23); idsGanhadores.Add(24);
+            datas.Add(new DateTime(2019, 7, 7, 17, 0, 0, 0)); estadios.Add("Maracanã"); ids.Add(26);
+            idsGanhadores.Add(23); idsGanhadores.Add(24);
 
 
-            int rodada = 7;
+            int rodada = 6;
             string nomeGrupo = " ";
 
             return base.GetJogosFinal(base.Campeonato, rodada, nomeGrupo, nomeFase, datas, estadios, ids, idsGanhadores);
@@ -284,19 +301,19 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
                 throw new ArgumentException("datas.Count != 4");
             if (idsGanhadores == null)
                 throw new ArgumentException("idsGanhadores");
-            if (idsGanhadores.Count != 8)
-                throw new ArgumentException("idsGanhadores.Count != 8");
 
+            //if (idsGanhadores.Count != 8)
+            //    throw new ArgumentException("idsGanhadores.Count != 8");
             IList<Entities.Campeonatos.Jogo> list = new List<Entities.Campeonatos.Jogo>();
 
             int c = 0; 
-            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], "A", 1, "BC", 3, true));
+            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], "A", 1, "BC", 3, true, null, true));
             c++;
-            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], "A", 2, "B", 2, true));
+            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], "A", 2, "B", 2, true, null, null));
             c++;
-            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], "B", 1, "C", 2, true));
+            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], "B", 1, "C", 2, true, null, null));
             c++;
-            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], "C", 1, "AB", 3, true));
+            list.Add(CreateJogo(campeonato.Nome, datas[c], estadios[c], nomeFase, nomeGrupo, rodada, ids[c], "C", 1, "AB", 3, true, null, true));
 
 
 
@@ -305,7 +322,16 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             return list;
 
         }
-        
+        public override IList<Entities.Campeonatos.CampeonatoPosicao> GetCampeonatoPosicoes(Entities.Campeonatos.Campeonato campeonato, string nomeFase)
+        {
+            IList<Entities.Campeonatos.CampeonatoPosicao> list = new List<Entities.Campeonatos.CampeonatoPosicao>();
+
+            list = Merge(list, CreateCampeonatoPosicao(campeonato, nomeFase, "A"));
+            list = Merge(list, CreateCampeonatoPosicao(campeonato, nomeFase, "B"));
+            list = Merge(list, CreateCampeonatoPosicao(campeonato, nomeFase, "C"));
+
+            return list;
+        }
         #endregion
 
     }

@@ -219,6 +219,18 @@ BEGIN
 	PRINT 'Termino da verificação do grupo ' + @NomeGrupo
 
 
+
+	EXEC sp_JogosUsuarios_Calcule_Grupo_Melhor 
+		@CurrentLogin,
+		@CurrentDateTime,
+		@NomeCampeonato,
+		@NomeBolao,	
+		@UserName,			
+		@NomeFase,
+		@NomeGrupo,
+		@ErrorNumber OUTPUT,
+		@ErrorDescription OUTPUT
+
 END
 
 

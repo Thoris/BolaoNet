@@ -10,7 +10,7 @@ namespace BolaoNet.Tests.CopaAmericaTests.BolaoCopaAmericaTests
     {
         #region Constants
 
-        public const string NomeBolao = "Copa do America 2019";
+        public const string NomeBolao = "Copa América 2019";
 
         #endregion
 
@@ -71,7 +71,7 @@ namespace BolaoNet.Tests.CopaAmericaTests.BolaoCopaAmericaTests
                 NomeCampeonato = campeonato.Nome,
                 ApostasApenasAntes = true,
                 Cidade = "São José dos Campos",
-                DataInicio = new DateTime(2018, 6, 1),
+                DataInicio = new DateTime(2019, 6, 1),
                 Descricao = "Bolão da Copa América",
                 Estado = "São Paulo",
                 ForumAtivado = true,

@@ -41,7 +41,8 @@ namespace BolaoNet.Tests.Debug
 
 
 
-
+            BolaoNet.MVC.Tests.BolaoCopaAmerica2019 t1 = new MVC.Tests.BolaoCopaAmerica2019();
+            t1.TestFullCycle();
 
             BolaoNet.MVC.Tests.BolaoCopa2018 t = new MVC.Tests.BolaoCopa2018();
             t.TestFullCycle();
