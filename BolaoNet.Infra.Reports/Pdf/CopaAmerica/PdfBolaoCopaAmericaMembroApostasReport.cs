@@ -1,4 +1,5 @@
-﻿using iTextSharp.text;
+﻿using ICSharpCode.SharpZipLib.Zip;
+using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System;
 using System.Collections.Generic;
@@ -7,14 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BolaoNet.Infra.Reports.Pdf
+namespace BolaoNet.Infra.Reports.Pdf.CopaAmerica
 {
-    public class PdfBolaoMembroApostasReport : 
-        Domain.Interfaces.Services.Reports.FormatReport.IBolaoMembroApostasFormatReportService
+    public class PdfBolaoCopaAmericaMembroApostasReport
     {
+         
         #region Constructors/Destructors
 
-        public PdfBolaoMembroApostasReport()
+        public PdfBolaoCopaAmericaMembroApostasReport()
         {
 
         }
@@ -1403,6 +1404,5 @@ namespace BolaoNet.Infra.Reports.Pdf
         }
 
         #endregion
-
     }
 }

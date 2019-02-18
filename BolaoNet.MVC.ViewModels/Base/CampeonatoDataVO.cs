@@ -15,6 +15,7 @@ namespace BolaoNet.MVC.ViewModels.Base
         public IList<string> NomeTimes { get; set; }
         public IList<string> NomeFases { get; set; }
         public IList<string> NomeGrupos { get; set; }
+        public Nullable<int> TipoCampeonato { get; set; }
 
         #endregion
         

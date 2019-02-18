@@ -221,7 +221,9 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
 
             if (!IsCampeonatoContainsFase(Domain.Entities.Campeonatos.CampeonatoFase.FaseClassificatoria))
                 return false;
-            if (!IsCampeonatoContainsFase(Domain.Entities.Campeonatos.CampeonatoFase.FaseOitavasFinal))
+
+            if (base.CampeonatoData.TipoCampeonato == (int)Domain.Entities.Campeonatos.Campeonato.Tipos.CopaDoMundo &&
+                !IsCampeonatoContainsFase(Domain.Entities.Campeonatos.CampeonatoFase.FaseOitavasFinal))
                 return false;
             if (!IsCampeonatoContainsFase(Domain.Entities.Campeonatos.CampeonatoFase.FaseQuartasFinal))
                 return false;

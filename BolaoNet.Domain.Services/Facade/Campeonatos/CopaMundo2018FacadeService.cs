@@ -47,7 +47,8 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             Entities.Campeonatos.Campeonato campeonato = new Entities.Campeonatos.Campeonato(nomeCampeonato)
             {
                 IsClube = isClube,
-                IsIniciado = false
+                IsIniciado = false,
+                TipoCampeonato = (int)Entities.Campeonatos.Campeonato.Tipos.CopaDoMundo
             };
 
             IList<Entities.Campeonatos.Jogo> list = new List<Entities.Campeonatos.Jogo>();

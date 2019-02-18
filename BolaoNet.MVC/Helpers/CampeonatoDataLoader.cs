@@ -57,7 +57,10 @@ namespace BolaoNet.MVC.Helpers
                 res.NomeTimes.Add(times[c].NomeTime);
 
 
+            Domain.Entities.Campeonatos.Campeonato camp = _campeonatoApp.Load(campeonato);
+
             res.NomeCampeonato = campeonato.Nome;
+            res.TipoCampeonato = camp.TipoCampeonato;
 
             return res;
         }

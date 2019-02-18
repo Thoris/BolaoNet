@@ -8,8 +8,9 @@ CREATE TABLE [dbo].[Campeonatos](
 	[CreatedBy] [varchar](25) NULL,
 	[RodadaAtual] [int] NULL,
 	[IsIniciado] [bit] NULL,
+	[TipoCampeonato] [bit] NULL,
 	[ModifiedDate] [datetime] NULL,
-	[DataInicio] [datetime] NULL,
+	[DataIniciado] [datetime] NULL,
 	[ActiveFlag] [bit] NULL,
 PRIMARY KEY CLUSTERED 
 (

@@ -11,6 +11,17 @@ namespace BolaoNet.Domain.Entities.Campeonatos
 {
     public class Campeonato : Base.BaseSelfValidationEntity, ISelfValidation
     {
+        #region Enumerations 
+
+        public enum Tipos
+        {
+            CopaDoMundo = 0,
+            CopaAmerica = 1,
+            Outros = 2
+        }
+
+        #endregion
+
         #region Properties
 
         [Key, Column(Order = 0)]
@@ -21,6 +32,8 @@ namespace BolaoNet.Domain.Entities.Campeonatos
         public int RodadaAtual { get; set; }
         public bool IsIniciado { get; set; }
         public DateTime ? DataIniciado { get; set; }
+
+        public Nullable<int> TipoCampeonato { get; set; }
 
         //public ICollection<DadosBasicos.Time> Times { get; set; }
         //public ICollection<Grupo> Grupos { get; set; }
