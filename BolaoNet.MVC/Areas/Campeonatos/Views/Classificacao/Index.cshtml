@@ -8,7 +8,7 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="wrapper wrapper-content animated fadeInRight">
+    @*<div class="wrapper wrapper-content animated fadeInRight">*@
         <div class="row">
 
             @for (int c = 0; c < Model.Count; c++ )
@@ -103,5 +103,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    @*</div>*@
 }
