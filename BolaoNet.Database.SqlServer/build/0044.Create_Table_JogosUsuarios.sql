@@ -39,6 +39,7 @@ CREATE TABLE [dbo].[JogosUsuarios](
 	[NomeTimeResult2] [varchar](30) NULL,
 	[Ganhador] [int] NULL,
 	[DataFacebook] [datetime] NULL,
+	[PontosAcertoTime] [int] NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[IdJogo] ASC,

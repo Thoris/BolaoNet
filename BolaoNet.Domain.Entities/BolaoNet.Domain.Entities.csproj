@@ -39,6 +39,7 @@
     <Compile Include="Boloes\ApostaPontos.cs" />
     <Compile Include="Boloes\ApostasRestantesUser.cs" />
     <Compile Include="Boloes\Bolao.cs" />
+    <Compile Include="Boloes\BolaoAcertoTimePonto.cs" />
     <Compile Include="Boloes\BolaoCampeonatoClassificacaoUsuario.cs" />
     <Compile Include="Boloes\BolaoCriterioPontos.cs" />
     <Compile Include="Boloes\BolaoCriterioPontosTimes.cs" />

@@ -52,6 +52,7 @@
     <Compile Include="Boloes\ApostaExtraUsuarioConfiguration.cs" />
     <Compile Include="Boloes\ApostaPontosConfiguration.cs" />
     <Compile Include="Boloes\ApostasRestantesConfiguration.cs" />
+    <Compile Include="Boloes\BolaoAcertoTimePontoConfiguration.cs" />
     <Compile Include="Boloes\BolaoCampeonatoClassificacaoUsuarioConfiguration.cs" />
     <Compile Include="Boloes\BolaoPremiacaoConfiguration.cs" />
     <Compile Include="Boloes\BolaoCriterioPontosConfiguration.cs" />

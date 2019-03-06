@@ -45,6 +45,7 @@
     <Compile Include="Boloes\IApostaExtraUsuarioDao.cs" />
     <Compile Include="Boloes\IApostaPontosDao.cs" />
     <Compile Include="Boloes\IApostasRestantesUserDao.cs" />
+    <Compile Include="Boloes\IBolaoAcertoTimePontoDao.cs" />
     <Compile Include="Boloes\IBolaoCampeonatoClassificacaoUsuarioDao.cs" />
     <Compile Include="Boloes\IBolaoPremiacaoDao.cs" />
     <Compile Include="Boloes\IBolaoCriterioPontosDao.cs" />

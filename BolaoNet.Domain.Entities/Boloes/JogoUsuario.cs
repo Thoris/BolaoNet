@@ -92,11 +92,12 @@ namespace BolaoNet.Domain.Entities.Boloes
         public bool? IsGolsTime1 { get; set; }
         public bool? IsGolsTime2 { get; set; }
         public bool? IsPlacarCheio { get; set; }
-        public bool? IsMultiploTime{get;set;}
+        public bool? IsMultiploTime { get; set; }
         public int? MultiploTime { get; set; }
 
-        public int? Ganhador { get; set; } 
-        public DateTime ? DataFacebook{get;set;}
+        public int? Ganhador { get; set; }
+        public DateTime? DataFacebook { get; set; }
+        public int? PontosAcertoTime { get; set; }
 
         #endregion
         
@@ -114,9 +115,6 @@ namespace BolaoNet.Domain.Entities.Boloes
             this.JogoId = jogoId;
         }
 
-        #endregion
-
-
-        
+        #endregion        
     }
 }

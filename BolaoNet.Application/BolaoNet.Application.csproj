@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\GenericApp.cs" />
+    <Compile Include="Boloes\BolaoAcertoTimePontoApp.cs" />
     <Compile Include="Boloes\BolaoPremiacaoApp.cs" />
     <Compile Include="Boloes\BolaoHistoricoApp.cs" />
     <Compile Include="Boloes\BolaoMembroPontoApp.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="Interfaces\Boloes\IApostaExtraUsuarioApp.cs" />
     <Compile Include="Interfaces\Boloes\IApostaPontosApp.cs" />
     <Compile Include="Interfaces\Boloes\IApostasRestantesApp.cs" />
+    <Compile Include="Interfaces\Boloes\IBolaoAcertoTimePontoApp.cs" />
     <Compile Include="Interfaces\Boloes\IBolaoCampeonatoClassificacaoUsuarioApp.cs" />
     <Compile Include="Interfaces\Boloes\IBolaoPremiacaoApp.cs" />
     <Compile Include="Interfaces\Boloes\IBolaoCriterioPontosApp.cs" />

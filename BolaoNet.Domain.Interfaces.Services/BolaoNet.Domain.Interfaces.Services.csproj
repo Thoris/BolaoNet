@@ -45,6 +45,7 @@
     <Compile Include="Boloes\IApostaExtraUsuarioService.cs" />
     <Compile Include="Boloes\IApostaPontosService.cs" />
     <Compile Include="Boloes\IApostasRestantesService.cs" />
+    <Compile Include="Boloes\IBolaoAcertoTimePontoService.cs" />
     <Compile Include="Boloes\IBolaoPremiacaoService.cs" />
     <Compile Include="Boloes\IBolaoHistoricoService.cs" />
     <Compile Include="Boloes\IBolaoMembroPontoService.cs" />

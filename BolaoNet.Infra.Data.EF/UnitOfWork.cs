@@ -65,6 +65,8 @@ namespace BolaoNet.Infra.Data.EF
 
         public DbSet<Domain.Entities.LogReporting.LogEvent> Log { get; set; }
 
+        public DbSet<Domain.Entities.Boloes.BolaoAcertoTimePonto> BolaoAcertoTimePontos { get; set; }
+
         #endregion
 
         #region Constructors/Destructors
@@ -244,6 +246,8 @@ namespace BolaoNet.Infra.Data.EF
 
             modelBuilder.Configurations.Add(new Mapping.LogReporting.LogConfiguration());
             modelBuilder.Configurations.Add(new Mapping.Feed.RssConfiguration());
+
+            modelBuilder.Configurations.Add(new Mapping.Boloes.BolaoAcertoTimePontoConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }
