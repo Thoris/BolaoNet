@@ -40,6 +40,8 @@ namespace BolaoNet.Tests
                 kernel.Get<IJogoUsuarioService>(),
                 kernel.Get<IUserService>(),
                 kernel.Get<IBolaoCampeonatoClassificacaoUsuarioService>(),
+                kernel.Get<ICampeonatoGrupoApp>(),
+                kernel.Get<ICampeonatoApp>(),
                 new Infra.Reports.Pdf.PdfBolaoMembroApostasReport()
                 );
 

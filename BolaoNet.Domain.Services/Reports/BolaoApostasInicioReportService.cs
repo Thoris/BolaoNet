@@ -20,7 +20,10 @@ namespace BolaoNet.Domain.Services.Reports
         private Interfaces.Services.Boloes.IApostaExtraUsuarioService _apostaExtraUsuarios;
         private Interfaces.Services.Boloes.IJogoUsuarioService _jogoUsuario;
         private Interfaces.Services.Users.IUserService _user;
+        private Interfaces.Services.Campeonatos.ICampeonatoService _campeonato;
+        private Interfaces.Services.Campeonatos.ICampeonatoGrupoService _campeonatoGrupo;
         private Interfaces.Services.Boloes.IBolaoRegraService _regraService;
+        private Interfaces.Services.Boloes.IBolaoCampeonatoClassificacaoUsuarioService _bolaoCampeonatoClassificacaoUsuarioService;
         private Interfaces.Services.Reports.FormatReport.IBolaoApostasInicioFormatReportService _output;
         private ILogging _logging;
 
@@ -28,7 +31,7 @@ namespace BolaoNet.Domain.Services.Reports
 
         #region Constructors/Destructors
 
-        public BolaoApostasInicioReportService(string userName, ILogging logging, Interfaces.Services.Boloes.IBolaoMembroService bolaoMembro, Interfaces.Services.Boloes.IBolaoService bolao, Interfaces.Services.Boloes.IApostaExtraUsuarioService apostaExtraUsuarios, Interfaces.Services.Boloes.IJogoUsuarioService jogoUsuario, Interfaces.Services.Users.IUserService user, Interfaces.Services.Boloes.IBolaoRegraService regraService, Interfaces.Services.Reports.FormatReport.IBolaoApostasInicioFormatReportService output)
+        public BolaoApostasInicioReportService(string userName, ILogging logging, Interfaces.Services.Boloes.IBolaoMembroService bolaoMembro, Interfaces.Services.Boloes.IBolaoService bolao, Interfaces.Services.Boloes.IApostaExtraUsuarioService apostaExtraUsuarios, Interfaces.Services.Boloes.IJogoUsuarioService jogoUsuario, Interfaces.Services.Users.IUserService user, Interfaces.Services.Campeonatos.ICampeonatoService campeonato,Interfaces.Services.Campeonatos.ICampeonatoGrupoService campeonatoGrupo, Interfaces.Services.Boloes.IBolaoRegraService regraService, Interfaces.Services.Boloes.IBolaoCampeonatoClassificacaoUsuarioService bolaoCampeonatoClassificacaoUsuarioService, Interfaces.Services.Reports.FormatReport.IBolaoApostasInicioFormatReportService output)
         {
             _bolaoMembro = bolaoMembro;
             _bolao = bolao;
@@ -36,9 +39,12 @@ namespace BolaoNet.Domain.Services.Reports
             _apostaExtraUsuarios = apostaExtraUsuarios;
             _jogoUsuario = jogoUsuario;
             _user = user;
+            _campeonatoGrupo = campeonatoGrupo;
             _regraService = regraService;
             _output = output;
             _logging = logging;
+            _campeonato = campeonato;
+            _bolaoCampeonatoClassificacaoUsuarioService = bolaoCampeonatoClassificacaoUsuarioService;
         }
 
         #endregion
@@ -58,13 +64,27 @@ namespace BolaoNet.Domain.Services.Reports
 
             Entities.ValueObjects.Reports.BolaoIniciarVO res = new Entities.ValueObjects.Reports.BolaoIniciarVO();
 
+            
+
             IList<Domain.Entities.Boloes.BolaoMembro> membros = _bolaoMembro.GetListUsersInBolao(bolao);
+
+            Domain.Entities.Campeonatos.Campeonato campeonato = _campeonato.Load(new Entities.Campeonatos.Campeonato(bolao.NomeCampeonato));
+            res.TipoCampeonato = (Entities.Campeonatos.Campeonato.Tipos) (campeonato.TipoCampeonato == null ? 0 : campeonato.TipoCampeonato);
+            
+
+           
+
 
             //IList<Entities.ValueObjects.Reports.BolaoMembroApostasVO> res = 
             res.Membros = new List<Entities.ValueObjects.Reports.BolaoMembroApostasVO>();
 
             Domain.Entities.Boloes.Bolao bolaoLoaded = _bolao.Load(bolao);
             res.Bolao = bolaoLoaded;
+
+
+            IList<Entities.Campeonatos.CampeonatoGrupo> grupos =
+                _campeonatoGrupo.GetGruposCampeonato(new Entities.Campeonatos.Campeonato(bolaoLoaded.NomeCampeonato));
+
 
             for (int c = 0; c < membros.Count; c++)
             {
@@ -79,6 +99,24 @@ namespace BolaoNet.Domain.Services.Reports
                 entry.JogosUsuarios = _jogoUsuario.GetJogosUser(bolaoLoaded, userLoaded, new Entities.ValueObjects.FilterJogosVO());
                 
                 res.Membros.Add(entry);
+
+                entry.ClassificacaoTimes = new List<IList<Domain.Entities.Boloes.BolaoCampeonatoClassificacaoUsuario>>();
+                for (int i = 0; i < grupos.Count; i++)
+                {
+                    IList<Domain.Entities.Boloes.BolaoCampeonatoClassificacaoUsuario> classificacao =
+                        _bolaoCampeonatoClassificacaoUsuarioService.LoadClassificacao(bolao,
+                            new Domain.Entities.Campeonatos.CampeonatoFase(Domain.Entities.Campeonatos.CampeonatoFase.FaseClassificatoria, bolaoLoaded.NomeCampeonato),
+                            new Domain.Entities.Campeonatos.CampeonatoGrupo(grupos[i].Nome, bolaoLoaded.NomeCampeonato),
+                            userLoaded);
+
+
+                    //Validando as posições
+                    for (int a = 0; a < classificacao.Count; a++)
+                        classificacao[a].Posicao = a + 1;
+
+                    entry.ClassificacaoTimes.Add(classificacao);
+                }
+
             }
 
             res.Regras = _regraService.GetRegrasBolao(bolao);

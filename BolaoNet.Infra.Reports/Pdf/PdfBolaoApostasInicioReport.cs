@@ -1243,6 +1243,14 @@ namespace BolaoNet.Infra.Reports.Pdf
 
         public Stream Generate(string fileName, string compressedFileName, string extension, string folderProfiles, string folderTimes, Domain.Entities.ValueObjects.Reports.BolaoIniciarVO data)
         {
+            switch (data.TipoCampeonato)
+            {
+                case Domain.Entities.Campeonatos.Campeonato.Tipos.CopaAmerica:
+                    return new CopaAmerica.PdfBolaoCopaAmericaApostasInicioReport().Generate(fileName, compressedFileName, extension, folderProfiles, folderTimes, data);
+                case Domain.Entities.Campeonatos.Campeonato.Tipos.Outros:
+                    break;
+            }
+
             Document document = new Document(PageSize.A4);
 
             MemoryStream fs = new MemoryStream();

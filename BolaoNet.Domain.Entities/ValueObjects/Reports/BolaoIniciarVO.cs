@@ -12,5 +12,6 @@ namespace BolaoNet.Domain.Entities.ValueObjects.Reports
         public IList<BolaoMembroApostasVO> Membros { get; set; }
         public Domain.Entities.Boloes.Bolao Bolao { get; set; }
         public IList<Domain.Entities.Campeonatos.Jogo> Jogos { get; set; }
+        public Domain.Entities.Campeonatos.Campeonato.Tipos TipoCampeonato { get; set; }
     }
 }

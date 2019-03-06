@@ -1371,6 +1371,15 @@ namespace BolaoNet.Infra.Reports.Pdf
 
         public System.IO.Stream Generate(string extension, string folderProfiles, string folderTimes, Domain.Entities.ValueObjects.Reports.BolaoMembroApostasVO data)
         {
+            switch(data.TipoCampeonato)
+            {
+                case Domain.Entities.Campeonatos.Campeonato.Tipos.CopaAmerica:
+                    return new CopaAmerica.PdfBolaoCopaAmericaMembroApostasReport().Generate(extension, folderProfiles, folderTimes, data);
+                case Domain.Entities.Campeonatos.Campeonato.Tipos.Outros:
+                    break;
+            }
+
+
             Document document = new Document(PageSize.A4);
 
             MemoryStream fs = new MemoryStream();
