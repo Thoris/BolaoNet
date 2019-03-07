@@ -50,6 +50,8 @@ namespace BolaoNet.MVC.Tests.IoC.Modules
             Bind<Application.Interfaces.Boloes.IMensagemApp>().To<Application.Boloes.MensagemApp>();
             Bind<Application.Interfaces.Boloes.IPagamentoApp>().To<Application.Boloes.PagamentoApp>();
             Bind<Application.Interfaces.Boloes.IPontuacaoApp>().To<Application.Boloes.PontuacaoApp>();
+            Bind<Application.Interfaces.Boloes.IBolaoAcertoTimePontoApp>().To<Application.Boloes.BolaoAcertoTimePontoApp>();
+
 
             Bind<Application.Interfaces.Campeonatos.ICampeonatoApp>().To<Application.Campeonatos.CampeonatoApp>();
             Bind<Application.Interfaces.Campeonatos.ICampeonatoClassificacaoApp>().To<Application.Campeonatos.CampeonatoClassificacaoApp>();

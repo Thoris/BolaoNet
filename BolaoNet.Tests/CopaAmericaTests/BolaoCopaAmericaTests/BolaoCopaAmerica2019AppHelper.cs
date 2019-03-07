@@ -25,6 +25,7 @@ namespace BolaoNet.Tests.CopaAmericaTests.BolaoCopaAmericaTests
         private Application.Interfaces.Boloes.IBolaoPontuacaoApp _bolaoPontuacaoApp;
         private Application.Interfaces.Boloes.IBolaoHistoricoApp _bolaoHistoricoApp;
         private Application.Interfaces.Boloes.IBolaoMembroApp _bolaoMembroApp;
+        private Application.Interfaces.Boloes.IBolaoAcertoTimePontoApp _bolaoAcertoTimePontoApp;
 
         #endregion
 
@@ -39,7 +40,8 @@ namespace BolaoNet.Tests.CopaAmericaTests.BolaoCopaAmericaTests
             Application.Interfaces.Boloes.IBolaoRegraApp bolaoRegraApp,
             Application.Interfaces.Boloes.IBolaoPontuacaoApp bolaoPontuacaoApp,
             Application.Interfaces.Boloes.IBolaoHistoricoApp bolaoHistoricoApp,
-            Application.Interfaces.Boloes.IBolaoMembroApp bolaoMembroApp
+            Application.Interfaces.Boloes.IBolaoMembroApp bolaoMembroApp,
+            Application.Interfaces.Boloes.IBolaoAcertoTimePontoApp bolaoAcertoTimePontoApp
         )
         {
             _apostaExtraApp = apostaExtraApp;
@@ -51,6 +53,7 @@ namespace BolaoNet.Tests.CopaAmericaTests.BolaoCopaAmericaTests
             _bolaoPontuacaoApp = bolaoPontuacaoApp;
             _bolaoHistoricoApp = bolaoHistoricoApp;
             _bolaoMembroApp = bolaoMembroApp;
+            _bolaoAcertoTimePontoApp = bolaoAcertoTimePontoApp;
         }
 
         #endregion
@@ -133,21 +136,21 @@ namespace BolaoNet.Tests.CopaAmericaTests.BolaoCopaAmericaTests
             Domain.Entities.Boloes.ApostaExtra extra2 = new Domain.Entities.Boloes.ApostaExtra(bolao.Nome, 2)
             {
                 Titulo = "Vice-Campeão",
-                TotalPontos = 10,
+                TotalPontos = 8,
             };
             StoreData<Domain.Entities.Boloes.ApostaExtra>(_apostaExtraApp, extra2);
 
             Domain.Entities.Boloes.ApostaExtra extra3 = new Domain.Entities.Boloes.ApostaExtra(bolao.Nome, 3)
             {
                 Titulo = "Terceiro Lugar",
-                TotalPontos = 10,
+                TotalPontos = 5,
             };
             StoreData<Domain.Entities.Boloes.ApostaExtra>(_apostaExtraApp, extra3);
 
             Domain.Entities.Boloes.ApostaExtra extra4 = new Domain.Entities.Boloes.ApostaExtra(bolao.Nome, 4)
             {
                 Titulo = "Quarto Lugar",
-                TotalPontos = 10,
+                TotalPontos = 2,
             };
             StoreData<Domain.Entities.Boloes.ApostaExtra>(_apostaExtraApp, extra4);
 
@@ -258,9 +261,33 @@ namespace BolaoNet.Tests.CopaAmericaTests.BolaoCopaAmericaTests
 
             #endregion
 
+            #region Pontos de Acertos de Times
+
+            StoreData<Domain.Entities.Boloes.BolaoAcertoTimePonto>(_bolaoAcertoTimePontoApp,
+                new Domain.Entities.Boloes.BolaoAcertoTimePonto(campeonato.Nome, 19, bolao.Nome) { Pontos = 2 });
+
+            StoreData<Domain.Entities.Boloes.BolaoAcertoTimePonto>(_bolaoAcertoTimePontoApp,
+               new Domain.Entities.Boloes.BolaoAcertoTimePonto(campeonato.Nome, 20, bolao.Nome) { Pontos = 2 });
+
+            StoreData<Domain.Entities.Boloes.BolaoAcertoTimePonto>(_bolaoAcertoTimePontoApp,
+               new Domain.Entities.Boloes.BolaoAcertoTimePonto(campeonato.Nome, 21, bolao.Nome) { Pontos = 2 });
+
+            StoreData<Domain.Entities.Boloes.BolaoAcertoTimePonto>(_bolaoAcertoTimePontoApp,
+               new Domain.Entities.Boloes.BolaoAcertoTimePonto(campeonato.Nome, 22, bolao.Nome) { Pontos = 2 });
+
+
+            StoreData<Domain.Entities.Boloes.BolaoAcertoTimePonto>(_bolaoAcertoTimePontoApp,
+               new Domain.Entities.Boloes.BolaoAcertoTimePonto(campeonato.Nome, 23, bolao.Nome) { Pontos = 3 });
+
+            StoreData<Domain.Entities.Boloes.BolaoAcertoTimePonto>(_bolaoAcertoTimePontoApp,
+              new Domain.Entities.Boloes.BolaoAcertoTimePonto(campeonato.Nome, 24, bolao.Nome) { Pontos = 3 });
+           
+
+            #endregion
+
             #region Boloes Histórico
 
-             
+
 
             #endregion
 
@@ -268,8 +295,8 @@ namespace BolaoNet.Tests.CopaAmericaTests.BolaoCopaAmericaTests
 
             StoreData<Domain.Entities.Boloes.BolaoMembro>(_bolaoMembroApp, new Domain.Entities.Boloes.BolaoMembro("admin", NomeBolao));
             
-
             #endregion
+
 
             return bolao;
         }

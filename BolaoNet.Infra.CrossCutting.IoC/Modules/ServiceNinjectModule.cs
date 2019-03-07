@@ -54,7 +54,9 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
             Bind<Domain.Interfaces.Services.Boloes.IPagamentoService>().To<Domain.Services.Boloes.PagamentoService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Boloes.IPontuacaoService>().To<Domain.Services.Boloes.PontuacaoService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Boloes.IBolaoPremiacaoService>().To<Domain.Services.Boloes.BolaoPremiacaoService>().WithConstructorArgument("userName", userName);
+            Bind<Domain.Interfaces.Services.Boloes.IBolaoAcertoTimePontoService>().To<Domain.Services.Boloes.BolaoAcertoTimePontoService>().WithConstructorArgument("userName", userName);
             
+
             Bind<Domain.Interfaces.Services.Campeonatos.ICampeonatoService>().To<Domain.Services.Campeonatos.CampeonatoService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Campeonatos.ICampeonatoClassificacaoService>().To<Domain.Services.Campeonatos.CampeonatoClassificacaoService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Campeonatos.ICampeonatoFaseService>().To<Domain.Services.Campeonatos.CampeonatoFaseService>().WithConstructorArgument("userName", userName);

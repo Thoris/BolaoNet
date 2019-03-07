@@ -52,6 +52,7 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
             Bind<Application.Interfaces.Boloes.IPagamentoApp>().To<Application.Boloes.PagamentoApp>();
             Bind<Application.Interfaces.Boloes.IPontuacaoApp>().To<Application.Boloes.PontuacaoApp>();
             Bind<Application.Interfaces.Boloes.IBolaoPremiacaoApp>().To<Application.Boloes.BolaoPremiacaoApp>();
+            Bind<Application.Interfaces.Boloes.IBolaoAcertoTimePontoApp>().To<Application.Boloes.BolaoAcertoTimePontoApp>();
             
 
             Bind<Application.Interfaces.Campeonatos.ICampeonatoApp>().To<Application.Campeonatos.CampeonatoApp>();

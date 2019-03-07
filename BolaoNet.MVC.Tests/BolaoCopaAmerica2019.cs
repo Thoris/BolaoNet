@@ -56,6 +56,7 @@ namespace BolaoNet.MVC.Tests
             IBolaoHistoricoApp bolaoHistoricoApp = kernel.Get<IBolaoHistoricoApp>();
             IRssApp rssApp = kernel.Get<IRssApp>();
             ICopaAmerica2019FacadeApp copaAmerica2019FacadeApp = kernel.Get<ICopaAmerica2019FacadeApp>();
+            IBolaoAcertoTimePontoApp bolaoAcertoTimePontoApp = kernel.Get<IBolaoAcertoTimePontoApp>();
 
 
             IUserFacadeApp userFacadeApp = kernel.Get<IUserFacadeApp>();
@@ -85,7 +86,8 @@ namespace BolaoNet.MVC.Tests
                 bolaoRegraApp,
                 bolaoPontuacaoApp,
                 bolaoHistoricoApp,
-                bolaoMembroApp);
+                bolaoMembroApp,
+                bolaoAcertoTimePontoApp);
 
             Domain.Entities.Boloes.Bolao bolao2018 = bolaoHelper2019.CreateBolao(campeonato);
 

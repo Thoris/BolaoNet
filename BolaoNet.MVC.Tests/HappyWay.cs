@@ -792,7 +792,7 @@ namespace BolaoNet.MVC.Tests
             IBolaoMembroClassificacaoApp bolaoMembroClassificacaoApp = kernel.Get<IBolaoMembroClassificacaoApp>();
             IBolaoHistoricoApp bolaoHistoricoApp = kernel.Get<IBolaoHistoricoApp>();
             IRssApp rssApp = kernel.Get<IRssApp>();
-
+            IBolaoAcertoTimePontoApp bolaoAcertoTimePontoApp = kernel.Get<IBolaoAcertoTimePontoApp>();
 
             IUserFacadeApp userFacadeApp = kernel.Get<IUserFacadeApp>();
 
@@ -870,7 +870,8 @@ namespace BolaoNet.MVC.Tests
                 bolaoRegraApp,
                 bolaoPontuacaoApp,
                 bolaoHistoricoApp,
-                bolaoMembroApp
+                bolaoMembroApp,
+                bolaoAcertoTimePontoApp
                 );
 
 

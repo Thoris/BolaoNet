@@ -28,5 +28,20 @@ namespace BolaoNet.Domain.Entities.Boloes
         public int Pontos { get; set; }
 
         #endregion
+
+        #region Properties
+
+        public BolaoAcertoTimePonto()
+        {
+
+        }
+        public BolaoAcertoTimePonto(string nomeCampeonato, int jogoId, string nomeBolao)
+        {
+            this.NomeBolao = nomeBolao;
+            this.JogoId = jogoId;
+            this.NomeCampeonato = nomeCampeonato;
+        }
+
+        #endregion
     }
 }
