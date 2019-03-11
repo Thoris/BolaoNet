@@ -162,7 +162,7 @@ BEGIN
 	BEGIN
 
 
-
+/*
 		IF (@LastTotalPontos	= @TotalPontos AND 
 			@LastTotalVitorias	= @TotalVitorias AND
 			@LastSaldo			= @Saldo AND
@@ -172,7 +172,7 @@ BEGIN
 			SET @Posicao = @LastPosicao
 
 		END
-
+*/
 
 		INSERT INTO @Classificacao
 			(
