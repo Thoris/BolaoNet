@@ -29,6 +29,7 @@ namespace BolaoNet.Domain.Entities.Boloes
         public int ? TotalGolsTime1 { get; set; }
         public int ? TotalGolsTime2 { get; set; }
         public int ? TotalPlacarCheio { get; set; }
+        public int ? TotalPontosAcertoTime { get; set; }
 
         #endregion
 

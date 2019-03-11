@@ -27,6 +27,7 @@ CREATE TABLE [dbo].[BoloesMembrosClassificacao](
 	[TotalGolsTime2] [int] NULL,
 	[TotalPlacarCheio] [int] NULL,
 	[TotalApostaExtra] [int] NULL,
+	[TotalPontosAcertoTime] [int] NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[UserName] ASC,

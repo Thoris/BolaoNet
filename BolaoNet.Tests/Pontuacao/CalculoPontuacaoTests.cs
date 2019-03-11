@@ -31,6 +31,7 @@ namespace BolaoNet.Tests.Pontuacao
         int pontosGolsTime1 = 0;
         int pontosGolsTime2 = 0;
         int pontosCheio = 0;
+        int pontosAcertoTime = 0;
 
 
         bool isMultiploTime = false;
@@ -57,6 +58,7 @@ namespace BolaoNet.Tests.Pontuacao
         bool countGolsTime1;
         bool countGolsTime2;
         bool countCheio;
+        int countPontosAcertoTime;
 
         int pontosResultados;
 
@@ -244,17 +246,18 @@ namespace BolaoNet.Tests.Pontuacao
             currentDateTime = DateTime.Now;
         }
 
-        private void TestCalcularPontos(int gols1, int gols2, int aposta1, int aposta2)
+        private void TestCalcularPontos(int gols1, int gols2, int aposta1, int aposta2, string nomeTime1, string nomeTime2, string nomeTime1Aposta, string nomeTime2Aposta)
         {
             pontosResultados = _dao.CalcularPontos(currentUserName, currentDateTime, gols1, gols2, aposta1, aposta2,
+                nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta,
                 pontosEmpate, pontosVitoria, pontosDerrota, pontosGanhador, pontosPerdedor, pontosTime1,
                 pontosTime2, pontosVDE, pontosErro, pontosGanhadorFora, pontosGanhadorDentro,
                 pontosPerdedorFora, pontosPerdedorDentro, pontosEmpateGols, pontosGolsTime1, pontosGolsTime2,
-                pontosCheio, isMultiploTime, multiploTime, out pontosTime1Total, out pontosTime2Total,
+                pontosCheio, pontosAcertoTime, isMultiploTime, multiploTime, out pontosTime1Total, out pontosTime2Total,
                 out pontosTotal, out countEmpate, out countVitoria, out countDerrota, out countGanhador,
                 out countPerdedor, out countTime1, out countTime2, out countVDE, out countErro,
                 out countGanhadorFora, out countGanhadorDentro, out countPerdedorFora, out countPerdedorDentro,
-                out countEmpateGols, out countGolsTime1, out countGolsTime2, out countCheio,
+                out countEmpateGols, out countGolsTime1, out countGolsTime2, out countCheio, out countPontosAcertoTime,
                 out errorNumber, out errorDescription);
         }
 
@@ -277,7 +280,7 @@ namespace BolaoNet.Tests.Pontuacao
             pontosGolsTime1 = 1;
             pontosGolsTime2 = 1;
             pontosCheio = 5;
-
+            pontosAcertoTime = 0;
 
             isMultiploTime = isMultiplo;
             multiploTime = 2;
@@ -302,7 +305,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 0;
             int aposta2 = 0;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
 
             Assert.AreEqual(countEmpate, true);
@@ -335,8 +344,14 @@ namespace BolaoNet.Tests.Pontuacao
 
             int aposta1 = 1;
             int aposta2 = 0;
+             
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
 
             Assert.AreEqual(countEmpate, false);
@@ -369,7 +384,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 0;
             int aposta2 = 1;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
 
             Assert.AreEqual(countEmpate, false);
@@ -402,7 +423,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 1;
             int aposta2 = 1;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
 
             Assert.AreEqual(countEmpate, true);
@@ -435,7 +462,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 2;
             int aposta2 = 0;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
 
             Assert.AreEqual(countEmpate, false);
@@ -468,7 +501,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 2;
             int aposta2 = 1;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
 
             Assert.AreEqual(countEmpate, false);
@@ -501,7 +540,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 0;
             int aposta2 = 2;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
 
             Assert.AreEqual(countEmpate, false);
@@ -534,7 +579,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 1;
             int aposta2 = 2;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
 
             Assert.AreEqual(countEmpate, false);
@@ -567,7 +618,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 2;
             int aposta2 = 2;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
 
             Assert.AreEqual(countEmpate, true);
@@ -606,7 +663,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 0;
             int aposta2 = 0;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
 
             Assert.AreEqual(countEmpate, false);
@@ -640,7 +703,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 1;
             int aposta2 = 0;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
 
             Assert.AreEqual(countEmpate, false);
@@ -673,7 +742,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 0;
             int aposta2 = 1;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
 
             Assert.AreEqual(countEmpate, false);
@@ -706,7 +781,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 1;
             int aposta2 = 1;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
 
             Assert.AreEqual(countEmpate, false);
@@ -739,7 +820,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 2;
             int aposta2 = 0;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
 
             Assert.AreEqual(countEmpate, false);
@@ -772,7 +859,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 2;
             int aposta2 = 1;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
 
             Assert.AreEqual(countEmpate, false);
@@ -805,7 +898,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 0;
             int aposta2 = 2;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
 
             Assert.AreEqual(countEmpate, false);
@@ -837,8 +936,13 @@ namespace BolaoNet.Tests.Pontuacao
 
             int aposta1 = 1;
             int aposta2 = 2;
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
 
             Assert.AreEqual(countEmpate, false);
@@ -871,7 +975,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 2;
             int aposta2 = 2;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
 
             Assert.AreEqual(countEmpate, false);
@@ -910,7 +1020,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 0;
             int aposta2 = 0;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
 
             Assert.AreEqual(countEmpate, false);
@@ -943,8 +1059,14 @@ namespace BolaoNet.Tests.Pontuacao
 
             int aposta1 = 1;
             int aposta2 = 0;
+             
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
 
             Assert.AreEqual(countEmpate, false);
@@ -977,7 +1099,12 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 0;
             int aposta2 = 1;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
 
 
             Assert.AreEqual(countEmpate, false);
@@ -1010,7 +1137,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 1;
             int aposta2 = 1;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
 
             Assert.AreEqual(countEmpate, false);
@@ -1043,7 +1176,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 2;
             int aposta2 = 0;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
 
             Assert.AreEqual(countEmpate, false);
@@ -1076,7 +1215,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 2;
             int aposta2 = 1;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
 
             Assert.AreEqual(countEmpate, false);
@@ -1109,7 +1254,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 0;
             int aposta2 = 2;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
 
             Assert.AreEqual(countEmpate, false);
@@ -1142,7 +1293,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 1;
             int aposta2 = 2;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
 
             Assert.AreEqual(countEmpate, false);
@@ -1175,7 +1332,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 2;
             int aposta2 = 2;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
 
             Assert.AreEqual(countEmpate, false);
@@ -1213,8 +1376,13 @@ namespace BolaoNet.Tests.Pontuacao
 
             int aposta1 = 0;
             int aposta2 = 0;
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(10, pontosResultados);
         }
@@ -1231,7 +1399,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 1;
             int aposta2 = 0;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(1, pontosResultados);
         }
@@ -1248,7 +1422,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 0;
             int aposta2 = 1;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(1, pontosResultados);
         }
@@ -1265,7 +1445,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 1;
             int aposta2 = 1;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(5, pontosResultados);
         }
@@ -1282,7 +1468,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 2;
             int aposta2 = 0;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(1, pontosResultados);
         }
@@ -1299,7 +1491,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 2;
             int aposta2 = 1;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(0, pontosResultados);
         }
@@ -1316,7 +1514,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 0;
             int aposta2 = 2;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(1, pontosResultados);
         }
@@ -1333,7 +1537,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 1;
             int aposta2 = 2;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(0, pontosResultados);
         }
@@ -1350,7 +1560,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 2;
             int aposta2 = 2;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(5, pontosResultados);
         }
@@ -1372,7 +1588,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 0;
             int aposta2 = 0;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(1, pontosResultados);
         }
@@ -1389,7 +1611,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 1;
             int aposta2 = 0;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(10, pontosResultados);
         }
@@ -1406,7 +1634,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 0;
             int aposta2 = 1;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(0, pontosResultados);
         }
@@ -1423,7 +1657,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 1;
             int aposta2 = 1;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(1, pontosResultados);
         }
@@ -1440,7 +1680,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 2;
             int aposta2 = 0;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(4, pontosResultados);
         }
@@ -1457,7 +1703,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 2;
             int aposta2 = 1;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(3, pontosResultados);
         }
@@ -1474,7 +1726,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 0;
             int aposta2 = 2;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(0, pontosResultados);
         }
@@ -1491,7 +1749,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 1;
             int aposta2 = 2;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(1, pontosResultados);
         }
@@ -1508,7 +1772,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 2;
             int aposta2 = 2;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(0, pontosResultados);
         }
@@ -1530,7 +1800,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 0;
             int aposta2 = 0;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(1, pontosResultados);
         }
@@ -1547,7 +1823,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 1;
             int aposta2 = 0;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(0, pontosResultados);
         }
@@ -1563,8 +1845,13 @@ namespace BolaoNet.Tests.Pontuacao
 
             int aposta1 = 0;
             int aposta2 = 1;
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(10, pontosResultados);
         }
@@ -1581,7 +1868,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 1;
             int aposta2 = 1;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(1, pontosResultados);
         }
@@ -1598,7 +1891,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 2;
             int aposta2 = 0;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(0, pontosResultados);
         }
@@ -1615,7 +1914,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 2;
             int aposta2 = 1;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(1, pontosResultados);
         }
@@ -1632,7 +1937,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 0;
             int aposta2 = 2;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(4, pontosResultados);
         }
@@ -1649,7 +1960,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 1;
             int aposta2 = 2;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(3, pontosResultados);
         }
@@ -1666,7 +1983,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 2;
             int aposta2 = 2;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(0, pontosResultados);
         }
@@ -1689,7 +2012,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 0;
             int aposta2 = 0;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(20, pontosResultados);
         }
@@ -1706,7 +2035,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 1;
             int aposta2 = 0;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(2, pontosResultados);
         }
@@ -1723,7 +2058,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 0;
             int aposta2 = 1;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(2, pontosResultados);
         }
@@ -1740,7 +2081,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 1;
             int aposta2 = 1;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(10, pontosResultados);
         }
@@ -1757,7 +2104,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 2;
             int aposta2 = 0;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(2, pontosResultados);
         }
@@ -1774,7 +2127,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 2;
             int aposta2 = 1;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(0, pontosResultados);
         }
@@ -1791,7 +2150,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 0;
             int aposta2 = 2;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(2, pontosResultados);
         }
@@ -1808,7 +2173,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 1;
             int aposta2 = 2;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(0, pontosResultados);
         }
@@ -1825,7 +2196,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 2;
             int aposta2 = 2;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(10, pontosResultados);
         }
@@ -1847,7 +2224,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 0;
             int aposta2 = 0;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(2, pontosResultados);
         }
@@ -1864,7 +2247,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 1;
             int aposta2 = 0;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(20, pontosResultados);
         }
@@ -1881,7 +2270,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 0;
             int aposta2 = 1;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(0, pontosResultados);
         }
@@ -1898,7 +2293,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 1;
             int aposta2 = 1;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(2, pontosResultados);
         }
@@ -1915,7 +2316,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 2;
             int aposta2 = 0;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(8, pontosResultados);
         }
@@ -1932,7 +2339,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 2;
             int aposta2 = 1;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(6, pontosResultados);
         }
@@ -1949,7 +2362,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 0;
             int aposta2 = 2;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(0, pontosResultados);
         }
@@ -1966,7 +2385,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 1;
             int aposta2 = 2;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(2, pontosResultados);
         }
@@ -1983,7 +2408,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 2;
             int aposta2 = 2;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(0, pontosResultados);
         }
@@ -2005,7 +2436,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 0;
             int aposta2 = 0;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(2, pontosResultados);
         }
@@ -2022,7 +2459,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 1;
             int aposta2 = 0;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(0, pontosResultados);
         }
@@ -2039,7 +2482,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 0;
             int aposta2 = 1;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(20, pontosResultados);
         }
@@ -2056,7 +2505,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 1;
             int aposta2 = 1;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(2, pontosResultados);
         }
@@ -2073,7 +2528,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 2;
             int aposta2 = 0;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(0, pontosResultados);
         }
@@ -2089,8 +2550,13 @@ namespace BolaoNet.Tests.Pontuacao
 
             int aposta1 = 2;
             int aposta2 = 1;
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(2, pontosResultados);
         }
@@ -2107,7 +2573,12 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 0;
             int aposta2 = 2;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
 
             Assert.AreEqual(8, pontosResultados);
         }
@@ -2124,7 +2595,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 1;
             int aposta2 = 2;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(6, pontosResultados);
         }
@@ -2141,7 +2618,13 @@ namespace BolaoNet.Tests.Pontuacao
             int aposta1 = 2;
             int aposta2 = 2;
 
-            TestCalcularPontos(gols1, gols2, aposta1, aposta2);
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+            string nomeTime1Aposta = "";
+            string nomeTime2Aposta = "";
+
+            TestCalcularPontos(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta);
+
 
             Assert.AreEqual(0, pontosResultados);
         }

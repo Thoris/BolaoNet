@@ -44,6 +44,7 @@ namespace BolaoNet.Domain.Interfaces.Repositories.Boloes
         //    Entities.Interfaces.IPontosJogosUsuarioEntity pontosEntity);
 
         int CalcularPontos(string currentUserName, DateTime currentDatetime, int gols1, int gols2, int aposta1, int aposta2,
+            string nomeTime1, string nomeTime2, string nomeTime1Aposta, string nomeTime2Aposta,
 	        int pontosEmpate,
 	        int pontosVitoria,
 	        int pontosDerrota,
@@ -61,6 +62,7 @@ namespace BolaoNet.Domain.Interfaces.Repositories.Boloes
 	        int pontosGolsTime1,
 	        int pontosGolsTime2,
 	        int pontosCheio,
+            int pontosAcertoTime,
 	
 	
 	        bool isMultiploTime,
@@ -87,6 +89,7 @@ namespace BolaoNet.Domain.Interfaces.Repositories.Boloes
 	        out bool countGolsTime1,
 	        out bool countGolsTime2,
 	        out bool countCheio,
+            out int countPontosAcertoTime,
 	
 	
             out int errorNumber,

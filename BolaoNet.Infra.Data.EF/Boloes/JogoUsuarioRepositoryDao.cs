@@ -523,7 +523,7 @@ namespace BolaoNet.Infra.Data.EF.Boloes
             else
                 return false;
         }
-        public Domain.Entities.Boloes.JogoUsuario CalculePontos(string currentUserName, DateTime currentDateTime, int gols1, int gols2, int aposta1, int aposta2, int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1, int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, bool isMultiploTime, int multiploTime, Domain.Entities.Boloes.JogoUsuario pontosEntity)
+        public Domain.Entities.Boloes.JogoUsuario CalculePontos(string currentUserName, DateTime currentDateTime, int gols1, int gols2, int aposta1, int aposta2, string nomeTime1, string nomeTime2, string nomeTime1Aposta, string nomeTime2Aposta, int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1, int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, int pontosAcertoTime, bool isMultiploTime, int multiploTime, Domain.Entities.Boloes.JogoUsuario pontosEntity)
         {
             string command = "exec sp_JogosUsuarios_CalculaPontos " +
                           "  @CurrentLogin " +
@@ -532,6 +532,12 @@ namespace BolaoNet.Infra.Data.EF.Boloes
                           ", @Gols2" +
                           ", @Aposta1" +
                           ", @Aposta2" +
+
+                          ", @NomeTime1" + 
+                          ", @NomeTime2" + 
+                          ", @NomeTime1Aposta" + 
+                          ", @NomeTime2Aposta" + 
+
                           ", @PontosEmpate" +
                           ", @PontosVitoria" +
                           ", @PontosGanhador" +
@@ -548,6 +554,9 @@ namespace BolaoNet.Infra.Data.EF.Boloes
                           ", @PontosGolsTime1" +
                           ", @PontosGolsTime2" +
                           ", @PontosCheio" +
+
+                          ", @PontosAcertoTime" +
+
                           ", @IsMultiploTime" +
                           ", @MultiploTime" +
 
@@ -570,6 +579,8 @@ namespace BolaoNet.Infra.Data.EF.Boloes
                           ", @CountGolsTime1 OUT" +
                           ", @CountGolsTime2 OUT" +
                           ", @CountCheio OUT" +
+
+                          ", @CountPontosAcertoTime OUT" +
                           
                           ", @ErrorNumber out" +
                           ", @ErrorDescription out";
@@ -710,6 +721,14 @@ namespace BolaoNet.Infra.Data.EF.Boloes
                 Direction = System.Data.ParameterDirection.Output
             };
 
+            var countPontosAcertoTime = new SqlParameter
+            {
+                ParameterName = "@CountPontosAcertoTime",
+                SqlDbType = System.Data.SqlDbType.Int,
+                Size = 2,
+                Direction = System.Data.ParameterDirection.Output
+            };
+
             var errorNumber = new SqlParameter
             {
                 ParameterName = "@ErrorNumber",
@@ -734,6 +753,13 @@ namespace BolaoNet.Infra.Data.EF.Boloes
                                                         new SqlParameter("Gols2", gols2),
                                                         new SqlParameter("Aposta1", aposta1),
                                                         new SqlParameter("Aposta2", aposta2),
+
+                                                        new SqlParameter("NomeTime1", nomeTime1),
+                                                        new SqlParameter("NomeTime2", nomeTime2),
+                                                        new SqlParameter("NomeTime1Aposta", nomeTime1Aposta),
+                                                        new SqlParameter("NomeTime2Aposta", nomeTime2Aposta),
+
+
                                                         new SqlParameter("PontosEmpate", pontosEmpate),
                                                         new SqlParameter("PontosVitoria", pontosVitoria),
                                                         new SqlParameter("PontosGanhador", pontosGanhador),
@@ -750,6 +776,9 @@ namespace BolaoNet.Infra.Data.EF.Boloes
                                                         new SqlParameter("PontosGolsTime1", pontosGolsTime1),
                                                         new SqlParameter("PontosGolsTime2", pontosGolsTime2),
                                                         new SqlParameter("PontosCheio", pontosCheio),
+
+                                                        new SqlParameter("PontosAcertoTime", pontosAcertoTime),
+
                                                         new SqlParameter("IsMultiploTime", isMultiploTime),
                                                         new SqlParameter("MultiploTime", multiploTime),
                                                         pontosTime1Total,
@@ -771,6 +800,7 @@ namespace BolaoNet.Infra.Data.EF.Boloes
                                                         countGolsTime1,
                                                         countGolsTime2,
                                                         countCheio,
+                                                        countPontosAcertoTime,
                                                         errorNumber,
                                                         errorDescription
                                                     ).ToList();
@@ -1453,8 +1483,8 @@ namespace BolaoNet.Infra.Data.EF.Boloes
 
             return q.ToList();
         }
-        public int CalcularPontos(string currentUserName, DateTime currentDatetime, int gols1, int gols2, int aposta1, int aposta2, int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1, int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, bool isMultiploTime, int multiploTime,
-            out int pontosTime1Total, out int pontosTime2Total, out int pontosTotal, out bool countEmpate, out bool countVitoria, out bool countDerrota, out bool countGanhador, out bool countPerdedor, out bool countTime1, out bool countTime2, out bool countVDE, out bool countErro, out bool countGanhadorFora, out bool countGanhadorDentro, out bool countPerdedorFora, out bool countPerdedorDentro, out bool countEmpateGols, out bool countGolsTime1, out bool countGolsTime2, out bool countCheio, out int errorNumber, out string errorDescription)
+        public int CalcularPontos(string currentUserName, DateTime currentDatetime, int gols1, int gols2, int aposta1, int aposta2, string nomeTime1, string nomeTime2, string nomeTime1Aposta, string nomeTime2Aposta, int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1, int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, int pontosAcertoTime, bool isMultiploTime, int multiploTime,
+            out int pontosTime1Total, out int pontosTime2Total, out int pontosTotal, out bool countEmpate, out bool countVitoria, out bool countDerrota, out bool countGanhador, out bool countPerdedor, out bool countTime1, out bool countTime2, out bool countVDE, out bool countErro, out bool countGanhadorFora, out bool countGanhadorDentro, out bool countPerdedorFora, out bool countPerdedorDentro, out bool countEmpateGols, out bool countGolsTime1, out bool countGolsTime2, out bool countCheio, out int countPontosAcertoTime, out int errorNumber, out string errorDescription)
         {
 
             pontosTime1Total = 0;
@@ -1477,6 +1507,7 @@ namespace BolaoNet.Infra.Data.EF.Boloes
             countGolsTime1 = false;
             countGolsTime2 = false;
             countCheio = false;
+            countPontosAcertoTime = 0;
             errorNumber = 0;
             errorDescription = null;
 
@@ -1489,6 +1520,12 @@ namespace BolaoNet.Infra.Data.EF.Boloes
                 ", @Gols2" +
                 ", @Aposta1" +
                 ", @Aposta2 " +
+
+                ", @NomeTime1" + 
+                ", @NomeTime2" + 
+                ", @NomeTime1Aposta" + 
+                ", @NomeTime2Aposta" + 
+
                 ", @PontosEmpate " +
                 ", @PontosVitoria " +
                 ", @PontosDerrota " +
@@ -1506,6 +1543,9 @@ namespace BolaoNet.Infra.Data.EF.Boloes
                 ", @PontosGolsTime1 " +
                 ", @PontosGolsTime2 " +
                 ", @PontosCheio " +
+
+                ", @PontosAcertoTime" +
+                
                 ", @IsMultiploTime " +
                 ", @MultiploTime " +
                 ", @PontosTime1Total out " +
@@ -1528,6 +1568,9 @@ namespace BolaoNet.Infra.Data.EF.Boloes
                 ", @CountGolsTime1 out " +
                 ", @CountGolsTime2 out " +
                 ", @CountCheio out " +
+
+                ", @CountPontosAcertoTime out " +
+
                 ", @ErrorNumber out" +
                 ", @ErrorDescription out";
 
@@ -1673,7 +1716,13 @@ namespace BolaoNet.Infra.Data.EF.Boloes
                 Size = 3,
                 Direction = System.Data.ParameterDirection.Output
             };
-
+            var pCountPontosAcertoTime = new SqlParameter
+            {
+                ParameterName = "@CountPontosAcertoTime",
+                SqlDbType = System.Data.SqlDbType.Int,
+                Size = 2,
+                Direction = System.Data.ParameterDirection.Output
+            };
 
 
             var errorNumberParam = new SqlParameter
@@ -1700,7 +1749,13 @@ namespace BolaoNet.Infra.Data.EF.Boloes
                             new SqlParameter("Gols1", gols1),
                             new SqlParameter("Gols2", gols2),
                             new SqlParameter("Aposta1", aposta1),
-                            new SqlParameter("Aposta2 ", aposta2),
+                            new SqlParameter("Aposta2", aposta2),
+
+                            new SqlParameter("NomeTime1", nomeTime1),
+                            new SqlParameter("NomeTime2", nomeTime2),
+                            new SqlParameter("NomeTime1Aposta", nomeTime1Aposta),
+                            new SqlParameter("NomeTime2Aposta", nomeTime2Aposta),
+
                             new SqlParameter("PontosEmpate ", pontosEmpate),
                             new SqlParameter("PontosVitoria ", pontosVitoria),
                             new SqlParameter("PontosDerrota ", pontosDerrota),
@@ -1718,6 +1773,9 @@ namespace BolaoNet.Infra.Data.EF.Boloes
                             new SqlParameter("PontosGolsTime1 ", pontosGolsTime1),
                             new SqlParameter("PontosGolsTime2 ", pontosGolsTime2),
                             new SqlParameter("PontosCheio ", pontosCheio),
+
+                            new SqlParameter("PontosAcertoTime", pontosAcertoTime),
+
                             new SqlParameter("IsMultiploTime ", isMultiploTime),
                             new SqlParameter("MultiploTime ", multiploTime),
 
@@ -1741,6 +1799,8 @@ namespace BolaoNet.Infra.Data.EF.Boloes
                             pCountGolsTime1,
                             pCountGolsTime2,
                             pCountCheio,
+
+                            pCountPontosAcertoTime,
 
                             errorNumberParam,
                             errorDescriptionParam
@@ -1768,6 +1828,9 @@ namespace BolaoNet.Infra.Data.EF.Boloes
             countGolsTime1 = (bool)pCountGolsTime1.Value;
             countGolsTime2 = (bool)pCountGolsTime2.Value;
             countCheio = (bool)pCountCheio.Value;
+
+            countPontosAcertoTime = (int)pCountPontosAcertoTime.Value;
+
             errorNumber = (int)errorNumberParam.Value;
             //errorDescription = (string)errorDescriptionParam.Value;
 

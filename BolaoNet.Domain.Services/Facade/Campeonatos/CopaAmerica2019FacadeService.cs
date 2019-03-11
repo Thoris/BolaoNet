@@ -171,9 +171,9 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             IList<int> idsGanhadores = new List<int>();
             IList<string> estadios = new List<string>();
 
-            datas.Add(new DateTime(2018, 7, 2, 21,30, 0, 0)); estadios.Add("Mineirão"); ids.Add(23);
+            datas.Add(new DateTime(2019, 7, 2, 21,30, 0, 0)); estadios.Add("Mineirão"); ids.Add(23);
             idsGanhadores.Add(19); idsGanhadores.Add(20);
-            datas.Add(new DateTime(2018, 7, 3, 21, 30, 0, 0)); estadios.Add("Arena do Grêmio"); ids.Add(24);
+            datas.Add(new DateTime(2019, 7, 3, 21, 30, 0, 0)); estadios.Add("Arena do Grêmio"); ids.Add(24);
             idsGanhadores.Add(21); idsGanhadores.Add(22);
 
 

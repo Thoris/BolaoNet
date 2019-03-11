@@ -25,6 +25,7 @@ CREATE TABLE [dbo].[BoloesMembrosPontos](
 	[TotalGolsTime1] [int] NULL,
 	[TotalGolsTime2] [int] NULL,
 	[TotalPlacarCheio] [int] NULL,
+	[TotalPontosAcertoTime] [int] NULL,
 	[UserName] [varchar](25) NOT NULL,
 	[IsMultiploTime] [bit] NULL,
 	[NomeBolao] [varchar](30) NOT NULL,

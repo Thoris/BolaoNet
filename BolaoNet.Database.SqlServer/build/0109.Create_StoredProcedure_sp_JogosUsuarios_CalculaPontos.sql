@@ -13,6 +13,13 @@ CREATE PROCEDURE [dbo].[sp_JogosUsuarios_CalculaPontos]
 	
 	@Aposta1							smallint,
 	@Aposta2							smallint,
+
+
+	@NomeTime1							varchar(150),
+	@NomeTime2							varchar(150),
+
+	@NomeTime1Aposta					varchar(150),
+	@NomeTime2Aposta					varchar(150),
 	
 	@PontosEmpate						int ,
 	@PontosVitoria						int ,
@@ -31,6 +38,8 @@ CREATE PROCEDURE [dbo].[sp_JogosUsuarios_CalculaPontos]
 	@PontosGolsTime1					int ,
 	@PontosGolsTime2					int ,
 	@PontosCheio						int ,
+
+	@PontosAcertoTime					int ,
 	
 	
 	@IsMultiploTime						bit,
@@ -57,6 +66,8 @@ CREATE PROCEDURE [dbo].[sp_JogosUsuarios_CalculaPontos]
 	@CountGolsTime1						bit OUTPUT,
 	@CountGolsTime2						bit OUTPUT,
 	@CountCheio							bit OUTPUT,
+
+	@CountPontosAcertoTime				int OUTPUT,
 	
 	
     @ErrorNumber						int OUTPUT,
@@ -99,7 +110,7 @@ BEGIN
 	SET @CountGolsTime2			= 0		-- Se acertou a quantidade de gols do time 2
 	SET @CountCheio				= 0		-- Se acertou em cheio o resultado
 
-
+	SET @CountPontosAcertoTime  = 0		-- Quantidade de acerto de times
 
 
 
@@ -357,6 +368,13 @@ BEGIN
 		SET @PontosTotal = @PontosTotal * ISNULL(@MultiploTime, 1)
 
 
+	IF (UPPER(RTRIM(LTRIM(@NomeTime1))) = UPPER(RTRIM(LTRIM(@NomeTime1Aposta))))
+		SET @CountPontosAcertoTime = @CountPontosAcertoTime + 1
+
+	IF (UPPER(RTRIM(LTRIM(@NomeTime2))) = UPPER(RTRIM(LTRIM(@NomeTime2Aposta))))
+		SET @CountPontosAcertoTime = @CountPontosAcertoTime + 1
+
+	SET @PontosTotal = @PontosTotal + (@CountPontosAcertoTime * @PontosAcertoTime)
 
 	--PRINT 'COUNT EMPATE: ' + LTRIM(STR(@CountEmpate * @PontosEmpate))
 	--PRINT 'COUNT VITORIA: ' + LTRIM(STR(@CountVitoria * @PontosVitoria))
@@ -375,16 +393,12 @@ BEGIN
 	--PRINT 'COUNT GOLS TIME 1: ' + LTRIM(STR(@CountGolsTime1 * @PontosGolsTime1))
 	--PRINT 'COUNT GOLS TIME 2: ' + LTRIM(STR(@CountGolsTime2 * @PontosGolsTime2))
 	--PRINT 'COUNT CHEIO: ' + LTRIM(STR(@CountCheio * @PontosCheio))
+	--PRINT 'COUNT ACERTO TIME: ' + LTRIM(STR(@CountPontosAcertoTime * @PontosAcertoTime))
 
 
 	PRINT 'Pontos do usuário: ' + LTRIM(Str(@PontosTotal))
-	
-
 
 
 END
-
-
-
 
 GO
