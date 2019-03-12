@@ -53,7 +53,7 @@ namespace BolaoNet.MVC.Areas.Pontuacao.Controllers
 
             int pontosEmpate = 0, pontosVitoria =0, pontosDerrota = 0, pontosGanhador = 0, pontosPerdedor = 0, pontosTime1 = 0,
                 pontosTime2 = 0, pontosVDE = 0, pontosErro = 0, pontosGanhadorFora = 0, pontosGanhadorDentro = 0, pontosPerdedorFora = 0, 
-                pontosPerdedorDentro = 0, pontosEmpateGols = 0, pontosGolsTime1 = 0, pontosGolsTime2 = 0, pontosCheio = 0, 
+                pontosPerdedorDentro = 0, pontosEmpateGols = 0, pontosGolsTime1 = 0, pontosGolsTime2 = 0, pontosCheio = 0, pontosAcertoTime = 0,
                 multiploTime = 0;
             bool isMultiploTime = false;
 
@@ -126,10 +126,10 @@ namespace BolaoNet.MVC.Areas.Pontuacao.Controllers
             apostas.Add(new Domain.Entities.Boloes.JogoUsuario() { ApostaTime1 = 1, ApostaTime2 = 1 });
 
 
-            apostas = _jogoUsuarioApp.Simulate(apostas, gols1, gols2, pontosEmpate, pontosVitoria, pontosDerrota, pontosGanhador, 
+            apostas = _jogoUsuarioApp.Simulate(apostas, gols1, gols2, "", "",  pontosEmpate, pontosVitoria, pontosDerrota, pontosGanhador, 
                     pontosPerdedor, pontosTime1, pontosTime2, pontosVDE, pontosErro, pontosGanhadorFora, 
                     pontosGanhadorDentro, pontosPerdedorFora, pontosPerdedorDentro, pontosEmpateGols, 
-                    pontosGolsTime1, pontosGolsTime2, pontosCheio, isMultiploTime, multiploTime);
+                    pontosGolsTime1, pontosGolsTime2, pontosCheio, pontosAcertoTime, isMultiploTime, multiploTime);
 
             res.Simulacao = new List<ViewModels.Pontuacao.BolaoCriterioPontosSimulacaoViewModel>();
 

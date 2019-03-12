@@ -31,9 +31,21 @@ namespace BolaoNet.Domain.Services.Boloes
         #endregion
 
         #region IBolaoAcertoTimePontoService members
+        public Entities.Boloes.BolaoAcertoTimePonto GetByJogoId(Entities.Boloes.Bolao bolao, int jogoId)
+        {
+            if (bolao == null)
+                throw new ArgumentException("bolao");
+            if (string.IsNullOrEmpty(bolao.Nome))
+                throw new ArgumentException("bolao.Nome");
+            if (jogoId == 0)
+                throw new ArgumentException("jogoId");
 
+            return Dao.GetByJogoId(base.CurrentUserName, DateTime.Now, bolao, jogoId);
+        }
         
         
         #endregion
+
+        
     }
 }

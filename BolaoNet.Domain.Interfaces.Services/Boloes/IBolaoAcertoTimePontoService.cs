@@ -9,5 +9,6 @@ namespace BolaoNet.Domain.Interfaces.Services.Boloes
     public interface IBolaoAcertoTimePontoService
         : Base.IGenericService<Entities.Boloes.BolaoAcertoTimePonto>
     {
+        Entities.Boloes.BolaoAcertoTimePonto GetByJogoId(Entities.Boloes.Bolao bolao, int jogoId);
     }
 }

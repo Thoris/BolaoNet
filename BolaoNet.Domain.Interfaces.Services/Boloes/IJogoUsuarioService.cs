@@ -52,17 +52,19 @@ namespace BolaoNet.Domain.Interfaces.Services.Boloes
 
 
         int CalcularPontoSimulation(int gols1, int gols2, int aposta1, int aposta2, 
+            string nomeTime1, string nomeTime2, string nomeTime1Aposta, string nomeTime2Aposta,
             int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1, 
             int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, 
             int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1, 
-            int pontosGolsTime2, int pontosCheio, bool isMultiploTime, int multiploTime);
+            int pontosGolsTime2, int pontosCheio, int pontosAcertoTime, bool isMultiploTime, int multiploTime);
 
 
         IList<Entities.Boloes.JogoUsuario> Simulate(IList<Entities.Boloes.JogoUsuario> apostas, int gols1, int gols2,
-            int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1,
+            string nomeTime1, string nomeTime2, int pontosEmpate, int pontosVitoria, int pontosDerrota, 
+            int pontosGanhador, int pontosPerdedor, int pontosTime1,
             int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro,
             int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1,
-            int pontosGolsTime2, int pontosCheio, bool isMultiploTime, int multiploTime);
+            int pontosGolsTime2, int pontosCheio, int pontosAcertoTime, bool isMultiploTime, int multiploTime);
 
         bool CorrecaoEliminatorias(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user);
 

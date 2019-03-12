@@ -71,6 +71,7 @@ namespace BolaoNet.MVC.Tests
             IBolaoMembroClassificacaoApp bolaoMembroClassificacaoApp = kernel.Get<IBolaoMembroClassificacaoApp>();
             IBolaoHistoricoApp bolaoHistoricoApp = kernel.Get<IBolaoHistoricoApp>();
             IRssApp rssApp = kernel.Get<IRssApp>();
+            IBolaoAcertoTimePontoApp bolaoAcertoTimePontoApp = kernel.Get<IBolaoAcertoTimePontoApp>();
 
 
             IUserFacadeApp userFacadeApp = kernel.Get<IUserFacadeApp>();
@@ -625,7 +626,8 @@ namespace BolaoNet.MVC.Tests
                         campeonatoGrupoApp,
                         campeonatoTimeApp, 
                         bolaoCriterioPontosApp,
-                        bolaoCriterioPontosTimesApp);
+                        bolaoCriterioPontosTimesApp,
+                        bolaoAcertoTimePontoApp);
 
 
                 Mocks.MvcMockHelpers.SetMockControllerContext(apostasJogoController, userAdmin);
@@ -1428,7 +1430,8 @@ namespace BolaoNet.MVC.Tests
                         campeonatoGrupoApp,
                         campeonatoTimeApp,
                         bolaoCriterioPontosApp,
-                        bolaoCriterioPontosTimesApp);
+                        bolaoCriterioPontosTimesApp,
+                        bolaoAcertoTimePontoApp);
 
 
                 Mocks.MvcMockHelpers.SetMockControllerContext(apostasJogoController, userAdmin);

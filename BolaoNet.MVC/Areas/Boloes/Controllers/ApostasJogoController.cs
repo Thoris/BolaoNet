@@ -16,6 +16,7 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
         private Application.Interfaces.Boloes.IBolaoMembroClassificacaoApp _bolaoMembroClassificacaoApp;
         private Application.Interfaces.Boloes.IBolaoCriterioPontosTimesApp _bolaoCriterioPontosTimesApp;
         private Application.Interfaces.Boloes.IBolaoCriterioPontosApp _bolaoCriterioPontosApp;
+        private Application.Interfaces.Boloes.IBolaoAcertoTimePontoApp _bolaoAcertoTimePontoApp;
 
         #endregion
 
@@ -33,7 +34,8 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
             Application.Interfaces.Campeonatos.ICampeonatoGrupoApp campeonatoGrupoApp,
             Application.Interfaces.Campeonatos.ICampeonatoTimeApp campeonatoTimeApp,
             Application.Interfaces.Boloes.IBolaoCriterioPontosApp bolaoCriterioPontosApp,
-            Application.Interfaces.Boloes.IBolaoCriterioPontosTimesApp bolaoCriterioPontosTimesApp
+            Application.Interfaces.Boloes.IBolaoCriterioPontosTimesApp bolaoCriterioPontosTimesApp,
+            Application.Interfaces.Boloes.IBolaoAcertoTimePontoApp bolaoAcertoTimePontoApp
             )
             : base(bolaoMembroApp, bolaoApp, campeonatoApp, campeonatoFaseApp, campeonatoGrupoApp, campeonatoTimeApp)
         {
@@ -42,6 +44,7 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
             _bolaoMembroClassificacaoApp = bolaoMembroClassificacaoApp;
             _bolaoCriterioPontosApp = bolaoCriterioPontosApp;
             _bolaoCriterioPontosTimesApp = bolaoCriterioPontosTimesApp;
+            _bolaoAcertoTimePontoApp = bolaoAcertoTimePontoApp;
         }
 
         #endregion
@@ -121,7 +124,7 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
                 }
             }
         }
-        private IList<Domain.Entities.Boloes.JogoUsuario> Simulate(IList<Domain.Entities.Boloes.JogoUsuario> apostas, string nomeTime1, string nomeTime2, IList<Domain.Entities.Boloes.BolaoCriterioPontosTimes> bolaoCriterioPontos, IList<Domain.Entities.Boloes.BolaoCriterioPontos> pontos, int gols1, int gols2)
+        private IList<Domain.Entities.Boloes.JogoUsuario> Simulate(IList<Domain.Entities.Boloes.JogoUsuario> apostas, string nomeTime1, string nomeTime2, int pontosAcertoTime, IList<Domain.Entities.Boloes.BolaoCriterioPontosTimes> bolaoCriterioPontos, IList<Domain.Entities.Boloes.BolaoCriterioPontos> pontos, int gols1, int gols2)
         {
             //int pontosTotal = 0;
 
@@ -142,6 +145,7 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
             int countGolsTime1 = 0;	// Se acertou a quantidade de gols do time 1
             int countGolsTime2 = 0;	// Se acertou a quantidade de gols do time 2
             int countCheio = 0;	// Se acertou em cheio o resultado
+            int countPontosAcertoTime = pontosAcertoTime;
             int multiploTime = 1;
             bool ismultiploTime = false;
 
@@ -214,10 +218,10 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
                 }
             }
 
-            IList<Domain.Entities.Boloes.JogoUsuario> jogos = _jogoUsuarioApp.Simulate(apostas, gols1, gols2, 
-                countEmpate, countVitoria, countDerrota, countGanhador, countPerdedor, countTime1, countTime2, 
+            IList<Domain.Entities.Boloes.JogoUsuario> jogos = _jogoUsuarioApp.Simulate(apostas, gols1, gols2,
+                nomeTime1, nomeTime2, countEmpate, countVitoria, countDerrota, countGanhador, countPerdedor, countTime1, countTime2, 
                 countVDE, countErro, countGanhadorFora, countGanhadorDentro, countPerdedorFora, countPerdedorDentro, 
-                countEmpateGols, countGolsTime1, countGolsTime2, countCheio, ismultiploTime, multiploTime);
+                countEmpateGols, countGolsTime1, countGolsTime2, countCheio, countPontosAcertoTime, ismultiploTime, multiploTime);
 
             return jogos;
         }
@@ -313,7 +317,15 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
             IList<Domain.Entities.Boloes.BolaoCriterioPontos> bolaoCriterioPontos =
                 _bolaoCriterioPontosApp.GetCriterioPontosBolao(base.SelectedBolao);
 
-            apostas = Simulate(apostas, jogo.NomeTime1, jogo.NomeTime2,  
+            Domain.Entities.Boloes.BolaoAcertoTimePonto acertoTimePonto =
+                _bolaoAcertoTimePontoApp.GetByJogoId(base.SelectedBolao, modelParam.JogoId);
+
+            int pontosAcertoTime = 0;
+            if (acertoTimePonto != null)
+                pontosAcertoTime = acertoTimePonto.Pontos;
+
+
+            apostas = Simulate(apostas, jogo.NomeTime1, jogo.NomeTime2, pontosAcertoTime,
                 bolaoCriterioPontosTimes, bolaoCriterioPontos, modelParam.SimulacaoGols1, modelParam.SimulacaoGols2);
             
 

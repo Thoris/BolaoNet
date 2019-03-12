@@ -496,7 +496,7 @@ namespace BolaoNet.Domain.Services.Boloes
 
             return res;
         }
-        public int CalcularPontoSimulation(int gols1, int gols2, int aposta1, int aposta2, int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1, int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, bool isMultiploTime, int multiploTime)
+        public int CalcularPontoSimulation(int gols1, int gols2, int aposta1, int aposta2, string nomeTime1, string nomeTime2, string nomeTime1Aposta, string nomeTime2Aposta, int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1, int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, int pontosAcertoTime, bool isMultiploTime, int multiploTime)
         {
             //int pontosTime1Total = 0;
             //int pontosTime2Total = 0;
@@ -519,7 +519,7 @@ namespace BolaoNet.Domain.Services.Boloes
             int countGolsTime1 = 0;	// Se acertou a quantidade de gols do time 1
             int countGolsTime2 = 0;	// Se acertou a quantidade de gols do time 2
             int countCheio = 0;	// Se acertou em cheio o resultado
-
+            int countPontosAcertoTime = 0;
 
             //-----------------------------------------
             //Parte 1: Verificando o resultado do jogo
@@ -656,10 +656,29 @@ namespace BolaoNet.Domain.Services.Boloes
                 pontosTotal *= multiploTime;
             }
 
+            if (!string.IsNullOrEmpty(nomeTime1Aposta))
+            {
+                if (string.Compare(nomeTime1.Trim(), nomeTime1Aposta.Trim()) == 0)
+                {
+                    countPontosAcertoTime++;
+                }
+            }
+
+            if (!string.IsNullOrEmpty(nomeTime2Aposta))
+            {
+                if (string.Compare(nomeTime2.Trim(), nomeTime2Aposta.Trim()) == 0)
+                {
+                    countPontosAcertoTime++;
+                }
+            }
+
+            int totalPontosAcertoTime = (pontosAcertoTime * countPontosAcertoTime);
+
+            pontosTotal += totalPontosAcertoTime;
 
             return pontosTotal;
         }
-        public IList<Entities.Boloes.JogoUsuario> Simulate(IList<Entities.Boloes.JogoUsuario> apostas, int gols1, int gols2, int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1, int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, bool isMultiploTime, int multiploTime)
+        public IList<Entities.Boloes.JogoUsuario> Simulate(IList<Entities.Boloes.JogoUsuario> apostas, int gols1, int gols2, string nomeTime1, string nomeTime2, int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1, int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, int pontosAcertoTime, bool isMultiploTime, int multiploTime)
         {
             if (apostas == null)
                 throw new ArgumentException("apostas");
@@ -667,10 +686,11 @@ namespace BolaoNet.Domain.Services.Boloes
             for (int c= 0; c < apostas.Count; c++)
             {
                 int pontos = CalcularPontoSimulation(gols1, gols2, (int)apostas[c].ApostaTime1, (int)apostas[c].ApostaTime2,
+                    nomeTime1, nomeTime2, apostas[c].NomeTimeResult1, apostas[c].NomeTimeResult2,
                     pontosEmpate, pontosVitoria, pontosDerrota, pontosGanhador, pontosPerdedor,
                     pontosTime1, pontosTime2, pontosVDE, pontosErro, pontosGanhadorFora,
                     pontosGanhadorDentro, pontosPerdedorFora, pontosPerdedorDentro, pontosEmpateGols,
-                    pontosGolsTime1, pontosGolsTime2, pontosCheio, isMultiploTime, multiploTime);
+                    pontosGolsTime1, pontosGolsTime2, pontosCheio, pontosAcertoTime, isMultiploTime, multiploTime);
 
                 apostas[c].Pontos = pontos;
             }

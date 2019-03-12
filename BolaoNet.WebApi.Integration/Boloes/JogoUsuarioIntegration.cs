@@ -138,7 +138,7 @@ namespace BolaoNet.WebApi.Integration.Boloes
                 parameters, "LoadProximosJogosUsuario");
         }
 
-        public int CalcularPontoSimulation(int gols1, int gols2, int aposta1, int aposta2, int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1, int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, bool isMultiploTime, int multiploTime)
+        public int CalcularPontoSimulation(int gols1, int gols2, int aposta1, int aposta2, string nomeTime1, string nomeTime2, string nomeTime1Aposta, string nomeTime2Aposta, int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1, int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, int pontosAcertoTime, bool isMultiploTime, int multiploTime)
         {
             
             Dictionary<string, object> parameters = new Dictionary<string, object>();
@@ -147,6 +147,12 @@ namespace BolaoNet.WebApi.Integration.Boloes
             parameters.Add("gols2", gols2);
             parameters.Add("aposta1", aposta1);
             parameters.Add("aposta2", aposta2);
+
+            parameters.Add("nomeTime1", nomeTime1);
+            parameters.Add("nomeTime2", nomeTime2);
+            parameters.Add("nomeTime1Aposta", nomeTime1Aposta);
+            parameters.Add("nomeTime2Aposta", nomeTime2Aposta);
+
             parameters.Add("pontosEmpate", pontosEmpate);
             parameters.Add("pontosVitoria", pontosVitoria);
             parameters.Add("pontosDerrota", pontosDerrota);
@@ -164,6 +170,9 @@ namespace BolaoNet.WebApi.Integration.Boloes
             parameters.Add("pontosGolsTime1", pontosGolsTime1);
             parameters.Add("pontosGolsTime2",pontosGolsTime2);
             parameters.Add("pontosCheio", pontosCheio);
+
+            parameters.Add("pontosAcertoTime", pontosAcertoTime);
+
             parameters.Add("isMultiploTime", isMultiploTime);
             parameters.Add("multiploTime", multiploTime);
              
@@ -172,7 +181,7 @@ namespace BolaoNet.WebApi.Integration.Boloes
                 parameters, "CalcularPontoSimulation");
         }
 
-        public IList<Domain.Entities.Boloes.JogoUsuario> Simulate(IList<Domain.Entities.Boloes.JogoUsuario> apostas, int gols1, int gols2, int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1, int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, bool isMultiploTime, int multiploTime)
+        public IList<Domain.Entities.Boloes.JogoUsuario> Simulate(IList<Domain.Entities.Boloes.JogoUsuario> apostas, int gols1, int gols2, string nomeTime1, string nomeTime2, int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1, int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, int pontosAcertoTime, bool isMultiploTime, int multiploTime)
         {
 
             Dictionary<string, object> parameters = new Dictionary<string, object>();
@@ -180,7 +189,14 @@ namespace BolaoNet.WebApi.Integration.Boloes
             parameters.Add("apostas", apostas);
             
             parameters.Add("gols1", gols1);
-            parameters.Add("gols2", gols2); 
+            parameters.Add("gols2", gols2);
+
+
+            parameters.Add("nomeTime1", nomeTime1);
+            parameters.Add("nomeTime2", nomeTime2);
+            //parameters.Add("nomeTime1Aposta", nomeTime1Aposta);
+            //parameters.Add("nomeTime2Aposta", nomeTime2Aposta);
+
             parameters.Add("pontosEmpate", pontosEmpate);
             parameters.Add("pontosVitoria", pontosVitoria);
             parameters.Add("pontosDerrota", pontosDerrota);
@@ -198,6 +214,9 @@ namespace BolaoNet.WebApi.Integration.Boloes
             parameters.Add("pontosGolsTime1", pontosGolsTime1);
             parameters.Add("pontosGolsTime2", pontosGolsTime2);
             parameters.Add("pontosCheio", pontosCheio);
+
+            parameters.Add("pontosAcertoTime", pontosAcertoTime);
+
             parameters.Add("isMultiploTime", isMultiploTime);
             parameters.Add("multiploTime", multiploTime);
 

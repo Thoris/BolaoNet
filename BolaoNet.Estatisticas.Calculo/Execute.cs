@@ -764,7 +764,7 @@ namespace BolaoNet.Estatisticas.Calculo
 
             for (int i = 0; i < jogo.Apostas.Count; i++)
             {
-                int res = CalcularPontos(pontuacao, jogo.NomeTime1, jogo.NomeTime2,
+                int res = CalcularPontos(pontuacao, jogo.NomeTime1, jogo.NomeTime2, "", "",
                     possibilidade.GolsTime1, possibilidade.GolsTime2,
                     jogo.Apostas[i].ApostaTime1, jogo.Apostas[i].ApostaTime2,
                     pontosTimes);
@@ -790,7 +790,7 @@ namespace BolaoNet.Estatisticas.Calculo
         /// <param name="aposta1"></param>
         /// <param name="aposta2"></param>
         /// <returns></returns>
-        private int CalcularPontos(int[] pontos, string nomeTime1, string nomeTime2, int gols1, int gols2, int aposta1, int aposta2, List<CriterioPontosTimes> pontosTimes)
+        private int CalcularPontos(int[] pontos, string nomeTime1, string nomeTime2, string nomeTime1Aposta, string nomeTime2Aposta, int gols1, int gols2, int aposta1, int aposta2, List<CriterioPontosTimes> pontosTimes)
         {
             int resultado = 0;
 
@@ -813,6 +813,7 @@ namespace BolaoNet.Estatisticas.Calculo
             int countGolsTime1 = 0;	// Se acertou a quantidade de gols do time 1
             int countGolsTime2 = 0;	// Se acertou a quantidade de gols do time 2
             int countCheio = 0;	// Se acertou em cheio o resultado
+            int countPontosAcertoTime = 0;
             int multiploTime = 1;
             bool ismultiploTime = false;
 
@@ -886,10 +887,11 @@ namespace BolaoNet.Estatisticas.Calculo
                 }
             }
 
-            resultado = _jogoUsuarioApp.CalcularPontoSimulation(gols1, gols2, aposta1, aposta2,
+            resultado = _jogoUsuarioApp.CalcularPontoSimulation(gols1, gols2, aposta1, aposta2, 
+                nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta,
                 countEmpate, countVitoria, countDerrota, countGanhador, countPerdedor, countTime1, countTime2,
                 countVDE, countErro, countGanhadorFora, countGanhadorDentro, countPerdedorFora, countPerdedorDentro,
-                countEmpateGols, countGolsTime1, countGolsTime2, countCheio, ismultiploTime, multiploTime);
+                countEmpateGols, countGolsTime1, countGolsTime2, countCheio, countPontosAcertoTime, ismultiploTime, multiploTime);
 
 
             return resultado;

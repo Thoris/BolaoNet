@@ -40,8 +40,13 @@ namespace BolaoNet.WebApi.Areas.Boloes.Controllers
 
         #region IBolaoAcertoTimePontoService members
 
-       
+        public Domain.Entities.Boloes.BolaoAcertoTimePonto GetByJogoId(Domain.Entities.Boloes.Bolao bolao, int jogoId)
+        {
+            return Service.GetByJogoId(bolao, jogoId);
+        }
 
         #endregion
+
+
     }
 }

@@ -76,19 +76,20 @@ namespace BolaoNet.Application.Boloes
             return Service.LoadProximosJogosUsuario(user, totalRetorno);
         }
 
-        public int CalcularPontoSimulation(int gols1, int gols2, int aposta1, int aposta2, int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1, int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, bool isMultiploTime, int multiploTime)
+        public int CalcularPontoSimulation(int gols1, int gols2, int aposta1, int aposta2, string nomeTime1, string nomeTime2, string nomeTime1Aposta, string nomeTime2Aposta, int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1, int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, int pontosAcertoTime, bool isMultiploTime, int multiploTime)
         {
-            return Service.CalcularPontoSimulation(gols1, gols2, aposta1, aposta2, pontosEmpate, pontosVitoria,
+            return Service.CalcularPontoSimulation(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta,
+                pontosEmpate, pontosVitoria,
                 pontosDerrota, pontosGanhador, pontosPerdedor, pontosTime1, pontosTime2, pontosVDE,
                 pontosErro, pontosGanhadorFora, pontosGanhadorDentro, pontosPerdedorFora, pontosPerdedorDentro,
-                pontosEmpateGols, pontosGolsTime1, pontosGolsTime2, pontosCheio, isMultiploTime, multiploTime);
+                pontosEmpateGols, pontosGolsTime1, pontosGolsTime2, pontosCheio, pontosAcertoTime, isMultiploTime, multiploTime);
         }
-        public IList<Domain.Entities.Boloes.JogoUsuario> Simulate(IList<Domain.Entities.Boloes.JogoUsuario> apostas, int gols1, int gols2, int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1, int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, bool isMultiploTime, int multiploTime)
+        public IList<Domain.Entities.Boloes.JogoUsuario> Simulate(IList<Domain.Entities.Boloes.JogoUsuario> apostas, int gols1, int gols2, string nomeTime1, string nomeTime2, int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1, int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, int pontosAcertoTime, bool isMultiploTime, int multiploTime)
         {
-            return Service.Simulate(apostas, gols1, gols2, pontosEmpate, pontosVitoria,
+            return Service.Simulate(apostas, gols1, gols2, nomeTime1, nomeTime2, pontosEmpate, pontosVitoria,
                 pontosDerrota, pontosGanhador, pontosPerdedor, pontosTime1, pontosTime2, pontosVDE,
                 pontosErro, pontosGanhadorFora, pontosGanhadorDentro, pontosPerdedorFora, pontosPerdedorDentro,
-                pontosEmpateGols, pontosGolsTime1, pontosGolsTime2, pontosCheio, isMultiploTime, multiploTime);
+                pontosEmpateGols, pontosGolsTime1, pontosGolsTime2, pontosCheio, pontosAcertoTime, isMultiploTime, multiploTime);
         }
 
         public bool CorrecaoEliminatorias(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Users.User user)

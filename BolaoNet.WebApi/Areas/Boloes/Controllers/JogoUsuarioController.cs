@@ -209,41 +209,50 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
             int gols2 = JsonConvert.DeserializeObject<int>(data[1].ToString());
             int aposta1 = JsonConvert.DeserializeObject<int>(data[2].ToString());
             int aposta2 = JsonConvert.DeserializeObject<int>(data[3].ToString());
-            int pontosEmpate = JsonConvert.DeserializeObject<int>(data[4].ToString());
-            int pontosVitoria = JsonConvert.DeserializeObject<int>(data[5].ToString());
-            int pontosDerrota = JsonConvert.DeserializeObject<int>(data[6].ToString());
-            int pontosGanhador = JsonConvert.DeserializeObject<int>(data[7].ToString());
-            int pontosPerdedor = JsonConvert.DeserializeObject<int>(data[8].ToString());
-            int pontosTime1 = JsonConvert.DeserializeObject<int>(data[9].ToString());
-            int pontosTime2 = JsonConvert.DeserializeObject<int>(data[10].ToString());
-            int pontosVDE = JsonConvert.DeserializeObject<int>(data[11].ToString());
-            int pontosErro = JsonConvert.DeserializeObject<int>(data[12].ToString());
-            int pontosGanhadorFora = JsonConvert.DeserializeObject<int>(data[13].ToString());
-            int pontosGanhadorDentro = JsonConvert.DeserializeObject<int>(data[14].ToString());
-            int pontosPerdedorFora = JsonConvert.DeserializeObject<int>(data[15].ToString());
-            int pontosPerdedorDentro = JsonConvert.DeserializeObject<int>(data[16].ToString());
-            int pontosEmpateGols = JsonConvert.DeserializeObject<int>(data[17].ToString());
-            int pontosGolsTime1 = JsonConvert.DeserializeObject<int>(data[18].ToString());
-            int pontosGolsTime2 = JsonConvert.DeserializeObject<int>(data[19].ToString());
-            int pontosCheio = JsonConvert.DeserializeObject<int>(data[20].ToString());
-            bool isMultiploTime = bool.Parse(data[21].ToString());
-            int multiploTime = JsonConvert.DeserializeObject<int>(data[22].ToString());
+
+            string nomeTime1 = JsonConvert.DeserializeObject<string>(data[4].ToString());
+            string nomeTime2 = JsonConvert.DeserializeObject<string>(data[5].ToString());
+            string nomeTime1Aposta = JsonConvert.DeserializeObject<string>(data[6].ToString());
+            string nomeTime2Aposta = JsonConvert.DeserializeObject<string>(data[7].ToString());
+
+            int pontosEmpate = JsonConvert.DeserializeObject<int>(data[8].ToString());
+            int pontosVitoria = JsonConvert.DeserializeObject<int>(data[9].ToString());
+            int pontosDerrota = JsonConvert.DeserializeObject<int>(data[10].ToString());
+            int pontosGanhador = JsonConvert.DeserializeObject<int>(data[11].ToString());
+            int pontosPerdedor = JsonConvert.DeserializeObject<int>(data[12].ToString());
+            int pontosTime1 = JsonConvert.DeserializeObject<int>(data[13].ToString());
+            int pontosTime2 = JsonConvert.DeserializeObject<int>(data[14].ToString());
+            int pontosVDE = JsonConvert.DeserializeObject<int>(data[15].ToString());
+            int pontosErro = JsonConvert.DeserializeObject<int>(data[16].ToString());
+            int pontosGanhadorFora = JsonConvert.DeserializeObject<int>(data[17].ToString());
+            int pontosGanhadorDentro = JsonConvert.DeserializeObject<int>(data[18].ToString());
+            int pontosPerdedorFora = JsonConvert.DeserializeObject<int>(data[19].ToString());
+            int pontosPerdedorDentro = JsonConvert.DeserializeObject<int>(data[20].ToString());
+            int pontosEmpateGols = JsonConvert.DeserializeObject<int>(data[21].ToString());
+            int pontosGolsTime1 = JsonConvert.DeserializeObject<int>(data[22].ToString());
+            int pontosGolsTime2 = JsonConvert.DeserializeObject<int>(data[23].ToString());
+            int pontosCheio = JsonConvert.DeserializeObject<int>(data[24].ToString());
+
+            int pontosAcertoTime = JsonConvert.DeserializeObject<int>(data[25].ToString());
+
+            bool isMultiploTime = bool.Parse(data[26].ToString());
+            int multiploTime = JsonConvert.DeserializeObject<int>(data[27].ToString());
 
 
-            return Service.CalcularPontoSimulation(gols1, gols2, aposta1, aposta2, pontosEmpate, pontosVitoria,
-               pontosDerrota, pontosGanhador, pontosPerdedor, pontosTime1, pontosTime2, pontosVDE,
+            return Service.CalcularPontoSimulation(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta,
+               pontosEmpate, pontosVitoria, pontosDerrota, pontosGanhador, pontosPerdedor, pontosTime1, pontosTime2, pontosVDE,
                pontosErro, pontosGanhadorFora, pontosGanhadorDentro, pontosPerdedorFora, pontosPerdedorDentro,
-               pontosEmpateGols, pontosGolsTime1, pontosGolsTime2, pontosCheio, isMultiploTime, multiploTime);
+               pontosEmpateGols, pontosGolsTime1, pontosGolsTime2, pontosCheio, pontosAcertoTime, isMultiploTime, multiploTime);
 
         }
 
         [HttpPost]
-        public int CalcularPontoSimulation(int gols1, int gols2, int aposta1, int aposta2, int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1, int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, bool isMultiploTime, int multiploTime)
+        public int CalcularPontoSimulation(int gols1, int gols2, int aposta1, int aposta2, string nomeTime1, string nomeTime2, string nomeTime1Aposta, string nomeTime2Aposta, int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1, int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, int pontosAcertoTime, bool isMultiploTime, int multiploTime)
         {
-            return Service.CalcularPontoSimulation(gols1, gols2, aposta1, aposta2, pontosEmpate, pontosVitoria,
-               pontosDerrota, pontosGanhador, pontosPerdedor, pontosTime1, pontosTime2, pontosVDE,
+            return Service.CalcularPontoSimulation(gols1, gols2, aposta1, aposta2, nomeTime1, nomeTime2, nomeTime1Aposta, nomeTime2Aposta, 
+               pontosEmpate, pontosVitoria, pontosDerrota, pontosGanhador, pontosPerdedor, pontosTime1, pontosTime2, pontosVDE,
                pontosErro, pontosGanhadorFora, pontosGanhadorDentro, pontosPerdedorFora, pontosPerdedorDentro,
-               pontosEmpateGols, pontosGolsTime1, pontosGolsTime2, pontosCheio, isMultiploTime, multiploTime);
+               pontosEmpateGols, pontosGolsTime1, pontosGolsTime2, pontosCheio, pontosAcertoTime, isMultiploTime, multiploTime);
        
         }
         [HttpPost]
@@ -252,41 +261,50 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
             IList<Domain.Entities.Boloes.JogoUsuario> apostas = JsonConvert.DeserializeObject<IList<Domain.Entities.Boloes.JogoUsuario>>(data[0].ToString()); ;
             int gols1 = JsonConvert.DeserializeObject<int>(data[1].ToString()); ;
             int gols2 = JsonConvert.DeserializeObject<int>(data[2].ToString());
-            
-            int pontosEmpate = JsonConvert.DeserializeObject<int>(data[3].ToString());
-            int pontosVitoria = JsonConvert.DeserializeObject<int>(data[4].ToString());
-            int pontosDerrota = JsonConvert.DeserializeObject<int>(data[5].ToString());
-            int pontosGanhador = JsonConvert.DeserializeObject<int>(data[6].ToString());
-            int pontosPerdedor = JsonConvert.DeserializeObject<int>(data[7].ToString());
-            int pontosTime1 = JsonConvert.DeserializeObject<int>(data[8].ToString());
-            int pontosTime2 = JsonConvert.DeserializeObject<int>(data[9].ToString());
-            int pontosVDE = JsonConvert.DeserializeObject<int>(data[10].ToString());
-            int pontosErro = JsonConvert.DeserializeObject<int>(data[11].ToString());
-            int pontosGanhadorFora = JsonConvert.DeserializeObject<int>(data[12].ToString());
-            int pontosGanhadorDentro = JsonConvert.DeserializeObject<int>(data[13].ToString());
-            int pontosPerdedorFora = JsonConvert.DeserializeObject<int>(data[14].ToString());
-            int pontosPerdedorDentro = JsonConvert.DeserializeObject<int>(data[15].ToString());
-            int pontosEmpateGols = JsonConvert.DeserializeObject<int>(data[16].ToString());
-            int pontosGolsTime1 = JsonConvert.DeserializeObject<int>(data[17].ToString());
-            int pontosGolsTime2 = JsonConvert.DeserializeObject<int>(data[18].ToString());
-            int pontosCheio = JsonConvert.DeserializeObject<int>(data[19].ToString());
-            bool isMultiploTime = bool.Parse(data[20].ToString());
-            int multiploTime = JsonConvert.DeserializeObject<int>(data[21].ToString());
+
+            string nomeTime1 = JsonConvert.DeserializeObject<string>(data[3].ToString());
+            string nomeTime2 = JsonConvert.DeserializeObject<string>(data[4].ToString());
+            //string nomeTime1Aposta = JsonConvert.DeserializeObject<string>(data[5].ToString());
+            //string nomeTime2Aposta = JsonConvert.DeserializeObject<string>(data[6].ToString());
+
+
+            int pontosEmpate = JsonConvert.DeserializeObject<int>(data[5].ToString());
+            int pontosVitoria = JsonConvert.DeserializeObject<int>(data[6].ToString());
+            int pontosDerrota = JsonConvert.DeserializeObject<int>(data[7].ToString());
+            int pontosGanhador = JsonConvert.DeserializeObject<int>(data[8].ToString());
+            int pontosPerdedor = JsonConvert.DeserializeObject<int>(data[9].ToString());
+            int pontosTime1 = JsonConvert.DeserializeObject<int>(data[10].ToString());
+            int pontosTime2 = JsonConvert.DeserializeObject<int>(data[11].ToString());
+            int pontosVDE = JsonConvert.DeserializeObject<int>(data[12].ToString());
+            int pontosErro = JsonConvert.DeserializeObject<int>(data[13].ToString());
+            int pontosGanhadorFora = JsonConvert.DeserializeObject<int>(data[14].ToString());
+            int pontosGanhadorDentro = JsonConvert.DeserializeObject<int>(data[15].ToString());
+            int pontosPerdedorFora = JsonConvert.DeserializeObject<int>(data[16].ToString());
+            int pontosPerdedorDentro = JsonConvert.DeserializeObject<int>(data[17].ToString());
+            int pontosEmpateGols = JsonConvert.DeserializeObject<int>(data[18].ToString());
+            int pontosGolsTime1 = JsonConvert.DeserializeObject<int>(data[19].ToString());
+            int pontosGolsTime2 = JsonConvert.DeserializeObject<int>(data[20].ToString());
+            int pontosCheio = JsonConvert.DeserializeObject<int>(data[21].ToString());
+
+            int pontosAcertoTime = JsonConvert.DeserializeObject<int>(data[22].ToString());
+
+            bool isMultiploTime = bool.Parse(data[23].ToString());
+            int multiploTime = JsonConvert.DeserializeObject<int>(data[24].ToString());
 
 
 
-            return Service.Simulate(apostas, gols1, gols2, pontosEmpate, pontosVitoria,
+            return Service.Simulate(apostas, gols1, gols2, nomeTime1, nomeTime2, pontosEmpate, pontosVitoria,
                pontosDerrota, pontosGanhador, pontosPerdedor, pontosTime1, pontosTime2, pontosVDE,
                pontosErro, pontosGanhadorFora, pontosGanhadorDentro, pontosPerdedorFora, pontosPerdedorDentro,
-               pontosEmpateGols, pontosGolsTime1, pontosGolsTime2, pontosCheio, isMultiploTime, multiploTime);
+               pontosEmpateGols, pontosGolsTime1, pontosGolsTime2, pontosCheio, pontosAcertoTime, isMultiploTime, multiploTime);
         }
         [HttpPost]
-        public IList<Domain.Entities.Boloes.JogoUsuario> Simulate(IList<Domain.Entities.Boloes.JogoUsuario> apostas, int gols1, int gols2, int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1, int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, bool isMultiploTime, int multiploTime)
+        public IList<Domain.Entities.Boloes.JogoUsuario> Simulate(IList<Domain.Entities.Boloes.JogoUsuario> apostas, int gols1, int gols2, string nomeTime1, string nomeTime2, int pontosEmpate, int pontosVitoria, int pontosDerrota, int pontosGanhador, int pontosPerdedor, int pontosTime1, int pontosTime2, int pontosVDE, int pontosErro, int pontosGanhadorFora, int pontosGanhadorDentro, int pontosPerdedorFora, int pontosPerdedorDentro, int pontosEmpateGols, int pontosGolsTime1, int pontosGolsTime2, int pontosCheio, int pontosAcertoTime, bool isMultiploTime, int multiploTime)
         {
-            return Service.Simulate(apostas, gols1, gols2, pontosEmpate, pontosVitoria,
+            return Service.Simulate(apostas, gols1, gols2, nomeTime1, nomeTime2, pontosEmpate, pontosVitoria,
                pontosDerrota, pontosGanhador, pontosPerdedor, pontosTime1, pontosTime2, pontosVDE,
                pontosErro, pontosGanhadorFora, pontosGanhadorDentro, pontosPerdedorFora, pontosPerdedorDentro,
-               pontosEmpateGols, pontosGolsTime1, pontosGolsTime2, pontosCheio, isMultiploTime, multiploTime);
+               pontosEmpateGols, pontosGolsTime1, pontosGolsTime2, pontosCheio, pontosAcertoTime, isMultiploTime, multiploTime);
         }
 
         [HttpPost]
@@ -319,8 +337,5 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
 
         #endregion        
     
-
-    
-
     }
 }
