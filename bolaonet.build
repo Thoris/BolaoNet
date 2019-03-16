@@ -15,8 +15,8 @@
     <property name="base.path" value="${project::get-base-directory()}" />
     <property name="base.path.parent" value="${directory::get-parent-directory('')}" />
     <property name="base.path.build.parent" value="${path::combine(base.path.parent, 'build')}" />
-	<property name="base.path.build.parent.env" value="${base.path.build.parent}\${folder.config.env}" />	
-	<property name="base.path.build" value="${base.path.build.parent.env}" />	
+    <property name="base.path.build.parent.env" value="${base.path.build.parent}\${folder.config.env}" />	
+    <property name="base.path.build" value="${base.path.build.parent.env}" />	
     <!-- property name="base.path.build" value="${base.path.build.parent.env}\${CCNetLabel}" / -->	
     <property name="base.path.build.release" value="${path::combine(base.path.build,'dist')}" />
     <property name="base.path.build.release.ws" value="${path::combine(base.path.build,'distws')}" />
@@ -348,6 +348,7 @@
   
   <target name="test_deploy">
 	<property name="folder.config.env" value="test" />	
+	<call target="test.config" />
     <call target="initializePaths" />
     <property name="tools.base.dir" value="${path::combine(base.path,'Tools')}" overwrite="true" />
     <call target="initializeTools" />
@@ -366,7 +367,7 @@
   
   <target name="prod"> 
     <property name="folder.config.env" value="prod" />
-    <call target="createVersion" />
+	<call target="createVersion" />
     <call target="initializePaths" />
     <property name="tools.base.dir" value="${path::combine(base.path,'Tools')}" overwrite="true" />
     <call target="initializeTools" />
@@ -385,6 +386,7 @@
   
   <target name="prod_deploy">
 	<property name="folder.config.env" value="prod" />	
+	<call target="prod.config" />
     <call target="initializePaths" />
     <property name="tools.base.dir" value="${path::combine(base.path,'Tools')}" overwrite="true" />
     <call target="initializeTools" />
@@ -401,6 +403,24 @@
     <call target="deployToFtp" />
   </target>
   
+  <target name="prod_deploy_partial">
+	<property name="folder.config.env" value="prod" />	
+	<call target="prod.config" />
+    <call target="initializePaths" />
+    <property name="tools.base.dir" value="${path::combine(base.path,'Tools')}" overwrite="true" />
+    <call target="initializeTools" />
+	
+	<property name="db.servername" value="${prod.db.servername}" dynamic="true" />
+    <property name="db.initialcatalog" value="${prod.db.initialcatalog}" dynamic="true" />
+    <property name="db.credentials" value="${prod.db.credentials}" dynamic="true" />	
+	<!-- call target="runDatabaseScripts" / -->
+    	
+	<property name="project.deployment.ftp.server" value="${prod.project.deployment.ftp.server}" />
+    <property name="project.deployment.ftp.user" value="${prod.project.deployment.ftp.user}" />
+    <property name="project.deployment.ftp.password" value="${prod.project.deployment.ftp.password}" />
+    <property name="project.deployment.path.remote" value="${prod.project.deployment.path.remote}" />
+    <call target="deployToFtpPartial" />
+  </target>
   
   <target name="prod_bkp1"> 
     <property name="folder.config.env" value="prod_bkp1" />
@@ -1215,6 +1235,58 @@
 
   </target>
 
+  <target name="deployToFtpPartial">
+
+    <connection id="ftp-transfer-connection"
+      server="${project.deployment.ftp.server}"
+      username="${project.deployment.ftp.user}"
+      password="${project.deployment.ftp.password}"
+    />
+
+    <ftp connection="ftp-transfer-connection"
+         showdironconnect="false"
+         createdirs="true"
+         verbose="false"
+         exec="true"
+         logfiles="true"
+       >
+
+      <put type="bin"
+           localdir="${base.path.build.release}"
+           remotedir="${project.deployment.path.remote}"
+           flatten="false"
+         >
+		 
+		<exclude name="*.*" />
+		<include name="\**\bin\BolaoNet.*.*" /> 
+		<include name="\**\Views\*" />
+		<include name="\**\Areas\*" />
+        <!-- include name="**/*" />
+		<exclude name="**/Ajuda/*" />
+		<exclude name="\**\App_Data\*.*" />
+		<exclude name="\**\Areas\*.*" />
+		<exclude name="\**\Content\*.*" />
+        <exclude name="**\web.config" />
+		<exclude name="**\log4net.config" />
+		<exclude name="\**\bin\WebGrease.dll" />
+		<exclude name="\**\bin\WebActivatorEx.dll" />
+		<exclude name="\**\bin\System.*.dll" />
+		<exclude name="\**\bin\Ninject*.dll" />
+		<exclude name="\**\bin\Newtonsoft.Json.dll" />
+		<exclude name="\**\bin\Microsoft*.dll" />
+		<exclude name="\**\bin\log4net.dll" />
+		<exclude name="\**\bin\itextsharp.dll" />
+		<exclude name="\**\bin\ICSharpCode.SharpZipLib.dll" />
+		<exclude name="\**\bin\Entity*.dll" />
+		<exclude name="\**\bin\AutoMapper.dll" />
+		<exclude name="\**\bin\Antlr3.Runtime.dll" / -->
+		
+		
+		
+      </put>
+    </ftp>
+
+  </target>
 
 
 
