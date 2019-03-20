@@ -58,14 +58,18 @@ namespace BolaoNet.Infra.Reports.Pdf.CopaAmerica
 
             int i = 0;
             int posY = 470;
-            grupos[i].TotalWidth = width;
-            grupos[i++].WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 0), posY - (distY * 0), writer.DirectContent);
-            
-            grupos[i].TotalWidth = width;
-            grupos[i++].WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 1), posY - (distY * 0), writer.DirectContent);
 
-            grupos[i].TotalWidth = width;
-            grupos[i++].WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 0), posY - (distY * 1), writer.DirectContent);
+            if (grupos != null && grupos.Count == 3)
+            {
+                grupos[i].TotalWidth = width;
+                grupos[i++].WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 0), posY - (distY * 0), writer.DirectContent);
+
+                grupos[i].TotalWidth = width;
+                grupos[i++].WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 1), posY - (distY * 0), writer.DirectContent);
+
+                grupos[i].TotalWidth = width;
+                grupos[i++].WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 0), posY - (distY * 1), writer.DirectContent);
+            }
 
             PdfPTable legendas = new PdfPTable(1);
 
