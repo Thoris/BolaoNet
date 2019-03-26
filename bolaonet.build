@@ -1259,8 +1259,8 @@
 		 
 		<exclude name="*.*" />
 		<include name="\**\bin\BolaoNet.*.*" /> 
-		<include name="\**\Views\*" />
-		<include name="\**\Areas\*" />
+		<include name="\**\Views\**" />
+		<include name="\**\Areas\**" /> 
         <!-- include name="**/*" />
 		<exclude name="**/Ajuda/*" />
 		<exclude name="\**\App_Data\*.*" />

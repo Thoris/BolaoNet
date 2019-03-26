@@ -29,7 +29,7 @@
                                new { value = 10 , text = "Grupo" }
                             }, "value", "text", "Fase"), new { @id = "filtros", @class = "form-control input-sm" })
 
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-filter"></span></span>
+                        <span class="input-group-addon hidden-xs"><span class="glyphicon glyphicon-filter"></span></span>
                     </div>
                 </div>
             </div>
@@ -39,38 +39,38 @@
                     <div class="input-group" id="filtroRodadas"
                          @if (Model.Filtros.FilterSelected != (int)BolaoNet.MVC.ViewModels.Campeonatos.FilterJogosViewModel.FilterJogoType.Rodada) { @Html.Raw("style=\"display: none;\"") ; }>
                         @Html.DropDownListFor(x => x.Filtros.Rodada, (SelectList)ViewBag.Rodadas, new { @class = "form-control input-sm" })
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        <span class="input-group-addon hidden-xs"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
 
                     <div class="input-group" id="filtroFases"
                          @if (Model.Filtros.FilterSelected != (int)BolaoNet.MVC.ViewModels.Campeonatos.FilterJogosViewModel.FilterJogoType.Fase)
                          { @Html.Raw("style=\"display: none;\"") ; }>
                         @Html.DropDownListFor(x => x.Filtros.NomeFase, (SelectList)ViewBag.Fases, new { @class = "form-control input-sm" })
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        <span class="input-group-addon hidden-xs"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
 
                     <div class="input-group" id="filtroTimes"
                          @if (Model.Filtros.FilterSelected != (int)BolaoNet.MVC.ViewModels.Campeonatos.FilterJogosViewModel.FilterJogoType.Time)
                          { @Html.Raw("style=\"display: none;\"") ; }>
                         @Html.DropDownListFor(x => x.Filtros.NomeTime, (SelectList)ViewBag.Times, new { @class = "form-control input-sm" })
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        <span class="input-group-addon hidden-xs"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
 
                     <div class="input-group" id="filtroGrupos"
                          @if (Model.Filtros.FilterSelected != (int)BolaoNet.MVC.ViewModels.Campeonatos.FilterJogosViewModel.FilterJogoType.Grupo)
                          { @Html.Raw("style=\"display: none;\"") ; }>
                         @Html.DropDownListFor(x => x.Filtros.NomeGrupo, (SelectList)ViewBag.Grupos, new { @class = "form-control input-sm" })
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        <span class="input-group-addon hidden-xs"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
 
                     <div class="input-group" id="filtroPeriodo"
                          @if (Model.Filtros.FilterSelected != (int)BolaoNet.MVC.ViewModels.Campeonatos.FilterJogosViewModel.FilterJogoType.Periodo)
                          { @Html.Raw("style=\"display: none;\"") ; }>
                         @Html.EditorFor(x => x.Filtros.DataInicial, new { htmlAttributes = new { @class = "form-control" } })
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        <span class="input-group-addon hidden-xs"><span class="glyphicon glyphicon-asterisk"></span></span>
 
                         @Html.EditorFor(x => x.Filtros.DataFinal, new { htmlAttributes = new { @class = "form-control" } })
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        <span class="input-group-addon hidden-xs"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
 
 

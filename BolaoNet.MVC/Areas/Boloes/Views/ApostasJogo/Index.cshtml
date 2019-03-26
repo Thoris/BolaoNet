@@ -35,7 +35,7 @@
                                 <label>Rodada:</label> @Model.Rodada
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row  text-center">
                             <div class="form-group col-md-2 col-sm-2">
                                 <h3>
                                     @Model.NomeTime1
@@ -205,7 +205,7 @@
                                     <thead>
                                         <tr>
                                             <td class="text-center">Pos</td>   
-                                            <td></td>                                      
+                                            <td class="hidden-xs"></td>                                      
                                             <td class="text-center">PTG</td>   
                                             <td class="hidden-xs"></td>                                        
                                             <td class="text-center">Usuário</td>  
@@ -220,7 +220,7 @@
                                             }                                            
                                             <td class="text-center">PT</td>
                                             <td class="text-center hidden-xs">Extra</td>
-                                            <td class="text-center"></td>
+                                            <td class="text-center hidden-xs"></td>
                                             <td class="text-center hidden-xs">%</td>
                                         </tr>
                                     </thead>
@@ -234,7 +234,7 @@
                                                 }                                                                                                
                                                 >
                                                 <td class="text-center">@Model.Apostas[c].Posicao</td>     
-                                                <td>
+                                                <td class="hidden-xs">
                                                     @if(Model.Apostas[c].LastPosicao != 0)
                                                     {
                                                         if(Model.Apostas[c].Posicao == Model.Apostas[c].LastPosicao)
@@ -293,7 +293,7 @@
                                                         <span class="glyphicon glyphicon-asterisk" />
                                                     }
                                                 </td>
-                                                <td class="text-center">
+                                                <td class="text-center hidden-xs">
                                                     @if (Model.Apostas[c].Automatico == 1)
                                                     {
                                                         <span class="glyphicon glyphicon-flash" />

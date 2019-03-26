@@ -23,7 +23,7 @@
 <li @if (string.Compare(controllerArea, "Resultados", true) == 0 || string.Compare(controllerArea, "Pagamentos", true) == 0 || 
         string.Compare(controllerArea, "Pontuacao", true) == 0 || string.Compare(controllerArea, "Admin", true) == 0)
     {  @Html.Raw("class=\"active\"")  }>    
-    <a href="/GrupoPonto/Grupos"><i class="fa fa-users"></i> <span class="nav-label">Admin</span> <span class="fa arrow"></span></a>
+    <a href="/GrupoPonto/Grupos"><i class="fa fa-users"></i><span class="nav-label">Admin</span> <span class="fa arrow"></span></a>
     <ul class="nav nav-second-level collapse">
 
         @if (roleResultados)
@@ -31,7 +31,7 @@
             <li @if (string.Compare(controllerName, "ApostasExtrasResultado", true) == 0 &&
                     string.Compare(controllerArea, "Resultados", true) == 0)
                 { @Html.Raw("class=\"active\"")  }>
-                <a href="/Resultados/ApostasExtrasResultado/Index" onclick="javascript:showWait();"><i class="fa fa-trophy"></i><span class="nav-label">Apostas Extras</span><span class="visible-xs-inline">Extras</span></a>
+                <a href="/Resultados/ApostasExtrasResultado/Index" onclick="javascript:showWait();"><span class="nav-label"><i class="fa fa-trophy"></i>Apostas Extras</span><span class="visible-xs-inline">Extras</span></a>
             </li>
         }
         @*<li @if (string.Compare(controllerAction, "Index", true) == 0 && 
@@ -46,7 +46,7 @@
             <li @if (string.Compare(controllerName, "Gerenciamento", true) == 0 &&
                     string.Compare(controllerArea, "Pagamentos", true) == 0)
                 { @Html.Raw("class=\"active\"")  }>
-                <a href="/Pagamentos/Gerenciamento/Index" onclick="javascript:showWait();"><i class="fa fa-money"></i><span class="nav-label">Pagamentos</span><span class="visible-xs-inline">Pagamentos</span></a>
+                <a href="/Pagamentos/Gerenciamento/Index" onclick="javascript:showWait();"><span class="nav-label"><i class="fa fa-money"></i>Pagamentos</span><span class="visible-xs-inline">Pagamentos</span></a>
             </li>
         }
         @if(rolePontuacao)
@@ -54,7 +54,7 @@
             <li @if (string.Compare(controllerName, "BolaoCriteriosPontos", true) == 0 && 
                     string.Compare(controllerArea, "Pontuacao", true) == 0)
                 { @Html.Raw("class=\"active\"")  }>
-                <a href="/Pontuacao/BolaoCriteriosPontos" onclick="javascript:showWait();"><i class="fa fa-connectdevelop"></i><span class="nav-label">Critérios pontos</span><span class="visible-xs-inline">Critérios</span></a>
+                <a href="/Pontuacao/BolaoCriteriosPontos" onclick="javascript:showWait();"><span class="nav-label"><i class="fa fa-connectdevelop"></i>Critérios pontos</span><span class="visible-xs-inline">Critérios</span></a>
             </li>
         }        
         @*<li @if (string.Compare(controllerAction, "Index", true) == 0 && 
@@ -69,7 +69,7 @@
             <li @if (string.Compare(controllerName, "BolaoIniciarParar", true) == 0 && 
                     string.Compare(controllerArea, "Admin", true) == 0)
                 { @Html.Raw("class=\"active\"")  }>
-                <a href="/Admin/BolaoIniciarParar/Index" onclick="javascript:showWait();"><i class="fa fa-table"></i><span class="nav-label">Painel</span><span class="visible-xs-inline">Painel</span></a>
+                <a href="/Admin/BolaoIniciarParar/Index" onclick="javascript:showWait();"><span class="nav-label"><i class="fa fa-table"></i>Painel</span><span class="visible-xs-inline">Painel</span></a>
             </li>
         }
         
@@ -78,7 +78,7 @@
             <li @if (string.Compare(controllerName, "LogViewer", true) == 0 && 
                     string.Compare(controllerArea, "Admin", true) == 0)
                 { @Html.Raw("class=\"active\"")   }>
-                <a href="/Admin/LogViewer/Index" onclick="javascript:showWait();"><i class="fa fa-keyboard-o"></i><span class="nav-label">Log Viewer</span><span class="visible-xs-inline">LogViwer</span></a>
+                <a href="/Admin/LogViewer/Index" onclick="javascript:showWait();"><span class="nav-label"><i class="fa fa-keyboard-o"></i>Log Viewer</span><span class="visible-xs-inline">LogViewer</span></a>
             </li>
         }
     </ul>

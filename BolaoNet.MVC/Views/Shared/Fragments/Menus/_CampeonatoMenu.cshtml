@@ -23,62 +23,62 @@
             <li @if (string.Compare(controllerName, "Classificacao", true) == 0 &&
                     string.Compare(controllerArea, "Campeonatos", true) == 0)
                 { @Html.Raw("class=\"active\"")  }>
-                <a href="/Campeonatos/Classificacao/Index" onclick="javascript:showWait();"><i class="fa fa-bar-chart"></i><span class="nav-label">Classificação</span><span class="visible-xs-inline">Classificação</span></a>
+                <a href="/Campeonatos/Classificacao/Index" onclick="javascript:showWait();"><span class="nav-label"><i class="fa fa-bar-chart"></i>Classificação</span><span class="visible-xs-inline">Classificação</span></a>
             </li>
             <li @if (string.Compare(controllerName, "Jogos", true) == 0 &&
                     string.Compare(controllerArea, "Campeonatos", true) == 0)
                 { @Html.Raw("class=\"active\"")  }>
-                <a href="/Campeonatos/Jogos/Index" onclick="javascript:showWait();"><i class="fa fa-play-circle"></i><span class="nav-label">Jogos</span><span class="visible-xs-inline">Jogos</span></a>
+                <a href="/Campeonatos/Jogos/Index" onclick="javascript:showWait();"><span class="nav-label"><i class="fa fa-play-circle"></i>Jogos</span><span class="visible-xs-inline">Jogos</span></a>
             </li>
             <li @if (string.Compare(controllerName, "Goleadas", true) == 0 &&
                     string.Compare(controllerArea, "Campeonatos", true) == 0)
                 { @Html.Raw("class=\"active\"")  }>
-                <a href="/Campeonatos/Goleadas/Index" onclick="javascript:showWait();"><i class="fa fa-hand-o-up"></i><span class="nav-label">Goleadas</span><span class="visible-xs-inline">Goleadas</span></a>
+                <a href="/Campeonatos/Goleadas/Index" onclick="javascript:showWait();"><span class="nav-label"><i class="fa fa-hand-o-up"></i>Goleadas</span><span class="visible-xs-inline">Goleadas</span></a>
             </li>
            
 
             <li @if (string.Compare(controllerArea, "Campeonatos", true) == 0 && string.Compare(controllerName,"RecordsTimes",true) == 0) {  @Html.Raw("class=\"active\"")  }>    
-                <a href="/GrupoPonto/Grupos"><i class="fa fa-soccer-ball-o"></i> <span class="nav-label">Placares Records</span> <span class="fa arrow"></span><span class="visible-xs-inline">Records</span></a>
+                <a href="/GrupoPonto/Grupos"> <span class="nav-label"><i class="fa fa-soccer-ball-o"></i>Placares Records</span> <span class="fa arrow"></span><span class="visible-xs-inline">Records</span></a>
                 <ul class="nav nav-second-level collapse">
                     <li>
                         <a href="/Campeonatos/RecordsTimes/Index/1" onclick="javascript:showWait();">
-                            <i class="fa fa-trophy"></i><span class="nav-label">Qtd jogos sem ganhar</span><span class="visible-xs-inline">J. s/ Ganhar</span></a>
+                            <span class="nav-label"><i class="fa fa-trophy"></i>Qtd jogos sem ganhar</span><span class="visible-xs-inline">J. s/ Ganhar</span></a>
                     </li>
                     <li>
                         <a href="/Campeonatos/RecordsTimes/Index/2" onclick="javascript:showWait();">
-                            <i class="fa fa-trophy"></i><span class="nav-label">Qtd jogos sem perder</span><span class="visible-xs-inline">J. s/ perder</span></a>
+                            <span class="nav-label"><i class="fa fa-trophy"></i>Qtd jogos sem perder</span><span class="visible-xs-inline">J. s/ perder</span></a>
                     </li>
                     <li>
                         <a href="/Campeonatos/RecordsTimes/Index/3" onclick="javascript:showWait();">
-                            <i class="fa fa-trophy"></i><span class="nav-label">Sequencia de derrotas</span><span class="visible-xs-inline">Seq. Derrotas</span></a>
+                            <span class="nav-label"><i class="fa fa-trophy"></i>Sequencia de derrotas</span><span class="visible-xs-inline">Seq. Derrotas</span></a>
                     </li>
                     <li>
                         <a href="/Campeonatos/RecordsTimes/Index/4" onclick="javascript:showWait();">
-                            <i class="fa fa-trophy"></i><span class="nav-label">Sequencia de empates</span><span class="visible-xs-inline">Seq. Empates</span></a>
+                            <span class="nav-label"><i class="fa fa-trophy"></i>Sequencia de empates</span><span class="visible-xs-inline">Seq. Empates</span></a>
                     </li>
                     <li>
                         <a href="/Campeonatos/RecordsTimes/Index/5" onclick="javascript:showWait();">
-                            <i class="fa fa-trophy"></i><span class="nav-label">Sequencia de vitórias</span><span class="visible-xs-inline">Seq. Vitórias</span></a>
+                            <span class="nav-label"><i class="fa fa-trophy"></i>Sequencia de vitórias</span><span class="visible-xs-inline">Seq. Vitórias</span></a>
                     </li>
                     <li>
                         <a href="/Campeonatos/RecordsTimes/Index/6" onclick="javascript:showWait();">
-                            <i class="fa fa-trophy"></i><span class="nav-label">Record qtd jogos sem ganhar</span><span class="visible-xs-inline">Rec. J.s/ ganhar</span></a>
+                            <span class="nav-label"><i class="fa fa-trophy"></i>Record qtd jogos sem ganhar</span><span class="visible-xs-inline">Rec. J.s/ ganhar</span></a>
                     </li>
                     <li>
                         <a href="/Campeonatos/RecordsTimes/Index/7" onclick="javascript:showWait();">
-                            <i class="fa fa-trophy"></i><span class="nav-label">Record qtd jogos sem perder</span><span class="visible-xs-inline">Rec. J.s/ perder</span></a>
+                            <span class="nav-label"><i class="fa fa-trophy"></i>Record qtd jogos sem perder</span><span class="visible-xs-inline">Rec. J.s/ perder</span></a>
                     </li>
                     <li>
                         <a href="/Campeonatos/RecordsTimes/Index/8" onclick="javascript:showWait();">
-                            <i class="fa fa-trophy"></i><span class="nav-label">Record seq derrotas</span><span class="visible-xs-inline">Rec. Seq. Derr.</span></a>
+                            <span class="nav-label"><i class="fa fa-trophy"></i>Record seq derrotas</span><span class="visible-xs-inline">Rec. Seq. Derr.</span></a>
                     </li>
                     <li>
                         <a href="/Campeonatos/RecordsTimes/Index/9" onclick="javascript:showWait();">
-                            <i class="fa fa-trophy"></i><span class="nav-label">Record seq empates</span><span class="visible-xs-inline">Rec. seq. Emp.</span></a>
+                            <span class="nav-label"><i class="fa fa-trophy"></i>Record seq empates</span><span class="visible-xs-inline">Rec. seq. Emp.</span></a>
                     </li>
                     <li>
                         <a href="/Campeonatos/RecordsTimes/Index/10" onclick="javascript:showWait();">
-                            <i class="fa fa-trophy"></i><span class="nav-label">Record seq vitorias</span><span class="visible-xs-inline">Rec. Seq. Vit.</span></a>
+                            <span class="nav-label"><i class="fa fa-trophy"></i>Record seq vitorias</span><span class="visible-xs-inline">Rec. Seq. Vit.</span></a>
                     </li>
                 </ul>
             </li>
@@ -101,7 +101,7 @@
             <li @if (string.Compare(controllerName, "Historico", true) == 0 &&
                     string.Compare(controllerArea, "Campeonatos", true) == 0)
                 { @Html.Raw("class=\"active\"")  }>
-                <a href="/Campeonatos/Historico/Index" onclick="javascript:showWait();"><i class="fa fa-star"></i><span class="nav-label">Histórico</span><span class="visible-xs-inline">Histórico</span></a>
+                <a href="/Campeonatos/Historico/Index" onclick="javascript:showWait();"><span class="nav-label"><i class="fa fa-star"></i>Histórico</span><span class="visible-xs-inline">Histórico</span></a>
             </li>
         </ul>
     </li>

@@ -22,7 +22,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     @Html.DropDownListFor(x => x.UserName, (SelectList)ViewBag.Membros, new { @class = "form-control input-sm" })
-                                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                                    <span class="input-group-addon hidden-xs"><span class="glyphicon glyphicon-user"></span></span>
                                 </div>
                             </div>
                         </div>
@@ -64,9 +64,9 @@
                                         <td>Time</td>
                                         <td>J</td>
                                         <td>PT</td>
-                                        <td>V</td>
-                                        <td>E</td>
-                                        <td>D</td>
+                                        <td class="hidden-xs">V</td>
+                                        <td class="hidden-xs">E</td>
+                                        <td class="hidden-xs">D</td>
                                         <td class="hidden-xs">GP</td>
                                         <td class="hidden-xs">GC</td>
                                         <td>S</td>
@@ -93,9 +93,9 @@
                                             <td class="text-left">@Model.Grupos[c].Posicoes[l].NomeTime</td>
                                             <td>@Model.Grupos[c].Posicoes[l].Jogos</td>
                                             <td>@Model.Grupos[c].Posicoes[l].TotalPontos</td>
-                                            <td>@Model.Grupos[c].Posicoes[l].TotalVitorias</td>
-                                            <td>@Model.Grupos[c].Posicoes[l].TotalEmpates</td>
-                                            <td>@Model.Grupos[c].Posicoes[l].TotalDerrotas</td>
+                                            <td class="hidden-xs">@Model.Grupos[c].Posicoes[l].TotalVitorias</td>
+                                            <td class="hidden-xs">@Model.Grupos[c].Posicoes[l].TotalEmpates</td>
+                                            <td class="hidden-xs">@Model.Grupos[c].Posicoes[l].TotalDerrotas</td>
                                             <td class="hidden-xs">@Model.Grupos[c].Posicoes[l].TotalGolsPro</td>
                                             <td class="hidden-xs">@Model.Grupos[c].Posicoes[l].TotalGolsContra</td>
                                             <td>@Model.Grupos[c].Posicoes[l].Saldo</td>
