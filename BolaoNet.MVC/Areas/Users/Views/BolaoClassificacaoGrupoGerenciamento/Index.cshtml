@@ -65,11 +65,11 @@
                                     <tr>
                                         <td></td>
                                         <td>Pos</td>
-                                        <td></td>
+                                        <td class="hidden-xs"></td>
                                         <td></td>
                                         <td>Membro</td>
-                                        <td>Nome</td>
-                                        <td>PT</td>
+                                        <td class="hidden-xs">Nome</td>
+                                        <td class="hidden-xs">PT</td>
 
                                     </tr>
                                 </thead>
@@ -84,7 +84,7 @@
                                                 </a>
                                             </td>
                                             <td>@Model.Classificacao[c].Posicao</td>
-                                            <td>
+                                            <td class="hidden-xs">
                                                 @if (Model.Classificacao[c].Posicao == Model.Classificacao[c].LastPosicao)
                                                 {
                                                     @Html.Raw("<span class=\"glyphicon glyphicon-stop black\">&nbsp;&nbsp;</span>");
@@ -105,8 +105,8 @@
                                                 <img class="img-username" src="/Content/img/database/profiles/@(Model.Classificacao[c].UserName).gif" />
                                             </td>
                                             <td>@Model.Classificacao[c].UserName</td>
-                                            <td>@Model.Classificacao[c].FullName</td>
-                                            <td>@Model.Classificacao[c].TotalPontos</td>
+                                            <td class="hidden-xs">@Model.Classificacao[c].FullName</td>
+                                            <td class="hidden-xs">@Model.Classificacao[c].TotalPontos</td>
                                         </tr>
                                     }
                                 </tbody>
