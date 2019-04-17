@@ -92,6 +92,19 @@ namespace BolaoNet.MVC.Tests
             Domain.Entities.Boloes.Bolao bolao2018 = bolaoHelper2019.CreateBolao(campeonato);
 
 
+            BolaoCopaAmerica2019UserApostasAppTests users = new BolaoCopaAmerica2019UserApostasAppTests(
+                userApp,
+                jogoUsuarioApp,
+                jogoApp,
+                bolaoApp,
+                bolaoMembroApp,
+                campeonatoApp,
+                userFacadeApp,
+                apostaExtraApp,
+                copaAmerica2019FacadeApp
+                );
+
+            users.TestValidacaoPontosUsuarioCampeonato();
 
 
 
