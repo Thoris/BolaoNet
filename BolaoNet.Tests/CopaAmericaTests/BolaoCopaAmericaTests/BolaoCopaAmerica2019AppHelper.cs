@@ -80,7 +80,7 @@ namespace BolaoNet.Tests.CopaAmericaTests.BolaoCopaAmericaTests
                 ForumAtivado = true,
                 Pais = "Brasil",
                 Publico = true,
-                TaxaParticipacao = 10,
+                TaxaParticipacao = 20,
                 IsIniciado = false,
             };
 
@@ -237,7 +237,11 @@ namespace BolaoNet.Tests.CopaAmericaTests.BolaoCopaAmericaTests
             StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "   * 1  PONTO  - Errar o resultado jogo e acertar apenas um dos placares: Ex.: Aposta 2 x 1; Resultado 0 x 1 ou 1 x 1;" });
             StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "   * 0  PONTO  - Para as outras situações." });
             StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "Jogos do Brasil valem o dobro, seguindo a pontuação de 20, 10, 8, 6 e 2 pontos, respectivamente. Se acertar em cheio o resultado, ao invés de obter 10 pontos, será aplicado 20 pontos." });            
-            StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "Com relação ao resultado dos 4 primeiros: Valerá apenas 10 pontos cada acerto." });
+            StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "Com relação ao resultado dos 4 primeiros colocados do campeonato, será utilizada a seguinte pontuação a ser somada com a pontuação obtida nos jogos:" });
+            StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "   * 10 PONTOS - Campeão;" });
+            StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "   * 8 PONTOS - Vice-Campeão;" });
+            StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "   * 5 PONTOS - Terceiro colocado;" });
+            StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "   * 2 PONTOS - Quarto lugar" });
             StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "Obs.: Na medida que você vai apostando o software vai fazendo uma previsão de quem serão os classificados." });
             StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "Porém, ainda que na sua aposta esteja aparecendo Brasil 2 x 1 Chile, o no jogo real seja Portugal x Chile, vale o resultado. " });
             StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraApp, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "Na fase eliminatória, vale o dobro de pontos apenas para o jogo real e não pelo cruzamento da aposta. " });
@@ -263,24 +267,24 @@ namespace BolaoNet.Tests.CopaAmericaTests.BolaoCopaAmericaTests
 
             #region Pontos de Acertos de Times
 
-            StoreData<Domain.Entities.Boloes.BolaoAcertoTimePonto>(_bolaoAcertoTimePontoApp,
-                new Domain.Entities.Boloes.BolaoAcertoTimePonto(campeonato.Nome, 19, bolao.Nome) { Pontos = 2 });
+            //StoreData<Domain.Entities.Boloes.BolaoAcertoTimePonto>(_bolaoAcertoTimePontoApp,
+            //    new Domain.Entities.Boloes.BolaoAcertoTimePonto(campeonato.Nome, 19, bolao.Nome) { Pontos = 2 });
 
-            StoreData<Domain.Entities.Boloes.BolaoAcertoTimePonto>(_bolaoAcertoTimePontoApp,
-               new Domain.Entities.Boloes.BolaoAcertoTimePonto(campeonato.Nome, 20, bolao.Nome) { Pontos = 2 });
+            //StoreData<Domain.Entities.Boloes.BolaoAcertoTimePonto>(_bolaoAcertoTimePontoApp,
+            //   new Domain.Entities.Boloes.BolaoAcertoTimePonto(campeonato.Nome, 20, bolao.Nome) { Pontos = 2 });
 
-            StoreData<Domain.Entities.Boloes.BolaoAcertoTimePonto>(_bolaoAcertoTimePontoApp,
-               new Domain.Entities.Boloes.BolaoAcertoTimePonto(campeonato.Nome, 21, bolao.Nome) { Pontos = 2 });
+            //StoreData<Domain.Entities.Boloes.BolaoAcertoTimePonto>(_bolaoAcertoTimePontoApp,
+            //   new Domain.Entities.Boloes.BolaoAcertoTimePonto(campeonato.Nome, 21, bolao.Nome) { Pontos = 2 });
 
-            StoreData<Domain.Entities.Boloes.BolaoAcertoTimePonto>(_bolaoAcertoTimePontoApp,
-               new Domain.Entities.Boloes.BolaoAcertoTimePonto(campeonato.Nome, 22, bolao.Nome) { Pontos = 2 });
+            //StoreData<Domain.Entities.Boloes.BolaoAcertoTimePonto>(_bolaoAcertoTimePontoApp,
+            //   new Domain.Entities.Boloes.BolaoAcertoTimePonto(campeonato.Nome, 22, bolao.Nome) { Pontos = 2 });
 
 
-            StoreData<Domain.Entities.Boloes.BolaoAcertoTimePonto>(_bolaoAcertoTimePontoApp,
-               new Domain.Entities.Boloes.BolaoAcertoTimePonto(campeonato.Nome, 23, bolao.Nome) { Pontos = 3 });
+            //StoreData<Domain.Entities.Boloes.BolaoAcertoTimePonto>(_bolaoAcertoTimePontoApp,
+            //   new Domain.Entities.Boloes.BolaoAcertoTimePonto(campeonato.Nome, 23, bolao.Nome) { Pontos = 3 });
 
-            StoreData<Domain.Entities.Boloes.BolaoAcertoTimePonto>(_bolaoAcertoTimePontoApp,
-              new Domain.Entities.Boloes.BolaoAcertoTimePonto(campeonato.Nome, 24, bolao.Nome) { Pontos = 3 });
+            //StoreData<Domain.Entities.Boloes.BolaoAcertoTimePonto>(_bolaoAcertoTimePontoApp,
+            //  new Domain.Entities.Boloes.BolaoAcertoTimePonto(campeonato.Nome, 24, bolao.Nome) { Pontos = 3 });
            
 
             #endregion

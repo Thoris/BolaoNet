@@ -80,6 +80,7 @@
   <ItemGroup>
     <Compile Include="AllTests.cs" />
     <Compile Include="CopaAmericaTests\BolaoCopaAmericaTests\BolaoCopaAmerica2019AppHelper.cs" />
+    <Compile Include="CopaAmericaTests\BolaoCopaAmericaTests\BolaoCopaAmerica2019UserApostasAppTests.cs" />
     <Compile Include="CopaDoMundoTests\BolaoCopaDoMundoTests\BolaoCopaMundo2018AppHelper.cs" />
     <Compile Include="LayersTests\ApiServiceLayerTests\DadosBasicosServiceLayerTests\TimeApiServiceLayerTests.cs" />
     <Compile Include="LayersTests\ApplicationLayerTests\DadosBasicosApplicationLayerTests\TimeApplicationLayerTests.cs" />
