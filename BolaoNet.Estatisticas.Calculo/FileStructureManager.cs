@@ -1,6 +1,7 @@
 ﻿//#define DEBUG_PONTOS_USUARIOS
 //#define WRITE_BINARY
 #define COMPRESS_FILE
+#define IGNORE_BRASIL
 
 
 using ICSharpCode.SharpZipLib.Core;
@@ -19,6 +20,14 @@ namespace BolaoNet.Estatisticas.Calculo
         #region Constants
 
         private const string Folder = ".\\Structure";
+
+
+        public const int JogoIdFinal = 26;
+        public const int JogoIdTerceiro = 25;
+        public const int JogoIdSemiFinal1 = 23;
+        public const int JogoIdSemiFinal2 = 24;
+
+        public const int JogoIdJogoPendente = 25;
 
         #endregion
 
@@ -114,8 +123,8 @@ namespace BolaoNet.Estatisticas.Calculo
 
             IList<ExtraJogoTime> res = new List<ExtraJogoTime>();
             
-            int idFinal = 64;
-            int idTerceiro = 63;
+            int idFinal = JogoIdFinal;
+            int idTerceiro = JogoIdTerceiro;
             int id;
             //61[Brasil|Argentina]57|True|58|True
             //62[Alemanha|Espanha]59|True|60|True
@@ -154,10 +163,39 @@ namespace BolaoNet.Estatisticas.Calculo
                     res.Add(entry);
                     #endregion
                 }
+
+                if (string.Compare(jogos[idTerceiro - 1].NomeTime1, nomeTime, true) == 0)
+                {
+                    #region Terceiro e Quarto
+                    ExtraJogoTime entry = new ExtraJogoTime();
+                    entry.Posicao = 3;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro, GanhadorTime1 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 3;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 4;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro, GanhadorTime2 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 4;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro });
+                    res.Add(entry);
+                    #endregion
+                }
             }
             else
             {
-                id = 61;
+                id = JogoIdSemiFinal1;
                 if (string.Compare(jogos[id-1].NomeTime1, nomeTime, true) == 0)
                 {
                     #region Campeão e Vice
@@ -447,10 +485,39 @@ namespace BolaoNet.Estatisticas.Calculo
                     res.Add(entry);
                     #endregion
                 }
+
+                if (string.Compare(jogos[idTerceiro - 1].NomeTime2, nomeTime, true) == 0)
+                {
+                    #region Terceiro e Quarto
+                    ExtraJogoTime entry = new ExtraJogoTime();
+                    entry.Posicao = 3;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro, GanhadorTime2 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 3;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 4;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro, GanhadorTime1 = true });
+                    res.Add(entry);
+
+                    entry = new ExtraJogoTime();
+                    entry.Posicao = 4;
+                    entry.NomeTime = nomeTime;
+                    entry.Possibilidades.Add(new ExtraJogoTimePossibilidade() { JogoId = idTerceiro });
+                    res.Add(entry);
+                    #endregion
+                }
             }
             else
             {
-                id = 62;
+                id = JogoIdSemiFinal2;
                 if (string.Compare(jogos[id - 1].NomeTime1, nomeTime, true) == 0)
                 {
                     #region Campeão e Vice
@@ -750,15 +817,15 @@ namespace BolaoNet.Estatisticas.Calculo
                 }
             }
 
-            ApplyNomeTime(listJogos, extras[0], 64, true);
-            ApplyNomeTime(listJogos, extras[1], 64, false);
-            ApplyNomeTime(listJogos, extras[2], 63, true);
-            ApplyNomeTime(listJogos, extras[3], 63, false);
+            ApplyNomeTime(listJogos, extras[0], JogoIdFinal, true);
+            ApplyNomeTime(listJogos, extras[1], JogoIdFinal, false);
+            ApplyNomeTime(listJogos, extras[2], JogoIdTerceiro, true);
+            ApplyNomeTime(listJogos, extras[3], JogoIdTerceiro, false);
 
 
             for (int c = 0; c < jogos.Jogos.Count; c++ )
             {
-                if (jogos.Jogos[c].JogoId == 63 || jogos.Jogos[c].JogoId == 64)
+                if (jogos.Jogos[c].JogoId == JogoIdTerceiro || jogos.Jogos[c].JogoId == JogoIdFinal)
                 {
                     if (string.Compare(listJogos[c].NomeTime1, "Brasil", true) == 0 || string.Compare(listJogos[c].NomeTime2, "Brasil", true) == 0)
                     {
@@ -769,8 +836,11 @@ namespace BolaoNet.Estatisticas.Calculo
                             {
                                 for (int y = 0; y < pontos.Count; y++)
                                 {
+                                    //TODO: Check the points to apply
+#if (!IGNORE_BRASIL)
                                     pontos[y].Pontos += listJogos[c].Possibilidades[i].Pontuacao[y].Pontos;
-                                }
+#endif
+                                    }
                                 break;
                             }
                         }
@@ -1118,13 +1188,13 @@ namespace BolaoNet.Estatisticas.Calculo
             //for (int c = 0; c < jogo.Jogos.Count; c++)
             for (int c = 0; c < 16; c++)
             {
-                tempJogos.Add(jogos[64-c-1].Clone());
+                tempJogos.Add(jogos[JogoIdFinal-c-1].Clone());
             }
 
-            List<string> primeiro = GetTimePontosExtras(tempJogos, jogo, 64, true);
-            List<string> segundo = GetTimePontosExtras(tempJogos, jogo, 64, false);
-            List<string> terceiro = GetTimePontosExtras(tempJogos, jogo, 63, true);
-            List<string> quarto = GetTimePontosExtras(tempJogos, jogo, 63, false);
+            List<string> primeiro = GetTimePontosExtras(tempJogos, jogo, JogoIdFinal, true);
+            List<string> segundo = GetTimePontosExtras(tempJogos, jogo, JogoIdFinal, false);
+            List<string> terceiro = GetTimePontosExtras(tempJogos, jogo, JogoIdTerceiro, true);
+            List<string> quarto = GetTimePontosExtras(tempJogos, jogo, JogoIdTerceiro, false);
 
 
             Dictionary<int, List<string>> res = new Dictionary<int, List<string>>();
@@ -1627,7 +1697,8 @@ namespace BolaoNet.Estatisticas.Calculo
 
                     #region Debug
 #if (DEBUG_PONTOS_USUARIOS)
-                    string jogoFileId = @"C:\temp\tempApostas\";
+                    //string jogoFileId = @"C:\temp\tempApostas\";
+                    string jogoFileId = @".\Jogos\tempApostas\";
                     for (int p = 0; p < jogo.Jogos.Count; p++)
                     {
                         jogoFileId += "_" + jogo.Jogos[p].JogoId + "-" + jogo.Jogos[p].Gols1 + "x" + jogo.Jogos[p].Gols2 + "";
@@ -1718,6 +1789,9 @@ namespace BolaoNet.Estatisticas.Calculo
 #if (DEBUG_PONTOS_USUARIOS)
                                     ptExtras[ptExtras.Count - 1].Add(extras[i].Possibilidades[l].Pontos[u].Pontos);
                                     ptTotal[u] += extras[i].Possibilidades[l].Pontos[u].Pontos;
+
+                                    //debugPontos.WriteLine("Pontos: [" + extras[i].Possibilidades[l].Pontos[u].Pontos + "]");
+                        
 #endif
                                 }
 

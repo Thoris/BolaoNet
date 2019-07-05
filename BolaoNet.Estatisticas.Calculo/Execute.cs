@@ -1,6 +1,7 @@
 ﻿//#define DEBUG_EXTRACTION
 //#define DEBUG_FAST_POSSIBILIDADES
 //#define DEBUG_ELIMINATORIAS
+//#define DEBUG_USUARIO
 
 using BolaoNet.Application.Interfaces.Boloes;
 using BolaoNet.Application.Interfaces.Campeonatos;
@@ -31,6 +32,7 @@ namespace BolaoNet.Estatisticas.Calculo
         private const short GolsSemApostaMenor = 888;
         private const short GolsSemApostaNegativa = -777;
         public const string NomeTimeDesconhecido = "Desconhecido";
+
 
         #endregion
 
@@ -321,7 +323,7 @@ namespace BolaoNet.Estatisticas.Calculo
 
                 Console.WriteLine(DateTime.Now.ToString() + " - " + listBase[i].JogoId + " - Fim da análise");
 
-                if (i == 60)
+                if (i == FileStructureManager.JogoIdSemiFinal1 - 1)
                     break;
             }//end for jogos
 
@@ -411,7 +413,7 @@ namespace BolaoNet.Estatisticas.Calculo
 
             
             //TODO: Alterar o identificador do jogo para buscar as possibilidades
-            int jogoIdCheck = 64;
+            int jogoIdCheck = FileStructureManager.JogoIdJogoPendente;
 
             int posId = -1;
             for (int c = listBase.Count - 1; c >= 0; c-- )
@@ -444,6 +446,12 @@ namespace BolaoNet.Estatisticas.Calculo
                 for (int c = 0; c < agrIndex.Pontuacao.Count; c++)
                 {
                     string userName = agrIndex.Pontuacao[c].UserName;
+
+#if (DEBUG_USUARIO)
+                    userName = "thoris";
+#endif
+
+
                     string file = System.IO.Path.Combine(apostas, userName);
 
                     Console.WriteLine(DateTime.Now.ToString() + " - Jogo[" + jogoId + "] - Análise de Apostas do Usuário: " + userName);
@@ -546,7 +554,7 @@ namespace BolaoNet.Estatisticas.Calculo
 
             Random rnd = new Random();
 
-            for (int c = 0; c < 64; c++ )
+            for (int c = 0; c < FileStructureManager.JogoIdFinal; c++)
             {
 
                 JogoInfo info = new JogoInfo();
@@ -681,8 +689,14 @@ namespace BolaoNet.Estatisticas.Calculo
 
                 if (golsTime1[c] > 0)
                 {
-                    if (BuscarPossibilidade(jogo.Possibilidades, golsTime1[c], GolsSemApostaNegativa) == -1)
-                        jogo.Possibilidades.Add(new JogoPossibilidade(golsTime1[c], GolsSemApostaNegativa));
+                    for (int i = 0; i < golsTime1[c] - 1; i++ )
+                    {
+                        int pos = BuscarPossibilidade(jogo.Possibilidades, golsTime1[c], i);
+
+                        if (pos == -1)
+                            if (BuscarPossibilidade(jogo.Possibilidades, golsTime1[c], GolsSemApostaNegativa) == -1)
+                                jogo.Possibilidades.Add(new JogoPossibilidade(golsTime1[c], GolsSemApostaNegativa));
+                    }
                 }
             }
             for (int c = 0; c < golsTime2.Count; c++)
@@ -692,8 +706,17 @@ namespace BolaoNet.Estatisticas.Calculo
 
                 if (golsTime2[c] > 0)
                 {
-                    if (BuscarPossibilidade(jogo.Possibilidades, GolsSemApostaNegativa, golsTime2[c]) == -1)
-                        jogo.Possibilidades.Add(new JogoPossibilidade(GolsSemApostaNegativa, golsTime2[c]));
+                    for (int i = 0; i < golsTime2[c] - 1; i++)
+                    {
+                        int pos = BuscarPossibilidade(jogo.Possibilidades, i, golsTime2[c]);
+
+                        if (pos == -1)
+                            if (BuscarPossibilidade(jogo.Possibilidades, GolsSemApostaNegativa, golsTime2[c] ) == -1)
+                                jogo.Possibilidades.Add(new JogoPossibilidade(GolsSemApostaNegativa, golsTime2[c]));
+                    }
+
+                    //if (BuscarPossibilidade(jogo.Possibilidades, GolsSemApostaNegativa, golsTime2[c]) == -1)
+                    //    jogo.Possibilidades.Add(new JogoPossibilidade(GolsSemApostaNegativa, golsTime2[c]));
                 }
             }
 
