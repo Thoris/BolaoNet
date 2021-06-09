@@ -58,63 +58,69 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="build" />
+    <Folder Include="Post" />
+    <Folder Include="Tables" />
+    <Folder Include="Pre" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="build\0001.Cleaning_Up.sql" />
-    <Build Include="build\0046.Create_Table_Log.sql" />
-    <Build Include="build\0049.Create_Table_BoloesPremiacao.sql" />
+    <None Include="build\0001.Cleaning_Up.sql" />
     <None Include="build\0067.Insert_Result_Premiacao.sql" />
-    <Build Include="build\0099.Create_StoredProcedure_sp_Jogos_Calcule_Grupo_Melhores.sql" />
+    <None Include="build\0099.Create_StoredProcedure_sp_Jogos_Calcule_Grupo_Melhores.sql" />
     <None Include="build\0098.Create_StoredProcedure_sp_JogosUsuarios_Calcule_Grupo_Melhor.sql" />
+    <Build Include="Tables\0008.Create_Table_UserMaritalStatus.sql" />
+    <Build Include="Tables\0009.Create_Table_Users.sql" />
+    <Build Include="Tables\0010.Create_Table_Roles.sql" />
+    <Build Include="Tables\0011.Create_Table_UsersInRoles.sql" />
+    <Build Include="Tables\0012.Create_Table_Profiles.sql" />
+    <Build Include="Tables\0013.Create_Table_Times.sql" />
+    <Build Include="Tables\0014.Create_Table_Estadios.sql" />
+    <Build Include="Tables\0015.Create_Table_Campeonatos.sql" />
+    <Build Include="Tables\0016.Create_Table_CampeonatosTimes.sql" />
+    <Build Include="Tables\0017.Create_Table_CampeonatosFases.sql" />
+    <Build Include="Tables\0018.Create_Table_CampeonatosGrupos.sql" />
+    <Build Include="Tables\0019.Create_Table_CampeonatosGruposTimes.sql" />
+    <Build Include="Tables\0020.Create_Table_CampeonatosHistorico.sql" />
+    <Build Include="Tables\0021.Create_Table_CampeonatosPosicoes.sql" />
+    <Build Include="Tables\0022.Create_Table_CampeonatosClassificacao.sql" />
+    <Build Include="Tables\0023.Create_Table_Jogos.sql" />
+    <Build Include="Tables\0024.Create_Table_Boloes.sql" />
+    <Build Include="Tables\0025.Create_Table_BoloesMembros.sql" />
+    <Build Include="Tables\0026.Create_Table_BoloesPontuacao.sql" />
+    <Build Include="Tables\0027.Create_Table_BoloesPremios.sql" />
+    <Build Include="Tables\0028.Create_Table_BoloesRegras.sql" />
+    <Build Include="Tables\0029.Create_Table_BoloesRequestsStatus.sql" />
+    <Build Include="Tables\0030.Create_Table_BoloesRequests.sql" />
+    <Build Include="Tables\0031.Create_Table_CriteriosFixos.sql" />
+    <Build Include="Tables\0032.Create_Table_BoloesCriteriosPontos.sql" />
+    <Build Include="Tables\0033.Create_Table_BoloesMembrosClassificacao.sql" />
+    <Build Include="Tables\0034.Create_Table_BoloesMembrosPontos.sql" />
+    <Build Include="Tables\0035.Create_Table_BoloesPontosRodadas.sql" />
+    <Build Include="Tables\0036.Create_Table_BoloesPontosRodadasUsuarios.sql" />
+    <Build Include="Tables\0037.Create_Table_BoloesCampeonatosClassificacaoUsuarios.sql" />
+    <Build Include="Tables\0038.Create_Table_ApostasExtras.sql" />
+    <Build Include="Tables\0039.Create_Table_ApostasExtrasUsuarios.sql" />
+    <Build Include="Tables\0040.Create_Table_Mensagens.sql" />
+    <Build Include="Tables\0041.Create_Table_PagamentosTipo.sql" />
+    <Build Include="Tables\0042.Create_Table_Pagamentos.sql" />
+    <Build Include="Tables\0043.Create_Table_BoloesCriteriosPontosTimes.sql" />
+    <Build Include="Tables\0044.Create_Table_JogosUsuarios.sql" />
+    <Build Include="Tables\0045.Create_Table_BoloesMembrosGrupo.sql" />
+    <Build Include="Tables\0046.Create_Table_Log.sql" />
+    <Build Include="Tables\0047.Create_Table_BoloesHistorico.sql" />
+    <Build Include="Tables\0048.Create_Table_Rss.sql" />
+    <Build Include="Tables\0049.Create_Table_BoloesPremiacao.sql" />
+    <Build Include="Tables\0050.Create_Table_BoloesAcertoTimePontos.sql" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="build\0008.Create_Table_UserMaritalStatus.sql" />
-    <Build Include="build\0009.Create_Table_Users.sql" />
-    <Build Include="build\0010.Create_Table_Roles.sql" />
-    <Build Include="build\0011.Create_Table_UsersInRoles.sql" />
-    <Build Include="build\0012.Create_Table_Profiles.sql" />
-    <Build Include="build\0013.Create_Table_Times.sql" />
-    <Build Include="build\0014.Create_Table_Estadios.sql" />
-    <Build Include="build\0015.Create_Table_Campeonatos.sql" />
-    <Build Include="build\0016.Create_Table_CampeonatosTimes.sql" />
-    <Build Include="build\0017.Create_Table_CampeonatosFases.sql" />
-    <Build Include="build\0018.Create_Table_CampeonatosGrupos.sql" />
-    <Build Include="build\0019.Create_Table_CampeonatosGruposTimes.sql" />
-    <Build Include="build\0020.Create_Table_CampeonatosHistorico.sql" />
-    <Build Include="build\0021.Create_Table_CampeonatosPosicoes.sql" />
-    <Build Include="build\0022.Create_Table_CampeonatosClassificacao.sql" />
-    <Build Include="build\0023.Create_Table_Jogos.sql" />
-    <Build Include="build\0024.Create_Table_Boloes.sql" />
-    <Build Include="build\0025.Create_Table_BoloesMembros.sql" />
-    <Build Include="build\0026.Create_Table_BoloesPontuacao.sql" />
-    <Build Include="build\0027.Create_Table_BoloesPremios.sql" />
-    <Build Include="build\0028.Create_Table_BoloesRegras.sql" />
-    <Build Include="build\0029.Create_Table_BoloesRequestsStatus.sql" />
-    <Build Include="build\0030.Create_Table_BoloesRequests.sql" />
-    <Build Include="build\0031.Create_Table_CriteriosFixos.sql" />
-    <Build Include="build\0032.Create_Table_BoloesCriteriosPontos.sql" />
-    <Build Include="build\0033.Create_Table_BoloesMembrosClassificacao.sql" />
-    <Build Include="build\0034.Create_Table_BoloesMembrosPontos.sql" />
-    <Build Include="build\0035.Create_Table_BoloesPontosRodadas.sql" />
-    <Build Include="build\0036.Create_Table_BoloesPontosRodadasUsuarios.sql" />
-    <Build Include="build\0037.Create_Table_BoloesCampeonatosClassificacaoUsuarios.sql" />
-    <Build Include="build\0038.Create_Table_ApostasExtras.sql" />
-    <Build Include="build\0039.Create_Table_ApostasExtrasUsuarios.sql" />
-    <Build Include="build\0040.Create_Table_Mensagens.sql" />
-    <Build Include="build\0041.Create_Table_PagamentosTipo.sql" />
-    <Build Include="build\0042.Create_Table_Pagamentos.sql" />
-    <Build Include="build\0043.Create_Table_BoloesCriteriosPontosTimes.sql" />
-    <Build Include="build\0044.Create_Table_JogosUsuarios.sql" />
-    <Build Include="build\0045.Create_Table_BoloesMembrosGrupo.sql" />
-    <Build Include="build\0051.Insert_Table_lg_content_types.sql" />
-    <Build Include="build\0052.Insert_Table_lg_log_level_types.sql" />
-    <Build Include="build\0054.Insert_Table_CriteriosFixos.sql" />
-    <Build Include="build\0055.Insert_Table_UserMaritalStatus.sql" />
-    <Build Include="build\0056.Insert_Table_Users.sql" />
-    <Build Include="build\0057.Insert_PagamentoTipo.sql" />
-    <Build Include="build\0058.Insert_Table_Roles.sql" />
-    <Build Include="build\0059.Insert_Table_UsersInRoles.sql" />
-    <Build Include="build\0060.Insert_Table_BoloesRequestsStatus.sql" />
+    <None Include="build\0051.Insert_Table_lg_content_types.sql" />
+    <None Include="build\0052.Insert_Table_lg_log_level_types.sql" />
+    <None Include="build\0054.Insert_Table_CriteriosFixos.sql" />
+    <None Include="build\0055.Insert_Table_UserMaritalStatus.sql" />
+    <None Include="build\0056.Insert_Table_Users.sql" />
+    <None Include="build\0057.Insert_PagamentoTipo.sql" />
+    <None Include="build\0058.Insert_Table_Roles.sql" />
+    <None Include="build\0059.Insert_Table_UsersInRoles.sql" />
+    <None Include="build\0060.Insert_Table_BoloesRequestsStatus.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="build\0100.Create_StoredProcedure_sp_JogosUsuarios_Calcule_Grupo.sql" />
@@ -156,10 +162,13 @@
     <None Include="build\0137.Create_Stored_Procedure_sp_CampeonatosRecords.sql" />
     <None Include="build\0138.Create_Stored_Procedure_sp_CampeonatosRecordGols.sql" />
     <None Include="build\0139.Create_Stored_Procedure_sp_CampeonatosRecordGolsFrequencia.sql" />
-    <None Include="build\0047.Create_Table_BoloesHistorico.sql" />
     <None Include="build\0140.Create_Stored_Procedure_sp_JogosUsuarios_CorrecaoEliminatorias.sql" />
-    <None Include="build\0048.Create_Table_Rss.sql" />
     <None Include="build\0141.Insert_Result_Copa_2018.sql" />
-    <None Include="build\0050.Create_Table_BoloesAcertoTimePontos.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Post\Script.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PreDeploy Include="Pre\Script.PreDeployment.sql" />
   </ItemGroup>
 </Project>
