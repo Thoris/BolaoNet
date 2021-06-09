@@ -1,95 +1,93 @@
 ﻿
---|--------------------------------------------------------------------------------
---| [CriteriosFixos] - Backs up all the data from a table into a SQL script.
---|--------------------------------------------------------------------------------
-BEGIN TRANSACTION
+----|--------------------------------------------------------------------------------
+----| [CriteriosFixos] - Backs up all the data from a table into a SQL script.
+----|--------------------------------------------------------------------------------
+--BEGIN TRANSACTION
 
-	INSERT INTO [CriteriosFixos]
-	([CriterioID], [Descricao])
-	VALUES
-	(1, 'Empate');
+IF (NOT EXISTS (SELECT * FROM CriteriosFixos WHERE CriterioID = 1))
+BEGIN
+	INSERT INTO [CriteriosFixos]	([CriterioID], [Descricao]) VALUES	(1, 'Empate');
+END
 
-	INSERT INTO [CriteriosFixos]
-	([CriterioID], [Descricao])
-	VALUES
-	(2, 'Vitória');
+IF (NOT EXISTS (SELECT * FROM CriteriosFixos WHERE CriterioID = 2))
+BEGIN
+	INSERT INTO [CriteriosFixos]	([CriterioID], [Descricao])	VALUES	(2, 'Vitória');
+END
 
-	INSERT INTO [CriteriosFixos]
-	([CriterioID], [Descricao])
-	VALUES
-	(3, 'Derrota');
+IF (NOT EXISTS (SELECT * FROM CriteriosFixos WHERE CriterioID = 3))
+BEGIN
+	INSERT INTO [CriteriosFixos]	([CriterioID], [Descricao])	VALUES	(3, 'Derrota');
+END
 
-	INSERT INTO [CriteriosFixos]
-	([CriterioID], [Descricao])
-	VALUES
-	(4, 'Ganhador');
+IF (NOT EXISTS (SELECT * FROM CriteriosFixos WHERE CriterioID = 4))
+BEGIN
+	INSERT INTO [CriteriosFixos]	([CriterioID], [Descricao])	VALUES	(4, 'Ganhador');
+END
 
-	INSERT INTO [CriteriosFixos]
-	([CriterioID], [Descricao])
-	VALUES
-	(5, 'Perdedor');
+IF (NOT EXISTS (SELECT * FROM CriteriosFixos WHERE CriterioID = 5))
+BEGIN
+	INSERT INTO [CriteriosFixos]	([CriterioID], [Descricao])	VALUES	(5, 'Perdedor');
+END
 
-	INSERT INTO [CriteriosFixos]
-	([CriterioID], [Descricao])
-	VALUES
-	(6, 'Time 1');
+IF (NOT EXISTS (SELECT * FROM CriteriosFixos WHERE CriterioID = 6))
+BEGIN
+	INSERT INTO [CriteriosFixos]	([CriterioID], [Descricao])	VALUES	(6, 'Time 1');
+END
 
-	INSERT INTO [CriteriosFixos]
-	([CriterioID], [Descricao])
-	VALUES
-	(7, 'Time 2');
+IF (NOT EXISTS (SELECT * FROM CriteriosFixos WHERE CriterioID = 7))
+BEGIN
+	INSERT INTO [CriteriosFixos]	([CriterioID], [Descricao])	VALUES	(7, 'Time 2');
+END
 
-	INSERT INTO [CriteriosFixos]
-	([CriterioID], [Descricao])
-	VALUES
-	(8, 'Vitória/Empate/Derrota');
+IF (NOT EXISTS (SELECT * FROM CriteriosFixos WHERE CriterioID = 8))
+BEGIN
+	INSERT INTO [CriteriosFixos]	([CriterioID], [Descricao])	VALUES	(8, 'Vitória/Empate/Derrota');
+END
 
-	INSERT INTO [CriteriosFixos]
-	([CriterioID], [Descricao])
-	VALUES
-	(9, 'Erro');
+IF (NOT EXISTS (SELECT * FROM CriteriosFixos WHERE CriterioID = 9))
+BEGIN
+	INSERT INTO [CriteriosFixos]	([CriterioID], [Descricao])	VALUES	(9, 'Erro');
+END
 
-	INSERT INTO [CriteriosFixos]
-	([CriterioID], [Descricao])
-	VALUES
-	(10, 'Ganhador Fora');
+IF (NOT EXISTS (SELECT * FROM CriteriosFixos WHERE CriterioID = 10))
+BEGIN
+	INSERT INTO [CriteriosFixos]	([CriterioID], [Descricao])	VALUES	(10, 'Ganhador Fora');
+END
 
-	INSERT INTO [CriteriosFixos]
-	([CriterioID], [Descricao])
-	VALUES
-	(11, 'Ganhador Dentro');
+IF (NOT EXISTS (SELECT * FROM CriteriosFixos WHERE CriterioID = 11))
+BEGIN
+	INSERT INTO [CriteriosFixos]	([CriterioID], [Descricao])	VALUES	(11, 'Ganhador Dentro');
+END
 
-	INSERT INTO [CriteriosFixos]
-	([CriterioID], [Descricao])
-	VALUES
-	(12, 'Perdedor Fora');
+IF (NOT EXISTS (SELECT * FROM CriteriosFixos WHERE CriterioID = 12))
+BEGIN
+	INSERT INTO [CriteriosFixos]	([CriterioID], [Descricao])	VALUES	(12, 'Perdedor Fora');
+END
+IF (NOT EXISTS (SELECT * FROM CriteriosFixos WHERE CriterioID = 13))
+BEGIN
+	INSERT INTO [CriteriosFixos]	([CriterioID], [Descricao])	VALUES	(13, 'Perdedor Dentro');
+END
 
-	INSERT INTO [CriteriosFixos]
-	([CriterioID], [Descricao])
-	VALUES
-	(13, 'Perdedor Dentro');
+IF (NOT EXISTS (SELECT * FROM CriteriosFixos WHERE CriterioID = 14))
+BEGIN
+	INSERT INTO [CriteriosFixos]	([CriterioID], [Descricao])	VALUES	(14, 'Empate Gols');
+END
 
-	INSERT INTO [CriteriosFixos]
-	([CriterioID], [Descricao])
-	VALUES
-	(14, 'Empate Gols');
+IF (NOT EXISTS (SELECT * FROM CriteriosFixos WHERE CriterioID = 15))
+BEGIN
+	INSERT INTO [CriteriosFixos]	([CriterioID], [Descricao])	VALUES	(15, 'Gols Time 1');
+END
+IF (NOT EXISTS (SELECT * FROM CriteriosFixos WHERE CriterioID = 16))
+BEGIN
+	INSERT INTO [CriteriosFixos]	([CriterioID], [Descricao])	VALUES	(16, 'Gols Time 2');
+END
 
-	INSERT INTO [CriteriosFixos]
-	([CriterioID], [Descricao])
-	VALUES
-	(15, 'Gols Time 1');
+IF (NOT EXISTS (SELECT * FROM CriteriosFixos WHERE CriterioID = 17))
+BEGIN
+	INSERT INTO [CriteriosFixos]	([CriterioID], [Descricao])	VALUES	(17, 'Cheio');
+END
 
-	INSERT INTO [CriteriosFixos]
-	([CriterioID], [Descricao])
-	VALUES
-	(16, 'Gols Time 2');
-
-	INSERT INTO [CriteriosFixos]
-	([CriterioID], [Descricao])
-	VALUES
-	(17, 'Cheio');
-
-IF @@ERROR <> 0 ROLLBACK TRANSACTION;
-ELSE COMMIT TRANSACTION;
-GO
---|--------------------------------------------------------------------------------
+--IF @@ERROR <> 0 ROLLBACK TRANSACTION;
+--ELSE COMMIT TRANSACTION;
+--GO
+----|--------------------------------------------------------------------------------

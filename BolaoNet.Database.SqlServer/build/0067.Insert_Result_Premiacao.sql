@@ -4,7 +4,8 @@ DECLARE @NomeBolao VARCHAR(100)
 
 SET @NomeBolao = 'Copa do Mundo 2018'
  
-
+IF (NOT EXISTS (SELECT * FROM BoloesPremiacao WHERE Posicao = 1))
+BEGIN
 INSERT INTO [dbo].[BoloesPremiacao]
            ([NomeBolao]
            ,[Posicao]
@@ -25,7 +26,9 @@ INSERT INTO [dbo].[BoloesPremiacao]
            ,'thoris'
            ,GetDate()
            ,NULL)
-
+END
+IF (NOT EXISTS (SELECT * FROM BoloesPremiacao WHERE Posicao = 2))
+BEGIN
 INSERT INTO [dbo].[BoloesPremiacao]
            ([NomeBolao]
            ,[Posicao]
@@ -46,7 +49,9 @@ INSERT INTO [dbo].[BoloesPremiacao]
            ,'thoris'
            ,GetDate()
            ,NULL)
-
+END
+IF (NOT EXISTS (SELECT * FROM BoloesPremiacao WHERE Posicao = 3))
+BEGIN
 INSERT INTO [dbo].[BoloesPremiacao]
            ([NomeBolao]
            ,[Posicao]
@@ -67,7 +72,9 @@ INSERT INTO [dbo].[BoloesPremiacao]
            ,'thoris'
            ,GetDate()
            ,NULL)
-
+END
+IF (NOT EXISTS (SELECT * FROM BoloesPremiacao WHERE Posicao = 40))
+BEGIN
  INSERT INTO [dbo].[BoloesPremiacao]
            ([NomeBolao]
            ,[Posicao]
@@ -88,6 +95,7 @@ INSERT INTO [dbo].[BoloesPremiacao]
            ,'thoris'
            ,GetDate()
            ,NULL)
+END
 GO
 
 
