@@ -1,4 +1,6 @@
-﻿CREATE TABLE [dbo].[Rss](
+﻿
+ 
+CREATE TABLE [dbo].[Rss](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Title] [varchar](500) NULL,
 	[Description] [varchar](4000) NULL,

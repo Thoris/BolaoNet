@@ -34,6 +34,4 @@ BEGIN
 	
 END
 
-
-
 GO

@@ -27,6 +27,4 @@ BEGIN
 
 END
 
-
-
 GO

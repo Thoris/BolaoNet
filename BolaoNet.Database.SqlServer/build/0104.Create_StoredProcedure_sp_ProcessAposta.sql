@@ -227,6 +227,4 @@ BEGIN
 	RETURN @RowCount	
 END
 
-
-
 GO

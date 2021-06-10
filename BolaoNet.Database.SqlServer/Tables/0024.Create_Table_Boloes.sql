@@ -1,30 +1,30 @@
-﻿CREATE TABLE [dbo].[Boloes](
-	[Nome] [varchar](30) NOT NULL,
-	[Descricao] [varchar](255) NULL,
-	[TaxaParticipacao] [money] NULL,
-	[CreatedDate] [datetime] NULL,
-	[Foto] [varbinary](1) NULL,
-	[ModifiedDate] [datetime] NULL,
+﻿
+CREATE TABLE [dbo].[Boloes](
+	[Nome] [varchar](100) NOT NULL,
+	[NomeCampeonato] [varchar](150) NULL,
+	[Descricao] [varchar](250) NULL,
+	[TaxaParticipacao] [decimal](18, 2) NULL,
 	[Publico] [bit] NULL,
-	[ActiveFlag] [bit] NULL,
 	[ForumAtivado] [bit] NULL,
-	[CreatedBy] [varchar](25) NULL,
 	[PermitirMsgAnonimos] [bit] NULL,
-	[ModifiedBy] [varchar](25) NULL,
 	[DataInicio] [datetime] NULL,
-	[Estado] [varchar](20) NULL,
-	[Cidade] [varchar](100) NULL,
+	[Pais] [varchar](30) NULL,
+	[Estado] [varchar](50) NULL,
+	[Cidade] [varchar](150) NULL,
 	[ApostasApenasAntes] [bit] NULL,
-	[HorasLimiteAposta] [int] NULL,
-	[Pais] [varchar](20) NULL,
+	[HorasLimiteAposta] [int] NOT NULL,
 	[IsIniciado] [bit] NULL,
+	[IniciadoBy] [varchar](250) NULL,
 	[DataIniciado] [datetime] NULL,
-	[IniciadoBy] [varchar](25) NULL,
-	[NomeCampeonato] [varchar](50) NULL,
-PRIMARY KEY CLUSTERED 
+	[CreatedBy] [varchar](25) NULL,
+	[CreatedDate] [datetime] NULL,
+	[ModifiedBy] [varchar](25) NULL,
+	[ModifiedDate] [datetime] NULL,
+	[ActiveFlag] [smallint] NULL,
+ CONSTRAINT [PK_dbo.Boloes] PRIMARY KEY CLUSTERED 
 (
 	[Nome] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
 GO
@@ -36,16 +36,24 @@ GO
 --REFERENCES [dbo].[Users] ([UserName])
 --GO
 
-ALTER TABLE [dbo].[Boloes]  ADD  CONSTRAINT FK_Boloes_Users_IniciadoBy FOREIGN KEY([IniciadoBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
-
---ALTER TABLE [dbo].[Boloes]  ADD FOREIGN KEY([ModifiedBy])
+--ALTER TABLE [dbo].[Boloes]  ADD  CONSTRAINT FK_Boloes_Users_IniciadoBy FOREIGN KEY([IniciadoBy])
 --REFERENCES [dbo].[Users] ([UserName])
 --GO
 
-ALTER TABLE [dbo].[Boloes]  ADD CONSTRAINT FK_Boloes_Campeonatos_NomeCampeonato  FOREIGN KEY([NomeCampeonato])
+----ALTER TABLE [dbo].[Boloes]  ADD FOREIGN KEY([ModifiedBy])
+----REFERENCES [dbo].[Users] ([UserName])
+----GO
+
+--ALTER TABLE [dbo].[Boloes]  ADD CONSTRAINT FK_Boloes_Campeonatos_NomeCampeonato  FOREIGN KEY([NomeCampeonato])
+--REFERENCES [dbo].[Campeonatos] ([Nome])
+--GO
+
+
+
+
+
+ALTER TABLE [dbo].[Boloes]   ADD  CONSTRAINT [FK_dbo.Boloes_dbo.Campeonatos_NomeCampeonato] FOREIGN KEY([NomeCampeonato])
 REFERENCES [dbo].[Campeonatos] ([Nome])
 GO
-
-
+ALTER TABLE [dbo].[Boloes] CHECK CONSTRAINT [FK_dbo.Boloes_dbo.Campeonatos_NomeCampeonato]
+GO

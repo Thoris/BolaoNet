@@ -1,39 +1,50 @@
-﻿
+﻿   
 CREATE TABLE [dbo].[CampeonatosGruposTimes](
-	[NomeTime] [varchar](30) NOT NULL,
+	[NomeCampeonato] [varchar](150) NOT NULL,
 	[NomeGrupo] [varchar](20) NOT NULL,
-	[NomeCampeonato] [varchar](50) NOT NULL,
-	[CreatedDate] [datetime] NULL,
-	[ModifiedDate] [datetime] NULL,
-	[ActiveFlag] [bit] NULL,
+	[NomeTime] [varchar](150) NOT NULL,
 	[CreatedBy] [varchar](25) NULL,
+	[CreatedDate] [datetime] NULL,
 	[ModifiedBy] [varchar](25) NULL,
-PRIMARY KEY CLUSTERED 
+	[ModifiedDate] [datetime] NULL,
+	[ActiveFlag] [smallint] NULL,
+ CONSTRAINT [PK_dbo.CampeonatosGruposTimes] PRIMARY KEY CLUSTERED 
 (
-	[NomeTime] ASC,
+	[NomeCampeonato] ASC,
 	[NomeGrupo] ASC,
-	[NomeCampeonato] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+	[NomeTime] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
 GO
 
---SET ANSI_PADDING OFF
+----SET ANSI_PADDING OFF
+----GO
+
+----ALTER TABLE [dbo].[CampeonatosGruposTimes]  ADD FOREIGN KEY([CreatedBy])
+----REFERENCES [dbo].[Users] ([UserName])
+----GO
+
+----ALTER TABLE [dbo].[CampeonatosGruposTimes]  ADD FOREIGN KEY([ModifiedBy])
+----REFERENCES [dbo].[Users] ([UserName])
+----GO
+
+--ALTER TABLE [dbo].[CampeonatosGruposTimes]  ADD CONSTRAINT FK_CampeonatosGruposTimes_Times_NomeTime  FOREIGN KEY([NomeTime])
+--REFERENCES [dbo].[Times] ([Nome])
 --GO
 
---ALTER TABLE [dbo].[CampeonatosGruposTimes]  ADD FOREIGN KEY([CreatedBy])
---REFERENCES [dbo].[Users] ([UserName])
+--ALTER TABLE [dbo].[CampeonatosGruposTimes]  ADD  CONSTRAINT FK_CampeonatosGruposTimes_CampeonatosGrupos_NomeCampeonato FOREIGN KEY([NomeGrupo], [NomeCampeonato])
+--REFERENCES [dbo].[CampeonatosGrupos] ([Nome], [NomeCampeonato])
 --GO
 
---ALTER TABLE [dbo].[CampeonatosGruposTimes]  ADD FOREIGN KEY([ModifiedBy])
---REFERENCES [dbo].[Users] ([UserName])
---GO
 
-ALTER TABLE [dbo].[CampeonatosGruposTimes]  ADD CONSTRAINT FK_CampeonatosGruposTimes_Times_NomeTime  FOREIGN KEY([NomeTime])
-REFERENCES [dbo].[Times] ([Nome])
+ALTER TABLE [dbo].[CampeonatosGruposTimes]   ADD  CONSTRAINT [FK_dbo.CampeonatosGruposTimes_dbo.CampeonatosGrupos_NomeCampeonato_NomeGrupo] FOREIGN KEY([NomeCampeonato], [NomeGrupo])
+REFERENCES [dbo].[CampeonatosGrupos] ([NomeCampeonato], [Nome])
 GO
-
-ALTER TABLE [dbo].[CampeonatosGruposTimes]  ADD  CONSTRAINT FK_CampeonatosGruposTimes_CampeonatosGrupos_NomeCampeonato FOREIGN KEY([NomeGrupo], [NomeCampeonato])
-REFERENCES [dbo].[CampeonatosGrupos] ([Nome], [NomeCampeonato])
+ALTER TABLE [dbo].[CampeonatosGruposTimes] CHECK CONSTRAINT [FK_dbo.CampeonatosGruposTimes_dbo.CampeonatosGrupos_NomeCampeonato_NomeGrupo]
 GO
-
+ALTER TABLE [dbo].[CampeonatosGruposTimes]   ADD  CONSTRAINT [FK_dbo.CampeonatosGruposTimes_dbo.CampeonatosTimes_NomeCampeonato_NomeTime] FOREIGN KEY([NomeCampeonato], [NomeTime])
+REFERENCES [dbo].[CampeonatosTimes] ([NomeCampeonato], [NomeTime])
+GO
+ALTER TABLE [dbo].[CampeonatosGruposTimes] CHECK CONSTRAINT [FK_dbo.CampeonatosGruposTimes_dbo.CampeonatosTimes_NomeCampeonato_NomeTime]
+GO

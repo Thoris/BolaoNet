@@ -1,16 +1,16 @@
 ﻿
 CREATE TABLE [dbo].[Roles](
-	[RoleName] [varchar](255) NOT NULL,
-	[Description] [varchar](255) NULL,
-	[CreatedDate] [datetime] NULL,
-	[ModifiedDate] [datetime] NULL,
-	[ActiveFlag] [bit] NULL,
+	[RoleName] [varchar](150) NOT NULL,
+	[Descricao] [varchar](255) NULL,
 	[CreatedBy] [varchar](25) NULL,
+	[CreatedDate] [datetime] NULL,
 	[ModifiedBy] [varchar](25) NULL,
-PRIMARY KEY CLUSTERED 
+	[ModifiedDate] [datetime] NULL,
+	[ActiveFlag] [smallint] NULL,
+ CONSTRAINT [PK_dbo.Roles] PRIMARY KEY CLUSTERED 
 (
 	[RoleName] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
 GO

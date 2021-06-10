@@ -1,37 +1,43 @@
 ﻿
 CREATE TABLE [dbo].[BoloesPremios](
-	[CreatedDate] [datetime] NULL,
+	[NomeBolao] [varchar](100) NOT NULL,
 	[Posicao] [int] NOT NULL,
-	[ModifiedDate] [datetime] NULL,
-	[Titulo] [varchar](50) NULL,
-	[ActiveFlag] [bit] NULL,
-	[BackColor] [varchar](20) NULL,
-	[NomeBolao] [varchar](30) NOT NULL,
-	[ForeColor] [varchar](20) NULL,
+	[Titulo] [varchar](150) NULL,
+	[ForeColorName] [varchar](30) NULL,
+	[BackColorName] [varchar](30) NULL,
 	[CreatedBy] [varchar](25) NULL,
+	[CreatedDate] [datetime] NULL,
 	[ModifiedBy] [varchar](25) NULL,
-PRIMARY KEY CLUSTERED 
+	[ModifiedDate] [datetime] NULL,
+	[ActiveFlag] [smallint] NULL,
+ CONSTRAINT [PK_dbo.BoloesPremios] PRIMARY KEY CLUSTERED 
 (
-	[Posicao] ASC,
-	[NomeBolao] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+	[NomeBolao] ASC,
+	[Posicao] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
 GO
 
---SET ANSI_PADDING OFF
+----SET ANSI_PADDING OFF
+----GO
+
+----ALTER TABLE [dbo].[BoloesPremios]  ADD FOREIGN KEY([CreatedBy])
+----REFERENCES [dbo].[Users] ([UserName])
+----GO
+
+
+----ALTER TABLE [dbo].[BoloesPremios]  ADD FOREIGN KEY([ModifiedBy])
+----REFERENCES [dbo].[Users] ([UserName])
+----GO
+
+
+--ALTER TABLE [dbo].[BoloesPremios]  ADD  CONSTRAINT FK_BoloesPremios_Boloes_NomeBolao FOREIGN KEY([NomeBolao])
+--REFERENCES [dbo].[Boloes] ([Nome])
 --GO
 
---ALTER TABLE [dbo].[BoloesPremios]  ADD FOREIGN KEY([CreatedBy])
---REFERENCES [dbo].[Users] ([UserName])
---GO
-
-
---ALTER TABLE [dbo].[BoloesPremios]  ADD FOREIGN KEY([ModifiedBy])
---REFERENCES [dbo].[Users] ([UserName])
---GO
-
-
-ALTER TABLE [dbo].[BoloesPremios]  ADD  CONSTRAINT FK_BoloesPremios_Boloes_NomeBolao FOREIGN KEY([NomeBolao])
+ALTER TABLE [dbo].[BoloesPremios]   ADD  CONSTRAINT [FK_dbo.BoloesPremios_dbo.Boloes_NomeBolao] FOREIGN KEY([NomeBolao])
 REFERENCES [dbo].[Boloes] ([Nome])
+GO
+ALTER TABLE [dbo].[BoloesPremios] CHECK CONSTRAINT [FK_dbo.BoloesPremios_dbo.Boloes_NomeBolao]
 GO

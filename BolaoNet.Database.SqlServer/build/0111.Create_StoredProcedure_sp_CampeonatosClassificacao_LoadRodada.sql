@@ -2,7 +2,9 @@
 BEGIN
 	DROP  Procedure  sp_CampeonatosClassificacao_LoadRodada
 END
-GO
+GO 
+
+
 CREATE PROCEDURE [dbo].[sp_CampeonatosClassificacao_LoadRodada]
 (
     @CurrentLogin						varchar(25),
@@ -237,8 +239,6 @@ BEGIN
 	RETURN 0
 
 END
-
-
 
 
 

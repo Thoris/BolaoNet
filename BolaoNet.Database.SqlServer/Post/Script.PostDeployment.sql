@@ -1,7 +1,5 @@
 ﻿
 :r ..\build\0001.Cleaning_Up.sql
---:r ..\build\0051.Insert_Table_lg_content_types.sql
---:r ..\build\0052.Insert_Table_lg_log_level_types.sql
 :r ..\build\0054.Insert_Table_CriteriosFixos.sql
 :r ..\build\0055.Insert_Table_UserMaritalStatus.sql
 :r ..\build\0056.Insert_Table_Users.sql

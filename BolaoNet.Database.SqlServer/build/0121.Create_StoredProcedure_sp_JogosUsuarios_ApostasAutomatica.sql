@@ -4,7 +4,7 @@ BEGIN
 END
 GO
 
-CREATE PROCEDURE [sp_JogosUsuarios_ApostasAutomatica]
+CREATE PROCEDURE [dbo].[sp_JogosUsuarios_ApostasAutomatica]
 (
     @CurrentLogin						varchar(25),
 	@CurrentDateTime					DateTime = null,
@@ -431,5 +431,6 @@ print CONVERT(VARCHAR, @CurrentDateTime)
 	--SELECT * FROM @Jogos
 	
 END
+
 
 GO

@@ -9,35 +9,41 @@
 --GO
 
 CREATE TABLE [dbo].[Estadios](
-	[Nome] [varchar](30) NOT NULL,
-	[Pais] [varchar](20) NULL,
-	[Estado] [varchar](20) NULL,
-	[Cidade] [varchar](100) NULL,
-	[Foto] [image] NULL,
-	[Capacidade] [int] NULL,
+	[Nome] [varchar](50) NOT NULL,
+	[Pais] [varchar](60) NULL,
+	[Estado] [varchar](30) NULL,
+	[Cidade] [varchar](50) NULL,
+	[Capacidade] [bigint] NOT NULL,
 	[Descricao] [varchar](255) NULL,
-	[CreatedDate] [datetime] NULL,
-	[ModifiedDate] [datetime] NULL,
-	[ActiveFlag] [bit] NULL,
+	[NomeTime] [varchar](150) NULL,
 	[CreatedBy] [varchar](25) NULL,
+	[CreatedDate] [datetime] NULL,
 	[ModifiedBy] [varchar](25) NULL,
-	[NomeTime] [varchar](30) NULL,
-PRIMARY KEY CLUSTERED 
+	[ModifiedDate] [datetime] NULL,
+	[ActiveFlag] [smallint] NULL,
+ CONSTRAINT [PK_dbo.Estadios] PRIMARY KEY CLUSTERED 
 (
 	[Nome] ASC
-)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
 
 GO
 
---ALTER TABLE [dbo].[Estadios]  ADD FOREIGN KEY([CreatedBy])
---REFERENCES [dbo].[Users] ([UserName])
+----ALTER TABLE [dbo].[Estadios]  ADD FOREIGN KEY([CreatedBy])
+----REFERENCES [dbo].[Users] ([UserName])
+----GO
+
+----ALTER TABLE [dbo].[Estadios]  ADD FOREIGN KEY([ModifiedBy])
+----REFERENCES [dbo].[Users] ([UserName])
+----GO
+
+--ALTER TABLE [dbo].[Estadios]  ADD  CONSTRAINT FK_Estadios_Times_NomeTime FOREIGN KEY([NomeTime])
+--REFERENCES [dbo].[Times] ([Nome])
 --GO
 
---ALTER TABLE [dbo].[Estadios]  ADD FOREIGN KEY([ModifiedBy])
---REFERENCES [dbo].[Users] ([UserName])
---GO
 
-ALTER TABLE [dbo].[Estadios]  ADD  CONSTRAINT FK_Estadios_Times_NomeTime FOREIGN KEY([NomeTime])
+ALTER TABLE [dbo].[Estadios]   ADD  CONSTRAINT [FK_dbo.Estadios_dbo.Times_NomeTime] FOREIGN KEY([NomeTime])
 REFERENCES [dbo].[Times] ([Nome])
+GO
+ALTER TABLE [dbo].[Estadios] CHECK CONSTRAINT [FK_dbo.Estadios_dbo.Times_NomeTime]
 GO
