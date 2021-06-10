@@ -22,15 +22,15 @@ GO
 --SET ANSI_PADDING OFF
 --GO
 
-ALTER TABLE [dbo].[BoloesPontuacao]  ADD FOREIGN KEY([CreatedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[BoloesPontuacao]  ADD FOREIGN KEY([CreatedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[BoloesPontuacao]  ADD FOREIGN KEY([ModifiedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[BoloesPontuacao]  ADD FOREIGN KEY([ModifiedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[BoloesPontuacao]  ADD FOREIGN KEY([NomeBolao])
+ALTER TABLE [dbo].[BoloesPontuacao]  ADD  CONSTRAINT FK_BoloesPontuacao_Boloes_NomeBolao FOREIGN KEY([NomeBolao])
 REFERENCES [dbo].[Boloes] ([Nome])
 GO
 

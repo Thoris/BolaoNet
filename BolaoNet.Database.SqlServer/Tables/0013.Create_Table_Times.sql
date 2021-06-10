@@ -25,10 +25,10 @@ PRIMARY KEY CLUSTERED
 
 GO
 
-ALTER TABLE [dbo].[Times]  ADD FOREIGN KEY([CreatedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[Times]  ADD  CONSTRAINT FK_Times_Users_CreatedBy FOREIGN KEY([CreatedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[Times]  ADD FOREIGN KEY([ModifiedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[Times]  ADD  CONSTRAINT FK_Times_Users_ModifiedBy FOREIGN KEY([ModifiedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO

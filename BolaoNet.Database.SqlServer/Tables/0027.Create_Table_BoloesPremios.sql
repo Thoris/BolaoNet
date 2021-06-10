@@ -22,16 +22,16 @@ GO
 --SET ANSI_PADDING OFF
 --GO
 
-ALTER TABLE [dbo].[BoloesPremios]  ADD FOREIGN KEY([CreatedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[BoloesPremios]  ADD FOREIGN KEY([CreatedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
 
-ALTER TABLE [dbo].[BoloesPremios]  ADD FOREIGN KEY([ModifiedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[BoloesPremios]  ADD FOREIGN KEY([ModifiedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
 
-ALTER TABLE [dbo].[BoloesPremios]  ADD FOREIGN KEY([NomeBolao])
+ALTER TABLE [dbo].[BoloesPremios]  ADD  CONSTRAINT FK_BoloesPremios_Boloes_NomeBolao FOREIGN KEY([NomeBolao])
 REFERENCES [dbo].[Boloes] ([Nome])
 GO

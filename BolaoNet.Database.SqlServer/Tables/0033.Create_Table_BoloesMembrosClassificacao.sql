@@ -40,15 +40,15 @@ GO
 --SET ANSI_PADDING OFF
 --GO
 
-ALTER TABLE [dbo].[BoloesMembrosClassificacao]  ADD FOREIGN KEY([CreatedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[BoloesMembrosClassificacao]  ADD FOREIGN KEY([CreatedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[BoloesMembrosClassificacao]  ADD FOREIGN KEY([ModifiedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[BoloesMembrosClassificacao]  ADD FOREIGN KEY([ModifiedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
 
-ALTER TABLE [dbo].[BoloesMembrosClassificacao]  ADD FOREIGN KEY([UserName], [NomeBolao])
+ALTER TABLE [dbo].[BoloesMembrosClassificacao]  ADD  CONSTRAINT FK_BoloesMembrosClassificacao_BoloesMembros_Username_NomeBolao FOREIGN KEY([UserName], [NomeBolao])
 REFERENCES [dbo].[BoloesMembros] ([UserName], [NomeBolao])
 GO

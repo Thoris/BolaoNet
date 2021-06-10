@@ -30,14 +30,14 @@ PRIMARY KEY CLUSTERED
 
 GO
 
-ALTER TABLE [dbo].[Estadios]  ADD FOREIGN KEY([CreatedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[Estadios]  ADD FOREIGN KEY([CreatedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[Estadios]  ADD FOREIGN KEY([ModifiedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[Estadios]  ADD FOREIGN KEY([ModifiedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[Estadios]  ADD FOREIGN KEY([NomeTime])
+ALTER TABLE [dbo].[Estadios]  ADD  CONSTRAINT FK_Estadios_Times_NomeTime FOREIGN KEY([NomeTime])
 REFERENCES [dbo].[Times] ([Nome])
 GO

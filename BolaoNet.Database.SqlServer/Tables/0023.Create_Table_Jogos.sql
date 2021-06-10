@@ -46,46 +46,46 @@ GO
 --SET ANSI_PADDING OFF
 --GO
 
-ALTER TABLE [dbo].[Jogos]  ADD FOREIGN KEY([PendenteTime2NomeGrupo], [NomeCampeonato])
+ALTER TABLE [dbo].[Jogos]  ADD  CONSTRAINT FK_Jogos_CampeonatosGrupos_PendenteTime2 FOREIGN KEY([PendenteTime2NomeGrupo], [NomeCampeonato])
 REFERENCES [dbo].[CampeonatosGrupos] ([Nome], [NomeCampeonato])
 GO
 
-ALTER TABLE [dbo].[Jogos]  ADD FOREIGN KEY([PendenteTime1NomeGrupo], [NomeCampeonato])
+ALTER TABLE [dbo].[Jogos]  ADD  CONSTRAINT FK_Jogos_CampeonatosGrupos_PendenteTime1 FOREIGN KEY([PendenteTime1NomeGrupo], [NomeCampeonato])
 REFERENCES [dbo].[CampeonatosGrupos] ([Nome], [NomeCampeonato])
 GO
 
-ALTER TABLE [dbo].[Jogos]  ADD FOREIGN KEY([NomeGrupo], [NomeCampeonato])
+ALTER TABLE [dbo].[Jogos]  ADD  CONSTRAINT FK_Jogos_CampeonatosGrupos_NomeGrupo_NomeCampeonato FOREIGN KEY([NomeGrupo], [NomeCampeonato])
 REFERENCES [dbo].[CampeonatosGrupos] ([Nome], [NomeCampeonato])
 GO
 
-ALTER TABLE [dbo].[Jogos]  ADD FOREIGN KEY([NomeCampeonato], [NomeFase])
+ALTER TABLE [dbo].[Jogos]  ADD  CONSTRAINT FK_Jogos_CampeonatosFases_NomeCampeonato_NomeFase FOREIGN KEY([NomeCampeonato], [NomeFase])
 REFERENCES [dbo].[CampeonatosFases] ([NomeCampeonato], [Nome])
 GO
 
-ALTER TABLE [dbo].[Jogos]  ADD FOREIGN KEY([NomeCampeonato], [NomeTime1])
+ALTER TABLE [dbo].[Jogos]  ADD  CONSTRAINT FK_Jogos_CampeonatosTimes_NomeCampeonato_NomeTime1 FOREIGN KEY([NomeCampeonato], [NomeTime1])
 REFERENCES [dbo].[CampeonatosTimes] ([NomeCampeonato], [NomeTime])
 GO
 
-ALTER TABLE [dbo].[Jogos]  ADD FOREIGN KEY([NomeCampeonato], [NomeTime2])
+ALTER TABLE [dbo].[Jogos]  ADD  CONSTRAINT FK_Jogos_CampeonatosTimes_NomeCampeonato_NomeTIme2 FOREIGN KEY([NomeCampeonato], [NomeTime2])
 REFERENCES [dbo].[CampeonatosTimes] ([NomeCampeonato], [NomeTime])
 GO
 
-ALTER TABLE [dbo].[Jogos]  ADD FOREIGN KEY([CreatedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[Jogos]  ADD FOREIGN KEY([CreatedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[Jogos]  ADD FOREIGN KEY([ModifiedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[Jogos]  ADD FOREIGN KEY([ModifiedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[Jogos]  ADD FOREIGN KEY([NomeCampeonato])
+ALTER TABLE [dbo].[Jogos]  ADD  CONSTRAINT FK_Jogos_Campeonatos_NomeCampeonato FOREIGN KEY([NomeCampeonato])
 REFERENCES [dbo].[Campeonatos] ([Nome])
 GO
 
-ALTER TABLE [dbo].[Jogos]  ADD FOREIGN KEY([NomeEstadio])
+ALTER TABLE [dbo].[Jogos]  ADD  CONSTRAINT FK_Jogos_Estadios_NomeEstadio FOREIGN KEY([NomeEstadio])
 REFERENCES [dbo].[Estadios] ([Nome])
 GO
 
-ALTER TABLE [dbo].[Jogos]  ADD FOREIGN KEY([ValidadoBy])
+ALTER TABLE [dbo].[Jogos]  ADD  CONSTRAINT FK_Jogos_Users_ValidadoBy FOREIGN KEY([ValidadoBy])
 REFERENCES [dbo].[Users] ([UserName])
 GO

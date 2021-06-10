@@ -16,18 +16,18 @@ PRIMARY KEY CLUSTERED
 
 GO
 
-ALTER TABLE [dbo].[BoloesMembros]  ADD FOREIGN KEY([CreatedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[BoloesMembros]  ADD FOREIGN KEY([CreatedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[BoloesMembros]  ADD FOREIGN KEY([ModifiedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[BoloesMembros]  ADD FOREIGN KEY([ModifiedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[BoloesMembros]  ADD FOREIGN KEY([NomeBolao])
+ALTER TABLE [dbo].[BoloesMembros]  ADD  CONSTRAINT FK_BoloesMembros_Boloes_NomeBolao FOREIGN KEY([NomeBolao])
 REFERENCES [dbo].[Boloes] ([Nome])
 GO
 
-ALTER TABLE [dbo].[BoloesMembros]  ADD FOREIGN KEY([UserName])
+ALTER TABLE [dbo].[BoloesMembros]  ADD  CONSTRAINT FK_BoloesMembros_Users_UserName FOREIGN KEY([UserName])
 REFERENCES [dbo].[Users] ([UserName])
 GO

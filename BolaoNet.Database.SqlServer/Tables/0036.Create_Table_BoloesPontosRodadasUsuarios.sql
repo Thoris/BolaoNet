@@ -29,19 +29,19 @@ GO
 --SET ANSI_PADDING OFF
 --GO
 
-ALTER TABLE [dbo].[BoloesPontosRodadasUsuarios]  ADD FOREIGN KEY([CreatedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[BoloesPontosRodadasUsuarios]  ADD FOREIGN KEY([CreatedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[BoloesPontosRodadasUsuarios]  ADD FOREIGN KEY([ModifiedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[BoloesPontosRodadasUsuarios]  ADD FOREIGN KEY([ModifiedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[BoloesPontosRodadasUsuarios]  ADD FOREIGN KEY([UserName], [NomeBolao])
+ALTER TABLE [dbo].[BoloesPontosRodadasUsuarios]  ADD  CONSTRAINT FK_BoloesPontosRodadasUsuarios_BoloesMembros_UserName_NomeBolao FOREIGN KEY([UserName], [NomeBolao])
 REFERENCES [dbo].[BoloesMembros] ([UserName], [NomeBolao])
 GO
 
-ALTER TABLE [dbo].[BoloesPontosRodadasUsuarios]  ADD FOREIGN KEY([NomeGrupo], [NomeCampeonato], [NomeFase], [NomeBolao], [Posicao])
+ALTER TABLE [dbo].[BoloesPontosRodadasUsuarios]  ADD  CONSTRAINT FK_BoloesPontosRodadasUsuarios_BoloesPontosRodadas FOREIGN KEY([NomeGrupo], [NomeCampeonato], [NomeFase], [NomeBolao], [Posicao])
 REFERENCES [dbo].[BoloesPontosRodadas] ([NomeGrupo], [NomeCampeonato], [NomeFase], [NomeBolao], [Posicao])
 GO
 

@@ -18,19 +18,19 @@ PRIMARY KEY CLUSTERED
 GO
 
 
-ALTER TABLE [dbo].[UsersInRoles]  ADD FOREIGN KEY([CreatedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[UsersInRoles]  ADD  CONSTRAINT FK_UsersInRoles_Users_CreatedBy FOREIGN KEY([CreatedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[UsersInRoles]  ADD FOREIGN KEY([ModifiedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[UsersInRoles]  ADD  CONSTRAINT FK_UsersInRoles_Users_ModifiedBy FOREIGN KEY([ModifiedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[UsersInRoles]  ADD FOREIGN KEY([RoleName])
+ALTER TABLE [dbo].[UsersInRoles]  ADD  CONSTRAINT FK_UsersInRoles_Roles_RoleName FOREIGN KEY([RoleName])
 REFERENCES [dbo].[Roles] ([RoleName])
 GO
 
-ALTER TABLE [dbo].[UsersInRoles]  ADD FOREIGN KEY([UserName])
+ALTER TABLE [dbo].[UsersInRoles]  ADD  CONSTRAINT FK_UsersInRoles_Users_UserName FOREIGN KEY([UserName])
 REFERENCES [dbo].[Users] ([UserName])
 GO
 

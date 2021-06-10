@@ -32,19 +32,19 @@ GO
 --SET ANSI_PADDING OFF
 --GO
 
-ALTER TABLE [dbo].[Boloes]  ADD FOREIGN KEY([CreatedBy])
+--ALTER TABLE [dbo].[Boloes]  ADD FOREIGN KEY([CreatedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
+
+ALTER TABLE [dbo].[Boloes]  ADD  CONSTRAINT FK_Boloes_Users_IniciadoBy FOREIGN KEY([IniciadoBy])
 REFERENCES [dbo].[Users] ([UserName])
 GO
 
-ALTER TABLE [dbo].[Boloes]  ADD FOREIGN KEY([IniciadoBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[Boloes]  ADD FOREIGN KEY([ModifiedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[Boloes]  ADD FOREIGN KEY([ModifiedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
-
-ALTER TABLE [dbo].[Boloes]  ADD FOREIGN KEY([NomeCampeonato])
+ALTER TABLE [dbo].[Boloes]  ADD CONSTRAINT FK_Boloes_Campeonatos_NomeCampeonato  FOREIGN KEY([NomeCampeonato])
 REFERENCES [dbo].[Campeonatos] ([Nome])
 GO
 

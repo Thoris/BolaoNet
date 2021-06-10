@@ -38,6 +38,6 @@ GO
 --REFERENCES [dbo].[Usuarios] ([UserName])
 --GO
 
-ALTER TABLE [dbo].[BoloesHistorico]  ADD FOREIGN KEY([NomeBolao])
+ALTER TABLE [dbo].[BoloesHistorico]  ADD CONSTRAINT FK_BoloesHistorico_Boloes_NomeBolao FOREIGN KEY([NomeBolao])
 REFERENCES [dbo].[Boloes] ([Nome])
 GO

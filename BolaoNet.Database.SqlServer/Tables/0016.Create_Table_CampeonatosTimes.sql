@@ -20,18 +20,18 @@ GO
 --SET ANSI_PADDING OFF
 --GO
 
-ALTER TABLE [dbo].[CampeonatosTimes]  ADD FOREIGN KEY([CreatedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[CampeonatosTimes]  ADD FOREIGN KEY([CreatedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[CampeonatosTimes]  ADD FOREIGN KEY([ModifiedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[CampeonatosTimes]  ADD FOREIGN KEY([ModifiedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[CampeonatosTimes]  ADD FOREIGN KEY([NomeCampeonato])
+ALTER TABLE [dbo].[CampeonatosTimes]  ADD  CONSTRAINT FK_CampeonatosTimes_Campeonato_NomeCampeonato FOREIGN KEY([NomeCampeonato])
 REFERENCES [dbo].[Campeonatos] ([Nome])
 GO
 
-ALTER TABLE [dbo].[CampeonatosTimes]  ADD FOREIGN KEY([NomeTime])
+ALTER TABLE [dbo].[CampeonatosTimes]  ADD CONSTRAINT FK_CampeonatoTimes_Times_NomeTime  FOREIGN KEY([NomeTime])
 REFERENCES [dbo].[Times] ([Nome])
 GO

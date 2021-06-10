@@ -27,15 +27,15 @@ GO
 --SET ANSI_PADDING OFF
 --GO
 
-ALTER TABLE [dbo].[CampeonatosHistorico]  ADD FOREIGN KEY([CreatedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[CampeonatosHistorico]  ADD FOREIGN KEY([CreatedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[CampeonatosHistorico]  ADD FOREIGN KEY([ModifiedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[CampeonatosHistorico]  ADD FOREIGN KEY([ModifiedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[CampeonatosHistorico]  ADD FOREIGN KEY([Nome])
+ALTER TABLE [dbo].[CampeonatosHistorico]  ADD  CONSTRAINT FK_CampeonatosHistorico_Campeonatos_Nome FOREIGN KEY([Nome])
 REFERENCES [dbo].[Campeonatos] ([Nome])
 GO
 

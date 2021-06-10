@@ -26,23 +26,23 @@ PRIMARY KEY CLUSTERED
 GO
 
 
-ALTER TABLE [dbo].[BoloesPontosRodadas]  ADD FOREIGN KEY([CreatedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[BoloesPontosRodadas]  ADD FOREIGN KEY([CreatedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[BoloesPontosRodadas]  ADD FOREIGN KEY([ModifiedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[BoloesPontosRodadas]  ADD FOREIGN KEY([ModifiedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[BoloesPontosRodadas]  ADD FOREIGN KEY([NomeBolao])
+ALTER TABLE [dbo].[BoloesPontosRodadas]  ADD CONSTRAINT FK_BoloesPontosRodadas_Boloes_NomeBolao  FOREIGN KEY([NomeBolao])
 REFERENCES [dbo].[Boloes] ([Nome])
 GO
 
-ALTER TABLE [dbo].[BoloesPontosRodadas]  ADD FOREIGN KEY([NomeCampeonato], [NomeFase])
+ALTER TABLE [dbo].[BoloesPontosRodadas]  ADD  CONSTRAINT FK_BoloesPontosRodadas_CampeonatosFases_NomeCampeonato_Nome FOREIGN KEY([NomeCampeonato], [NomeFase])
 REFERENCES [dbo].[CampeonatosFases] ([NomeCampeonato], [Nome])
 GO
 
-ALTER TABLE [dbo].[BoloesPontosRodadas]  ADD FOREIGN KEY([NomeGrupo], [NomeCampeonato])
+ALTER TABLE [dbo].[BoloesPontosRodadas]  ADD  CONSTRAINT FK_BoloesPontosRodadas_CampeonatosGrupos_Nome_NomeCampeonato FOREIGN KEY([NomeGrupo], [NomeCampeonato])
 REFERENCES [dbo].[CampeonatosGrupos] ([Nome], [NomeCampeonato])
 GO
 

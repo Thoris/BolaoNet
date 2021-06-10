@@ -11,6 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BolaoNet.Tests.Debug", "Bol
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{9099C1CD-73E4-4939-BC9A-E65CE7AEC51C}"
 	ProjectSection(SolutionItems) = preProject
+		azure-pipelines.yml = azure-pipelines.yml
 		bolaonet.build = bolaonet.build
 	EndProjectSection
 EndProject

@@ -25,22 +25,22 @@ GO
 --SET ANSI_PADDING OFF
 --GO
 
-ALTER TABLE [dbo].[Pagamentos]  ADD FOREIGN KEY([CreatedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[Pagamentos]  ADD FOREIGN KEY([CreatedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[Pagamentos]  ADD FOREIGN KEY([ModifiedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[Pagamentos]  ADD FOREIGN KEY([ModifiedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[Pagamentos]  ADD FOREIGN KEY([NomeBolao])
+ALTER TABLE [dbo].[Pagamentos]  ADD CONSTRAINT FK_Pagamentos_Boloes_NomeBolao  FOREIGN KEY([NomeBolao])
 REFERENCES [dbo].[Boloes] ([Nome])
 GO
 
-ALTER TABLE [dbo].[Pagamentos]  ADD FOREIGN KEY([TipoPagamento])
+ALTER TABLE [dbo].[Pagamentos]  ADD  CONSTRAINT FK_Pagamentos_PagamentoTipo_TipoPagamento FOREIGN KEY([TipoPagamento])
 REFERENCES [dbo].[PagamentoTipo] ([TipoPagamento])
 GO
 
-ALTER TABLE [dbo].[Pagamentos]  ADD FOREIGN KEY([UserName])
+ALTER TABLE [dbo].[Pagamentos]  ADD CONSTRAINT FK_Pagamentos_Users_UserName FOREIGN KEY([UserName])
 REFERENCES [dbo].[Users] ([UserName])
 GO

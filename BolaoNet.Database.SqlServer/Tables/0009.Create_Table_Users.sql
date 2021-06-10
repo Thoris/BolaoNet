@@ -54,6 +54,6 @@ PRIMARY KEY CLUSTERED
 GO
 
 
-ALTER TABLE [dbo].[Users]  ADD FOREIGN KEY([IdMaritalStatus])
+ALTER TABLE [dbo].[Users]  ADD CONSTRAINT FK_User_MaritalStatus_Id FOREIGN KEY([IdMaritalStatus])
 REFERENCES [dbo].[UserMaritalStatus] ([IdMaritalStatus])
 GO

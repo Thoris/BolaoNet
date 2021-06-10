@@ -32,35 +32,35 @@ PRIMARY KEY CLUSTERED
 GO
 
 
-ALTER TABLE [dbo].[BoloesCampeonatosClassificacaoUsuarios]  ADD FOREIGN KEY([CreatedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[BoloesCampeonatosClassificacaoUsuarios]  ADD FOREIGN KEY([CreatedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[BoloesCampeonatosClassificacaoUsuarios]  ADD FOREIGN KEY([ModifiedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[BoloesCampeonatosClassificacaoUsuarios]  ADD FOREIGN KEY([ModifiedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[BoloesCampeonatosClassificacaoUsuarios]  ADD FOREIGN KEY([NomeBolao])
+ALTER TABLE [dbo].[BoloesCampeonatosClassificacaoUsuarios]  ADD  CONSTRAINT FK_BoloesCampeonatosClassificacaoUsuarios_Boloes_Nome FOREIGN KEY([NomeBolao])
 REFERENCES [dbo].[Boloes] ([Nome])
 GO
 
-ALTER TABLE [dbo].[BoloesCampeonatosClassificacaoUsuarios]  ADD FOREIGN KEY([NomeCampeonato])
+ALTER TABLE [dbo].[BoloesCampeonatosClassificacaoUsuarios]  ADD  CONSTRAINT FK_BoloesCampeonatosClassificacaoUsuarios_Campeonatos_Nome FOREIGN KEY([NomeCampeonato])
 REFERENCES [dbo].[Campeonatos] ([Nome])
 GO
 
-ALTER TABLE [dbo].[BoloesCampeonatosClassificacaoUsuarios]  ADD FOREIGN KEY([NomeTime])
+ALTER TABLE [dbo].[BoloesCampeonatosClassificacaoUsuarios]  ADD  CONSTRAINT FK_BoloesCampeonatosClassificacaoUsuarios_Times_Nome FOREIGN KEY([NomeTime])
 REFERENCES [dbo].[Times] ([Nome])
 GO
 
-ALTER TABLE [dbo].[BoloesCampeonatosClassificacaoUsuarios]  ADD FOREIGN KEY([UserName])
+ALTER TABLE [dbo].[BoloesCampeonatosClassificacaoUsuarios]  ADD  CONSTRAINT FK_BoloesCampeonatosClassificacaoUsuarios_Users_UserName FOREIGN KEY([UserName])
 REFERENCES [dbo].[Users] ([UserName])
 GO
 
-ALTER TABLE [dbo].[BoloesCampeonatosClassificacaoUsuarios]  ADD FOREIGN KEY([NomeGrupo], [NomeCampeonato])
+ALTER TABLE [dbo].[BoloesCampeonatosClassificacaoUsuarios]  ADD CONSTRAINT FK_BoloesCampeonatosClassificacaoUsuarios_CampeonatosGrupos_Nome_NomeCampeonato FOREIGN KEY([NomeGrupo], [NomeCampeonato])
 REFERENCES [dbo].[CampeonatosGrupos] ([Nome], [NomeCampeonato])
 GO
 
-ALTER TABLE [dbo].[BoloesCampeonatosClassificacaoUsuarios]  ADD FOREIGN KEY([NomeCampeonato], [NomeFase])
+ALTER TABLE [dbo].[BoloesCampeonatosClassificacaoUsuarios]  ADD CONSTRAINT FK_BoloesCampeonatosClassificacaoUsuarios_CampeonatosFases_NomeCampeonato_Nome FOREIGN KEY([NomeCampeonato], [NomeFase])
 REFERENCES [dbo].[CampeonatosFases] ([NomeCampeonato], [Nome])
 GO
 

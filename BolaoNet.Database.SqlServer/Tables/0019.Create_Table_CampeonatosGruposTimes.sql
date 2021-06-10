@@ -21,19 +21,19 @@ GO
 --SET ANSI_PADDING OFF
 --GO
 
-ALTER TABLE [dbo].[CampeonatosGruposTimes]  ADD FOREIGN KEY([CreatedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[CampeonatosGruposTimes]  ADD FOREIGN KEY([CreatedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[CampeonatosGruposTimes]  ADD FOREIGN KEY([ModifiedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[CampeonatosGruposTimes]  ADD FOREIGN KEY([ModifiedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[CampeonatosGruposTimes]  ADD FOREIGN KEY([NomeTime])
+ALTER TABLE [dbo].[CampeonatosGruposTimes]  ADD CONSTRAINT FK_CampeonatosGruposTimes_Times_NomeTime  FOREIGN KEY([NomeTime])
 REFERENCES [dbo].[Times] ([Nome])
 GO
 
-ALTER TABLE [dbo].[CampeonatosGruposTimes]  ADD FOREIGN KEY([NomeGrupo], [NomeCampeonato])
+ALTER TABLE [dbo].[CampeonatosGruposTimes]  ADD  CONSTRAINT FK_CampeonatosGruposTimes_CampeonatosGrupos_NomeCampeonato FOREIGN KEY([NomeGrupo], [NomeCampeonato])
 REFERENCES [dbo].[CampeonatosGrupos] ([Nome], [NomeCampeonato])
 GO
 

@@ -54,27 +54,27 @@ GO
 --SET ANSI_PADDING OFF
 --GO
 
-ALTER TABLE [dbo].[JogosUsuarios]  ADD FOREIGN KEY([CreatedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[JogosUsuarios]  ADD FOREIGN KEY([CreatedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[JogosUsuarios]  ADD FOREIGN KEY([ModifiedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[JogosUsuarios]  ADD FOREIGN KEY([ModifiedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[JogosUsuarios]  ADD FOREIGN KEY([NomeTimeResult2])
+ALTER TABLE [dbo].[JogosUsuarios]  ADD CONSTRAINT FK_JogosUsuarios_Times_NomeTimeResult2 FOREIGN KEY([NomeTimeResult2])
 REFERENCES [dbo].[Times] ([Nome])
 GO
 
-ALTER TABLE [dbo].[JogosUsuarios]  ADD FOREIGN KEY([NomeTimeResult1])
+ALTER TABLE [dbo].[JogosUsuarios]  ADD CONSTRAINT FK_JogosUsuarios_Times_NomeTimeResult1 FOREIGN KEY([NomeTimeResult1])
 REFERENCES [dbo].[Times] ([Nome])
 GO
 
-ALTER TABLE [dbo].[JogosUsuarios]  ADD FOREIGN KEY([UserName], [NomeBolao])
+ALTER TABLE [dbo].[JogosUsuarios]  ADD CONSTRAINT FK_JogosUsuarios_BoloesMembros_UserName_NomeBolao FOREIGN KEY([UserName], [NomeBolao])
 REFERENCES [dbo].[BoloesMembros] ([UserName], [NomeBolao])
 GO
 
-ALTER TABLE [dbo].[JogosUsuarios]  ADD FOREIGN KEY([IdJogo], [NomeCampeonato])
+ALTER TABLE [dbo].[JogosUsuarios]  ADD CONSTRAINT FK_JogosUsuarios_Jogos_IdJogo_NomeCampeonato FOREIGN KEY([IdJogo], [NomeCampeonato])
 REFERENCES [dbo].[Jogos] ([IdJogo], [NomeCampeonato])
 GO
 

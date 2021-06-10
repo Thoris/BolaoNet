@@ -1,5 +1,5 @@
 pool:
-  name: Vision4Docs
+  name: Hosted VS2017
   demands:
   - msbuild
   - visualstudio
@@ -9,45 +9,29 @@ pool:
 #Your build pipeline references an undefined variable named ‘Parameters.solution’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
 #Your build pipeline references the ‘BuildPlatform’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
 #Your build pipeline references the ‘BuildConfiguration’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
-#Your build pipeline references the ‘BuildConfiguration’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
 #Your build pipeline references the ‘BuildPlatform’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
 #Your build pipeline references the ‘BuildConfiguration’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
 #Your build pipeline references an undefined variable named ‘Parameters.ArtifactName’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
 
 steps:
-- task: ArchiveFiles@2
-  displayName: 'Archive Tools'
-  inputs:
-    rootFolderOrFile: Tools
-    includeRootFolder: false
-    archiveFile: '$(build.artifactstagingdirectory)\deploy/zip/Tools_$(Build.BuildNumber).zip'
-
-- task: ArchiveFiles@2
-  displayName: 'Archive Migration'
-  inputs:
-    rootFolderOrFile: Tworpnet.Vision4Docs.Infra.Database.SqlServer
-    includeRootFolder: false
-    archiveFile: '$(build.artifactstagingdirectory)\deploy/zip/Migration_$(Build.BuildNumber).zip'
-
 - task: NuGetToolInstaller@0
   displayName: 'Use NuGet 5.8.0'
   inputs:
     versionSpec: 5.8.0
-    checkLatest: true
 
 - task: NuGetCommand@2
   displayName: 'NuGet restore'
   inputs:
     restoreSolution: '$(Parameters.solution)'
 
-- task: jaybrockway.SetAssemblyVersion.jaybrockway-SetAssemblyVersion-task.SetAssemblyVersion@2018
+- task: jaybrockway.SetAssemblyVersion.jaybrockway-SetAssemblyVersion-task.SetAssemblyVersion@2021
   displayName: 'Set Assembly Version $(Build.SourcesDirectory)'
 
 - task: VSBuild@1
   displayName: 'Build solution'
   inputs:
     solution: '$(Parameters.solution)'
-    msbuildArgs: '/p:GenerateDocumentation=true /p:VisualStudioVersion=12.0 /p:DeployOnBuild=true  /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true   /p:DeployDefaultTarget=WebPublish /p:PublishProfile=IIS /m:4 '
+    msbuildArgs: '/p:GenerateDocumentation=true /p:VisualStudioVersion=12.0 /p:DeployOnBuild=true  /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true   /p:DeployDefaultTarget=WebPublish /p:PublishProfile=IIS '
     platform: '$(BuildPlatform)'
     configuration: '$(BuildConfiguration)'
 
@@ -55,36 +39,50 @@ steps:
   displayName: 'Test Assemblies'
   inputs:
     testAssemblyVer2: |
-     **\$(BuildConfiguration)\*test*.dll
+     **\BolaoNet.Tests.dll
+     !**\*TestAdapter.dll
      !**\obj\**
-     !**\Tworpnet.Vision4Docs.Tests.Cmd\**
-     !**\Tworpnet.Vision4Docs.AutomationTests\**
-     !**\Tworpnet.Vision4Docs.AutomationTests.Selenium\**
+     !**\BolaoNet.Tests.Debug\**
+     !**\BolaoNet.MVC.Tests\**
     codeCoverageEnabled: true
     platform: '$(BuildPlatform)'
     configuration: '$(BuildConfiguration)'
 
-- task: NubeOne.TFS-Changelog-Generator.TFS-Changelog-Generator-task.ChangelogGenerator@1
-  displayName: 'Changelog Generator'
-  inputs:
-    workingDir: '$(build.artifactstagingdirectory)/deploy/'
-    commits: true
+- powershell: |
+   # Write your PowerShell commands here.
+   
+   Get-ChildItem -Path '$(Build.SourcesDirectory)' -recurse
+   # Get-ChildItem -Path '$(Build.SourcesDirectory)' -recurse
+  displayName: 'PowerShell Script'
 
-- task: richardfennellBM.BM-VSTS-XplatGenerateReleaseNotes.XplatGenerate-Release-Notes.XplatGenerateReleaseNotes@2
-  displayName: 'Generate Release Notes based on Release Comparision API'
+- script: |
+   echo del "$(Build.SourcesDirectory)\deploy\MVC\web.config"
+   del "$(Build.SourcesDirectory)\deploy\MVC\web.config"
+   
+   echo copy "$(Build.SourcesDirectory)\deploy\MVC\web.devops.config" "$(Build.SourcesDirectory)\deploy\MVC\web.config"
+   copy "$(Build.SourcesDirectory)\deploy\MVC\web.devops.config" "$(Build.SourcesDirectory)\deploy\MVC\web.config"
+    
+   echo del "$(Build.SourcesDirectory)\deploy\MVC\web.devops.config"
+   del "$(Build.SourcesDirectory)\deploy\MVC\web.devops.config"
+   
+   
+  displayName: 'Rename Web.config from MVC and WebApi'
+
+- task: CopyFiles@2
+  displayName: 'Copy DacPac'
   inputs:
-    outputfile: '$(build.artifactstagingdirectory)/deploy/ChangeLogNotes.md'
-    templateLocation: InLine
-    inlinetemplate: |
-     **Build Number** - $(Build.BuildNumber) 
-     **Build Source Branch** - $(Build.SourceBranchName) 
-     
-     ### Associated commits
-     @@CSLOOP@@
-     * **ID ${csdetail.id} ** ${csdetail.message}
-     @@CSLOOP@@
-     
-    stopOnRedeploy: false
+    SourceFolder: 'BolaoNet.Database.SqlServer\bin\release'
+    Contents: |
+     *.dacpac
+     *.sql
+    TargetFolder: '$(build.artifactstagingdirectory)\deploy'
+
+- task: ArchiveFiles@2
+  displayName: 'Archive Web MVC Files'
+  inputs:
+    rootFolderOrFile: '$(Build.SourcesDirectory)/deploy/MVC'
+    includeRootFolder: false
+    archiveFile: '$(build.artifactstagingdirectory)\deploy/zip/Mvc_$(Build.BuildNumber).zip'
 
 - task: PublishSymbols@2
   displayName: 'Publish symbols path'
@@ -93,130 +91,8 @@ steps:
     PublishSymbols: false
   continueOnError: true
 
-- script: |
-   echo del "$(Build.SourcesDirectory)\deploy\Vision4Docs\WebApi\web.config"
-   del "$(Build.SourcesDirectory)\deploy\Vision4Docs\WebApi\web.config"
-   
-   echo del "$(Build.SourcesDirectory)\deploy\Vision4Docs\MVC\web.config"
-   del "$(Build.SourcesDirectory)\deploy\Vision4Docs\MVC\web.config"
-   
-   echo copy "$(Build.SourcesDirectory)\deploy\Vision4Docs\WebApi\web.devops.config" "$(Build.SourcesDirectory)\deploy\Vision4Docs\WebApi\web.config"
-   copy "$(Build.SourcesDirectory)\deploy\Vision4Docs\WebApi\web.devops.config" "$(Build.SourcesDirectory)\deploy\Vision4Docs\WebApi\web.config"
-   
-   echo copy "$(Build.SourcesDirectory)\deploy\Vision4Docs\MVC\web.devops.config" "$(Build.SourcesDirectory)\deploy\Vision4Docs\MVC\web.config"
-   copy "$(Build.SourcesDirectory)\deploy\Vision4Docs\MVC\web.devops.config" "$(Build.SourcesDirectory)\deploy\Vision4Docs\MVC\web.config"
-   
-   echo del "$(Build.SourcesDirectory)\deploy\Vision4Docs\WebApi\web.devops.config"
-   del "$(Build.SourcesDirectory)\deploy\Vision4Docs\WebApi\web.devops.config"
-   
-   echo del "$(Build.SourcesDirectory)\deploy\Vision4Docs\MVC\web.devops.config"
-   del "$(Build.SourcesDirectory)\deploy\Vision4Docs\MVC\web.devops.config"
-   
-   echo del "$(Build.SourcesDirectory)\deploy\Vision4Docs\WebApi\App_Data\jobs\continuous\WebJobRequest\Tworpnet.Vision4Docs.WebJob.exe.config"
-   del "$(Build.SourcesDirectory)\deploy\Vision4Docs\WebApi\App_Data\jobs\continuous\WebJobRequest\Tworpnet.Vision4Docs.WebJob.exe.config"
-   echo copy "$(Build.SourcesDirectory)\Tworpnet.Vision4Docs.WebJob\app.devops.config" "$(Build.SourcesDirectory)\deploy\Vision4Docs\WebApi\App_Data\jobs\continuous\WebJobRequest\Tworpnet.Vision4Docs.WebJob.exe.config"
-   copy "$(Build.SourcesDirectory)\Tworpnet.Vision4Docs.WebJob\app.devops.config" "$(Build.SourcesDirectory)\deploy\Vision4Docs\WebApi\App_Data\jobs\continuous\WebJobRequest\Tworpnet.Vision4Docs.WebJob.exe.config"
-   
-   
-  displayName: 'Rename Web.config from MVC and WebApi'
-
-- script: |
-   echo create folder "$(Build.SourcesDirectory)\deploy\Vision4Docs\Selenium"
-   IF not exist "$(Build.SourcesDirectory)\deploy\Vision4Docs\Selenium" (mkdir "$(Build.SourcesDirectory)\deploy\Vision4Docs\Selenium")
-   
-   echo del /s "$(Build.SourcesDirectory)\deploy\Vision4Docs\Selenium\*.*"
-   del /s "$(Build.SourcesDirectory)\deploy\Vision4Docs\Selenium\*.*"
-   
-   
-   echo copy "$(Build.SourcesDirectory)\Tworpnet.Vision4Docs.AutomationTests.Selenium\bin\Release\*.*" "$(Build.SourcesDirectory)\deploy\Vision4Docs\Selenium\*.*"
-    copy "$(Build.SourcesDirectory)\Tworpnet.Vision4Docs.AutomationTests.Selenium\bin\Release\*.*" "$(Build.SourcesDirectory)\deploy\Vision4Docs\Selenium\*.*"
-   
-   echo del "$(Build.SourcesDirectory)\deploy\Vision4Docs\Selenium\Tworpnet.Vision4Docs.AutomationTests.Selenium.dll.config"
-   del "$(Build.SourcesDirectory)\deploy\Vision4Docs\Selenium\Tworpnet.Vision4Docs.AutomationTests.Selenium.dll.config"
-   
-   echo copy "$(Build.SourcesDirectory)\Tworpnet.Vision4Docs.AutomationTests.Selenium\app.devops.config" "$(Build.SourcesDirectory)\deploy\Vision4Docs\Selenium\Tworpnet.Vision4Docs.AutomationTests.Selenium.dll.config" 
-   copy "$(Build.SourcesDirectory)\Tworpnet.Vision4Docs.AutomationTests.Selenium\app.devops.config" "$(Build.SourcesDirectory)\deploy\Vision4Docs\Selenium\Tworpnet.Vision4Docs.AutomationTests.Selenium.dll.config" 
-   
-  displayName: 'Prepare Selenium artifacts'
-
-- task: CopyFiles@2
-  displayName: 'Copy keys files'
-  inputs:
-    SourceFolder: Keys
-    TargetFolder: '$(Build.SourcesDirectory)/deploy/Vision4Docs/WebApi/'
-    OverWrite: true
-
-- task: CopyFiles@2
-  displayName: 'Copy Models files'
-  inputs:
-    SourceFolder: Models
-    TargetFolder: '$(Build.SourcesDirectory)/deploy/Vision4Docs/WebApi/App_Data'
-    OverWrite: true
-
-- task: CopyFiles@2
-  displayName: 'Copy DacPac'
-  inputs:
-    SourceFolder: 'Tworpnet.Vision4Docs.Infra.Database.SqlServer\bin\release'
-    Contents: '*.dacpac'
-    TargetFolder: '$(build.artifactstagingdirectory)\deploy'
-
-- task: CopyFiles@2
-  displayName: 'Copy Opencv Files'
-  inputs:
-    SourceFolder: '$(Build.SourcesDirectory)/deploy/Vision4Docs/WebApi/bin/dll/x86/'
-    Contents: '*.dll'
-    TargetFolder: '$(Build.SourcesDirectory)/deploy/Vision4Docs/WebApi/bin'
-
-- task: DeleteFiles@1
-  displayName: 'Delete unused dll files from Opencv subfolder'
-  inputs:
-    SourceFolder: '$(Build.SourcesDirectory)/deploy/Vision4Docs/WebApi/bin/dll'
-    Contents: '**'
-
-- task: DeleteFiles@1
-  displayName: 'Delete unused dll files from Opencv'
-  inputs:
-    SourceFolder: '$(Build.SourcesDirectory)/deploy/Vision4Docs/WebApi/dll'
-    Contents: '**'
-
-- task: ArchiveFiles@2
-  displayName: 'Archive WebApi Files'
-  inputs:
-    rootFolderOrFile: '$(Build.SourcesDirectory)/deploy/Vision4Docs/WebApi/'
-    includeRootFolder: false
-    archiveFile: '$(build.artifactstagingdirectory)\deploy/zip/Webapi_$(Build.BuildNumber).zip'
-
-- task: ArchiveFiles@2
-  displayName: 'Archive Web MVC Files'
-  inputs:
-    rootFolderOrFile: '$(Build.SourcesDirectory)/deploy/Vision4Docs/MVC'
-    includeRootFolder: false
-    archiveFile: '$(build.artifactstagingdirectory)\deploy/zip/Mvc_$(Build.BuildNumber).zip'
-
-- task: ArchiveFiles@2
-  displayName: 'Archive WebJob File'
-  inputs:
-    rootFolderOrFile: '"$(Build.SourcesDirectory)\deploy\Vision4Docs\WebApi\App_Data\jobs\continuous\WebJobRequest"'
-    includeRootFolder: false
-    archiveFile: '$(build.artifactstagingdirectory)\deploy/zip/WebJob_$(Build.BuildNumber).zip'
-
-- task: ArchiveFiles@2
-  displayName: 'Archive Python Files'
-  inputs:
-    rootFolderOrFile: '$(Build.SourcesDirectory)/Tworpnet.Vision4Docs.Core'
-    includeRootFolder: false
-    archiveFile: '$(build.artifactstagingdirectory)\deploy/zip/Python_$(Build.BuildNumber).zip'
-
-- task: ArchiveFiles@2
-  displayName: 'Archive Selenium artifacts tests'
-  inputs:
-    rootFolderOrFile: '$(Build.SourcesDirectory)\deploy\Vision4Docs\Selenium'
-    includeRootFolder: false
-    archiveFile: '$(build.artifactstagingdirectory)\deploy/zip/Selenium_$(Build.BuildNumber).zip'
-
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
   inputs:
     PathtoPublish: '$(build.artifactstagingdirectory)'
     ArtifactName: '$(Parameters.ArtifactName)'
-  condition: succeededOrFailed()

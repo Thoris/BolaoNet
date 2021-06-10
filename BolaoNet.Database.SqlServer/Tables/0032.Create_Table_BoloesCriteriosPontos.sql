@@ -21,18 +21,18 @@ GO
 --SET ANSI_PADDING OFF
 --GO
 
-ALTER TABLE [dbo].[BoloesCriteriosPontos]  ADD FOREIGN KEY([CreatedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[BoloesCriteriosPontos]  ADD FOREIGN KEY([CreatedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[BoloesCriteriosPontos]  ADD FOREIGN KEY([CriterioID])
+ALTER TABLE [dbo].[BoloesCriteriosPontos]  ADD  CONSTRAINT FK_BoloesCriteriosPontos_CriteriosFixos_CriterioId FOREIGN KEY([CriterioID])
 REFERENCES [dbo].[CriteriosFixos] ([CriterioID])
 GO
 
-ALTER TABLE [dbo].[BoloesCriteriosPontos]  ADD FOREIGN KEY([ModifiedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[BoloesCriteriosPontos]  ADD FOREIGN KEY([ModifiedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[BoloesCriteriosPontos]  ADD FOREIGN KEY([NomeBolao])
+ALTER TABLE [dbo].[BoloesCriteriosPontos]  ADD  CONSTRAINT FK_BoloesCriteriosPontos_Boloes_NomeBolao FOREIGN KEY([NomeBolao])
 REFERENCES [dbo].[Boloes] ([Nome])
 GO

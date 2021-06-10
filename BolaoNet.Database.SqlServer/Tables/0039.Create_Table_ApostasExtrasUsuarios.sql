@@ -26,22 +26,22 @@ GO
 --SET ANSI_PADDING OFF
 --GO
 
-ALTER TABLE [dbo].[ApostasExtrasUsuarios] ADD FOREIGN KEY([CreatedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[ApostasExtrasUsuarios] ADD FOREIGN KEY([CreatedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[ApostasExtrasUsuarios] ADD FOREIGN KEY([ModifiedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[ApostasExtrasUsuarios] ADD FOREIGN KEY([ModifiedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[ApostasExtrasUsuarios] ADD FOREIGN KEY([NomeTime])
+ALTER TABLE [dbo].[ApostasExtrasUsuarios] ADD  CONSTRAINT FK_ApostasExtrasUsuarios_Times_NomeTime FOREIGN KEY([NomeTime])
 REFERENCES [dbo].[Times] ([Nome])
 GO
 
-ALTER TABLE [dbo].[ApostasExtrasUsuarios] ADD FOREIGN KEY([UserName])
+ALTER TABLE [dbo].[ApostasExtrasUsuarios] ADD  CONSTRAINT FK_ApostasExtrasUsuarios_Users_UserName FOREIGN KEY([UserName])
 REFERENCES [dbo].[Users] ([UserName])
 GO
 
-ALTER TABLE [dbo].[ApostasExtrasUsuarios] ADD FOREIGN KEY([Posicao], [NomeBolao])
+ALTER TABLE [dbo].[ApostasExtrasUsuarios] ADD  CONSTRAINT FK_ApostasExtrasUsuarios_ApostasExtras_Posicao_NomeBolao FOREIGN KEY([Posicao], [NomeBolao])
 REFERENCES [dbo].[ApostasExtras] ([Posicao], [NomeBolao])
 GO

@@ -17,14 +17,14 @@ PRIMARY KEY CLUSTERED
 
 GO
 
-ALTER TABLE [dbo].[CampeonatosFases]  ADD FOREIGN KEY([CreatedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[CampeonatosFases]  ADD FOREIGN KEY([CreatedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[CampeonatosFases]  ADD FOREIGN KEY([ModifiedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[CampeonatosFases]  ADD FOREIGN KEY([ModifiedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[CampeonatosFases]  ADD FOREIGN KEY([NomeCampeonato])
+ALTER TABLE [dbo].[CampeonatosFases]  ADD  CONSTRAINT FK_CampeonatoFases_Campeonatos_NomeCampeonato FOREIGN KEY([NomeCampeonato])
 REFERENCES [dbo].[Campeonatos] ([Nome])
 GO

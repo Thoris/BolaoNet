@@ -15,10 +15,10 @@ PRIMARY KEY CLUSTERED
 
 GO
 
-ALTER TABLE [dbo].[Roles]  ADD FOREIGN KEY([CreatedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[Roles]  ADD  CONSTRAINT FK_Roles_Users_CreatedBy FOREIGN KEY([CreatedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
 
-ALTER TABLE [dbo].[Roles]  ADD FOREIGN KEY([ModifiedBy])
-REFERENCES [dbo].[Users] ([UserName])
-GO
+--ALTER TABLE [dbo].[Roles]  ADD  CONSTRAINT FK_Roles_Users_ModifiedBy FOREIGN KEY([ModifiedBy])
+--REFERENCES [dbo].[Users] ([UserName])
+--GO
