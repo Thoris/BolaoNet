@@ -23,6 +23,7 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
+    <GenerateCreateScript>True</GenerateCreateScript>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -113,8 +114,6 @@
     <None Include="Tables\Historico.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="build\0051.Insert_Table_lg_content_types.sql" />
-    <None Include="build\0052.Insert_Table_lg_log_level_types.sql" />
     <None Include="build\0054.Insert_Table_CriteriosFixos.sql" />
     <None Include="build\0055.Insert_Table_UserMaritalStatus.sql" />
     <None Include="build\0056.Insert_Table_Users.sql" />

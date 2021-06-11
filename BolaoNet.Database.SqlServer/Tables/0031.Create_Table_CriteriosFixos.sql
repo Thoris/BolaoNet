@@ -1,6 +1,6 @@
 ﻿
 CREATE TABLE [dbo].[CriteriosFixos](
-	[CriterioId] [int] IDENTITY(1,1) NOT NULL,
+	[CriterioId] [int] NOT NULL,
 	[Descricao] [varchar](255) NULL,
 	[CreatedBy] [varchar](25) NULL,
 	[CreatedDate] [datetime] NULL,
