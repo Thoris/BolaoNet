@@ -22,18 +22,18 @@
 ) ON [PRIMARY]
 
 
-ALTER TABLE [dbo].[Historico]   ADD  CONSTRAINT [FK_dbo.Historico_dbo.Times_NomeTimeCampeao_Nome] FOREIGN KEY([NomeTimeCampeao_Nome])
-REFERENCES [dbo].[Times] ([Nome])
-GO
-ALTER TABLE [dbo].[Historico] CHECK CONSTRAINT [FK_dbo.Historico_dbo.Times_NomeTimeCampeao_Nome]
-GO
-ALTER TABLE [dbo].[Historico]   ADD  CONSTRAINT [FK_dbo.Historico_dbo.Times_NomeTimeTerceiro_Nome] FOREIGN KEY([NomeTimeTerceiro_Nome])
-REFERENCES [dbo].[Times] ([Nome])
-GO
-ALTER TABLE [dbo].[Historico] CHECK CONSTRAINT [FK_dbo.Historico_dbo.Times_NomeTimeTerceiro_Nome]
-GO
-ALTER TABLE [dbo].[Historico]   ADD  CONSTRAINT [FK_dbo.Historico_dbo.Times_NomeTimeVice_Nome] FOREIGN KEY([NomeTimeVice_Nome])
-REFERENCES [dbo].[Times] ([Nome])
-GO
-ALTER TABLE [dbo].[Historico] CHECK CONSTRAINT [FK_dbo.Historico_dbo.Times_NomeTimeVice_Nome]
-GO
+--ALTER TABLE [dbo].[Historico]   ADD  CONSTRAINT [FK_dbo.Historico_dbo.Times_NomeTimeCampeao_Nome] FOREIGN KEY([NomeTimeCampeao_Nome])
+--REFERENCES [dbo].[Times] ([Nome])
+--GO
+--ALTER TABLE [dbo].[Historico] CHECK CONSTRAINT [FK_dbo.Historico_dbo.Times_NomeTimeCampeao_Nome]
+--GO
+--ALTER TABLE [dbo].[Historico]   ADD  CONSTRAINT [FK_dbo.Historico_dbo.Times_NomeTimeTerceiro_Nome] FOREIGN KEY([NomeTimeTerceiro_Nome])
+--REFERENCES [dbo].[Times] ([Nome])
+--GO
+--ALTER TABLE [dbo].[Historico] CHECK CONSTRAINT [FK_dbo.Historico_dbo.Times_NomeTimeTerceiro_Nome]
+--GO
+--ALTER TABLE [dbo].[Historico]   ADD  CONSTRAINT [FK_dbo.Historico_dbo.Times_NomeTimeVice_Nome] FOREIGN KEY([NomeTimeVice_Nome])
+--REFERENCES [dbo].[Times] ([Nome])
+--GO
+--ALTER TABLE [dbo].[Historico] CHECK CONSTRAINT [FK_dbo.Historico_dbo.Times_NomeTimeVice_Nome]
+--GO

@@ -1,6 +1,6 @@
 ﻿
 CREATE TABLE [dbo].[PagamentosTipo](
-	[TipoPagamento] [int] IDENTITY(1,1) NOT NULL,
+	[TipoPagamento] [int] NOT NULL,
 	[Descricao] [varchar](255) NULL,
 	[CreatedBy] [varchar](25) NULL,
 	[CreatedDate] [datetime] NULL,
