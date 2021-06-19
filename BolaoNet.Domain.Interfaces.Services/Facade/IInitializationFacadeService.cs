@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BolaoNet.Domain.Interfaces.Services.Facade.Campeonatos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,7 @@ namespace BolaoNet.Domain.Interfaces.Services.Facade
         IList<Entities.Users.UserInRole> GetUsersInRoles();
         
         IList<Entities.DadosBasicos.CriterioFixo> GetCriteriosFixos();        
-        IList<Entities.DadosBasicos.PagamentoTipo> GetPagamentoTipo();     
+        IList<Entities.DadosBasicos.PagamentoTipo> GetPagamentoTipo();
+         
     }
 }

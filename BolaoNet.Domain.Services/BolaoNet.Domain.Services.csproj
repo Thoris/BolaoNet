@@ -88,10 +88,16 @@
     <Compile Include="DadosBasicos\TimeService.cs" />
     <Compile Include="Encrypt\EncryptDecrypt.cs" />
     <Compile Include="Facade\BolaoFacadeService.cs" />
+    <Compile Include="Facade\Boloes\BolaoCopaAmerica2019ServiceHelper.cs" />
+    <Compile Include="Facade\Boloes\BolaoCopaMundo2010ServiceHelper.cs" />
+    <Compile Include="Facade\Boloes\BolaoCopaMundo2014ServiceHelper.cs" />
+    <Compile Include="Facade\Boloes\BolaoCopaMundo2018ServiceHelper.cs" />
+    <Compile Include="Facade\Boloes\BolaoListFacadeService.cs" />
     <Compile Include="Facade\CampeonatoFacadeService.cs" />
     <Compile Include="Facade\Campeonatos\BaseCopaMundoFacadeService.cs" />
     <Compile Include="Facade\Campeonatos\BaseStructureCopaMundoFacadeService.cs" />
     <Compile Include="Facade\Campeonatos\CopaAmerica2019FacadeService.cs" />
+    <Compile Include="Facade\Campeonatos\CopaListFacadeService.cs" />
     <Compile Include="Facade\Campeonatos\CopaMundo2010FacadeService.cs" />
     <Compile Include="Facade\Campeonatos\CopaMundo2014DataFacadeService.cs" />
     <Compile Include="Facade\Campeonatos\CopaMundo2018FacadeService.cs" />

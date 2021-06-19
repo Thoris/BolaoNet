@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BolaoNet.Domain.Services.Facade.Campeonatos
 {
     public class CopaMundo2010FacadeService : BaseStructureCopaMundoFacadeService, 
         Domain.Interfaces.Services.Facade.Campeonatos.ICopaMundo2010FacadeService
     {
-        
+
+        #region Constants
+
+        public const string Name = "Copa do Mundo 2010";
+
+        #endregion
+
         #region Constructors/Destructors
 
         public CopaMundo2010FacadeService(

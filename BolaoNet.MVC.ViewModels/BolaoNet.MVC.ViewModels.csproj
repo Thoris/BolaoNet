@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\ConfigurationViewModel.cs" />
     <Compile Include="Bolao\BolaoComparacaoApostaJogoViewModel.cs" />
     <Compile Include="Bolao\BolaoComparacaoApostasViewModel.cs" />
     <Compile Include="Bolao\BolaoPremiacaoViewModelInfo.cs" />

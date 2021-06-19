@@ -1,0 +1,142 @@
+﻿@model BolaoNet.MVC.ViewModels.Admin.ConfigurationViewModel
+@{
+    ViewBag.Title = "Gerenciamento de configurações";
+}
+
+@using (Html.BeginForm("Configuration", "Index", FormMethod.Post, new { }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Campeonatos</h5>
+                </div>
+                <div class="ibox-content" style="display: block;">
+                    <div class="text-center m-t-lg">
+
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <h4>Campeonatos Disponíveis</h4>
+
+                                @if (Model.CampeonatosDisponiveis.Count == 0)
+                                {
+                                    <h5>Não há Campeonatos disponíveis para cadastro</h5>
+                                }
+                                else
+                                {
+                                    <table class="table table-hover">
+                                        <tbody>
+                                            @for (int c = 0; c < Model.CampeonatosDisponiveis.Count; c++)
+                                            {
+                                                <tr>
+                                                    <td>@Model.CampeonatosDisponiveis[c]</td>
+                                                    <td>
+                                                        <a href="@Url.Action("AdicionarCampeonato", new { NomeCampeonato = Model.CampeonatosDisponiveis[c] })"
+                                                           onclick="return confirm('Deseja adicionar o campeonato disponível para a  base de dados?');"><span class="glyphicon glyphicon-plus fa-lg"></span></a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                }
+                            </div>
+
+                            <div class="form-group col-sm-6">
+                                <h4>Campeonatos Existentes</h4>
+                                @if (Model.CampeonatosExistentes.Count == 0)
+                                {
+                                    <h5>Não há Campeonatos existentes</h5>
+                                }
+                                else
+                                {
+                                    <table class="table table-hover">
+                                        <tbody>
+                                            @for (int c = 0; c < Model.CampeonatosExistentes.Count; c++)
+                                            {
+                                                <tr>
+                                                    <td>@Model.CampeonatosExistentes[c]</td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Bolões</h5>
+                </div>
+                <div class="ibox-content" style="display: block;">
+                    <div class="text-center m-t-lg">
+
+                        <div class="row">
+                            <div class="form-group col-sm-6">
+                                <h4>Bolões Disponíveis</h4>
+
+                                @if (Model.BoloesDisponiveis.Count == 0)
+                                {
+                                    <h5>Não há bolões disponíveis para cadastro</h5>
+                                }
+                                else
+                                {
+                                    <table class="table table-hover">
+                                        <tbody>
+                                            @for (int c = 0; c < Model.BoloesDisponiveis.Count; c++)
+                                            {
+                                                <tr>
+                                                    <td>@Model.BoloesDisponiveis[c]</td>
+                                                    <td>
+                                                        <a href="@Url.Action("AdicionarBolao", new { NomeBolao = @Model.BoloesDisponiveis[c] })"
+                                                           onclick="return confirm('Deseja adicionar o bolão disponível para a  base de dados?');"><span class="glyphicon glyphicon-plus fa-lg"></span></a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                }
+                            </div>
+
+                            <div class="form-group col-sm-6">
+                                <h4>Bolões Existentes</h4>
+                                @if (Model.BoloesExistentes.Count == 0)
+                                {
+                                    <h5>Não há bolões existentes</h5>
+                                }
+                                else
+                                {
+                                    <table class="table table-hover">
+                                        <tbody>
+                                            @for (int c = 0; c < Model.BoloesExistentes.Count; c++)
+                                            {
+                                                <tr>
+                                                    <td>@Model.BoloesExistentes[c]</td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}

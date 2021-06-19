@@ -157,6 +157,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseAdminAreaController.cs" />
     <Compile Include="Areas\Admin\Controllers\BolaoIniciarPararController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ConfigurationController.cs" />
     <Compile Include="Areas\Admin\Controllers\GerenciamentoMembrosBolaoController.cs" />
     <Compile Include="Areas\Admin\Controllers\LogViewerController.cs" />
     <Compile Include="Areas\Apostas\ApostasAreaRegistration.cs" />
@@ -662,6 +663,7 @@
     <Content Include="Areas\Boloes\Views\ApostasExtrasPossibilidades\Index.cshtml" />
     <Content Include="Areas\Boloes\Views\PercentualChances\Index.cshtml" />
     <Content Include="Areas\Boloes\Views\IndicePontos\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Configuration\Index.cshtml" />
     <None Include="Content\js\jquery-1.10.2.intellisense.js" />
     <Content Include="Content\js\jquery-1.10.2.js" />
     <Content Include="Content\js\jquery-1.10.2.min.js" />
@@ -1415,6 +1417,7 @@
     <Folder Include="Content\img\database\profiles\" />
     <Folder Include="Content\img\database\temp\crop\" />
     <Folder Include="Content\img\database\temp\uploaded\" />
+    <Folder Include="Views\Config\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

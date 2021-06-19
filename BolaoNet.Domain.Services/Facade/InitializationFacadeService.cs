@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BolaoNet.Domain.Interfaces.Services.Facade.Campeonatos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -302,8 +303,8 @@ namespace BolaoNet.Domain.Services.Facade
             });
 
             return list;
-        }        
-         
+        }
+
         #endregion
     }
 }

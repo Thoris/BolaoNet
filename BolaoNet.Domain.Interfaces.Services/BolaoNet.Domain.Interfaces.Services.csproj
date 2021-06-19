@@ -85,7 +85,11 @@
     <Compile Include="DadosBasicos\IEstadioService.cs" />
     <Compile Include="DadosBasicos\IPagamentoTipoService.cs" />
     <Compile Include="DadosBasicos\ITimeService.cs" />
+    <Compile Include="Facade\Boloes\IBolaoFacadeService.cs" />
+    <Compile Include="Facade\Boloes\IBolaoListFacadeService.cs" />
     <Compile Include="Facade\Campeonatos\ICopaAmerica2019FacadeService.cs" />
+    <Compile Include="Facade\Campeonatos\ICopaFacadeService.cs" />
+    <Compile Include="Facade\Campeonatos\ICopaListFacadeService.cs" />
     <Compile Include="Facade\Campeonatos\ICopaMundo2010FacadeService.cs" />
     <Compile Include="Facade\Campeonatos\ICopaMundo2018FacadeService.cs" />
     <Compile Include="Facade\Campeonatos\ICopaMundo2014FacadeService.cs" />

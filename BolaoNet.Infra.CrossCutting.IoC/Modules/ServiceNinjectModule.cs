@@ -82,9 +82,13 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
 
             Bind<Domain.Interfaces.Services.Facade.IUserFacadeService>().To<Domain.Services.Facade.UserFacadeService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Facade.Campeonatos.IStructureCopaMundoFacadeService>().To<Domain.Services.Facade.Campeonatos.StructureCopaMundoFacadeService>().WithConstructorArgument("userName", userName);
+            Bind<Domain.Interfaces.Services.Facade.Campeonatos.ICopaMundo2010FacadeService>().To<Domain.Services.Facade.Campeonatos.CopaMundo2010FacadeService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Facade.Campeonatos.ICopaMundo2014FacadeService>().To<Domain.Services.Facade.Campeonatos.CopaMundo2014FacadeService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Facade.Campeonatos.ICopaMundo2018FacadeService>().To<Domain.Services.Facade.Campeonatos.CopaMundo2018FacadeService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Facade.Campeonatos.ICopaAmerica2019FacadeService>().To<Domain.Services.Facade.Campeonatos.CopaAmerica2019FacadeService>().WithConstructorArgument("userName", userName);
+
+            Bind<Domain.Interfaces.Services.Facade.Campeonatos.ICopaListFacadeService>().To<Domain.Services.Facade.Campeonatos.CopaListFacadeService>().WithConstructorArgument("userName", userName);
+            Bind<Domain.Interfaces.Services.Facade.Boloes.IBolaoListFacadeService>().To<Domain.Services.Facade.Boloes.BolaoListFacadeService>().WithConstructorArgument("userName", userName);
 
             Bind<Domain.Interfaces.Services.Reports.IBolaoMembroApostasReportService>().To<Domain.Services.Reports.BolaoMembroApostasReportService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Reports.IBolaoApostasInicioReportService>().To<Domain.Services.Reports.BolaoApostasInicioReportService>().WithConstructorArgument("userName", userName);

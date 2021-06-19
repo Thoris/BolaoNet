@@ -172,10 +172,15 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
                     IList<ViewModels.Users.PaginaPrincipal.PaginaPrincipalPontosObtidosViewModel>
                     >(obtidos);
 
-
-
-            Session["MensagemPendente"] = _mensagemApp.GetTotalMensagensNaoLidas(base.SelectedBolao, base.UserLogged);
-
+            //Se não tem nenhum bolão selecionado
+            if (base.SelectedBolao != null && !string.IsNullOrEmpty(base.SelectedBolao.Nome))
+            {
+                Session["MensagemPendente"] = _mensagemApp.GetTotalMensagensNaoLidas(base.SelectedBolao, base.UserLogged);
+            }
+            else
+            {
+                Session["MensagemPendente"] = 0;
+            }
             
             return View(model);
         }

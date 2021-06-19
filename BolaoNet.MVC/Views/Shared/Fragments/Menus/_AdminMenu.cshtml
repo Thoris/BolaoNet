@@ -81,6 +81,15 @@
                 <a href="/Admin/LogViewer/Index" onclick="javascript:showWait();"><span class="nav-label"><i class="fa fa-keyboard-o"></i>Log Viewer</span><span class="visible-xs-inline">LogViewer</span></a>
             </li>
         }
+        
+        @if (roleAdmin)
+        {
+            <li @if (string.Compare(controllerName, "Configuration", true) == 0 && 
+                    string.Compare(controllerArea, "Admin", true) == 0)
+                { @Html.Raw("class=\"active\"")   }>
+                <a href="/Admin/Configuration/Index" onclick="javascript:showWait();"><span class="nav-label"><i class="fa fa-navicon"></i>Config</span><span class="visible-xs-inline">Config</span></a>
+            </li>
+        }
     </ul>
 </li>
 }
