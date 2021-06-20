@@ -14,6 +14,13 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
 
         #endregion
 
+
+        #region Properties
+
+        public bool IsContainsResults { get { return true; } }
+
+        #endregion
+
         #region Constructors/Destructors
 
         public CopaMundo2014FacadeService(

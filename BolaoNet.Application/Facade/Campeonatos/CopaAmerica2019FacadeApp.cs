@@ -6,11 +6,20 @@ using System.Threading.Tasks;
 
 namespace BolaoNet.Application.Facade.Campeonatos
 {
-    public class CopaAmerica2019FacadeApp: Interfaces.Facade.Campeonatos.ICopaAmerica2019FacadeApp
+    public class CopaAmerica2019FacadeApp : Interfaces.Facade.Campeonatos.ICopaAmerica2019FacadeApp
     {
         #region Variables
 
         private Domain.Interfaces.Services.Facade.Campeonatos.ICopaAmerica2019FacadeService _service;
+
+        #endregion
+
+        #region Properties
+
+        public bool IsContainsResults 
+        {
+            get { return _service.IsContainsResults ; } 
+        } 
 
         #endregion
 

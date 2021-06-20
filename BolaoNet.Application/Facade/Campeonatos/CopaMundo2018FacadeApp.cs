@@ -14,6 +14,13 @@ namespace BolaoNet.Application.Facade.Campeonatos
 
         #endregion
 
+
+        #region Properties
+
+        public bool IsContainsResults { get { return _service.IsContainsResults; } }
+
+        #endregion
+
         #region Constructors/Destructors
 
         public CopaMundo2018FacadeApp(Domain.Interfaces.Services.Facade.Campeonatos.ICopaMundo2018FacadeService service)

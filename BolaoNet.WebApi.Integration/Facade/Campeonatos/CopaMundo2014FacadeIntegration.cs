@@ -17,7 +17,14 @@ namespace BolaoNet.WebApi.Integration.Facade.Campeonatos
         private const string ModuleName = "CopaMundo2014Facade";
 
         #endregion
-        
+
+
+        #region Properties
+
+        public bool IsContainsResults { get { return false; } }
+
+        #endregion
+
         #region Constructors/Destructors
 
         public CopaMundo2014FacadeIntegration(string url, string token)
@@ -27,7 +34,6 @@ namespace BolaoNet.WebApi.Integration.Facade.Campeonatos
         }
 
         #endregion
-
 
         #region ICopaMundo2014FacadeService members
 

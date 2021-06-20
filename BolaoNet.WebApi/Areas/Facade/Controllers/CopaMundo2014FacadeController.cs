@@ -18,6 +18,12 @@ namespace BolaoNet.WebApi.Areas.Facade.Controllers
 
         #endregion
 
+        #region Properties
+
+        public bool IsContainsResults { get { return _service.IsContainsResults; } }
+
+        #endregion
+
         #region Constructors/Destructors
 
         public CopaMundo2014FacadeController(Domain.Interfaces.Services.Facade.Campeonatos.ICopaMundo2014FacadeService service)

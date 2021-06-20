@@ -12,6 +12,11 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
 
         public const string Name = "Copa América 2019";
 
+        public bool IsContainsResults
+        {
+            get { return false; }
+        }
+
         #endregion
 
         #region Constructors/Destructors
