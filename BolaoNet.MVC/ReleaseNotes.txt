@@ -1,4 +1,8 @@
-﻿[2.5.0.0] - 12/03/2019
+﻿[2.5.1.0] - 19/06/2019
+* Inclusão de Página para configuração de campeonato e bolão.
+* Preparação de estrutura para pipeline no devops.
+
+[2.5.0.0] - 12/03/2019
 * Alteração da estrutura para atender campeonato da copa américa.
 * Inclusão da pontuação por acerto de time.
 
