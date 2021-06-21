@@ -4112,3 +4112,1047 @@
 2021-06-19 15:29:44,558 [5] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoService - Campeonato: (ID= [Nome = Copa do Mundo 2018]) loaded. [00:00:00.1991514]
 2021-06-19 15:29:44,772 [5] DEBUG [admin] BolaoNet.Domain.Services.Boloes.BolaoService - Verificação se o bolão [Copa do Mundo 2018] está iniciado. res: False [00:00:00.2120593]
 2021-06-19 15:29:45,153 [5] DEBUG [admin] BolaoNet.Domain.Services.Boloes.JogoUsuarioService - Busca de jogos por usuário do bolão : [Copa do Mundo 2018] do usuário [admin] total : 64 [00:00:00.3457248]
+2021-06-20 13:49:40,986 [6] DEBUG [] BolaoNet.Domain.Services.Users.UserService - User: (ID= [UserName = admin]) loaded. [00:00:13.3320074]
+2021-06-20 13:49:41,236 [6] DEBUG [] BolaoNet.Domain.Services.Users.UserService - User: (ID= [UserName = Admin]) Updating entity...
+2021-06-20 16:25:17,128 [6] DEBUG [] BolaoNet.Domain.Services.Users.UserService - User: (ID= [UserName = admin]) loaded. [00:00:10.3483885]
+2021-06-20 16:25:17,274 [6] DEBUG [] BolaoNet.Domain.Services.Users.UserService - User: (ID= [UserName = Admin]) Updating entity...
+2021-06-20 16:25:18,473 [6] INFO [] BolaoNet.Domain.Services.Users.UserService - User: (ID= [UserName = Admin]) Updated. [00:00:01.1989283]
+2021-06-20 16:25:18,473 [6] WARN [] BolaoNet.Domain.Services.Users.UserService - Usuário [admin] com senha incorreta [00:00:01.1989283]
+2021-06-20 16:28:52,648 [10] DEBUG [] BolaoNet.Domain.Services.Users.UserService - User: (ID= [UserName = admin]) loaded. [00:00:00.2370685]
+2021-06-20 16:28:52,651 [10] DEBUG [] BolaoNet.Domain.Services.Users.UserService - User: (ID= [UserName = Admin]) Updating entity...
+2021-06-20 16:28:53,293 [10] INFO [] BolaoNet.Domain.Services.Users.UserService - User: (ID= [UserName = Admin]) Updated. [00:00:00.6391787]
+2021-06-20 16:28:53,296 [10] INFO [] BolaoNet.Domain.Services.Users.UserService - Login do usuário [admin] [00:00:00.6426803]
+2021-06-20 16:28:53,513 [10] DEBUG [] BolaoNet.Domain.Services.Users.UserService - User: (ID= [UserName = admin]) loaded. [00:00:00.2123548]
+2021-06-20 16:28:53,966 [10] DEBUG [] BolaoNet.Domain.Services.Users.UserInRoleService - Carregamento de roles do usuário [Admin] total: 1 [00:00:00.4451030]
+2021-06-20 16:28:54,928 [10] DEBUG [] BolaoNet.Domain.Services.Boloes.BolaoMembroService - Carregamento de lista de bolões do usuário [admin] total: 0 [00:00:00.3322178]
+2021-06-20 16:28:55,340 [9] DEBUG [admin] BolaoNet.Domain.Services.Boloes.BolaoMembroService - Carregamento de lista de bolões do usuário [admin] total: 0 [00:00:00.2105132]
+2021-06-20 16:28:55,692 [9] DEBUG [admin] BolaoNet.Domain.Services.Boloes.BolaoService - Carregamento de bolões do usuário [admin] total: 0 [00:00:00.3365628]
+2021-06-20 16:28:56,006 [9] DEBUG [admin] BolaoNet.Domain.Services.Boloes.BolaoService - Buscando saldo de pagamento do usuário [admin] total: 0 [00:00:00.2324961]
+2021-06-20 16:28:56,425 [9] DEBUG [admin] BolaoNet.Domain.Services.Boloes.JogoUsuarioService - Carregamento de próximos jogos do usuário [admin] com totalRetorno [5] total: 0 [00:00:00.4148935]
+2021-06-20 16:28:56,703 [9] DEBUG [admin] BolaoNet.Domain.Services.Boloes.JogoUsuarioService - Carregamento de pontos obtidos do usuário [admin] com totalRetorno [5] total: 0 [00:00:00.2708645]
+2021-06-20 16:29:07,138 [8] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoService - System.Collections.Generic.List`1[BolaoNet.Domain.Entities.Campeonatos.Campeonato]: Total of items:0 [00:00:00.2648470]
+2021-06-20 16:29:07,350 [8] DEBUG [admin] BolaoNet.Domain.Services.Boloes.BolaoMembroService - Carregamento de lista de bolões do usuário [admin] total: 0 [00:00:00.2050317]
+2021-06-20 16:29:14,616 [8] DEBUG [admin] BolaoNet.Domain.Services.Boloes.BolaoService - System.Collections.Generic.List`1[BolaoNet.Domain.Entities.Boloes.Bolao]: Total of items:0 [00:00:00.3053603]
+2021-06-20 16:29:15,138 [8] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoService - System.Collections.Generic.List`1[BolaoNet.Domain.Entities.Campeonatos.Campeonato]: Total of items:0 [00:00:00.5152025]
+2021-06-20 16:29:25,212 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoService - Campeonato: (ID= [Nome = Copa do Mundo 2018]) Not loaded. [00:00:00.2050953]
+2021-06-20 16:29:25,222 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoService - Campeonato: Inserting ...
+2021-06-20 16:29:26,109 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoService - Campeonato: (ID= [Nome = Copa do Mundo 2018]) Inserted. [00:00:00.8833989]
+2021-06-20 16:29:26,111 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoService - Campeonato: (ID= [Nome = Copa do Mundo 2018]) loaded. [00:00:00.0008973]
+2021-06-20 16:29:26,386 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Luzhniki]) Not loaded. [00:00:00.2404119]
+2021-06-20 16:29:26,390 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: Inserting ...
+2021-06-20 16:29:27,053 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Luzhniki]) Inserted. [00:00:00.6609760]
+2021-06-20 16:29:27,319 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = A]) Not loaded. [00:00:00.2616953]
+2021-06-20 16:29:27,325 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: Inserting ...
+2021-06-20 16:29:27,953 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = A]) Inserted. [00:00:00.6245475]
+2021-06-20 16:29:28,183 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Rússia]) Not loaded. [00:00:00.2276558]
+2021-06-20 16:29:28,188 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: Inserting ...
+2021-06-20 16:29:28,812 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Rússia]) Inserted. [00:00:00.6221200]
+2021-06-20 16:29:29,008 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Arábia Saudita]) Not loaded. [00:00:00.1927996]
+2021-06-20 16:29:29,012 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: Inserting ...
+2021-06-20 16:29:29,596 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Arábia Saudita]) Inserted. [00:00:00.5820328]
+2021-06-20 16:29:29,911 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Rússia]) Not loaded. [00:00:00.3101098]
+2021-06-20 16:29:29,914 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: Inserting ...
+2021-06-20 16:29:30,549 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Rússia]) Inserted. [00:00:00.6330705]
+2021-06-20 16:29:30,773 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Arábia Saudita]) Not loaded. [00:00:00.2139119]
+2021-06-20 16:29:30,774 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: Inserting ...
+2021-06-20 16:29:31,366 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Arábia Saudita]) Inserted. [00:00:00.5911002]
+2021-06-20 16:29:31,642 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) Not loaded. [00:00:00.2656334]
+2021-06-20 16:29:31,651 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: Inserting ...
+2021-06-20 16:29:32,276 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) Inserted. [00:00:00.6227733]
+2021-06-20 16:29:32,584 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = A] [NomeTime = Rússia]) Not loaded. [00:00:00.2979224]
+2021-06-20 16:29:32,590 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: Inserting ...
+2021-06-20 16:29:33,210 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = A] [NomeTime = Rússia]) Inserted. [00:00:00.6161547]
+2021-06-20 16:29:33,437 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = A] [NomeTime = Arábia Saudita]) Not loaded. [00:00:00.2260541]
+2021-06-20 16:29:33,440 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: Inserting ...
+2021-06-20 16:29:34,025 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = A] [NomeTime = Arábia Saudita]) Inserted. [00:00:00.5834249]
+2021-06-20 16:29:34,035 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:29:34,407 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 1]) Not loaded. [00:00:00.3693945]
+2021-06-20 16:29:34,412 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:29:35,079 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 1]) Inserted. [00:00:00.6655349]
+2021-06-20 16:29:35,287 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Ekaterinburg]) Not loaded. [00:00:00.2079063]
+2021-06-20 16:29:35,287 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: Inserting ...
+2021-06-20 16:29:35,871 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Ekaterinburg]) Inserted. [00:00:00.5840420]
+2021-06-20 16:29:35,873 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = A]) loaded. [00:00:00.0023582]
+2021-06-20 16:29:36,069 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Egito]) Not loaded. [00:00:00.1947699]
+2021-06-20 16:29:36,071 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: Inserting ...
+2021-06-20 16:29:36,665 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Egito]) Inserted. [00:00:00.5929774]
+2021-06-20 16:29:36,868 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Uruguai]) Not loaded. [00:00:00.2004726]
+2021-06-20 16:29:36,870 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: Inserting ...
+2021-06-20 16:29:37,449 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Uruguai]) Inserted. [00:00:00.5769671]
+2021-06-20 16:29:37,657 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Egito]) Not loaded. [00:00:00.2004673]
+2021-06-20 16:29:37,657 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: Inserting ...
+2021-06-20 16:29:38,247 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Egito]) Inserted. [00:00:00.5899426]
+2021-06-20 16:29:38,445 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Uruguai]) Not loaded. [00:00:00.1932083]
+2021-06-20 16:29:38,449 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: Inserting ...
+2021-06-20 16:29:39,031 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Uruguai]) Inserted. [00:00:00.5807521]
+2021-06-20 16:29:39,034 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:29:39,234 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = A] [NomeTime = Egito]) Not loaded. [00:00:00.1966101]
+2021-06-20 16:29:39,234 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: Inserting ...
+2021-06-20 16:29:39,826 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = A] [NomeTime = Egito]) Inserted. [00:00:00.5925351]
+2021-06-20 16:29:40,033 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = A] [NomeTime = Uruguai]) Not loaded. [00:00:00.2052622]
+2021-06-20 16:29:40,034 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: Inserting ...
+2021-06-20 16:29:40,630 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = A] [NomeTime = Uruguai]) Inserted. [00:00:00.5942691]
+2021-06-20 16:29:40,633 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:29:40,845 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 2]) Not loaded. [00:00:00.2068974]
+2021-06-20 16:29:40,848 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:29:41,454 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 2]) Inserted. [00:00:00.6027135]
+2021-06-20 16:29:41,659 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Krestovsky]) Not loaded. [00:00:00.2006832]
+2021-06-20 16:29:41,660 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: Inserting ...
+2021-06-20 16:29:42,256 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Krestovsky]) Inserted. [00:00:00.5945692]
+2021-06-20 16:29:42,260 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = A]) loaded. [00:00:00.0010516]
+2021-06-20 16:29:42,265 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Rússia]) loaded. [00:00:00.0009966]
+2021-06-20 16:29:42,270 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Egito]) loaded. [00:00:00.0013721]
+2021-06-20 16:29:42,273 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Rússia]) loaded. [00:00:00.0010041]
+2021-06-20 16:29:42,279 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Egito]) loaded. [00:00:00.0017015]
+2021-06-20 16:29:42,280 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:29:42,285 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = A] [NomeTime = Rússia]) loaded. [00:00:00]
+2021-06-20 16:29:42,289 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = A] [NomeTime = Egito]) loaded. [00:00:00.0041828]
+2021-06-20 16:29:42,291 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:29:42,493 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 17]) Not loaded. [00:00:00.1992154]
+2021-06-20 16:29:42,493 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:29:43,114 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 17]) Inserted. [00:00:00.6199867]
+2021-06-20 16:29:43,314 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Arena Rostov]) Not loaded. [00:00:00.2000072]
+2021-06-20 16:29:43,315 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: Inserting ...
+2021-06-20 16:29:43,908 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Arena Rostov]) Inserted. [00:00:00.5915482]
+2021-06-20 16:29:43,912 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = A]) loaded. [00:00:00.0020107]
+2021-06-20 16:29:43,916 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Uruguai]) loaded. [00:00:00.0010547]
+2021-06-20 16:29:43,921 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Arábia Saudita]) loaded. [00:00:00.0019628]
+2021-06-20 16:29:43,924 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Uruguai]) loaded. [00:00:00.0010659]
+2021-06-20 16:29:43,928 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Arábia Saudita]) loaded. [00:00:00.0009987]
+2021-06-20 16:29:43,929 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:29:43,929 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = A] [NomeTime = Uruguai]) loaded. [00:00:00]
+2021-06-20 16:29:43,936 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = A] [NomeTime = Arábia Saudita]) loaded. [00:00:00.0020911]
+2021-06-20 16:29:43,941 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:29:44,142 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 18]) Not loaded. [00:00:00.1991243]
+2021-06-20 16:29:44,142 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:29:44,739 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 18]) Inserted. [00:00:00.5965321]
+2021-06-20 16:29:44,950 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Estádio de Samara]) Not loaded. [00:00:00.2069071]
+2021-06-20 16:29:44,952 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: Inserting ...
+2021-06-20 16:29:45,562 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Estádio de Samara]) Inserted. [00:00:00.6089822]
+2021-06-20 16:29:45,566 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = A]) loaded. [00:00:00.0009971]
+2021-06-20 16:29:45,571 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Uruguai]) loaded. [00:00:00.0020309]
+2021-06-20 16:29:45,575 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Rússia]) loaded. [00:00:00]
+2021-06-20 16:29:45,581 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Uruguai]) loaded. [00:00:00.0010482]
+2021-06-20 16:29:45,585 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Rússia]) loaded. [00:00:00]
+2021-06-20 16:29:45,589 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00.0008752]
+2021-06-20 16:29:45,590 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = A] [NomeTime = Uruguai]) loaded. [00:00:00]
+2021-06-20 16:29:45,594 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = A] [NomeTime = Rússia]) loaded. [00:00:00]
+2021-06-20 16:29:45,595 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:29:45,794 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 33]) Not loaded. [00:00:00.1982409]
+2021-06-20 16:29:45,794 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:29:46,395 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 33]) Inserted. [00:00:00.5933456]
+2021-06-20 16:29:46,597 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Arena Volgogrado]) Not loaded. [00:00:00.1983040]
+2021-06-20 16:29:46,600 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: Inserting ...
+2021-06-20 16:29:47,187 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Arena Volgogrado]) Inserted. [00:00:00.5845623]
+2021-06-20 16:29:47,189 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = A]) loaded. [00:00:00.0006614]
+2021-06-20 16:29:47,191 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Arábia Saudita]) loaded. [00:00:00]
+2021-06-20 16:29:47,193 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Egito]) loaded. [00:00:00]
+2021-06-20 16:29:47,195 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Arábia Saudita]) loaded. [00:00:00.0008460]
+2021-06-20 16:29:47,196 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Egito]) loaded. [00:00:00]
+2021-06-20 16:29:47,198 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:29:47,200 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = A] [NomeTime = Arábia Saudita]) loaded. [00:00:00]
+2021-06-20 16:29:47,200 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = A] [NomeTime = Egito]) loaded. [00:00:00]
+2021-06-20 16:29:47,204 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00.0010042]
+2021-06-20 16:29:47,408 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 34]) Not loaded. [00:00:00.2038772]
+2021-06-20 16:29:47,409 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:29:47,999 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 34]) Inserted. [00:00:00.5889518]
+2021-06-20 16:29:48,209 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Fisht Olympic]) Not loaded. [00:00:00.2099456]
+2021-06-20 16:29:48,213 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: Inserting ...
+2021-06-20 16:29:48,817 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Fisht Olympic]) Inserted. [00:00:00.6008673]
+2021-06-20 16:29:49,017 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = B]) Not loaded. [00:00:00.1989840]
+2021-06-20 16:29:49,021 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: Inserting ...
+2021-06-20 16:29:49,605 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = B]) Inserted. [00:00:00.5840140]
+2021-06-20 16:29:49,799 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Portugal]) Not loaded. [00:00:00.1895729]
+2021-06-20 16:29:49,808 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: Inserting ...
+2021-06-20 16:29:50,428 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Portugal]) Inserted. [00:00:00.6174038]
+2021-06-20 16:29:50,627 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Espanha]) Not loaded. [00:00:00.1967978]
+2021-06-20 16:29:50,629 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: Inserting ...
+2021-06-20 16:29:51,248 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Espanha]) Inserted. [00:00:00.6189628]
+2021-06-20 16:29:51,460 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Portugal]) Not loaded. [00:00:00.2115806]
+2021-06-20 16:29:51,462 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: Inserting ...
+2021-06-20 16:29:52,078 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Portugal]) Inserted. [00:00:00.6151800]
+2021-06-20 16:29:52,280 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Espanha]) Not loaded. [00:00:00.2016906]
+2021-06-20 16:29:52,286 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: Inserting ...
+2021-06-20 16:29:52,884 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Espanha]) Inserted. [00:00:00.5973446]
+2021-06-20 16:29:52,889 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:29:53,096 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = B] [NomeTime = Portugal]) Not loaded. [00:00:00.2064355]
+2021-06-20 16:29:53,096 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: Inserting ...
+2021-06-20 16:29:53,693 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = B] [NomeTime = Portugal]) Inserted. [00:00:00.5903538]
+2021-06-20 16:29:53,893 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = B] [NomeTime = Espanha]) Not loaded. [00:00:00.1971835]
+2021-06-20 16:29:53,896 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: Inserting ...
+2021-06-20 16:29:54,502 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = B] [NomeTime = Espanha]) Inserted. [00:00:00.6044201]
+2021-06-20 16:29:54,511 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00.0010390]
+2021-06-20 16:29:54,713 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 3]) Not loaded. [00:00:00.2000206]
+2021-06-20 16:29:54,715 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:29:55,318 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 3]) Inserted. [00:00:00.5996343]
+2021-06-20 16:29:55,322 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Krestovsky]) loaded. [00:00:00]
+2021-06-20 16:29:55,326 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = B]) loaded. [00:00:00.0009975]
+2021-06-20 16:29:55,519 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Marrocos]) Not loaded. [00:00:00.1914180]
+2021-06-20 16:29:55,527 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: Inserting ...
+2021-06-20 16:29:56,134 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Marrocos]) Inserted. [00:00:00.6045864]
+2021-06-20 16:29:56,345 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Irã]) Not loaded. [00:00:00.2015363]
+2021-06-20 16:29:56,347 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: Inserting ...
+2021-06-20 16:29:56,946 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Irã]) Inserted. [00:00:00.5958172]
+2021-06-20 16:29:57,164 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Marrocos]) Not loaded. [00:00:00.2128712]
+2021-06-20 16:29:57,166 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: Inserting ...
+2021-06-20 16:29:57,772 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Marrocos]) Inserted. [00:00:00.6064094]
+2021-06-20 16:29:57,979 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Irã]) Not loaded. [00:00:00.1996285]
+2021-06-20 16:29:57,982 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: Inserting ...
+2021-06-20 16:29:58,579 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Irã]) Inserted. [00:00:00.5937137]
+2021-06-20 16:29:58,580 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:29:58,782 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = B] [NomeTime = Marrocos]) Not loaded. [00:00:00.2022462]
+2021-06-20 16:29:58,794 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: Inserting ...
+2021-06-20 16:29:59,382 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = B] [NomeTime = Marrocos]) Inserted. [00:00:00.5868267]
+2021-06-20 16:29:59,602 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = B] [NomeTime = Irã]) Not loaded. [00:00:00.2196343]
+2021-06-20 16:29:59,603 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: Inserting ...
+2021-06-20 16:30:00,186 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = B] [NomeTime = Irã]) Inserted. [00:00:00.5834728]
+2021-06-20 16:30:00,186 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:30:00,392 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 4]) Not loaded. [00:00:00.2017480]
+2021-06-20 16:30:00,392 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:30:01,000 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 4]) Inserted. [00:00:00.6075820]
+2021-06-20 16:30:01,009 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Luzhniki]) loaded. [00:00:00.0010449]
+2021-06-20 16:30:01,011 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = B]) loaded. [00:00:00]
+2021-06-20 16:30:01,011 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Portugal]) loaded. [00:00:00]
+2021-06-20 16:30:01,019 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Marrocos]) loaded. [00:00:00.0081928]
+2021-06-20 16:30:01,025 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Portugal]) loaded. [00:00:00.0016428]
+2021-06-20 16:30:01,026 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Marrocos]) loaded. [00:00:00]
+2021-06-20 16:30:01,026 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:30:01,036 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = B] [NomeTime = Portugal]) loaded. [00:00:00]
+2021-06-20 16:30:01,041 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = B] [NomeTime = Marrocos]) loaded. [00:00:00.0009964]
+2021-06-20 16:30:01,045 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00.0009989]
+2021-06-20 16:30:01,253 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 19]) Not loaded. [00:00:00.2078709]
+2021-06-20 16:30:01,257 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:30:01,865 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 19]) Inserted. [00:00:00.6073151]
+2021-06-20 16:30:02,064 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Kazan Arena]) Not loaded. [00:00:00.1993264]
+2021-06-20 16:30:02,064 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: Inserting ...
+2021-06-20 16:30:02,672 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Kazan Arena]) Inserted. [00:00:00.6012384]
+2021-06-20 16:30:02,674 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = B]) loaded. [00:00:00.0010433]
+2021-06-20 16:30:02,676 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Irã]) loaded. [00:00:00.0009973]
+2021-06-20 16:30:02,678 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Espanha]) loaded. [00:00:00]
+2021-06-20 16:30:02,680 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Irã]) loaded. [00:00:00]
+2021-06-20 16:30:02,681 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Espanha]) loaded. [00:00:00]
+2021-06-20 16:30:02,681 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:30:02,681 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = B] [NomeTime = Irã]) loaded. [00:00:00]
+2021-06-20 16:30:02,686 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = B] [NomeTime = Espanha]) loaded. [00:00:00]
+2021-06-20 16:30:02,689 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:30:02,887 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 20]) Not loaded. [00:00:00.1958312]
+2021-06-20 16:30:02,888 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:30:03,505 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 20]) Inserted. [00:00:00.6173328]
+2021-06-20 16:30:03,719 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Arena Mordovia]) Not loaded. [00:00:00.2040845]
+2021-06-20 16:30:03,720 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: Inserting ...
+2021-06-20 16:30:04,309 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Arena Mordovia]) Inserted. [00:00:00.5890232]
+2021-06-20 16:30:04,311 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = B]) loaded. [00:00:00]
+2021-06-20 16:30:04,313 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Irã]) loaded. [00:00:00]
+2021-06-20 16:30:04,317 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Portugal]) loaded. [00:00:00.0009995]
+2021-06-20 16:30:04,319 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Irã]) loaded. [00:00:00.0009976]
+2021-06-20 16:30:04,320 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Portugal]) loaded. [00:00:00]
+2021-06-20 16:30:04,321 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:30:04,321 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = B] [NomeTime = Irã]) loaded. [00:00:00]
+2021-06-20 16:30:04,321 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = B] [NomeTime = Portugal]) loaded. [00:00:00]
+2021-06-20 16:30:04,321 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:30:04,538 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 35]) Not loaded. [00:00:00.2175040]
+2021-06-20 16:30:04,538 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:30:05,184 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 35]) Inserted. [00:00:00.6443268]
+2021-06-20 16:30:05,411 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Estádio de Kaliningrado]) Not loaded. [00:00:00.2268158]
+2021-06-20 16:30:05,415 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: Inserting ...
+2021-06-20 16:30:06,097 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Estádio de Kaliningrado]) Inserted. [00:00:00.6802515]
+2021-06-20 16:30:06,101 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = B]) loaded. [00:00:00.0003251]
+2021-06-20 16:30:06,103 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Espanha]) loaded. [00:00:00]
+2021-06-20 16:30:06,103 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Marrocos]) loaded. [00:00:00]
+2021-06-20 16:30:06,103 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Espanha]) loaded. [00:00:00]
+2021-06-20 16:30:06,114 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Marrocos]) loaded. [00:00:00.0015421]
+2021-06-20 16:30:06,116 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:30:06,116 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = B] [NomeTime = Espanha]) loaded. [00:00:00]
+2021-06-20 16:30:06,124 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = B] [NomeTime = Marrocos]) loaded. [00:00:00.0010003]
+2021-06-20 16:30:06,128 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00.0010467]
+2021-06-20 16:30:06,343 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 36]) Not loaded. [00:00:00.2117428]
+2021-06-20 16:30:06,347 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:30:06,966 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 36]) Inserted. [00:00:00.6164136]
+2021-06-20 16:30:06,968 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Kazan Arena]) loaded. [00:00:00]
+2021-06-20 16:30:07,167 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = C]) Not loaded. [00:00:00.1986252]
+2021-06-20 16:30:07,167 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: Inserting ...
+2021-06-20 16:30:07,753 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = C]) Inserted. [00:00:00.5867098]
+2021-06-20 16:30:07,946 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = França]) Not loaded. [00:00:00.1929979]
+2021-06-20 16:30:07,954 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: Inserting ...
+2021-06-20 16:30:08,535 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = França]) Inserted. [00:00:00.5807979]
+2021-06-20 16:30:08,746 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Austrália]) Not loaded. [00:00:00.2012395]
+2021-06-20 16:30:08,746 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: Inserting ...
+2021-06-20 16:30:09,351 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Austrália]) Inserted. [00:00:00.6058337]
+2021-06-20 16:30:09,562 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = França]) Not loaded. [00:00:00.2104733]
+2021-06-20 16:30:09,564 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: Inserting ...
+2021-06-20 16:30:10,143 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = França]) Inserted. [00:00:00.5791064]
+2021-06-20 16:30:10,349 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Austrália]) Not loaded. [00:00:00.1980289]
+2021-06-20 16:30:10,349 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: Inserting ...
+2021-06-20 16:30:10,934 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Austrália]) Inserted. [00:00:00.5845284]
+2021-06-20 16:30:10,941 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00.0009970]
+2021-06-20 16:30:11,150 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = C] [NomeTime = França]) Not loaded. [00:00:00.2090866]
+2021-06-20 16:30:11,154 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: Inserting ...
+2021-06-20 16:30:11,772 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = C] [NomeTime = França]) Inserted. [00:00:00.6148201]
+2021-06-20 16:30:12,011 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = C] [NomeTime = Austrália]) Not loaded. [00:00:00.2390047]
+2021-06-20 16:30:12,011 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: Inserting ...
+2021-06-20 16:30:12,671 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = C] [NomeTime = Austrália]) Inserted. [00:00:00.6591489]
+2021-06-20 16:30:12,671 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:30:12,880 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 5]) Not loaded. [00:00:00.2097285]
+2021-06-20 16:30:12,882 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:30:13,490 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 5]) Inserted. [00:00:00.6026844]
+2021-06-20 16:30:13,494 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Arena Mordovia]) loaded. [00:00:00.0012595]
+2021-06-20 16:30:13,498 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = C]) loaded. [00:00:00.0010058]
+2021-06-20 16:30:13,701 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Peru]) Not loaded. [00:00:00.1997382]
+2021-06-20 16:30:13,702 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: Inserting ...
+2021-06-20 16:30:14,296 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Peru]) Inserted. [00:00:00.5936756]
+2021-06-20 16:30:14,501 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Dinamarca]) Not loaded. [00:00:00.2017713]
+2021-06-20 16:30:14,501 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: Inserting ...
+2021-06-20 16:30:15,135 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Dinamarca]) Inserted. [00:00:00.6349330]
+2021-06-20 16:30:15,363 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Peru]) Not loaded. [00:00:00.2184041]
+2021-06-20 16:30:15,366 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: Inserting ...
+2021-06-20 16:30:15,965 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Peru]) Inserted. [00:00:00.5976443]
+2021-06-20 16:30:16,163 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Dinamarca]) Not loaded. [00:00:00.1957485]
+2021-06-20 16:30:16,169 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: Inserting ...
+2021-06-20 16:30:16,764 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Dinamarca]) Inserted. [00:00:00.5906393]
+2021-06-20 16:30:16,772 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00.0009940]
+2021-06-20 16:30:16,972 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = C] [NomeTime = Peru]) Not loaded. [00:00:00.1962217]
+2021-06-20 16:30:16,975 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: Inserting ...
+2021-06-20 16:30:17,570 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = C] [NomeTime = Peru]) Inserted. [00:00:00.5918818]
+2021-06-20 16:30:17,771 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = C] [NomeTime = Dinamarca]) Not loaded. [00:00:00.1977000]
+2021-06-20 16:30:17,774 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: Inserting ...
+2021-06-20 16:30:18,375 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = C] [NomeTime = Dinamarca]) Inserted. [00:00:00.5976570]
+2021-06-20 16:30:18,379 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00.0015203]
+2021-06-20 16:30:18,614 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 6]) Not loaded. [00:00:00.2324970]
+2021-06-20 16:30:18,620 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:30:19,233 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 6]) Inserted. [00:00:00.6103016]
+2021-06-20 16:30:19,436 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Ekaterninburg Arena]) Not loaded. [00:00:00.1977516]
+2021-06-20 16:30:19,438 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: Inserting ...
+2021-06-20 16:30:20,053 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Ekaterninburg Arena]) Inserted. [00:00:00.6130827]
+2021-06-20 16:30:20,057 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = C]) loaded. [00:00:00.0009962]
+2021-06-20 16:30:20,062 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = França]) loaded. [00:00:00.0009983]
+2021-06-20 16:30:20,065 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Peru]) loaded. [00:00:00.0010014]
+2021-06-20 16:30:20,067 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = França]) loaded. [00:00:00.0010016]
+2021-06-20 16:30:20,068 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Peru]) loaded. [00:00:00]
+2021-06-20 16:30:20,068 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:30:20,068 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = C] [NomeTime = França]) loaded. [00:00:00]
+2021-06-20 16:30:20,073 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = C] [NomeTime = Peru]) loaded. [00:00:00]
+2021-06-20 16:30:20,074 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:30:20,293 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 21]) Not loaded. [00:00:00.2171658]
+2021-06-20 16:30:20,293 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:30:20,929 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 21]) Inserted. [00:00:00.6368865]
+2021-06-20 16:30:20,929 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Estádio de Samara]) loaded. [00:00:00]
+2021-06-20 16:30:20,937 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = C]) loaded. [00:00:00.0076771]
+2021-06-20 16:30:20,940 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Dinamarca]) loaded. [00:00:00.0010697]
+2021-06-20 16:30:20,942 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Austrália]) loaded. [00:00:00.0009972]
+2021-06-20 16:30:20,942 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Dinamarca]) loaded. [00:00:00]
+2021-06-20 16:30:20,942 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Austrália]) loaded. [00:00:00]
+2021-06-20 16:30:20,942 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:30:20,942 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = C] [NomeTime = Dinamarca]) loaded. [00:00:00]
+2021-06-20 16:30:20,950 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = C] [NomeTime = Austrália]) loaded. [00:00:00]
+2021-06-20 16:30:20,951 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:30:21,157 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 22]) Not loaded. [00:00:00.2059082]
+2021-06-20 16:30:21,158 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:30:21,805 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 22]) Inserted. [00:00:00.6472732]
+2021-06-20 16:30:21,805 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Luzhniki]) loaded. [00:00:00]
+2021-06-20 16:30:21,805 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = C]) loaded. [00:00:00]
+2021-06-20 16:30:21,813 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Dinamarca]) loaded. [00:00:00]
+2021-06-20 16:30:21,813 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = França]) loaded. [00:00:00]
+2021-06-20 16:30:21,821 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Dinamarca]) loaded. [00:00:00.0010032]
+2021-06-20 16:30:21,824 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = França]) loaded. [00:00:00.0010489]
+2021-06-20 16:30:21,825 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:30:21,825 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = C] [NomeTime = Dinamarca]) loaded. [00:00:00]
+2021-06-20 16:30:21,833 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = C] [NomeTime = França]) loaded. [00:00:00.0080688]
+2021-06-20 16:30:21,837 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00.0009964]
+2021-06-20 16:30:22,038 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 37]) Not loaded. [00:00:00.1993832]
+2021-06-20 16:30:22,041 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:30:22,635 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 37]) Inserted. [00:00:00.5933998]
+2021-06-20 16:30:22,644 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Fisht Olympic]) loaded. [00:00:00.0084001]
+2021-06-20 16:30:22,645 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = C]) loaded. [00:00:00]
+2021-06-20 16:30:22,645 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Austrália]) loaded. [00:00:00]
+2021-06-20 16:30:22,645 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Peru]) loaded. [00:00:00]
+2021-06-20 16:30:22,645 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Austrália]) loaded. [00:00:00]
+2021-06-20 16:30:22,652 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Peru]) loaded. [00:00:00.0009999]
+2021-06-20 16:30:22,654 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:30:22,655 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = C] [NomeTime = Austrália]) loaded. [00:00:00]
+2021-06-20 16:30:22,655 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = C] [NomeTime = Peru]) loaded. [00:00:00]
+2021-06-20 16:30:22,655 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:30:22,854 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 38]) Not loaded. [00:00:00.1992683]
+2021-06-20 16:30:22,854 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:30:23,453 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 38]) Inserted. [00:00:00.5987219]
+2021-06-20 16:30:23,669 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Otkrytiye Arena]) Not loaded. [00:00:00.2129753]
+2021-06-20 16:30:23,671 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: Inserting ...
+2021-06-20 16:30:24,269 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Otkrytiye Arena]) Inserted. [00:00:00.5974386]
+2021-06-20 16:30:24,497 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = D]) Not loaded. [00:00:00.2231462]
+2021-06-20 16:30:24,500 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: Inserting ...
+2021-06-20 16:30:25,091 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = D]) Inserted. [00:00:00.5878715]
+2021-06-20 16:30:25,292 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Argentina]) Not loaded. [00:00:00.1978052]
+2021-06-20 16:30:25,297 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: Inserting ...
+2021-06-20 16:30:25,899 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Argentina]) Inserted. [00:00:00.5988774]
+2021-06-20 16:30:26,096 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Islândia]) Not loaded. [00:00:00.1946314]
+2021-06-20 16:30:26,096 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: Inserting ...
+2021-06-20 16:30:26,712 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Islândia]) Inserted. [00:00:00.6162306]
+2021-06-20 16:30:26,912 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Argentina]) Not loaded. [00:00:00.1979531]
+2021-06-20 16:30:26,915 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: Inserting ...
+2021-06-20 16:30:27,544 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Argentina]) Inserted. [00:00:00.6245010]
+2021-06-20 16:30:27,758 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Islândia]) Not loaded. [00:00:00.2046066]
+2021-06-20 16:30:27,762 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: Inserting ...
+2021-06-20 16:30:28,359 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Islândia]) Inserted. [00:00:00.5957325]
+2021-06-20 16:30:28,363 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00.0009965]
+2021-06-20 16:30:28,560 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = D] [NomeTime = Argentina]) Not loaded. [00:00:00.1951083]
+2021-06-20 16:30:28,567 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: Inserting ...
+2021-06-20 16:30:29,152 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = D] [NomeTime = Argentina]) Inserted. [00:00:00.5848237]
+2021-06-20 16:30:29,358 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = D] [NomeTime = Islândia]) Not loaded. [00:00:00.2013174]
+2021-06-20 16:30:29,359 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: Inserting ...
+2021-06-20 16:30:29,991 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = D] [NomeTime = Islândia]) Inserted. [00:00:00.6308976]
+2021-06-20 16:30:29,992 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:30:30,199 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 7]) Not loaded. [00:00:00.2075158]
+2021-06-20 16:30:30,205 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:30:30,805 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 7]) Inserted. [00:00:00.5989292]
+2021-06-20 16:30:30,814 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Estádio de Kaliningrado]) loaded. [00:00:00]
+2021-06-20 16:30:30,814 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = D]) loaded. [00:00:00]
+2021-06-20 16:30:31,019 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Croácia]) Not loaded. [00:00:00.1926825]
+2021-06-20 16:30:31,023 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: Inserting ...
+2021-06-20 16:30:31,637 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Croácia]) Inserted. [00:00:00.6116343]
+2021-06-20 16:30:31,837 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Nigéria]) Not loaded. [00:00:00.1976139]
+2021-06-20 16:30:31,837 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: Inserting ...
+2021-06-20 16:30:32,434 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Nigéria]) Inserted. [00:00:00.5964797]
+2021-06-20 16:30:32,650 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Croácia]) Not loaded. [00:00:00.2146344]
+2021-06-20 16:30:32,653 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: Inserting ...
+2021-06-20 16:30:33,233 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Croácia]) Inserted. [00:00:00.5784070]
+2021-06-20 16:30:33,466 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Nigéria]) Not loaded. [00:00:00.2252924]
+2021-06-20 16:30:33,466 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: Inserting ...
+2021-06-20 16:30:34,106 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Nigéria]) Inserted. [00:00:00.6401441]
+2021-06-20 16:30:34,106 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:30:34,299 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = D] [NomeTime = Croácia]) Not loaded. [00:00:00.1923746]
+2021-06-20 16:30:34,307 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: Inserting ...
+2021-06-20 16:30:34,898 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = D] [NomeTime = Croácia]) Inserted. [00:00:00.5909902]
+2021-06-20 16:30:35,098 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = D] [NomeTime = Nigéria]) Not loaded. [00:00:00.1999003]
+2021-06-20 16:30:35,106 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: Inserting ...
+2021-06-20 16:30:35,710 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = D] [NomeTime = Nigéria]) Inserted. [00:00:00.6034703]
+2021-06-20 16:30:35,714 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00.0009970]
+2021-06-20 16:30:35,917 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 8]) Not loaded. [00:00:00.1991179]
+2021-06-20 16:30:35,928 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:30:36,548 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 8]) Inserted. [00:00:00.6175594]
+2021-06-20 16:30:36,760 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Novgorod]) Not loaded. [00:00:00.2031382]
+2021-06-20 16:30:36,764 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: Inserting ...
+2021-06-20 16:30:37,360 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Novgorod]) Inserted. [00:00:00.5935147]
+2021-06-20 16:30:37,362 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = D]) loaded. [00:00:00.0010303]
+2021-06-20 16:30:37,362 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Argentina]) loaded. [00:00:00]
+2021-06-20 16:30:37,367 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Croácia]) loaded. [00:00:00.0043473]
+2021-06-20 16:30:37,368 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Argentina]) loaded. [00:00:00]
+2021-06-20 16:30:37,368 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Croácia]) loaded. [00:00:00]
+2021-06-20 16:30:37,368 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:30:37,368 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = D] [NomeTime = Argentina]) loaded. [00:00:00]
+2021-06-20 16:30:37,377 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = D] [NomeTime = Croácia]) loaded. [00:00:00]
+2021-06-20 16:30:37,379 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00.0009967]
+2021-06-20 16:30:37,579 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 23]) Not loaded. [00:00:00.2001763]
+2021-06-20 16:30:37,587 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:30:38,193 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 23]) Inserted. [00:00:00.6060771]
+2021-06-20 16:30:38,193 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Arena Volgogrado]) loaded. [00:00:00]
+2021-06-20 16:30:38,193 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = D]) loaded. [00:00:00]
+2021-06-20 16:30:38,201 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Nigéria]) loaded. [00:00:00]
+2021-06-20 16:30:38,207 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Islândia]) loaded. [00:00:00.0055875]
+2021-06-20 16:30:38,211 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Nigéria]) loaded. [00:00:00.0014335]
+2021-06-20 16:30:38,212 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Islândia]) loaded. [00:00:00]
+2021-06-20 16:30:38,212 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:30:38,212 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = D] [NomeTime = Nigéria]) loaded. [00:00:00]
+2021-06-20 16:30:38,220 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = D] [NomeTime = Islândia]) loaded. [00:00:00.0080990]
+2021-06-20 16:30:38,220 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:30:38,434 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 24]) Not loaded. [00:00:00.2105274]
+2021-06-20 16:30:38,434 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:30:39,090 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 24]) Inserted. [00:00:00.6486505]
+2021-06-20 16:30:39,090 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Krestovsky]) loaded. [00:00:00]
+2021-06-20 16:30:39,099 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = D]) loaded. [00:00:00.0081563]
+2021-06-20 16:30:39,099 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Nigéria]) loaded. [00:00:00]
+2021-06-20 16:30:39,106 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Argentina]) loaded. [00:00:00.0075660]
+2021-06-20 16:30:39,109 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Nigéria]) loaded. [00:00:00]
+2021-06-20 16:30:39,109 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Argentina]) loaded. [00:00:00]
+2021-06-20 16:30:39,117 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:30:39,124 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = D] [NomeTime = Nigéria]) loaded. [00:00:00.0009971]
+2021-06-20 16:30:39,126 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = D] [NomeTime = Argentina]) loaded. [00:00:00]
+2021-06-20 16:30:39,126 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:30:39,331 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 39]) Not loaded. [00:00:00.2053502]
+2021-06-20 16:30:39,331 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:30:39,951 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 39]) Inserted. [00:00:00.6201178]
+2021-06-20 16:30:40,153 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Arena Rosov]) Not loaded. [00:00:00.1996188]
+2021-06-20 16:30:40,154 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: Inserting ...
+2021-06-20 16:30:40,753 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Arena Rosov]) Inserted. [00:00:00.5991649]
+2021-06-20 16:30:40,754 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = D]) loaded. [00:00:00]
+2021-06-20 16:30:40,762 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Islândia]) loaded. [00:00:00]
+2021-06-20 16:30:40,770 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Croácia]) loaded. [00:00:00.0011089]
+2021-06-20 16:30:40,773 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Islândia]) loaded. [00:00:00]
+2021-06-20 16:30:40,773 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Croácia]) loaded. [00:00:00]
+2021-06-20 16:30:40,781 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00.0083675]
+2021-06-20 16:30:40,785 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = D] [NomeTime = Islândia]) loaded. [00:00:00.0028793]
+2021-06-20 16:30:40,786 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = D] [NomeTime = Croácia]) loaded. [00:00:00]
+2021-06-20 16:30:40,786 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:30:41,022 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 40]) Not loaded. [00:00:00.2356817]
+2021-06-20 16:30:41,022 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:30:41,654 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 40]) Inserted. [00:00:00.6315768]
+2021-06-20 16:30:41,662 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Arena Rostov]) loaded. [00:00:00]
+2021-06-20 16:30:41,883 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = E]) Not loaded. [00:00:00.2160426]
+2021-06-20 16:30:41,885 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: Inserting ...
+2021-06-20 16:30:42,500 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = E]) Inserted. [00:00:00.6137936]
+2021-06-20 16:30:42,704 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Brasil]) Not loaded. [00:00:00.2001797]
+2021-06-20 16:30:42,713 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: Inserting ...
+2021-06-20 16:30:43,299 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Brasil]) Inserted. [00:00:00.5824403]
+2021-06-20 16:30:43,500 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Suíça]) Not loaded. [00:00:00.1976796]
+2021-06-20 16:30:43,500 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: Inserting ...
+2021-06-20 16:30:44,116 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Suíça]) Inserted. [00:00:00.6166644]
+2021-06-20 16:30:44,316 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Brasil]) Not loaded. [00:00:00.1995154]
+2021-06-20 16:30:44,324 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: Inserting ...
+2021-06-20 16:30:44,930 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Brasil]) Inserted. [00:00:00.5980637]
+2021-06-20 16:30:45,148 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Suíça]) Not loaded. [00:00:00.2164638]
+2021-06-20 16:30:45,148 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: Inserting ...
+2021-06-20 16:30:45,779 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Suíça]) Inserted. [00:00:00.6304249]
+2021-06-20 16:30:45,779 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:30:45,978 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = E] [NomeTime = Brasil]) Not loaded. [00:00:00.1912500]
+2021-06-20 16:30:45,987 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: Inserting ...
+2021-06-20 16:30:46,594 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = E] [NomeTime = Brasil]) Inserted. [00:00:00.6074410]
+2021-06-20 16:30:46,827 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = E] [NomeTime = Suíça]) Not loaded. [00:00:00.2226177]
+2021-06-20 16:30:46,827 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: Inserting ...
+2021-06-20 16:30:47,446 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = E] [NomeTime = Suíça]) Inserted. [00:00:00.6196403]
+2021-06-20 16:30:47,446 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:30:47,659 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 9]) Not loaded. [00:00:00.2125322]
+2021-06-20 16:30:47,659 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:30:48,270 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 9]) Inserted. [00:00:00.6028680]
+2021-06-20 16:30:48,276 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Estádio de Samara]) loaded. [00:00:00.0019946]
+2021-06-20 16:30:48,280 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = E]) loaded. [00:00:00]
+2021-06-20 16:30:48,491 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Costa Rica]) Not loaded. [00:00:00.2075640]
+2021-06-20 16:30:48,491 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: Inserting ...
+2021-06-20 16:30:49,084 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Costa Rica]) Inserted. [00:00:00.5934920]
+2021-06-20 16:30:49,290 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Sérvia]) Not loaded. [00:00:00.2000365]
+2021-06-20 16:30:49,291 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: Inserting ...
+2021-06-20 16:30:49,888 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Sérvia]) Inserted. [00:00:00.5978041]
+2021-06-20 16:30:50,088 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Costa Rica]) Not loaded. [00:00:00.1991916]
+2021-06-20 16:30:50,088 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: Inserting ...
+2021-06-20 16:30:50,762 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Costa Rica]) Inserted. [00:00:00.6745428]
+2021-06-20 16:30:51,002 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Sérvia]) Not loaded. [00:00:00.2320770]
+2021-06-20 16:30:51,006 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: Inserting ...
+2021-06-20 16:30:51,602 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Sérvia]) Inserted. [00:00:00.5917700]
+2021-06-20 16:30:51,602 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:30:51,813 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = E] [NomeTime = Costa Rica]) Not loaded. [00:00:00.1945865]
+2021-06-20 16:30:51,813 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: Inserting ...
+2021-06-20 16:30:52,436 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = E] [NomeTime = Costa Rica]) Inserted. [00:00:00.6175372]
+2021-06-20 16:30:52,636 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = E] [NomeTime = Sérvia]) Not loaded. [00:00:00.2005546]
+2021-06-20 16:30:52,636 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: Inserting ...
+2021-06-20 16:30:53,242 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = E] [NomeTime = Sérvia]) Inserted. [00:00:00.6057703]
+2021-06-20 16:30:53,244 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:30:53,464 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 10]) Not loaded. [00:00:00.2152056]
+2021-06-20 16:30:53,465 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:30:54,086 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 10]) Inserted. [00:00:00.6205818]
+2021-06-20 16:30:54,087 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Krestovsky]) loaded. [00:00:00]
+2021-06-20 16:30:54,095 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = E]) loaded. [00:00:00.0083486]
+2021-06-20 16:30:54,098 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Brasil]) loaded. [00:00:00.0009966]
+2021-06-20 16:30:54,102 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Costa Rica]) loaded. [00:00:00.0009973]
+2021-06-20 16:30:54,102 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Brasil]) loaded. [00:00:00]
+2021-06-20 16:30:54,102 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Costa Rica]) loaded. [00:00:00]
+2021-06-20 16:30:54,102 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:30:54,112 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = E] [NomeTime = Brasil]) loaded. [00:00:00.0013026]
+2021-06-20 16:30:54,115 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = E] [NomeTime = Costa Rica]) loaded. [00:00:00.0009977]
+2021-06-20 16:30:54,117 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00.0009970]
+2021-06-20 16:30:54,325 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 25]) Not loaded. [00:00:00.2084745]
+2021-06-20 16:30:54,330 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:30:54,973 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 25]) Inserted. [00:00:00.6428194]
+2021-06-20 16:30:54,979 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Estádio de Kaliningrado]) loaded. [00:00:00.0020516]
+2021-06-20 16:30:54,983 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = E]) loaded. [00:00:00.0009966]
+2021-06-20 16:30:54,984 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Sérvia]) loaded. [00:00:00]
+2021-06-20 16:30:54,984 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Suíça]) loaded. [00:00:00]
+2021-06-20 16:30:54,992 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Sérvia]) loaded. [00:00:00.0080814]
+2021-06-20 16:30:54,997 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Suíça]) loaded. [00:00:00.0019932]
+2021-06-20 16:30:54,997 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:30:54,997 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = E] [NomeTime = Sérvia]) loaded. [00:00:00]
+2021-06-20 16:30:55,006 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = E] [NomeTime = Suíça]) loaded. [00:00:00.0011664]
+2021-06-20 16:30:55,007 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:30:55,216 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 26]) Not loaded. [00:00:00.2055535]
+2021-06-20 16:30:55,216 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:30:55,833 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 26]) Inserted. [00:00:00.6173521]
+2021-06-20 16:30:55,833 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Otkrytiye Arena]) loaded. [00:00:00]
+2021-06-20 16:30:55,844 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = E]) loaded. [00:00:00.0027844]
+2021-06-20 16:30:55,848 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Sérvia]) loaded. [00:00:00.0010545]
+2021-06-20 16:30:55,848 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Brasil]) loaded. [00:00:00]
+2021-06-20 16:30:55,848 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Sérvia]) loaded. [00:00:00]
+2021-06-20 16:30:55,861 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Brasil]) loaded. [00:00:00.0037664]
+2021-06-20 16:30:55,861 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:30:55,869 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = E] [NomeTime = Sérvia]) loaded. [00:00:00]
+2021-06-20 16:30:55,875 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = E] [NomeTime = Brasil]) loaded. [00:00:00.0061395]
+2021-06-20 16:30:55,879 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00.0010067]
+2021-06-20 16:30:56,102 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 41]) Not loaded. [00:00:00.2222399]
+2021-06-20 16:30:56,109 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:30:56,726 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 41]) Inserted. [00:00:00.6130641]
+2021-06-20 16:30:56,729 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Novgorod]) loaded. [00:00:00.0010345]
+2021-06-20 16:30:56,732 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = E]) loaded. [00:00:00.0009993]
+2021-06-20 16:30:56,736 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Suíça]) loaded. [00:00:00.0009973]
+2021-06-20 16:30:56,739 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Costa Rica]) loaded. [00:00:00.0011499]
+2021-06-20 16:30:56,742 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Suíça]) loaded. [00:00:00]
+2021-06-20 16:30:56,743 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Costa Rica]) loaded. [00:00:00]
+2021-06-20 16:30:56,743 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:30:56,743 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = E] [NomeTime = Suíça]) loaded. [00:00:00]
+2021-06-20 16:30:56,752 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = E] [NomeTime = Costa Rica]) loaded. [00:00:00.0081516]
+2021-06-20 16:30:56,752 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:30:56,951 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 42]) Not loaded. [00:00:00.1996139]
+2021-06-20 16:30:56,958 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:30:57,578 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 42]) Inserted. [00:00:00.6182071]
+2021-06-20 16:30:57,578 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Luzhniki]) loaded. [00:00:00]
+2021-06-20 16:30:57,778 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = F]) Not loaded. [00:00:00.1995844]
+2021-06-20 16:30:57,786 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: Inserting ...
+2021-06-20 16:30:58,399 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = F]) Inserted. [00:00:00.6086907]
+2021-06-20 16:30:58,623 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Alemanha]) Not loaded. [00:00:00.2247269]
+2021-06-20 16:30:58,624 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: Inserting ...
+2021-06-20 16:30:59,240 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Alemanha]) Inserted. [00:00:00.6151023]
+2021-06-20 16:30:59,439 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = México]) Not loaded. [00:00:00.1965054]
+2021-06-20 16:30:59,443 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: Inserting ...
+2021-06-20 16:31:00,065 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = México]) Inserted. [00:00:00.6220686]
+2021-06-20 16:31:00,263 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Alemanha]) Not loaded. [00:00:00.1975052]
+2021-06-20 16:31:00,265 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: Inserting ...
+2021-06-20 16:31:00,906 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Alemanha]) Inserted. [00:00:00.6410507]
+2021-06-20 16:31:01,105 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = México]) Not loaded. [00:00:00.1986220]
+2021-06-20 16:31:01,105 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: Inserting ...
+2021-06-20 16:31:01,705 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = México]) Inserted. [00:00:00.5998070]
+2021-06-20 16:31:01,705 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:31:01,903 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = F] [NomeTime = Alemanha]) Not loaded. [00:00:00.1984541]
+2021-06-20 16:31:01,911 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: Inserting ...
+2021-06-20 16:31:02,527 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = F] [NomeTime = Alemanha]) Inserted. [00:00:00.6157469]
+2021-06-20 16:31:02,734 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = F] [NomeTime = México]) Not loaded. [00:00:00.2019241]
+2021-06-20 16:31:02,745 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: Inserting ...
+2021-06-20 16:31:03,340 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = F] [NomeTime = México]) Inserted. [00:00:00.5909067]
+2021-06-20 16:31:03,348 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00.0009993]
+2021-06-20 16:31:03,547 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 11]) Not loaded. [00:00:00.1977124]
+2021-06-20 16:31:03,555 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:31:04,188 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 11]) Inserted. [00:00:00.6310014]
+2021-06-20 16:31:04,192 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Novgorod]) loaded. [00:00:00.0010652]
+2021-06-20 16:31:04,196 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = F]) loaded. [00:00:00.0009926]
+2021-06-20 16:31:04,413 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Suécia]) Not loaded. [00:00:00.2138924]
+2021-06-20 16:31:04,417 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: Inserting ...
+2021-06-20 16:31:05,025 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Suécia]) Inserted. [00:00:00.6057265]
+2021-06-20 16:31:05,230 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Coreia do Sul]) Not loaded. [00:00:00.2025607]
+2021-06-20 16:31:05,237 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: Inserting ...
+2021-06-20 16:31:05,891 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Coreia do Sul]) Inserted. [00:00:00.6532920]
+2021-06-20 16:31:06,098 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Suécia]) Not loaded. [00:00:00.2044672]
+2021-06-20 16:31:06,098 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: Inserting ...
+2021-06-20 16:31:06,695 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Suécia]) Inserted. [00:00:00.5964558]
+2021-06-20 16:31:06,893 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Coreia do Sul]) Not loaded. [00:00:00.1984919]
+2021-06-20 16:31:06,893 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: Inserting ...
+2021-06-20 16:31:07,492 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Coreia do Sul]) Inserted. [00:00:00.5908505]
+2021-06-20 16:31:07,492 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:31:07,707 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = F] [NomeTime = Suécia]) Not loaded. [00:00:00.2062544]
+2021-06-20 16:31:07,709 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: Inserting ...
+2021-06-20 16:31:08,291 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = F] [NomeTime = Suécia]) Inserted. [00:00:00.5818487]
+2021-06-20 16:31:08,513 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = F] [NomeTime = Coreia do Sul]) Not loaded. [00:00:00.2217931]
+2021-06-20 16:31:08,513 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: Inserting ...
+2021-06-20 16:31:09,122 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = F] [NomeTime = Coreia do Sul]) Inserted. [00:00:00.6092204]
+2021-06-20 16:31:09,122 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:31:09,322 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 12]) Not loaded. [00:00:00.1999943]
+2021-06-20 16:31:09,331 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:31:09,930 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 12]) Inserted. [00:00:00.5998484]
+2021-06-20 16:31:09,936 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Fisht Olympic]) loaded. [00:00:00.0010459]
+2021-06-20 16:31:09,936 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = F]) loaded. [00:00:00]
+2021-06-20 16:31:09,944 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Alemanha]) loaded. [00:00:00.0082075]
+2021-06-20 16:31:09,944 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Suécia]) loaded. [00:00:00]
+2021-06-20 16:31:09,952 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Alemanha]) loaded. [00:00:00.0010010]
+2021-06-20 16:31:09,954 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Suécia]) loaded. [00:00:00]
+2021-06-20 16:31:09,956 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:31:09,956 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = F] [NomeTime = Alemanha]) loaded. [00:00:00]
+2021-06-20 16:31:09,956 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = F] [NomeTime = Suécia]) loaded. [00:00:00]
+2021-06-20 16:31:09,964 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:31:10,170 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 27]) Not loaded. [00:00:00.2065024]
+2021-06-20 16:31:10,170 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:31:10,778 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 27]) Inserted. [00:00:00.6075380]
+2021-06-20 16:31:10,782 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Arena Rostov]) loaded. [00:00:00]
+2021-06-20 16:31:10,786 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = F]) loaded. [00:00:00.0007803]
+2021-06-20 16:31:10,791 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Coreia do Sul]) loaded. [00:00:00.0020552]
+2021-06-20 16:31:10,793 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = México]) loaded. [00:00:00]
+2021-06-20 16:31:10,793 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Coreia do Sul]) loaded. [00:00:00]
+2021-06-20 16:31:10,801 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = México]) loaded. [00:00:00.0009953]
+2021-06-20 16:31:10,801 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:31:10,801 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = F] [NomeTime = Coreia do Sul]) loaded. [00:00:00]
+2021-06-20 16:31:10,801 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = F] [NomeTime = México]) loaded. [00:00:00]
+2021-06-20 16:31:10,809 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00.0084011]
+2021-06-20 16:31:11,018 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 28]) Not loaded. [00:00:00.2068855]
+2021-06-20 16:31:11,019 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:31:11,634 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 28]) Inserted. [00:00:00.6141503]
+2021-06-20 16:31:11,634 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Ekaterninburg Arena]) loaded. [00:00:00]
+2021-06-20 16:31:11,634 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = F]) loaded. [00:00:00]
+2021-06-20 16:31:11,643 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Coreia do Sul]) loaded. [00:00:00]
+2021-06-20 16:31:11,648 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Alemanha]) loaded. [00:00:00.0047805]
+2021-06-20 16:31:11,652 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Coreia do Sul]) loaded. [00:00:00.0010484]
+2021-06-20 16:31:11,654 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Alemanha]) loaded. [00:00:00]
+2021-06-20 16:31:11,654 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:31:11,662 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = F] [NomeTime = Coreia do Sul]) loaded. [00:00:00.0009998]
+2021-06-20 16:31:11,664 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = F] [NomeTime = Alemanha]) loaded. [00:00:00]
+2021-06-20 16:31:11,666 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:31:11,890 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 43]) Not loaded. [00:00:00.2215088]
+2021-06-20 16:31:11,891 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:31:12,498 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 43]) Inserted. [00:00:00.6073169]
+2021-06-20 16:31:12,500 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Kazan Arena]) loaded. [00:00:00]
+2021-06-20 16:31:12,500 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = F]) loaded. [00:00:00]
+2021-06-20 16:31:12,508 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = México]) loaded. [00:00:00]
+2021-06-20 16:31:12,508 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Suécia]) loaded. [00:00:00]
+2021-06-20 16:31:12,513 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = México]) loaded. [00:00:00.0045005]
+2021-06-20 16:31:12,514 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Suécia]) loaded. [00:00:00]
+2021-06-20 16:31:12,514 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:31:12,514 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = F] [NomeTime = México]) loaded. [00:00:00]
+2021-06-20 16:31:12,514 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = F] [NomeTime = Suécia]) loaded. [00:00:00]
+2021-06-20 16:31:12,522 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00.0081547]
+2021-06-20 16:31:12,729 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 44]) Not loaded. [00:00:00.2071351]
+2021-06-20 16:31:12,731 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:31:13,322 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 44]) Inserted. [00:00:00.5899551]
+2021-06-20 16:31:13,332 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Fisht Olympic]) loaded. [00:00:00.0009966]
+2021-06-20 16:31:13,532 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = G]) Not loaded. [00:00:00.1960542]
+2021-06-20 16:31:13,532 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: Inserting ...
+2021-06-20 16:31:14,133 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = G]) Inserted. [00:00:00.6011530]
+2021-06-20 16:31:14,378 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Bélgica]) Not loaded. [00:00:00.2451640]
+2021-06-20 16:31:14,381 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: Inserting ...
+2021-06-20 16:31:14,997 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Bélgica]) Inserted. [00:00:00.6147624]
+2021-06-20 16:31:15,208 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Panamá]) Not loaded. [00:00:00.2115359]
+2021-06-20 16:31:15,212 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: Inserting ...
+2021-06-20 16:31:15,830 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Panamá]) Inserted. [00:00:00.6135150]
+2021-06-20 16:31:16,027 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Bélgica]) Not loaded. [00:00:00.1972487]
+2021-06-20 16:31:16,033 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: Inserting ...
+2021-06-20 16:31:16,661 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Bélgica]) Inserted. [00:00:00.6253408]
+2021-06-20 16:31:16,924 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Panamá]) Not loaded. [00:00:00.2627326]
+2021-06-20 16:31:16,927 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: Inserting ...
+2021-06-20 16:31:17,527 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Panamá]) Inserted. [00:00:00.5994571]
+2021-06-20 16:31:17,527 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:31:17,759 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = G] [NomeTime = Bélgica]) Not loaded. [00:00:00.2235588]
+2021-06-20 16:31:17,759 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: Inserting ...
+2021-06-20 16:31:18,427 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = G] [NomeTime = Bélgica]) Inserted. [00:00:00.6599626]
+2021-06-20 16:31:18,646 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = G] [NomeTime = Panamá]) Not loaded. [00:00:00.2193888]
+2021-06-20 16:31:18,651 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: Inserting ...
+2021-06-20 16:31:19,270 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = G] [NomeTime = Panamá]) Inserted. [00:00:00.6164931]
+2021-06-20 16:31:19,270 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:31:19,490 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 13]) Not loaded. [00:00:00.2120203]
+2021-06-20 16:31:19,500 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:31:20,120 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 13]) Inserted. [00:00:00.6186616]
+2021-06-20 16:31:20,128 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Arena Volgogrado]) loaded. [00:00:00]
+2021-06-20 16:31:20,133 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = G]) loaded. [00:00:00.0009984]
+2021-06-20 16:31:20,357 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Tunísia]) Not loaded. [00:00:00.2229436]
+2021-06-20 16:31:20,368 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: Inserting ...
+2021-06-20 16:31:20,971 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Tunísia]) Inserted. [00:00:00.6037359]
+2021-06-20 16:31:21,182 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Inglaterra]) Not loaded. [00:00:00.2106403]
+2021-06-20 16:31:21,184 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: Inserting ...
+2021-06-20 16:31:21,798 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Inglaterra]) Inserted. [00:00:00.6131941]
+2021-06-20 16:31:21,998 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Tunísia]) Not loaded. [00:00:00.2007784]
+2021-06-20 16:31:22,008 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: Inserting ...
+2021-06-20 16:31:22,631 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Tunísia]) Inserted. [00:00:00.6219496]
+2021-06-20 16:31:22,839 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Inglaterra]) Not loaded. [00:00:00.1993905]
+2021-06-20 16:31:22,839 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: Inserting ...
+2021-06-20 16:31:23,481 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Inglaterra]) Inserted. [00:00:00.6348775]
+2021-06-20 16:31:23,481 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:31:23,689 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = G] [NomeTime = Tunísia]) Not loaded. [00:00:00.2000949]
+2021-06-20 16:31:23,689 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: Inserting ...
+2021-06-20 16:31:24,303 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = G] [NomeTime = Tunísia]) Inserted. [00:00:00.6100632]
+2021-06-20 16:31:24,504 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = G] [NomeTime = Inglaterra]) Not loaded. [00:00:00.2007491]
+2021-06-20 16:31:24,504 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: Inserting ...
+2021-06-20 16:31:25,104 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = G] [NomeTime = Inglaterra]) Inserted. [00:00:00.5948735]
+2021-06-20 16:31:25,109 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00.0009976]
+2021-06-20 16:31:25,313 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 14]) Not loaded. [00:00:00.2027023]
+2021-06-20 16:31:25,314 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:31:25,953 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 14]) Inserted. [00:00:00.6387838]
+2021-06-20 16:31:25,959 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Otkrytiye Arena]) loaded. [00:00:00.0010492]
+2021-06-20 16:31:25,959 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = G]) loaded. [00:00:00]
+2021-06-20 16:31:25,959 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Bélgica]) loaded. [00:00:00]
+2021-06-20 16:31:25,967 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Tunísia]) loaded. [00:00:00]
+2021-06-20 16:31:25,967 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Bélgica]) loaded. [00:00:00]
+2021-06-20 16:31:25,972 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Tunísia]) loaded. [00:00:00.0048219]
+2021-06-20 16:31:25,973 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:31:25,975 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = G] [NomeTime = Bélgica]) loaded. [00:00:00.0011500]
+2021-06-20 16:31:25,977 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = G] [NomeTime = Tunísia]) loaded. [00:00:00.0009976]
+2021-06-20 16:31:25,980 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00.0025229]
+2021-06-20 16:31:26,193 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 29]) Not loaded. [00:00:00.2116117]
+2021-06-20 16:31:26,201 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:31:26,833 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 29]) Inserted. [00:00:00.6319362]
+2021-06-20 16:31:26,838 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Novgorod]) loaded. [00:00:00.0037896]
+2021-06-20 16:31:26,843 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = G]) loaded. [00:00:00]
+2021-06-20 16:31:26,843 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Inglaterra]) loaded. [00:00:00]
+2021-06-20 16:31:26,855 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Panamá]) loaded. [00:00:00.0037649]
+2021-06-20 16:31:26,857 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Inglaterra]) loaded. [00:00:00]
+2021-06-20 16:31:26,857 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Panamá]) loaded. [00:00:00]
+2021-06-20 16:31:26,865 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:31:26,865 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = G] [NomeTime = Inglaterra]) loaded. [00:00:00]
+2021-06-20 16:31:26,872 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = G] [NomeTime = Panamá]) loaded. [00:00:00.0009997]
+2021-06-20 16:31:26,875 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00.0009962]
+2021-06-20 16:31:27,075 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 30]) Not loaded. [00:00:00.2000716]
+2021-06-20 16:31:27,077 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:31:27,677 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 30]) Inserted. [00:00:00.6001748]
+2021-06-20 16:31:27,686 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Arena Mordovia]) loaded. [00:00:00.0093510]
+2021-06-20 16:31:27,691 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = G]) loaded. [00:00:00.0019936]
+2021-06-20 16:31:27,691 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Inglaterra]) loaded. [00:00:00]
+2021-06-20 16:31:27,701 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Bélgica]) loaded. [00:00:00]
+2021-06-20 16:31:27,709 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Inglaterra]) loaded. [00:00:00.0022451]
+2021-06-20 16:31:27,717 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Bélgica]) loaded. [00:00:00.0081457]
+2021-06-20 16:31:27,725 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:31:27,726 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = G] [NomeTime = Inglaterra]) loaded. [00:00:00]
+2021-06-20 16:31:27,736 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = G] [NomeTime = Bélgica]) loaded. [00:00:00.0016662]
+2021-06-20 16:31:27,738 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00.0009973]
+2021-06-20 16:31:27,942 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 45]) Not loaded. [00:00:00.2029889]
+2021-06-20 16:31:27,950 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:31:28,582 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 45]) Inserted. [00:00:00.6304142]
+2021-06-20 16:31:28,586 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Estádio de Kaliningrado]) loaded. [00:00:00]
+2021-06-20 16:31:28,586 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = G]) loaded. [00:00:00]
+2021-06-20 16:31:28,594 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Panamá]) loaded. [00:00:00]
+2021-06-20 16:31:28,604 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Tunísia]) loaded. [00:00:00.0009985]
+2021-06-20 16:31:28,607 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Panamá]) loaded. [00:00:00.0009955]
+2021-06-20 16:31:28,607 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Tunísia]) loaded. [00:00:00]
+2021-06-20 16:31:28,607 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:31:28,607 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = G] [NomeTime = Panamá]) loaded. [00:00:00]
+2021-06-20 16:31:28,616 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = G] [NomeTime = Tunísia]) loaded. [00:00:00]
+2021-06-20 16:31:28,618 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00.0010083]
+2021-06-20 16:31:28,827 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 46]) Not loaded. [00:00:00.2079501]
+2021-06-20 16:31:28,827 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:31:29,492 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 46]) Inserted. [00:00:00.6562207]
+2021-06-20 16:31:29,492 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Otkrytiye Arena]) loaded. [00:00:00]
+2021-06-20 16:31:29,692 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = H]) Not loaded. [00:00:00.2000013]
+2021-06-20 16:31:29,699 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: Inserting ...
+2021-06-20 16:31:30,291 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = H]) Inserted. [00:00:00.5904623]
+2021-06-20 16:31:30,516 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Polônia]) Not loaded. [00:00:00.2238389]
+2021-06-20 16:31:30,526 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: Inserting ...
+2021-06-20 16:31:31,115 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Polônia]) Inserted. [00:00:00.5871491]
+2021-06-20 16:31:31,314 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Senegal]) Not loaded. [00:00:00.1983644]
+2021-06-20 16:31:31,316 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: Inserting ...
+2021-06-20 16:31:31,902 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Senegal]) Inserted. [00:00:00.5860279]
+2021-06-20 16:31:32,113 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Polônia]) Not loaded. [00:00:00.2110705]
+2021-06-20 16:31:32,113 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: Inserting ...
+2021-06-20 16:31:32,712 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Polônia]) Inserted. [00:00:00.5888234]
+2021-06-20 16:31:32,914 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Senegal]) Not loaded. [00:00:00.1926863]
+2021-06-20 16:31:32,914 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: Inserting ...
+2021-06-20 16:31:33,495 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Senegal]) Inserted. [00:00:00.5814639]
+2021-06-20 16:31:33,504 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:31:33,701 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = H] [NomeTime = Polônia]) Not loaded. [00:00:00.1943569]
+2021-06-20 16:31:33,701 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: Inserting ...
+2021-06-20 16:31:34,301 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = H] [NomeTime = Polônia]) Inserted. [00:00:00.5927570]
+2021-06-20 16:31:34,525 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = H] [NomeTime = Senegal]) Not loaded. [00:00:00.2236542]
+2021-06-20 16:31:34,525 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: Inserting ...
+2021-06-20 16:31:35,144 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = H] [NomeTime = Senegal]) Inserted. [00:00:00.6105567]
+2021-06-20 16:31:35,144 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:31:35,357 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 15]) Not loaded. [00:00:00.2128231]
+2021-06-20 16:31:35,357 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:31:35,967 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 15]) Inserted. [00:00:00.6103403]
+2021-06-20 16:31:35,967 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Arena Mordovia]) loaded. [00:00:00]
+2021-06-20 16:31:35,971 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = H]) loaded. [00:00:00.0043026]
+2021-06-20 16:31:36,163 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Colômbia]) Not loaded. [00:00:00.1901394]
+2021-06-20 16:31:36,163 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: Inserting ...
+2021-06-20 16:31:36,757 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Colômbia]) Inserted. [00:00:00.5847386]
+2021-06-20 16:31:36,964 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Japão]) Not loaded. [00:00:00.2073946]
+2021-06-20 16:31:36,968 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: Inserting ...
+2021-06-20 16:31:37,574 [9] INFO [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Japão]) Inserted. [00:00:00.6026562]
+2021-06-20 16:31:37,796 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Colômbia]) Not loaded. [00:00:00.2162696]
+2021-06-20 16:31:37,796 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: Inserting ...
+2021-06-20 16:31:38,419 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Colômbia]) Inserted. [00:00:00.6146457]
+2021-06-20 16:31:38,618 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Japão]) Not loaded. [00:00:00.1981414]
+2021-06-20 16:31:38,620 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: Inserting ...
+2021-06-20 16:31:39,218 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Japão]) Inserted. [00:00:00.5978514]
+2021-06-20 16:31:39,226 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00.0081283]
+2021-06-20 16:31:39,425 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = H] [NomeTime = Colômbia]) Not loaded. [00:00:00.1979899]
+2021-06-20 16:31:39,426 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: Inserting ...
+2021-06-20 16:31:40,039 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = H] [NomeTime = Colômbia]) Inserted. [00:00:00.6126278]
+2021-06-20 16:31:40,259 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = H] [NomeTime = Japão]) Not loaded. [00:00:00.2107088]
+2021-06-20 16:31:40,260 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: Inserting ...
+2021-06-20 16:31:40,860 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = H] [NomeTime = Japão]) Inserted. [00:00:00.5950574]
+2021-06-20 16:31:40,867 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00.0019925]
+2021-06-20 16:31:41,083 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 16]) Not loaded. [00:00:00.2137456]
+2021-06-20 16:31:41,084 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:31:41,680 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 16]) Inserted. [00:00:00.5968217]
+2021-06-20 16:31:41,691 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Kazan Arena]) loaded. [00:00:00.0010115]
+2021-06-20 16:31:41,695 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = H]) loaded. [00:00:00.0009843]
+2021-06-20 16:31:41,698 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Polônia]) loaded. [00:00:00.0010526]
+2021-06-20 16:31:41,698 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Colômbia]) loaded. [00:00:00]
+2021-06-20 16:31:41,698 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Polônia]) loaded. [00:00:00]
+2021-06-20 16:31:41,706 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Colômbia]) loaded. [00:00:00]
+2021-06-20 16:31:41,712 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00.0009983]
+2021-06-20 16:31:41,713 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = H] [NomeTime = Polônia]) loaded. [00:00:00]
+2021-06-20 16:31:41,713 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = H] [NomeTime = Colômbia]) loaded. [00:00:00]
+2021-06-20 16:31:41,713 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:31:41,913 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 31]) Not loaded. [00:00:00.2000816]
+2021-06-20 16:31:41,922 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:31:42,523 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 31]) Inserted. [00:00:00.5991044]
+2021-06-20 16:31:42,531 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Ekaterninburg Arena]) loaded. [00:00:00.0029902]
+2021-06-20 16:31:42,535 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = H]) loaded. [00:00:00.0010498]
+2021-06-20 16:31:42,539 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Japão]) loaded. [00:00:00.0010559]
+2021-06-20 16:31:42,543 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Senegal]) loaded. [00:00:00.0015639]
+2021-06-20 16:31:42,547 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Japão]) loaded. [00:00:00]
+2021-06-20 16:31:42,552 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Senegal]) loaded. [00:00:00.0010441]
+2021-06-20 16:31:42,555 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00.0009980]
+2021-06-20 16:31:42,560 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = H] [NomeTime = Japão]) loaded. [00:00:00.0019715]
+2021-06-20 16:31:42,564 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = H] [NomeTime = Senegal]) loaded. [00:00:00.0010093]
+2021-06-20 16:31:42,564 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:31:42,789 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 32]) Not loaded. [00:00:00.2240964]
+2021-06-20 16:31:42,793 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:31:43,397 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 32]) Inserted. [00:00:00.6005537]
+2021-06-20 16:31:43,397 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Arena Volgogrado]) loaded. [00:00:00]
+2021-06-20 16:31:43,405 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = H]) loaded. [00:00:00]
+2021-06-20 16:31:43,411 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Japão]) loaded. [00:00:00.0019850]
+2021-06-20 16:31:43,411 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Polônia]) loaded. [00:00:00]
+2021-06-20 16:31:43,411 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Japão]) loaded. [00:00:00]
+2021-06-20 16:31:43,422 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Polônia]) loaded. [00:00:00.0003493]
+2021-06-20 16:31:43,425 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:31:43,426 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = H] [NomeTime = Japão]) loaded. [00:00:00]
+2021-06-20 16:31:43,426 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = H] [NomeTime = Polônia]) loaded. [00:00:00]
+2021-06-20 16:31:43,426 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:31:43,660 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 47]) Not loaded. [00:00:00.2328275]
+2021-06-20 16:31:43,664 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:31:44,318 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 47]) Inserted. [00:00:00.6516669]
+2021-06-20 16:31:44,323 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Estádio de Samara]) loaded. [00:00:00.0049798]
+2021-06-20 16:31:44,327 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = H]) loaded. [00:00:00.0009982]
+2021-06-20 16:31:44,327 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Senegal]) loaded. [00:00:00]
+2021-06-20 16:31:44,327 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.TimeService - Time: (ID= [Nome = Colômbia]) loaded. [00:00:00]
+2021-06-20 16:31:44,327 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Senegal]) loaded. [00:00:00]
+2021-06-20 16:31:44,335 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoTimeService - CampeonatoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeTime = Colômbia]) loaded. [00:00:00.0080742]
+2021-06-20 16:31:44,335 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:31:44,335 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = H] [NomeTime = Senegal]) loaded. [00:00:00]
+2021-06-20 16:31:44,342 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoTimeService - CampeonatoGrupoTime: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeGrupo = H] [NomeTime = Colômbia]) loaded. [00:00:00.0009946]
+2021-06-20 16:31:44,342 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Classificatória]) loaded. [00:00:00]
+2021-06-20 16:31:44,559 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 48]) Not loaded. [00:00:00.2173536]
+2021-06-20 16:31:44,559 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:31:45,160 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 48]) Inserted. [00:00:00.6012078]
+2021-06-20 16:31:45,161 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Fisht Olympic]) loaded. [00:00:00]
+2021-06-20 16:31:45,391 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome =  ]) Not loaded. [00:00:00.2212643]
+2021-06-20 16:31:45,391 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: Inserting ...
+2021-06-20 16:31:46,009 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome =  ]) Inserted. [00:00:00.6180048]
+2021-06-20 16:31:46,228 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Oitavas de Final]) Not loaded. [00:00:00.2187198]
+2021-06-20 16:31:46,228 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: Inserting ...
+2021-06-20 16:31:46,846 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Oitavas de Final]) Inserted. [00:00:00.6182925]
+2021-06-20 16:31:47,058 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 49]) Not loaded. [00:00:00.2117378]
+2021-06-20 16:31:47,058 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:31:47,667 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 49]) Inserted. [00:00:00.6097675]
+2021-06-20 16:31:47,669 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Kazan Arena]) loaded. [00:00:00]
+2021-06-20 16:31:47,669 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome =  ]) loaded. [00:00:00]
+2021-06-20 16:31:47,678 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Oitavas de Final]) loaded. [00:00:00]
+2021-06-20 16:31:47,884 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 50]) Not loaded. [00:00:00.1986707]
+2021-06-20 16:31:47,888 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:31:48,501 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 50]) Inserted. [00:00:00.6106625]
+2021-06-20 16:31:48,513 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Luzhniki]) loaded. [00:00:00.0020074]
+2021-06-20 16:31:48,516 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome =  ]) loaded. [00:00:00.0011489]
+2021-06-20 16:31:48,519 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Oitavas de Final]) loaded. [00:00:00]
+2021-06-20 16:31:48,720 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 51]) Not loaded. [00:00:00.2006753]
+2021-06-20 16:31:48,728 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:31:49,377 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 51]) Inserted. [00:00:00.6481998]
+2021-06-20 16:31:49,378 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Novgorod]) loaded. [00:00:00]
+2021-06-20 16:31:49,382 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome =  ]) loaded. [00:00:00.0009970]
+2021-06-20 16:31:49,385 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Oitavas de Final]) loaded. [00:00:00]
+2021-06-20 16:31:49,589 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 52]) Not loaded. [00:00:00.2016715]
+2021-06-20 16:31:49,590 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:31:50,184 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 52]) Inserted. [00:00:00.5927467]
+2021-06-20 16:31:50,184 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Estádio de Samara]) loaded. [00:00:00]
+2021-06-20 16:31:50,184 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome =  ]) loaded. [00:00:00]
+2021-06-20 16:31:50,184 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Oitavas de Final]) loaded. [00:00:00]
+2021-06-20 16:31:50,383 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 53]) Not loaded. [00:00:00.1912316]
+2021-06-20 16:31:50,392 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:31:50,985 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 53]) Inserted. [00:00:00.5917859]
+2021-06-20 16:31:50,985 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Arena Rostov]) loaded. [00:00:00]
+2021-06-20 16:31:50,985 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome =  ]) loaded. [00:00:00]
+2021-06-20 16:31:50,985 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Oitavas de Final]) loaded. [00:00:00]
+2021-06-20 16:31:51,196 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 54]) Not loaded. [00:00:00.2034742]
+2021-06-20 16:31:51,196 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:31:51,817 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 54]) Inserted. [00:00:00.6201210]
+2021-06-20 16:31:51,828 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Krestovsky]) loaded. [00:00:00.0009972]
+2021-06-20 16:31:51,828 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome =  ]) loaded. [00:00:00]
+2021-06-20 16:31:51,836 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Oitavas de Final]) loaded. [00:00:00.0082365]
+2021-06-20 16:31:52,061 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 55]) Not loaded. [00:00:00.2240707]
+2021-06-20 16:31:52,061 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:31:52,682 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 55]) Inserted. [00:00:00.6215576]
+2021-06-20 16:31:52,694 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Otkrytiye Arena]) loaded. [00:00:00]
+2021-06-20 16:31:52,694 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome =  ]) loaded. [00:00:00]
+2021-06-20 16:31:52,702 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Oitavas de Final]) loaded. [00:00:00]
+2021-06-20 16:31:52,912 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 56]) Not loaded. [00:00:00.2094067]
+2021-06-20 16:31:52,914 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:31:53,527 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 56]) Inserted. [00:00:00.6133830]
+2021-06-20 16:31:53,536 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Novgorod]) loaded. [00:00:00.0019152]
+2021-06-20 16:31:53,543 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome =  ]) loaded. [00:00:00.0026953]
+2021-06-20 16:31:53,746 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Quartas de Final]) Not loaded. [00:00:00.1984754]
+2021-06-20 16:31:53,746 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: Inserting ...
+2021-06-20 16:31:54,356 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Quartas de Final]) Inserted. [00:00:00.6096529]
+2021-06-20 16:31:54,571 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 57]) Not loaded. [00:00:00.2127254]
+2021-06-20 16:31:54,574 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:31:55,200 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 57]) Inserted. [00:00:00.6221770]
+2021-06-20 16:31:55,204 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Kazan Arena]) loaded. [00:00:00.0010039]
+2021-06-20 16:31:55,208 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome =  ]) loaded. [00:00:00.0012211]
+2021-06-20 16:31:55,210 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Quartas de Final]) loaded. [00:00:00]
+2021-06-20 16:31:55,410 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 58]) Not loaded. [00:00:00.2000727]
+2021-06-20 16:31:55,410 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:31:56,040 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 58]) Inserted. [00:00:00.6226474]
+2021-06-20 16:31:56,049 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Fisht Olympic]) loaded. [00:00:00.0081319]
+2021-06-20 16:31:56,050 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome =  ]) loaded. [00:00:00]
+2021-06-20 16:31:56,056 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Quartas de Final]) loaded. [00:00:00.0009963]
+2021-06-20 16:31:56,254 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 59]) Not loaded. [00:00:00.1988126]
+2021-06-20 16:31:56,264 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:31:56,854 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 59]) Inserted. [00:00:00.5894268]
+2021-06-20 16:31:56,862 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Estádio de Samara]) loaded. [00:00:00]
+2021-06-20 16:31:56,862 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome =  ]) loaded. [00:00:00]
+2021-06-20 16:31:56,870 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Quartas de Final]) loaded. [00:00:00.0010412]
+2021-06-20 16:31:57,073 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 60]) Not loaded. [00:00:00.2030554]
+2021-06-20 16:31:57,081 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:31:57,704 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 60]) Inserted. [00:00:00.6191197]
+2021-06-20 16:31:57,704 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Krestovsky]) loaded. [00:00:00]
+2021-06-20 16:31:57,713 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome =  ]) loaded. [00:00:00.0002966]
+2021-06-20 16:31:57,908 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Semi Final]) Not loaded. [00:00:00.1941087]
+2021-06-20 16:31:57,909 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: Inserting ...
+2021-06-20 16:31:58,537 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Semi Final]) Inserted. [00:00:00.6247132]
+2021-06-20 16:31:58,769 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 61]) Not loaded. [00:00:00.2220731]
+2021-06-20 16:31:58,769 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:31:59,372 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 61]) Inserted. [00:00:00.5950257]
+2021-06-20 16:31:59,380 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Luzhniki]) loaded. [00:00:00.0081052]
+2021-06-20 16:31:59,382 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome =  ]) loaded. [00:00:00]
+2021-06-20 16:31:59,382 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Semi Final]) loaded. [00:00:00]
+2021-06-20 16:31:59,602 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 62]) Not loaded. [00:00:00.2121553]
+2021-06-20 16:31:59,602 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:32:00,235 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 62]) Inserted. [00:00:00.6322495]
+2021-06-20 16:32:00,243 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Krestovsky]) loaded. [00:00:00.0081141]
+2021-06-20 16:32:00,246 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome =  ]) loaded. [00:00:00.0009999]
+2021-06-20 16:32:00,463 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Final]) Not loaded. [00:00:00.2162733]
+2021-06-20 16:32:00,468 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: Inserting ...
+2021-06-20 16:32:01,087 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Final]) Inserted. [00:00:00.6162779]
+2021-06-20 16:32:01,297 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 63]) Not loaded. [00:00:00.2102422]
+2021-06-20 16:32:01,300 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:32:01,907 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 63]) Inserted. [00:00:00.6061581]
+2021-06-20 16:32:01,912 [9] DEBUG [admin] BolaoNet.Domain.Services.DadosBasicos.EstadioService - Estadio: (ID= [Nome = Luzhniki]) loaded. [00:00:00.0009997]
+2021-06-20 16:32:01,912 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoGrupoService - CampeonatoGrupo: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome =  ]) loaded. [00:00:00]
+2021-06-20 16:32:01,919 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoFaseService - CampeonatoFase: (ID= [NomeCampeonato = Copa do Mundo 2018] [Nome = Final]) loaded. [00:00:00.0014043]
+2021-06-20 16:32:02,128 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 64]) Not loaded. [00:00:00.2074023]
+2021-06-20 16:32:02,131 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: Inserting ...
+2021-06-20 16:32:02,762 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.JogoService - Jogo: (ID= [NomeCampeonato = Copa do Mundo 2018] [JogoId = 64]) Inserted. [00:00:00.6309871]
+2021-06-20 16:32:03,075 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeFase = Classificatória] [NomeGrupo = A] [Posicao = 1]) Not loaded. [00:00:00.2995563]
+2021-06-20 16:32:03,075 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: Inserting ...
+2021-06-20 16:32:03,725 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeFase = Classificatória] [NomeGrupo = A] [Posicao = 1]) Inserted. [00:00:00.6404252]
+2021-06-20 16:32:03,940 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeFase = Classificatória] [NomeGrupo = A] [Posicao = 2]) Not loaded. [00:00:00.2124679]
+2021-06-20 16:32:03,940 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: Inserting ...
+2021-06-20 16:32:04,536 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeFase = Classificatória] [NomeGrupo = A] [Posicao = 2]) Inserted. [00:00:00.5967562]
+2021-06-20 16:32:04,739 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeFase = Classificatória] [NomeGrupo = B] [Posicao = 1]) Not loaded. [00:00:00.1996824]
+2021-06-20 16:32:04,745 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: Inserting ...
+2021-06-20 16:32:05,326 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeFase = Classificatória] [NomeGrupo = B] [Posicao = 1]) Inserted. [00:00:00.5790978]
+2021-06-20 16:32:05,525 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeFase = Classificatória] [NomeGrupo = B] [Posicao = 2]) Not loaded. [00:00:00.1932915]
+2021-06-20 16:32:05,533 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: Inserting ...
+2021-06-20 16:32:06,176 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeFase = Classificatória] [NomeGrupo = B] [Posicao = 2]) Inserted. [00:00:00.6417752]
+2021-06-20 16:32:06,408 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeFase = Classificatória] [NomeGrupo = C] [Posicao = 1]) Not loaded. [00:00:00.2196946]
+2021-06-20 16:32:06,419 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: Inserting ...
+2021-06-20 16:32:07,044 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeFase = Classificatória] [NomeGrupo = C] [Posicao = 1]) Inserted. [00:00:00.6220704]
+2021-06-20 16:32:07,260 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeFase = Classificatória] [NomeGrupo = C] [Posicao = 2]) Not loaded. [00:00:00.2093691]
+2021-06-20 16:32:07,260 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: Inserting ...
+2021-06-20 16:32:07,852 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeFase = Classificatória] [NomeGrupo = C] [Posicao = 2]) Inserted. [00:00:00.5851317]
+2021-06-20 16:32:08,067 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeFase = Classificatória] [NomeGrupo = D] [Posicao = 1]) Not loaded. [00:00:00.2062443]
+2021-06-20 16:32:08,076 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: Inserting ...
+2021-06-20 16:32:08,719 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeFase = Classificatória] [NomeGrupo = D] [Posicao = 1]) Inserted. [00:00:00.6401678]
+2021-06-20 16:32:08,917 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeFase = Classificatória] [NomeGrupo = D] [Posicao = 2]) Not loaded. [00:00:00.1975354]
+2021-06-20 16:32:08,927 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: Inserting ...
+2021-06-20 16:32:09,507 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeFase = Classificatória] [NomeGrupo = D] [Posicao = 2]) Inserted. [00:00:00.5806025]
+2021-06-20 16:32:09,714 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeFase = Classificatória] [NomeGrupo = E] [Posicao = 1]) Not loaded. [00:00:00.2062992]
+2021-06-20 16:32:09,716 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: Inserting ...
+2021-06-20 16:32:10,305 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeFase = Classificatória] [NomeGrupo = E] [Posicao = 1]) Inserted. [00:00:00.5890375]
+2021-06-20 16:32:10,516 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeFase = Classificatória] [NomeGrupo = E] [Posicao = 2]) Not loaded. [00:00:00.2027490]
+2021-06-20 16:32:10,516 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: Inserting ...
+2021-06-20 16:32:11,146 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeFase = Classificatória] [NomeGrupo = E] [Posicao = 2]) Inserted. [00:00:00.6306855]
+2021-06-20 16:32:11,359 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeFase = Classificatória] [NomeGrupo = F] [Posicao = 1]) Not loaded. [00:00:00.2123140]
+2021-06-20 16:32:11,361 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: Inserting ...
+2021-06-20 16:32:12,011 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeFase = Classificatória] [NomeGrupo = F] [Posicao = 1]) Inserted. [00:00:00.6488707]
+2021-06-20 16:32:12,226 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeFase = Classificatória] [NomeGrupo = F] [Posicao = 2]) Not loaded. [00:00:00.2056214]
+2021-06-20 16:32:12,226 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: Inserting ...
+2021-06-20 16:32:12,877 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeFase = Classificatória] [NomeGrupo = F] [Posicao = 2]) Inserted. [00:00:00.6501029]
+2021-06-20 16:32:13,078 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeFase = Classificatória] [NomeGrupo = G] [Posicao = 1]) Not loaded. [00:00:00.1997533]
+2021-06-20 16:32:13,078 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: Inserting ...
+2021-06-20 16:32:13,666 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeFase = Classificatória] [NomeGrupo = G] [Posicao = 1]) Inserted. [00:00:00.5877582]
+2021-06-20 16:32:13,865 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeFase = Classificatória] [NomeGrupo = G] [Posicao = 2]) Not loaded. [00:00:00.1931777]
+2021-06-20 16:32:13,872 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: Inserting ...
+2021-06-20 16:32:14,489 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeFase = Classificatória] [NomeGrupo = G] [Posicao = 2]) Inserted. [00:00:00.6148786]
+2021-06-20 16:32:14,697 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeFase = Classificatória] [NomeGrupo = H] [Posicao = 1]) Not loaded. [00:00:00.2083340]
+2021-06-20 16:32:14,697 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: Inserting ...
+2021-06-20 16:32:15,357 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeFase = Classificatória] [NomeGrupo = H] [Posicao = 1]) Inserted. [00:00:00.6540104]
+2021-06-20 16:32:15,561 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeFase = Classificatória] [NomeGrupo = H] [Posicao = 2]) Not loaded. [00:00:00.2038314]
+2021-06-20 16:32:15,561 [9] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: Inserting ...
+2021-06-20 16:32:16,160 [9] INFO [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoPosicaoService - CampeonatoPosicao: (ID= [NomeCampeonato = Copa do Mundo 2018] [NomeFase = Classificatória] [NomeGrupo = H] [Posicao = 2]) Inserted. [00:00:00.5997311]
+2021-06-20 16:32:16,417 [15] DEBUG [admin] BolaoNet.Domain.Services.Boloes.BolaoService - System.Collections.Generic.List`1[BolaoNet.Domain.Entities.Boloes.Bolao]: Total of items:0 [00:00:00.1985512]
+2021-06-20 16:32:16,616 [15] DEBUG [admin] BolaoNet.Domain.Services.Campeonatos.CampeonatoService - System.Collections.Generic.List`1[BolaoNet.Domain.Entities.Campeonatos.Campeonato]: Total of items:1 [00:00:00.1974188]
