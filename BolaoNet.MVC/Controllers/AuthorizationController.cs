@@ -72,7 +72,14 @@ namespace BolaoNet.MVC.Controllers
                 }
                 else
                 {
-                    return false;
+                    this.SelectedNomeBolao = list[0].NomeBolao;
+
+                    Domain.Entities.Boloes.Bolao bolaoLoaded = bolaoApp.Load(base.SelectedBolao);
+
+                    this.SelectedNomeCampeonato = bolaoLoaded.NomeCampeonato;
+                    this.IsBolaoIniciado = bolaoLoaded.IsIniciado == true ? true : false;
+
+                    //return false;
                 }
             }
 

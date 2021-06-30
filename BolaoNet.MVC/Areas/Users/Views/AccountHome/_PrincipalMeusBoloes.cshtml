@@ -28,7 +28,17 @@
                                 @*<a href="#">
                                     @Model[c].NomeBolao
                                 </a>*@
-                                @Model[c].NomeBolao 
+                                @*@Model[c].NomeBolao*@ 
+                                @if(Model.Count > 1)
+                                {
+                                    <a href="/Users/UserBoloes/Selecionar?nomeBolao=@Model[c].NomeBolao">
+                                        @Model[c].NomeBolao
+                                    </a>
+                                }
+                                else
+                                {
+                                    @Model[c].NomeBolao
+                                }
                             </td>
                             <td class="hidden-xs">
                                 @*<a href="#">

@@ -1,6 +1,6 @@
 ﻿@model BolaoNet.MVC.ViewModels.Admin.BolaoIniciarPararViewModel
 @{
-    ViewBag.Title = "Gerenciamento do Bolão";
+    ViewBag.Title = "Gerenciamento do Bolão - " + Model.Nome;
 }
 
 @using (Html.BeginForm("Simular", "ApostasExtras", FormMethod.Post, new { }))
