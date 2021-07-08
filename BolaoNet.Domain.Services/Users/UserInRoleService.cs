@@ -1,4 +1,5 @@
-﻿using BolaoNet.Domain.Interfaces.Services.Logging;
+﻿using BolaoNet.Domain.Entities.Users;
+using BolaoNet.Domain.Interfaces.Services.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,6 +49,26 @@ namespace BolaoNet.Domain.Services.Users
             if (IsSaveLog)
             {
                 _logging.Debug(this, GetMessageTotalTime("Carregamento de roles do usuário [" + user.UserName + "] total: " + res.Count));
+            }
+
+            return res;
+        }
+
+        public IList<User> GetUsersInRole(Role role)
+        {
+            if (role == null)
+                throw new ArgumentException("role");
+            if (string.IsNullOrEmpty(role.RoleName))
+                throw new ArgumentException("role.RoleName");
+
+            if (IsSaveLog)
+                CheckStart();
+
+            IList<Entities.Users.User> res = Dao.GetUsersInRole(base.CurrentUserName, role);
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Carregamento de usuários da role [" + role.RoleName + "] total: " + res.Count));
             }
 
             return res;

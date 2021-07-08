@@ -12,6 +12,15 @@ namespace BolaoNet.Infra.Reports.Pdf
     public class PdfBolaoMembroApostasReport : 
         Domain.Interfaces.Services.Reports.FormatReport.IBolaoMembroApostasFormatReportService
     {
+        #region Constants
+
+        private const int FlagImageWidth = 40;
+        private const int FlagImageHeight = 27;
+        private const int UserImageWidth = 100;
+        private const int UserImageHeight = 100;
+
+        #endregion
+
         #region Constructors/Destructors
 
         public PdfBolaoMembroApostasReport()
@@ -38,9 +47,20 @@ namespace BolaoNet.Infra.Reports.Pdf
             string [] nomeGrupos = {"A", "B", "C", "D", "E", "F", "G", "H"};
 
 
+            for (int c= classificacaoTimes.Count - 1; c >= 0; c--)
+            {
+                if (classificacaoTimes[c].Count == 0)
+                {
+                    classificacaoTimes.RemoveAt(c);
+                }
+            }
+
             for (int c = 0; c < classificacaoTimes.Count; c++ )
             {
-                grupos.Add(CreateGrupoClassificacao(nomeGrupos[c], imageTimesFolder, imageExtension, classificacaoTimes[c]));
+                //if (classificacaoTimes[c].Count > 0)
+                {
+                    grupos.Add(CreateGrupoClassificacao(nomeGrupos[c], imageTimesFolder, imageExtension, classificacaoTimes[c]));
+                }
             }
 
             int i = 0;
@@ -231,7 +251,10 @@ namespace BolaoNet.Infra.Reports.Pdf
                 string timeFileImage = System.IO.Path.Combine(imageTimesFolder, classificacaoTimes[c].NomeTime + "." + imageExtension);
                 if (System.IO.File.Exists(timeFileImage))
                 {
-                    Image imgTime = Image.GetInstance(timeFileImage);
+                    System.Drawing.Image img = System.Drawing.Bitmap.FromFile(timeFileImage);
+                    img = ImageManagement.ResizeImage(img, FlagImageWidth, FlagImageHeight);
+                    Image imgTime = Image.GetInstance(img, Color.WHITE);
+                    //Image imgTime = Image.GetInstance(timeFileImage);
                     cellBandeira.AddElement(imgTime);
                     cellBandeira.BorderWidth = 0;
                 }
@@ -471,16 +494,27 @@ namespace BolaoNet.Infra.Reports.Pdf
 
             //Se existir a imagem do usuário
             if (System.IO.File.Exists(fileImage))
-                imgUser = Image.GetInstance(fileImage);
+            {
+                System.Drawing.Image img = System.Drawing.Bitmap.FromFile(fileImage);
+                img = ImageManagement.ResizeImage(img, UserImageWidth, UserImageHeight);
+                imgUser = Image.GetInstance(img, Color.WHITE);
+                //imgUser = Image.GetInstance(imgUsr);
+            }
             else
             {
                 string noFileName = System.IO.Path.Combine(imageFolder, noPictureFile + "." + imageExtension);
                 if (System.IO.File.Exists(noFileName))
-                    imgUser = Image.GetInstance(noFileName);
+                {
+                    System.Drawing.Image img = System.Drawing.Bitmap.FromFile(noFileName);
+                    img = ImageManagement.ResizeImage(img, UserImageWidth, UserImageHeight);
+                    imgUser = Image.GetInstance(img, Color.WHITE);
+
+                    //imgUser = Image.GetInstance(noFileName);
+                }
                 else
                 {
 
-                    System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(160, 120);
+                    System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(UserImageWidth, UserImageHeight);
                     imgUser = Image.GetInstance(bmp, Color.BLACK);
                 }
             }
@@ -556,15 +590,16 @@ namespace BolaoNet.Infra.Reports.Pdf
                 //cellTime.BorderWidth = 0;
                 cellTime.HorizontalAlignment = Element.ALIGN_CENTER;
                 cellTime.VerticalAlignment = Element.ALIGN_MIDDLE;
-
+                
 
                 PdfPCell cellImageTime = new PdfPCell();
                 string timeFileImage = System.IO.Path.Combine(imageTimesFolder, aposta.NomeTime + "." + imageExtension);
                 if (System.IO.File.Exists(timeFileImage))
                 {
-                    Image imgTime = Image.GetInstance(timeFileImage);
+                    System.Drawing.Image img = System.Drawing.Bitmap.FromFile(timeFileImage);
+                    img = ImageManagement.ResizeImage(img, FlagImageWidth, FlagImageHeight);
+                    Image imgTime = Image.GetInstance(img, Color.WHITE);
                     cellImageTime.AddElement(imgTime);
-
                 }
                 //cellImageTime.Border = 0;
                 //cellImageTime.BorderWidth = 0;
@@ -691,14 +726,25 @@ namespace BolaoNet.Infra.Reports.Pdf
 
 
             //Criando a imagem do time de casa
+            //PdfPCell cellImageTimeCasa = new PdfPCell(); 
+            //string time1FileImage = System.IO.Path.Combine(imagePath, jogo.NomeTime1 + "." + imageExtension);
+            //if (System.IO.File.Exists(time1FileImage))
+            //{
+            //    Image imgTimeCasa = Image.GetInstance(time1FileImage);
+            //    cellImageTimeCasa.AddElement(imgTimeCasa);
+            //}
+
             PdfPCell cellImageTimeCasa = new PdfPCell();
-            //string time1FileImage = System.IO.Path.Combine(imagePath, jogo.Jogo.NomeTime1 + ".gif");
             string time1FileImage = System.IO.Path.Combine(imagePath, jogo.NomeTime1 + "." + imageExtension);
             if (System.IO.File.Exists(time1FileImage))
             {
-                Image imgTimeCasa = Image.GetInstance(time1FileImage);
-                cellImageTimeCasa.AddElement(imgTimeCasa);
+                System.Drawing.Image img = System.Drawing.Bitmap.FromFile(time1FileImage);
+                img = ImageManagement.ResizeImage(img, FlagImageWidth, FlagImageHeight);
+                Image imgTime = Image.GetInstance(img, Color.WHITE);
+                cellImageTimeCasa.AddElement(imgTime);
             }
+
+
             cellImageTimeCasa.HorizontalAlignment = Element.ALIGN_LEFT;
             cellImageTimeCasa.VerticalAlignment = Element.ALIGN_MIDDLE;
 
@@ -810,13 +856,27 @@ namespace BolaoNet.Infra.Reports.Pdf
 
 
             //Criando a imagem do time de fora
+            //PdfPCell cellImageTimeFora = new PdfPCell();
+            //string time2FileImage = System.IO.Path.Combine(imagePath, jogo.NomeTime2 + "." + imageExtension);
+            //if (System.IO.File.Exists(time2FileImage))
+            //{
+            //    Image imgTimeFora = Image.GetInstance(time2FileImage);
+            //    cellImageTimeFora.AddElement(imgTimeFora);
+            //}
+
+
             PdfPCell cellImageTimeFora = new PdfPCell();
             string time2FileImage = System.IO.Path.Combine(imagePath, jogo.NomeTime2 + "." + imageExtension);
             if (System.IO.File.Exists(time2FileImage))
             {
-                Image imgTimeFora = Image.GetInstance(time2FileImage);
-                cellImageTimeFora.AddElement(imgTimeFora);
+                System.Drawing.Image img = System.Drawing.Bitmap.FromFile(time2FileImage);
+                img = ImageManagement.ResizeImage(img, FlagImageWidth, FlagImageHeight);
+                Image imgTime = Image.GetInstance(img, Color.WHITE);
+                cellImageTimeFora.AddElement(imgTime);
             }
+
+
+
             cellImageTimeFora.BorderWidth = 0;
             cellImageTimeFora.HorizontalAlignment = Element.ALIGN_RIGHT;
             cellImageTimeFora.VerticalAlignment = Element.ALIGN_MIDDLE;
@@ -915,56 +975,56 @@ namespace BolaoNet.Infra.Reports.Pdf
             int oitavasRight = 531;
 
             PdfContentByte cb = writer.DirectContent;
-            //cb.MoveTo(oitavasLeft, 247);
-            //cb.LineTo(oitavasLeft, 223);
-            cb.MoveTo(oitavasLeft, 242);
-            cb.LineTo(oitavasLeft, 217);
+            cb.MoveTo(oitavasLeft, 247);
+            cb.LineTo(oitavasLeft, 223);
+            //cb.MoveTo(oitavasLeft, 242);
+            //cb.LineTo(oitavasLeft, 217);
             cb.Stroke();
 
-            //cb.MoveTo(oitavasLeft, 133);
-            //cb.LineTo(oitavasLeft, 109);
-            cb.MoveTo(oitavasLeft, 117);
-            cb.LineTo(oitavasLeft, 92);
-            cb.Stroke();
-
-
-            //cb.MoveTo(oitavasRight, 247);
-            //cb.LineTo(oitavasRight, 223);
-            cb.MoveTo(oitavasRight, 242);
-            cb.LineTo(oitavasRight, 217);
-            cb.Stroke();
-
-            //cb.MoveTo(oitavasRight, 133);
-            //cb.LineTo(oitavasRight, 109);
-            cb.MoveTo(oitavasRight, 117);
-            cb.LineTo(oitavasRight, 92);
-            cb.Stroke();
-
-            //cb.MoveTo(oitavasLeft, 233);
-            //cb.LineTo(oitavasLeft + 43, 233);
-            cb.MoveTo(oitavasLeft, 230);
-            cb.LineTo(oitavasLeft + 43, 230);
+            cb.MoveTo(oitavasLeft, 133);
+            cb.LineTo(oitavasLeft, 109);
+            //cb.MoveTo(oitavasLeft, 117);
+            //cb.LineTo(oitavasLeft, 92);
             cb.Stroke();
 
 
-            //cb.MoveTo(oitavasLeft, 121);
-            //cb.LineTo(oitavasLeft + 43, 121);
-            cb.MoveTo(oitavasLeft, 105);
-            cb.LineTo(oitavasLeft + 43, 105);
+            cb.MoveTo(oitavasRight, 247);
+            cb.LineTo(oitavasRight, 223);
+            //cb.MoveTo(oitavasRight, 242);
+            //cb.LineTo(oitavasRight, 217);
+            cb.Stroke();
+
+            cb.MoveTo(oitavasRight, 133);
+            cb.LineTo(oitavasRight, 109);
+            //cb.MoveTo(oitavasRight, 117);
+            //cb.LineTo(oitavasRight, 92);
+            cb.Stroke();
+
+            cb.MoveTo(oitavasLeft, 233);
+            cb.LineTo(oitavasLeft + 43, 233);
+            //cb.MoveTo(oitavasLeft, 230);
+            //cb.LineTo(oitavasLeft + 43, 230);
             cb.Stroke();
 
 
-            //cb.MoveTo(oitavasRight, 233);
-            //cb.LineTo(oitavasRight - 49, 233);
-            cb.MoveTo(oitavasRight, 230);
-            cb.LineTo(oitavasRight - 49, 230);
+            cb.MoveTo(oitavasLeft, 121);
+            cb.LineTo(oitavasLeft + 43, 121);
+            //cb.MoveTo(oitavasLeft, 105);
+            //cb.LineTo(oitavasLeft + 43, 105);
             cb.Stroke();
 
 
-            //cb.MoveTo(oitavasRight, 121);
-            //cb.LineTo(oitavasRight - 49, 121);
-            cb.MoveTo(oitavasRight, 105);
-            cb.LineTo(oitavasRight - 49, 105);
+            cb.MoveTo(oitavasRight, 233);
+            cb.LineTo(oitavasRight - 49, 233);
+            //cb.MoveTo(oitavasRight, 230);
+            //cb.LineTo(oitavasRight - 49, 230);
+            cb.Stroke();
+
+
+            cb.MoveTo(oitavasRight, 121);
+            cb.LineTo(oitavasRight - 49, 121);
+            //cb.MoveTo(oitavasRight, 105);
+            //cb.LineTo(oitavasRight - 49, 105);
             cb.Stroke();
 
 
@@ -1059,9 +1119,13 @@ namespace BolaoNet.Infra.Reports.Pdf
             string timeFileImage = System.IO.Path.Combine(imagePath, (timeCasa ? jogo.NomeTimeResult1 : jogo.NomeTimeResult2) + "." + imageExtension);
             if (System.IO.File.Exists(timeFileImage))
             {
-                Image imgTime = Image.GetInstance(timeFileImage);
+                System.Drawing.Image img = System.Drawing.Bitmap.FromFile(timeFileImage);
+                img = ImageManagement.ResizeImage(img, FlagImageWidth, FlagImageHeight);
+                Image imgTime = Image.GetInstance(img, Color.WHITE);
                 cellImageTime.AddElement(imgTime);
             }
+
+
             cellImageTime.BorderWidth = 0;
 
             //Criando a descrição do time de fora
@@ -1084,12 +1148,14 @@ namespace BolaoNet.Infra.Reports.Pdf
                 cellResult.AddElement(new Phrase((timeCasa ? jogo.ApostaTime1.ToString() : jogo.ApostaTime2.ToString()),
                     //cellResult = new PdfPCell(new Phrase((timeCasa ? jogo.ApostaTime1.ToString() : jogo.ApostaTime2.ToString()),
                     new Font(Font.HELVETICA, 6f, Font.BOLD, Color.BLACK)));
+                 
             }
             else
             {
                 cellResult.AddElement(new Phrase((""),
                     //cellResult = new PdfPCell(new Phrase((timeCasa ? jogo.ApostaTime1.ToString() : jogo.ApostaTime2.ToString()),
                 new Font(Font.HELVETICA, 6f, Font.BOLD, Color.BLACK)));
+                 
 
             }
 
@@ -1110,7 +1176,6 @@ namespace BolaoNet.Infra.Reports.Pdf
                 cellGols.VerticalAlignment = Element.ALIGN_MIDDLE;
                 cellGols.BorderWidth = 0;
                 time.AddCell(cellGols);
-
 
 
                 PdfPCell cellPontos = new PdfPCell(new Phrase((timeCasa ? jogo.Pontos.ToString() : ""),

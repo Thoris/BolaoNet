@@ -48,6 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin\ConfigurationViewModel.cs" />
+    <Compile Include="Admin\RoleViewModel.cs" />
+    <Compile Include="Admin\UserChangePasswordViewModel.cs" />
+    <Compile Include="Admin\UserProfileViewModel.cs" />
     <Compile Include="Bolao\BolaoComparacaoApostaJogoViewModel.cs" />
     <Compile Include="Bolao\BolaoComparacaoApostasViewModel.cs" />
     <Compile Include="Bolao\BolaoPremiacaoViewModelInfo.cs" />

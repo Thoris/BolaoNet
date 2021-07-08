@@ -76,6 +76,12 @@ namespace BolaoNet.MVC.AutoMapper
             Mapper.CreateMap<ViewModels.Users.UserProfileViewModel, Domain.Entities.Users.User>();
 
 
+
+            Mapper.CreateMap<ViewModels.Admin.UserProfileViewModel, Domain.Entities.Users.User>();
+            Mapper.CreateMap<ViewModels.Admin.RoleViewModel, Domain.Entities.Users.Role>();
+ 
+
+
             Mapper.CreateMap<ViewModels.Pagamentos.PagamentoViewModel, Domain.Entities.Boloes.Pagamento>();
 
             Mapper.CreateMap<ViewModels.Bolao.PremioViewModel, Domain.Entities.Boloes.BolaoPremio>();

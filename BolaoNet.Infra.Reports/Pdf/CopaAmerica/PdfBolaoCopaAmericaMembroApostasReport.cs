@@ -12,7 +12,15 @@ namespace BolaoNet.Infra.Reports.Pdf.CopaAmerica
 {
     public class PdfBolaoCopaAmericaMembroApostasReport
     {
-         
+        #region Constants
+
+        private const int FlagImageWidth = 40;
+        private const int FlagImageHeight = 27;
+        private const int UserImageWidth = 100;
+        private const int UserImageHeight = 100;
+
+        #endregion 
+
         #region Constructors/Destructors
 
         public PdfBolaoCopaAmericaMembroApostasReport()
@@ -232,7 +240,10 @@ namespace BolaoNet.Infra.Reports.Pdf.CopaAmerica
                 string timeFileImage = System.IO.Path.Combine(imageTimesFolder, classificacaoTimes[c].NomeTime + "." + imageExtension);
                 if (System.IO.File.Exists(timeFileImage))
                 {
-                    Image imgTime = Image.GetInstance(timeFileImage);
+                    System.Drawing.Image img = System.Drawing.Bitmap.FromFile(timeFileImage);
+                    img = ImageManagement.ResizeImage(img, FlagImageWidth, FlagImageHeight);
+                    Image imgTime = Image.GetInstance(img, Color.WHITE);
+                    // Image imgTime = Image.GetInstance(timeFileImage);
                     cellBandeira.AddElement(imgTime);
                     cellBandeira.BorderWidth = 0;
                 }
@@ -452,16 +463,27 @@ namespace BolaoNet.Infra.Reports.Pdf.CopaAmerica
 
             //Se existir a imagem do usuário
             if (System.IO.File.Exists(fileImage))
-                imgUser = Image.GetInstance(fileImage);
+            {
+                System.Drawing.Image img = System.Drawing.Bitmap.FromFile(fileImage);
+                img = ImageManagement.ResizeImage(img, UserImageWidth, UserImageHeight);
+                imgUser = Image.GetInstance(img, Color.WHITE);
+                //imgUser = Image.GetInstance(imgUsr);
+            }
             else
             {
                 string noFileName = System.IO.Path.Combine(imageFolder, noPictureFile + "." + imageExtension);
                 if (System.IO.File.Exists(noFileName))
-                    imgUser = Image.GetInstance(noFileName);
+                {
+                    System.Drawing.Image img = System.Drawing.Bitmap.FromFile(noFileName);
+                    img = ImageManagement.ResizeImage(img, UserImageWidth, UserImageHeight);
+                    imgUser = Image.GetInstance(img, Color.WHITE);
+
+                    //imgUser = Image.GetInstance(noFileName);
+                }
                 else
                 {
 
-                    System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(160, 120);
+                    System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(UserImageWidth, UserImageHeight);
                     imgUser = Image.GetInstance(bmp, Color.BLACK);
                 }
             }

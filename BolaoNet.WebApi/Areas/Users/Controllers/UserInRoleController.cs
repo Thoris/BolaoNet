@@ -1,4 +1,5 @@
-﻿using BolaoNet.Services.Controllers;
+﻿using BolaoNet.Domain.Entities.Users;
+using BolaoNet.Services.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,6 +50,12 @@ namespace BolaoNet.Services.Areas.Users.Controllers
         public IList<Domain.Entities.Users.Role> GetRolesInUser(Domain.Entities.Users.User user)
         {
             return Service.GetRolesInUser(user);
+        }
+
+        [HttpPost]
+        public IList<User> GetUsersInRole(Role role)
+        {
+            return Service.GetUsersInRole(role);
         }
 
         #endregion

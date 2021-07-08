@@ -12,6 +12,15 @@ namespace BolaoNet.Infra.Reports.Pdf.CopaAmerica
 {
     public class PdfBolaoCopaAmericaApostasFimReport
     {
+        #region Constants
+
+        private const int FlagImageWidth = 40;
+        private const int FlagImageHeight = 27;
+        private const int UserImageWidth = 160;
+        private const int UserImageHeight = 120;
+
+        #endregion
+
         #region Constructors/Destructors
 
         public PdfBolaoCopaAmericaApostasFimReport()
@@ -356,7 +365,10 @@ namespace BolaoNet.Infra.Reports.Pdf.CopaAmerica
                 string timeFileImage = System.IO.Path.Combine(imageTimesFolder, classificacaoTimes[c].NomeTime + "." + imageExtension);
                 if (System.IO.File.Exists(timeFileImage))
                 {
-                    Image imgTime = Image.GetInstance(timeFileImage);
+                    System.Drawing.Image img = System.Drawing.Bitmap.FromFile(timeFileImage);
+                    img = ImageManagement.ResizeImage(img, FlagImageWidth, FlagImageHeight);
+                    Image imgTime = Image.GetInstance(img, Color.WHITE);
+                    //Image imgTime = Image.GetInstance(timeFileImage);
                     cellBandeira.AddElement(imgTime);
                     cellBandeira.BorderWidth = 0;
                 }
@@ -745,16 +757,27 @@ namespace BolaoNet.Infra.Reports.Pdf.CopaAmerica
 
             //Se existir a imagem do usuário
             if (System.IO.File.Exists(fileImage))
-                imgUser = Image.GetInstance(fileImage);
+            {
+                System.Drawing.Image img = System.Drawing.Bitmap.FromFile(fileImage);
+                img = ImageManagement.ResizeImage(img, UserImageWidth, UserImageHeight);
+                imgUser = Image.GetInstance(img, Color.WHITE);
+                //imgUser = Image.GetInstance(imgUsr);
+            }
             else
             {
                 string noFileName = System.IO.Path.Combine(imageFolder, noPictureFile + "." + imageExtension);
                 if (System.IO.File.Exists(noFileName))
-                    imgUser = Image.GetInstance(noFileName);
+                {
+                    System.Drawing.Image img = System.Drawing.Bitmap.FromFile(noFileName);
+                    img = ImageManagement.ResizeImage(img, UserImageWidth, UserImageHeight);
+                    imgUser = Image.GetInstance(img, Color.WHITE);
+
+                    //imgUser = Image.GetInstance(noFileName);
+                }
                 else
                 {
 
-                    System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(160, 120);
+                    System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(UserImageWidth, UserImageHeight);
                     imgUser = Image.GetInstance(bmp, Color.BLACK);
                 }
             }
@@ -836,7 +859,10 @@ namespace BolaoNet.Infra.Reports.Pdf.CopaAmerica
                 string timeFileImage = System.IO.Path.Combine(imageTimesFolder, aposta.NomeTime + "." + imageExtension);
                 if (System.IO.File.Exists(timeFileImage))
                 {
-                    Image imgTime = Image.GetInstance(timeFileImage);
+                    System.Drawing.Image img = System.Drawing.Bitmap.FromFile(timeFileImage);
+                    img = ImageManagement.ResizeImage(img, FlagImageWidth, FlagImageHeight);
+                    Image imgTime = Image.GetInstance(img, Color.WHITE);
+                    //Image imgTime = Image.GetInstance(timeFileImage);
                     cellImageTime.AddElement(imgTime);
 
                 }
@@ -956,7 +982,10 @@ namespace BolaoNet.Infra.Reports.Pdf.CopaAmerica
             string time1FileImage = System.IO.Path.Combine(imagePath, jogo.NomeTime1 + "." + imageExtension);
             if (System.IO.File.Exists(time1FileImage))
             {
-                Image imgTimeCasa = Image.GetInstance(time1FileImage);
+                System.Drawing.Image img = System.Drawing.Bitmap.FromFile(time1FileImage);
+                img = ImageManagement.ResizeImage(img, FlagImageWidth, FlagImageHeight);
+                Image imgTimeCasa = Image.GetInstance(img, Color.WHITE);
+                //Image imgTimeCasa = Image.GetInstance(time1FileImage);
                 cellImageTimeCasa.AddElement(imgTimeCasa);
             }
             cellImageTimeCasa.HorizontalAlignment = Element.ALIGN_LEFT;
@@ -1074,7 +1103,10 @@ namespace BolaoNet.Infra.Reports.Pdf.CopaAmerica
             string time2FileImage = System.IO.Path.Combine(imagePath, jogo.NomeTime2 + "." + imageExtension);
             if (System.IO.File.Exists(time2FileImage))
             {
-                Image imgTimeFora = Image.GetInstance(time2FileImage);
+                System.Drawing.Image img = System.Drawing.Bitmap.FromFile(time2FileImage);
+                img = ImageManagement.ResizeImage(img, FlagImageWidth, FlagImageHeight);
+                Image imgTimeFora = Image.GetInstance(img, Color.WHITE);
+                //Image imgTimeFora = Image.GetInstance(time2FileImage);
                 cellImageTimeFora.AddElement(imgTimeFora);
             }
             cellImageTimeFora.BorderWidth = 0;
@@ -1435,7 +1467,10 @@ namespace BolaoNet.Infra.Reports.Pdf.CopaAmerica
             string timeFileImage = System.IO.Path.Combine(imagePath, (timeCasa ? jogo.NomeTimeResult1 : jogo.NomeTimeResult2) + "." + imageExtension);
             if (System.IO.File.Exists(timeFileImage))
             {
-                Image imgTime = Image.GetInstance(timeFileImage);
+                System.Drawing.Image img = System.Drawing.Bitmap.FromFile(timeFileImage);
+                img = ImageManagement.ResizeImage(img, FlagImageWidth, FlagImageHeight);
+                Image imgTime = Image.GetInstance(img, Color.WHITE);
+                //Image imgTime = Image.GetInstance(timeFileImage);
                 cellImageTime.AddElement(imgTime);
             }
             cellImageTime.BorderWidth = 0;

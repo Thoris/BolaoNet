@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ImageManagement.cs" />
     <Compile Include="Pdf\CopaAmerica\PdfBolaoCopaAmericaApostasFimReport.cs" />
     <Compile Include="Pdf\CopaAmerica\PdfBolaoCopaAmericaApostasInicioReport.cs" />
     <Compile Include="Pdf\CopaAmerica\PdfBolaoCopaAmericaMembroApostasReport.cs" />

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BolaoNet.Domain.Entities.Users;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,6 +40,12 @@ namespace BolaoNet.WebApi.Integration.Users
         {
             return base.HttpPostApi<IList<Domain.Entities.Users.Role>>(
               new Dictionary<string, string>(), user, "GetRolesInUser");
+        }
+
+        public IList<User> GetUsersInRole(Role role)
+        {
+            return base.HttpPostApi<IList<Domain.Entities.Users.User>>(
+              new Dictionary<string, string>(), role, "GetUsersInRole");
         }
 
         #endregion

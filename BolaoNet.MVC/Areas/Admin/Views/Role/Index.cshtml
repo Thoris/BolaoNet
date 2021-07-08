@@ -1,0 +1,65 @@
+﻿@model IList<BolaoNet.MVC.ViewModels.Admin.RoleViewModel>
+@{
+    ViewBag.Title = "Gerenciamento de Grupos de Usuários";
+}
+<div class="row">
+
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h3>Grupos de usuários</h3>
+            </div>
+            <div class="ibox-content" style="display: block;">
+
+                @*<div class="row">
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <a href="@Url.Action("Create")" class="btn btn-default btn-sm center-block">Novo</a>
+                        </div>
+                    </div>
+                </div>*@
+
+                <div class="row">
+                    @if (Model.Count > 0)
+                    {
+                        <table class="table table-hover">
+                            <caption>Roles</caption>
+                            <thead>
+                                <tr>
+                                    <td>@Html.DisplayNameFor(model => model[0].RoleName)</td>
+                                    <td class="hidden-xs">@Html.DisplayNameFor(model => model[0].Description)</td>
+                                     
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (int c = 0; c < Model.Count; c++)
+                                {
+                                    <tr>
+                                        <td>
+                                            <a href="@Url.Action("Details", "Role", new
+                                                    {
+                                                        roleName = Model[c].RoleName
+                                                    })">
+                                                @Html.DisplayFor(model => model[c].RoleName)
+                                            </a>
+                                        </td>
+                                         
+                                        <td class="hidden-xs">@Html.DisplayFor(model => model[c].Description)</td>
+                                         
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <h3>Não existem grupos de usuários cadastrados</h3>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+
+
+

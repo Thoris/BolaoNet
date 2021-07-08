@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace BolaoNet.Domain.Interfaces.Services.Users
 {
@@ -11,6 +7,7 @@ namespace BolaoNet.Domain.Interfaces.Services.Users
     {
 
         IList<Entities.Users.Role> GetRolesInUser(Entities.Users.User user);
+        IList<Entities.Users.User> GetUsersInRole(Entities.Users.Role role);
 
     }
 }

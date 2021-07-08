@@ -1,0 +1,48 @@
+﻿@model BolaoNet.MVC.ViewModels.Admin.RoleViewModel
+@{
+    ViewBag.Title = "Inclusão de grupo de usuário";
+}
+<div class="row">
+
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h3>Dados de grupo de usuário</h3>
+            </div>
+            <div class="ibox-content" style="display: block;">
+                <div class="row">
+                    @using (Html.BeginForm("Edit", "Role", FormMethod.Post, new { }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(x => x.RoleName)
+                        <div class="col-md-12 col-sm-12">
+
+                            <div class="form-group col-md-12 col-sm-12">
+                                @Html.LabelFor(a => a.RoleName)
+                                @Html.DisplayFor(a => a.RoleName, new { @class = "form-control input-sm", @placeholder = "" })
+                                @Html.ValidationMessageFor(m => m.RoleName)
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12">
+                            <div class="form-group col-md-12 col-sm-12">
+                                @Html.LabelFor(a => a.Description)
+                                @Html.TextAreaFor(a => a.Description, new { @class = "form-control input-sm", @placeholder = "" })
+                                @Html.ValidationMessageFor(m => m.Description)
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12">
+                            <div class="login-erro">
+                                @Html.ValidationSummary(true)
+                            </div>
+                            <div class="col-sm-offset-4 col-md-4 col-sm-4 centered-text">
+                                <input type="submit" class="btn btn-lg btn-success btn-block" value="Salvar" />
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+
+

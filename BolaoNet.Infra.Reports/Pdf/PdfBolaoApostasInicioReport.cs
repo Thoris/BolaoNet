@@ -13,6 +13,15 @@ namespace BolaoNet.Infra.Reports.Pdf
     public class PdfBolaoApostasInicioReport :
         Domain.Interfaces.Services.Reports.FormatReport.IBolaoApostasInicioFormatReportService
     {
+        #region Constants
+
+        private const int FlagImageWidth = 40;
+        private const int FlagImageHeight = 27;
+        private const int UserImageWidth = 160;
+        private const int UserImageHeight = 120;
+
+        #endregion
+
         #region Constructors/Destructors
 
         public PdfBolaoApostasInicioReport()
@@ -194,19 +203,28 @@ namespace BolaoNet.Infra.Reports.Pdf
 
             //Se existir a imagem do usuário
             if (System.IO.File.Exists(fileImage))
-                imgUser = Image.GetInstance(fileImage);
+            {
+                System.Drawing.Image img = System.Drawing.Bitmap.FromFile(fileImage);
+                img = ImageManagement.ResizeImage(img, FlagImageWidth, FlagImageHeight);
+                imgUser = Image.GetInstance(img, Color.WHITE);
+                //imgUser = Image.GetInstance(fileImage);
+            }
             else
             {
                 string noFileName = System.IO.Path.Combine(imageFolder, noPictureFile + "." + imageExtension);
                 if (System.IO.File.Exists(noFileName))
-                    imgUser = Image.GetInstance(noFileName);
-                else
                 {
-
-                    System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(160, 120);
+                    System.Drawing.Image img = System.Drawing.Bitmap.FromFile(noFileName);
+                    img = ImageManagement.ResizeImage(img, FlagImageWidth, FlagImageHeight);
+                    imgUser = Image.GetInstance(img, Color.WHITE);
+                    //imgUser = Image.GetInstance(noFileName);
+                }
+                else
+                { 
+                    System.Drawing.Bitmap bmp = new System.Drawing.Bitmap(UserImageWidth, UserImageHeight);
                     imgUser = Image.GetInstance(bmp, Color.BLACK);
                 }
-            }
+            } 
 
             PdfPCell cellUserName = new PdfPCell(new Phrase(user.UserName, new Font(Font.HELVETICA, 9f, Font.NORMAL, Color.BLACK)));
             cellUserName.HorizontalAlignment = Element.ALIGN_CENTER;
@@ -285,7 +303,10 @@ namespace BolaoNet.Infra.Reports.Pdf
                 string timeFileImage = System.IO.Path.Combine(imageTimesFolder, aposta.NomeTime + "." + imageExtension);
                 if (System.IO.File.Exists(timeFileImage))
                 {
-                    Image imgTime = Image.GetInstance(timeFileImage);
+                    System.Drawing.Image img = System.Drawing.Bitmap.FromFile(timeFileImage);
+                    img = ImageManagement.ResizeImage(img, FlagImageWidth, FlagImageHeight);
+                    Image imgTime = Image.GetInstance(img, Color.WHITE);
+                    //Image imgTime = Image.GetInstance(timeFileImage);
                     cellImageTime.AddElement(imgTime);
 
                 }
@@ -419,7 +440,10 @@ namespace BolaoNet.Infra.Reports.Pdf
             string time1FileImage = System.IO.Path.Combine(imagePath, jogo.NomeTime1 + "." + imageExtension);
             if (System.IO.File.Exists(time1FileImage))
             {
-                Image imgTimeCasa = Image.GetInstance(time1FileImage);
+                System.Drawing.Image img = System.Drawing.Bitmap.FromFile(time1FileImage);
+                img = ImageManagement.ResizeImage(img, FlagImageWidth, FlagImageHeight);
+                Image imgTimeCasa = Image.GetInstance(img, Color.WHITE);
+                //Image imgTimeCasa = Image.GetInstance(time1FileImage);
                 cellImageTimeCasa.AddElement(imgTimeCasa);
             }
             cellImageTimeCasa.HorizontalAlignment = Element.ALIGN_LEFT;
@@ -537,7 +561,10 @@ namespace BolaoNet.Infra.Reports.Pdf
             string time2FileImage = System.IO.Path.Combine(imagePath, jogo.NomeTime2 + "." + imageExtension);
             if (System.IO.File.Exists(time2FileImage))
             {
-                Image imgTimeFora = Image.GetInstance(time2FileImage);
+                System.Drawing.Image img = System.Drawing.Bitmap.FromFile(time2FileImage);
+                img = ImageManagement.ResizeImage(img, FlagImageWidth, FlagImageHeight);
+                Image imgTimeFora = Image.GetInstance(img, Color.WHITE);
+                //Image imgTimeFora = Image.GetInstance(time2FileImage);
                 cellImageTimeFora.AddElement(imgTimeFora);
             }
             cellImageTimeFora.BorderWidth = 0;
@@ -637,56 +664,56 @@ namespace BolaoNet.Infra.Reports.Pdf
             int oitavasRight = 531;
 
             PdfContentByte cb = writer.DirectContent;
-            //cb.MoveTo(oitavasLeft, 247);
-            //cb.LineTo(oitavasLeft, 223);
-            cb.MoveTo(oitavasLeft, 242);
-            cb.LineTo(oitavasLeft, 217);
+            cb.MoveTo(oitavasLeft, 247);
+            cb.LineTo(oitavasLeft, 223);
+            //cb.MoveTo(oitavasLeft, 242);
+            //cb.LineTo(oitavasLeft, 217);
             cb.Stroke();
 
-            //cb.MoveTo(oitavasLeft, 133);
-            //cb.LineTo(oitavasLeft, 109);
-            cb.MoveTo(oitavasLeft, 117);
-            cb.LineTo(oitavasLeft, 92);
-            cb.Stroke();
-
-
-            //cb.MoveTo(oitavasRight, 247);
-            //cb.LineTo(oitavasRight, 223);
-            cb.MoveTo(oitavasRight, 242);
-            cb.LineTo(oitavasRight, 217);
-            cb.Stroke();
-
-            //cb.MoveTo(oitavasRight, 133);
-            //cb.LineTo(oitavasRight, 109);
-            cb.MoveTo(oitavasRight, 117);
-            cb.LineTo(oitavasRight, 92);
-            cb.Stroke();
-
-            //cb.MoveTo(oitavasLeft, 233);
-            //cb.LineTo(oitavasLeft + 43, 233);
-            cb.MoveTo(oitavasLeft, 230);
-            cb.LineTo(oitavasLeft + 43, 230);
+            cb.MoveTo(oitavasLeft, 133);
+            cb.LineTo(oitavasLeft, 109);
+            // cb.MoveTo(oitavasLeft, 117);
+            //cb.LineTo(oitavasLeft, 92);
             cb.Stroke();
 
 
-            //cb.MoveTo(oitavasLeft, 121);
-            //cb.LineTo(oitavasLeft + 43, 121);
-            cb.MoveTo(oitavasLeft, 105);
-            cb.LineTo(oitavasLeft + 43, 105);
+            cb.MoveTo(oitavasRight, 247);
+            cb.LineTo(oitavasRight, 223);
+            //cb.MoveTo(oitavasRight, 242);
+            //cb.LineTo(oitavasRight, 217);
+            cb.Stroke();
+
+            cb.MoveTo(oitavasRight, 133);
+            cb.LineTo(oitavasRight, 109);
+            //cb.MoveTo(oitavasRight, 117);
+            //cb.LineTo(oitavasRight, 92);
+            cb.Stroke();
+
+            cb.MoveTo(oitavasLeft, 233);
+            cb.LineTo(oitavasLeft + 43, 233);
+            //cb.MoveTo(oitavasLeft, 230);
+            //cb.LineTo(oitavasLeft + 43, 230);
             cb.Stroke();
 
 
-            //cb.MoveTo(oitavasRight, 233);
-            //cb.LineTo(oitavasRight - 49, 233);
-            cb.MoveTo(oitavasRight, 230);
-            cb.LineTo(oitavasRight - 49, 230);
+            cb.MoveTo(oitavasLeft, 121);
+            cb.LineTo(oitavasLeft + 43, 121);
+            //cb.MoveTo(oitavasLeft, 105);
+            //cb.LineTo(oitavasLeft + 43, 105);
             cb.Stroke();
 
 
-            //cb.MoveTo(oitavasRight, 121);
-            //cb.LineTo(oitavasRight - 49, 121);
-            cb.MoveTo(oitavasRight, 105);
-            cb.LineTo(oitavasRight - 49, 105);
+            cb.MoveTo(oitavasRight, 233);
+            cb.LineTo(oitavasRight - 49, 233);
+            //cb.MoveTo(oitavasRight, 230);
+            //cb.LineTo(oitavasRight - 49, 230);
+            cb.Stroke();
+
+
+            cb.MoveTo(oitavasRight, 121);
+            cb.LineTo(oitavasRight - 49, 121);
+            //cb.MoveTo(oitavasRight, 105);
+            //cb.LineTo(oitavasRight - 49, 105);
             cb.Stroke();
 
 
@@ -743,123 +770,6 @@ namespace BolaoNet.Infra.Reports.Pdf
 
         }
         
-        private void CreateEliminatorias_old(bool showOnlyPartidaValida, bool fim, PdfWriter writer, string imagePath, string imageExtension, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> oitavas, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> quartas, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> semiFinais, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> finais)
-        {
-            float[] relative = new float[] { 10, 0.5f, 9, 0.5f, 9, 0.5f, 9, 0.5f, 9, 0.5f, 9, 0.5f, 10 };
-            PdfPTable table = new PdfPTable(relative);
-            table.DefaultCell.BorderWidth = 0;
-            table.DefaultCell.Padding = 0;
-
-
-
-            table.AddCell(CreateOitavasLeft(showOnlyPartidaValida, fim, imagePath, imageExtension, oitavas));
-            table.AddCell("");
-            table.AddCell(CreateQuartasLeft(showOnlyPartidaValida, fim, imagePath, imageExtension, quartas));
-            table.AddCell("");
-            table.AddCell(CreateSemiFinaisLeft(showOnlyPartidaValida, fim, imagePath, imageExtension, semiFinais));
-            table.AddCell("");
-            table.AddCell(CreateFinais(showOnlyPartidaValida, fim, imagePath, imageExtension, finais));
-            table.AddCell("");
-            table.AddCell(CreateSemiFinaisRight(showOnlyPartidaValida, fim, imagePath, imageExtension, semiFinais));
-            table.AddCell("");
-            table.AddCell(CreateQuartasRight(showOnlyPartidaValida, fim, imagePath, imageExtension, quartas));
-            table.AddCell("");
-            table.AddCell(CreateOitavasRight(showOnlyPartidaValida, fim, imagePath, imageExtension, oitavas));
-
-            //table.TotalWidth = 580;
-            table.TotalWidth = 540;
-            table.SpacingAfter = 10;
-
-            //table.WriteSelectedRows(0, -1, 5, 280, writer.DirectContent);
-            table.WriteSelectedRows(0, -1, 25, 280, writer.DirectContent);
-
-
-            //int oitavasLeft = 45;
-            //int oitavasRight = 541;
-
-            int oitavasLeft = 65;
-            int oitavasRight = 531;
-
-            PdfContentByte cb = writer.DirectContent;
-            cb.MoveTo(oitavasLeft, 247);
-            cb.LineTo(oitavasLeft, 223);
-            cb.Stroke();
-
-            cb.MoveTo(oitavasLeft, 133);
-            cb.LineTo(oitavasLeft, 109);
-            cb.Stroke();
-
-
-            cb.MoveTo(oitavasRight, 247);
-            cb.LineTo(oitavasRight, 223);
-            cb.Stroke();
-
-            cb.MoveTo(oitavasRight, 133);
-            cb.LineTo(oitavasRight, 109);
-            cb.Stroke();
-
-            cb.MoveTo(oitavasLeft, 233);
-            cb.LineTo(oitavasLeft + 43, 233);
-            cb.Stroke();
-
-
-            cb.MoveTo(oitavasLeft, 121);
-            cb.LineTo(oitavasLeft + 43, 121);
-            cb.Stroke();
-
-
-            cb.MoveTo(oitavasRight, 233);
-            cb.LineTo(oitavasRight - 49, 233);
-            cb.Stroke();
-
-
-            cb.MoveTo(oitavasRight, 121);
-            cb.LineTo(oitavasRight - 49, 121);
-            cb.Stroke();
-
-
-            //   |
-            cb.MoveTo(145, 223);
-            cb.LineTo(145, 139);
-            cb.Stroke();
-            //   |
-            cb.MoveTo(445, 223);
-            cb.LineTo(445, 139);
-            cb.Stroke();
-
-            // -
-            cb.MoveTo(145, 180);
-            cb.LineTo(180 + 4, 180);
-            cb.Stroke();
-            // -
-            cb.MoveTo(445, 180);
-            cb.LineTo(407, 180);
-            cb.Stroke();
-
-
-
-            cb.MoveTo(280, 211);
-            cb.LineTo(280, 180);
-            cb.Stroke();
-
-
-
-            cb.MoveTo(310, 211);
-            cb.LineTo(310, 180);
-            cb.Stroke();
-
-
-
-            cb.MoveTo(280, 180);
-            cb.LineTo(247 + 8, 180);
-            cb.Stroke();
-
-
-            cb.MoveTo(310, 180);
-            cb.LineTo(343 - 8, 180);
-            cb.Stroke();
-
-        }
         private PdfPTable CreateTimeEliminatoriaFormat(bool showOnlyPartidaValida, bool fim, bool showTitle, string imageExtension, string imagePath, bool timeCasa, Domain.Entities.ValueObjects.JogoUsuarioVO jogo)
         {
             float[] relative = null;
@@ -899,7 +809,10 @@ namespace BolaoNet.Infra.Reports.Pdf
             string timeFileImage = System.IO.Path.Combine(imagePath, (timeCasa ? jogo.NomeTimeResult1 : jogo.NomeTimeResult2) + "." + imageExtension);
             if (System.IO.File.Exists(timeFileImage))
             {
-                Image imgTime = Image.GetInstance(timeFileImage);
+                System.Drawing.Image img = System.Drawing.Bitmap.FromFile(timeFileImage);
+                img = ImageManagement.ResizeImage(img, FlagImageWidth, FlagImageHeight);
+                Image imgTime = Image.GetInstance(img, Color.WHITE);
+                //Image imgTime = Image.GetInstance(timeFileImage);
                 cellImageTime.AddElement(imgTime);
             }
             cellImageTime.BorderWidth = 0;

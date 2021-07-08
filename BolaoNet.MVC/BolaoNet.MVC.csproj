@@ -160,6 +160,8 @@
     <Compile Include="Areas\Admin\Controllers\ConfigurationController.cs" />
     <Compile Include="Areas\Admin\Controllers\GerenciamentoMembrosBolaoController.cs" />
     <Compile Include="Areas\Admin\Controllers\LogViewerController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Apostas\ApostasAreaRegistration.cs" />
     <Compile Include="Areas\Apostas\Controllers\AcessoBolaoController.cs" />
     <Compile Include="Areas\Apostas\Controllers\ApostasAutomaticasController.cs" />
@@ -239,6 +241,7 @@
     <Compile Include="Helpers\FileHelper.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Helpers\PersistenceProviders\PersistenceProvider.cs" />
+    <Compile Include="Helpers\StringHelper.cs" />
     <Compile Include="Security\AuthenticationFilterAttribute.cs" />
     <Compile Include="Security\AuthorizeRolesAttribute.cs" />
     <Compile Include="Security\CookieManager.cs" />
@@ -664,6 +667,13 @@
     <Content Include="Areas\Boloes\Views\PercentualChances\Index.cshtml" />
     <Content Include="Areas\Boloes\Views\IndicePontos\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Configuration\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Role\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Role\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Role\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\User\ChangePassword.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Index.cshtml" />
     <None Include="Content\js\jquery-1.10.2.intellisense.js" />
     <Content Include="Content\js\jquery-1.10.2.js" />
     <Content Include="Content\js\jquery-1.10.2.min.js" />

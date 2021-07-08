@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace BolaoNet.Application.Users
 {
@@ -38,6 +34,10 @@ namespace BolaoNet.Application.Users
         public IList<Domain.Entities.Users.Role> GetRolesInUser(Domain.Entities.Users.User user)
         {
             return Service.GetRolesInUser(user);
+        }
+        public IList<Domain.Entities.Users.User> GetUsersInRole(Domain.Entities.Users.Role role)
+        {
+            return Service.GetUsersInRole(role);
         }
 
         #endregion

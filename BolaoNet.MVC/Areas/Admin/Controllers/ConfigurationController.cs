@@ -4,6 +4,7 @@ using BolaoNet.MVC.Controllers;
 using BolaoNet.MVC.Security;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -95,21 +96,18 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
 
         public ActionResult AdicionarCampeonato(string nomeCampeonato)
         {
-            //string s = System.Uri.UnescapeDataString(nomeCampeonato); 
+            byte[] bytes = Encoding.GetEncoding(1252).GetBytes(nomeCampeonato);
+            string nomeCampeonatoFx = Encoding.UTF8.GetString(bytes);
 
-            //string myEncodedString = HttpUtility.HtmlDecode(nomeCampeonato);
-
-            //string x = Server.HtmlDecode(nomeCampeonato);
-             
-            ICopaFacadeService facade = _copaListFacadeApp.GetInstance(nomeCampeonato);
+            ICopaFacadeService facade = _copaListFacadeApp.GetInstance(nomeCampeonatoFx);
 
             if (facade == null)
             {
-                base.ShowErrorMessage("Não há instância para o campeonato: " + nomeCampeonato);
+                base.ShowErrorMessage("Não há instância para o campeonato: " + nomeCampeonatoFx);
             }
             else
             {
-                facade.CreateCampeonato(nomeCampeonato, false);
+                facade.CreateCampeonato(nomeCampeonatoFx, false);
             }
 
 
@@ -118,15 +116,18 @@ namespace BolaoNet.MVC.Areas.Admin.Controllers
 
         public ActionResult AdicionarBolao(string nomeBolao)
         {
-            IBolaoFacadeService facade = _bolaoListFacadeApp.GetInstance(nomeBolao);
+            byte[] bytes = Encoding.GetEncoding(1252).GetBytes(nomeBolao);
+            string nomeBolaoFx = Encoding.UTF8.GetString(bytes);
+
+            IBolaoFacadeService facade = _bolaoListFacadeApp.GetInstance(nomeBolaoFx);
 
             if (facade == null)
             {
-                base.ShowErrorMessage("Não há instância para o campeonato: " + nomeBolao);
+                base.ShowErrorMessage("Não há instância para o campeonato: " + nomeBolaoFx);
             }
             else
             {
-                facade.CreateBolao(new Domain.Entities.Campeonatos.Campeonato(nomeBolao));
+                facade.CreateBolao(new Domain.Entities.Campeonatos.Campeonato(nomeBolaoFx));
             }
 
             return RedirectToAction("Index");

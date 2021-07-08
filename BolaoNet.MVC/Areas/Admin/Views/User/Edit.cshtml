@@ -1,0 +1,124 @@
+﻿@model BolaoNet.MVC.ViewModels.Admin.UserProfileViewModel
+@{
+    ViewBag.Title = "Alteração de usuário";
+} 
+<div class="row">
+
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h3>Dados do usuário</h3>
+            </div>
+            <div class="ibox-content" style="display: block;">
+                <div class="row">
+                    @using (Html.BeginForm("Edit", "User", FormMethod.Post, new { }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        @Html.HiddenFor(x => x.UserName)
+
+                                                       
+                        <div class="col-md-12 col-sm-12">
+
+                            <div class="form-group col-md-4 col-sm-4">
+                                @Html.LabelFor(a => a.UserName)
+                                @Html.DisplayFor(a => a.UserName, new { @class = "form-control input-sm", @placeholder = "" })
+                                @Html.ValidationMessageFor(m => m.UserName)
+                            </div>
+
+                            <div class="form-group col-md-6 col-sm-6">
+                                @Html.LabelFor(a => a.Email)
+                                @Html.EditorFor(a => a.Email, new { @class = "form-control input-sm", @placeholder = "" })
+                                @Html.ValidationMessageFor(m => m.Email)
+                            </div>
+
+                            <div class="form-group col-md-2 col-sm-2">
+                                <a href="@Url.Action("ChangePassword", "User", new { userName = Model.UserName})" class="btn btn-default btn-sm center-block ">Alterar Senha</a>
+                            </div>
+
+                            <div class="form-group col-md-8 col-sm-8">
+                                @Html.LabelFor(a => a.FullName)
+                                @Html.TextBoxFor(a => a.FullName, new { @class = "form-control input-sm", @placeholder = "" })
+                                @Html.ValidationMessageFor(m => m.FullName)
+                            </div>
+
+                            <div class="form-group col-md-4 col-sm-4">
+                                @Html.LabelFor(a => a.Male)
+                                @Html.DropDownListFor(model => model.Male, new SelectList(
+                                                                new List<Object>{
+                                                                    new { value = true , text = "Masculino"  },
+                                                                    new { value = false , text = "Feminino" }
+                                                                }, "value", "text", 0), "- Selecione -", new { @class = "form-control input-sm" })
+                                @Html.ValidationMessageFor(m => m.Male)
+                            </div>
+
+                                
+                            <div class="form-group col-md-4 col-sm-4">
+                                @Html.LabelFor(a => a.BirthDate)
+                                @Html.EditorFor(a => a.BirthDate, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(m => m.BirthDate)
+                            </div>
+                            <div class="form-group col-md-4 col-sm-4">
+                                @Html.LabelFor(a => a.PhoneNumber)
+                                @Html.TextBoxFor(a => a.PhoneNumber, new { @class = "form-control input-sm", @placeholder = "" })
+                                @Html.ValidationMessageFor(m => m.PhoneNumber)
+                            </div>
+                            <div class="form-group col-md-4 col-sm-4">
+                                @Html.LabelFor(a => a.CellPhone)
+                                @Html.TextBoxFor(a => a.CellPhone, new { @class = "form-control input-sm", @placeholder = "" })
+                                @Html.ValidationMessageFor(m => m.CellPhone)
+                            </div>
+
+                        </div>
+                        <div class="col-md-12 col-sm-12">
+
+                            <div class="form-group col-md-3 col-sm-3">
+                                @Html.LabelFor(a => a.PostalCode)
+                                @Html.TextBoxFor(a => a.PostalCode, new { @class = "form-control input-sm", @placeholder = "" })
+                                @Html.ValidationMessageFor(m => m.PostalCode)
+                            </div>
+                            <div class="form-group col-md-5 col-sm-5">
+                                @Html.LabelFor(a => a.Country)
+                                @Html.TextBoxFor(a => a.Country, new { @class = "form-control input-sm", @placeholder = "" })
+                                @Html.ValidationMessageFor(m => m.Country)
+                            </div>
+                            <div class="form-group col-md-4 col-sm-4">
+                                @Html.LabelFor(a => a.State)
+                                @Html.TextBoxFor(a => a.State, new { @class = "form-control input-sm", @placeholder = "" })
+                                @Html.ValidationMessageFor(m => m.State)
+                            </div>
+
+                            <div class="form-group col-md-8 col-sm-8">
+                                @Html.LabelFor(a => a.Street)
+                                @Html.TextBoxFor(a => a.Street, new { @class = "form-control input-sm", @placeholder = "" })
+                                @Html.ValidationMessageFor(m => m.Street)
+                            </div>
+                            <div class="form-group col-md-4 col-sm-4">
+                                @Html.LabelFor(a => a.StreetNumber)
+                                @Html.TextBoxFor(a => a.StreetNumber, new { @class = "form-control input-sm", @placeholder = "" })
+                                @Html.ValidationMessageFor(m => m.StreetNumber)
+                            </div>
+                        </div>
+                        @*<div class="col-md-12 col-sm-12" id="deceased">
+
+                            <div class="form-group col-md-6 col-sm-6">
+                                @Html.CheckBoxFor(a => a.ReceiveEmails, new { }) @Html.DisplayNameFor(x => x.ReceiveEmails)
+                                @Html.ValidationMessageFor(m => m.ReceiveEmails)
+                            </div>
+                        </div>*@
+                        <div class="col-md-12 col-sm-12">
+                            <div class="login-erro">
+                                @Html.ValidationSummary(true)
+                            </div>
+                            <div class="col-sm-offset-4 col-md-4 col-sm-4 centered-text">
+                                <input type="submit" class="btn btn-lg btn-success btn-block" value="Salvar" />
+                            </div>
+                        </div>
+                            
+                            
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

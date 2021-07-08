@@ -89,6 +89,13 @@
                 { @Html.Raw("class=\"active\"")   }>
                 <a href="/Admin/Configuration/Index" onclick="javascript:showWait();"><span class="nav-label"><i class="fa fa-navicon"></i>Config</span><span class="visible-xs-inline">Config</span></a>
             </li>
+
+            <li @if (string.Compare(controllerName, "Role", true) == 0 && string.Compare(controllerArea, "Admin", true) == 0) { @Html.Raw("class=\"active\"") }>
+                <a href="/Admin/Role/Index" onclick="javascript:showWait();"><i class="fa fa-cubes"></i><span class="nav-label">Roles</span><span class="visible-xs-inline">Roles</span></a>
+            </li>
+            <li @if (string.Compare(controllerName, "User", true) == 0 && string.Compare(controllerArea, "Admin", true) == 0) { @Html.Raw("class=\"active\"") }>
+                <a href="/Admin/User/Index" onclick="javascript:showWait();"><i class="fa fa-user-md"></i><span class="nav-label">Users</span><span class="visible-xs-inline">Users</span></a>
+            </li>
         }
     </ul>
 </li>

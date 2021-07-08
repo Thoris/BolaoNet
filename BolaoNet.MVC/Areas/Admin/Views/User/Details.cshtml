@@ -1,0 +1,164 @@
+﻿@model BolaoNet.MVC.ViewModels.Admin.UserProfileViewModel
+@{
+    ViewBag.Title = "Visualização de usuário";
+} 
+<div class="row">
+
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h3>Dados do Usuário</h3>
+            </div>
+            <div class="ibox-content" style="display: block;">
+                <div class="row">
+                    @using (Html.BeginForm("Create", "User", FormMethod.Post, new { }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        @Html.HiddenFor( x => x.UserName)
+                            
+                        <div class="col-md-12 col-sm-12">
+
+                            <div class="form-group col-md-4 col-sm-4">
+                                @Html.LabelFor(a => a.UserName)
+                                @Html.DisplayFor(a => a.UserName, new { @class = "form-control input-sm", @placeholder = "" })                                
+                            </div>
+
+                            <div class="form-group col-md-6 col-sm-6">
+                                @Html.LabelFor(a => a.Email)
+                                @Html.DisplayFor(a => a.Email, new { @class = "form-control input-sm", @placeholder = "" })
+                            </div>
+
+                            <div class="form-group col-md-2 col-sm-2">
+                                <a href="@Url.Action("ChangePassword", "User", new { userName = Model.UserName })" class="btn btn-default btn-sm center-block ">Alterar Senha</a>
+                            </div>
+
+                            <div class="form-group col-md-8 col-sm-8">
+                                @Html.LabelFor(a => a.FullName)
+                                @Html.DisplayFor(a => a.FullName, new { @class = "form-control input-sm", @placeholder = "" })
+                            </div>
+
+                            <div class="form-group col-md-4 col-sm-4">
+                                @Html.LabelFor(a => a.Male)
+                                @Html.DisplayFor(model => model.Male, new { @class = "form-control input-sm", @placeholder = "" })
+                            </div>
+
+                            <div class="form-group col-md-4 col-sm-4">
+                                @Html.LabelFor(a => a.BirthDate)
+                                @Html.DisplayFor(a => a.BirthDate, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="form-group col-md-4 col-sm-4">
+                                @Html.LabelFor(a => a.PhoneNumber)
+                                @Html.DisplayFor(a => a.PhoneNumber, new { @class = "form-control input-sm", @placeholder = "" })
+                            </div>
+                            <div class="form-group col-md-4 col-sm-4">
+                                @Html.LabelFor(a => a.CellPhone)
+                                @Html.DisplayFor(a => a.CellPhone, new { @class = "form-control input-sm", @placeholder = "" })
+                            </div>
+
+                        </div>
+                        <div class="col-md-12 col-sm-12">
+
+                            <div class="form-group col-md-3 col-sm-3">
+                                @Html.LabelFor(a => a.PostalCode)
+                                @Html.DisplayFor(a => a.PostalCode, new { @class = "form-control input-sm", @placeholder = "" })
+                            </div>
+                            <div class="form-group col-md-5 col-sm-5">
+                                @Html.LabelFor(a => a.Country)
+                                @Html.DisplayFor(a => a.Country, new { @class = "form-control input-sm", @placeholder = "" })
+                            </div>
+                            <div class="form-group col-md-4 col-sm-4">
+                                @Html.LabelFor(a => a.State)
+                                @Html.DisplayFor(a => a.State, new { @class = "form-control input-sm", @placeholder = "" })                                
+                            </div>
+
+                            <div class="form-group col-md-8 col-sm-8">
+                                @Html.LabelFor(a => a.Street)
+                                @Html.DisplayFor(a => a.Street, new { @class = "form-control input-sm", @placeholder = "" })
+                            </div>
+                            <div class="form-group col-md-4 col-sm-4">
+                                @Html.LabelFor(a => a.StreetNumber)
+                                @Html.DisplayFor(a => a.StreetNumber, new { @class = "form-control input-sm", @placeholder = "" })
+                            </div>
+                        </div> 
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h3>Usuários do grupo</h3>
+            </div>
+            <div class="ibox-content" style="display: block;">
+                <div class="row">
+                    @if (Model.AvailableRoles.Count > 0)
+                    {
+                        using (Html.BeginForm("AddUser", "User", FormMethod.Post, new { }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.HiddenFor(x => x.UserName)
+
+                            <div class="col-md-12 col-sm-12">
+
+                                <div class="col-md-10 col-sm-10">
+                                    @Html.LabelFor(a => a.AvailableRoles[0].RoleName)
+
+                                    @Html.DropDownListFor(x => x.SelectedRoleName,
+                                         new SelectList(Model.AvailableRoles, "RoleName", "RoleName", 0),
+                                      "- Selecione -", new { @class = "form-control input-sm", @id = "SelectedRoleName", @name = "SelectedRoleName" })
+
+                                </div>
+                                <div class="col-md-2 col-sm-2">
+                                    <input type="submit" class="btn btn-default" name="AddUserName" id="AddUserName" value="Adicionar" />
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+                <div class="row">
+                    @if (Model.Roles != null && Model.Roles.Count > 0)
+                    {
+                        <table class="table table-hover">
+                            <caption>Roles</caption>
+                            <thead>
+                                <tr>
+                                    
+                                    <td>@Html.DisplayNameFor(model => model.Roles[0].RoleName)</td>
+                                    <td></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (int c = 0; c < Model.Roles.Count; c++)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(model => Model.Roles[c].RoleName)</td>
+                                        <td>
+                                            <a href="@Url.Action("RemoveUser", "User", new
+                                                {
+                                                    userName = Model.UserName,
+                                                    SelectedRoleName = Model.Roles[c].RoleName
+                                                })">
+                                                <span class="glyphicon glyphicon-remove fa-lg"></span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <h3>Este usuários não possui grupos.</h3>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

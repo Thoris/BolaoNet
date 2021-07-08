@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BolaoNet.Domain.Entities.Users;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,6 +34,18 @@ namespace BolaoNet.Infra.Data.EF.Users
             select r;
 
             return x.ToList<Domain.Entities.Users.Role>();
+        }
+
+        public IList<User> GetUsersInRole(string currentUserName, Role role)
+        {
+            var x =
+            from r in base.DataContext.Usuarios
+            join ur in base.DataContext.UserInRole
+              on r.UserName equals ur.UserName
+            where string.Compare(ur.RoleName, role.RoleName) == 0
+            select r;
+
+            return x.ToList<Domain.Entities.Users.User>();
         }
 
         #endregion

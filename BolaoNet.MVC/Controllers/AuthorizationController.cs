@@ -72,14 +72,19 @@ namespace BolaoNet.MVC.Controllers
                 }
                 else
                 {
-                    this.SelectedNomeBolao = list[0].NomeBolao;
+                    if (list.Count > 0)
+                    {
+                        this.SelectedNomeBolao = list[0].NomeBolao;
 
-                    Domain.Entities.Boloes.Bolao bolaoLoaded = bolaoApp.Load(base.SelectedBolao);
+                        Domain.Entities.Boloes.Bolao bolaoLoaded = bolaoApp.Load(base.SelectedBolao);
 
-                    this.SelectedNomeCampeonato = bolaoLoaded.NomeCampeonato;
-                    this.IsBolaoIniciado = bolaoLoaded.IsIniciado == true ? true : false;
-
-                    //return false;
+                        this.SelectedNomeCampeonato = bolaoLoaded.NomeCampeonato;
+                        this.IsBolaoIniciado = bolaoLoaded.IsIniciado == true ? true : false;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
             }
 

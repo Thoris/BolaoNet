@@ -1,5 +1,8 @@
-﻿using System;
+﻿using BolaoNet.Application.Interfaces.Reports;
+using Ninject;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -38,6 +41,49 @@ namespace BolaoNet.Tests.Debug
             //t.ApartmentState = ApartmentState.STA;
             //t.Start();
             //t.Join();
+
+            Ninject.StandardKernel kernel = (StandardKernel)NinjectCommon.CreateKernel();
+            IBolaoMembroApostasReportApp bolaoMembroApostasReportApp = kernel.Get<IBolaoMembroApostasReportApp>();
+            IBolaoApostasInicioReportApp bolaoApostasInicioReportApp = kernel.Get<IBolaoApostasInicioReportApp>();
+            IBolaoApostasFimReportApp bolaoApostasFimReportApp = kernel.Get<IBolaoApostasFimReportApp>();
+
+            string baseFolder = @"C:\Thoris\Projetos\Bolao\BolaoNet\";
+            //Stream streamMembro = bolaoMembroApostasReportApp.Generate("gif",
+            //    baseFolder + @"\BolaoNet.MVC\Content\img\database\profiles",
+            //    baseFolder + @"\BolaoNet.MVC\Content\img\database\times",
+            //    bolaoMembroApostasReportApp.GetData(
+            //        new Domain.Entities.Boloes.Bolao("Copa do Mundo 2018")
+            //        {
+            //            NomeCampeonato = "Copa do Mundo 2018"
+            //        }, new Domain.Entities.Users.User("thoris1")));
+            //string pdfMembro = "membro.pdf";
+            //if (System.IO.File.Exists(pdfMembro))
+            //    System.IO.File.Delete(pdfMembro);
+            //using (var fileStream = File.Create(pdfMembro))
+            //{
+            //    streamMembro.Seek(0, SeekOrigin.Begin);
+            //    streamMembro.CopyTo(fileStream);
+            //}
+
+            //bolaoApostasInicioReportApp.Generate("inicio.pdf", "inicio.zip", "gif",
+            //    baseFolder + @"\BolaoNet.MVC\Content\img\database\profiles",
+            //    baseFolder + @"\BolaoNet.MVC\Content\img\database\times",
+            //    bolaoApostasInicioReportApp.GetData(
+            //        new Domain.Entities.Boloes.Bolao("Copa do Mundo 2018")
+            //        {
+            //            NomeCampeonato = "Copa do Mundo 2018"
+            //        }));
+
+            bolaoApostasFimReportApp.Generate("fim.pdf", "fim.zip", "gif",
+                baseFolder + @"\BolaoNet.MVC\Content\img\database\profiles",
+                baseFolder + @"\BolaoNet.MVC\Content\img\database\times",
+                bolaoApostasFimReportApp.GetData(
+                    new Domain.Entities.Boloes.Bolao("Copa do Mundo 2018")
+                    {
+                        NomeCampeonato = "Copa do Mundo 2018"
+                    }));
+
+            return;
 
 
 
