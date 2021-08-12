@@ -1,0 +1,68 @@
+name: 1.$(Date:yy).$(Month).$(DayOfMonth)$(Rev:.r)
+resources:
+  repositories:
+  - repository: self
+    type: git
+    ref: master
+jobs:
+- job: Job_2
+  displayName: Docfx
+  pool:
+    vmImage: vs2017-win2016
+  steps:
+  - checkout: self
+    clean: true
+  - task: ChocolateyInstaller@1
+    displayName: Install/Upgrade Chocolatey
+    inputs:
+      upgradeIfNeeded: false
+  - task: ChocoInstallPackage@1
+    displayName: Install docfx
+    inputs:
+      packageId: docfx
+  - task: ChocoInstallPackage@1
+    displayName: Install wkhtmltopdf
+    inputs:
+      packageId: wkhtmltopdf
+  - task: CmdLine@2
+    displayName: Command Line Script
+    inputs:
+      script: >
+        echo "File: $(Build.SourcesDirectory)/Info/DocFx/docfx.json"
+
+        docfx $(Build.SourcesDirectory)/Info/DocFx/docfx.json
+  - task: ArchiveFiles@2
+    displayName: Archive Info/DocFx/_site
+    inputs:
+      rootFolderOrFile: Info/DocFx/_site
+      includeRootFolder: false
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: bolaonetdoc'
+    inputs:
+      PathtoPublish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+      ArtifactName: bolaonetdoc
+- job: Job_1
+  displayName: SonarCloud
+  pool:
+    vmImage: vs2017-win2016
+  steps:
+  - checkout: self
+    clean: true
+  - task: SonarCloudPrepare@1
+    displayName: Prepare analysis on SonarCloud
+    inputs:
+      SonarCloud: 756c5801-ec38-4174-a584-a43dea0ac5df
+      organization: thoris
+      projectKey: BolaoNet
+      projectVersion: $(Build.BuildNumber)
+  - task: NuGetToolInstaller@1
+    displayName: 'Use NuGet '
+  - task: NuGetCommand@2
+    displayName: NuGet restore
+  - task: VSBuild@1
+    displayName: Build solution **\*.sln
+  - task: SonarCloudAnalyze@1
+    displayName: Run Code Analysis
+  - task: SonarCloudPublish@1
+    displayName: Publish Quality Gate Result
+...
