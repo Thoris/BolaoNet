@@ -52,8 +52,7 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
             Bind<Application.Interfaces.Boloes.IPagamentoApp>().To<Application.Boloes.PagamentoApp>();
             Bind<Application.Interfaces.Boloes.IPontuacaoApp>().To<Application.Boloes.PontuacaoApp>();
             Bind<Application.Interfaces.Boloes.IBolaoPremiacaoApp>().To<Application.Boloes.BolaoPremiacaoApp>();
-            Bind<Application.Interfaces.Boloes.IBolaoAcertoTimePontoApp>().To<Application.Boloes.BolaoAcertoTimePontoApp>();
-            
+            Bind<Application.Interfaces.Boloes.IBolaoAcertoTimePontoApp>().To<Application.Boloes.BolaoAcertoTimePontoApp>();            
 
             Bind<Application.Interfaces.Campeonatos.ICampeonatoApp>().To<Application.Campeonatos.CampeonatoApp>();
             Bind<Application.Interfaces.Campeonatos.ICampeonatoClassificacaoApp>().To<Application.Campeonatos.CampeonatoClassificacaoApp>();
@@ -84,15 +83,15 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
             Bind<Application.Interfaces.Facade.Campeonatos.ICopaMundo2018FacadeApp>().To<Application.Facade.Campeonatos.CopaMundo2018FacadeApp>();
             Bind<Application.Interfaces.Facade.Campeonatos.IStructureCopaMundoFacadeApp>().To<Application.Facade.Campeonatos.StructureCopaMundoFacadeApp>();
             Bind<Application.Interfaces.Facade.Campeonatos.ICopaAmerica2019FacadeApp>().To<Application.Facade.Campeonatos.CopaAmerica2019FacadeApp>();
+            Bind<Application.Interfaces.Facade.Campeonatos.ICopaMundo2022FacadeApp>().To<Application.Facade.Campeonatos.CopaMundo2022FacadeApp>();
 
             Bind<Application.Interfaces.Facade.Campeonatos.ICopaListFacadeApp>().To<Application.Facade.Campeonatos.CopaListFacadeApp>();
             Bind<Application.Interfaces.Facade.Boloes.IBolaoListFacadeApp>().To<Application.Facade.Boloes.BolaoListFacadeApp>();
 
-
             Bind<Application.Interfaces.Reports.IBolaoMembroApostasReportApp>().To<Application.Reports.BolaoMembroApostasReportApp>();
             Bind<Application.Interfaces.Reports.IBolaoApostasInicioReportApp>().To<Application.Reports.BolaoApostasInicioReportApp>();
             Bind<Application.Interfaces.Reports.IBolaoApostasFimReportApp>().To<Application.Reports.BolaoApostasFimReportApp>();
-
+            
             
         }
 

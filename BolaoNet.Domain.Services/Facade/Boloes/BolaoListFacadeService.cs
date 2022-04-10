@@ -70,22 +70,30 @@ namespace BolaoNet.Domain.Services.Facade.Boloes
                     return new BolaoCopaMundo2010ServiceHelper(_apostaExtraService, _bolaoService, _bolaoPremioService,
                         _bolaoCriterioPontosService, _bolaoCriterioPontosTimesService, _bolaoRegraService, _bolaoPontuacaoService,
                         _bolaoHistoricoService, _userService, _userFacadeService, _bolaoMembroService, _jogoUsuarioService);
+
                 case BolaoCopaMundo2014ServiceHelper.NomeBolao:
 
                     return new BolaoCopaMundo2014ServiceHelper(_apostaExtraService, _bolaoService, _bolaoPremioService,
                         _bolaoCriterioPontosService, _bolaoCriterioPontosTimesService, _bolaoRegraService, _bolaoPontuacaoService,
                         _bolaoHistoricoService, _userService, _userFacadeService, _bolaoMembroService, _jogoUsuarioService);
+
                 case BolaoCopaMundo2018ServiceHelper.NomeBolao:
 
                     return new BolaoCopaMundo2018ServiceHelper(_apostaExtraService, _bolaoService, _bolaoPremioService,
                         _bolaoCriterioPontosService, _bolaoCriterioPontosTimesService, _bolaoRegraService, _bolaoPontuacaoService,
                         _bolaoHistoricoService, _userService, _userFacadeService, _bolaoMembroService, _jogoUsuarioService);
+
                 case BolaoCopaAmerica2019ServiceHelper.NomeBolao:
 
                     return new BolaoCopaAmerica2019ServiceHelper(_apostaExtraService, _bolaoService, _bolaoPremioService,
                         _bolaoCriterioPontosService, _bolaoCriterioPontosTimesService, _bolaoRegraService, _bolaoPontuacaoService,
                         _bolaoHistoricoService, _userService, _userFacadeService, _bolaoMembroService, _jogoUsuarioService);
 
+                case BolaoCopaMundo2022ServiceHelper.NomeBolao:
+
+                    return new BolaoCopaMundo2022ServiceHelper(_apostaExtraService, _bolaoService, _bolaoPremioService,
+                        _bolaoCriterioPontosService, _bolaoCriterioPontosTimesService, _bolaoRegraService, _bolaoPontuacaoService,
+                        _bolaoHistoricoService, _userService, _userFacadeService, _bolaoMembroService, _jogoUsuarioService);
             }
 
             return null;
@@ -99,6 +107,7 @@ namespace BolaoNet.Domain.Services.Facade.Boloes
             list.Add(BolaoCopaMundo2014ServiceHelper.NomeBolao);
             list.Add(BolaoCopaMundo2018ServiceHelper.NomeBolao);
             list.Add(BolaoCopaAmerica2019ServiceHelper.NomeBolao);
+            list.Add(BolaoCopaMundo2022ServiceHelper.NomeBolao);
 
             return list;
         }

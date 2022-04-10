@@ -249,7 +249,11 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
                 .WithConstructorArgument("url", url)
                 .WithConstructorArgument("token", token);
             //Bind<Domain.Interfaces.Services.Facade.Campeonatos.ICopaMundo2018FacadeService>().To<WebApi.Integration.Facade.Campeonatos.CopaMundo2018FacadeIntegration>()
-            //    .WhenInjectedExactlyInto(typeof(Application.Facade.Campeonatos.CopaMundo2014FacadeApp))
+            //    .WhenInjectedExactlyInto(typeof(Application.Facade.Campeonatos.CopaMundo2018FacadeApp))
+            //    .WithConstructorArgument("url", url)
+            //    .WithConstructorArgument("token", token);
+            //Bind<Domain.Interfaces.Services.Facade.Campeonatos.ICopaMundo2022FacadeService>().To<WebApi.Integration.Facade.Campeonatos.CopaMundo2022FacadeIntegration>()
+            //    .WhenInjectedExactlyInto(typeof(Application.Facade.Campeonatos.CopaMundo2022FacadeApp))
             //    .WithConstructorArgument("url", url)
             //    .WithConstructorArgument("token", token);
 

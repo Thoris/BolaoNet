@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BolaoNet.Domain.Services</RootNamespace>
     <AssemblyName>BolaoNet.Domain.Services</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -91,6 +92,7 @@
     <Compile Include="Facade\Boloes\BolaoCopaAmerica2019ServiceHelper.cs" />
     <Compile Include="Facade\Boloes\BolaoCopaMundo2010ServiceHelper.cs" />
     <Compile Include="Facade\Boloes\BolaoCopaMundo2014ServiceHelper.cs" />
+    <Compile Include="Facade\Boloes\BolaoCopaMundo2022ServiceHelper.cs" />
     <Compile Include="Facade\Boloes\BolaoCopaMundo2018ServiceHelper.cs" />
     <Compile Include="Facade\Boloes\BolaoListFacadeService.cs" />
     <Compile Include="Facade\CampeonatoFacadeService.cs" />
@@ -100,6 +102,7 @@
     <Compile Include="Facade\Campeonatos\CopaListFacadeService.cs" />
     <Compile Include="Facade\Campeonatos\CopaMundo2010FacadeService.cs" />
     <Compile Include="Facade\Campeonatos\CopaMundo2014DataFacadeService.cs" />
+    <Compile Include="Facade\Campeonatos\CopaMundo2022FacadeService.cs" />
     <Compile Include="Facade\Campeonatos\CopaMundo2018FacadeService.cs" />
     <Compile Include="Facade\Campeonatos\CopaMundo2014FacadeService.cs" />
     <Compile Include="Facade\Campeonatos\StructureCopaMundoFacadeService.cs" />

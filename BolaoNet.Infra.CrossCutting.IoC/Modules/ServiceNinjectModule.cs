@@ -56,7 +56,6 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
             Bind<Domain.Interfaces.Services.Boloes.IBolaoPremiacaoService>().To<Domain.Services.Boloes.BolaoPremiacaoService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Boloes.IBolaoAcertoTimePontoService>().To<Domain.Services.Boloes.BolaoAcertoTimePontoService>().WithConstructorArgument("userName", userName);
             
-
             Bind<Domain.Interfaces.Services.Campeonatos.ICampeonatoService>().To<Domain.Services.Campeonatos.CampeonatoService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Campeonatos.ICampeonatoClassificacaoService>().To<Domain.Services.Campeonatos.CampeonatoClassificacaoService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Campeonatos.ICampeonatoFaseService>().To<Domain.Services.Campeonatos.CampeonatoFaseService>().WithConstructorArgument("userName", userName);
@@ -79,13 +78,13 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
             Bind<Domain.Interfaces.Services.Users.IRoleService>().To<Domain.Services.Users.RoleService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Users.IUserInRoleService>().To<Domain.Services.Users.UserInRoleService>().WithConstructorArgument("userName", userName);
 
-
             Bind<Domain.Interfaces.Services.Facade.IUserFacadeService>().To<Domain.Services.Facade.UserFacadeService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Facade.Campeonatos.IStructureCopaMundoFacadeService>().To<Domain.Services.Facade.Campeonatos.StructureCopaMundoFacadeService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Facade.Campeonatos.ICopaMundo2010FacadeService>().To<Domain.Services.Facade.Campeonatos.CopaMundo2010FacadeService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Facade.Campeonatos.ICopaMundo2014FacadeService>().To<Domain.Services.Facade.Campeonatos.CopaMundo2014FacadeService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Facade.Campeonatos.ICopaMundo2018FacadeService>().To<Domain.Services.Facade.Campeonatos.CopaMundo2018FacadeService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Facade.Campeonatos.ICopaAmerica2019FacadeService>().To<Domain.Services.Facade.Campeonatos.CopaAmerica2019FacadeService>().WithConstructorArgument("userName", userName);
+            Bind<Domain.Interfaces.Services.Facade.Campeonatos.ICopaMundo2022FacadeService>().To<Domain.Services.Facade.Campeonatos.CopaMundo2022FacadeService>().WithConstructorArgument("userName", userName);
 
             Bind<Domain.Interfaces.Services.Facade.Campeonatos.ICopaListFacadeService>().To<Domain.Services.Facade.Campeonatos.CopaListFacadeService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Facade.Boloes.IBolaoListFacadeService>().To<Domain.Services.Facade.Boloes.BolaoListFacadeService>().WithConstructorArgument("userName", userName);
