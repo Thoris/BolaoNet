@@ -108,7 +108,7 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2022, 11, 29, 12, 0, 0, 0), "Al Khor", nomeFase, "A", grupoA[1], grupoA[2], 3, 33, false));
             list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2022, 11, 29, 12, 0, 0, 0), "Internacional Khalifa", nomeFase, "A", grupoA[0], grupoA[3], 3, 34, false));
             
-            string[] grupoB = { "Inglaterra", "Irã", "Estados Unidos", "*REPESCAGEM*" };
+            string[] grupoB = { "Inglaterra", "Irã", "Estados Unidos", "País de Gales" };
             list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2022, 11, 21, 10, 0, 0, 0), "Internacional Khalifa", nomeFase, "B", grupoB[0], grupoB[1], 1, 3, false));
             list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2022, 11, 21, 16, 0, 0, 0), "Al Rayyan", nomeFase, "B", grupoB[2], grupoB[3], 1, 4, false));
             list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2022, 11, 25, 7, 0, 0, 0), "Al Rayyan", nomeFase, "B", grupoB[3], grupoB[1], 2, 19, false));
@@ -124,7 +124,7 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2022, 11, 30, 16, 0, 0, 0), "Porto de Doha", nomeFase, "C", grupoC[3], grupoC[0], 3, 37, false));
             list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2022, 11, 30, 16, 0, 0, 0), "Nacional de Lusail", nomeFase, "C", grupoC[1], grupoC[2], 3, 38, false));
 
-            string[] grupoD = { "Dinamarca", "Tunísia", "França", "*REPESCAGEm*" };
+            string[] grupoD = { "Dinamarca", "Tunísia", "França", "Austrália" };
             list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2022, 11, 22, 10, 0, 0, 0), "Cidade da Educação", nomeFase, "D", grupoD[0], grupoD[1], 1, 7, false));
             list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2022, 11, 22, 16, 0, 0, 0), "Al Wakrah", nomeFase, "D", grupoD[2], grupoD[3], 1, 8, false));
             list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2022, 11, 26, 7, 0, 0, 0), "Al Wakrah", nomeFase, "D", grupoD[1], grupoD[3], 2, 23, false));
@@ -132,7 +132,7 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2022, 11, 30, 12, 0, 0, 0), "Cidade da Educação", nomeFase, "D", grupoD[1], grupoD[2], 3, 39, false));
             list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2022, 11, 30, 12, 0, 0, 0), "Al Wakrah", nomeFase, "D", grupoD[3], grupoD[0], 3, 40, false));
 
-            string[] grupoE = { "Alemanha", "Japão", "Espanha", "REPESCAGEM"  };
+            string[] grupoE = { "Alemanha", "Japão", "Espanha", "Costa Rica"  };
             list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2022, 11, 23, 10, 0, 0, 0), "Internacional Khalifa", nomeFase, "E", grupoE[0], grupoE[1], 1, 9, false));
             list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2022, 11, 23, 13, 0, 0, 0), "Al Thumama", nomeFase, "E", grupoE[2], grupoE[3], 1, 10, false));
             list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2022, 11, 27, 7, 0, 0, 0), "Al Rayyan", nomeFase, "E", grupoE[1], grupoE[3], 2, 25, false));
