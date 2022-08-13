@@ -41,6 +41,7 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
             MVC.ViewModels.Bolao.BolaoHistoricoListViewModel model = new ViewModels.Bolao.BolaoHistoricoListViewModel();
 
             model.ListYears = _bolaoHistoricoApp.GetYearsFromBolao(base.SelectedBolao);
+            model.ListYears = model.ListYears.OrderByDescending(p => p).ToList();
             ViewBag.Years = model.ListYears;
 
             return View(model);
@@ -50,6 +51,7 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
         {
 
             model.ListYears = _bolaoHistoricoApp.GetYearsFromBolao(base.SelectedBolao);
+            model.ListYears = model.ListYears.OrderByDescending(p => p).ToList();
             ViewBag.Years = model.ListYears;
 
  

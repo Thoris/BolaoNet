@@ -78,7 +78,7 @@ namespace BolaoNet.Domain.Services.Facade.Boloes
                 NomeCampeonato = campeonato.Nome,
                 ApostasApenasAntes = true,
                 Cidade = "São José dos Campos",
-                DataInicio = new DateTime(2022, 11, 10),
+                DataInicio = new DateTime(2022, 11, 20),
                 Descricao = "Bolão da Copa do Mundo",
                 Estado = "São Paulo",
                 ForumAtivado = true,
@@ -267,32 +267,47 @@ namespace BolaoNet.Domain.Services.Facade.Boloes
 
             #region Boloes Histórico
 
-            StoreBolaoHistorico(bolao.Nome, 2010, 1, "Alberto", 237, 3, 36, 16, 25, 9, 30);
-            StoreBolaoHistorico(bolao.Nome, 2010, 2, "Thoris", 210, 7, 36, 16, 28, 8, 0);
-            StoreBolaoHistorico(bolao.Nome, 2010, 3, "andermoura", 199, 4, 35, 14, 24, 7, 0);
-            StoreBolaoHistorico(bolao.Nome, 2010, 4, "carlinhosbueno", 199, 3, 31, 20, 23, 8, 0);
-            StoreBolaoHistorico(bolao.Nome, 2010, 5, "luizen", 199, 4, 34, 16, 26, 3, 15);
-            StoreBolaoHistorico(bolao.Nome, 2010, 6, "TAQUARA", 198, 4, 34, 12, 20, 3, 30);
-            StoreBolaoHistorico(bolao.Nome, 2010, 7, "Marcio", 197, 1, 30, 19, 26, 9, 0);
-            StoreBolaoHistorico(bolao.Nome, 2010, 8, "lucas_scremin", 197, 0, 32, 16, 23, 7, 15);
-            StoreBolaoHistorico(bolao.Nome, 2010, 9, "afreita2", 190, 4, 36, 18, 23, 5, 0);
-            StoreBolaoHistorico(bolao.Nome, 2010, 10, "julia", 189, 5, 29, 18, 25, 9, 0);
-            StoreBolaoHistorico(bolao.Nome, 2010, 11, "Sara", 188, 4, 28, 18, 23, 8, 0);
-            StoreBolaoHistorico(bolao.Nome, 2010, 12, "lgcarvalho", 187, 4, 32, 12, 32, 5, 0);
-            StoreBolaoHistorico(bolao.Nome, 2010, 13, "Alan", 177, 1, 26, 18, 23, 8, 0);
-            StoreBolaoHistorico(bolao.Nome, 2010, 14, "Carlos", 172, 2, 28, 15, 22, 6, 0);
-            StoreBolaoHistorico(bolao.Nome, 2010, 15, "fabiop", 172, 2, 25, 21, 25, 8, 0);
-            StoreBolaoHistorico(bolao.Nome, 2010, 16, "Juninho", 172, 3, 27, 18, 22, 6, 0);
-            StoreBolaoHistorico(bolao.Nome, 2010, 17, "TAQUARA2", 169, 5, 32, 12, 20, 3, 0);
-            StoreBolaoHistorico(bolao.Nome, 2010, 18, "AndreBarboza", 169, 4, 30, 12, 23, 4, 0);
-            StoreBolaoHistorico(bolao.Nome, 2010, 19, "helton_hls", 166, 2, 28, 20, 23, 6, 0);
-            StoreBolaoHistorico(bolao.Nome, 2010, 20, "JulioCesar", 166, 3, 28, 12, 20, 6, 0);
-            StoreBolaoHistorico(bolao.Nome, 2010, 21, "TAQUARA3", 165, 4, 31, 13, 20, 4, 0);
-            StoreBolaoHistorico(bolao.Nome, 2010, 22, "Serrano", 162, 2, 24, 16, 27, 7, 0);
-            StoreBolaoHistorico(bolao.Nome, 2010, 23, "Betovb", 159, 3, 25, 17, 23, 6, 0);
-            StoreBolaoHistorico(bolao.Nome, 2010, 24, "dnlima", 158, 2, 30, 16, 23, 3, 0);
-            StoreBolaoHistorico(bolao.Nome, 2010, 25, "teles", 150, 3, 26, 15, 24, 3, 0);
-            StoreBolaoHistorico(bolao.Nome, 2010, 26, "tharcius", 143, 1, 26, 10, 22, 3, 0);
+
+            StoreBolaoHistorico(bolao.Nome, 2018, 1, "lucas_slp@hotmail.com", 234, 6, 35, 23, 22, 13, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 2, "lg_sjc", 226, 3, 34, 21, 26, 8, 20);
+            StoreBolaoHistorico(bolao.Nome, 2018, 3, "alcastro", 221, 3, 34, 25, 22, 9, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 4, "thais", 216, 3, 34, 21, 23, 7, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 5, "wfukuda", 214, 3, 33, 20, 22, 8, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 5, "fabspo", 214, 1, 33, 19, 23, 9, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 7, "fcarvalho", 211, 0, 33, 21, 22, 9, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 8, "pauloraamorim", 210, 6, 34, 15, 25, 9, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 9, "rafael.aar", 209, 5, 36, 21, 21, 7, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 10, "danilo.dma", 206, 1, 33, 22, 25, 8, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 11, "kleberlp", 204, 4, 35, 17, 26, 7, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 12, "laura.pivetta", 203, 4, 35, 19, 22, 8, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 13, "Telouis", 197, 3, 30, 21, 26, 8, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 13, "chutabola", 197, 5, 34, 15, 25, 6, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 15, "danielcmm", 196, 4, 32, 17, 25, 7, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 15, "anunes81", 196, 3, 34, 17, 19, 7, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 17, "andinho", 195, 3, 29, 19, 21, 8, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 17, "érico", 195, 3, 35, 20, 20, 7, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 19, "magno.sousa", 190, 0, 31, 21, 22, 7, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 19, "gsquirino", 190, 3, 34, 16, 22, 6, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 21, "helton_hls", 188, 3, 29, 17, 24, 9, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 21, "Tharcius", 188, 3, 33, 15, 23, 5, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 23, "Navarrete", 187, 4, 32, 18, 23, 7, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 23, "alberto", 187, 1, 41, 16, 19, 3, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 25, "leovilla", 186, 4, 32, 18, 24, 5, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 26, "denis", 185, 0, 33, 18, 21, 6, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 27, "lenio.paiva", 184, 4, 39, 10, 17, 3, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 28, "Mazola", 180, 1, 33, 26, 18, 5, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 29, "thoris", 179, 2, 33, 17, 21, 6, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 30, "Marvinmsp", 177, 1, 31, 18, 23, 6, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 31, "branco", 174, 0, 33, 16, 24, 3, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 32, "barbosaalr", 170, 2, 31, 14, 25, 5, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 33, "Gabriel Fernandes", 166, 2, 31, 13, 19, 4, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 34, "lpfernandes", 163, 2, 31, 18, 16, 5, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 35, "teles", 159, 2, 24, 14, 24, 4, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 35, "Carlos Sergio Pivetta", 159, 0, 30, 17, 17, 5, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 37, "vieira junior", 157, 3, 27, 16, 18, 5, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 38, "Pedro Oliveira", 151, 1, 27, 13, 24, 4, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 39, "lise", 141, 1, 30, 12, 17, 2, 0);
+            StoreBolaoHistorico(bolao.Nome, 2018, 40, "toninha", 110, 3, 22, 11, 15, 1, 0);
 
             StoreBolaoHistorico(bolao.Nome, 2014, 1, "wfukuda", 224, 5, 36, 23, 17, 7, 10);
             StoreBolaoHistorico(bolao.Nome, 2014, 2, "Batista", 203, 4, 28, 17, 26, 9, 10);
@@ -344,46 +359,41 @@ namespace BolaoNet.Domain.Services.Facade.Boloes
             StoreBolaoHistorico(bolao.Nome, 2014, 48, "bolacha", 113, 2, 17, 16, 15, 3, 0);
             StoreBolaoHistorico(bolao.Nome, 2014, 49, "Helio", 109, 5, 14, 16, 20, 2, 0);
 
-            StoreBolaoHistorico(bolao.Nome, 2018, 1, "lucas_slp@hotmail.com", 234, 6, 35, 23, 22, 13, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 2, "lg_sjc", 226, 3, 34, 21, 26, 8, 20);
-            StoreBolaoHistorico(bolao.Nome, 2018, 3, "alcastro", 221, 3, 34, 25, 22, 9, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 4, "thais", 216, 3, 34, 21, 23, 7, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 5, "wfukuda", 214, 3, 33, 20, 22, 8, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 5, "fabspo", 214, 1, 33, 19, 23, 9, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 7, "fcarvalho", 211, 0, 33, 21, 22, 9, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 8, "pauloraamorim", 210, 6, 34, 15, 25, 9, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 9, "rafael.aar", 209, 5, 36, 21, 21, 7, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 10, "danilo.dma", 206, 1, 33, 22, 25, 8, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 11, "kleberlp", 204, 4, 35, 17, 26, 7, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 12, "laura.pivetta", 203, 4, 35, 19, 22, 8, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 13, "Telouis", 197, 3, 30, 21, 26, 8, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 13, "chutabola", 197, 5, 34, 15, 25, 6, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 15, "danielcmm", 196, 4, 32, 17, 25, 7, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 15, "anunes81", 196, 3, 34, 17, 19, 7, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 17, "andinho", 195, 3, 29, 19, 21, 8, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 17, "érico", 195, 3, 35, 20, 20, 7, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 19, "magno.sousa", 190, 0, 31, 21, 22, 7, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 19, "gsquirino", 190, 3, 34, 16, 22, 6, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 21, "helton_hls", 188, 3, 29, 17, 24, 9, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 21, "Tharcius", 188, 3, 33, 15, 23, 5, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 23, "Navarrete", 187, 4, 32, 18, 23, 7, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 23, "alberto", 187, 1, 41, 16, 19, 3, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 25, "leovilla", 186, 4, 32, 18, 24, 5, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 26, "denis", 185, 0, 33, 18, 21, 6, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 27, "lenio.paiva", 184, 4, 39, 10, 17, 3, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 28, "Mazola", 180, 1, 33, 26, 18, 5, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 29, "thoris", 179, 2, 33, 17, 21, 6, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 30, "Marvinmsp", 177, 1, 31, 18, 23, 6, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 31, "branco", 174, 0, 33, 16, 24, 3, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 32, "barbosaalr", 170, 2, 31, 14, 25, 5, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 33, "Gabriel Fernandes", 166, 2, 31, 13, 19, 4, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 34, "lpfernandes", 163, 2, 31, 18, 16, 5, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 35, "teles", 159, 2, 24, 14, 24, 4, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 35, "Carlos Sergio Pivetta", 159, 0, 30, 17, 17, 5, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 37, "vieira junior", 157, 3, 27, 16, 18, 5, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 38, "Pedro Oliveira", 151, 1, 27, 13, 24, 4, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 39, "lise", 141, 1, 30, 12, 17, 2, 0);
-            StoreBolaoHistorico(bolao.Nome, 2018, 40, "toninha", 110, 3, 22, 11, 15, 1, 0);
+            StoreBolaoHistorico(bolao.Nome, 2010, 1, "Alberto", 237, 3, 36, 16, 25, 9, 30);
+            StoreBolaoHistorico(bolao.Nome, 2010, 2, "Thoris", 210, 7, 36, 16, 28, 8, 0);
+            StoreBolaoHistorico(bolao.Nome, 2010, 3, "andermoura", 199, 4, 35, 14, 24, 7, 0);
+            StoreBolaoHistorico(bolao.Nome, 2010, 4, "carlinhosbueno", 199, 3, 31, 20, 23, 8, 0);
+            StoreBolaoHistorico(bolao.Nome, 2010, 5, "luizen", 199, 4, 34, 16, 26, 3, 15);
+            StoreBolaoHistorico(bolao.Nome, 2010, 6, "TAQUARA", 198, 4, 34, 12, 20, 3, 30);
+            StoreBolaoHistorico(bolao.Nome, 2010, 7, "Marcio", 197, 1, 30, 19, 26, 9, 0);
+            StoreBolaoHistorico(bolao.Nome, 2010, 8, "lucas_scremin", 197, 0, 32, 16, 23, 7, 15);
+            StoreBolaoHistorico(bolao.Nome, 2010, 9, "afreita2", 190, 4, 36, 18, 23, 5, 0);
+            StoreBolaoHistorico(bolao.Nome, 2010, 10, "julia", 189, 5, 29, 18, 25, 9, 0);
+            StoreBolaoHistorico(bolao.Nome, 2010, 11, "Sara", 188, 4, 28, 18, 23, 8, 0);
+            StoreBolaoHistorico(bolao.Nome, 2010, 12, "lgcarvalho", 187, 4, 32, 12, 32, 5, 0);
+            StoreBolaoHistorico(bolao.Nome, 2010, 13, "Alan", 177, 1, 26, 18, 23, 8, 0);
+            StoreBolaoHistorico(bolao.Nome, 2010, 14, "Carlos", 172, 2, 28, 15, 22, 6, 0);
+            StoreBolaoHistorico(bolao.Nome, 2010, 15, "fabiop", 172, 2, 25, 21, 25, 8, 0);
+            StoreBolaoHistorico(bolao.Nome, 2010, 16, "Juninho", 172, 3, 27, 18, 22, 6, 0);
+            StoreBolaoHistorico(bolao.Nome, 2010, 17, "TAQUARA2", 169, 5, 32, 12, 20, 3, 0);
+            StoreBolaoHistorico(bolao.Nome, 2010, 18, "AndreBarboza", 169, 4, 30, 12, 23, 4, 0);
+            StoreBolaoHistorico(bolao.Nome, 2010, 19, "helton_hls", 166, 2, 28, 20, 23, 6, 0);
+            StoreBolaoHistorico(bolao.Nome, 2010, 20, "JulioCesar", 166, 3, 28, 12, 20, 6, 0);
+            StoreBolaoHistorico(bolao.Nome, 2010, 21, "TAQUARA3", 165, 4, 31, 13, 20, 4, 0);
+            StoreBolaoHistorico(bolao.Nome, 2010, 22, "Serrano", 162, 2, 24, 16, 27, 7, 0);
+            StoreBolaoHistorico(bolao.Nome, 2010, 23, "Betovb", 159, 3, 25, 17, 23, 6, 0);
+            StoreBolaoHistorico(bolao.Nome, 2010, 24, "dnlima", 158, 2, 30, 16, 23, 3, 0);
+            StoreBolaoHistorico(bolao.Nome, 2010, 25, "teles", 150, 3, 26, 15, 24, 3, 0);
+            StoreBolaoHistorico(bolao.Nome, 2010, 26, "tharcius", 143, 1, 26, 10, 22, 3, 0);
+
+            StoreBolaoHistorico(bolao.Nome, 2006, 0, "-", 0, 0, 0, 0, 0, 0, 0);
+
+            StoreBolaoHistorico(bolao.Nome, 2002, 0, "-", 0, 0, 0, 0, 0, 0, 0);
+
+            StoreBolaoHistorico(bolao.Nome, 1998, 0, "-", 0, 0, 0, 0, 0, 0, 0);
+
+            StoreBolaoHistorico(bolao.Nome, 1994, 0, "-", 0, 0, 0, 0, 0, 0, 0);
+
 
             //StoreBolaoHistorico("Copa América", 2019, 1, "teles", 109, 3, 12, 7, 6, 4, 10);
             //StoreBolaoHistorico("Copa América", 2019, 1, "magno.sousa", 109, 1, 11, 5, 11, 3, 15);
