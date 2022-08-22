@@ -30,7 +30,8 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             Interfaces.Services.Campeonatos.ICampeonatoGrupoTimeService campeonatoGrupoTimeService,
             Interfaces.Services.DadosBasicos.IEstadioService estadioService,
             Interfaces.Services.Campeonatos.IJogoService jogoService,
-            Interfaces.Services.Campeonatos.ICampeonatoPosicaoService campeonatoPosicaoService
+            Interfaces.Services.Campeonatos.ICampeonatoPosicaoService campeonatoPosicaoService,
+            Interfaces.Services.Campeonatos.ICampeonatoHistoricoService campeonatoHistoricoService
             )
             : base(
                 timeService,
@@ -41,7 +42,8 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
                 campeonatoGrupoTimeService,
                 estadioService, 
                 jogoService,
-                campeonatoPosicaoService
+                campeonatoPosicaoService,
+                campeonatoHistoricoService
             )
         {
 
@@ -86,6 +88,8 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
                 StoreData<Entities.Campeonatos.CampeonatoPosicao>(_campeonatoPosicaoService, listPosicao[c]);
             }
 
+            CreateHistorico(base.Campeonato.Nome);
+
             return campeonato;
         }
         public IList<Entities.Campeonatos.Jogo> GetJogosGrupo()
@@ -101,7 +105,7 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             string campeonatoNome = base.Campeonato.Nome;
 
             string[] grupoA = { "Senegal", "Holanda", "Catar", "Equador" };
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2022, 11, 21, 7, 0, 0, 0), "Al Thumama", nomeFase, "A", grupoA[0], grupoA[1], 1, 1, false));
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2022, 11, 21, 13, 0, 0, 0), "Al Thumama", nomeFase, "A", grupoA[0], grupoA[1], 1, 1, false));
             list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2022, 11, 20, 13, 0, 0, 0), "Al Khor", nomeFase, "A", grupoA[2], grupoA[3], 1, 2, false));
             list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2022, 11, 25, 10, 0, 0, 0), "Al Thumama", nomeFase, "A", grupoA[2], grupoA[0], 2, 17, false));
             list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2022, 11, 25, 13, 0, 0, 0), "Internacional Khalifa", nomeFase, "A", grupoA[1], grupoA[3], 2, 18, false));
@@ -329,6 +333,223 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
         public IList<Entities.Campeonatos.CampeonatoPosicao> GetCampeonatoPosicoes()
         {
             throw new NotImplementedException();
+        }
+        private void CreateHistorico(string campeonato)
+        {
+            StoreData<Entities.Campeonatos.CampeonatoHistorico>(_campeonatoHistoricoService, new Entities.Campeonatos.CampeonatoHistorico()
+            {
+                NomeCampeonato = campeonato,
+                Ano = 1930,
+                NomeTimeCampeao = "Uruguai",
+                FinalTime1 = 4,
+                FinalTime2 = 2,
+                NomeTimeVice = "Argentina",
+                Sede = "Uruguai"
+            });
+            StoreData<Entities.Campeonatos.CampeonatoHistorico>(_campeonatoHistoricoService, new Entities.Campeonatos.CampeonatoHistorico()
+            {
+                NomeCampeonato = campeonato,
+                Ano = 1934,
+                NomeTimeCampeao = "Itália",
+                FinalTime1 = 2,
+                FinalTime2 = 1,
+                NomeTimeVice = "Tchecoslováquia",
+                Sede = "Itália"
+            });
+            StoreData<Entities.Campeonatos.CampeonatoHistorico>(_campeonatoHistoricoService, new Entities.Campeonatos.CampeonatoHistorico()
+            {
+                NomeCampeonato = campeonato,
+                Ano = 1938,
+                NomeTimeCampeao = "Itália",
+                FinalTime1 = 4,
+                FinalTime2 = 2,
+                NomeTimeVice = "Hungria",
+                Sede = "França"
+            });
+            StoreData<Entities.Campeonatos.CampeonatoHistorico>(_campeonatoHistoricoService, new Entities.Campeonatos.CampeonatoHistorico()
+            {
+                NomeCampeonato = campeonato,
+                Ano = 1950,
+                NomeTimeCampeao = "Uruguai",
+                FinalTime1 = 2,
+                FinalTime2 = 1,
+                NomeTimeVice = "Brasil",
+                Sede = "Brasil"
+            });
+            StoreData<Entities.Campeonatos.CampeonatoHistorico>(_campeonatoHistoricoService, new Entities.Campeonatos.CampeonatoHistorico()
+            {
+                NomeCampeonato = campeonato,
+                Ano = 1954,
+                NomeTimeCampeao = "Alemanha",
+                FinalTime1 = 3,
+                FinalTime2 = 2,
+                NomeTimeVice = "Hungria",
+                Sede = "Suíça"
+            });
+            StoreData<Entities.Campeonatos.CampeonatoHistorico>(_campeonatoHistoricoService, new Entities.Campeonatos.CampeonatoHistorico()
+            {
+                NomeCampeonato = campeonato,
+                Ano = 1958,
+                NomeTimeCampeao = "Brasil",
+                FinalTime1 = 5,
+                FinalTime2 = 2,
+                NomeTimeVice = "Suécia",
+                Sede = "Suécia"
+            }); 
+            StoreData<Entities.Campeonatos.CampeonatoHistorico>(_campeonatoHistoricoService, new Entities.Campeonatos.CampeonatoHistorico()
+            {
+                NomeCampeonato = campeonato,
+                Ano = 1962,
+                NomeTimeCampeao = "Brasil",
+                FinalTime1 = 3,
+                FinalTime2 = 1,
+                NomeTimeVice = "Tchecoslováquia",
+                Sede = "Chile"
+            });
+            StoreData<Entities.Campeonatos.CampeonatoHistorico>(_campeonatoHistoricoService, new Entities.Campeonatos.CampeonatoHistorico()
+            {
+                NomeCampeonato = campeonato,
+                Ano = 1966,
+                NomeTimeCampeao = "Inglaterra",
+                FinalTime1 = 4,
+                FinalTime2 = 2,
+                NomeTimeVice = "Alemanha",
+                Sede = "Inglaterra"
+            });
+            StoreData<Entities.Campeonatos.CampeonatoHistorico>(_campeonatoHistoricoService, new Entities.Campeonatos.CampeonatoHistorico()
+            {
+                NomeCampeonato = campeonato,
+                Ano = 1970,
+                NomeTimeCampeao = "Brasil",
+                FinalTime1 = 4,
+                FinalTime2 = 1,
+                NomeTimeVice = "Itália",
+                Sede = "México"
+            });
+            StoreData<Entities.Campeonatos.CampeonatoHistorico>(_campeonatoHistoricoService, new Entities.Campeonatos.CampeonatoHistorico()
+            {
+                NomeCampeonato = campeonato,
+                Ano = 1974,
+                NomeTimeCampeao = "Alemanha",
+                FinalTime1 = 2,
+                FinalTime2 = 1,
+                NomeTimeVice = "Holanda",
+                Sede = "Alemanha"
+            });
+            StoreData<Entities.Campeonatos.CampeonatoHistorico>(_campeonatoHistoricoService, new Entities.Campeonatos.CampeonatoHistorico()
+            {
+                NomeCampeonato = campeonato,
+                Ano = 1978,
+                NomeTimeCampeao = "Argentina",
+                FinalTime1 = 3,
+                FinalTime2 = 1,
+                NomeTimeVice = "Holanda",
+                Sede = "Argentina"
+            });
+            StoreData<Entities.Campeonatos.CampeonatoHistorico>(_campeonatoHistoricoService, new Entities.Campeonatos.CampeonatoHistorico()
+            {
+                NomeCampeonato = campeonato,
+                Ano = 1982,
+                NomeTimeCampeao = "Itália",
+                FinalTime1 = 3,
+                FinalTime2 = 1,
+                NomeTimeVice = "Alemanha",
+                Sede = "Espanha"
+            });
+            StoreData<Entities.Campeonatos.CampeonatoHistorico>(_campeonatoHistoricoService, new Entities.Campeonatos.CampeonatoHistorico()
+            {
+                NomeCampeonato = campeonato,
+                Ano = 1986,
+                NomeTimeCampeao = "Argentina",
+                FinalTime1 = 3,
+                FinalTime2 = 2,
+                NomeTimeVice = "Alemanha",
+                Sede = "México"
+            });
+            StoreData<Entities.Campeonatos.CampeonatoHistorico>(_campeonatoHistoricoService, new Entities.Campeonatos.CampeonatoHistorico()
+            {
+                NomeCampeonato = campeonato,
+                Ano = 1990,
+                NomeTimeCampeao = "Alemanha",
+                FinalTime1 = 1,
+                FinalTime2 = 0,
+                NomeTimeVice = "Argentina",
+                Sede = "Itália"
+            });
+            StoreData<Entities.Campeonatos.CampeonatoHistorico>(_campeonatoHistoricoService, new Entities.Campeonatos.CampeonatoHistorico()
+            {
+                NomeCampeonato = campeonato,
+                Ano = 1994,
+                NomeTimeCampeao = "Brasil",
+                FinalTime1 = 0,
+                FinalTime2 = 0,
+                FinalPenaltis1 = 3,
+                FinalPenaltis2 = 2,
+                NomeTimeVice = "Itália",
+                Sede = "Estados Unidos"
+            });
+            StoreData<Entities.Campeonatos.CampeonatoHistorico>(_campeonatoHistoricoService, new Entities.Campeonatos.CampeonatoHistorico()
+            {
+                NomeCampeonato = campeonato,
+                Ano = 1998,
+                NomeTimeCampeao = "França",
+                FinalTime1 = 3,
+                FinalTime2 = 0,
+                NomeTimeVice = "Brasil",
+                Sede = "França"
+            });
+            StoreData<Entities.Campeonatos.CampeonatoHistorico>(_campeonatoHistoricoService, new Entities.Campeonatos.CampeonatoHistorico()
+            {
+                NomeCampeonato = campeonato,
+                Ano = 2002,
+                NomeTimeCampeao = "Brasil",
+                FinalTime1 = 2,
+                FinalTime2 = 0,
+                NomeTimeVice = "Alemanha",
+                Sede = "Japão"
+            });
+            StoreData<Entities.Campeonatos.CampeonatoHistorico>(_campeonatoHistoricoService, new Entities.Campeonatos.CampeonatoHistorico()
+            {
+                NomeCampeonato = campeonato,
+                Ano = 2006,
+                NomeTimeCampeao = "Itália",
+                FinalTime1 = 1,
+                FinalTime2 = 1,
+                FinalPenaltis1 = 5,
+                FinalPenaltis2 = 2,
+                NomeTimeVice = "França",
+                Sede = "Alemanha"
+            });
+            StoreData<Entities.Campeonatos.CampeonatoHistorico>(_campeonatoHistoricoService, new Entities.Campeonatos.CampeonatoHistorico()
+            {
+                NomeCampeonato = campeonato,
+                Ano = 2010,
+                NomeTimeCampeao = "Espanha",
+                FinalTime1 = 1,
+                FinalTime2 = 0,
+                NomeTimeVice = "Holanda",
+                Sede = "África do Sul"
+            });
+            StoreData<Entities.Campeonatos.CampeonatoHistorico>(_campeonatoHistoricoService, new Entities.Campeonatos.CampeonatoHistorico()
+            {
+                NomeCampeonato = campeonato,
+                Ano = 2014,
+                NomeTimeCampeao = "Alemanha",
+                FinalTime1 = 1,
+                FinalTime2 = 0,
+                NomeTimeVice = "Argentina",
+                Sede = "Brasil"
+            });
+            StoreData<Entities.Campeonatos.CampeonatoHistorico>(_campeonatoHistoricoService, new Entities.Campeonatos.CampeonatoHistorico()
+            {
+                NomeCampeonato = campeonato,
+                Ano = 2018,
+                NomeTimeCampeao = "França",
+                FinalTime1 = 4,
+                FinalTime2 = 2,
+                NomeTimeVice = "Croácia",
+                Sede = "Rússia"
+            });
         }
 
         #endregion

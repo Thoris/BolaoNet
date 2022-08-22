@@ -18,6 +18,7 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
         private Interfaces.Services.DadosBasicos.IEstadioService _estadioService;
         private Interfaces.Services.Campeonatos.IJogoService _jogoService;
         private Interfaces.Services.Campeonatos.ICampeonatoPosicaoService _campeonatoPosicaoService;
+        private Interfaces.Services.Campeonatos.ICampeonatoHistoricoService _campeonatoHistoricoService;
 
         #endregion
 
@@ -32,7 +33,8 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             Interfaces.Services.Campeonatos.ICampeonatoGrupoTimeService campeonatoGrupoTimeService,
             Interfaces.Services.DadosBasicos.IEstadioService estadioService,
             Interfaces.Services.Campeonatos.IJogoService jogoService,
-            Interfaces.Services.Campeonatos.ICampeonatoPosicaoService campeonatoPosicaoService
+            Interfaces.Services.Campeonatos.ICampeonatoPosicaoService campeonatoPosicaoService,
+            Interfaces.Services.Campeonatos.ICampeonatoHistoricoService campeonatoHistoricoService
             )
 
         {
@@ -45,6 +47,7 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             _estadioService = estadioService;
             _jogoService = jogoService;
             _campeonatoPosicaoService = campeonatoPosicaoService;
+            _campeonatoHistoricoService = campeonatoHistoricoService;
         }
 
         #endregion
@@ -58,27 +61,27 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
                 case CopaMundo2010FacadeService.Name:
                     return new CopaMundo2010FacadeService(_timeService, _campeonatoService, _campeonatoTimeService,
                         _campeonatoFaseService, _campeonatoGrupoService, _campeonatoGrupoTimeService, _estadioService,
-                        _jogoService, _campeonatoPosicaoService);
+                        _jogoService, _campeonatoPosicaoService, _campeonatoHistoricoService);
                     
                 case CopaMundo2014FacadeService.Name:
                     return new CopaMundo2014FacadeService(_timeService, _campeonatoService, _campeonatoTimeService,
                         _campeonatoFaseService, _campeonatoGrupoService, _campeonatoGrupoTimeService, _estadioService,
-                        _jogoService, _campeonatoPosicaoService);
+                        _jogoService, _campeonatoPosicaoService, _campeonatoHistoricoService);
                     
                 case CopaMundo2018FacadeService.Name:
                     return new CopaMundo2018FacadeService(_timeService, _campeonatoService, _campeonatoTimeService,
                         _campeonatoFaseService, _campeonatoGrupoService, _campeonatoGrupoTimeService, _estadioService,
-                        _jogoService, _campeonatoPosicaoService);
+                        _jogoService, _campeonatoPosicaoService, _campeonatoHistoricoService);
 
                 case CopaAmerica2019FacadeService.Name:
                     return new CopaAmerica2019FacadeService(_timeService, _campeonatoService, _campeonatoTimeService,
                         _campeonatoFaseService, _campeonatoGrupoService, _campeonatoGrupoTimeService, _estadioService,
-                        _jogoService, _campeonatoPosicaoService);
+                        _jogoService, _campeonatoPosicaoService, _campeonatoHistoricoService);
 
                 case CopaMundo2022FacadeService.Name:
                     return new CopaMundo2022FacadeService(_timeService, _campeonatoService, _campeonatoTimeService,
                         _campeonatoFaseService, _campeonatoGrupoService, _campeonatoGrupoTimeService, _estadioService,
-                        _jogoService, _campeonatoPosicaoService);
+                        _jogoService, _campeonatoPosicaoService, _campeonatoHistoricoService);
             }
 
             return null;

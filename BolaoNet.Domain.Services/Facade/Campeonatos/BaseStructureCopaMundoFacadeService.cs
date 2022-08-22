@@ -41,6 +41,7 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
         protected Interfaces.Services.DadosBasicos.IEstadioService _estadioService;
         protected Interfaces.Services.Campeonatos.IJogoService _jogoService;
         protected Interfaces.Services.Campeonatos.ICampeonatoPosicaoService _campeonatoPosicaoService;
+        protected Interfaces.Services.Campeonatos.ICampeonatoHistoricoService _campeonatoHistoricoService;
 
         private Domain.Entities.Campeonatos.Campeonato _campeonato;
         
@@ -67,7 +68,8 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             Interfaces.Services.Campeonatos.ICampeonatoGrupoTimeService campeonatoGrupoTimeService,
             Interfaces.Services.DadosBasicos.IEstadioService estadioService,
             Interfaces.Services.Campeonatos.IJogoService jogoService,
-            Interfaces.Services.Campeonatos.ICampeonatoPosicaoService campeonatoPosicaoService
+            Interfaces.Services.Campeonatos.ICampeonatoPosicaoService campeonatoPosicaoService,
+            Interfaces.Services.Campeonatos.ICampeonatoHistoricoService campeonatoHistoricoService
             )
         {
             _timeService = timeService;
@@ -79,6 +81,7 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             _estadioService = estadioService;
             _jogoService = jogoService;
             _campeonatoPosicaoService = campeonatoPosicaoService;
+            _campeonatoHistoricoService = campeonatoHistoricoService;
         }
         
         #endregion

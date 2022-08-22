@@ -20,7 +20,8 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             Interfaces.Services.Campeonatos.ICampeonatoGrupoTimeService campeonatoGrupoTimeService,
             Interfaces.Services.DadosBasicos.IEstadioService estadioService,
             Interfaces.Services.Campeonatos.IJogoService jogoService,
-            Interfaces.Services.Campeonatos.ICampeonatoPosicaoService campeonatoPosicaoService
+            Interfaces.Services.Campeonatos.ICampeonatoPosicaoService campeonatoPosicaoService,
+            Interfaces.Services.Campeonatos.ICampeonatoHistoricoService campeonatoHistoricoService
             )
             : base(
                 timeService,
@@ -31,7 +32,8 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
                 campeonatoGrupoTimeService,
                 estadioService, 
                 jogoService,
-                campeonatoPosicaoService
+                campeonatoPosicaoService,
+                campeonatoHistoricoService
             )
         {
         
