@@ -62,9 +62,14 @@ namespace BolaoNet.MVC.ViewModels.Account
         //[RegularExpression("True", ErrorMessage = "É necessário concordar com os termos para prosseguir.")]
         [DisplayName("Concordo com os termos")]
         public bool ConcordoTermos { get; set; }
-        
-        [DisplayName("Quero receber emails")]
+
+        [DisplayName("Quero receber notificações")]
         public bool ReceiveEmails { get; set; }
+
+        [DataType(DataType.PhoneNumber, ErrorMessage = "Formato de whatsapp inválido")]
+        [Phone(ErrorMessage = "O Whatsapp de entrada não é válido.")]
+        [DisplayName("Whatsapp")]
+        public string Whatsapp { get; set; }
 
         #endregion
 

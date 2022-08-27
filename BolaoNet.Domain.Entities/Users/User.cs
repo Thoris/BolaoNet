@@ -113,6 +113,8 @@ namespace BolaoNet.Domain.Entities.Users
         public bool IsOnline{ get; set; }
         public bool IsAdmin { get; set; }
 
+        public string Whatsapp { get; set; }
+
         #endregion
 
         #region Constructors/Destructors

@@ -42,6 +42,7 @@ CREATE TABLE [dbo].[Usuarios](
 	[ApprovedDate] [datetime] NULL,
 	[IsOnline] [bit] NOT NULL,
 	[IsAdmin] [bit] NOT NULL,
+	[Whatsapp] [varchar](30) NULL,
 	[CreatedBy] [varchar](25) NULL,
 	[CreatedDate] [datetime] NULL,
 	[ModifiedBy] [varchar](25) NULL,

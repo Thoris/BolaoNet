@@ -56,7 +56,7 @@
                         @Html.Label(@Res.RememberMe)
 
                 }
-                <p class="m-t"> <small>@Res.CopyRight</small> </p>
+                <p class="m-t"> <small>@Res.CopyRight @DateTime.Now.Year</small> </p>
 
                 @if (!string.IsNullOrEmpty(env))
                 {

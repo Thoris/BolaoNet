@@ -320,6 +320,10 @@
     <Content Include="Areas\Apostas\Views\ApostasJogos\Jogos.cshtml" />
     <Content Include="Areas\Users\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Users\Views\Shared\_Layout.cshtml" />
+    <Content Include="Content\img\database\apostas\readme.txt" />
+    <Content Include="Content\img\database\profiles\readme.txt" />
+    <Content Include="Content\img\database\temp\crop\readme.txt" />
+    <Content Include="Content\img\database\temp\uploaded\readme.txt" />
     <Content Include="Content\img\database\times\.gif" />
     <Content Include="Content\img\database\times\Afeganistão.gif" />
     <Content Include="Content\img\database\times\Albânia.gif" />
@@ -1428,10 +1432,6 @@
     <Folder Include="Areas\Visitante\Controllers\" />
     <Folder Include="Areas\Visitante\Models\" />
     <Folder Include="Areas\Visitante\Views\Shared\" />
-    <Folder Include="Content\img\database\apostas\" />
-    <Folder Include="Content\img\database\profiles\" />
-    <Folder Include="Content\img\database\temp\crop\" />
-    <Folder Include="Content\img\database\temp\uploaded\" />
     <Folder Include="Views\Config\" />
   </ItemGroup>
   <ItemGroup>

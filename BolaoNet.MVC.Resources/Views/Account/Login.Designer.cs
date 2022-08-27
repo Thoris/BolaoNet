@@ -70,7 +70,7 @@ namespace BolaoNet.MVC.Resources.Views.Account {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Todos direitos reservados 2017.
+        ///   Looks up a localized string similar to Todos direitos reservados .
         /// </summary>
         public static string CopyRight {
             get {

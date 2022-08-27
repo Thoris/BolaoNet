@@ -84,9 +84,8 @@ namespace BolaoNet.Infra.Data.EF.Mapping.Users
             Property(c => c.Street)
                 .HasMaxLength(150);
 
-
-
-
+            Property(c => c.PhoneNumber)
+                .HasMaxLength(30);
         }
 
         #endregion

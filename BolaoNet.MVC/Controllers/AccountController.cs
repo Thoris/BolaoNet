@@ -181,8 +181,9 @@ namespace BolaoNet.MVC.Controllers
             {
                 return RedirectToAction("RegistrationFormNoBolao");
             }
-
-            return View();
+            ViewModels.Account.RegistrationUserViewModel model = new ViewModels.Account.RegistrationUserViewModel();
+            model.ReceiveEmails = true;
+            return View(model);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -269,13 +270,11 @@ namespace BolaoNet.MVC.Controllers
             if (!string.IsNullOrEmpty(login) && !string.IsNullOrEmpty(key))
             {
                 ViewModels.Account.ActivationCodeViewModel model = new ViewModels.Account.ActivationCodeViewModel();
-                model.ActivateKey = key;
+                model.ActivateKey = key.Trim();
                 model.UserName = login;
 
                 return ActivateCode(model);
             }
-
-            
 
             return View();
         }
@@ -290,7 +289,7 @@ namespace BolaoNet.MVC.Controllers
 
             Domain.Entities.Users.User data = Mapper.Map<ViewModels.Account.ActivationCodeViewModel, Domain.Entities.Users.User>(model);
 
-            ValidationResult result = _userApp.ApproveUser(data, model.ActivateKey);
+            ValidationResult result = _userApp.ApproveUser(data, model.ActivateKey.Trim());
 
             if (!result.IsValid)
             {
@@ -298,11 +297,9 @@ namespace BolaoNet.MVC.Controllers
                 return View();
             }
 
+            Domain.Entities.Users.User user = _userApp.Load(data);
 
-
-            Domain.Entities.Users.User user = _userApp.Load (data);
-
-            IList<Domain.Entities.Boloes.Bolao> bolaoList = _bolaoApp.GetAll().ToList ();
+            IList<Domain.Entities.Boloes.Bolao> bolaoList = _bolaoApp.GetAll().ToList();
 
             for (int c = 0; c < bolaoList.Count; c++ )
             {

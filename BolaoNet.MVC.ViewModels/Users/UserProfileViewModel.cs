@@ -40,7 +40,7 @@ namespace BolaoNet.MVC.ViewModels.Users
         [DisplayName("Email *")]
         public string Email { get; set; }
 
-        [DisplayName("Quero receber emails")]
+        [DisplayName("Quero receber notificações")]
         public bool ReceiveEmails { get; set; }
 
         [DisplayName("Celular")]
@@ -64,6 +64,10 @@ namespace BolaoNet.MVC.ViewModels.Users
         [DisplayName("CEP")]        
         public string PostalCode { get; set; }
 
+        [DataType(DataType.PhoneNumber, ErrorMessage = "Formato de Whatsapp inválido")]
+        [Phone(ErrorMessage = "O Whatsapp de entrada não é válido.")]
+        [DisplayName("Whatsapp")]
+        public string Whatsapp { get; set; }
 
         #endregion
     }

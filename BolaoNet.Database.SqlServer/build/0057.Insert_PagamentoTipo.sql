@@ -16,6 +16,10 @@ IF (NOT EXISTS(SELECT * FROM PagamentosTipo WHERE TipoPagamento = '3'))
 BEGIN
 	INSERT INTO [PagamentosTipo]	([TipoPagamento], [Descricao])	VALUES	('3', 'Depósito');
 END
+IF (NOT EXISTS(SELECT * FROM PagamentosTipo WHERE TipoPagamento = '4'))
+BEGIN
+	INSERT INTO [PagamentosTipo]	([TipoPagamento], [Descricao])	VALUES	('4', 'Pix');
+END
 --IF @@ERROR <> 0 ROLLBACK TRANSACTION;
 --ELSE COMMIT TRANSACTION;
 --GO

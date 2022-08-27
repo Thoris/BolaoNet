@@ -209,12 +209,12 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
                 return View("Profile", model);
             }
 
-
             userLoaded.FullName = model.FullName;
             userLoaded.Male = model.Male;
             userLoaded.BirthDate = model.BirthDate;
             userLoaded.PhoneNumber = model.PhoneNumber;
             userLoaded.CellPhone = model.CellPhone;
+            userLoaded.Whatsapp = model.Whatsapp;
             userLoaded.PostalCode = model.PostalCode;
             userLoaded.Country = model.Country;
             userLoaded.State = model.State;
