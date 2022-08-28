@@ -63,32 +63,51 @@ namespace BolaoNet.Infra.Reports.Pdf
                 }
             }
 
-            int i = 0;
-            grupos[i].TotalWidth = width;
-            grupos[i++].WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 0), 800 - (distY * 0), writer.DirectContent);
-            
-            grupos[i].TotalWidth = width;
-            grupos[i++].WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 1), 800 - (distY * 0), writer.DirectContent);
+            if (grupos.Count > 0)
+            {
+                int i = 0;
 
-            grupos[i].TotalWidth = width;
-            grupos[i++].WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 0), 800 - (distY * 1), writer.DirectContent);
-
-            grupos[i].TotalWidth = width;
-            grupos[i++].WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 1), 800 - (distY * 1), writer.DirectContent);
-
-            grupos[i].TotalWidth = width;
-            grupos[i++].WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 0), 800 - (distY * 2), writer.DirectContent);
-
-            grupos[i].TotalWidth = width;
-            grupos[i++].WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 1), 800 - (distY * 2), writer.DirectContent);
-
-            grupos[i].TotalWidth = width;
-            grupos[i++].WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 0), 800 - (distY * 3), writer.DirectContent);
-
-            grupos[i].TotalWidth = width;
-            grupos[i++].WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 1), 800 - (distY * 3), writer.DirectContent);
-
-
+                if (grupos.Count > i + 1)
+                {
+                    grupos[i].TotalWidth = width;
+                    grupos[i++].WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 0), 800 - (distY * 0), writer.DirectContent);
+                }
+                if (grupos.Count > i + 1)
+                {
+                    grupos[i].TotalWidth = width;
+                    grupos[i++].WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 1), 800 - (distY * 0), writer.DirectContent);
+                }
+                if (grupos.Count > i + 1)
+                {
+                    grupos[i].TotalWidth = width;
+                    grupos[i++].WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 0), 800 - (distY * 1), writer.DirectContent);
+                }
+                if (grupos.Count > i + 1)
+                {
+                    grupos[i].TotalWidth = width;
+                    grupos[i++].WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 1), 800 - (distY * 1), writer.DirectContent);
+                }
+                if (grupos.Count > i + 1)
+                {
+                    grupos[i].TotalWidth = width;
+                    grupos[i++].WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 0), 800 - (distY * 2), writer.DirectContent);
+                }
+                if (grupos.Count > i + 1)
+                {
+                    grupos[i].TotalWidth = width;
+                    grupos[i++].WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 1), 800 - (distY * 2), writer.DirectContent);
+                }
+                if (grupos.Count > i + 1)
+                {
+                    grupos[i].TotalWidth = width;
+                    grupos[i++].WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 0), 800 - (distY * 3), writer.DirectContent);
+                }
+                if (grupos.Count > i + 1)
+                {
+                    grupos[i].TotalWidth = width;
+                    grupos[i++].WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 1), 800 - (distY * 3), writer.DirectContent);
+                }
+            }
 
             PdfPTable legendas = new PdfPTable(1);
 
