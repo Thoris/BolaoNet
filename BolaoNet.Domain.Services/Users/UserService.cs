@@ -1,4 +1,5 @@
-﻿using BolaoNet.Domain.Interfaces.Services.Logging;
+﻿using BolaoNet.Domain.Entities.Users;
+using BolaoNet.Domain.Interfaces.Services.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;

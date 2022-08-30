@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BolaoNet.Domain.Entities.Boloes;
+using BolaoNet.Domain.Entities.Users;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -56,10 +58,12 @@ namespace BolaoNet.WebApi.Integration.Boloes
             return base.HttpPostApi<bool>(
                 new Dictionary<string, string>(), membro, "RemoverMembroBolao");        
         }
+        public IList<User> GetUsersToNotificate(Bolao bolao)
+        {
+            return base.HttpGetApi<IList<User>>(
+                new Dictionary<string, string>(), bolao, "GetUsersToNotificate");
+        }
 
         #endregion
-
-
-
     }
 }

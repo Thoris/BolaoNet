@@ -157,6 +157,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseAdminAreaController.cs" />
     <Compile Include="Areas\Admin\Controllers\BolaoIniciarPararController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ClassificacaoNotificacaoController.cs" />
     <Compile Include="Areas\Admin\Controllers\ConfigurationController.cs" />
     <Compile Include="Areas\Admin\Controllers\GerenciamentoMembrosBolaoController.cs" />
     <Compile Include="Areas\Admin\Controllers\LogViewerController.cs" />
@@ -683,6 +684,7 @@
     <Content Include="Areas\Admin\Views\User\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\User\Index.cshtml" />
     <Content Include="Areas\Apostas\Views\BolaoHistorico\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ClassificacaoNotificacao\Index.cshtml" />
     <None Include="Content\js\jquery-1.10.2.intellisense.js" />
     <Content Include="Content\js\jquery-1.10.2.js" />
     <Content Include="Content\js\jquery-1.10.2.min.js" />

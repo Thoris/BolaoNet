@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BolaoNet.Domain.Entities.ValueObjects.Notification;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
@@ -113,6 +114,18 @@ namespace BolaoNet.Infra.Notification.Mail
                 true,
                 emails.ToArray(),
                 file);
+        }
+
+        public void NotifyClassificacao(IList<string> emails, IList<ClassificacaoObject> classificacao, IList<PremioObject> premios, IList<JogoObject> jogos)
+        {
+            ITemplateMail template = new Templates.ClassificacaoTemplateMail(
+                base.CurrentUserName, GetFolderTemplates(), classificacao, premios, jogos);
+
+            SendMailFromAppSettingsConfig(
+                template.LoadTitle(),
+                template.LoadBody(),
+                true,
+                emails.ToArray());
         }
 
         #endregion

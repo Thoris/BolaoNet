@@ -10,8 +10,7 @@ namespace BolaoNet.Infra.Data.EF.Boloes
     public class BolaoMembroRepositoryDao :
         Base.BaseRepositoryDao<Domain.Entities.Boloes.BolaoMembro>,
         Domain.Interfaces.Repositories.Boloes.IBolaoMembroDao
-    {
-        
+    {      
         #region Constructors/Destructors
 
         public BolaoMembroRepositoryDao(Base.IUnitOfWork unitOfWork)
@@ -83,12 +82,10 @@ namespace BolaoNet.Infra.Data.EF.Boloes
             else
                 return false;
         }
-
         public IList<Domain.Entities.Boloes.BolaoMembro> GetListUsersInBolao(string currentUserName, DateTime currentDateTime, Domain.Entities.Boloes.Bolao bolao)
         {
             return base.GetList(x => string.Compare(x.NomeBolao, bolao.Nome, true) == 0).ToList();
         }
-
         public IList<Domain.Entities.Boloes.BolaoMembro> GetListBolaoInUsers(string currentUserName, DateTime currentDateTime, Domain.Entities.Users.User user)
         {
             return base.GetList(x => string.Compare(x.UserName, user.UserName, true) == 0).ToList();
@@ -193,11 +190,24 @@ namespace BolaoNet.Infra.Data.EF.Boloes
 
             return true;
         }
-        
+        public IList<Domain.Entities.Users.User> GetUsersToNotificate(string currentUserName, Domain.Entities.Boloes.Bolao bolao)
+        {
+            var q =
+            (from m in base.DataContext.BoloesMembros
+
+
+             join u in base.DataContext.Usuarios
+                     on new { c1 = m.UserName }
+                 equals new { c1 = u.UserName }
+
+             where string.Compare(m.NomeBolao, bolao.Nome, true) == 0 &&
+              u.ReceiveEmails == true
+             orderby u.UserName descending
+             select u).ToList();
+
+            return q;
+        }
+
         #endregion
-
-
-
-
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BolaoNet.Domain.Entities.ValueObjects.Notification;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,7 +18,6 @@ namespace BolaoNet.Domain.Interfaces.Services.Notification
         void NotityPagamentoRestante(Entities.Users.User user);
         void NotifyWelcome(Entities.Users.User user);
         void NotifySendPassword(Entities.Users.User user);
-        
-
+        void NotifyClassificacao(IList<string> emails, IList<ClassificacaoObject> classificacao, IList<PremioObject> premios, IList<JogoObject> jogos);
     }
 }

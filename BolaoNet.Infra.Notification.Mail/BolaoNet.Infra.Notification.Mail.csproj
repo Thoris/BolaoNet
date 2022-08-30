@@ -35,6 +35,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -56,6 +57,7 @@
     <Compile Include="Templates\ApostasRestantesTemplateMail.cs" />
     <Compile Include="Templates\BaseTemplateMail.cs" />
     <Compile Include="Templates\BaseTemplateMailUser.cs" />
+    <Compile Include="Templates\ClassificacaoTemplateMail.cs" />
     <Compile Include="Templates\PagamentosRestantesTemplateMail.cs" />
     <Compile Include="Templates\ResetPasswordTemplateMail.cs" />
     <Compile Include="Templates\WelcomeTemplateMail.cs" />
@@ -77,6 +79,7 @@
     <Content Include="TemplatesHtml\ApostasBolaoInicial.htm" />
     <Content Include="TemplatesHtml\ApostasBolao.htm" />
     <Content Include="TemplatesHtml\ApostasRestantes.htm" />
+    <Content Include="TemplatesHtml\Classificacao.htm" />
     <Content Include="TemplatesHtml\PagamentosRestantes.htm" />
     <Content Include="TemplatesHtml\ResetPassword.htm" />
     <Content Include="TemplatesHtml\Welcome.htm" />

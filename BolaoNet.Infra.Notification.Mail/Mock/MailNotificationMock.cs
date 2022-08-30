@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BolaoNet.Domain.Entities.ValueObjects.Notification;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -43,6 +44,10 @@ namespace BolaoNet.Infra.Notification.Mail.Mock
         }
 
         public void NotifyApostasFinaisBolao(IList<string> emails, string file)
+        { 
+        } 
+
+        public void NotifyClassificacao(IList<string> emails, IList<ClassificacaoObject> classificacao, IList<PremioObject> premios, IList<JogoObject> jogos)
         { 
         }
     }

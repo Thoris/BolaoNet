@@ -1,4 +1,5 @@
-﻿using BolaoNet.Services.Controllers;
+﻿using BolaoNet.Domain.Entities.Campeonatos;
+using BolaoNet.Services.Controllers;
 using Newtonsoft.Json;
 using System;
 using System.Collections;
@@ -161,6 +162,11 @@ namespace BolaoNet.Services.Areas.Campeonatos.Controllers
         public IList<Domain.Entities.Campeonatos.Jogo> GetJogosTimesPossibilidades(Domain.Entities.Campeonatos.Campeonato campeonato)
         {
             return Service.GetJogosTimesPossibilidades(campeonato);
+        }
+        [HttpGet]
+        public Jogo GetLastValidJogo(Campeonato campeonato)
+        {
+            return Service.GetLastValidJogo(campeonato);
         }
 
         #endregion

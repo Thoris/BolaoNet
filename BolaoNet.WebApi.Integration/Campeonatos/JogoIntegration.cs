@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BolaoNet.Domain.Entities.Campeonatos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -118,7 +119,11 @@ namespace BolaoNet.WebApi.Integration.Campeonatos
             new Dictionary<string, string>(), campeonato, "GetJogosTimesPossibilidades").ToList<Domain.Entities.Campeonatos.Jogo>();
        
         }
+        public Jogo GetLastValidJogo(Campeonato campeonato)
+        {
+            return base.HttpGetApi<Jogo>(new Dictionary<string, string>(), campeonato, "GetLastValidJogo");
+        }
 
         #endregion
-     }
+    }
 }

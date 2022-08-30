@@ -15,6 +15,7 @@ namespace BolaoNet.MVC.AutoMapper
 
         protected override void Configure()
         {
+            Mapper.CreateMap<ViewModels.Admin.AdminUserMailViewModel, Domain.Entities.Users.User>();
             Mapper.CreateMap<ViewModels.Account.RegistrationUserViewModel, Domain.Entities.Users.User>();
             Mapper.CreateMap<ViewModels.Apostas.ApostaJogoEntryViewModel, Domain.Entities.ValueObjects.JogoUsuarioVO>();
             Mapper.CreateMap<ViewModels.Apostas.ApostaJogoEntryViewModel, Domain.Entities.Campeonatos.Jogo>();
@@ -26,6 +27,8 @@ namespace BolaoNet.MVC.AutoMapper
             Mapper.CreateMap<ViewModels.Apostas.ApostaExtraViewModel, Domain.Entities.Boloes.ApostaExtraUsuario>();
 
             Mapper.CreateMap<ViewModels.Bolao.ClassificacaoViewModel, Domain.Entities.ValueObjects.BolaoClassificacaoVO>();
+            Mapper.CreateMap<ViewModels.Admin.AdminClassificacaoViewModel, Domain.Entities.ValueObjects.BolaoClassificacaoVO>();
+            Mapper.CreateMap<ViewModels.Admin.AdminJogoViewModel, Domain.Entities.Campeonatos.Jogo>();
 
             Mapper.CreateMap<ViewModels.Campeonatos.CampeonatoJogoEntryViewModel, Domain.Entities.Campeonatos.Jogo>();
             Mapper.CreateMap<ViewModels.Resultados.JogoResultadoViewModel, Domain.Entities.Campeonatos.Jogo>();
@@ -75,19 +78,19 @@ namespace BolaoNet.MVC.AutoMapper
 
             Mapper.CreateMap<ViewModels.Users.UserProfileViewModel, Domain.Entities.Users.User>();
 
-
-
             Mapper.CreateMap<ViewModels.Admin.UserProfileViewModel, Domain.Entities.Users.User>();
             Mapper.CreateMap<ViewModels.Admin.RoleViewModel, Domain.Entities.Users.Role>();
- 
-
 
             Mapper.CreateMap<ViewModels.Pagamentos.PagamentoViewModel, Domain.Entities.Boloes.Pagamento>();
 
             Mapper.CreateMap<ViewModels.Bolao.PremioViewModel, Domain.Entities.Boloes.BolaoPremio>();
+            Mapper.CreateMap<ViewModels.Admin.AdminPremioViewModel, Domain.Entities.Boloes.BolaoPremio>();
+
+            Mapper.CreateMap<ViewModels.Admin.AdminPremioViewModel, Domain.Entities.ValueObjects.Notification.PremioObject>();
+            Mapper.CreateMap<ViewModels.Admin.AdminClassificacaoViewModel, Domain.Entities.ValueObjects.Notification.ClassificacaoObject>();
+            Mapper.CreateMap<ViewModels.Admin.AdminJogoViewModel, Domain.Entities.ValueObjects.Notification.JogoObject>();
 
             Mapper.CreateMap<ViewModels.Campeonatos.CampeonatoRecordsViewModel, Domain.Entities.ValueObjects.CampeonatoRecordVO>();
-
 
             Mapper.CreateMap<ViewModels.Mensagens.MensagemViewModel, Domain.Entities.Boloes.Mensagem>();
             Mapper.CreateMap<ViewModels.Bolao.BolaoHistoricoViewModel, Domain.Entities.Boloes.BolaoHistorico>();

@@ -48,7 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\AdminBolaoClassificacaoViewModel.cs" />
+    <Compile Include="Admin\AdminClassificacaoViewModel.cs" />
+    <Compile Include="Admin\AdminJogoViewModel.cs" />
+    <Compile Include="Admin\AdminUserMailViewModel.cs" />
     <Compile Include="Admin\ConfigurationViewModel.cs" />
+    <Compile Include="Admin\AdminPremioViewModel.cs" />
     <Compile Include="Admin\RoleViewModel.cs" />
     <Compile Include="Admin\UserChangePasswordViewModel.cs" />
     <Compile Include="Admin\UserProfileViewModel.cs" />

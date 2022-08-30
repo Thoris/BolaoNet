@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BolaoNet.Domain.Entities.Campeonatos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -65,6 +66,10 @@ namespace BolaoNet.Application.Campeonatos
         public IList<Domain.Entities.Campeonatos.Jogo> GetJogosTimesPossibilidades(Domain.Entities.Campeonatos.Campeonato campeonato)
         {
             return Service.GetJogosTimesPossibilidades(campeonato);
+        }
+        public Jogo GetLastValidJogo(Campeonato campeonato)
+        {
+            return Service.GetLastValidJogo(campeonato);
         }
 
         #endregion

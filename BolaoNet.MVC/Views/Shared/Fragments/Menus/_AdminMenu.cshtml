@@ -71,6 +71,12 @@
                 { @Html.Raw("class=\"active\"")  }>
                 <a href="/Admin/BolaoIniciarParar/Index" onclick="javascript:showWait();"><span class="nav-label"><i class="fa fa-table"></i>Painel</span><span class="visible-xs-inline">Painel</span></a>
             </li>
+            
+            <li @if (string.Compare(controllerName, "ClassificacaoNotificacao", true) == 0 && 
+                    string.Compare(controllerArea, "Admin", true) == 0)
+                { @Html.Raw("class=\"active\"")  }>
+                <a href="/Admin/ClassificacaoNotificacao/Index" onclick="javascript:showWait();"><span class="nav-label"><i class="fa fa-mail-reply-all"></i>Classificação</span><span class="visible-xs-inline">Classificacação</span></a>
+            </li>
         }
         
         @if (roleAdmin)

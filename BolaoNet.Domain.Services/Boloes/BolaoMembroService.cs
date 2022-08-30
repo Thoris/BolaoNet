@@ -1,4 +1,6 @@
-﻿using BolaoNet.Domain.Interfaces.Services.Logging;
+﻿using BolaoNet.Domain.Entities.Boloes;
+using BolaoNet.Domain.Entities.Users;
+using BolaoNet.Domain.Interfaces.Services.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -125,6 +127,24 @@ namespace BolaoNet.Domain.Services.Boloes
 
             return res;
 
+        }
+        public IList<User> GetUsersToNotificate(Bolao bolao)
+        {
+            if (bolao == null)
+                throw new ArgumentException("bolao");
+            if (string.IsNullOrEmpty(bolao.Nome))
+                throw new ArgumentException("bolao.Nome");
+
+            IList<User> res = Dao.GetUsersToNotificate(base.CurrentUserName, bolao);
+
+            if (IsSaveLog)
+                CheckStart();
+            if (IsSaveLog)
+            {
+                _logging.Info(this, GetMessageTotalTime("Buscando usuários para notificação do bolão [" + bolao.Nome + "]. Total: " + res.Count));
+            }
+
+            return res;
         }
 
         #endregion

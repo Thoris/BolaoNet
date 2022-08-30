@@ -1,4 +1,5 @@
-﻿using BolaoNet.Domain.Interfaces.Services.Logging;
+﻿using BolaoNet.Domain.Entities.Campeonatos;
+using BolaoNet.Domain.Interfaces.Services.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -221,6 +222,25 @@ namespace BolaoNet.Domain.Services.Campeonatos
             }
 
             return res;
+        }
+        public Entities.Campeonatos.Jogo GetLastValidJogo(Entities.Campeonatos.Campeonato campeonato)
+        {
+            if (campeonato == null)
+                throw new ArgumentException("campeonato");
+            if (string.IsNullOrEmpty(campeonato.Nome))
+                throw new ArgumentException("campeonato.Nome");
+
+            if (IsSaveLog)
+                CheckStart();
+
+            Entities.Campeonatos.Jogo jogo = base.GetList(x => x.IsValido == true).OrderByDescending(x => x.DataJogo).First();
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Buscando último jogo válido do campeonato [" + campeonato.Nome + "] jogo: " + (jogo == null ? "" : jogo.DataJogo.ToString()) ));
+            }
+
+            return jogo;
         }
 
         #endregion

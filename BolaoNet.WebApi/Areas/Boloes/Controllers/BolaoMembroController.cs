@@ -1,4 +1,6 @@
-﻿using BolaoNet.Services.Controllers;
+﻿using BolaoNet.Domain.Entities.Boloes;
+using BolaoNet.Domain.Entities.Users;
+using BolaoNet.Services.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,11 +57,15 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
         {
             return Service.GetUserStatus(bolao);
         }
-
         [HttpPost]
         public bool RemoverMembroBolao(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Boloes.BolaoMembro membro)
         {
             return Service.RemoverMembroBolao(bolao, membro);
+        }
+        [HttpGet]
+        public IList<User> GetUsersToNotificate(Bolao bolao)
+        {
+            return Service.GetUsersToNotificate(bolao);
         }
 
         #endregion

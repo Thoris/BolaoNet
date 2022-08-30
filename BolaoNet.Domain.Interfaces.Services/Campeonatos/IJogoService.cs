@@ -28,5 +28,6 @@ namespace BolaoNet.Domain.Interfaces.Services.Campeonatos
 
         IList<Domain.Entities.Campeonatos.Jogo> GetJogosTimesPossibilidades(Domain.Entities.Campeonatos.Campeonato campeonato);
         
+        Entities.Campeonatos.Jogo GetLastValidJogo(Entities.Campeonatos.Campeonato campeonato);
     }
 }

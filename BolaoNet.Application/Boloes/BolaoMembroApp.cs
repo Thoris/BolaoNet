@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BolaoNet.Domain.Entities.Boloes;
+using BolaoNet.Domain.Entities.Users;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -50,6 +52,11 @@ namespace BolaoNet.Application.Boloes
         public bool RemoverMembroBolao(Domain.Entities.Boloes.Bolao bolao, Domain.Entities.Boloes.BolaoMembro membro)
         {
             return Service.RemoverMembroBolao(bolao, membro);
+        }
+
+        public IList<User> GetUsersToNotificate(Bolao bolao)
+        {
+            return Service.GetUsersToNotificate(bolao);
         }
 
         #endregion

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BolaoNet.Domain.Entities.ValueObjects.Notification;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -64,9 +65,11 @@ namespace BolaoNet.Application.Notification
         {
             _service.NotifyApostasFinaisBolao(emails, file);
         }
+
+        public void NotifyClassificacao(IList<string> emails, IList<ClassificacaoObject> classificacao, IList<PremioObject> premios, IList<JogoObject> jogos)
+        {
+            _service.NotifyClassificacao(emails, classificacao, premios, jogos);      
+        }
         #endregion
-
-
-
     }
 }

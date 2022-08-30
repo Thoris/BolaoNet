@@ -1,0 +1,199 @@
+﻿@model BolaoNet.MVC.ViewModels.Admin.AdminBolaoClassificacaoViewModel
+@{
+    ViewBag.Title = "Classificação do Bolão";
+    BolaoNet.MVC.Controllers.AuthorizationController homeController =
+        ViewContext.Controller as BolaoNet.MVC.Controllers.AuthorizationController;
+    string userNameLogged = homeController.UserLogged.UserName;
+}
+
+@using (Html.BeginForm("Enviar", "ClassificacaoNotificacao", FormMethod.Post, new { }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content" style="display: block;">
+                    <div class="text-center m-t-lg">
+
+                        <div class="row">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <td>Pos</td>
+                                        <td></td>
+                                        <td>Membro</td>
+                                        <td></td>
+                                        <td class="hidden-xs">Nome</td>
+                                        <td>PT</td>
+                                        <td class="hidden-xs">E</td>
+                                        <td class="hidden-xs">VDE</td>
+                                        <td class="hidden-xs">GT1</td>
+                                        <td class="hidden-xs">GT2</td>
+                                        <td class="hidden-xs">C</td>
+                                        <td class="hidden-xs">EX</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (int c = 0; c < Model.Classificacao.Count; c++)
+                                    {
+                                        <tr @if (string.Compare(userNameLogged, Model.Classificacao[c].UserName, true) == 0) { @Html.Raw("class=\"info\"") ; }>
+                                            <td>
+                                                @if (Model.Classificacao[c].BackColorName != null)
+                                                {
+
+                                                    <i class="fa fa-usd" style="color:@(Model.Classificacao[c].ForeColorName)" aria-hidden="true"></i>
+                                                    <strong style="color:@(Model.Classificacao[c].BackColorName)">@(Model.Classificacao[c].Posicao)</strong>
+                                                }
+                                                else
+                                                {
+                                                    //if (c == Model.Classificacao.Count - 1)
+                                                    if (Model.Classificacao[c].Posicao == Model.Classificacao[Model.Classificacao.Count - 1].Posicao)
+                                                    {
+                                                        <i class="fa fa-ambulance" style="color:black" aria-hidden="true"></i>
+                                                        <strong style="color:black">@(Model.Classificacao[c].Posicao)</strong>
+
+                                                    }
+                                                    else
+                                                    {
+                                                        <strong>@Model.Classificacao[c].Posicao</strong>
+                                                    }
+                                                }
+                                            </td>
+
+                                            <td>
+                                                @if (Model.Classificacao[c].Posicao == Model.Classificacao[c].LastPosicao)
+                                                {
+                                                    @Html.Raw("<span class=\"glyphicon glyphicon-stop black\">&nbsp;&nbsp;</span>");
+                                                }
+                                                else if (Model.Classificacao[c].Posicao < Model.Classificacao[c].LastPosicao)
+                                                {
+                                                    @Html.Raw("<span class=\"glyphicon glyphicon-arrow-up blue\">&nbsp;" + (Model.Classificacao[c].LastPosicao - Model.Classificacao[c].Posicao) + "</span>");
+
+                                                }
+                                                else
+                                                {
+                                                    @*<span class="glyphicon glyphicon-arrow-down ">*@
+                                                    @Html.Raw("<span style=\"color:red\" class=\"glyphicon glyphicon-arrow-down \">&nbsp;" + (Model.Classificacao[c].Posicao - Model.Classificacao[c].LastPosicao) + "</span>");
+                                                }
+
+                                            </td>
+                                            <td>@Model.Classificacao[c].UserName</td>
+                                            <td>
+                                                <img class="img-username" src="/Content/img/database/profiles/@(Model.Classificacao[c].UserName).gif?time=@(DateTime.Now)" />
+                                            </td>
+                                            <td class="hidden-xs">@Model.Classificacao[c].FullName</td>
+                                            <td><strong>@Model.Classificacao[c].TotalPontos</strong></td>
+                                            <td class="hidden-xs">@Model.Classificacao[c].TotalEmpate</td>
+                                            <td class="hidden-xs">@Model.Classificacao[c].TotalVDE</td>
+                                            <td class="hidden-xs">@Model.Classificacao[c].TotalGolsTime1</td>
+                                            <td class="hidden-xs">@Model.Classificacao[c].TotalGolsTime2</td>
+                                            <td class="hidden-xs">@Model.Classificacao[c].TotalPlacarCheio</td>
+                                            <td class="hidden-xs">@Model.Classificacao[c].TotalApostaExtra</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox-title">
+                <h5>Legenda</h5>
+            </div>
+            <div class="ibox float-e-margins">
+                <div class="ibox-content" style="display: block;">
+                    <div class="text-center m-t-lg">
+                        PT - pontos, E - Empates, V - Vitórias, GG - Gols Ganhador, GP - Gols Perdedor, RT1 - Resultado time 1, RT2 - Resultado Time 2, VDE - Vitória/Empate/Derrota, ERR - Erros, GGF - Gols Ganhador Fora, GGD - Gols Ganhador Dentro, GPF - Gols Perdedor Fora, GPD - Gols Perdedor Dentro, GE - Gols Empates, GT1 - Gols time 1, GT2 - Gols Time 2, C - Placar em cheio, EX - Pontos em Apostas Extras
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    if (Model.Jogos != null)
+    {
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox-title">
+                    <h5>Jogos</h5>
+                </div>
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content" style="display: block;">
+                        <div class="text-center m-t-lg">
+
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>@Html.DisplayNameFor(x => x.Jogos[0].JogoId)</th>
+                                        <td class="hidden-xs">@Html.DisplayNameFor(x => x.Jogos[0].DataJogo)</td>
+                                        <td class="text-right hidden-xs">@Html.DisplayNameFor(x => x.Jogos[0].NomeTime1)</td>
+                                        <td></td>
+                                        <td class="hidden-xs">@Html.DisplayNameFor(x => x.Jogos[0].GolsTime1)</td>
+                                        <td class="hidden-xs"></td>
+                                        <td class="hidden-xs">@Html.DisplayNameFor(x => x.Jogos[0].GolsTime2)</td>
+                                        <td></td>
+                                        <td class="text-left hidden-xs">@Html.DisplayNameFor(x => x.Jogos[0].NomeTime2)</td>
+                                        <td class="text-left hidden-xs">@Html.DisplayNameFor(x => x.Jogos[0].IsValido)</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @for (int c = 0; c < Model.Jogos.Count; c++)
+                                    {
+                                        <tr>
+                                            <th>@Model.Jogos[c].JogoId</th>
+                                            <td class="hidden-xs">@Model.Jogos[c].DataJogo.ToString("dd/MM/yy HH:mm")</td>
+                                            <td class="text-right hidden-xs">@Model.Jogos[c].NomeTime1</td>
+                                            <td><img class="img-time" src="@Model.Jogos[c].ImageTime1"></td>
+                                            <td class="hidden-xs">@Model.Jogos[c].GolsTime1</td>
+                                            <td class="hidden-xs">x</td>
+                                            <td class="hidden-xs">@Model.Jogos[c].GolsTime2</td>
+                                            <td><img class="img-time" src="@Model.Jogos[c].ImageTime2"></td>
+                                            <td class="text-left hidden-xs">@Model.Jogos[c].NomeTime2 </td>
+                                            <td class="text-left hidden-xs">@Html.CheckBoxFor(m => m.Jogos[c].IsValido, new { @checked = Model.Jogos[c].IsValido })</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox-title">
+                <h5>E-mails</h5>
+            </div>
+            <div class="ibox float-e-margins">
+                <div class="ibox-content" style="display: block;">
+                    <div class="text-center m-t-lg">
+                        <div class="row">
+                            <div class="col-sm-6">Total de emails para notificação: @Model.Mails.Count</div>
+                            <div class="col-sm-6">
+                                <input type="submit" onclick="return confirm('Deseja enviar email de classificação para os usuários?');" class="btn btn-primary btn-lg center-block " value="Enviar" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+@section scripts
+{
+    <script>
+
+    </script>
+}
