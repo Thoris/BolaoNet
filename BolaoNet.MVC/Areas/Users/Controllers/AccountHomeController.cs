@@ -311,7 +311,7 @@ namespace BolaoNet.MVC.Areas.Users.Controllers
 
             Domain.Entities.Users.User userLoaded = _userApp.Load(base.UserLogged);
 
-            if (string.Compare (model.NewPassword, userLoaded.Password, true) != 0)
+            if (string.Compare (model.Password, userLoaded.Password, true) != 0)
             {
                 ModelState.AddModelError("", "Senha inválida.");
                 return View("ChangePassword", model);
