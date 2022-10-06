@@ -236,6 +236,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseBolaoController.cs" />
     <Compile Include="Controllers\BaseCampeonatoController.cs" />
+    <Compile Include="Controllers\DivulgacaoController.cs" />
     <Compile Include="Helpers\AntiSqlInjectionHelper.cs" />
     <Compile Include="Helpers\CampeonatoDataLoader.cs" />
     <Compile Include="Helpers\ColorPontosHelper.cs" />
@@ -1413,6 +1414,7 @@
     <Content Include="Web.devops.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Views\Divulgacao\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

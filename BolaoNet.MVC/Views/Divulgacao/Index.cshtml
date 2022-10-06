@@ -1,0 +1,108 @@
+﻿@model BolaoNet.MVC.ViewModels.Account.DivulgacaoViewModel
+@{
+    ViewBag.Title = "Divulgação";
+    var baseController = ViewContext.Controller as BolaoNet.MVC.Controllers.BaseController;
+    string env = baseController.Environment;
+}
+<div class="gray-bg">
+    <div id="wrapper">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h2 class="font-bold blue">8º Bolão da Copa do Mundo dos Pivettas - 2022</h2>
+                        </div>
+                        <div class="ibox-content" style="display: block;">
+                            <div class="row">
+                                @using (Html.BeginForm("RegistrationForm", "Account", FormMethod.Post, new { }))
+                                {
+                                    @Html.AntiForgeryToken()
+
+                                <div class="col-md-12 col-sm-12">                                                                     
+                                    <br />Estamos iniciando o nosso tradicional bolão da copa do mundo - 8º Bolão da Copa do Mundo dos Pivettas - e você está convidado a participar, também, convidar e divulgar a quem interessar.
+                                    
+                                    <h3>
+                                        * Como funciona
+                                    </h3>
+                                    As apostas de todos os jogos, inclusive em fase classificatória até a final, serão efetuadas até a data limite que ocorrerá antes do início do primeiro jogo do campeonato. Todas as apostas de todos os participantes serão enviadas por e-mail para todos os demais antes do início do campeonato. Conforme a inclusão das apostas forem armazenadas no site, calcula-se a previsão de cruzamento das seleções em fase eliminatória.
+                                    <br />Ao término de cada jogo, o site calcula os pontos obtidos comparando o resultado do jogo com o resultado da aposta de cada participante. Os pontos serão somados com o total de pontos de cada participante, gerando assim a classificação. Os jogos do Brasil valem o dobro.
+                                    <br />Pontos extras (10 pontos) serão somados na pontuação geral dos participantes em caso de acerto entre os 4 primeiros colocados (Campeão, vice, terceiro e quarto colocados).
+                                    <br /><strong>O participante que somar a maior pontuação é o campeão do bolão.</strong>
+                                    <br />Embora as apostas sejam enviadas por e-mail, será possível acompanhar o andamento do campeonato e bolão pelo site, o qual, disponibiliza informações referente a classificação dos participantes, simulação de resultados e as apostas realizadas.
+
+                                    <h3>
+                                        * Como participar
+                                    </h3>
+                                    1) Cadastre uma conta no site http://bolaonet.somee.com , no link <a href="http://bolaonet.somee.com/Account/RegistrationForm">Registrar usuário</a>;
+                                    <br />Será enviado um e-mail para confirmação após o registro do usuário;
+                                    <br />2) Acesse o link http://bolaonet.somee.com/Account/ActivateCode e utilize o código recebido para ativação do usuário no site;
+                                    <br />3) Efetue o login no site;
+                                    <br />4) Efetue as apostas de todos os jogos no site (por meio do menu Apostas -> Inclusão de Apostas);
+                                    <br />5) Entre em contato e efetue o pagamento;
+                                    <br /><i>6) Torcer para pontuar o máximo possível!;</i>
+
+                                    <h3>
+                                        * Data Limite
+                                    </h3>
+                                    Estipulou-se data limite dia 18/Nov/2022 para efetuar as apostas e pagamento.
+
+                                    <h3>
+                                        * Taxa de participação
+                                    </h3>
+                                    O valor da participação será de R$ 50,00.
+                                    <h3>
+                                        * Como efetuar o pagamento
+                                    </h3>
+                                    Deve-se entrar em contato com um dos irmãos Pivettas.
+
+                                    <h3>
+                                        * Premiação
+                                    </h3>
+                                    - Premiação para o primeiro lugar: 70% do dinheiro arrecadado;
+                                    <br />- Premiação para o segundo lugar: 20% do dinheiro arrecadado;
+                                    <br />- Premiação para o terceiro lugar: 9% do dinheiro arrecadado;
+                                    <br />- Premiação para o último lugar: 1% do dinheiro arrecadado;
+
+                                    <h3>
+                                        * Pontuação
+                                    </h3>
+                                    - 10 PONTOS - Acertar o resultado em cheio: Ex.: Aposta 2 x 1; Resultado 2 x 1;
+                                    <br />- 5 PONTOS - Acertar o empate errando o número de gols: Ex.: Aposta 1 x 1; Resultado 2 x 2;
+                                    <br />- 4 PONTOS - Acertar vencedor e acertar apenas um dos placares: Ex.: Aposta 2 x 1; Resultado 3 x 1;
+                                    <br />- 3 PONTOS - Acertar apenas o vencedor e errar os placares: Ex.: Aposta 2 x 1; Resultado 1 x 0;
+                                    <br />- 1 PONTO - Errar o resultado jogo e acertar apenas um dos placares: Ex.: Aposta 2 x 1; Resultado 0 x 1 ou 1 x 1;
+                                    <br />- 0 PONTO - Para as outras situações.
+                                    <br /><strong>
+                                        Jogos do Brasil valem o dobro, seguindo a pontuação de 20, 10, 8, 6 e 2 pontos, respectivamente. Se acertar em cheio o resultado, ao invés de obter 10 pontos, será aplicado 20 pontos.
+                                    </strong>
+
+                                    <br />
+                                    <br />
+                                    Com relação ao resultado das 4 primeiras seleções do campeonato, será utilizada a seguinte pontuação a ser somada com a pontuação obtida nos jogos:
+                                    <br />- 10 PONTOS - Campeão;
+                                    <br />- 8 PONTOS - Vice-Campeão;
+                                    <br />- 5 PONTOS - Terceiro colocado;
+                                    <br />- 2 PONTOS - Quarto lugar
+                                    <br />Porém, ainda que na sua aposta esteja aparecendo Brasil 2 x 1 Chile, o jogo real seja Portugal x Chile, vale o resultado.
+                                    <br />Na fase eliminatória, vale o dobro de pontos apenas para o jogo real e não pelo cruzamento da aposta. Ou seja, você estará apostando no primeiro classificado do grupo A x Segundo classificado do grupo B, independente do time que classificar.
+                                    <br />
+                                    
+                                    <br />Qualquer problema ou sugestão, favor, não hesite em entrar em contato.
+                                    
+                                    <p />
+                                    <strong>Thoris, Teles e Tharcius</strong>
+
+
+                                </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
