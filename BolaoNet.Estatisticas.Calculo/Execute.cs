@@ -1,4 +1,6 @@
-﻿//#define DEBUG_EXTRACTION
+﻿#define IGNORE_CALCULO_PONTOS //Já foi feito por outra máquina, depois, comentar
+//#define DEBUG_SEMIFINAL
+//#define DEBUG_EXTRACTION
 //#define DEBUG_FAST_POSSIBILIDADES
 //#define DEBUG_ELIMINATORIAS
 //#define DEBUG_USUARIO
@@ -32,7 +34,6 @@ namespace BolaoNet.Estatisticas.Calculo
         private const short GolsSemApostaMenor = 888;
         private const short GolsSemApostaNegativa = -777;
         public const string NomeTimeDesconhecido = "Desconhecido";
-
 
         #endregion
 
@@ -175,8 +176,7 @@ namespace BolaoNet.Estatisticas.Calculo
             if (reloadDatabase)
             {
                 Serialization.Serialize<List<ApostaExtraInfo>>(extras, System.IO.Path.Combine(folder, "extras_final.xml"));
-                Serialization.Serialize<List<JogoInfo>>(list, System.IO.Path.Combine(folder, "list_final.xml"));
-                
+                Serialization.Serialize<List<JogoInfo>>(list, System.IO.Path.Combine(folder, "list_final.xml")); 
             }
 
             string outputPath = "Jogos";
@@ -187,8 +187,6 @@ namespace BolaoNet.Estatisticas.Calculo
 
             string outputExtras = System.IO.Path.Combine (outputPath, "Extras");
             manager.SaveApostasExtras(outputExtras, extras);
-
-
 
             for (int c = 0; c < extras.Count; c++)
             {
@@ -215,7 +213,6 @@ namespace BolaoNet.Estatisticas.Calculo
                 }
             }
 
-
             #endregion
 
             #region Apostas BASE
@@ -228,7 +225,6 @@ namespace BolaoNet.Estatisticas.Calculo
             string indexFile = System.IO.Path.Combine(outputPath, "Index.txt");
             JogoPossibilidadeAgrupamento agrIndex = new JogoPossibilidadeAgrupamento(listBase[listBase.Count - 1].Possibilidades[0]);
             manager.SaveIndex(indexFile, agrIndex);
-
 
             string outputPontos = System.IO.Path.Combine (outputPath, "Pontos");
 
@@ -246,7 +242,6 @@ namespace BolaoNet.Estatisticas.Calculo
                     listBase[listBase.Count - 1].Possibilidades[c].GolsTime1 + "_" +
                     listBase[listBase.Count - 1].Possibilidades[c].GolsTime2 + ".txt");
 
-
                 if (System.IO.File.Exists(file))
                     continue;
 
@@ -259,7 +254,6 @@ namespace BolaoNet.Estatisticas.Calculo
                 });
 
                 manager.SaveFile(file, agrupamento);
-                 
             }
 
             string newFile = System.IO.Path.Combine(outputPontos, listBase[listBase.Count - 1].JogoId + ".txt");
@@ -269,6 +263,22 @@ namespace BolaoNet.Estatisticas.Calculo
 
             #endregion
 
+            #region Armazenamento de pontos dos jogos
+
+            for (int i = listBase.Count - 1; i >= 0; i--)
+            {
+                if (!listBase[i].IsValid)
+                {
+                    newFile = System.IO.Path.Combine(outputPontos, listBase[i].JogoId + ".txt");
+
+                    if (!System.IO.File.Exists(newFile))
+                        manager.SaveJogoPossibilidades(newFile, listBase[i]);
+                }
+            }
+
+            #endregion
+
+#if !IGNORE_CALCULO_PONTOS
             #region Cálculo de Apostas
 
             //Todas as apostas
@@ -280,7 +290,6 @@ namespace BolaoNet.Estatisticas.Calculo
 
                 for (int c = 0; c < listBase[i].Possibilidades.Count; c++)
                 {
-
                     Console.WriteLine(DateTime.Now.ToString() + " - Possibilidade : [" +
                         listBase[i].Possibilidades.Count + " / " + (c + 1) + "] : " +
                         listBase[i].Possibilidades[c].GolsTime1 + " x " + listBase[i].Possibilidades[c].GolsTime2);
@@ -294,7 +303,6 @@ namespace BolaoNet.Estatisticas.Calculo
                         listBase[i].Possibilidades[c].GolsTime1 + "_" +
                         listBase[i].Possibilidades[c].GolsTime2 + ".txt");
 
- 
                     int f = i + 1;
   
                     string pathBase = System.IO.Path.Combine(outputPath, listBase[f].JogoId.ToString());
@@ -309,35 +317,30 @@ namespace BolaoNet.Estatisticas.Calculo
                     agrupamento.JogoId = listBase[i].JogoId;
 
                     manager.ReadAppendSave(file, pathBase, agrupamento);
-
-
                 }
 
+                //newFile = System.IO.Path.Combine(outputPontos, listBase[i].JogoId + ".txt");
 
-                newFile = System.IO.Path.Combine(outputPontos, listBase[i].JogoId + ".txt");
-
-                if (!System.IO.File.Exists(newFile))
-                    manager.SaveJogoPossibilidades(newFile, listBase[i]);
+                //if (!System.IO.File.Exists(newFile))
+                //    manager.SaveJogoPossibilidades(newFile, listBase[i]);
 
                 #endregion
 
                 Console.WriteLine(DateTime.Now.ToString() + " - " + listBase[i].JogoId + " - Fim da análise");
 
-                if (i == FileStructureManager.JogoIdSemiFinal1 - 1)
+                if (i < FileStructureManager.JogoIdJogoPendente)
                     break;
             }//end for jogos
 
             #endregion
+#endif
 
-
-            ///////////////////////////////
-            //// DEBUG
-            ///////////////////////////////
-
-            //list[61 - 1].NomeTime1 = "França";
-            //list[61 - 1].NomeTime2 = "Brasil";
-            //list[62 - 1].NomeTime1 = "Espanha";
-            //list[62 - 1].NomeTime2 = "Croácia";
+#if DEBUG_SEMIFINAL
+            list[61 - 1].NomeTime1 = "Argentina";
+            list[61 - 1].NomeTime2 = "Croácia";
+            list[62 - 1].NomeTime1 = "França";
+            list[62 - 1].NomeTime2 = "Marrocos";
+#endif
 
             #region Times Jogos
 
@@ -346,26 +349,7 @@ namespace BolaoNet.Estatisticas.Calculo
             if (!System.IO.File.Exists(fileTimes))
                 manager.SaveTimesJogos(fileTimes, list);
 
-
             #endregion
-
-            //List<List<string>> d = new List<List<string>>();
-            //List<List<string>> outData = new List<List<string>>();
-            //d.Add(new List<string>());
-            //d.Add(new List<string>());
-            //d.Add(new List<string>());
-            //d.Add(new List<string>());
-            //d[0].Add("A");
-            //d[0].Add("B");
-            //d[1].Add("A");
-            //d[1].Add("B");
-            //d[2].Add("C");
-            //d[2].Add("D");
-            //d[3].Add("C");
-            //d[3].Add("D");
-            //d[3].Add("E");
-            //manager.GetPossibilidades(outData, d, 0, new List<string>());
-            //List<List<string>> o = outData;
 
             #region Classificacao
 
@@ -374,7 +358,6 @@ namespace BolaoNet.Estatisticas.Calculo
 
             string fileClassificacaoValidacao = System.IO.Path.Combine(outputPath, "ClassValidacao.txt");
             SaveClassificacao(fileClassificacaoValidacao, list);
-
 
             string fileClassificacao = System.IO.Path.Combine(outputPath, "Classificacao.txt");
             
@@ -393,15 +376,13 @@ namespace BolaoNet.Estatisticas.Calculo
 
             #region Simulação de Jogo
 
-            //int jogoIdSimul = 59;
-            //List<JogoIdAgrupamento> jogosSimulacao = new List<JogoIdAgrupamento>();
-            //jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 59, Gols1 = 1, Gols2 = 2 });
-            //jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 61, Gols1 = 1, Gols2 = 2 });
-            //jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 62, Gols1 = 1, Gols2 = 2 });
-            //jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 63, Gols1 = 1, Gols2 = 2 });
-            //jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 64, Gols1 = 1, Gols2 = 2 });
-
-
+            List<JogoIdAgrupamento> jogosSimulacao = new List<JogoIdAgrupamento>();
+            jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 59, Gols1 = 1, Gols2 = 2 });
+            jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 61, Gols1 = 1, Gols2 = 2 });
+            jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 62, Gols1 = 1, Gols2 = 2 });
+            jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 63, Gols1 = 1, Gols2 = 2 });
+            jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 64, Gols1 = 1, Gols2 = 2 });
+            new SimulateJogos().Calcular(bolaoMembros, list, extras, jogosSimulacao);
 
             #endregion
 
@@ -411,7 +392,6 @@ namespace BolaoNet.Estatisticas.Calculo
             if (!System.IO.Directory.Exists(apostas))
                 System.IO.Directory.CreateDirectory(apostas);
 
-            
             //TODO: Alterar o identificador do jogo para buscar as possibilidades
             int jogoIdCheck = FileStructureManager.JogoIdJogoPendente;
 
@@ -424,6 +404,7 @@ namespace BolaoNet.Estatisticas.Calculo
                     break;
                 }
             }
+
             #region Cálculo de pontos dos usuários
             //for (int i = listBase.Count - 1; i >= 0; i--)
             {
@@ -431,13 +412,11 @@ namespace BolaoNet.Estatisticas.Calculo
                 string jogoPath = System.IO.Path.Combine(outputPath, jogoId.ToString());
                 string apostasPath = System.IO.Path.Combine(apostas, jogoId.ToString());
 
-
                 string baseApostas = System.IO.Path.Combine(outputPath, "TempApostas");
 
                 if (System.IO.Directory.Exists(apostasPath))                
                     System.IO.Directory.Delete(apostasPath, true);               
                 System.IO.Directory.CreateDirectory(apostasPath);
-
 
                 if (System.IO.Directory.Exists(baseApostas))
                     System.IO.Directory.Delete(baseApostas, true);                
@@ -451,7 +430,6 @@ namespace BolaoNet.Estatisticas.Calculo
                     userName = "thoris";
 #endif
 
-
                     string file = System.IO.Path.Combine(apostas, userName);
 
                     Console.WriteLine(DateTime.Now.ToString() + " - Jogo[" + jogoId + "] - Análise de Apostas do Usuário: " + userName);
@@ -460,11 +438,10 @@ namespace BolaoNet.Estatisticas.Calculo
 
                     manager.CheckPossibilidades(baseApostas, outputApostas, indexFile, jogoPath, membros, userName, extras, listBase, possibilidadeExtras, true, 1, 2, 3);
 
-
                     Console.WriteLine(DateTime.Now.ToString() + " - Jogo[" + jogoId + "] - Análise de Apostas do Usuário: " + userName + ". FIM");
-
-                    //if (i == 59)
-                    //    break;
+#if (DEBUG_USUARIO)
+                    break;
+#endif
                 }
             }
             #endregion
@@ -485,6 +462,41 @@ namespace BolaoNet.Estatisticas.Calculo
 
             SaveLogJogos("log.log", list, extras);
 
+        }
+
+        public void ReRun(string nomeBolao)
+        {
+            int[] pontuacao = null;
+            List<JogoInfo> list = null;
+            List<ApostaExtraInfo> extras = null;
+            List<Domain.Entities.Boloes.BolaoCriterioPontosTimes> pontosTimes = null;
+            List<Domain.Entities.Boloes.BolaoMembroClassificacao> bolaoMembros = null;
+            FileStructureManager manager = new FileStructureManager();
+
+            List<CriterioPontosTimes> criterioTimes = new List<CriterioPontosTimes>();
+            List<MembroClassificacao> membros = new List<MembroClassificacao>();
+            extras = ExtractApostasExtras(nomeBolao);
+            pontosTimes = (List<Domain.Entities.Boloes.BolaoCriterioPontosTimes>)_bolaoCriterioPontosTimesApp.GetCriterioPontosBolao(new Domain.Entities.Boloes.Bolao(nomeBolao));
+            pontuacao = _bolaoCriterioPontosApp.GetCriteriosPontos(new Domain.Entities.Boloes.Bolao(nomeBolao));
+            bolaoMembros = _bolaoMembroClassificacaoApp.GetAll().ToList();
+            list = ExtractJogos(nomeBolao);
+
+            string outputPath = "Jogos";
+            string percentualFile = System.IO.Path.Combine(outputPath, "contagem.txt");
+            string percFile = System.IO.Path.Combine(outputPath, "percentual.txt");
+            manager.CalcularPercentual(percFile, percentualFile);
+
+            #region Simulação de Jogo
+
+            List<JogoIdAgrupamento> jogosSimulacao = new List<JogoIdAgrupamento>();
+            jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 59, Gols1 = 1, Gols2 = 2 });
+            jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 61, Gols1 = 1, Gols2 = 2 });
+            jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 62, Gols1 = 1, Gols2 = 2 });
+            jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 63, Gols1 = 1, Gols2 = 2 });
+            jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 64, Gols1 = 1, Gols2 = 2 });
+            new SimulateJogos().Calcular(bolaoMembros, list, extras, jogosSimulacao);
+
+            #endregion
         }
 
         private void ValidarJogosResultado(List<JogoInfo> list, int[] pontuacao, List<CriterioPontosTimes> pontosTimes)
@@ -817,7 +829,7 @@ namespace BolaoNet.Estatisticas.Calculo
         {
             int resultado = 0;
 
-            #region Converter pontuacao em variáveis
+#region Converter pontuacao em variáveis
 
             int countEmpate = 0;	// Se o usuário apostou empate e o jogo deu empate
             int countVitoria = 0;	// Se o usuário apostou vitória para o time e deu vitória para o time selecionado
@@ -898,7 +910,7 @@ namespace BolaoNet.Estatisticas.Calculo
 
                 }
             }
-            #endregion
+#endregion
 
             for (int c = 0; c < pontosTimes.Count; c++)
             {
@@ -1134,7 +1146,7 @@ namespace BolaoNet.Estatisticas.Calculo
 
             List<ApostaPontos> pt = pontos.OrderByDescending(x => x.Pontos).ToList();
 
-            #region Calculando posições
+#region Calculando posições
 
             int currentPosicao = 0;
             int currentPontos = -1;
@@ -1154,7 +1166,7 @@ namespace BolaoNet.Estatisticas.Calculo
                     pt[c].Posicao = currentPosicao;
                 }
             }
-            #endregion
+#endregion
 
             StreamWriter writer = new StreamWriter(file);
 
@@ -1224,6 +1236,6 @@ namespace BolaoNet.Estatisticas.Calculo
         }
 
 
-        #endregion
+#endregion
     }
 }

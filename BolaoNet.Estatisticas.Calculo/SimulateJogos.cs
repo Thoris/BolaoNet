@@ -11,7 +11,7 @@ namespace BolaoNet.Estatisticas.Calculo
     {
         #region Methods
 
-        public void Calcular(BolaoMembroClassificacao classificacao, IList<JogoInfo> jogos, IList<ApostaExtraInfo> extras, params int [] jogoIds)
+        public void Calcular(List<Domain.Entities.Boloes.BolaoMembroClassificacao> bolaoMembros, IList<JogoInfo> jogos, IList<ApostaExtraInfo> extras, List<JogoIdAgrupamento> jogoAgrupamento)
         {
 
         }

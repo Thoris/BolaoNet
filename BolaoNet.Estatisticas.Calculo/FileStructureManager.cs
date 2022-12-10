@@ -22,12 +22,12 @@ namespace BolaoNet.Estatisticas.Calculo
         private const string Folder = ".\\Structure";
 
 
-        public const int JogoIdFinal = 26;
-        public const int JogoIdTerceiro = 25;
-        public const int JogoIdSemiFinal1 = 23;
-        public const int JogoIdSemiFinal2 = 24;
+        public const int JogoIdFinal = 64;
+        public const int JogoIdTerceiro = 63;
+        public const int JogoIdSemiFinal1 = 62;
+        public const int JogoIdSemiFinal2 = 61;
 
-        public const int JogoIdJogoPendente = 25;
+        public const int JogoIdJogoPendente = 61;
 
         #endregion
 
@@ -1608,19 +1608,19 @@ namespace BolaoNet.Estatisticas.Calculo
                 double calc_1 = 0;
                 if (tot1 > 0)
                     calc_1 = (double)((double)pt1[c] / (double)tot1 * (double)100);
-                writer.Write(calc_1.ToString("0.0000") + " %|");
+                writer.Write(calc_1.ToString("0.00000000000000") + " %|");
                 double calc_2 = 0;
                 if (tot2 > 0)
                     calc_2 = (double)((double)pt2[c] / (double)tot2 * (double)100);
-                writer.Write(calc_2.ToString("0.0000") + " %|");
+                writer.Write(calc_2.ToString("0.00000000000000") + " %|");
                 double calc_3 = 0;
                 if (tot3 > 0)
                     calc_3 = (double)((double)pt3[c] / (double)tot3 * (double)100);
-                writer.Write(calc_3.ToString("0.0000") + " %|");
+                writer.Write(calc_3.ToString("0.00000000000000") + " %|");
                 double calc_ult = 0;
                 if (totUlt > 0)
                     calc_ult = (double)((double)ult[c] / (double)totUlt * (double)100);
-                writer.Write(calc_ult.ToString("0.0000") + "%");
+                writer.Write(calc_ult.ToString("0.00000000000000") + "%");
                 writer.WriteLine();
             }
 
