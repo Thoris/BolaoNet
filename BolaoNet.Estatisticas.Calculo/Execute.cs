@@ -374,17 +374,17 @@ namespace BolaoNet.Estatisticas.Calculo
 
             #endregion
 
-            #region Simulação de Jogo
+            //#region Simulação de Jogo 
 
-            List<JogoIdAgrupamento> jogosSimulacao = new List<JogoIdAgrupamento>();
-            jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 59, Gols1 = 1, Gols2 = 2 });
-            jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 61, Gols1 = 1, Gols2 = 2 });
-            jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 62, Gols1 = 1, Gols2 = 2 });
-            jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 63, Gols1 = 1, Gols2 = 2 });
-            jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 64, Gols1 = 1, Gols2 = 2 });
-            new SimulateJogos().Calcular(bolaoMembros, list, extras, jogosSimulacao);
+            //List<JogoIdAgrupamento> jogosSimulacao = new List<JogoIdAgrupamento>();
+            //jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 59, Gols1 = 1, Gols2 = 2 });
+            //jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 61, Gols1 = 1, Gols2 = 2 });
+            //jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 62, Gols1 = 1, Gols2 = 2 });
+            //jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 63, Gols1 = 1, Gols2 = 2 });
+            //jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 64, Gols1 = 1, Gols2 = 2 });
+            //new SimulateJogos().Calcular(outputPontos, bolaoMembros, list, extras, jogosSimulacao);
 
-            #endregion
+            //#endregion
 
             #region Possibilidades de usuários
 
@@ -482,19 +482,17 @@ namespace BolaoNet.Estatisticas.Calculo
             list = ExtractJogos(nomeBolao);
 
             string outputPath = "Jogos";
-            string percentualFile = System.IO.Path.Combine(outputPath, "contagem.txt");
-            string percFile = System.IO.Path.Combine(outputPath, "percentual.txt");
-            manager.CalcularPercentual(percFile, percentualFile);
+            //string percentualFile = System.IO.Path.Combine(outputPath, "contagem.txt");
+            string outputPontos = System.IO.Path.Combine(outputPath, "Pontos");
 
             #region Simulação de Jogo
 
             List<JogoIdAgrupamento> jogosSimulacao = new List<JogoIdAgrupamento>();
-            jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 59, Gols1 = 1, Gols2 = 2 });
             jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 61, Gols1 = 1, Gols2 = 2 });
             jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 62, Gols1 = 1, Gols2 = 2 });
             jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 63, Gols1 = 1, Gols2 = 2 });
             jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 64, Gols1 = 1, Gols2 = 2 });
-            new SimulateJogos().Calcular(bolaoMembros, list, extras, jogosSimulacao);
+            new SimulateJogos().Calcular(outputPontos, bolaoMembros, list, extras, jogosSimulacao);
 
             #endregion
         }
