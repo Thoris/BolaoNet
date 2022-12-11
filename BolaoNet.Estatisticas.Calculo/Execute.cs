@@ -1,4 +1,4 @@
-﻿#define IGNORE_CALCULO_PONTOS //Já foi feito por outra máquina, depois, comentar
+﻿//#define IGNORE_CALCULO_PONTOS //Já foi feito por outra máquina, depois, comentar
 //#define DEBUG_SEMIFINAL
 //#define DEBUG_EXTRACTION
 //#define DEBUG_FAST_POSSIBILIDADES
@@ -476,23 +476,35 @@ namespace BolaoNet.Estatisticas.Calculo
             List<CriterioPontosTimes> criterioTimes = new List<CriterioPontosTimes>();
             List<MembroClassificacao> membros = new List<MembroClassificacao>();
             extras = ExtractApostasExtras(nomeBolao);
-            pontosTimes = (List<Domain.Entities.Boloes.BolaoCriterioPontosTimes>)_bolaoCriterioPontosTimesApp.GetCriterioPontosBolao(new Domain.Entities.Boloes.Bolao(nomeBolao));
-            pontuacao = _bolaoCriterioPontosApp.GetCriteriosPontos(new Domain.Entities.Boloes.Bolao(nomeBolao));
+            //pontosTimes = (List<Domain.Entities.Boloes.BolaoCriterioPontosTimes>)_bolaoCriterioPontosTimesApp.GetCriterioPontosBolao(new Domain.Entities.Boloes.Bolao(nomeBolao));
+            //pontuacao = _bolaoCriterioPontosApp.GetCriteriosPontos(new Domain.Entities.Boloes.Bolao(nomeBolao));
             bolaoMembros = _bolaoMembroClassificacaoApp.GetAll().ToList();
             list = ExtractJogos(nomeBolao);
 
             string outputPath = "Jogos";
             //string percentualFile = System.IO.Path.Combine(outputPath, "contagem.txt");
             string outputPontos = System.IO.Path.Combine(outputPath, "Pontos");
+            string outputExtras = System.IO.Path.Combine(outputPath, "Extras");
+            string outputSimulacoes = System.IO.Path.Combine(outputPath, "Simulacoes");
+            if (!System.IO.Directory.Exists(outputSimulacoes))
+                System.IO.Directory.CreateDirectory(outputSimulacoes);
 
             #region Simulação de Jogo
 
             List<JogoIdAgrupamento> jogosSimulacao = new List<JogoIdAgrupamento>();
-            jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 61, Gols1 = 1, Gols2 = 2 });
-            jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 62, Gols1 = 1, Gols2 = 2 });
-            jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 63, Gols1 = 1, Gols2 = 2 });
-            jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 64, Gols1 = 1, Gols2 = 2 });
-            new SimulateJogos().Calcular(outputPontos, bolaoMembros, list, extras, jogosSimulacao);
+            jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 61, Gols1 = 0, Gols2 = 1 });
+            jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 62, Gols1 = 0, Gols2 = 2 });
+            jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 63, Gols1 = 1, Gols2 = 0 });
+            jogosSimulacao.Add(new JogoIdAgrupamento() { JogoId = 64, Gols1 = 2, Gols2 = 1 });
+            List<string> campeoes = new List<string>();
+            campeoes.Add("Croácia");
+            campeoes.Add("Marrocos");
+            campeoes.Add("Argentina");
+            campeoes.Add("França");
+
+            string outputSimulacao = System.IO.Path.Combine(outputSimulacoes, "simulacao1.txt");
+
+            new SimulateJogos().Calcular(outputPontos, outputExtras, bolaoMembros, list, extras, jogosSimulacao, campeoes, outputSimulacao);
 
             #endregion
         }

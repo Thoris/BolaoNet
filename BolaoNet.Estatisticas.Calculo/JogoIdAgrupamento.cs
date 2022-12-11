@@ -13,7 +13,6 @@ namespace BolaoNet.Estatisticas.Calculo
         public int JogoId { get; set; }
         public int Gols1 { get; set; }
         public int Gols2 { get; set; }
-        public bool ? time1Ganhou { get; set; }
 
         #endregion
 
