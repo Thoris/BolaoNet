@@ -11,6 +11,7 @@ namespace BolaoNet.Estatisticas.Calculo
     {
         #region Properties
 
+        public string NomeTimeValidado { get; set; }
         public int Posicao { get; set; }
         public int Pontuacao { get; set; }
         public List<ApostaExtraAposta> Apostas { get; set; }

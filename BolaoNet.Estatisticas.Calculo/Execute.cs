@@ -951,7 +951,6 @@ namespace BolaoNet.Estatisticas.Calculo
         {
             List<ApostaExtraInfo> list = new List<ApostaExtraInfo>();
 
-
             IList<Domain.Entities.Boloes.ApostaExtra> extras =
                 _apostaExtraApp.GetApostasBolao(new Domain.Entities.Boloes.Bolao(nomeBolao));
             
@@ -961,6 +960,7 @@ namespace BolaoNet.Estatisticas.Calculo
             for (int c = 0; c < extras.Count; c++ )
             {
                 ApostaExtraInfo info = new ApostaExtraInfo(extras[c]);
+                info.NomeTimeValidado = extras[c].NomeTimeValidado;
 
                 for (int i = 0; i < apostas.Count; i++ )
                 {
@@ -991,28 +991,34 @@ namespace BolaoNet.Estatisticas.Calculo
         {
             extra.Possibilidades = new List<ApostaExtraPossibilidade>();
 
-            //Para todas as apostas do jogo
-            for (int c = 0; c < extra.Apostas.Count; c++)
+            if (extra.NomeTimeValidado == null)
             {
-                //Buscando se a aposta já existe na lista
-                int pos = BuscarPossibilidade(extra.Possibilidades, extra.Apostas[c]);
-
-                //Se não encontrou a aposta
-                if (pos == -1)
+                //Para todas as apostas do jogo
+                for (int c = 0; c < extra.Apostas.Count; c++)
                 {
-                    //Inclui na lista de possibilidades
-                    extra.Possibilidades.Add(new ApostaExtraPossibilidade(extra.Apostas[c]));
-                }
-                else
-                {
-                    //Inclui no total de apostas
-                    extra.Possibilidades[pos].TotalApostas++;
+                    //Buscando se a aposta já existe na lista
+                    int pos = BuscarPossibilidade(extra.Possibilidades, extra.Apostas[c]);
 
-                }//end if encontrou a aposta
-            }//end for apostas
+                    //Se não encontrou a aposta
+                    if (pos == -1)
+                    {
+                        //Inclui na lista de possibilidades
+                        extra.Possibilidades.Add(new ApostaExtraPossibilidade(extra.Apostas[c]));
+                    }
+                    else
+                    {
+                        //Inclui no total de apostas
+                        extra.Possibilidades[pos].TotalApostas++;
 
-            extra.Possibilidades.Add(new ApostaExtraPossibilidade() { NomeTime = NomeTimeDesconhecido, TotalApostas = 1 });
-            
+                    }//end if encontrou a aposta
+                }//end for apostas
+
+                extra.Possibilidades.Add(new ApostaExtraPossibilidade() { NomeTime = NomeTimeDesconhecido, TotalApostas = 1 });
+            }
+            else
+            {
+                extra.Possibilidades.Add(new ApostaExtraPossibilidade() { NomeTime = extra.NomeTimeValidado, TotalApostas = 1 });
+            }
         }
 
         private int BuscarPossibilidade(IList<ApostaExtraPossibilidade> list, ApostaExtraAposta aposta)

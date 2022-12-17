@@ -27,7 +27,7 @@ namespace BolaoNet.Estatisticas.Calculo
         public const int JogoIdSemiFinal1 = 62;
         public const int JogoIdSemiFinal2 = 61;
 
-        public const int JogoIdJogoPendente = 61;
+        public const int JogoIdJogoPendente = 64;
 
         #endregion
 
@@ -1195,6 +1195,17 @@ namespace BolaoNet.Estatisticas.Calculo
             List<string> segundo = GetTimePontosExtras(tempJogos, jogo, JogoIdFinal, false);
             List<string> terceiro = GetTimePontosExtras(tempJogos, jogo, JogoIdTerceiro, true);
             List<string> quarto = GetTimePontosExtras(tempJogos, jogo, JogoIdTerceiro, false);
+
+            if (extras.Count >= 3 && extras[2].NomeTimeValidado != null)
+            {
+                terceiro.Clear() ;
+                terceiro.Add(extras[2].NomeTimeValidado);
+            }
+            if (extras.Count >= 4 && extras[3].NomeTimeValidado != null)
+            {
+                quarto.Clear();
+                quarto.Add(extras[3].NomeTimeValidado);
+            }
 
 
             Dictionary<int, List<string>> res = new Dictionary<int, List<string>>();
