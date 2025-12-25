@@ -94,6 +94,12 @@ namespace BolaoNet.Domain.Services.Facade.Boloes
                     return new BolaoCopaMundo2022ServiceHelper(_apostaExtraService, _bolaoService, _bolaoPremioService,
                         _bolaoCriterioPontosService, _bolaoCriterioPontosTimesService, _bolaoRegraService, _bolaoPontuacaoService,
                         _bolaoHistoricoService, _userService, _userFacadeService, _bolaoMembroService, _jogoUsuarioService);
+
+                case BolaoCopaMundo2026ServiceHelper.NomeBolao:
+
+                    return new BolaoCopaMundo2026ServiceHelper(_apostaExtraService, _bolaoService, _bolaoPremioService,
+                        _bolaoCriterioPontosService, _bolaoCriterioPontosTimesService, _bolaoRegraService, _bolaoPontuacaoService,
+                        _bolaoHistoricoService, _userService, _userFacadeService, _bolaoMembroService, _jogoUsuarioService);
             }
 
             return null;
@@ -107,7 +113,8 @@ namespace BolaoNet.Domain.Services.Facade.Boloes
             list.Add(BolaoCopaMundo2014ServiceHelper.NomeBolao);
             list.Add(BolaoCopaMundo2018ServiceHelper.NomeBolao);
             list.Add(BolaoCopaAmerica2019ServiceHelper.NomeBolao);
-            list.Add(BolaoCopaMundo2022ServiceHelper.NomeBolao);
+            list.Add(BolaoCopaMundo2026ServiceHelper.NomeBolao);
+            list.Add(BolaoCopaMundo2026ServiceHelper.NomeBolao);
 
             return list;
         }

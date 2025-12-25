@@ -82,6 +82,11 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
                     return new CopaMundo2022FacadeService(_timeService, _campeonatoService, _campeonatoTimeService,
                         _campeonatoFaseService, _campeonatoGrupoService, _campeonatoGrupoTimeService, _estadioService,
                         _jogoService, _campeonatoPosicaoService, _campeonatoHistoricoService);
+
+                case CopaMundo2026FacadeService.Name:
+                    return new CopaMundo2026FacadeService(_timeService, _campeonatoService, _campeonatoTimeService,
+                        _campeonatoFaseService, _campeonatoGrupoService, _campeonatoGrupoTimeService, _estadioService,
+                        _jogoService, _campeonatoPosicaoService, _campeonatoHistoricoService);
             }
 
             return null;
@@ -96,6 +101,7 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             list.Add(CopaMundo2018FacadeService.Name);
             list.Add(CopaAmerica2019FacadeService.Name);
             list.Add(CopaMundo2022FacadeService.Name);
+            list.Add(CopaMundo2026FacadeService.Name);
 
             return list;
         }

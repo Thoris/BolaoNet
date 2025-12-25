@@ -1,4 +1,7 @@
-﻿[2.5.1.1] - 14/06/2022
+﻿[2.6.0.0] - 24/12/2025
+* Criação de campeonato da copa do mundo de 2026.
+
+[2.5.1.1] - 14/06/2022
 * Criação de campeonato da copa do mundo de 2022.
 
 [2.5.1.0] - 19/06/2019

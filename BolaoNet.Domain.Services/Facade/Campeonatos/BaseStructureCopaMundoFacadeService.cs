@@ -21,8 +21,8 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
         //protected const string FaseSemiFinal = "Semi finais";
         //protected const string FaseFinal = "Final";
 
-
         protected const string FaseClassificatoria = Domain.Entities.Campeonatos.CampeonatoFase.FaseClassificatoria;
+        protected const string FaseDezesseisAvosFinal = Domain.Entities.Campeonatos.CampeonatoFase.FaseDezesseisAvosFinal;
         protected const string FaseOitavasFinal = Domain.Entities.Campeonatos.CampeonatoFase.FaseOitavasFinal;
         protected const string FaseQuartasFinal = Domain.Entities.Campeonatos.CampeonatoFase.FaseQuartasFinal;
         protected const string FaseSemiFinal = Domain.Entities.Campeonatos.CampeonatoFase.FaseSemiFinal;

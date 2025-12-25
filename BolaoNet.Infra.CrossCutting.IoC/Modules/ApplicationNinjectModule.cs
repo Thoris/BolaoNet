@@ -84,6 +84,7 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
             Bind<Application.Interfaces.Facade.Campeonatos.IStructureCopaMundoFacadeApp>().To<Application.Facade.Campeonatos.StructureCopaMundoFacadeApp>();
             Bind<Application.Interfaces.Facade.Campeonatos.ICopaAmerica2019FacadeApp>().To<Application.Facade.Campeonatos.CopaAmerica2019FacadeApp>();
             Bind<Application.Interfaces.Facade.Campeonatos.ICopaMundo2022FacadeApp>().To<Application.Facade.Campeonatos.CopaMundo2022FacadeApp>();
+            Bind<Application.Interfaces.Facade.Campeonatos.ICopaMundo2026FacadeApp>().To<Application.Facade.Campeonatos.CopaMundo2026FacadeApp>();
 
             Bind<Application.Interfaces.Facade.Campeonatos.ICopaListFacadeApp>().To<Application.Facade.Campeonatos.CopaListFacadeApp>();
             Bind<Application.Interfaces.Facade.Boloes.IBolaoListFacadeApp>().To<Application.Facade.Boloes.BolaoListFacadeApp>();

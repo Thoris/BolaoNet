@@ -52,6 +52,9 @@
     <Compile Include="Pdf\CopaAmerica\PdfBolaoCopaAmericaApostasFimReport.cs" />
     <Compile Include="Pdf\CopaAmerica\PdfBolaoCopaAmericaApostasInicioReport.cs" />
     <Compile Include="Pdf\CopaAmerica\PdfBolaoCopaAmericaMembroApostasReport.cs" />
+    <Compile Include="Pdf\CopaMundoAntes2026\PdfBolaoApostasFimReport.cs" />
+    <Compile Include="Pdf\CopaMundoAntes2026\PdfBolaoApostasInicioReport.cs" />
+    <Compile Include="Pdf\CopaMundoAntes2026\PdfBolaoMembroApostasReport.cs" />
     <Compile Include="Pdf\PdfBolaoApostasFimReport.cs" />
     <Compile Include="Pdf\PdfBolaoApostasInicioReport.cs" />
     <Compile Include="Pdf\PdfBolaoMembroApostasReport.cs" />

@@ -1,4 +1,5 @@
-﻿using BolaoNet.Application.Interfaces.Reports;
+﻿using BolaoNet.Application.Interfaces.Facade.Campeonatos;
+using BolaoNet.Application.Interfaces.Reports;
 using Ninject;
 using System;
 using System.Collections.Generic;
@@ -47,23 +48,28 @@ namespace BolaoNet.Tests.Debug
             IBolaoApostasInicioReportApp bolaoApostasInicioReportApp = kernel.Get<IBolaoApostasInicioReportApp>();
             IBolaoApostasFimReportApp bolaoApostasFimReportApp = kernel.Get<IBolaoApostasFimReportApp>();
 
-            string baseFolder = @"C:\Thoris\Projetos\Bolao\BolaoNet\";
-            //Stream streamMembro = bolaoMembroApostasReportApp.Generate("gif",
-            //    baseFolder + @"\BolaoNet.MVC\Content\img\database\profiles",
-            //    baseFolder + @"\BolaoNet.MVC\Content\img\database\times",
-            //    bolaoMembroApostasReportApp.GetData(
-            //        new Domain.Entities.Boloes.Bolao("Copa do Mundo 2018")
-            //        {
-            //            NomeCampeonato = "Copa do Mundo 2018"
-            //        }, new Domain.Entities.Users.User("thoris1")));
-            //string pdfMembro = "membro.pdf";
-            //if (System.IO.File.Exists(pdfMembro))
-            //    System.IO.File.Delete(pdfMembro);
-            //using (var fileStream = File.Create(pdfMembro))
-            //{
-            //    streamMembro.Seek(0, SeekOrigin.Begin);
-            //    streamMembro.CopyTo(fileStream);
-            //}
+            ICopaMundo2026FacadeApp copaMundo2026FacadeApp = kernel.Get<ICopaMundo2026FacadeApp>();
+
+            copaMundo2026FacadeApp.CreateCampeonato("Copa do Mundo 2026", false);
+
+
+            string baseFolder = @"C:\Thoris\Aplicativos\BolaoNet\";
+            Stream streamMembro = bolaoMembroApostasReportApp.Generate("gif",
+                baseFolder + @"\BolaoNet.MVC\Content\img\database\profiles",
+                baseFolder + @"\BolaoNet.MVC\Content\img\database\times",
+                bolaoMembroApostasReportApp.GetData(
+                    new Domain.Entities.Boloes.Bolao("Copa do Mundo 2026")
+                    {
+                        NomeCampeonato = "Copa do Mundo 2026"
+                    }, new Domain.Entities.Users.User("admin")));
+            string pdfMembro = "membro.pdf";
+            if (System.IO.File.Exists(pdfMembro))
+                System.IO.File.Delete(pdfMembro);
+            using (var fileStream = File.Create(pdfMembro))
+            {
+                streamMembro.Seek(0, SeekOrigin.Begin);
+                streamMembro.CopyTo(fileStream);
+            }
 
             //bolaoApostasInicioReportApp.Generate("inicio.pdf", "inicio.zip", "gif",
             //    baseFolder + @"\BolaoNet.MVC\Content\img\database\profiles",
@@ -78,9 +84,9 @@ namespace BolaoNet.Tests.Debug
                 baseFolder + @"\BolaoNet.MVC\Content\img\database\profiles",
                 baseFolder + @"\BolaoNet.MVC\Content\img\database\times",
                 bolaoApostasFimReportApp.GetData(
-                    new Domain.Entities.Boloes.Bolao("Copa do Mundo 2018")
+                    new Domain.Entities.Boloes.Bolao("Copa do Mundo 2026")
                     {
-                        NomeCampeonato = "Copa do Mundo 2018"
+                        NomeCampeonato = "Copa do Mundo 2026"
                     }));
 
             return;

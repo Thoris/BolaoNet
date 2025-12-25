@@ -16,8 +16,10 @@ namespace BolaoNet.Estatisticas.Calculo
 
             //exe.Run("Copa do Mundo 2018", true);
 
-            exe.Run("Copa do Mundo 2022", true);
+            //exe.Run("Copa do Mundo 2022", true);
             //exe.ReRun("Copa do Mundo 2022");
+
+            exe.Run("Copa do Mundo 2026", true);
         }
     }
 }

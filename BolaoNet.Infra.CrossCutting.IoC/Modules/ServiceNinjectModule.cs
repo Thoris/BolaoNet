@@ -85,6 +85,7 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
             Bind<Domain.Interfaces.Services.Facade.Campeonatos.ICopaMundo2018FacadeService>().To<Domain.Services.Facade.Campeonatos.CopaMundo2018FacadeService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Facade.Campeonatos.ICopaAmerica2019FacadeService>().To<Domain.Services.Facade.Campeonatos.CopaAmerica2019FacadeService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Facade.Campeonatos.ICopaMundo2022FacadeService>().To<Domain.Services.Facade.Campeonatos.CopaMundo2022FacadeService>().WithConstructorArgument("userName", userName);
+            Bind<Domain.Interfaces.Services.Facade.Campeonatos.ICopaMundo2026FacadeService>().To<Domain.Services.Facade.Campeonatos.CopaMundo2026FacadeService>().WithConstructorArgument("userName", userName);
 
             Bind<Domain.Interfaces.Services.Facade.Campeonatos.ICopaListFacadeService>().To<Domain.Services.Facade.Campeonatos.CopaListFacadeService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Facade.Boloes.IBolaoListFacadeService>().To<Domain.Services.Facade.Boloes.BolaoListFacadeService>().WithConstructorArgument("userName", userName);

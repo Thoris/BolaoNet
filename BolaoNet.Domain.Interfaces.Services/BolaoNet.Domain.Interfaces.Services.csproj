@@ -92,6 +92,7 @@
     <Compile Include="Facade\Campeonatos\ICopaFacadeService.cs" />
     <Compile Include="Facade\Campeonatos\ICopaListFacadeService.cs" />
     <Compile Include="Facade\Campeonatos\ICopaMundo2010FacadeService.cs" />
+    <Compile Include="Facade\Campeonatos\ICopaMundo2026FacadeService.cs" />
     <Compile Include="Facade\Campeonatos\ICopaMundo2022FacadeService.cs" />
     <Compile Include="Facade\Campeonatos\ICopaMundo2018FacadeService.cs" />
     <Compile Include="Facade\Campeonatos\ICopaMundo2014FacadeService.cs" />

@@ -51,6 +51,7 @@
     <Compile Include="Facade\Campeonatos\CopaAmerica2019FacadeApp.cs" />
     <Compile Include="Facade\Campeonatos\CopaListFacadeApp.cs" />
     <Compile Include="Facade\Campeonatos\CopaMundo2010FacadeApp.cs" />
+    <Compile Include="Facade\Campeonatos\CopaMundo2026FacadeApp.cs" />
     <Compile Include="Facade\Campeonatos\CopaMundo2022FacadeApp.cs" />
     <Compile Include="Facade\Campeonatos\CopaMundo2018FacadeApp.cs" />
     <Compile Include="Facade\Campeonatos\CopaMundo2014FacadeApp.cs" />
@@ -146,6 +147,7 @@
     <Compile Include="Interfaces\Facade\Campeonatos\ICopaAmerica2019FacadeApp.cs" />
     <Compile Include="Interfaces\Facade\Campeonatos\ICopaListFacadeApp.cs" />
     <Compile Include="Interfaces\Facade\Campeonatos\ICopaMundo2010FacadeApp.cs" />
+    <Compile Include="Interfaces\Facade\Campeonatos\ICopaMundo2026FacadeApp.cs" />
     <Compile Include="Interfaces\Facade\Campeonatos\ICopaMundo2022FacadeApp.cs" />
     <Compile Include="Interfaces\Facade\Campeonatos\ICopaMundo2018FacadeApp.cs" />
     <Compile Include="Interfaces\Facade\Campeonatos\ICopaMundo2014FacadeApp.cs" />

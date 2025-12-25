@@ -13,6 +13,7 @@ namespace BolaoNet.Domain.Entities.Campeonatos
         #region Contants
 
         public const string FaseClassificatoria = "Classificatória";
+        public const string FaseDezesseisAvosFinal = "Dezesseis avos final";
         public const string FaseOitavasFinal = "Oitavas de Final";
         public const string FaseQuartasFinal = "Quartas de Final";
         public const string FaseSemiFinal = "Semi Final";

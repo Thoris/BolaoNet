@@ -92,6 +92,7 @@
     <Compile Include="Facade\Boloes\BolaoCopaAmerica2019ServiceHelper.cs" />
     <Compile Include="Facade\Boloes\BolaoCopaMundo2010ServiceHelper.cs" />
     <Compile Include="Facade\Boloes\BolaoCopaMundo2014ServiceHelper.cs" />
+    <Compile Include="Facade\Boloes\BolaoCopaMundo2026ServiceHelper.cs" />
     <Compile Include="Facade\Boloes\BolaoCopaMundo2022ServiceHelper.cs" />
     <Compile Include="Facade\Boloes\BolaoCopaMundo2018ServiceHelper.cs" />
     <Compile Include="Facade\Boloes\BolaoListFacadeService.cs" />
@@ -103,6 +104,7 @@
     <Compile Include="Facade\Campeonatos\CopaMundo2010FacadeService.cs" />
     <Compile Include="Facade\Campeonatos\CopaMundo2014DataFacadeService.cs" />
     <Compile Include="Facade\Campeonatos\CopaMundo2022FacadeService.cs" />
+    <Compile Include="Facade\Campeonatos\CopaMundo2026FacadeService.cs" />
     <Compile Include="Facade\Campeonatos\CopaMundo2018FacadeService.cs" />
     <Compile Include="Facade\Campeonatos\CopaMundo2014FacadeService.cs" />
     <Compile Include="Facade\Campeonatos\StructureCopaMundoFacadeService.cs" />
