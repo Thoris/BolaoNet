@@ -1,4 +1,5 @@
-﻿using BolaoNet.Application.Interfaces.Facade.Campeonatos;
+﻿using BolaoNet.Application.Interfaces.Facade.Boloes;
+using BolaoNet.Application.Interfaces.Facade.Campeonatos;
 using BolaoNet.Application.Interfaces.Reports;
 using Ninject;
 using System;
@@ -50,7 +51,11 @@ namespace BolaoNet.Tests.Debug
 
             ICopaMundo2026FacadeApp copaMundo2026FacadeApp = kernel.Get<ICopaMundo2026FacadeApp>();
 
-            copaMundo2026FacadeApp.CreateCampeonato("Copa do Mundo 2026", false);
+            //copaMundo2026FacadeApp.CreateCampeonato("Copa do Mundo 2026", false);
+
+            IBolaoListFacadeApp bolaoListFacadeApp = kernel.Get<IBolaoListFacadeApp>();
+            var bolaoFacade = bolaoListFacadeApp.GetInstance("Copa do Mundo 2026");
+            //bolaoFacade.CreateBolao(new Domain.Entities.Campeonatos.Campeonato("Copa do Mundo 2026"));
 
 
             string baseFolder = @"C:\Thoris\Aplicativos\BolaoNet\";
@@ -70,6 +75,7 @@ namespace BolaoNet.Tests.Debug
                 streamMembro.Seek(0, SeekOrigin.Begin);
                 streamMembro.CopyTo(fileStream);
             }
+            return;
 
             //bolaoApostasInicioReportApp.Generate("inicio.pdf", "inicio.zip", "gif",
             //    baseFolder + @"\BolaoNet.MVC\Content\img\database\profiles",

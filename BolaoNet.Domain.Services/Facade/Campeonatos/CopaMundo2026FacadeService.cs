@@ -247,19 +247,32 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
 
             IList<Entities.Campeonatos.Jogo> list = new List<Entities.Campeonatos.Jogo>();
 
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 1, 12, 0, 0), "Dallas", nomeFase, nomeGrupo, rodada, 73, "A", 1, "B", 3, true, null, null));
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 1, 16, 0, 0), "Houston", nomeFase, nomeGrupo, rodada, 74, "C", 1, "D", 3, true, null, null));
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 2, 12, 0, 0), "Atlanta", nomeFase, nomeGrupo, rodada, 75, "E", 1, "F", 3, true, null, null));
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 2, 16, 0, 0), "Miami", nomeFase, nomeGrupo, rodada, 76, "G", 1, "H", 3, true, null, null));
+            // 1º colocados x 3º colocados
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 6, 28, 12, 0, 0), "Los Angeles", nomeFase, nomeGrupo, rodada, 73, "A", 1, "X", 3, true, null, null));
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 6, 28, 16, 0, 0), "Houston", nomeFase, nomeGrupo, rodada, 74, "B", 1, "Y", 3, true, null, null));
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 6, 29, 12, 0, 0), "Dallas", nomeFase, nomeGrupo, rodada, 75, "C", 1, "Z", 3, true, null, null));
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 6, 29, 16, 0, 0), "Atlanta", nomeFase, nomeGrupo, rodada, 76, "D", 1, "W", 3, true, null, null));
 
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 3, 12, 0, 0), "Los Angeles", nomeFase, nomeGrupo, rodada, 77, "I", 1, "J", 3, true, null, null));
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 3, 16, 0, 0), "Seattle", nomeFase, nomeGrupo, rodada, 78, "K", 1, "L", 3, true, null, null));
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 6, 30, 12, 0, 0), "Miami", nomeFase, nomeGrupo, rodada, 77, "E", 1, "V", 3, true, null, null));
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 6, 30, 16, 0, 0), "Seattle", nomeFase, nomeGrupo, rodada, 78, "F", 1, "U", 3, true, null, null));
 
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 4, 12, 0, 0), "Toronto", nomeFase, nomeGrupo, rodada, 79, "B", 2, "A", 3, true, null, null));
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 4, 16, 0, 0), "Vancouver", nomeFase, nomeGrupo, rodada, 80, "D", 2, "C", 3, true, null, null));
+            // 2º colocados x 1º colocados
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 1, 12, 0, 0), "Toronto", nomeFase, nomeGrupo, rodada, 79, "G", 2, "H", 1, true, null, null));
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 1, 16, 0, 0), "Vancouver", nomeFase, nomeGrupo, rodada, 80, "I", 2, "J", 1, true, null, null));
+
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 2, 12, 0, 0), "Boston", nomeFase, nomeGrupo, rodada, 81, "K", 2, "L", 1, true, null, null));
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 2, 16, 0, 0), "Kansas City", nomeFase, nomeGrupo, rodada, 82, "A", 2, "B", 1, true, null, null));
+
+            // restantes (dependem do ranking final dos terceiros)
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 3, 12, 0, 0), "Monterrey", nomeFase, nomeGrupo, rodada, 83, "C", 2, "D", 1, true, null, null));
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 3, 16, 0, 0), "Philadelphia", nomeFase, nomeGrupo, rodada, 84, "E", 2, "F", 1, true, null, null));
+
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 4, 12, 0, 0), "New York", nomeFase, nomeGrupo, rodada, 85, "H", 2, "G", 1, true, null, null));
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 4, 16, 0, 0), "San Francisco", nomeFase, nomeGrupo, rodada, 86, "J", 2, "I", 1, true, null, null));
 
             return list;
         }
+
         public IList<Entities.Campeonatos.Jogo> GetOitavasFinal()
         {
             string nomeFase = FaseOitavasFinal;
@@ -268,13 +281,22 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
 
             IList<Entities.Campeonatos.Jogo> list = new List<Entities.Campeonatos.Jogo>();
 
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 6, 12, 0, 0), "Dallas", nomeFase, nomeGrupo, rodada, 81, 73, true, 74, true, true));
+            // Oitavas – vencedores dos 16-avos
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 6, 12, 0, 0), "Philadelphia", nomeFase, nomeGrupo, rodada, 81, 73, true, 74, true, true));
             list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 6, 16, 0, 0), "Houston", nomeFase, nomeGrupo, rodada, 82, 75, true, 76, true, true));
+
             list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 7, 12, 0, 0), "Atlanta", nomeFase, nomeGrupo, rodada, 83, 77, true, 78, true, true));
             list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 7, 16, 0, 0), "Miami", nomeFase, nomeGrupo, rodada, 84, 79, true, 80, true, true));
 
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 8, 12, 0, 0), "Dallas", nomeFase, nomeGrupo, rodada, 85, 81 - 8, true, 82 - 8, true, true));
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 8, 16, 0, 0), "Seattle", nomeFase, nomeGrupo, rodada, 86, 83 - 8, true, 84 - 8, true, true));
+
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 9, 12, 0, 0), "Boston", nomeFase, nomeGrupo, rodada, 87, 85 - 12, true, 86 - 12, true, true));
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 9, 16, 0, 0), "Vancouver", nomeFase, nomeGrupo, rodada, 88, 87 - 14, true, 88 - 16, true, true));
+
             return list;
         }
+
         public IList<Entities.Campeonatos.Jogo> GetQuartasFinal()
         {
             string nomeFase = FaseQuartasFinal;
@@ -283,11 +305,62 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
 
             IList<Entities.Campeonatos.Jogo> list = new List<Entities.Campeonatos.Jogo>();
 
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 9, 12, 0, 0), "Los Angeles", nomeFase, nomeGrupo, rodada, 85, 81, true, 82, true, true));
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 9, 16, 0, 0), "Seattle", nomeFase, nomeGrupo, rodada, 86, 83, true, 84, true, true));
+            // Quartas – vencedores das oitavas
+            list.Add(CreateJogo(
+                base.Campeonato.Nome,
+                new DateTime(2026, 7, 9, 12, 0, 0),
+                "Los Angeles",
+                nomeFase,
+                nomeGrupo,
+                rodada,
+                89,        // número do jogo (quartas)
+                81, true,  // vencedor do jogo 81 (oitavas)
+                82, true,  // vencedor do jogo 82 (oitavas)
+                true
+            ));
+
+            list.Add(CreateJogo(
+                base.Campeonato.Nome,
+                new DateTime(2026, 7, 9, 16, 0, 0),
+                "Seattle",
+                nomeFase,
+                nomeGrupo,
+                rodada,
+                90,
+                83, true,
+                84, true,
+                true
+            ));
+
+            list.Add(CreateJogo(
+                base.Campeonato.Nome,
+                new DateTime(2026, 7, 10, 12, 0, 0),
+                "Boston",
+                nomeFase,
+                nomeGrupo,
+                rodada,
+                91,
+                85, true,
+                86, true,
+                true
+            ));
+
+            list.Add(CreateJogo(
+                base.Campeonato.Nome,
+                new DateTime(2026, 7, 10, 16, 0, 0),
+                "Miami",
+                nomeFase,
+                nomeGrupo,
+                rodada,
+                92,
+                87, true,
+                88, true,
+                true
+            ));
 
             return list;
         }
+
         public IList<Entities.Campeonatos.Jogo> GetSemiFinal()
         {
             string nomeFase = FaseSemiFinal;
@@ -296,10 +369,37 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
 
             IList<Entities.Campeonatos.Jogo> list = new List<Entities.Campeonatos.Jogo>();
 
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 12, 16, 0, 0), "New York", nomeFase, nomeGrupo, rodada, 87, 85, true, 86, true, true));
+            // Semifinal 1 – vencedores das quartas
+            list.Add(CreateJogo(
+                base.Campeonato.Nome,
+                new DateTime(2026, 7, 14, 16, 0, 0),
+                "Dallas",
+                nomeFase,
+                nomeGrupo,
+                rodada,
+                93,        // número do jogo (semifinal)
+                89, true,  // vencedor da quarta 1
+                90, true,  // vencedor da quarta 2
+                true
+            ));
+
+            // Semifinal 2 – vencedores das quartas
+            list.Add(CreateJogo(
+                base.Campeonato.Nome,
+                new DateTime(2026, 7, 15, 16, 0, 0),
+                "Atlanta",
+                nomeFase,
+                nomeGrupo,
+                rodada,
+                94,
+                91, true,  // vencedor da quarta 3
+                92, true,  // vencedor da quarta 4
+                true
+            ));
 
             return list;
         }
+
         public IList<Entities.Campeonatos.Jogo> GetFinal()
         {
             string nomeFase = FaseFinal;
@@ -308,14 +408,37 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
 
             IList<Entities.Campeonatos.Jogo> list = new List<Entities.Campeonatos.Jogo>();
 
-            // Terceiro lugar
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 17, 12, 0, 0), "Miami", nomeFase, nomeGrupo, rodada, 88, 87, false, 87, false, true));
+            // 🥉 Disputa do 3º lugar – perdedores das semifinais
+            list.Add(CreateJogo(
+                base.Campeonato.Nome,
+                new DateTime(2026, 7, 18, 12, 0, 0),
+                "Miami",
+                nomeFase,
+                nomeGrupo,
+                rodada,
+                95,        // número do jogo
+                93, false, // perdedor da semifinal 1
+                94, false, // perdedor da semifinal 2
+                true
+            ));
 
-            // Final
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 18, 16, 0, 0), "New York", nomeFase, nomeGrupo, rodada, 89, 87, true, 87, true, true));
+            // 🏆 Final – vencedores das semifinais
+            list.Add(CreateJogo(
+                base.Campeonato.Nome,
+                new DateTime(2026, 7, 19, 16, 0, 0),
+                "New York",
+                nomeFase,
+                nomeGrupo,
+                rodada,
+                96,
+                93, true,  // vencedor da semifinal 1
+                94, true,  // vencedor da semifinal 2
+                true
+            ));
 
             return list;
         }
+
 
         public bool InsertResults(string nomeCampeonato, Entities.Users.User validatedBy)
         {

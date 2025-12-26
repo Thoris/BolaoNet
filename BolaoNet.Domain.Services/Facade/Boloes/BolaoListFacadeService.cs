@@ -113,7 +113,7 @@ namespace BolaoNet.Domain.Services.Facade.Boloes
             list.Add(BolaoCopaMundo2014ServiceHelper.NomeBolao);
             list.Add(BolaoCopaMundo2018ServiceHelper.NomeBolao);
             list.Add(BolaoCopaAmerica2019ServiceHelper.NomeBolao);
-            list.Add(BolaoCopaMundo2026ServiceHelper.NomeBolao);
+            list.Add(BolaoCopaMundo2022ServiceHelper.NomeBolao);
             list.Add(BolaoCopaMundo2026ServiceHelper.NomeBolao);
 
             return list;
