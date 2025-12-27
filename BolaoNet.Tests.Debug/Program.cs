@@ -57,6 +57,25 @@ namespace BolaoNet.Tests.Debug
             var bolaoFacade = bolaoListFacadeApp.GetInstance("Copa do Mundo 2026");
             //bolaoFacade.CreateBolao(new Domain.Entities.Campeonatos.Campeonato("Copa do Mundo 2026"));
 
+            var inicio = bolaoApostasInicioReportApp.Generate("inicio.pdf", "inicio.zip", "gif",
+                @"\BolaoNet.MVC\Content\img\database\profiles",
+                @"\BolaoNet.MVC\Content\img\database\times",
+                bolaoApostasInicioReportApp.GetData(
+                    new Domain.Entities.Boloes.Bolao("Copa do Mundo 2026")
+                    {
+                        NomeCampeonato = "Copa do Mundo 2026"
+                    }));
+
+            string pdfInicio = "inicio.pdf";
+            if (System.IO.File.Exists(pdfInicio))
+                System.IO.File.Delete(pdfInicio);
+            using (var fileStream = File.Create(pdfInicio))
+            {
+                inicio.Seek(0, SeekOrigin.Begin);
+                inicio.CopyTo(fileStream);
+            }
+
+
             string baseFolder = @"C:\Thoris\Projetos\BolaoNet_git\";
             Stream streamMembro = bolaoMembroApostasReportApp.Generate("gif",
                 baseFolder + @"\BolaoNet.MVC\Content\img\database\profiles",
