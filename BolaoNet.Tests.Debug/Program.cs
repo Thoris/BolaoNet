@@ -57,8 +57,7 @@ namespace BolaoNet.Tests.Debug
             var bolaoFacade = bolaoListFacadeApp.GetInstance("Copa do Mundo 2026");
             //bolaoFacade.CreateBolao(new Domain.Entities.Campeonatos.Campeonato("Copa do Mundo 2026"));
 
-
-            string baseFolder = @"C:\Thoris\Aplicativos\BolaoNet\";
+            string baseFolder = @"C:\Thoris\Projetos\BolaoNet_git\";
             Stream streamMembro = bolaoMembroApostasReportApp.Generate("gif",
                 baseFolder + @"\BolaoNet.MVC\Content\img\database\profiles",
                 baseFolder + @"\BolaoNet.MVC\Content\img\database\times",

@@ -431,11 +431,9 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
                 };
                 StoreData<Entities.DadosBasicos.Time>(_timeService, time2);
 
-
-            #endregion
+                #endregion
 
                 #region CampeonatosTimes
-
 
                 StoreData<Entities.Campeonatos.CampeonatoTime>(_campeonatoTimeService,
                     new Entities.Campeonatos.CampeonatoTime(time1.Nome, campeonato.Nome));
@@ -453,14 +451,13 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
 
                 #region Campeonato Grupos Times
 
-
                 StoreData<Entities.Campeonatos.CampeonatoGrupoTime>(_campeonatoGrupoTimeService,
                     new Entities.Campeonatos.CampeonatoGrupoTime(time1.Nome, jogo.NomeGrupo, campeonato.Nome));
                 StoreData<Entities.Campeonatos.CampeonatoGrupoTime>(_campeonatoGrupoTimeService,
                     new Entities.Campeonatos.CampeonatoGrupoTime(time2.Nome, jogo.NomeGrupo, campeonato.Nome));
             }
 
-                #endregion
+            #endregion
 
             #region Campeonato Fases
 
