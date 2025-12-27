@@ -7,6 +7,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
+using static BolaoNet.Domain.Entities.Campeonatos.Campeonato;
 
 namespace BolaoNet.Infra.Reports.Pdf
 {
@@ -17,8 +19,8 @@ namespace BolaoNet.Infra.Reports.Pdf
 
         private const int FlagImageWidth = 40;
         private const int FlagImageHeight = 27;
-        private const int UserImageWidth = 160;
-        private const int UserImageHeight = 120;
+        private const int UserImageWidth = 100;
+        private const int UserImageHeight = 100;
 
         #endregion
 
@@ -145,10 +147,6 @@ namespace BolaoNet.Infra.Reports.Pdf
 
             }
 
-
-
-
-
             //table.TotalWidth = 535;
             table.TotalWidth = 250;
             //table.WriteSelectedRows(0, -1, 30, 780, writer.DirectContent);
@@ -160,8 +158,6 @@ namespace BolaoNet.Infra.Reports.Pdf
 
         private void CreateClassificacaoPage(PdfWriter writer, string imagePath, IList<Domain.Entities.ValueObjects.BolaoClassificacaoVO> classificacao, IList<Domain.Entities.Boloes.BolaoPremio> premios)
         {
-
-
             PdfPTable titulo = new PdfPTable(1);
             PdfPCell cell = new PdfPCell(new Phrase("Classificação", new Font(Font.HELVETICA, 12f, Font.BOLD, Color.BLACK)));
             cell.HorizontalAlignment = Element.ALIGN_CENTER;
@@ -171,10 +167,8 @@ namespace BolaoNet.Infra.Reports.Pdf
             titulo.TotalWidth = 250;
             titulo.WriteSelectedRows(0, -1, 175, 790, writer.DirectContent);
 
-
             int max = 55;
             PdfPTable class1 = CreateClassificacao(writer, imagePath, 0, max, classificacao, premios);
-
 
             if (classificacao.Count >= max)
             {
@@ -191,7 +185,6 @@ namespace BolaoNet.Infra.Reports.Pdf
 
             }
 
-
             PdfPTable legendas = new PdfPTable(1);
             cell = new PdfPCell(new Phrase(
                 "Pontos = Total de Pontos, E = Total de Empates, VDE = Total de Vitórias/Derrotas/Empates, GT1 = Total de Gols do time 1, GT2 = Total de Gols do time 2, C = Acertos em cheio, EX = Pontuação extra."
@@ -202,6 +195,7 @@ namespace BolaoNet.Infra.Reports.Pdf
             legendas.TotalWidth = 550;
             legendas.WriteSelectedRows(0, -1, 23, 70, writer.DirectContent);
         }
+        
         private void CreateRegrasPage(PdfWriter writer, Domain.Entities.Boloes.Bolao bolao, IList<Domain.Entities.Boloes.BolaoRegra> regras)
         {
 
@@ -352,19 +346,13 @@ namespace BolaoNet.Infra.Reports.Pdf
             cell.BackgroundColor = Color.YELLOW;
             titulo.AddCell(cell);
             titulo.TotalWidth = 250;
-            titulo.WriteSelectedRows(0, -1, 175, 790, writer.DirectContent);
-
-            //PdfPTable tableExtra = CreateApostasExtras(false, imageTimesPath, imageExtension, listExtra);
-            //tableExtra.TotalWidth = 200;
-            //tableExtra.WriteSelectedRows(0, -1, 360, 780, writer.DirectContent);
+            titulo.WriteSelectedRows(0, -1, 175, 820, writer.DirectContent);
            
-            CreateGrupos(false, false, writer, imageTimesPath, imageExtension, grupo);
-            CreateEliminatoriasCampeonato(writer, imageTimesPath, imageExtension, oitavas, quartas, semiFinais, finais);
+            CreateGrupos(780, 140, false, false, writer, imageTimesPath, imageExtension, grupo);
+            CreateEliminatoriasCampeonato(writer, imageTimesPath, imageExtension, dezesseis, oitavas, quartas, semiFinais, finais);
         }
-        
-
-
-        public void CreatePage(bool showOnlyPartidaValida, bool fim, int posicao, int pontos, PdfWriter writer, string imageExtension, string noPictureFile, string imageUserPath, string imageTimesPath, Domain.Entities.Users.User user, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> list, IList<Domain.Entities.ValueObjects.ApostaExtraUsuarioVO> listExtra)
+    
+        public void CreatePage(Document document, bool showOnlyPartidaValida, bool fim, int posicao, int pontos, PdfWriter writer, string imageExtension, string noPictureFile, string imageUserPath, string imageTimesPath, Domain.Entities.Users.User user, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> list, IList<Domain.Entities.ValueObjects.ApostaExtraUsuarioVO> listExtra)
         {
             List<Domain.Entities.ValueObjects.JogoUsuarioVO>[] grupo = new List<Domain.Entities.ValueObjects.JogoUsuarioVO>[12];
             grupo[0] = new List<Domain.Entities.ValueObjects.JogoUsuarioVO>();         //A
@@ -419,7 +407,6 @@ namespace BolaoNet.Infra.Reports.Pdf
                         else if (string.Compare(jogo.NomeGrupo, "L", true) == 0)
                             grupo[11].Add(jogo);
 
-
                         break;
 
                     //case "oitavas de final":
@@ -443,45 +430,41 @@ namespace BolaoNet.Infra.Reports.Pdf
                         finais.Add(jogo);
                         break;
                 }//end switch fase
-
-
             }//end foreach
-
-
 
             if (user != null)
             {
                 PdfPTable table = CreateUserData(imageUserPath, imageExtension, noPictureFile, user);
-                table.TotalWidth = 100;
-                table.WriteSelectedRows(0, -1, 33, 795, writer.DirectContent);
+                table.TotalWidth = 230;
+                table.WriteSelectedRows(0, -1, 16, 830, writer.DirectContent);
             }
 
             PdfPTable tableExtra = CreateApostasExtras(fim, imageTimesPath, imageExtension, listExtra);
-            tableExtra.TotalWidth = 200;
-            tableExtra.WriteSelectedRows(0, -1, 360, 780, writer.DirectContent);
+            tableExtra.TotalWidth = 220;
+            tableExtra.WriteSelectedRows(0, -1, 360, 828, writer.DirectContent);
 
 
             if (fim)
             {
                 PdfPTable tablePosition = new PdfPTable(1);
-                tablePosition.TotalWidth = 100;
+                tablePosition.TotalWidth = 90;
 
-                PdfPCell cellTitPosition = new PdfPCell(new Phrase("Posição", new Font(Font.HELVETICA, 9f, Font.NORMAL, Color.BLACK)));
+                PdfPCell cellTitPosition = new PdfPCell(new Phrase("Posição", new Font(Font.HELVETICA, 7f, Font.NORMAL, Color.BLACK)));
                 cellTitPosition.HorizontalAlignment = Element.ALIGN_CENTER;
                 cellTitPosition.VerticalAlignment = Element.ALIGN_MIDDLE;
                 cellTitPosition.BackgroundColor = Color.LIGHT_GRAY;
 
-                PdfPCell cellPosition = new PdfPCell(new Phrase(posicao.ToString(), new Font(Font.HELVETICA, 20f, Font.BOLD, Color.BLACK)));
+                PdfPCell cellPosition = new PdfPCell(new Phrase(posicao.ToString(), new Font(Font.HELVETICA, 14f, Font.BOLD, Color.BLACK)));
                 cellPosition.HorizontalAlignment = Element.ALIGN_CENTER;
                 cellPosition.VerticalAlignment = Element.ALIGN_MIDDLE;
 
 
-                PdfPCell cellTitPontos = new PdfPCell(new Phrase("Pontos", new Font(Font.HELVETICA, 9f, Font.NORMAL, Color.BLACK)));
+                PdfPCell cellTitPontos = new PdfPCell(new Phrase("Pontos", new Font(Font.HELVETICA, 7f, Font.NORMAL, Color.BLACK)));
                 cellTitPontos.HorizontalAlignment = Element.ALIGN_CENTER;
                 cellTitPontos.VerticalAlignment = Element.ALIGN_MIDDLE;
                 cellTitPontos.BackgroundColor = Color.LIGHT_GRAY;
 
-                PdfPCell cellPontos = new PdfPCell(new Phrase(pontos.ToString(), new Font(Font.HELVETICA, 20f, Font.BOLD, Color.BLACK)));
+                PdfPCell cellPontos = new PdfPCell(new Phrase(pontos.ToString(), new Font(Font.HELVETICA, 14f, Font.BOLD, Color.BLACK)));
                 cellPontos.HorizontalAlignment = Element.ALIGN_CENTER;
                 cellPontos.VerticalAlignment = Element.ALIGN_MIDDLE;
 
@@ -490,20 +473,20 @@ namespace BolaoNet.Infra.Reports.Pdf
                 tablePosition.AddCell(cellTitPontos);
                 tablePosition.AddCell(cellPontos);
 
-                tablePosition.WriteSelectedRows(0, -1, 200, 780, writer.DirectContent);
+                tablePosition.WriteSelectedRows(0, -1, 258, 830, writer.DirectContent);
             }
 
-            CreateGrupos(showOnlyPartidaValida, fim, writer, imageTimesPath, imageExtension, grupo);
-            CreateEliminatorias(showOnlyPartidaValida, fim, writer, imageTimesPath, imageExtension, oitavas, quartas, semiFinais, finais);
+            CreateGrupos(740, 220, showOnlyPartidaValida, fim, writer, imageTimesPath, imageExtension, grupo);
 
-
-
+            document.NewPage();
+            CreateEliminatorias(showOnlyPartidaValida, fim, writer, imageTimesPath, imageExtension, dezesseis, oitavas, quartas, semiFinais, finais);
         }
+        
         private PdfPTable CreateUserData(string imageFolder, string imageExtension, string noPictureFile, Domain.Entities.Users.User user)
         {
-            //float[] relative = new float[] { 30, 70 };
+            float[] relative = new float[] { 25, 75 };
 
-            PdfPTable table = new PdfPTable(1);
+            PdfPTable table = new PdfPTable(relative);
 
 
             Image imgUser = null;
@@ -526,8 +509,7 @@ namespace BolaoNet.Infra.Reports.Pdf
                 {
                     System.Drawing.Image img = System.Drawing.Bitmap.FromFile(noFileName);
                     img = ImageManagement.ResizeImage(img, FlagImageWidth, FlagImageHeight);
-                    imgUser = Image.GetInstance(img, Color.WHITE);
-                    //imgUser = Image.GetInstance(noFileName);
+                    imgUser = Image.GetInstance(img, Color.WHITE); 
                 }
                 else
                 {
@@ -536,13 +518,16 @@ namespace BolaoNet.Infra.Reports.Pdf
                 }
             }
 
-            PdfPCell cellUserName = new PdfPCell(new Phrase(user.UserName, new Font(Font.HELVETICA, 9f, Font.NORMAL, Color.BLACK)));
+            var login = new Phrase("login: " + user.UserName, new Font(Font.HELVETICA, 10f, Font.NORMAL, Color.BLACK));
+            var name = new Phrase(user.FullName, new Font(Font.HELVETICA, 12f, Font.NORMAL, Color.BLACK));
+            PdfPCell cellUserName = new PdfPCell();
+            cellUserName.AddElement(login);
+            cellUserName.AddElement(name);
             cellUserName.HorizontalAlignment = Element.ALIGN_CENTER;
             cellUserName.VerticalAlignment = Element.ALIGN_MIDDLE;
 
             PdfPCell cellImage = new PdfPCell();
             cellImage.AddElement(imgUser);
-
 
             table.AddCell(imgUser);
             table.AddCell(cellUserName);
@@ -550,9 +535,9 @@ namespace BolaoNet.Infra.Reports.Pdf
             PdfPCell cellFullName = new PdfPCell(new Phrase(user.FullName, new Font(Font.HELVETICA, 9f, Font.NORMAL, Color.BLACK)));
             table.AddCell(cellFullName);
 
-
             return table;
         }
+        
         private PdfPTable CreateApostasExtras(bool fim, string imageTimesFolder, string imageExtension, IList<Domain.Entities.ValueObjects.ApostaExtraUsuarioVO> apostasExtras)
         {
             float[] relative = new float[] { 60, 10, 30 };
@@ -650,7 +635,7 @@ namespace BolaoNet.Infra.Reports.Pdf
             return table;
         }
 
-        private void CreateGrupos(bool showOnlyPartidaValida, bool fim, PdfWriter writer, string imagePath, string imageExtension, IList<Domain.Entities.ValueObjects.JogoUsuarioVO>[] list)
+        private void CreateGrupos(int yPos,int spaceBetweenGroup, bool showOnlyPartidaValida, bool fim, PdfWriter writer, string imagePath, string imageExtension, IList<Domain.Entities.ValueObjects.JogoUsuarioVO>[] list)
         {
             PdfPTable grupoA = CreateGrupoJogos(showOnlyPartidaValida, fim, imageExtension, "Grupo A", imagePath, list[0]);
             PdfPTable grupoB = CreateGrupoJogos(showOnlyPartidaValida, fim, imageExtension, "Grupo B", imagePath, list[1]);
@@ -665,9 +650,9 @@ namespace BolaoNet.Infra.Reports.Pdf
             PdfPTable grupoK = CreateGrupoJogos(showOnlyPartidaValida, fim, imageExtension, "Grupo K", imagePath, list[10]);
             PdfPTable grupoL = CreateGrupoJogos(showOnlyPartidaValida, fim, imageExtension, "Grupo L", imagePath, list[11]);
 
-
             int width = 123;
             int spaceLeft = 20;
+            int startPos = yPos; 
 
             if (fim)
             {
@@ -676,34 +661,43 @@ namespace BolaoNet.Infra.Reports.Pdf
             }
 
             grupoA.TotalWidth = width;
-            grupoA.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 0), 655, writer.DirectContent);
+            grupoA.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 0), startPos - spaceBetweenGroup * 0, writer.DirectContent);
 
             grupoB.TotalWidth = width;
-            grupoB.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 1), 655, writer.DirectContent);
+            grupoB.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 1), startPos - spaceBetweenGroup * 0, writer.DirectContent);
 
             grupoC.TotalWidth = width;
-            grupoC.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 2), 655, writer.DirectContent);
+            grupoC.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 2), startPos - spaceBetweenGroup * 0, writer.DirectContent);
 
             grupoD.TotalWidth = width;
-            grupoD.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 3), 655, writer.DirectContent);
+            grupoD.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 3), startPos - spaceBetweenGroup * 0, writer.DirectContent);
 
             grupoE.TotalWidth = width;
-            grupoE.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 0), 465, writer.DirectContent);
+            grupoE.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 0), startPos - spaceBetweenGroup * 1, writer.DirectContent);
 
             grupoF.TotalWidth = width;
-            grupoF.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 1), 465, writer.DirectContent);
+            grupoF.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 1), startPos - spaceBetweenGroup * 1, writer.DirectContent);
 
             grupoG.TotalWidth = width;
-            grupoG.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 2), 465, writer.DirectContent);
+            grupoG.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 2), startPos - spaceBetweenGroup * 1, writer.DirectContent);
 
             grupoH.TotalWidth = width;
-            grupoH.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 3), 465, writer.DirectContent);
+            grupoH.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 3), startPos - spaceBetweenGroup * 1, writer.DirectContent);
 
+            grupoI.TotalWidth = width;
+            grupoI.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 0), startPos - spaceBetweenGroup * 2, writer.DirectContent);
 
+            grupoJ.TotalWidth = width;
+            grupoJ.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 1), startPos - spaceBetweenGroup * 2, writer.DirectContent);
 
+            grupoK.TotalWidth = width;
+            grupoK.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 2), startPos - spaceBetweenGroup * 2, writer.DirectContent);
 
+            grupoL.TotalWidth = width;
+            grupoL.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 3), startPos - spaceBetweenGroup * 2, writer.DirectContent);
 
         }
+        
         private PdfPTable CreateGrupoJogos(bool showOnlyPartidaValida, bool fim, string imageExtension, string title, string imagePath, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> list)
         {
             PdfPTable pjogos = new PdfPTable(1);
@@ -723,6 +717,7 @@ namespace BolaoNet.Infra.Reports.Pdf
 
             return pjogos;
         }
+        
         private PdfPTable CreateJogoInGroupFormat(bool showOnlyPartidaValida, bool fim, string imageExtension, Color backColor, string imagePath, Domain.Entities.ValueObjects.JogoUsuarioVO jogo)
         {
             //Criando a table contendo todas as informações do jogo
@@ -942,16 +937,14 @@ namespace BolaoNet.Infra.Reports.Pdf
             return pjogoFull;
         }
 
-        private void CreateEliminatoriasCampeonato(PdfWriter writer, string imagePath, string imageExtension, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> oitavas, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> quartas, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> semiFinais, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> finais)
+        private void CreateEliminatoriasCampeonato(PdfWriter writer, string imagePath, string imageExtension, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> dezesseis, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> oitavas, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> quartas, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> semiFinais, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> finais)
         {
-            float[] relative = new float[] { 10, 0.5f, 9, 0.5f, 9, 0.5f, 9, 0.5f, 9, 0.5f, 9, 0.5f, 10 };
+            float[] relative = new float[] { 9, 0.2f, 9, 0.2f, 9, 0.2f, 9, 0.2f, 9, 0.2f, 9, 0.2f, 9, 0.2f, 9, 0.2f, 9 };
             PdfPTable table = new PdfPTable(relative);
             table.DefaultCell.BorderWidth = 0;
             table.DefaultCell.Padding = 0;
 
-
-
-            table.AddCell(CreateDezesseisLeft(false, false, imagePath, imageExtension, oitavas));
+            table.AddCell(CreateDezesseisLeft(false, false, imagePath, imageExtension, dezesseis));
             table.AddCell("");
             table.AddCell(CreateOitavasLeft(false, false, imagePath, imageExtension, oitavas));
             table.AddCell("");
@@ -967,141 +960,130 @@ namespace BolaoNet.Infra.Reports.Pdf
             table.AddCell("");
             table.AddCell(CreateOitavasRight(false, false, imagePath, imageExtension, oitavas));
             table.AddCell("");
-            table.AddCell(CreateDezesseisRight(false, false, imagePath, imageExtension, oitavas));
+            table.AddCell(CreateDezesseisRight(false, false, imagePath, imageExtension, dezesseis));
 
-            //table.TotalWidth = 580;
-            table.TotalWidth = 540;
+            table.TotalWidth = 553;
             table.SpacingAfter = 10;
+            table.WriteSelectedRows(0, -1, 20, 320 + 10, writer.DirectContent);
 
-            //table.WriteSelectedRows(0, -1, 5, 280, writer.DirectContent);
-            //table.WriteSelectedRows(0, -1, 25, 280, writer.DirectContent);
-            table.WriteSelectedRows(0, -1, 25, 280, writer.DirectContent);
-
-
-            //int oitavasLeft = 45;
-            //int oitavasRight = 541;
-
-            int oitavasLeft = 65;
-            int oitavasRight = 531;
-
+            int sizeJogo = 26;
+            int pos = 320;
             PdfContentByte cb = writer.DirectContent;
-            cb.MoveTo(oitavasLeft, 247);
-            cb.LineTo(oitavasLeft, 223);
-            //cb.MoveTo(oitavasLeft, 242);
-            //cb.LineTo(oitavasLeft, 217);
+             
+
+            #region Bloco de oitavas
+
+            int oitavasLeft = 129;
+            int oitavasRight = 464;
+            int sizeSpaceOitavas = 48;
+            int sizeLineOitavas = 14;
+
+            //Bloco 1
+            pos = 311 - 26;
+            cb.MoveTo(oitavasLeft, pos);
+            cb.LineTo(oitavasLeft, pos - sizeSpaceOitavas);
             cb.Stroke();
 
-            cb.MoveTo(oitavasLeft, 133);
-            cb.LineTo(oitavasLeft, 109);
-            //cb.MoveTo(oitavasLeft, 117);
-            //cb.LineTo(oitavasLeft, 92);
+            cb.MoveTo(oitavasRight, pos);
+            cb.LineTo(oitavasRight, pos - sizeSpaceOitavas);
             cb.Stroke();
 
-
-            cb.MoveTo(oitavasRight, 247);
-            cb.LineTo(oitavasRight, 223);
-            //cb.MoveTo(oitavasRight, 242);
-            //cb.LineTo(oitavasRight, 217);
+            cb.MoveTo(oitavasLeft, pos - sizeSpaceOitavas / 2);
+            cb.LineTo(oitavasLeft + sizeLineOitavas, pos - sizeSpaceOitavas / 2);
             cb.Stroke();
 
-            cb.MoveTo(oitavasRight, 133);
-            cb.LineTo(oitavasRight, 109);
-            //cb.MoveTo(oitavasRight, 117);
-            //cb.LineTo(oitavasRight, 92);
+            cb.MoveTo(oitavasRight, pos - sizeSpaceOitavas / 2);
+            cb.LineTo(oitavasRight - sizeLineOitavas, pos - sizeSpaceOitavas / 2);
             cb.Stroke();
 
-            cb.MoveTo(oitavasLeft, 233);
-            cb.LineTo(oitavasLeft + 43, 233);
-            //cb.MoveTo(oitavasLeft, 230);
-            //cb.LineTo(oitavasLeft + 43, 230);
+            //Bloco 2
+            //pos = pos - (sizeJogo + sizeSpaceOitavas) * 2;
+            pos = 149 - 26;
+            cb.MoveTo(oitavasLeft, pos);
+            cb.LineTo(oitavasLeft, pos - sizeSpaceOitavas);
             cb.Stroke();
 
-
-            cb.MoveTo(oitavasLeft, 121);
-            cb.LineTo(oitavasLeft + 43, 121);
-            //cb.MoveTo(oitavasLeft, 105);
-            //cb.LineTo(oitavasLeft + 43, 105);
+            cb.MoveTo(oitavasRight, pos);
+            cb.LineTo(oitavasRight, pos - sizeSpaceOitavas);
             cb.Stroke();
 
-
-            cb.MoveTo(oitavasRight, 233);
-            cb.LineTo(oitavasRight - 49, 233);
-            //cb.MoveTo(oitavasRight, 230);
-            //cb.LineTo(oitavasRight - 49, 230);
+            cb.MoveTo(oitavasLeft, pos - sizeSpaceOitavas / 2);
+            cb.LineTo(oitavasLeft + sizeLineOitavas, pos - sizeSpaceOitavas / 2);
             cb.Stroke();
 
-
-            cb.MoveTo(oitavasRight, 121);
-            cb.LineTo(oitavasRight - 49, 121);
-            //cb.MoveTo(oitavasRight, 105);
-            //cb.LineTo(oitavasRight - 49, 105);
+            cb.MoveTo(oitavasRight, pos - sizeSpaceOitavas / 2);
+            cb.LineTo(oitavasRight - sizeLineOitavas, pos - sizeSpaceOitavas / 2);
             cb.Stroke();
 
+            #endregion
 
-            //   |
-            cb.MoveTo(145, 223-3); //*
-            cb.LineTo(145, 139-3); //*
-            //cb.MoveTo(145, 208);
-            //cb.LineTo(145, 125);
-            cb.Stroke();
-            //   |
-            cb.MoveTo(445, 223-3); //*
-            cb.LineTo(445, 139-3);//*
-            //cb.MoveTo(445, 208);
-            //cb.LineTo(445, 125);
-            cb.Stroke();
+            #region Bloco de quartas
 
-            // -
-            //cb.MoveTo(145, 180);
-            //cb.LineTo(180 + 4, 180);
-            cb.MoveTo(145, 167);
-            cb.LineTo(180 + 4, 167);
-            cb.Stroke();
-            // -
-            //cb.MoveTo(445, 180);
-            //cb.LineTo(407, 180);
-            cb.MoveTo(445, 167);
-            cb.LineTo(407, 167);
+            int quartasLeft = 191;
+            int quartasRight = 402;
+            int sizeSpaceQuartas = 120;
+            int sizeLineQuartas = 14;
+
+            //Bloco 1
+            pos = 263;
+            cb.MoveTo(quartasLeft, pos - sizeJogo);
+            cb.LineTo(quartasLeft, pos - sizeJogo - sizeSpaceQuartas);
             cb.Stroke();
 
-
-
-            //cb.MoveTo(280, 211);
-            cb.MoveTo(280, 209);
-            cb.LineTo(280, 180);
+            cb.MoveTo(quartasRight, pos - sizeJogo);
+            cb.LineTo(quartasRight, pos - sizeJogo - sizeSpaceQuartas);
             cb.Stroke();
 
-
-
-            //cb.MoveTo(310, 211);
-            cb.MoveTo(310, 209);
-            cb.LineTo(310, 180);
+            cb.MoveTo(quartasLeft, pos - sizeJogo - sizeSpaceQuartas / 2);
+            cb.LineTo(quartasLeft + sizeLineQuartas, pos - sizeJogo - sizeSpaceQuartas / 2);
             cb.Stroke();
 
-
-
-            cb.MoveTo(280, 180);
-            cb.LineTo(247 + 8, 180);
+            cb.MoveTo(quartasRight, pos - sizeJogo - sizeSpaceQuartas / 2);
+            cb.LineTo(quartasRight - sizeLineQuartas, pos - sizeJogo - sizeSpaceQuartas / 2);
             cb.Stroke();
 
+            #endregion
 
-            cb.MoveTo(310, 180);
-            cb.LineTo(343 - 8, 180);
+
+            #region Bloco de semifinais
+
+            int semiLeft = 279;
+            int semiRight = 314;
+            int sizeSpaceSemi = 120;
+            int sizeLineSemi = 14;
+
+            //Bloco 1
+            pos = 263;
+            cb.MoveTo(semiLeft, pos - sizeJogo);
+            cb.LineTo(semiLeft, pos - sizeJogo - sizeSpaceSemi / 2);
             cb.Stroke();
+
+            cb.MoveTo(semiRight, pos - sizeJogo);
+            cb.LineTo(semiRight, pos - sizeJogo - sizeSpaceSemi / 2);
+            cb.Stroke();
+
+            cb.MoveTo(semiLeft, pos - sizeJogo - sizeSpaceSemi / 2);
+            cb.LineTo(semiLeft - sizeLineSemi, pos - sizeJogo - sizeSpaceSemi / 2);
+            cb.Stroke();
+
+            cb.MoveTo(semiRight, pos - sizeJogo - sizeSpaceSemi / 2);
+            cb.LineTo(semiRight + sizeLineSemi, pos - sizeJogo - sizeSpaceSemi / 2);
+            cb.Stroke();
+
+            #endregion
 
         }
-        
 
-        private void CreateEliminatorias(bool showOnlyPartidaValida, bool fim, PdfWriter writer, string imagePath, string imageExtension, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> oitavas, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> quartas, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> semiFinais, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> finais)
+        private void CreateEliminatorias(bool showOnlyPartidaValida, bool fim, PdfWriter writer, string imagePath, string imageExtension, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> dezesseis, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> oitavas, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> quartas, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> semiFinais, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> finais)
         {
-            float[] relative = new float[] { 10, 0.5f, 9, 0.5f, 9, 0.5f, 9, 0.5f, 9, 0.5f, 9, 0.5f, 10 };
+            float[] relative = new float[] { 9, 0.2f, 9, 0.2f, 9, 0.2f, 9, 0.2f, 9, 0.2f, 9, 0.2f, 9, 0.2f, 9, 0.2f, 9 };
             PdfPTable table = new PdfPTable(relative);
             table.DefaultCell.BorderWidth = 0;
             table.DefaultCell.Padding = 0;
 
 
 
-            table.AddCell(CreateDezesseisLeft(showOnlyPartidaValida, fim, imagePath, imageExtension, oitavas));
+            table.AddCell(CreateDezesseisLeft(showOnlyPartidaValida, fim, imagePath, imageExtension, dezesseis));
             table.AddCell("");
             table.AddCell(CreateOitavasLeft(showOnlyPartidaValida, fim, imagePath, imageExtension, oitavas));
             table.AddCell("");
@@ -1117,14 +1099,14 @@ namespace BolaoNet.Infra.Reports.Pdf
             table.AddCell("");
             table.AddCell(CreateOitavasRight(showOnlyPartidaValida, fim, imagePath, imageExtension, oitavas));
             table.AddCell("");
-            table.AddCell(CreateDezesseisRight(showOnlyPartidaValida, fim, imagePath, imageExtension, oitavas));
+            table.AddCell(CreateDezesseisRight(showOnlyPartidaValida, fim, imagePath, imageExtension, dezesseis));
 
             //table.TotalWidth = 580;
-            table.TotalWidth = 540;
+            table.TotalWidth = 570;
             table.SpacingAfter = 10;
 
             //table.WriteSelectedRows(0, -1, 25, 280, writer.DirectContent);
-            table.WriteSelectedRows(0, -1, 25, 270, writer.DirectContent);
+            table.WriteSelectedRows(0, -1, 15, 700, writer.DirectContent);
 
 
             //int oitavasLeft = 45;
@@ -1213,6 +1195,7 @@ namespace BolaoNet.Infra.Reports.Pdf
             cb.Stroke();
 
         }
+        
         private PdfPTable CreateTimeEliminatoriaFormat(bool showOnlyPartidaValida, bool fim, bool showTitle, string imageExtension, string imagePath, bool timeCasa, Domain.Entities.ValueObjects.JogoUsuarioVO jogo)
         {
             float[] relative = null;
@@ -1333,6 +1316,7 @@ namespace BolaoNet.Infra.Reports.Pdf
 
             return time;
         }
+        
         private PdfPTable CreateJogoInEliminatoriaFormat(bool showOnlyPartidaValida, bool fim, Color backColor, bool showTitle, string imagePath, string imageExtension, Domain.Entities.ValueObjects.JogoUsuarioVO jogo)
         {
             PdfPTable jogoTable = new PdfPTable(1);
@@ -1340,13 +1324,10 @@ namespace BolaoNet.Infra.Reports.Pdf
             //jogoTable.DefaultCell.BorderWidth = 0;
             jogoTable.DefaultCell.BackgroundColor = backColor;
 
-
-
             jogoTable.AddCell(CreateTimeEliminatoriaFormat(showOnlyPartidaValida, fim, showTitle, imageExtension, imagePath, true, jogo));
             jogoTable.AddCell(CreateTimeEliminatoriaFormat(showOnlyPartidaValida, fim, showTitle, imageExtension, imagePath, false, jogo));
 
-
-            string dateDescription = jogo.DataJogo.ToString("dd/MM - HH:mm") + " - " + jogo.NomeEstadio;
+            string dateDescription = jogo.DataJogo.ToString("dd/MM HH") + "h " + jogo.NomeEstadio;
 
             //Adicionando o local do jogo
             PdfPCell dateJogo = new PdfPCell(new Phrase(dateDescription, new Font(Font.HELVETICA, 5f, Font.NORMAL, Color.BLACK)));
@@ -1360,8 +1341,6 @@ namespace BolaoNet.Infra.Reports.Pdf
             //Adicionando o local do jogo na tabela principal
             jogoTable.AddCell(dateJogo);
 
-
-
             return jogoTable;
         }
 
@@ -1372,47 +1351,64 @@ namespace BolaoNet.Infra.Reports.Pdf
             fase.DefaultCell.BorderWidth = 0;
 
             fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, true,
-                imagePath, imageExtension, GetJogoByLabel(49, list)));
-            fase.AddCell(" ");
-            fase.AddCell(" ");
-            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.WHITE, true,
-                imagePath, imageExtension, GetJogoByLabel(50, list)));
-            fase.AddCell(" ");
+                imagePath, imageExtension, GetJogoByLabel(73, list)));
+            //fase.AddCell(" ");
+            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, true,
+                imagePath, imageExtension, GetJogoByLabel(74, list)));
             fase.AddCell(" ");
             fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, true,
-                imagePath, imageExtension, GetJogoByLabel(53, list)));
+                imagePath, imageExtension, GetJogoByLabel(75, list)));
+            //fase.AddCell(" ");
+            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, true,
+                imagePath, imageExtension, GetJogoByLabel(76, list)));
             fase.AddCell(" ");
+            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, true,
+                imagePath, imageExtension, GetJogoByLabel(77, list)));
+            //fase.AddCell(" ");
+            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, true,
+                imagePath, imageExtension, GetJogoByLabel(78, list)));
             fase.AddCell(" ");
-            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.WHITE, true,
-                imagePath, imageExtension, GetJogoByLabel(54, list)));
-
-
+            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, true,
+                imagePath, imageExtension, GetJogoByLabel(79, list)));
+            //fase.AddCell(" ");
+            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, true,
+                imagePath, imageExtension, GetJogoByLabel(80, list)));
+            fase.AddCell(" ");
             return fase;
         }
+
         private PdfPTable CreateOitavasLeft(bool showOnlyPartidaValida, bool fim, string imagePath, string imageExtension, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> list)
         {
             PdfPTable fase = new PdfPTable(1);
             fase.DefaultCell.Padding = 0;
             fase.DefaultCell.BorderWidth = 0;
+            fase.AddCell(" ");
+            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, false,
+                imagePath, imageExtension, GetJogoByLabel(89, list)));
+            fase.AddCell(" ");
+            fase.AddCell(" ");
+            fase.AddCell(" ");
+            fase.AddCell(" ");
+            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, false,
+                imagePath, imageExtension, GetJogoByLabel(90, list)));
+            fase.AddCell(" ");
+            fase.AddCell(" ");
+            fase.AddCell(" ");
+            fase.AddCell(" ");
+            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, false,
+                imagePath, imageExtension, GetJogoByLabel(91, list)));
+            fase.AddCell(" ");
+            fase.AddCell(" ");
+            fase.AddCell(" ");
+            fase.AddCell(" ");
+            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, false,
+                imagePath, imageExtension, GetJogoByLabel(92, list)));
 
-            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, true,
-                imagePath, imageExtension, GetJogoByLabel(49, list)));
             fase.AddCell(" ");
-            fase.AddCell(" ");
-            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.WHITE, true,
-                imagePath, imageExtension, GetJogoByLabel(50, list)));
-            fase.AddCell(" ");
-            fase.AddCell(" ");
-            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, true,
-                imagePath, imageExtension, GetJogoByLabel(53, list)));
-            fase.AddCell(" ");
-            fase.AddCell(" ");
-            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.WHITE, true,
-                imagePath, imageExtension, GetJogoByLabel(54, list)));
-
 
             return fase;
         }
+
         private PdfPTable CreateQuartasLeft(bool showOnlyPartidaValida, bool fim, string imagePath, string imageExtension, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> list)
         {
             PdfPTable fase = new PdfPTable(1);
@@ -1421,8 +1417,11 @@ namespace BolaoNet.Infra.Reports.Pdf
 
             fase.AddCell(" ");
             fase.AddCell(" ");
+            fase.AddCell(" ");
+            fase.AddCell(" ");
+            fase.AddCell(" ");
             fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, false,
-                imagePath, imageExtension, GetJogoByLabel(57, list)));
+                imagePath, imageExtension, GetJogoByLabel(97, list)));
             fase.AddCell(" ");
             fase.AddCell(" ");
             fase.AddCell(" ");
@@ -1430,14 +1429,18 @@ namespace BolaoNet.Infra.Reports.Pdf
             fase.AddCell(" ");
             fase.AddCell(" ");
             fase.AddCell(" ");
-            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.WHITE, false,
-                imagePath, imageExtension, GetJogoByLabel(58, list)));
+            fase.AddCell(" ");
+            fase.AddCell(" ");
+            fase.AddCell(" ");
+            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, false,
+                imagePath, imageExtension, GetJogoByLabel(98, list)));
             fase.AddCell(" ");
             fase.AddCell(" ");
 
 
             return fase;
         }
+
         private PdfPTable CreateSemiFinaisLeft(bool showOnlyPartidaValida, bool fim, string imagePath, string imageExtension, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> list)
         {
             PdfPTable fase = new PdfPTable(1);
@@ -1451,15 +1454,19 @@ namespace BolaoNet.Infra.Reports.Pdf
             fase.AddCell(" ");
             fase.AddCell(" ");
             fase.AddCell(" ");
+            fase.AddCell(" ");
+            fase.AddCell(" ");
+            fase.AddCell(" ");
+            fase.AddCell(" ");
 
             fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, false,
-                imagePath, imageExtension, GetJogoByLabel(61, list)));
+                imagePath, imageExtension, GetJogoByLabel(101, list)));
             fase.AddCell(" ");
             fase.AddCell(" ");
-
 
             return fase;
         }
+
         private PdfPTable CreateDezesseisRight(bool showOnlyPartidaValida, bool fim, string imagePath, string imageExtension, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> list)
         {
             PdfPTable fase = new PdfPTable(1);
@@ -1467,53 +1474,76 @@ namespace BolaoNet.Infra.Reports.Pdf
             fase.DefaultCell.BorderWidth = 0;
 
             fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, true,
-                imagePath, imageExtension, GetJogoByLabel(52, list)));
-            fase.AddCell(" ");
-            fase.AddCell(" ");
+                imagePath, imageExtension, GetJogoByLabel(81, list)));
+            //fase.AddCell(" ");
 
-            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.WHITE, true,
-                imagePath, imageExtension, GetJogoByLabel(51, list)));
-            fase.AddCell(" ");
+            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, true,
+                imagePath, imageExtension, GetJogoByLabel(82, list)));
             fase.AddCell(" ");
 
             fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, true,
-                imagePath, imageExtension, GetJogoByLabel(55, list)));
+                imagePath, imageExtension, GetJogoByLabel(83, list)));
+            //fase.AddCell(" ");
+
+            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, true,
+                imagePath, imageExtension, GetJogoByLabel(84, list)));
             fase.AddCell(" ");
+
+            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, true,
+                imagePath, imageExtension, GetJogoByLabel(85, list)));
+            //fase.AddCell(" ");
+
+            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, true,
+                imagePath, imageExtension, GetJogoByLabel(86, list)));
             fase.AddCell(" ");
 
-            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.WHITE, true,
-                imagePath, imageExtension, GetJogoByLabel(56, list)));
+            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, true,
+                imagePath, imageExtension, GetJogoByLabel(87, list)));
+            //fase.AddCell(" ");
 
+            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, true,
+                imagePath, imageExtension, GetJogoByLabel(88, list)));
 
+            fase.AddCell(" ");
             return fase;
         }
+
         private PdfPTable CreateOitavasRight(bool showOnlyPartidaValida, bool fim, string imagePath, string imageExtension, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> list)
         {
             PdfPTable fase = new PdfPTable(1);
             fase.DefaultCell.Padding = 0;
             fase.DefaultCell.BorderWidth = 0;
 
-            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, true,
-                imagePath, imageExtension, GetJogoByLabel(52, list)));
+            fase.AddCell(" ");
+            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, false,
+                imagePath, imageExtension, GetJogoByLabel(93, list)));
+            fase.AddCell(" ");
+            fase.AddCell(" ");
             fase.AddCell(" ");
             fase.AddCell(" ");
 
-            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.WHITE, true,
-                imagePath, imageExtension, GetJogoByLabel(51, list)));
+            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, false,
+                imagePath, imageExtension, GetJogoByLabel(94, list)));
+            fase.AddCell(" ");
+            fase.AddCell(" ");
             fase.AddCell(" ");
             fase.AddCell(" ");
 
-            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, true,
-                imagePath, imageExtension, GetJogoByLabel(55, list)));
+            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, false,
+                imagePath, imageExtension, GetJogoByLabel(95, list)));
+            fase.AddCell(" ");
+            fase.AddCell(" ");
             fase.AddCell(" ");
             fase.AddCell(" ");
 
-            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.WHITE, true,
-                imagePath, imageExtension, GetJogoByLabel(56, list)));
+            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, false,
+                imagePath, imageExtension, GetJogoByLabel(96, list)));
 
+            fase.AddCell(" ");
 
             return fase;
         }
+
         private PdfPTable CreateQuartasRight(bool showOnlyPartidaValida, bool fim, string imagePath, string imageExtension, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> list)
         {
             PdfPTable fase = new PdfPTable(1);
@@ -1522,8 +1552,11 @@ namespace BolaoNet.Infra.Reports.Pdf
 
             fase.AddCell(" ");
             fase.AddCell(" ");
+            fase.AddCell(" ");
+            fase.AddCell(" ");
+            fase.AddCell(" ");
             fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, false,
-                imagePath, imageExtension, GetJogoByLabel(59, list)));
+                imagePath, imageExtension, GetJogoByLabel(99, list)));
             fase.AddCell(" ");
             fase.AddCell(" ");
             fase.AddCell(" ");
@@ -1531,21 +1564,27 @@ namespace BolaoNet.Infra.Reports.Pdf
             fase.AddCell(" ");
             fase.AddCell(" ");
             fase.AddCell(" ");
-            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.WHITE, false,
-                imagePath, imageExtension, GetJogoByLabel(60, list)));
             fase.AddCell(" ");
             fase.AddCell(" ");
-
+            fase.AddCell(" ");
+            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, false,
+                imagePath, imageExtension, GetJogoByLabel(100, list)));
+            fase.AddCell(" ");
+            fase.AddCell(" ");
 
             return fase;
         }
+
         private PdfPTable CreateSemiFinaisRight(bool showOnlyPartidaValida, bool fim, string imagePath, string imageExtension, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> list)
         {
             PdfPTable fase = new PdfPTable(1);
             fase.DefaultCell.Padding = 0;
             fase.DefaultCell.BorderWidth = 0;
 
-
+            fase.AddCell(" ");
+            fase.AddCell(" ");
+            fase.AddCell(" ");
+            fase.AddCell(" ");
             fase.AddCell(" ");
             fase.AddCell(" ");
             fase.AddCell(" ");
@@ -1554,13 +1593,14 @@ namespace BolaoNet.Infra.Reports.Pdf
             fase.AddCell(" ");
             fase.AddCell(" ");
             fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, false,
-                imagePath, imageExtension, GetJogoByLabel(62, list)));
+                imagePath, imageExtension, GetJogoByLabel(102, list)));
             fase.AddCell(" ");
             fase.AddCell(" ");
 
 
             return fase;
         }
+
         private PdfPTable CreateFinais(bool showOnlyPartidaValida, bool fim, string imagePath, string imageExtension, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> list)
         {
             PdfPTable fase = new PdfPTable(1);
@@ -1570,10 +1610,16 @@ namespace BolaoNet.Infra.Reports.Pdf
             fase.AddCell(" ");
             fase.AddCell(" ");
             fase.AddCell(" ");
+            fase.AddCell(" ");
+            fase.AddCell(" ");
 
 
             fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, false,
-                imagePath, imageExtension, GetJogoByLabel(64, list)));
+                imagePath, imageExtension, GetJogoByLabel(104, list)));
+            fase.AddCell(" ");
+            fase.AddCell(" ");
+            fase.AddCell(" ");
+            fase.AddCell(" ");
             fase.AddCell(" ");
             fase.AddCell(" ");
             fase.AddCell(" ");
@@ -1581,13 +1627,14 @@ namespace BolaoNet.Infra.Reports.Pdf
             fase.AddCell(" ");
             fase.AddCell(" ");
 
-            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.WHITE, false,
-                imagePath, imageExtension, GetJogoByLabel(63, list)));
+            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, false,
+                imagePath, imageExtension, GetJogoByLabel(103, list)));
             fase.AddCell(" ");
             fase.AddCell(" ");
 
             return fase;
         }
+
         private Domain.Entities.ValueObjects.JogoUsuarioVO GetJogoByLabel(int jogoId, IList<Domain.Entities.ValueObjects.JogoUsuarioVO> list)
         {
             for (int c = 0; c < list.Count; c++)
@@ -1695,7 +1742,7 @@ namespace BolaoNet.Infra.Reports.Pdf
                 user.FullName = data.Membros[c].FullName;
                 user.Email = data.Membros[c].Email;
 
-                CreatePage(false, true, (int)data.Classificacao[p].Posicao, (int)data.Classificacao[p].TotalPontos, writer, extension, "", folderProfiles, folderTimes,
+                CreatePage(document, false, true, (int)data.Classificacao[p].Posicao, (int)data.Classificacao[p].TotalPontos, writer, extension, "", folderProfiles, folderTimes,
                     user, data.Membros[c].JogosUsuarios, data.Membros[c].ApostasExtras);
             }
             document.Close();

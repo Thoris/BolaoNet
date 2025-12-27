@@ -57,6 +57,31 @@ namespace BolaoNet.Tests.Debug
             var bolaoFacade = bolaoListFacadeApp.GetInstance("Copa do Mundo 2026");
             //bolaoFacade.CreateBolao(new Domain.Entities.Campeonatos.Campeonato("Copa do Mundo 2026"));
 
+
+
+            var fim = bolaoApostasFimReportApp.Generate("fim.pdf", "fim.zip", "gif",
+            @"\BolaoNet.MVC\Content\img\database\profiles",
+            @"\BolaoNet.MVC\Content\img\database\times",
+            bolaoApostasFimReportApp.GetData(
+                new Domain.Entities.Boloes.Bolao("Copa do Mundo 2026")
+                {
+                    NomeCampeonato = "Copa do Mundo 2026"
+                }));
+
+            string pdfInicio = "fim.pdf";
+            if (System.IO.File.Exists(pdfInicio))
+                System.IO.File.Delete(pdfInicio);
+            using (var fileStream = File.Create(pdfInicio))
+            {
+                fim.Seek(0, SeekOrigin.Begin);
+                fim.CopyTo(fileStream);
+            }
+
+
+
+            return;
+
+
             var inicio = bolaoApostasInicioReportApp.Generate("inicio.pdf", "inicio.zip", "gif",
                 @"\BolaoNet.MVC\Content\img\database\profiles",
                 @"\BolaoNet.MVC\Content\img\database\times",
@@ -66,7 +91,7 @@ namespace BolaoNet.Tests.Debug
                         NomeCampeonato = "Copa do Mundo 2026"
                     }));
 
-            string pdfInicio = "inicio.pdf";
+            pdfInicio = "inicio.pdf";
             if (System.IO.File.Exists(pdfInicio))
                 System.IO.File.Delete(pdfInicio);
             using (var fileStream = File.Create(pdfInicio))
@@ -75,6 +100,7 @@ namespace BolaoNet.Tests.Debug
                 inicio.CopyTo(fileStream);
             }
 
+            return;
 
             string baseFolder = @"C:\Thoris\Projetos\BolaoNet_git\";
             Stream streamMembro = bolaoMembroApostasReportApp.Generate("gif",
@@ -93,7 +119,6 @@ namespace BolaoNet.Tests.Debug
                 streamMembro.Seek(0, SeekOrigin.Begin);
                 streamMembro.CopyTo(fileStream);
             }
-            return;
 
             //bolaoApostasInicioReportApp.Generate("inicio.pdf", "inicio.zip", "gif",
             //    baseFolder + @"\BolaoNet.MVC\Content\img\database\profiles",
