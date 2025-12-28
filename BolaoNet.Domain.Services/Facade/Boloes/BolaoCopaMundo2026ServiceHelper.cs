@@ -247,7 +247,6 @@ namespace BolaoNet.Domain.Services.Facade.Boloes
             StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraService, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "Na fase eliminatória, vale o dobro de pontos apenas para o jogo real e não pelo cruzamento da aposta. " });
             StoreData<Domain.Entities.Boloes.BolaoRegra>(_bolaoRegraService, new Domain.Entities.Boloes.BolaoRegra(bolao.Nome, c++) { Descricao = "Ou seja, você estará apostando no primeiro classificado do grupo A x Segundo classificado do grupo B, independente do time que classificar." });
 
-
             #endregion
 
             #region Boloes Pontuação
@@ -267,6 +266,45 @@ namespace BolaoNet.Domain.Services.Facade.Boloes
 
             #region Boloes Histórico
 
+            StoreBolaoHistorico(bolao.Nome, 2022, 1, "lg_sjc", 225, 1, 30, 17, 27, 9, 20);
+            StoreBolaoHistorico(bolao.Nome, 2022, 2, "gabriel fernandes", 219, 6, 33, 22, 26, 10, 0);
+            StoreBolaoHistorico(bolao.Nome, 2022, 3, "weliston", 218, 2, 33, 19, 24, 9, 10);
+            StoreBolaoHistorico(bolao.Nome, 2022, 4, "kadu", 217, 3, 33, 20, 26, 9, 10);
+            StoreBolaoHistorico(bolao.Nome, 2022, 5, "nicolas.borges", 214, 1, 35, 12, 26, 7, 10);
+            StoreBolaoHistorico(bolao.Nome, 2022, 6, "luisa_sertao", 213, 6, 32, 18, 19, 8, 0);
+            StoreBolaoHistorico(bolao.Nome, 2022, 7, "magno.sousa", 208, 0, 31, 20, 24, 8, 20);
+            StoreBolaoHistorico(bolao.Nome, 2022, 8, "anunes1981", 204, 8, 35, 13, 17, 6, 10);
+            StoreBolaoHistorico(bolao.Nome, 2022, 9, "mateuscleto", 203, 3, 33, 14, 27, 8, 0);
+            StoreBolaoHistorico(bolao.Nome, 2022, 10, "lpfernandes", 202, 2, 33, 17, 20, 7, 10);
+            StoreBolaoHistorico(bolao.Nome, 2022, 11, "teles", 199, 4, 31, 16, 23, 8, 0);
+            StoreBolaoHistorico(bolao.Nome, 2022, 11, "chutabola", 199, 3, 32, 20, 18, 5, 20);
+            StoreBolaoHistorico(bolao.Nome, 2022, 13, "fabiao", 198, 4, 32, 20, 18, 6, 0);
+            StoreBolaoHistorico(bolao.Nome, 2022, 14, "Lucas Fabião", 197, 1, 31, 19, 26, 7, 10);
+            StoreBolaoHistorico(bolao.Nome, 2022, 15, "barbosaalr", 195, 3, 28, 18, 22, 8, 0);
+            StoreBolaoHistorico(bolao.Nome, 2022, 15, "pietro", 195, 4, 33, 14, 22, 8, 0);
+            StoreBolaoHistorico(bolao.Nome, 2022, 15, "Fcarvalho", 195, 2, 29, 20, 15, 7, 10);
+            StoreBolaoHistorico(bolao.Nome, 2022, 18, "Milena Pisciotta", 194, 3, 34, 18, 18, 6, 0);
+            StoreBolaoHistorico(bolao.Nome, 2022, 18, "tharcius", 194, 2, 27, 18, 26, 9, 10);
+            StoreBolaoHistorico(bolao.Nome, 2022, 20, "antigrenalxavante", 192, 5, 31, 20, 21, 6, 0);
+            StoreBolaoHistorico(bolao.Nome, 2022, 21, "caboas", 185, 3, 34, 16, 21, 4, 10);
+            StoreBolaoHistorico(bolao.Nome, 2022, 22, "thoris", 184, 2, 33, 16, 20, 3, 10);
+            StoreBolaoHistorico(bolao.Nome, 2022, 23, "Lise", 182, 3, 33, 19, 18, 6, 0);
+            StoreBolaoHistorico(bolao.Nome, 2022, 23, "lucas_slp", 182, 4, 33, 19, 19, 5, 0);
+            StoreBolaoHistorico(bolao.Nome, 2022, 25, "helena", 181, 6, 29, 23, 19, 6, 0);
+            StoreBolaoHistorico(bolao.Nome, 2022, 26, "FabSpo", 179, 3, 30, 15, 20, 7, 0);
+            StoreBolaoHistorico(bolao.Nome, 2022, 27, "andre.luz", 177, 4, 31, 19, 22, 5, 0);
+            StoreBolaoHistorico(bolao.Nome, 2022, 28, "ericogvieira@gmail.com", 173, 3, 30, 11, 27, 6, 0);
+            StoreBolaoHistorico(bolao.Nome, 2022, 29, "was.souza", 171, 4, 31, 15, 16, 4, 0);
+            StoreBolaoHistorico(bolao.Nome, 2022, 30, "mariana_sertao", 169, 4, 28, 12, 23, 5, 0);
+            StoreBolaoHistorico(bolao.Nome, 2022, 31, "toninha", 167, 8, 31, 13, 12, 4, 0);
+            StoreBolaoHistorico(bolao.Nome, 2022, 32, "lenio.paiva", 165, 2, 32, 11, 22, 4, 0);
+            StoreBolaoHistorico(bolao.Nome, 2022, 32, "kajiyamatt", 165, 4, 32, 16, 15, 3, 0);
+            StoreBolaoHistorico(bolao.Nome, 2022, 32, "helton_hls", 165, 4, 25, 19, 23, 4, 0);
+            StoreBolaoHistorico(bolao.Nome, 2022, 35, "Samuel", 155, 3, 27, 13, 17, 2, 10);
+            StoreBolaoHistorico(bolao.Nome, 2022, 36, "cspivetta", 151, 2, 30, 12, 21, 3, 0);
+            StoreBolaoHistorico(bolao.Nome, 2022, 37, "Vieira Junior", 146, 7, 21, 18, 18, 6, 0);
+            StoreBolaoHistorico(bolao.Nome, 2022, 38, "Gianluigi", 141, 5, 24, 19, 17, 4, 0);
+            StoreBolaoHistorico(bolao.Nome, 2022, 39, "pedro_sertao", 130, 3, 22, 13, 23, 4, 0);
 
             StoreBolaoHistorico(bolao.Nome, 2018, 1, "lucas_slp@hotmail.com", 234, 6, 35, 23, 22, 13, 0);
             StoreBolaoHistorico(bolao.Nome, 2018, 2, "lg_sjc", 226, 3, 34, 21, 26, 8, 20);

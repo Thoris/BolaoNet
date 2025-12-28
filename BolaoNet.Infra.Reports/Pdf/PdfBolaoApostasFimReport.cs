@@ -15,6 +15,14 @@ namespace BolaoNet.Infra.Reports.Pdf
     public class PdfBolaoApostasFimReport :
         Domain.Interfaces.Services.Reports.FormatReport.IBolaoApostasFimFormatReportService
     {
+        class JogoDraw
+        {
+            public int Label;
+            public PdfPTable Table;
+            public float X;
+            public float Y;
+        }
+
         #region Constants
 
         private const int FlagImageWidth = 40;
@@ -479,7 +487,13 @@ namespace BolaoNet.Infra.Reports.Pdf
             CreateGrupos(740, 220, showOnlyPartidaValida, fim, writer, imageTimesPath, imageExtension, grupo);
 
             document.NewPage();
-            CreateEliminatorias(showOnlyPartidaValida, fim, writer, imageTimesPath, imageExtension, dezesseis, oitavas, quartas, semiFinais, finais);
+
+
+            var jogos = dezesseis.Concat(oitavas).Concat(quartas).Concat(semiFinais).Concat(finais).ToList();
+
+            DrawPaginaEliminatorias(writer, showOnlyPartidaValida, fim, imageTimesPath, imageExtension, jogos);
+
+            //CreateEliminatorias(showOnlyPartidaValida, fim, writer, imageTimesPath, imageExtension, dezesseis, oitavas, quartas, semiFinais, finais);
         }
         
         private PdfPTable CreateUserData(string imageFolder, string imageExtension, string noPictureFile, Domain.Entities.Users.User user)
@@ -1684,6 +1698,198 @@ namespace BolaoNet.Infra.Reports.Pdf
                 s.Close();
             }
         }
+
+        private void DrawPaginaEliminatorias(
+            PdfWriter writer,
+            bool showOnlyPartidaValida,
+            bool fim,
+            string imagePath,
+            string imageExtension,
+            IList<Domain.Entities.ValueObjects.JogoUsuarioVO> list)
+        {
+            PdfContentByte cb = writer.DirectContent;
+
+            // ===============================
+            // CONFIGURAÇÃO DE LAYOUT
+            // ===============================
+            float startY = 720;
+
+            float col16L = 20;
+            float col8L = 180;
+            float col4L = 340;
+            float col2 = 500;
+            float col4R = 660;
+            float col8R = 820;
+            float col16R = 980;
+
+            float step16 = 70;
+            float step8 = step16 * 2;
+            float step4 = step16 * 4;
+            float step2 = step16 * 8;
+
+            var jogos = new List<JogoDraw>();
+
+            // ===============================
+            // FUNÇÃO AUXILIAR
+            // ===============================
+            void AddJogo(int label, float x, float y, bool showTitle)
+            {
+                var jogoVO = GetJogoByLabel(label, list);
+
+                if (jogoVO == null)
+                    throw new InvalidOperationException(
+                        $"Jogo com label {label} não encontrado."
+                    );
+
+                var table = CreateJogoInEliminatoriaFormat(
+                    showOnlyPartidaValida,
+                    fim,
+                    Color.LIGHT_GRAY,
+                    showTitle,
+                    imagePath,
+                    imageExtension,
+                    jogoVO);
+
+                if (table == null)
+                    throw new InvalidOperationException(
+                        $"Tabela não criada para o jogo {label}."
+                    );
+
+                jogos.Add(new JogoDraw
+                {
+                    Label = label,
+                    Table = table,
+                    X = x,
+                    Y = y
+                });
+            }
+
+
+            // ===============================
+            // 16 AVOS – LEFT
+            // ===============================
+            int[] l16L = { 73, 74, 75, 76, 77, 78, 79, 80 };
+            for (int i = 0; i < l16L.Length; i++)
+                AddJogo(l16L[i], col16L, startY - i * step16, true);
+
+            // ===============================
+            // OITAVAS – LEFT
+            // ===============================
+            int[] l8L = { 89, 90, 91, 92 };
+            for (int i = 0; i < l8L.Length; i++)
+                AddJogo(l8L[i], col8L, startY - i * step8 - step16 / 2, false);
+
+            // ===============================
+            // QUARTAS – LEFT
+            // ===============================
+            int[] l4L = { 97, 98 };
+            for (int i = 0; i < l4L.Length; i++)
+                AddJogo(l4L[i], col4L, startY - i * step4 - step8 / 2, false);
+
+            // ===============================
+            // SEMI – LEFT
+            // ===============================
+            AddJogo(101, col2, startY - step4, false);
+
+            // ===============================
+            // SEMI – RIGHT
+            // ===============================
+            AddJogo(102, col2, startY - step4 - step4, false);
+
+            // ===============================
+            // QUARTAS – RIGHT
+            // ===============================
+            int[] l4R = { 99, 100 };
+            for (int i = 0; i < l4R.Length; i++)
+                AddJogo(l4R[i], col4R, startY - i * step4 - step8 / 2, false);
+
+            // ===============================
+            // OITAVAS – RIGHT
+            // ===============================
+            int[] l8R = { 93, 94, 95, 96 };
+            for (int i = 0; i < l8R.Length; i++)
+                AddJogo(l8R[i], col8R, startY - i * step8 - step16 / 2, false);
+
+            // ===============================
+            // 16 AVOS – RIGHT
+            // ===============================
+            int[] l16R = { 81, 82, 83, 84, 85, 86, 87, 88 };
+            for (int i = 0; i < l16R.Length; i++)
+                AddJogo(l16R[i], col16R, startY - i * step16, true);
+
+            // ===============================
+            // FINAL
+            // ===============================
+            AddJogo(104, col2 + 120, startY - step4 * 1.5f, false);
+
+            // ===============================
+            // DESENHAR TABELAS
+            // ===============================
+            foreach (var jogo in jogos)
+            {
+                jogo.Table.TotalWidth = 100f;    
+                jogo.Table.LockedWidth = true;
+
+                jogo.Table.WriteSelectedRows(
+                    0, -1,
+                    jogo.X,
+                    jogo.Y,
+                    cb
+                );
+            }
+
+            // ===============================
+            // DESENHAR LIGAÇÕES
+            // ===============================
+            cb.SetLineWidth(0.8f);
+
+            void Liga(int from, int to)
+            {
+                var a = jogos.First(j => j.Label == from);
+                var b = jogos.First(j => j.Label == to);
+
+                float ax = a.X + a.Table.TotalWidth;
+                float ay = a.Y - a.Table.TotalHeight / 2;
+
+                float bx = b.X;
+                float by = b.Y - b.Table.TotalHeight / 2;
+
+                float midX = (ax + bx) / 2;
+
+                cb.MoveTo(ax, ay);
+                cb.LineTo(midX, ay);
+                cb.LineTo(midX, by);
+                cb.LineTo(bx, by);
+                cb.Stroke();
+            }
+
+            // 16 → 8
+            Liga(73, 89); Liga(74, 89);
+            Liga(75, 90); Liga(76, 90);
+            Liga(77, 91); Liga(78, 91);
+            Liga(79, 92); Liga(80, 92);
+
+            Liga(81, 93); Liga(82, 93);
+            Liga(83, 94); Liga(84, 94);
+            Liga(85, 95); Liga(86, 95);
+            Liga(87, 96); Liga(88, 96);
+
+            // 8 → 4
+            Liga(89, 97); Liga(90, 97);
+            Liga(91, 98); Liga(92, 98);
+
+            Liga(93, 99); Liga(94, 99);
+            Liga(95, 100); Liga(96, 100);
+
+            // 4 → semi
+            Liga(97, 101); Liga(98, 101);
+            Liga(99, 102); Liga(100, 102);
+
+            // semi → final
+            Liga(101, 104);
+            Liga(102, 104);
+        }
+
 
         #endregion
 
