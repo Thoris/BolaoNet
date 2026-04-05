@@ -1,4 +1,6 @@
-﻿using ICSharpCode.SharpZipLib.Zip;
+﻿using BolaoNet.Domain.Entities.Campeonatos;
+using BolaoNet.Domain.Entities.ValueObjects;
+using ICSharpCode.SharpZipLib.Zip;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System;
@@ -512,7 +514,7 @@ namespace BolaoNet.Infra.Reports.Pdf
             if (System.IO.File.Exists(fileImage))
             {
                 System.Drawing.Image img = System.Drawing.Bitmap.FromFile(fileImage);
-                img = ImageManagement.ResizeImage(img, FlagImageWidth, FlagImageHeight);
+                img = ImageManagement.ResizeImage(img, UserImageWidth, UserImageHeight);
                 imgUser = Image.GetInstance(img, Color.WHITE);
                 //imgUser = Image.GetInstance(fileImage);
             }
@@ -522,7 +524,7 @@ namespace BolaoNet.Infra.Reports.Pdf
                 if (System.IO.File.Exists(noFileName))
                 {
                     System.Drawing.Image img = System.Drawing.Bitmap.FromFile(noFileName);
-                    img = ImageManagement.ResizeImage(img, FlagImageWidth, FlagImageHeight);
+                    img = ImageManagement.ResizeImage(img, UserImageWidth, UserImageHeight);
                     imgUser = Image.GetInstance(img, Color.WHITE); 
                 }
                 else
@@ -673,7 +675,7 @@ namespace BolaoNet.Infra.Reports.Pdf
                 width = 140;
                 spaceLeft = 6;
             }
-
+              
             grupoA.TotalWidth = width;
             grupoA.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 0), startPos - spaceBetweenGroup * 0, writer.DirectContent);
 
@@ -789,13 +791,13 @@ namespace BolaoNet.Infra.Reports.Pdf
             if (fim)
             {
                 PdfPTable table = new PdfPTable(1);
-                PdfPCell cellAposta1 = new PdfPCell(new Phrase(jogo.ApostaTime1.ToString(), new Font(Font.HELVETICA, 6f, Font.BOLD, Color.BLACK)));
+                PdfPCell cellAposta1 = new PdfPCell(new Phrase(jogo.ApostaTime1.ToString(), new Font(Font.HELVETICA, 8f, Font.BOLD, Color.BLACK)));
                 cellAposta1.HorizontalAlignment = Element.ALIGN_CENTER;
                 cellAposta1.VerticalAlignment = Element.ALIGN_MIDDLE;
                 cellAposta1.BackgroundColor = Color.YELLOW;
                 cellAposta1.BorderWidth = 0;
 
-                PdfPCell cellResult1 = new PdfPCell(new Phrase(jogo.GolsTime1.ToString(), new Font(Font.HELVETICA, 4f, Font.NORMAL, Color.BLACK)));
+                PdfPCell cellResult1 = new PdfPCell(new Phrase(jogo.GolsTime1.ToString(), new Font(Font.HELVETICA, 7f, Font.NORMAL, Color.BLACK)));
                 cellResult1.HorizontalAlignment = Element.ALIGN_CENTER;
                 cellResult1.VerticalAlignment = Element.ALIGN_MIDDLE;
                 cellResult1.BorderWidth = 0;
@@ -838,13 +840,13 @@ namespace BolaoNet.Infra.Reports.Pdf
             if (fim)
             {
                 PdfPTable table = new PdfPTable(1);
-                PdfPCell cellAposta2 = new PdfPCell(new Phrase(jogo.ApostaTime2.ToString(), new Font(Font.HELVETICA, 6f, Font.BOLD, Color.BLACK)));
+                PdfPCell cellAposta2 = new PdfPCell(new Phrase(jogo.ApostaTime2.ToString(), new Font(Font.HELVETICA, 8f, Font.BOLD, Color.BLACK)));
                 cellAposta2.HorizontalAlignment = Element.ALIGN_CENTER;
                 cellAposta2.VerticalAlignment = Element.ALIGN_MIDDLE;
                 cellAposta2.BackgroundColor = Color.YELLOW;
                 cellAposta2.BorderWidth = 0;
 
-                PdfPCell cellResult2 = new PdfPCell(new Phrase(jogo.GolsTime2.ToString(), new Font(Font.HELVETICA, 4f, Font.NORMAL, Color.BLACK)));
+                PdfPCell cellResult2 = new PdfPCell(new Phrase(jogo.GolsTime2.ToString(), new Font(Font.HELVETICA, 7f, Font.NORMAL, Color.BLACK)));
                 cellResult2.HorizontalAlignment = Element.ALIGN_CENTER;
                 cellResult2.VerticalAlignment = Element.ALIGN_MIDDLE;
                 cellResult2.BorderWidth = 0;
@@ -910,7 +912,7 @@ namespace BolaoNet.Infra.Reports.Pdf
             if (fim)
             {
                 //Criando o nome do time que está fora
-                PdfPCell cellPontos = new PdfPCell(new Phrase(jogo.Pontos.ToString(), new Font(Font.HELVETICA, 5f, Font.NORMAL, Color.BLACK)));
+                PdfPCell cellPontos = new PdfPCell(new Phrase(jogo.Pontos.ToString(), new Font(Font.HELVETICA, 7f, Font.NORMAL, Color.BLACK)));
                 cellPontos.HorizontalAlignment = Element.ALIGN_CENTER;
                 cellPontos.VerticalAlignment = Element.ALIGN_MIDDLE;
                 cellPontos.BorderWidth = 0;
@@ -1290,6 +1292,9 @@ namespace BolaoNet.Infra.Reports.Pdf
             cellResult.HorizontalAlignment = Element.ALIGN_CENTER;
             cellResult.VerticalAlignment = Element.ALIGN_MIDDLE;
             cellResult.BorderWidth = 0;
+             
+            //cellResult.UseAscender = true;
+            //cellResult.UseDescender = true;
             cellResult.BackgroundColor = Color.YELLOW;
 
             time.AddCell(cellImageTime);
@@ -1305,14 +1310,16 @@ namespace BolaoNet.Infra.Reports.Pdf
                 cellGols.BorderWidth = 0;
                 time.AddCell(cellGols);
 
-
-
                 PdfPCell cellPontos = new PdfPCell(new Phrase((timeCasa ? jogo.Pontos.ToString() : ""),
                     //new Font(Font.HELVETICA, 8f, Font.BOLD, Color.BLACK)));
                     new Font(Font.HELVETICA, 6f, Font.BOLD, Color.BLACK)));
                 cellPontos.HorizontalAlignment = Element.ALIGN_CENTER;
                 cellPontos.VerticalAlignment = Element.ALIGN_MIDDLE;
                 cellPontos.BorderWidth = 0;
+
+                cellPontos.Padding = 0; 
+                cellPontos.UseAscender = true;
+                cellPontos.UseDescender = true;
 
                 if (jogo.PartidaValida)
                 {
@@ -1698,7 +1705,7 @@ namespace BolaoNet.Infra.Reports.Pdf
                 s.Close();
             }
         }
-
+         
         private void DrawPaginaEliminatorias(
             PdfWriter writer,
             bool showOnlyPartidaValida,
@@ -1707,39 +1714,42 @@ namespace BolaoNet.Infra.Reports.Pdf
             string imageExtension,
             IList<Domain.Entities.ValueObjects.JogoUsuarioVO> list)
         {
+            // ===============================
+            // Configurar página em paisagem
+            // ===============================
+            //writer.PageSize = PageSize.A4.Rotate(); // paisagem
             PdfContentByte cb = writer.DirectContent;
 
-            // ===============================
-            // CONFIGURAÇÃO DE LAYOUT
-            // ===============================
-            float startY = 720;
+            float pageWidth = writer.PageSize.Width;
+            float pageHeight = writer.PageSize.Height;
+            float marginX = 10f;
+            float marginY = 40f;
+            float offsetY = -20f; // deslocamento para cima
 
-            float col16L = 20;
-            float col8L = 180;
-            float col4L = 340;
-            float col2 = 500;
-            float col4R = 660;
-            float col8R = 820;
-            float col16R = 980;
+            float tableWidth = 100f;
+            float tableHeight = 65f;
+            float minSpace = 115f;
 
-            float step16 = 70;
-            float step8 = step16 * 2;
-            float step4 = step16 * 4;
-            float step2 = step16 * 8;
+            // Labels reais dos jogos
+            int[][] layerLabels = new int[][]
+            {
+                new int[] { 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88 }, // 16 avos
+                new int[] { 89, 90, 91, 92, 93, 94, 95, 96 },                               // oitavas
+                new int[] { 97, 98, 99, 100 },                                             // quartas
+                new int[] { 101, 102 },                                                    // semi
+                new int[] { 104 }                                                          // final
+            };
 
             var jogos = new List<JogoDraw>();
+            var layerPositions = new List<List<JogoDraw>>();
 
             // ===============================
-            // FUNÇÃO AUXILIAR
+            // Função auxiliar para adicionar jogo
             // ===============================
             void AddJogo(int label, float x, float y, bool showTitle)
             {
                 var jogoVO = GetJogoByLabel(label, list);
-
-                if (jogoVO == null)
-                    throw new InvalidOperationException(
-                        $"Jogo com label {label} não encontrado."
-                    );
+                if (jogoVO == null) return;
 
                 var table = CreateJogoInEliminatoriaFormat(
                     showOnlyPartidaValida,
@@ -1750,11 +1760,6 @@ namespace BolaoNet.Infra.Reports.Pdf
                     imageExtension,
                     jogoVO);
 
-                if (table == null)
-                    throw new InvalidOperationException(
-                        $"Tabela não criada para o jogo {label}."
-                    );
-
                 jogos.Add(new JogoDraw
                 {
                     Label = label,
@@ -1764,132 +1769,104 @@ namespace BolaoNet.Infra.Reports.Pdf
                 });
             }
 
+            // ===============================
+            // Distribuir camadas horizontalmente
+            // ===============================
+            int totalLayers = layerLabels.Length;
+            float totalLayerWidth = pageWidth - 2 * marginX;
+            //float gapX = totalLayerWidth / (totalLayers - 1);
+            float gapX = Math.Min(totalLayerWidth / (totalLayers - 1), minSpace);
+
+            List<JogoDraw> previousLayer = null;
+
+            for (int layer = 0; layer < totalLayers; layer++)
+            {
+                int[] currentLabels = layerLabels[layer];
+                int numGames = currentLabels.Length;
+                float xPos = marginX + layer * gapX;
+
+                // Distribuir verticalmente
+                float totalLayerHeight = pageHeight - 2 * marginY;
+                float stepY = (numGames == 1) ? 0 : totalLayerHeight / (numGames - 1);
+                var currentLayer = new List<JogoDraw>();
+
+                for (int i = 0; i < numGames; i++)
+                {
+                    float yPos = marginY + totalLayerHeight - i * stepY;
+
+                    // Ajuste Y baseado na média dos dois jogos anteriores
+                    if (layer > 0 && previousLayer != null)
+                    {
+                        int indexPrev = i * 2;
+                        if (indexPrev + 1 < previousLayer.Count)
+                            yPos = (previousLayer[indexPrev].Y + previousLayer[indexPrev + 1].Y) / 2;
+                    }
+
+                    AddJogo(currentLabels[i], xPos, yPos, layer == 0); // títulos apenas na primeira fase
+                    currentLayer.Add(jogos.Last());
+                }
+
+                layerPositions.Add(currentLayer);
+                previousLayer = currentLayer;
+            }
 
             // ===============================
-            // 16 AVOS – LEFT
-            // ===============================
-            int[] l16L = { 73, 74, 75, 76, 77, 78, 79, 80 };
-            for (int i = 0; i < l16L.Length; i++)
-                AddJogo(l16L[i], col16L, startY - i * step16, true);
-
-            // ===============================
-            // OITAVAS – LEFT
-            // ===============================
-            int[] l8L = { 89, 90, 91, 92 };
-            for (int i = 0; i < l8L.Length; i++)
-                AddJogo(l8L[i], col8L, startY - i * step8 - step16 / 2, false);
-
-            // ===============================
-            // QUARTAS – LEFT
-            // ===============================
-            int[] l4L = { 97, 98 };
-            for (int i = 0; i < l4L.Length; i++)
-                AddJogo(l4L[i], col4L, startY - i * step4 - step8 / 2, false);
-
-            // ===============================
-            // SEMI – LEFT
-            // ===============================
-            AddJogo(101, col2, startY - step4, false);
-
-            // ===============================
-            // SEMI – RIGHT
-            // ===============================
-            AddJogo(102, col2, startY - step4 - step4, false);
-
-            // ===============================
-            // QUARTAS – RIGHT
-            // ===============================
-            int[] l4R = { 99, 100 };
-            for (int i = 0; i < l4R.Length; i++)
-                AddJogo(l4R[i], col4R, startY - i * step4 - step8 / 2, false);
-
-            // ===============================
-            // OITAVAS – RIGHT
-            // ===============================
-            int[] l8R = { 93, 94, 95, 96 };
-            for (int i = 0; i < l8R.Length; i++)
-                AddJogo(l8R[i], col8R, startY - i * step8 - step16 / 2, false);
-
-            // ===============================
-            // 16 AVOS – RIGHT
-            // ===============================
-            int[] l16R = { 81, 82, 83, 84, 85, 86, 87, 88 };
-            for (int i = 0; i < l16R.Length; i++)
-                AddJogo(l16R[i], col16R, startY - i * step16, true);
-
-            // ===============================
-            // FINAL
-            // ===============================
-            AddJogo(104, col2 + 120, startY - step4 * 1.5f, false);
-
-            // ===============================
-            // DESENHAR TABELAS
+            // Desenhar tabelas
             // ===============================
             foreach (var jogo in jogos)
             {
-                jogo.Table.TotalWidth = 100f;    
+                jogo.Table.TotalWidth = tableWidth;
                 jogo.Table.LockedWidth = true;
+                 
 
-                jogo.Table.WriteSelectedRows(
-                    0, -1,
-                    jogo.X,
-                    jogo.Y,
-                    cb
-                );
+                jogo.Table.WriteSelectedRows(0, -1, jogo.X, jogo.Y - offsetY, cb);
             }
 
             // ===============================
-            // DESENHAR LIGAÇÕES
+            // Desenhar ligações
             // ===============================
             cb.SetLineWidth(0.8f);
 
-            void Liga(int from, int to)
+            void Liga(JogoDraw from, JogoDraw to)
             {
-                var a = jogos.First(j => j.Label == from);
-                var b = jogos.First(j => j.Label == to);
+                float fromCenterX = from.X + tableWidth;
+                //float fromCenterY = from.Y - tableHeight / 2;
 
-                float ax = a.X + a.Table.TotalWidth;
-                float ay = a.Y - a.Table.TotalHeight / 2;
+                float fromCenterY = from.Y - from.Table.TotalHeight / 2 - offsetY;
+                float toCenterY = to.Y - to.Table.TotalHeight / 2 - offsetY;
 
-                float bx = b.X;
-                float by = b.Y - b.Table.TotalHeight / 2;
+                float toCenterX = to.X;
+                //float toCenterY = to.Y - tableHeight / 2;
 
-                float midX = (ax + bx) / 2;
+                float midX = (fromCenterX + toCenterX) / 2;
 
-                cb.MoveTo(ax, ay);
-                cb.LineTo(midX, ay);
-                cb.LineTo(midX, by);
-                cb.LineTo(bx, by);
+                cb.MoveTo(fromCenterX, fromCenterY);
+                cb.LineTo(midX, fromCenterY);   // horizontal
+                cb.LineTo(midX, toCenterY);     // vertical
+                cb.LineTo(toCenterX, toCenterY);// horizontal entrada
                 cb.Stroke();
+            } 
+
+            // ===============================
+            // Conectar todas as camadas
+            // ===============================
+            for (int layer = 0; layer < layerPositions.Count - 1; layer++)
+            {
+                var current = layerPositions[layer];
+                var next = layerPositions[layer + 1];
+
+                for (int i = 0; i < next.Count; i++)
+                {
+                    int indexPrev = i * 2;
+                    if (indexPrev + 1 < current.Count)
+                    {
+                        Liga(current[indexPrev], next[i]);
+                        Liga(current[indexPrev + 1], next[i]);
+                    }
+                }
             }
-
-            // 16 → 8
-            Liga(73, 89); Liga(74, 89);
-            Liga(75, 90); Liga(76, 90);
-            Liga(77, 91); Liga(78, 91);
-            Liga(79, 92); Liga(80, 92);
-
-            Liga(81, 93); Liga(82, 93);
-            Liga(83, 94); Liga(84, 94);
-            Liga(85, 95); Liga(86, 95);
-            Liga(87, 96); Liga(88, 96);
-
-            // 8 → 4
-            Liga(89, 97); Liga(90, 97);
-            Liga(91, 98); Liga(92, 98);
-
-            Liga(93, 99); Liga(94, 99);
-            Liga(95, 100); Liga(96, 100);
-
-            // 4 → semi
-            Liga(97, 101); Liga(98, 101);
-            Liga(99, 102); Liga(100, 102);
-
-            // semi → final
-            Liga(101, 104);
-            Liga(102, 104);
         }
-
+         
 
         #endregion
 
@@ -1947,6 +1924,9 @@ namespace BolaoNet.Infra.Reports.Pdf
                 Domain.Entities.Users.User user = new Domain.Entities.Users.User(data.Membros[c].UserName);
                 user.FullName = data.Membros[c].FullName;
                 user.Email = data.Membros[c].Email;
+
+                if (p == -1)
+                    continue;
 
                 CreatePage(document, false, true, (int)data.Classificacao[p].Posicao, (int)data.Classificacao[p].TotalPontos, writer, extension, "", folderProfiles, folderTimes,
                     user, data.Membros[c].JogosUsuarios, data.Membros[c].ApostasExtras);

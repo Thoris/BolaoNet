@@ -159,11 +159,24 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
 
             #region Verificando se as fases foram preenchidas com sucesso
 
+            //Se a fase classificatória não foi preenchida
+            if (!IsFasePreenchidaJogos(list, model.Filtros.NomeFase, out jogos))
+            {
+                string nomeGrupoFilter = "";
+                IsGrupoPreenchidoJogos(list, base.CampeonatoData.NomeGrupos, out jogos, out nomeGrupoFilter);
+
+                model.Filtros.FilterSelected = (int)ViewModels.Apostas.FilterJogosViewModel.FilterJogoType.Grupo;
+                model.Filtros.NomeGrupo = nomeGrupoFilter;
+                return true;
+                 
+            }
+
+            model.Filtros.NomeFase = Domain.Entities.Campeonatos.CampeonatoFase.FaseDezesseisAvosFinal;
             if (!IsFasePreenchidaJogos(list, model.Filtros.NomeFase, out jogos))
             {
                 return true;
             }
-            
+
             model.Filtros.NomeFase = Domain.Entities.Campeonatos.CampeonatoFase.FaseOitavasFinal;
             if (!IsFasePreenchidaJogos(list, model.Filtros.NomeFase, out jogos))
             {                
@@ -197,6 +210,42 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
             return false;
             
         }
+        private bool IsGrupoPreenchidoJogos(IList<Domain.Entities.ValueObjects.JogoUsuarioVO> data, IList<string> nomeGrupos, out IList<Domain.Entities.ValueObjects.JogoUsuarioVO> jogos, out string nomeGrupo)
+        {
+            jogos = null;
+            nomeGrupo = null;
+            for (int c = 0; c < nomeGrupos.Count; c++)
+            {
+                if (nomeGrupos[c] != " ")
+                {
+                    nomeGrupo = nomeGrupos[c];
+                    if (!IsGrupoPreenchidoJogos(data, nomeGrupos[c], out jogos))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        private bool IsGrupoPreenchidoJogos(IList<Domain.Entities.ValueObjects.JogoUsuarioVO> data, string nomeGrupo, out IList<Domain.Entities.ValueObjects.JogoUsuarioVO> jogos)
+        {
+            jogos = new List<Domain.Entities.ValueObjects.JogoUsuarioVO>();
+            IList<Domain.Entities.ValueObjects.JogoUsuarioVO> list =
+                (from p in data
+                 where string.Compare(p.NomeGrupo, nomeGrupo, true) == 0 &&
+                     (p.ApostaTime1 == null || p.ApostaTime2 == null)
+                 select p).ToList();
+
+            if (list == null || list.Count == 0)
+                return true;
+            else
+            {
+                jogos = list;
+                return false;
+            }
+        }
+
         private bool IsFasePreenchidaJogos(IList<Domain.Entities.ValueObjects.JogoUsuarioVO> data, string nomeFase, out IList<Domain.Entities.ValueObjects.JogoUsuarioVO> jogos)
         {
             jogos = new List<Domain.Entities.ValueObjects.JogoUsuarioVO>();
@@ -222,6 +271,9 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
             if (!IsCampeonatoContainsFase(Domain.Entities.Campeonatos.CampeonatoFase.FaseClassificatoria))
                 return false;
 
+            if (base.CampeonatoData.TipoCampeonato == (int)Domain.Entities.Campeonatos.Campeonato.Tipos.CopaDoMundo &&
+                !IsCampeonatoContainsFase(Domain.Entities.Campeonatos.CampeonatoFase.FaseDezesseisAvosFinal))
+                return false;
             if (base.CampeonatoData.TipoCampeonato == (int)Domain.Entities.Campeonatos.Campeonato.Tipos.CopaDoMundo &&
                 !IsCampeonatoContainsFase(Domain.Entities.Campeonatos.CampeonatoFase.FaseOitavasFinal))
                 return false;
@@ -291,7 +343,7 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
             {
                 model.Filtros.FilterSelected = (int)ViewModels.Apostas.FilterJogosViewModel.FilterJogoType.Rodada;
                 model.Filtros.Rodada = 1;
-
+                
                 list = Bind(new Domain.Entities.ValueObjects.FilterJogosVO() { Rodada = 1 });
             }
 
