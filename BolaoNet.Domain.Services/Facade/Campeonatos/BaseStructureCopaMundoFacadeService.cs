@@ -531,6 +531,10 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             list = Merge(list, CreateCampeonatoPosicao(campeonato, nomeFase, "F"));
             list = Merge(list, CreateCampeonatoPosicao(campeonato, nomeFase, "G"));
             list = Merge(list, CreateCampeonatoPosicao(campeonato, nomeFase, "H"));
+            list = Merge(list, CreateCampeonatoPosicao(campeonato, nomeFase, "I"));
+            list = Merge(list, CreateCampeonatoPosicao(campeonato, nomeFase, "J"));
+            list = Merge(list, CreateCampeonatoPosicao(campeonato, nomeFase, "K"));
+            list = Merge(list, CreateCampeonatoPosicao(campeonato, nomeFase, "L"));
 
             return list;
         }
