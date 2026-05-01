@@ -781,7 +781,7 @@ namespace BolaoNet.Infra.Reports.Pdf
 
 
             //Criando a descrição do time de fora
-            PdfPCell cellTimeCasa = new PdfPCell(new Phrase(jogo.NomeTime1, new Font(Font.HELVETICA, 5f, Font.NORMAL, Color.BLACK)));
+            PdfPCell cellTimeCasa = new PdfPCell(new Phrase(jogo.NomeTime1, new Font(Font.HELVETICA, 4.5f, Font.NORMAL, Color.BLACK)));
             cellTimeCasa.HorizontalAlignment = Element.ALIGN_CENTER;
             cellTimeCasa.VerticalAlignment = Element.ALIGN_MIDDLE;
             cellTimeCasa.BorderWidth = 0;
@@ -877,7 +877,7 @@ namespace BolaoNet.Infra.Reports.Pdf
             }
 
             //Criando o nome do time que está fora
-            PdfPCell cellTimeFora = new PdfPCell(new Phrase(jogo.NomeTime2, new Font(Font.HELVETICA, 5f, Font.NORMAL, Color.BLACK)));
+            PdfPCell cellTimeFora = new PdfPCell(new Phrase(jogo.NomeTime2, new Font(Font.HELVETICA, 4.5f, Font.NORMAL, Color.BLACK)));
             cellTimeFora.HorizontalAlignment = Element.ALIGN_CENTER;
             cellTimeFora.VerticalAlignment = Element.ALIGN_MIDDLE;
             cellTimeFora.BorderWidth = 0;
@@ -1375,16 +1375,16 @@ namespace BolaoNet.Infra.Reports.Pdf
                 imagePath, imageExtension, GetJogoByLabel(73, list)));
             //fase.AddCell(" ");
             fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, true,
-                imagePath, imageExtension, GetJogoByLabel(74, list)));
+                imagePath, imageExtension, GetJogoByLabel(75, list)));
             fase.AddCell(" ");
             fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, true,
-                imagePath, imageExtension, GetJogoByLabel(75, list)));
+                imagePath, imageExtension, GetJogoByLabel(74, list)));
             //fase.AddCell(" ");
             fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, true,
-                imagePath, imageExtension, GetJogoByLabel(76, list)));
+                imagePath, imageExtension, GetJogoByLabel(77, list)));
             fase.AddCell(" ");
             fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, true,
-                imagePath, imageExtension, GetJogoByLabel(77, list)));
+                imagePath, imageExtension, GetJogoByLabel(76, list)));
             //fase.AddCell(" ");
             fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, true,
                 imagePath, imageExtension, GetJogoByLabel(78, list)));
@@ -1405,13 +1405,13 @@ namespace BolaoNet.Infra.Reports.Pdf
             fase.DefaultCell.BorderWidth = 0;
             fase.AddCell(" ");
             fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, false,
-                imagePath, imageExtension, GetJogoByLabel(89, list)));
+                imagePath, imageExtension, GetJogoByLabel(90, list)));
             fase.AddCell(" ");
             fase.AddCell(" ");
             fase.AddCell(" ");
             fase.AddCell(" ");
             fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, false,
-                imagePath, imageExtension, GetJogoByLabel(90, list)));
+                imagePath, imageExtension, GetJogoByLabel(89, list)));
             fase.AddCell(" ");
             fase.AddCell(" ");
             fase.AddCell(" ");
@@ -1454,7 +1454,7 @@ namespace BolaoNet.Infra.Reports.Pdf
             fase.AddCell(" ");
             fase.AddCell(" ");
             fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, false,
-                imagePath, imageExtension, GetJogoByLabel(98, list)));
+                imagePath, imageExtension, GetJogoByLabel(99, list)));
             fase.AddCell(" ");
             fase.AddCell(" ");
 
@@ -1495,14 +1495,6 @@ namespace BolaoNet.Infra.Reports.Pdf
             fase.DefaultCell.BorderWidth = 0;
 
             fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, true,
-                imagePath, imageExtension, GetJogoByLabel(81, list)));
-            //fase.AddCell(" ");
-
-            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, true,
-                imagePath, imageExtension, GetJogoByLabel(82, list)));
-            fase.AddCell(" ");
-
-            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, true,
                 imagePath, imageExtension, GetJogoByLabel(83, list)));
             //fase.AddCell(" ");
 
@@ -1511,19 +1503,27 @@ namespace BolaoNet.Infra.Reports.Pdf
             fase.AddCell(" ");
 
             fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, true,
-                imagePath, imageExtension, GetJogoByLabel(85, list)));
+                imagePath, imageExtension, GetJogoByLabel(81, list)));
             //fase.AddCell(" ");
 
             fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, true,
-                imagePath, imageExtension, GetJogoByLabel(86, list)));
+                imagePath, imageExtension, GetJogoByLabel(82, list)));
             fase.AddCell(" ");
 
             fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, true,
-                imagePath, imageExtension, GetJogoByLabel(87, list)));
+                imagePath, imageExtension, GetJogoByLabel(86, list)));
             //fase.AddCell(" ");
 
             fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, true,
                 imagePath, imageExtension, GetJogoByLabel(88, list)));
+            fase.AddCell(" ");
+
+            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, true,
+                imagePath, imageExtension, GetJogoByLabel(85, list)));
+            //fase.AddCell(" ");
+
+            fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, true,
+                imagePath, imageExtension, GetJogoByLabel(87, list)));
 
             fase.AddCell(" ");
             return fase;
@@ -1577,7 +1577,7 @@ namespace BolaoNet.Infra.Reports.Pdf
             fase.AddCell(" ");
             fase.AddCell(" ");
             fase.AddCell(CreateJogoInEliminatoriaFormat(showOnlyPartidaValida, fim, Color.LIGHT_GRAY, false,
-                imagePath, imageExtension, GetJogoByLabel(99, list)));
+                imagePath, imageExtension, GetJogoByLabel(98, list)));
             fase.AddCell(" ");
             fase.AddCell(" ");
             fase.AddCell(" ");

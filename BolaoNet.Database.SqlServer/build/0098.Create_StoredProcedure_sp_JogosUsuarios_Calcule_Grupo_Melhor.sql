@@ -80,11 +80,7 @@ BEGIN
 			   AND JogosUsuarios.ApostaTime2 IS NOT NULL
 			 WHERE Jogos.NomeCampeonato		= @NomeCampeonato
 			   AND Jogos.NomeFase			= 'Classificatória'		   
-			   
-			   
-			   
-			   
-
+			  			
 			-- Verifica se não existem mais jogos pendentes e está incluindo o último da fase classificatória    
 			--IF @JogosPendentes = 0  --AND @NomeFase = 'Classificatória'
 			IF (@TotalJogos = @JogosPendentes)
@@ -325,6 +321,269 @@ BEGIN
 					END -- endif jogos dos usuários
 				END -- Endif id do jogo existe
 			END  -- Endif nao existem jogos pendentes
+	   END
+	   IF (@NomeCampeonato LIKE 'Copa do Mundo %')
+	   BEGIN 
+
+			 PRINT 'INICIO - Campeonato: ' + @NomeCampeonato + ' - Fase: ' + @NomeFase + ' - Grupo: ' + @NomeGrupo
+
+
+
+			 
+			--1. GERAR GRUPOS A-L
+			IF OBJECT_ID('tempdb..#Grupos') IS NOT NULL DROP TABLE #Grupos
+
+			CREATE TABLE #Grupos (Grupo CHAR(1))
+
+			INSERT INTO #Grupos
+			SELECT Nome
+			FROM CampeonatosGrupos
+			WHERE NomeCampeonato = @NomeCampeonato
+			  AND Nome IS NOT NULL
+			  AND Nome <> ' '
+
+			-- 2. GERAR AS 495 COMBINAÇÕES
+			IF OBJECT_ID('tempdb..#Combinacoes') IS NOT NULL DROP TABLE #Combinacoes
+
+			;WITH CTE AS (
+				SELECT 
+					CAST(Grupo AS VARCHAR(20)) AS Combinacao,
+					Grupo,
+					1 AS Nivel
+				FROM #Grupos
+
+				UNION ALL
+
+				SELECT 
+					CAST(C.Combinacao + G.Grupo AS VARCHAR(20)),
+					G.Grupo,
+					C.Nivel + 1
+				FROM CTE C
+				JOIN #Grupos G
+					ON G.Grupo > C.Grupo
+				WHERE C.Nivel < 8
+			)
+			SELECT Combinacao
+			INTO #Combinacoes
+			FROM CTE
+			WHERE LEN(Combinacao) = 8
+			OPTION (MAXRECURSION 0)
+
+			-- Resultado: 495 linhas
+
+			-- 3. SLOTS FIXOS FIFA
+
+			--INSERT INTO #SlotsFifa VALUES
+			--(1,74,2),
+			--(2,77,2),
+			--(3,79,2),
+			--(4,80,2),
+			--(5,81,2),
+			--(6,82,2),
+			--(7,85,2),
+			--(8,87,2)
+
+			 IF OBJECT_ID('tempdb..#SlotsFifa') IS NOT NULL DROP TABLE #SlotsFifa
+
+			;WITH Slots AS (
+				SELECT 
+					JogoId,
+					1 AS Lado,
+					DataJogo
+				FROM Jogos
+				WHERE NomeCampeonato = @NomeCampeonato
+				  AND PendenteTime1PosGrupo = 3
+
+				UNION ALL
+
+				SELECT 
+					JogoId,
+					2,
+					DataJogo
+				FROM Jogos
+				WHERE NomeCampeonato = @NomeCampeonato
+				  AND PendenteTime2PosGrupo = 3
+			)
+			SELECT *,
+				   ROW_NUMBER() OVER (ORDER BY DataJogo, JogoId, Lado) AS SlotOrdem
+			INTO #SlotsFifa
+			FROM Slots
+
+
+
+			-- 4. GERAR TABELA COMPLETA #FifaOficial
+
+			--vamos criar uma distribuição determinística e sem duplicação
+
+			IF OBJECT_ID('tempdb..#FifaOficial') IS NOT NULL DROP TABLE #FifaOficial
+
+			CREATE TABLE #FifaOficial
+			(
+				Combinacao VARCHAR(20),
+				SlotOrdem INT,
+				Grupo CHAR(1)
+			)
+
+			;WITH GruposExplodidos AS (
+				SELECT 
+					C.Combinacao,
+					SUBSTRING(C.Combinacao, N.Number, 1) AS Grupo,
+					ROW_NUMBER() OVER (
+						PARTITION BY C.Combinacao
+						ORDER BY SUBSTRING(C.Combinacao, N.Number, 1)
+					) AS OrdemGrupo
+				FROM #Combinacoes C
+				JOIN master..spt_values N
+					ON N.Type = 'P'
+				   AND N.Number BETWEEN 1 AND LEN(C.Combinacao)
+			)
+			INSERT INTO #FifaOficial
+			SELECT 
+				G.Combinacao,
+				G.OrdemGrupo AS SlotOrdem,
+				G.Grupo
+			FROM GruposExplodidos G
+
+			--5. RANKING + TOP 8
+
+			IF OBJECT_ID('tempdb..#Ranking') IS NOT NULL DROP TABLE #Ranking
+
+			SELECT 
+				NomeTime,
+				NomeGrupo,
+				TotalPontos,
+				(TotalGolsPro - TotalGolsContra) AS Saldo,
+				TotalGolsPro,
+				ROW_NUMBER() OVER (
+					ORDER BY 
+						TotalPontos DESC,
+						(TotalGolsPro - TotalGolsContra) DESC,
+						TotalGolsPro DESC
+				) AS RankTerceiro
+			INTO #Ranking
+			FROM BoloesCampeonatosClassificacaoUsuarios
+			WHERE NomeCampeonato = @NomeCampeonato
+			  AND NomeFase = 'Classificatória'
+			  AND UserName = @UserName
+			  AND NomeBolao = @NomeBolao
+			  AND Posicao = 3
+
+			IF OBJECT_ID('tempdb..#Top8') IS NOT NULL DROP TABLE #Top8
+
+			SELECT TOP 8 *
+			INTO #Top8
+			FROM #Ranking
+			ORDER BY RankTerceiro
+
+			-- 6. COMBINAÇÃO ATUAL
+			DECLARE @Combinacao VARCHAR(20)
+
+			SELECT @Combinacao =
+				STRING_AGG(NomeGrupo, '') WITHIN GROUP (ORDER BY NomeGrupo)
+			FROM #Top8
+
+			PRINT 'COMBINACAO FIFA: ' + @Combinacao
+
+			-- 7. DISTRIBUIÇÃO FINAL
+			IF OBJECT_ID('tempdb..#Preenchimento') IS NOT NULL DROP TABLE #Preenchimento
+
+			SELECT 
+				S.JogoId,
+				S.Lado,
+				T.NomeTime
+			INTO #Preenchimento
+			FROM #FifaOficial F
+			JOIN #SlotsFifa S
+				ON S.SlotOrdem = F.SlotOrdem
+			JOIN #Top8 T
+				ON T.NomeGrupo = F.Grupo
+			WHERE F.Combinacao = @Combinacao
+
+			------------------------------------------------------------
+			-- 8. UPSERT FINAL EM JogosUsuarios
+			------------------------------------------------------------
+
+			-- 8.1. GARANTIR 1 LINHA POR JOGO (pivot dos lados)
+			IF OBJECT_ID('tempdb..#FinalJogos') IS NOT NULL DROP TABLE #FinalJogos
+
+			SELECT 
+				P.JogoId,
+				MAX(CASE WHEN P.Lado = 1 THEN P.NomeTime END) AS NomeTime1,
+				MAX(CASE WHEN P.Lado = 2 THEN P.NomeTime END) AS NomeTime2
+			INTO #FinalJogos
+			FROM #Preenchimento P
+			GROUP BY P.JogoId
+
+			------------------------------------------------------------
+			-- 8.2. INSERT (somente se não existir)
+			------------------------------------------------------------
+			INSERT INTO JogosUsuarios
+			(
+				JogoID,
+				NomeCampeonato,
+				UserName,
+				NomeBolao,
+				NomeTimeResult1,
+				NomeTimeResult2,
+				Automatico,
+				CreatedBy,
+				CreatedDate,
+				ModifiedBy,
+				ModifiedDate
+			)
+			SELECT 
+				F.JogoId,
+				@NomeCampeonato,
+				@UserName,
+				@NomeBolao,
+				F.NomeTime1,
+				F.NomeTime2,
+				1,
+				@UserName,
+				GETDATE(),
+				@UserName,
+				GETDATE()
+			FROM #FinalJogos F
+			WHERE NOT EXISTS (
+				SELECT 1
+				FROM JogosUsuarios JU
+				WHERE JU.JogoID = F.JogoId
+				  AND JU.NomeCampeonato = @NomeCampeonato
+				  AND JU.UserName = @UserName
+				  AND JU.NomeBolao = @NomeBolao
+			)
+
+
+			------------------------------------------------------------
+			-- 8.3. UPDATE (quando já existir)
+			------------------------------------------------------------
+			UPDATE JU
+			SET 
+				JU.NomeTimeResult1 = CASE WHEN F.NomeTime1 IS NOT NULL THEN F.NomeTime1 ELSE JU.NomeTimeResult1 END,
+				JU.NomeTimeResult2 = CASE WHEN F.NomeTime2 IS NOT NULL THEN F.NomeTime2 ELSE JU.NomeTimeResult2 END,
+				JU.ModifiedBy = @UserName,
+				JU.ModifiedDate = GETDATE()
+			FROM JogosUsuarios JU
+			JOIN #FinalJogos F
+				ON JU.JogoID = F.JogoId
+			WHERE JU.NomeCampeonato = @NomeCampeonato
+			  AND JU.UserName = @UserName
+			  AND JU.NomeBolao = @NomeBolao
+
+
+			------------------------------------------------------------
+			-- DEBUG FINAL
+			------------------------------------------------------------
+			PRINT '--- UPSERT CONCLUIDO ---'
+
+			--SELECT *
+			--FROM JogosUsuarios
+			--WHERE NomeCampeonato = @NomeCampeonato
+			--  AND UserName = @UserName
+			--  AND NomeBolao = @NomeBolao
+
+			 PRINT 'FIM - Campeonato: ' + @NomeCampeonato + ' - Fase: ' + @NomeFase + ' - Grupo: ' + @NomeGrupo
+			 
 	   END
 	   ELSE
 	   BEGIN

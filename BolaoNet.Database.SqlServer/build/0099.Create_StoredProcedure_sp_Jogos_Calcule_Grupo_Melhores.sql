@@ -215,162 +215,130 @@ BEGIN
 	END
 	ELSE
 	BEGIN
+	 
 
-		IF (@NomeCampeonato LIKE 'Copa Mundo %')
+		IF (@NomeCampeonato LIKE 'Copa do Mundo %')
 		BEGIN
-			PRINT '-- CALCULO DOS MELHORES TERCEIROS DA COPA DO MUNDO --'
+			PRINT '-- CALCULO FIFA DOS MELHORES TERCEIROS (OFICIAL) --'
 
-			DECLARE @MaxRodada int
-			SELECT @MaxRodada = ISNULL(MAX(Rodada), 0)
-			  FROM CampeonatosClassificacao
-			 WHERE NomeCampeonato = @NomeCampeonato
-			   AND NomeFase = 'Classificatória';
-
-			-- Pegando todos os terceiros colocados de cada grupo
-			;WITH Terceiros AS (
-				SELECT NomeTime, NomeGrupo, TotalPontos, Saldo = TotalGolsPro - TotalGolsContra, TotalGolsPro
-				  FROM CampeonatosClassificacao
-				 WHERE NomeCampeonato = @NomeCampeonato
-				   AND NomeFase = 'Classificatória'
-				   AND Posicao = 3
-				   AND Rodada = @MaxRodada
+			------------------------------------------------------------
+			-- 1. GARANTIR QUE FASE DE GRUPOS TERMINOU
+			------------------------------------------------------------
+			IF EXISTS (
+				SELECT 1
+				FROM Jogos
+				WHERE NomeCampeonato = @NomeCampeonato
+				  AND NomeFase = 'Classificatória'
+				  AND IsValido = 0
 			)
-			SELECT TOP 4 *
-			  INTO #MelhoresTerceiros
-			  FROM Terceiros
-			 ORDER BY TotalPontos DESC, Saldo DESC, TotalGolsPro DESC;
-
-			PRINT 'Melhores terceiros selecionados:'
-			SELECT * FROM #MelhoresTerceiros;
-
-			-- Inserindo os melhores terceiros na lógica dos jogos pendentes
-			-- Para o TIME 1
-			DECLARE curClassificacao1 CURSOR FOR
-				SELECT JogoId, LTRIM(RTRIM(PendenteTime1NomeGrupo)), PendenteTime1PosGrupo
-				  FROM Jogos
-				 WHERE NomeCampeonato = @NomeCampeonato
-				   AND PendenteTime1MelhorGrupos = 1;
-
-			OPEN curClassificacao1
-			FETCH NEXT FROM curClassificacao1 INTO @IdJogoCursor, @PendenteTimeNomeGrupoCursor, @PendenteTimePosGrupoCursor
-
-			WHILE @@FETCH_STATUS = 0
 			BEGIN
-				SET @count = 1
-				SET @SomaGrupos = 0
-				SET @NomeGrupoIn = ''
-
-				-- Verifica se os jogos dos grupos estão concluídos
-				WHILE (@count <= LEN(@PendenteTimeNomeGrupoCursor))
-				BEGIN
-					SET @NomeGrupoCorrente = SUBSTRING(@PendenteTimeNomeGrupoCursor, @count, 1)
-
-					SELECT @TotalPendencia = ISNULL(COUNT(*), 0)
-					  FROM Jogos
-					 WHERE IsValido = 0
-					   AND NomeCampeonato = @NomeCampeonato
-					   AND NomeGrupo = @NomeGrupoCorrente
-					   AND NomeFase = @NomeFase;
-
-					IF (@TotalPendencia = 0)
-					BEGIN
-						SET @SomaGrupos = @SomaGrupos + 1
-						IF (LEN(@NomeGrupoIn) > 0)
-							SET @NomeGrupoIn = @NomeGrupoIn + ','
-						SET @NomeGrupoIn = @NomeGrupoIn + '''' + @NomeGrupoCorrente + ''''
-					END
-
-					SET @count = @count + 1
-				END
-
-				-- Se todos os grupos concluídos, pega o melhor terceiro
-				IF (@SomaGrupos = LEN(@PendenteTimeNomeGrupoCursor))
-				BEGIN
-					SET @sql = 'SELECT TOP 1 @NomeTime = NomeTime, @NomeGrupoMelhor = NomeGrupo
-								  FROM #MelhoresTerceiros
-								 WHERE NomeGrupo IN (' + @NomeGrupoIn + ')
-								 ORDER BY TotalPontos DESC, Saldo DESC, TotalGolsPro DESC';
-
-					EXECUTE sp_executesql @sql, 
-										  @Params = N'@NomeTime varchar(150) OUTPUT, @NomeGrupoMelhor varchar(30) OUTPUT',
-										  @NomeTime = @NomeTime OUTPUT, @NomeGrupoMelhor = @NomeGrupoMelhor OUTPUT;
-
-					PRINT 'Melhor 3º colocado para TIME 1: ' + @NomeTime + ' (Grupo: ' + @NomeGrupoMelhor + ') - Jogo: ' + CONVERT(VARCHAR, @IdJogoCursor);
-
-					UPDATE Jogos
-					   SET NomeTime1 = @NomeTime
-					 WHERE NomeCampeonato = @NomeCampeonato
-					   AND JogoID = @IdJogoCursor;
-				END
-
-				FETCH NEXT FROM curClassificacao1 INTO @IdJogoCursor, @PendenteTimeNomeGrupoCursor, @PendenteTimePosGrupoCursor
+				PRINT 'Ainda existem jogos não finalizados na fase de grupos'
+				RETURN
 			END
-			CLOSE curClassificacao1
-			DEALLOCATE curClassificacao1
 
-			-- Para o TIME 2
-			DECLARE curClassificacao2 CURSOR FOR
-				SELECT JogoId, LTRIM(RTRIM(PendenteTime2NomeGrupo)), PendenteTime2PosGrupo
-				  FROM Jogos
-				 WHERE NomeCampeonato = @NomeCampeonato
-				   AND PendenteTime2MelhorGrupos = 1;
+			------------------------------------------------------------
+			-- 2. RANKING GLOBAL DOS TERCEIROS
+			------------------------------------------------------------
+			IF OBJECT_ID('tempdb..#Ranking') IS NOT NULL DROP TABLE #Ranking
 
-			OPEN curClassificacao2
-			FETCH NEXT FROM curClassificacao2 INTO @IdJogoCursor, @PendenteTimeNomeGrupoCursor, @PendenteTimePosGrupoCursor
+			SELECT 
+				NomeTime,
+				NomeGrupo,
+				SUM(TotalPontos) AS Pontos,
+				SUM(TotalGolsPro - TotalGolsContra) AS Saldo,
+				SUM(TotalGolsPro) AS GolsPro,
+				ROW_NUMBER() OVER (
+					ORDER BY 
+						SUM(TotalPontos) DESC,
+						SUM(TotalGolsPro - TotalGolsContra) DESC,
+						SUM(TotalGolsPro) DESC
+				) AS RankTerceiro
+			INTO #Ranking
+			FROM CampeonatosClassificacao
+			WHERE NomeCampeonato = @NomeCampeonato
+			  AND NomeFase = 'Classificatória'
+			  AND Posicao = 3
+			GROUP BY NomeTime, NomeGrupo
 
-			WHILE @@FETCH_STATUS = 0
-			BEGIN
-				SET @count = 1
-				SET @SomaGrupos = 0
-				SET @NomeGrupoIn = ''
+			------------------------------------------------------------
+			-- 3. TOP 8 (CLASSIFICADOS)
+			------------------------------------------------------------
+			IF OBJECT_ID('tempdb..#Top8') IS NOT NULL DROP TABLE #Top8
 
-				WHILE (@count <= LEN(@PendenteTimeNomeGrupoCursor))
-				BEGIN
-					SET @NomeGrupoCorrente = SUBSTRING(@PendenteTimeNomeGrupoCursor, @count, 1)
+			SELECT TOP 8 *
+			INTO #Top8
+			FROM #Ranking
+			ORDER BY RankTerceiro
 
-					SELECT @TotalPendencia = ISNULL(COUNT(*), 0)
-					  FROM Jogos
-					 WHERE IsValido = 0
-					   AND NomeCampeonato = @NomeCampeonato
-					   AND NomeGrupo = @NomeGrupoCorrente
-					   AND NomeFase = @NomeFase;
+			PRINT 'Top 8 terceiros classificados'
+			SELECT * FROM #Top8
 
-					IF (@TotalPendencia = 0)
-					BEGIN
-						SET @SomaGrupos = @SomaGrupos + 1
-						IF (LEN(@NomeGrupoIn) > 0)
-							SET @NomeGrupoIn = @NomeGrupoIn + ','
-						SET @NomeGrupoIn = @NomeGrupoIn + '''' + @NomeGrupoCorrente + ''''
-					END
+			------------------------------------------------------------
+			-- 4. SLOTS DOS JOGOS (POSIÇÕES DOS TERCEIROS)
+			------------------------------------------------------------
+			IF OBJECT_ID('tempdb..#Slots') IS NOT NULL DROP TABLE #Slots
 
-					SET @count = @count + 1
-				END
+			;WITH Slots AS (
+				SELECT JogoId, 1 AS Lado, DataJogo
+				FROM Jogos
+				WHERE NomeCampeonato = @NomeCampeonato
+				  AND PendenteTime1PosGrupo = 3
 
-				IF (@SomaGrupos = LEN(@PendenteTimeNomeGrupoCursor))
-				BEGIN
-					SET @sql = 'SELECT TOP 1 @NomeTime = NomeTime, @NomeGrupoMelhor = NomeGrupo
-								  FROM #MelhoresTerceiros
-								 WHERE NomeGrupo IN (' + @NomeGrupoIn + ')
-								 ORDER BY TotalPontos DESC, Saldo DESC, TotalGolsPro DESC';
+				UNION ALL
 
-					EXECUTE sp_executesql @sql, 
-										  @Params = N'@NomeTime varchar(150) OUTPUT, @NomeGrupoMelhor varchar(30) OUTPUT',
-										  @NomeTime = @NomeTime OUTPUT, @NomeGrupoMelhor = @NomeGrupoMelhor OUTPUT;
+				SELECT JogoId, 2, DataJogo
+				FROM Jogos
+				WHERE NomeCampeonato = @NomeCampeonato
+				  AND PendenteTime2PosGrupo = 3
+			)
+			SELECT *,
+				   ROW_NUMBER() OVER (ORDER BY DataJogo, JogoId, Lado) AS SlotOrdem
+			INTO #Slots
+			FROM Slots
 
-					PRINT 'Melhor 3º colocado para TIME 2: ' + @NomeTime + ' (Grupo: ' + @NomeGrupoMelhor + ') - Jogo: ' + CONVERT(VARCHAR, @IdJogoCursor);
+			------------------------------------------------------------
+			-- 5. DISTRIBUIÇÃO DIRETA (SEM DUPLICAR)
+			------------------------------------------------------------
+			IF OBJECT_ID('tempdb..#Distribuicao') IS NOT NULL DROP TABLE #Distribuicao
 
-					UPDATE Jogos
-					   SET NomeTime2 = @NomeTime
-					 WHERE NomeCampeonato = @NomeCampeonato
-					   AND JogoID = @IdJogoCursor;
-				END
+			SELECT 
+				S.JogoId,
+				S.Lado,
+				T.NomeTime,
+				T.RankTerceiro
+			INTO #Distribuicao
+			FROM #Slots S
+			JOIN #Top8 T
+				ON T.RankTerceiro = S.SlotOrdem
 
-				FETCH NEXT FROM curClassificacao2 INTO @IdJogoCursor, @PendenteTimeNomeGrupoCursor, @PendenteTimePosGrupoCursor
-			END
-			CLOSE curClassificacao2
-			DEALLOCATE curClassificacao2
+			------------------------------------------------------------
+			-- DEBUG
+			------------------------------------------------------------
+			PRINT 'Distribuição final dos terceiros'
+			SELECT * FROM #Distribuicao
 
-			DROP TABLE #MelhoresTerceiros
+			------------------------------------------------------------
+			-- 6. ATUALIZAR JOGOS (SEM DUPLICAR)
+			------------------------------------------------------------
+
+			-- TIME 1
+			UPDATE J
+			   SET J.NomeTime1 = D.NomeTime
+			FROM Jogos J
+			JOIN #Distribuicao D
+				ON J.JogoId = D.JogoId
+			   AND D.Lado = 1
+			WHERE J.NomeCampeonato = @NomeCampeonato
+
+			-- TIME 2
+			UPDATE J
+			   SET J.NomeTime2 = D.NomeTime
+			FROM Jogos J
+			JOIN #Distribuicao D
+				ON J.JogoId = D.JogoId
+			   AND D.Lado = 2
+			WHERE J.NomeCampeonato = @NomeCampeonato
+
 			PRINT '-- FIM DO CÁLCULO DOS MELHORES TERCEIROS --'
 		END
 		ELSE

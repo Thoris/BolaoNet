@@ -107,7 +107,7 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             string[] grupoA = { "México", "Coreia do Sul", "África do Sul", "República Tcheca" };
 
             // GRUPO B
-            string[] grupoB = { "Canadá", "Suíça", "Catar", "Bósnia e Herzegovina" };
+            string[] grupoB = { "Canadá", "Suíça", "Catar", "Bósnia Herzegovina" };
 
             // GRUPO C
             string[] grupoC = { "Brasil", "Marrocos", "Escócia", "Haiti" };
@@ -134,145 +134,189 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             string[] grupoJ = { "Argentina", "Áustria", "Argélia", "Jordânia" };
 
             // GRUPO K
-            string[] grupoK = { "Portugal", "Colômbia", "Uzbequistão", "República Democrática do Congo" };
+            string[] grupoK = { "Portugal", "Colômbia", "Uzbequistão", "RD Congo" };
 
             // GRUPO L
             string[] grupoL = { "Inglaterra", "Croácia", "Gana", "Panamá" };
 
 
-            // =========================
+
+            // =====================================================
             // GRUPO A
-            // =========================
-            //string[] grupoA = { "Estados Unidos", "México", "Japão", "Nigéria" };
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 11, 18, 0, 0), "Los Angeles", nomeFase, "A", grupoA[0], grupoA[1], 1, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 11, 21, 0, 0), "Dallas", nomeFase, "A", grupoA[2], grupoA[3], 1, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 15, 18, 0, 0), "Dallas", nomeFase, "A", grupoA[0], grupoA[2], 2, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 15, 21, 0, 0), "Los Angeles", nomeFase, "A", grupoA[1], grupoA[3], 2, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 19, 21, 0, 0), "Los Angeles", nomeFase, "A", grupoA[0], grupoA[3], 3, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 19, 21, 0, 0), "Dallas", nomeFase, "A", grupoA[1], grupoA[2], 3, jogoId++, false));
+            // =====================================================
 
-            // =========================
+            // Rodada 1
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 11, 16, 0, 0), "Cidade do México", nomeFase, "A", grupoA[0], grupoA[2], 1, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 11, 23, 0, 0), "Guadalajara", nomeFase, "A", grupoA[1], grupoA[3], 1, jogoId++, false));
+
+            // Rodada 2
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 18, 13, 0, 0), "Atlanta", nomeFase, "A", grupoA[3], grupoA[2], 2, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 18, 22, 0, 0), "Guadalajara", nomeFase, "A", grupoA[0], grupoA[1], 2, jogoId++, false));
+
+            // Rodada 3
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 24, 22, 0, 0), "Cidade do México", nomeFase, "A", grupoA[3], grupoA[0], 3, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 24, 22, 0, 0), "Monterrey", nomeFase, "A", grupoA[2], grupoA[1], 3, jogoId++, false));
+
+
+            // =====================================================
             // GRUPO B
-            // =========================
-             //string[] grupoB = { "Brasil", "Coreia do Sul", "Canadá", "Marrocos" };
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 12, 18, 0, 0), "Toronto", nomeFase, "B", grupoB[0], grupoB[1], 1, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 12, 21, 0, 0), "Vancouver", nomeFase, "B", grupoB[2], grupoB[3], 1, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 16, 18, 0, 0), "Toronto", nomeFase, "B", grupoB[0], grupoB[2], 2, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 16, 21, 0, 0), "Vancouver", nomeFase, "B", grupoB[1], grupoB[3], 2, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 20, 21, 0, 0), "Toronto", nomeFase, "B", grupoB[0], grupoB[3], 3, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 20, 21, 0, 0), "Vancouver", nomeFase, "B", grupoB[2], grupoB[1], 3, jogoId++, false));
+            // =====================================================
 
-            // =========================
+            // Rodada 1
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 12, 16, 0, 0), "Toronto", nomeFase, "B", grupoB[0], grupoB[3], 1, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 13, 16, 0, 0), "San Francisco", nomeFase, "B", grupoB[2], grupoB[1], 1, jogoId++, false));
+
+            // Rodada 2
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 18, 16, 0, 0), "Los Angeles", nomeFase, "B", grupoB[1], grupoB[3], 2, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 18, 19, 0, 0), "Vancouver", nomeFase, "B", grupoB[0], grupoB[2], 2, jogoId++, false));
+
+            // Rodada 3
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 24, 16, 0, 0), "Vancouver", nomeFase, "B", grupoB[1], grupoB[0], 3, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 24, 16, 0, 0), "Seattle", nomeFase, "B", grupoB[3], grupoB[2], 3, jogoId++, false));
+
+
+            // =====================================================
             // GRUPO C
-            // =========================
-             //string[] grupoC = { "Argentina", "Polônia", "Egito", "Austrália" };
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 13, 18, 0, 0), "Miami", nomeFase, "C", grupoC[0], grupoC[1], 1, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 13, 21, 0, 0), "Atlanta", nomeFase, "C", grupoC[2], grupoC[3], 1, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 17, 18, 0, 0), "Miami", nomeFase, "C", grupoC[0], grupoC[2], 2, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 17, 21, 0, 0), "Atlanta", nomeFase, "C", grupoC[1], grupoC[3], 2, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 21, 21, 0, 0), "Miami", nomeFase, "C", grupoC[0], grupoC[3], 3, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 21, 21, 0, 0), "Atlanta", nomeFase, "C", grupoC[1], grupoC[2], 3, jogoId++, false));
+            // =====================================================
 
-            // =========================
-            // GRUPOS D
-            // =========================
-              //string[] grupoD = { "França", "Tunísia", "Peru", "Dinamarca" };
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 14, 18, 0, 0), "Houston", nomeFase, "D", grupoD[0], grupoD[1], 1, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 14, 21, 0, 0), "Monterrey", nomeFase, "D", grupoD[2], grupoD[3], 1, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 18, 18, 0, 0), "Houston", nomeFase, "D", grupoD[0], grupoD[2], 2, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 18, 21, 0, 0), "Monterrey", nomeFase, "D", grupoD[1], grupoD[3], 2, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 22, 21, 0, 0), "Houston", nomeFase, "D", grupoD[0], grupoD[3], 3, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 22, 21, 0, 0), "Monterrey", nomeFase, "D", grupoD[1], grupoD[2], 3, jogoId++, false));
+            // Rodada 1
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 13, 19, 0, 0), "Nova York", nomeFase, "C", grupoC[0], grupoC[1], 1, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 13, 22, 0, 0), "Boston", nomeFase, "C", grupoC[3], grupoC[2], 1, jogoId++, false));
 
-            // =========================
-            // GRUPOS E
-            // =========================
-             //string[] grupoE = { "Espanha", "Japão", "Chile", "Irã" };
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 15, 18, 0, 0), "Seattle", nomeFase, "E", grupoE[0], grupoE[1], 1, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 15, 21, 0, 0), "San Francisco", nomeFase, "E", grupoE[2], grupoE[3], 1, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 19, 18, 0, 0), "Seattle", nomeFase, "E", grupoE[0], grupoE[2], 2, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 19, 21, 0, 0), "San Francisco", nomeFase, "E", grupoE[1], grupoE[3], 2, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 23, 21, 0, 0), "Seattle", nomeFase, "E", grupoE[0], grupoE[3], 3, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 23, 21, 0, 0), "San Francisco", nomeFase, "E", grupoE[1], grupoE[2], 3, jogoId++, false));
+            // Rodada 2
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 19, 19, 0, 0), "Boston", nomeFase, "C", grupoC[2], grupoC[1], 2, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 19, 21, 30, 0), "Filadélfia", nomeFase, "C", grupoC[0], grupoC[3], 2, jogoId++, false));
 
-            // =========================
-            // GRUPOS F
-            // =========================
-             //string[] grupoF = { "Alemanha", "Canadá", "Nigéria", "Arábia Saudita" };
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 16, 18, 0, 0), "Chicago", nomeFase, "F", grupoF[0], grupoF[1], 1, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 16, 21, 0, 0), "Detroit", nomeFase, "F", grupoF[2], grupoF[3], 1, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 20, 18, 0, 0), "Chicago", nomeFase, "F", grupoF[0], grupoF[2], 2, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 20, 21, 0, 0), "Detroit", nomeFase, "F", grupoF[1], grupoF[3], 2, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 24, 21, 0, 0), "Chicago", nomeFase, "F", grupoF[0], grupoF[3], 3, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 24, 21, 0, 0), "Detroit", nomeFase, "F", grupoF[1], grupoF[2], 3, jogoId++, false));
-
-            // =========================
-            // GRUPOS G
-            // =========================
-              //string[] grupoG = { "Inglaterra", "Gana", "Sérvia", "Coreia do Sul" };
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 17, 18, 0, 0), "Boston", nomeFase, "G", grupoG[0], grupoG[1], 1, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 17, 21, 0, 0), "New York", nomeFase, "G", grupoG[2], grupoG[3], 1, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 21, 18, 0, 0), "Boston", nomeFase, "G", grupoG[0], grupoG[2], 2, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 21, 21, 0, 0), "New York", nomeFase, "G", grupoG[1], grupoG[3], 2, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 25, 21, 0, 0), "Boston", nomeFase, "G", grupoG[0], grupoG[3], 3, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 25, 21, 0, 0), "New York", nomeFase, "G", grupoG[1], grupoG[2], 3, jogoId++, false));
-
-            // =========================
-            // GRUPOS H
-            // =========================
-              //string[] grupoH = { "Portugal", "Uruguai", "Camarões", "Austrália" };
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 18, 18, 0, 0), "Philadelphia", nomeFase, "H", grupoH[0], grupoH[1], 1, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 18, 21, 0, 0), "Washington", nomeFase, "H", grupoH[2], grupoH[3], 1, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 22, 18, 0, 0), "Philadelphia", nomeFase, "H", grupoH[0], grupoH[2], 2, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 22, 21, 0, 0), "Washington", nomeFase, "H", grupoH[1], grupoH[3], 2, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 26, 21, 0, 0), "Philadelphia", nomeFase, "H", grupoH[0], grupoH[3], 3, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 26, 21, 0, 0), "Washington", nomeFase, "H", grupoH[1], grupoH[2], 3, jogoId++, false));
+            // Rodada 3
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 24, 19, 0, 0), "Miami", nomeFase, "C", grupoC[2], grupoC[0], 3, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 24, 19, 0, 0), "Atlanta", nomeFase, "C", grupoC[1], grupoC[3], 3, jogoId++, false));
 
 
-            // =========================
-            // GRUPOS I
-            // =========================
-             //string[] grupoI = { "Itália", "México", "Egito", "Japão" };
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 19, 18, 0, 0), "Orlando", nomeFase, "I", grupoI[0], grupoI[1], 1, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 19, 21, 0, 0), "Tampa", nomeFase, "I", grupoI[2], grupoI[3], 1, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 23, 18, 0, 0), "Orlando", nomeFase, "I", grupoI[0], grupoI[2], 2, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 23, 21, 0, 0), "Tampa", nomeFase, "I", grupoI[1], grupoI[3], 2, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 27, 21, 0, 0), "Orlando", nomeFase, "I", grupoI[0], grupoI[3], 3, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 27, 21, 0, 0), "Tampa", nomeFase, "I", grupoI[1], grupoI[2], 3, jogoId++, false));
+            // =====================================================
+            // GRUPO D
+            // =====================================================
 
-            // =========================
-            // GRUPOS J
-            // =========================
-             //string[] grupoJ = { "Holanda", "Colômbia", "Gales", "Tunísia" };
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 20, 18, 0, 0), "Denver", nomeFase, "J", grupoJ[0], grupoJ[1], 1, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 20, 21, 0, 0), "Kansas City", nomeFase, "J", grupoJ[2], grupoJ[3], 1, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 24, 18, 0, 0), "Denver", nomeFase, "J", grupoJ[0], grupoJ[2], 2, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 24, 21, 0, 0), "Kansas City", nomeFase, "J", grupoJ[1], grupoJ[3], 2, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 28, 21, 0, 0), "Denver", nomeFase, "J", grupoJ[0], grupoJ[3], 3, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 28, 21, 0, 0), "Kansas City", nomeFase, "J", grupoJ[1], grupoJ[2], 3, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 12, 22, 0, 0), "Los Angeles", nomeFase, "D", grupoD[0], grupoD[1], 1, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 13, 1, 0, 0), "Vancouver", nomeFase, "D", grupoD[3], grupoD[2], 1, jogoId++, false));
 
-            // =========================
-            // GRUPOS K
-            // =========================
-              //string[] grupoK = { "Bélgica", "Suíça", "Costa Rica", "Uzbequistão" };
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 21, 18, 0, 0), "Phoenix", nomeFase, "K", grupoK[0], grupoK[1], 1, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 21, 21, 0, 0), "Glendale", nomeFase, "K", grupoK[2], grupoK[3], 1, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 25, 18, 0, 0), "Phoenix", nomeFase, "K", grupoK[0], grupoK[2], 2, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 25, 21, 0, 0), "Glendale", nomeFase, "K", grupoK[1], grupoK[3], 2, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 29, 21, 0, 0), "Phoenix", nomeFase, "K", grupoK[0], grupoK[3], 3, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 29, 21, 0, 0), "Glendale", nomeFase, "K", grupoK[1], grupoK[2], 3, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 19, 0, 0, 0), "San Francisco", nomeFase, "D", grupoD[2], grupoD[1], 2, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 19, 16, 0, 0), "Seattle", nomeFase, "D", grupoD[0], grupoD[3], 2, jogoId++, false));
 
-            // =========================
-            // GRUPOS L
-            // =========================
-              //string[] grupoL = { "Croácia", "Suécia", "Equador", "Nova Zelândia" };
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 22, 18, 0, 0), "Las Vegas", nomeFase, "L", grupoL[0], grupoL[1], 1, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 22, 21, 0, 0), "San Diego", nomeFase, "L", grupoL[2], grupoL[3], 1, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 26, 18, 0, 0), "Las Vegas", nomeFase, "L", grupoL[0], grupoL[2], 2, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 26, 21, 0, 0), "San Diego", nomeFase, "L", grupoL[1], grupoL[3], 2, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 30, 21, 0, 0), "Las Vegas", nomeFase, "L", grupoL[0], grupoL[3], 3, jogoId++, false));
-            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 30, 21, 0, 0), "San Diego", nomeFase, "L", grupoL[1], grupoL[2], 3, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 25, 23, 0, 0), "Los Angeles", nomeFase, "D", grupoD[2], grupoD[0], 3, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 25, 23, 0, 0), "San Francisco", nomeFase, "D", grupoD[1], grupoD[3], 3, jogoId++, false));
 
+
+            // =====================================================
+            // GRUPO E
+            // =====================================================
+
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 14, 14, 0, 0), "Houston", nomeFase, "E", grupoE[0], grupoE[3], 1, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 14, 20, 0, 0), "Filadélfia", nomeFase, "E", grupoE[2], grupoE[1], 1, jogoId++, false));
+
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 20, 17, 0, 0), "Toronto", nomeFase, "E", grupoE[0], grupoE[2], 2, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 20, 21, 0, 0), "Kansas City", nomeFase, "E", grupoE[1], grupoE[3], 2, jogoId++, false));
+
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 25, 17, 0, 0), "Nova York", nomeFase, "E", grupoE[1], grupoE[0], 3, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 25, 17, 0, 0), "Filadélfia", nomeFase, "E", grupoE[3], grupoE[2], 3, jogoId++, false));
+
+
+            // =====================================================
+            // GRUPO F
+            // =====================================================
+
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 14, 17, 0, 0), "Dallas", nomeFase, "F", grupoF[0], grupoF[1], 1, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 14, 23, 0, 0), "Monterrey", nomeFase, "F", grupoF[2], grupoF[3], 1, jogoId++, false));
+
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 20, 14, 0, 0), "Houston", nomeFase, "F", grupoF[0], grupoF[2], 2, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 21, 1, 0, 0), "Monterrey", nomeFase, "F", grupoF[3], grupoF[1], 2, jogoId++, false));
+
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 25, 20, 0, 0), "Dallas", nomeFase, "F", grupoF[1], grupoF[2], 3, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 25, 20, 0, 0), "Kansas City", nomeFase, "F", grupoF[3], grupoF[0], 3, jogoId++, false));
+
+
+            // =====================================================
+            // GRUPO G
+            // =====================================================
+
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 15, 16, 0, 0), "Seattle", nomeFase, "G", grupoG[0], grupoG[1], 1, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 15, 22, 0, 0), "Los Angeles", nomeFase, "G", grupoG[2], grupoG[3], 1, jogoId++, false));
+
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 21, 16, 0, 0), "Los Angeles", nomeFase, "G", grupoG[0], grupoG[2], 2, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 21, 22, 0, 0), "Vancouver", nomeFase, "G", grupoG[3], grupoG[1], 2, jogoId++, false));
+
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 26, 0, 0, 0), "Seattle", nomeFase, "G", grupoG[1], grupoG[2], 3, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 26, 0, 0, 0), "Vancouver", nomeFase, "G", grupoG[3], grupoG[0], 3, jogoId++, false));
+
+
+            // =====================================================
+            // GRUPO H
+            // =====================================================
+
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 15, 13, 0, 0), "Atlanta", nomeFase, "H", grupoH[0], grupoH[3], 1, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 15, 19, 0, 0), "Miami", nomeFase, "H", grupoH[2], grupoH[1], 1, jogoId++, false));
+
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 21, 13, 0, 0), "Atlanta", nomeFase, "H", grupoH[0], grupoH[2], 2, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 21, 19, 0, 0), "Miami", nomeFase, "H", grupoH[1], grupoH[3], 2, jogoId++, false));
+
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 26, 21, 0, 0), "Houston", nomeFase, "H", grupoH[3], grupoH[2], 3, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 26, 21, 0, 0), "Guadalajara", nomeFase, "H", grupoH[1], grupoH[0], 3, jogoId++, false));
+
+
+            // =====================================================
+            // GRUPO I
+            // =====================================================
+
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 16, 16, 0, 0), "Nova York", nomeFase, "I", grupoI[0], grupoI[1], 1, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 16, 19, 0, 0), "Boston", nomeFase, "I", grupoI[3], grupoI[2], 1, jogoId++, false));
+
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 22, 18, 0, 0), "Filadélfia", nomeFase, "I", grupoI[0], grupoI[3], 2, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 22, 21, 0, 0), "Nova York", nomeFase, "I", grupoI[2], grupoI[1], 2, jogoId++, false));
+
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 26, 16, 0, 0), "Boston", nomeFase, "I", grupoI[2], grupoI[0], 3, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 26, 16, 0, 0), "Toronto", nomeFase, "I", grupoI[1], grupoI[3], 3, jogoId++, false));
+
+
+            // =====================================================
+            // GRUPO J
+            // =====================================================
+
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 16, 22, 0, 0), "Kansas City", nomeFase, "J", grupoJ[0], grupoJ[2], 1, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 17, 1, 0, 0), "San Francisco", nomeFase, "J", grupoJ[1], grupoJ[3], 1, jogoId++, false));
+
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 22, 14, 0, 0), "Dallas", nomeFase, "J", grupoJ[0], grupoJ[1], 2, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 23, 0, 0, 0), "San Francisco", nomeFase, "J", grupoJ[3], grupoJ[2], 2, jogoId++, false));
+
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 27, 23, 0, 0), "Dallas", nomeFase, "J", grupoJ[3], grupoJ[0], 3, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 27, 23, 0, 0), "Kansas City", nomeFase, "J", grupoJ[2], grupoJ[1], 3, jogoId++, false));
+
+
+            // =====================================================
+            // GRUPO K
+            // =====================================================
+
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 17, 14, 0, 0), "Houston", nomeFase, "K", grupoK[0], grupoK[3], 1, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 17, 23, 0, 0), "Cidade do México", nomeFase, "K", grupoK[2], grupoK[1], 1, jogoId++, false));
+
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 23, 14, 0, 0), "Houston", nomeFase, "K", grupoK[0], grupoK[2], 2, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 23, 23, 0, 0), "Guadalajara", nomeFase, "K", grupoK[1], grupoK[3], 2, jogoId++, false));
+
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 27, 20, 30, 0), "Miami", nomeFase, "K", grupoK[1], grupoK[0], 3, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 27, 20, 30, 0), "Atlanta", nomeFase, "K", grupoK[3], grupoK[2], 3, jogoId++, false));
+
+
+            // =====================================================
+            // GRUPO L
+            // =====================================================
+
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 17, 17, 0, 0), "Dallas", nomeFase, "L", grupoL[0], grupoL[1], 1, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 17, 20, 0, 0), "Toronto", nomeFase, "L", grupoL[2], grupoL[3], 1, jogoId++, false));
+
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 23, 17, 0, 0), "Boston", nomeFase, "L", grupoL[0], grupoL[2], 2, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 23, 20, 0, 0), "Toronto", nomeFase, "L", grupoL[3], grupoL[1], 2, jogoId++, false));
+
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 27, 18, 0, 0), "Nova York", nomeFase, "L", grupoL[3], grupoL[0], 3, jogoId++, false));
+            list.Add(CreateJogo(campeonatoNome, new DateTime(2026, 6, 27, 18, 0, 0), "Filadélfia", nomeFase, "L", grupoL[1], grupoL[2], 3, jogoId++, false));
+             
             return list;
         }
 
@@ -281,55 +325,57 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             string nomeFase = FaseDezesseisAvosFinal;
             int rodada = 4;
             string nomeGrupo = " ";
-
+             
             IList<Entities.Campeonatos.Jogo> list = new List<Entities.Campeonatos.Jogo>();
 
-            //// 1º colocados x melhores 3º (dinâmico – FIFA)
-            //list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 6, 28, 12, 0, 0), "Los Angeles", nomeFase, nomeGrupo, rodada, 73, "A", 1, "CEFHI", 3, true, null, null));
-            //list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 6, 28, 16, 0, 0), "Houston", nomeFase, nomeGrupo, rodada, 74, "B", 1, "EFGIJ", 3, true, null, null));
-            //list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 6, 29, 12, 0, 0), "Dallas", nomeFase, nomeGrupo, rodada, 75, "C", 1, "F", 2, true, null, null));
-            //list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 6, 29, 16, 0, 0), "Atlanta", nomeFase, nomeGrupo, rodada, 76, "D", 1, "BEFIJ", 3, true, null, null));
+            // =========================
+            // 28/06
+            // =========================
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 6, 28, 16, 0, 0), "Los Angeles", nomeFase, nomeGrupo, rodada, 73, "A", 2, "B", 2, true, null, null));
 
-            //list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 6, 30, 12, 0, 0), "Miami", nomeFase, nomeGrupo, rodada, 77, "E", 1, "ABCDF", 3, true, null, null));
-            //list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 6, 30, 16, 0, 0), "Seattle", nomeFase, nomeGrupo, rodada, 78, "F", 1, "3º", 0, true, null, null));
-            //list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 1, 12, 0, 0), "Toronto", nomeFase, nomeGrupo, rodada, 79, "G", 1, "AEHIJ", 3, true, null, null));
-            //list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 1, 16, 0, 0), "Vancouver", nomeFase, nomeGrupo, rodada, 80, "H", 1, "3º", 0, true, null, null));
+            // =========================
+            // 29/06
+            // =========================
+            //list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 6, 29, 17, 30, 0), "Boston", nomeFase, nomeGrupo, rodada, 74, "E", 1, "ABCDF", 3, true, null, null));
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 6, 29, 17, 30, 0), "Boston", nomeFase, nomeGrupo, rodada, 74, "E", 1, "X", 3, true, null, null));
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 6, 29, 22, 0, 0), "Monterrey", nomeFase, nomeGrupo, rodada, 75, "F", 1, "C", 2, true, null, null));
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 6, 29, 14, 0, 0), "Houston", nomeFase, nomeGrupo, rodada, 76, "C", 1, "F", 2, true, null, null));
 
-            //// 2º x 2º (fixo FIFA)
-            //list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 2, 12, 0, 0), "Boston", nomeFase, nomeGrupo, rodada, 81, "A", 2, "B", 2, true, null, null));
-            //list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 2, 16, 0, 0), "Kansas City", nomeFase, nomeGrupo, rodada, 82, "C", 2, "D", 2, true, null, null));
-            //list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 3, 12, 0, 0), "Monterrey", nomeFase, nomeGrupo, rodada, 83, "E", 2, "F", 2, true, null, null));
-            //list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 3, 16, 0, 0), "Philadelphia", nomeFase, nomeGrupo, rodada, 84, "G", 2, "H", 2, true, null, null));
+            // =========================
+            // 30/06
+            // =========================
+            //list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 6, 30, 18, 0, 0), "NY/New Jersey", nomeFase, nomeGrupo, rodada, 77, "I", 1, "CDFGH", 3, true, null, null));
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 6, 30, 18, 0, 0), "NY/New Jersey", nomeFase, nomeGrupo, rodada, 77, "I", 1, "X", 3, true, null, null));
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 6, 30, 14, 0, 0), "Dallas", nomeFase, nomeGrupo, rodada, 78, "E", 2, "I", 2, true, null, null));
+            //list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 6, 30, 22, 0, 0), "Cidade do México", nomeFase, nomeGrupo, rodada, 79, "A", 1, "CEFHI", 3, true, null, null));
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 6, 30, 22, 0, 0), "Cidade do México", nomeFase, nomeGrupo, rodada, 79, "A", 1, "X", 3, true, null, null));
 
-            //// Últimos 1º x melhores 3º
-            //list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 4, 12, 0, 0), "New York", nomeFase, nomeGrupo, rodada, 85, "I", 1, "CDFGH", 3, true, null, null));
-            //list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 4, 16, 0, 0), "San Francisco", nomeFase, nomeGrupo, rodada, 86, "J", 1, "3º", 0, true, null, null));
-            //list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 5, 12, 0, 0), "Dallas", nomeFase, nomeGrupo, rodada, 87, "K", 1, "DEIJL", 3, true, null, null));
-            //list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 5, 16, 0, 0), "Seattle", nomeFase, nomeGrupo, rodada, 88, "L", 1, "EHIJK", 3, true, null, null));
+            // =========================
+            // 01/07
+            // =========================
+            //list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 1, 13, 0, 0), "Atlanta", nomeFase, nomeGrupo, rodada, 80, "L", 1, "EHIJK", 3, true, null, null));
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 1, 13, 0, 0), "Atlanta", nomeFase, nomeGrupo, rodada, 80, "L", 1, "X", 3, true, null, null));
+            //list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 1, 21, 0, 0), "San Francisco", nomeFase, nomeGrupo, rodada, 81, "D", 1, "BEFIJ", 3, true, null, null));
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 1, 21, 0, 0), "San Francisco", nomeFase, nomeGrupo, rodada, 81, "D", 1, "X", 3, true, null, null));
+            //list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 1, 17, 0, 0), "Seattle", nomeFase, nomeGrupo, rodada, 82, "G", 1, "AEHIJ", 3, true, null, null));
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 1, 17, 0, 0), "Seattle", nomeFase, nomeGrupo, rodada, 82, "G", 1, "X", 3, true, null, null));
 
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 6, 28, 12, 0, 0), "Los Angeles", nomeFase, nomeGrupo, rodada, 73, "A", 2, "B", 2, true, null, null));
-
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 6, 29, 12, 0, 0), "Boston", nomeFase, nomeGrupo, rodada, 74, "E", 1, "ABCDF", 3, true, null, null));
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 6, 29, 16, 0, 0), "Monterrey", nomeFase, nomeGrupo, rodada, 75, "F", 1, "C", 2, true, null, null));
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 6, 29, 21, 0, 0), "Houston", nomeFase, nomeGrupo, rodada, 76, "C", 1, "F", 2, true, null, null));
-
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 6, 30, 12, 0, 0), "New York", nomeFase, nomeGrupo, rodada, 77, "I", 1, "CDFGH", 3, true, null, null));
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 6, 30, 16, 0, 0), "Dallas", nomeFase, nomeGrupo, rodada, 78, "E", 2, "I", 2, true, null, null));
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 6, 30, 21, 0, 0), "Cidade do México", nomeFase, nomeGrupo, rodada, 79, "A", 1, "CEFHI", 3, true, null, null));
-
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 1, 12, 0, 0), "Atlanta", nomeFase, nomeGrupo, rodada, 80, "L", 1, "EHIJK", 3, true, null, null));
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 1, 16, 0, 0), "San Francisco", nomeFase, nomeGrupo, rodada, 81, "D", 1, "BEFIJ", 3, true, null, null));
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 1, 21, 0, 0), "Seattle", nomeFase, nomeGrupo, rodada, 82, "G", 1, "AEHIJ", 3, true, null, null));
-
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 2, 12, 0, 0), "Toronto", nomeFase, nomeGrupo, rodada, 83, "K", 2, "L", 2, true, null, null));
+            // =========================
+            // 02/07
+            // =========================
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 2, 20, 0, 0), "Toronto", nomeFase, nomeGrupo, rodada, 83, "K", 2, "L", 2, true, null, null));
             list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 2, 16, 0, 0), "Los Angeles", nomeFase, nomeGrupo, rodada, 84, "H", 1, "J", 2, true, null, null));
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 2, 21, 0, 0), "Vancouver", nomeFase, nomeGrupo, rodada, 85, "B", 1, "EFGIJ", 3, true, null, null));
+            //list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 2, 0, 0, 0), "Vancouver", nomeFase, nomeGrupo, rodada, 85, "B", 1, "EFGIJ", 3, true, null, null));
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 2, 0, 0, 0), "Vancouver", nomeFase, nomeGrupo, rodada, 85, "B", 1, "X", 3, true, null, null));
 
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 3, 12, 0, 0), "Miami", nomeFase, nomeGrupo, rodada, 86, "J", 1, "H", 2, true, null, null));
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 3, 16, 0, 0), "Kansas City", nomeFase, nomeGrupo, rodada, 87, "K", 1, "DEIJL", 3, true, null, null));
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 3, 21, 0, 0), "Dallas", nomeFase, nomeGrupo, rodada, 88, "D", 2, "G", 2, true, null, null));
-
-
+            // =========================
+            // 03/07
+            // =========================
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 3, 19, 0, 0), "Miami", nomeFase, nomeGrupo, rodada, 86, "J", 1, "H", 2, true, null, null));
+            //list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 3, 22, 30, 0), "Kansas City", nomeFase, nomeGrupo, rodada, 87, "K", 1, "DEIJL", 3, true, null, null));
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 3, 22, 30, 0), "Kansas City", nomeFase, nomeGrupo, rodada, 87, "K", 1, "X", 3, true, null, null));
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 3, 15, 0, 0), "Dallas", nomeFase, nomeGrupo, rodada, 88, "D", 2, "G", 2, true, null, null));
+                         
             return list;
         }
 
@@ -341,33 +387,29 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
 
             IList<Entities.Campeonatos.Jogo> list = new List<Entities.Campeonatos.Jogo>();
 
-            //list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 6, 12, 0, 0), "Philadelphia", nomeFase, nomeGrupo, rodada, 89, 73, true, 74, true, true));
-            //list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 6, 16, 0, 0), "Houston", nomeFase, nomeGrupo, rodada, 90, 75, true, 76, true, true));
+            // =========================
+            // Sábado, 04/07/2026
+            // =========================
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 4, 18, 0, 0), "Filadélfia", nomeFase, nomeGrupo, rodada, 89, 74, true, 77, true, true));
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 4, 14, 0, 0), "Houston", nomeFase, nomeGrupo, rodada, 90, 73, true, 75, true, true));
 
-            //list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 7, 12, 0, 0), "Atlanta", nomeFase, nomeGrupo, rodada, 91, 77, true, 78, true, true));
-            //list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 7, 16, 0, 0), "Miami", nomeFase, nomeGrupo, rodada, 92, 79, true, 80, true, true));
+            // =========================
+            // Domingo, 05/07/2026
+            // =========================
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 5, 17, 0, 0), "NY/New Jersey", nomeFase, nomeGrupo, rodada, 91, 76, true, 78, true, true));
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 5, 21, 0, 0), "Cidade do México", nomeFase, nomeGrupo, rodada, 92, 79, true, 80, true, true));
 
-            //list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 8, 12, 0, 0), "Dallas", nomeFase, nomeGrupo, rodada, 93, 81, true, 82, true, true));
-            //list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 8, 16, 0, 0), "Seattle", nomeFase, nomeGrupo, rodada, 94, 83, true, 84, true, true));
+            // =========================
+            // Segunda-feira, 06/07/2026
+            // =========================
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 6, 16, 0, 0), "Dallas", nomeFase, nomeGrupo, rodada, 93, 83, true, 84, true, true));
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 6, 21, 0, 0), "Seattle", nomeFase, nomeGrupo, rodada, 94, 81, true, 82, true, true));
 
-            //list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 9, 12, 0, 0), "Boston", nomeFase, nomeGrupo, rodada, 95, 85, true, 86, true, true));
-            //list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 9, 16, 0, 0), "Vancouver", nomeFase, nomeGrupo, rodada, 96, 87, true, 88, true, true));
-
-            // Sábado, 4 de julho de 2026
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 4, 12, 0, 0), "Philadelphia", nomeFase, nomeGrupo, rodada, 89, 74, true, 77, true, true));
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 4, 16, 0, 0), "Houston", nomeFase, nomeGrupo, rodada, 90, 73, true, 75, true, true));
-
-            // Domingo, 5 de julho de 2026
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 5, 12, 0, 0), "New York", nomeFase, nomeGrupo, rodada, 91, 76, true, 78, true, true));
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 5, 16, 0, 0), "Cidade do México", nomeFase, nomeGrupo, rodada, 92, 79, true, 80, true, true));
-
-            // Segunda-feira, 6 de julho de 2026
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 6, 12, 0, 0), "Dallas", nomeFase, nomeGrupo, rodada, 93, 83, true, 84, true, true));
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 6, 16, 0, 0), "Seattle", nomeFase, nomeGrupo, rodada, 94, 81, true, 82, true, true));
-
-            // Terça-feira, 7 de julho de 2026
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 7, 12, 0, 0), "Atlanta", nomeFase, nomeGrupo, rodada, 95, 86, true, 88, true, true));
-            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 7, 16, 0, 0), "Vancouver", nomeFase, nomeGrupo, rodada, 96, 85, true, 87, true, true));
+            // =========================
+            // Terça-feira, 07/07/2026
+            // =========================
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 7, 13, 0, 0), "Atlanta", nomeFase, nomeGrupo, rodada, 95, 86, true, 88, true, true));
+            list.Add(CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 7, 17, 0, 0), "Vancouver", nomeFase, nomeGrupo, rodada, 96, 85, true, 87, true, true));
 
             return list;
         }
@@ -378,20 +420,28 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             int rodada = 6;
             string nomeGrupo = " ";
 
-            //return new List<Entities.Campeonatos.Jogo>
-            //{
-            //    CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 10, 12, 0, 0), "Los Angeles", nomeFase, nomeGrupo, rodada, 97, 89, true, 90, true, true),
-            //    CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 10, 16, 0, 0), "Seattle",     nomeFase, nomeGrupo, rodada, 98, 91, true, 92, true, true),
-            //    CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 11, 12, 0, 0), "Boston",      nomeFase, nomeGrupo, rodada, 99, 93, true, 94, true, true),
-            //    CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 11, 16, 0, 0), "Miami",       nomeFase, nomeGrupo, rodada, 100,95, true, 96, true, true)
-            //};
-
             return new List<Entities.Campeonatos.Jogo>
             {
-                CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 9, 12, 0, 0), "Boston",        nomeFase, nomeGrupo, rodada, 97, 89, true, 90, true, true),
-                CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 10, 16, 0, 0), "Los Angeles",   nomeFase, nomeGrupo, rodada, 98, 93, true, 94, true, true),
-                CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 12, 12, 0, 0), "Miami",         nomeFase, nomeGrupo, rodada, 99, 91, true, 92, true, true),
-                CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 12, 16, 0, 0), "Kansas City",   nomeFase, nomeGrupo, rodada, 100,95, true, 96, true, true)
+                // =========================
+                // Quinta-feira, 09/07/2026
+                // =========================
+                CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 9, 17, 0, 0), "Boston",
+                    nomeFase, nomeGrupo, rodada, 97, 90, true, 89, true, true),
+
+                // =========================
+                // Sexta-feira, 10/07/2026
+                // =========================
+                CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 10, 16, 0, 0), "Los Angeles",
+                    nomeFase, nomeGrupo, rodada, 98, 93, true, 94, true, true),
+
+                // =========================
+                // Sábado, 11/07/2026
+                // =========================
+                CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 11, 18, 0, 0), "Miami",
+                    nomeFase, nomeGrupo, rodada, 99, 91, true, 92, true, true),
+
+                CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 11, 22, 0, 0), "Kansas City",
+                    nomeFase, nomeGrupo, rodada, 100, 95, true, 96, true, true)
             };
         }
 
@@ -401,16 +451,19 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             int rodada = 7;
             string nomeGrupo = " ";
 
-            //return new List<Entities.Campeonatos.Jogo>
-            //{
-            //    CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 14, 16, 0, 0), "Dallas",  nomeFase, nomeGrupo, rodada, 101, 97, true, 98, true, true),
-            //    CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 15, 16, 0, 0), "Atlanta", nomeFase, nomeGrupo, rodada, 102, 99, true, 100,true, true)
-            //};
-
             return new List<Entities.Campeonatos.Jogo>
             {
-                CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 14, 16, 0, 0), "Dallas",  nomeFase, nomeGrupo, rodada, 101, 97, true, 98, true, true),
-                CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 15, 16, 0, 0), "Atlanta", nomeFase, nomeGrupo, rodada, 102, 99, true, 100, true, true)
+                // =========================
+                // Terça-feira, 14/07/2026
+                // =========================
+                CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 14, 16, 0, 0), "Dallas",
+                    nomeFase, nomeGrupo, rodada, 101, 97, true, 99, true, true),
+
+                // =========================
+                // Quarta-feira, 15/07/2026
+                // =========================
+                CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 15, 16, 0, 0), "Atlanta",
+                    nomeFase, nomeGrupo, rodada, 102, 98, true, 100, true, true)
             };
         }
 
@@ -420,22 +473,19 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
             int rodada = 8;
             string nomeGrupo = " ";
 
-            //return new List<Entities.Campeonatos.Jogo>
-            //{
-            //    // 3º lugar
-            //    CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 18, 12, 0, 0), "Miami", nomeFase, nomeGrupo, rodada, 103, 101, false, 102, false, true),
-
-            //    // Final
-            //    CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 19, 16, 0, 0), "New York", nomeFase, nomeGrupo, rodada, 104, 101, true, 102, true, true)
-            //};
-
             return new List<Entities.Campeonatos.Jogo>
             {
-                // Disputa do 3º lugar
-                CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 18, 12, 0, 0), "Miami", nomeFase, nomeGrupo, rodada, 103, 101, false, 102, false, true),
+                // =========================
+                // Sábado, 18/07/2026 - 3º lugar
+                // =========================
+                CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 18, 18, 0, 0), "Miami",
+                    nomeFase, nomeGrupo, rodada, 103, 101, false, 102, false, true),
 
-                // Final
-                CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 19, 16, 0, 0), "New York", nomeFase, nomeGrupo, rodada, 104, 101, true, 102, true, true)
+                // =========================
+                // Domingo, 19/07/2026 - Final
+                // =========================
+                CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 19, 16, 0, 0), "NY/New Jersey",
+                    nomeFase, nomeGrupo, rodada, 104, 101, true, 102, true, true)
             };
         }
 
@@ -542,10 +592,12 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
 
             return true;
         }
+
         public IList<Entities.Campeonatos.CampeonatoPosicao> GetCampeonatoPosicoes()
         {
             throw new NotImplementedException();
         }
+
         private void CreateHistorico(string campeonato)
         {
             StoreData<Entities.Campeonatos.CampeonatoHistorico>(_campeonatoHistoricoService, new Entities.Campeonatos.CampeonatoHistorico()

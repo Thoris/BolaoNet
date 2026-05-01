@@ -1,87 +1,88 @@
 # BolaoNet
 
-Projeto que gerencia o bolão da copa do mundo.
+BolaoNet é uma solução em .NET Framework para gerenciamento de bolões esportivos (placares, pontuação e relatórios). A solução está organizada em múltiplos projetos que separam domínio, aplicação, infraestrutura, interface web, API, banco de dados e testes.
 
-## Getting Started
+Resumo rápido
+- Tipo: Solução multi-projeto .NET Framework
+- Targets observados: `.NET Framework 4.8` e `.NET Framework 4.6.1`
+- IDE recomendada: `Microsoft Visual Studio 2022` / `Microsoft Visual Studio 2026` com workloads para desenvolvimento .NET
+- Banco de dados alvo: `SQL Server` (projeto `.sqlproj` incluso)
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Principais projetos
+- `BolaoNet.Application` - Camada de aplicação (casos de uso)
+- `BolaoNet.Domain.Entities` - Entidades do domínio
+- `BolaoNet.Domain.Interfaces.Services` - Interfaces de serviços do domínio
+- `BolaoNet.Domain.Interfaces.Repositories` - Interfaces de repositórios
+- `BolaoNet.Domain.Services` - Implementações de serviços de domínio
+- `BolaoNet.Infra.Data.EF` - Persistência via Entity Framework
+- `BolaoNet.Infra.Data.EF.Mapping` - Mapeamentos EF
+- `BolaoNet.Database.SqlServer` - Projeto de banco de dados (`.sqlproj`) com scripts/objetos
+- `BolaoNet.WebApi` - API REST
+- `BolaoNet.MVC` - Aplicação ASP.NET MVC (UI)
+- `BolaoNet.MVC.ViewModels` - ViewModels usados pela MVC
+- `BolaoNet.Infra.CrossCutting.IoC` - Registro de dependências / Injeção de Dependência
+- `BolaoNet.Infra.CrossCutting.Logging` - Logging centralizado
+- `BolaoNet.Infra.CrossCutting.Caching` - Abstrações de cache
+- `BolaoNet.Infra.Notification.Mail` - Serviço de envio de e-mails
+- `BolaoNet.Infra.Reports` - Geração de relatórios
+- `BolaoNet.Feed.Rss` - Feed RSS
+- `BolaoNet.Estatisticas.Calculo` - Cálculos estatísticos
+- Projetos de teste: `BolaoNet.Tests`, `BolaoNet.Tests.Debug`, `BolaoNet.MVC.Tests`, `BolaoNet.Tests.Exploratory`, `BolaoNet.WebApi.Integration`
+- `Info/DocFx` - Geração de documentação (DocFX)
 
-### Prerequisites
+Requisitos (desenvolvimento)
+- `Visual Studio` (2022 ou 2026) com suporte a .NET Framework 4.x
+- `SQL Server` (local ou remoto) para executar scripts do projeto `BolaoNet.Database.SqlServer`
+- SMTP disponível para testes de envio de e-mail (ou configurar um mock)
 
-What things you need to install the software and how to install them
+Como abrir e compilar
+1. Abra `BolaoNet.sln` no Visual Studio.
+2. Restaure pacotes NuGet (o Visual Studio normalmente faz isso automaticamente).
+3. Selecione o projeto startup desejado (`BolaoNet.MVC` para UI, `BolaoNet.WebApi` para API) e pressione F5 para executar em IIS Express.
 
-```
-Visual Studio 2022
-```
+Linha de comando (build)
+- Compilar solução: `msbuild BolaoNet.sln /p:Configuration=Release`
+- Observação: por se tratar de projetos .NET Framework, prefira `msbuild` ou Visual Studio em vez de `dotnet build` para full support.
 
-### Installing
+Banco de dados
+- O projeto `BolaoNet.Database.SqlServer` contém scripts e objetos de banco. Revise os scripts antes de aplicar em qualquer ambiente.
+- Para desenvolvimento local: ajuste as connection strings nos `Web.config`/`App.config` dos projetos que acessam o banco e aplique os scripts via SQL Server Management Studio ou publique o `.sqlproj` para sua instância.
 
-A step by step series of examples that tell you have to get a development env running
+Configurações importantes
+- Connection strings: procurar por `connectionStrings` em `Web.config` / `App.config` nos projetos Web/API.
+- SMTP: verificar configurações em `appSettings` / `Web.config` relacionadas a `BolaoNet.Infra.Notification.Mail`.
+- Logging / Cache: revisar `BolaoNet.Infra.CrossCutting.Logging` e `BolaoNet.Infra.CrossCutting.Caching` para ajustar provedores e níveis.
 
-Say what the step will be
+Executando testes
+- Use o Test Explorer do Visual Studio para executar os testes unitários e de integração.
+- É possível executar testes via `vstest.console.exe` apontando para os assemblies de teste.
+- Projetos de integração podem depender de DB ou serviços externos; assegure as dependências antes de executar.
 
-```
-Give the example
-```
+Documentação
+- `Info/DocFx` sugere uso do DocFX para gerar documentação. Consulte o projeto `DocFx.csproj` e a configuração do DocFX para gerar HTML/documentação localmente.
 
-And repeat
+Arquitetura e padrões
+- Arquitetura em camadas (Domain, Application, Infra, Presentation).
+- Separação entre interfaces e implementações (Interfaces.* e Services/Infra).
+- Injeção de dependência centralizada em `BolaoNet.Infra.CrossCutting.IoC`.
 
-```
-until finished
-```
+Notas e recomendações
+- Verifique versões de pacotes NuGet antes de atualizar o ambiente. Testes e build podem quebrar se pacotes forem atualizados sem validação.
+- Mantenha credenciais e connection strings fora do controle de versão; use transformações de configuração, variáveis de ambiente ou um secret manager no CI/CD.
+- Ao portar para .NET Core/NET (6/7/8), comece portando bibliotecas de domínio e testes, depois infraestrutura (EF, IIS) e adaptando a infraestrutura de hosting.
 
-End with an example of getting some data out of the system or using it for a little demo
+Contribuindo
+- Abra uma issue descrevendo o problema ou feature.
+- Crie um branch a partir de `master` com prefixo `feature/` ou `fix/`.
+- Submeta um Pull Request com descrição clara e evidências (testes, logs, screenshots quando aplicável).
 
-## Running the tests
+Licença
+- Não foi detectado um arquivo de licença no repositório. Se o projeto for open-source, adicione um `LICENSE` (ex.: MIT) e atualize este README.
 
-Explain how to run the automated tests for this system
+Contato
+- Repositório remoto: `https://github.com/Thoris/BolaoNet`
+- Exemplo de caminho local do autor: `C:\Thoris\Pessoal\Projetos\BolaoNet\`
 
-### Break down into end to end tests
+---
 
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/Thoris/BolaoNet/tags). 
-
-## Authors
-
-* **Thoris Pivetta** - *Initial work* - [BolaoNet](https://github.com/Thoris/BolaoNet)
-
-See also the list of [contributors](https://github.com/Thoris/BolaoNet/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+Este README foi gerado automaticamente a partir da estrutura do repositório. Ajuste instruções específicas (strings de conexão, comandos de deploy, políticas de CI/CD) conforme sua infraestrutura.
