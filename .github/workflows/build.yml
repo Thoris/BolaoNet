@@ -154,27 +154,70 @@ jobs:
             New-Item -ItemType Directory -Force -Path "${{ github.workspace }}\publish"
           }
 
+      - name: Debug publish folder
+        shell: pwsh
+        run: |
+          Write-Host "=== SEARCH publish FILES ==="
+
+          Get-ChildItem "${{ github.workspace }}" -Recurse -File |
+            Where-Object { $_.FullName -like "*publish*" } |
+            Select-Object FullName
+
+          Write-Host "=== DIRECT publish CONTENT ==="
+
+          Get-ChildItem "${{ github.workspace }}\publish" -Recurse -Force -ErrorAction SilentlyContinue |
+            Select FullName
+
+
       - name: Create ZIP
         shell: pwsh
         run: |
-
           $buildNumber = "2.$(Get-Date -Format yy.MM.dd)$env:GITHUB_RUN_NUMBER"
-
-          New-Item -ItemType Directory -Force -Path deploy/zip | Out-Null
 
           $source = "${{ github.workspace }}\publish"
 
+          Write-Host "Checking: $source"
+
           if (!(Test-Path $source)) {
-            throw "Build output not found: $source"
+            Write-Host "FALLBACK: trying PackageTmp"
+
+            $source = "${{ github.workspace }}\BolaoNet.MVC\obj\Release\Package\PackageTmp"
+
+            if (!(Test-Path $source)) {
+              throw "Nenhum output de publish encontrado"
+            }
           }
 
-          Compress-Archive `
-            -Path "${{ github.workspace }}\publish\*" `
-            -DestinationPath "deploy/zip/Mvc_$buildNumber.zip"
+          New-Item -ItemType Directory -Force -Path deploy/zip | Out-Null
+
+          Compress-Archive -Path "$source\*" -DestinationPath "deploy/zip/Mvc_$buildNumber.zip"
 
           echo "BUILD_NUMBER=$buildNumber" >> $env:GITHUB_ENV
 
           Write-Host "ZIP criado com sucesso"
+
+
+      # - name: Create ZIP
+      #   shell: pwsh
+      #   run: |
+
+      #     $buildNumber = "2.$(Get-Date -Format yy.MM.dd)$env:GITHUB_RUN_NUMBER"
+
+      #     New-Item -ItemType Directory -Force -Path deploy/zip | Out-Null
+
+      #     $source = "${{ github.workspace }}\publish"
+
+      #     if (!(Test-Path $source)) {
+      #       throw "Build output not found: $source"
+      #     }
+
+      #     Compress-Archive `
+      #       -Path "${{ github.workspace }}\publish\*" `
+      #       -DestinationPath "deploy/zip/Mvc_$buildNumber.zip"
+
+      #     echo "BUILD_NUMBER=$buildNumber" >> $env:GITHUB_ENV
+
+      #     Write-Host "ZIP criado com sucesso"
 
       # - name: Debug publish folder
       #   shell: pwsh
