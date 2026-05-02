@@ -478,9 +478,7 @@ BEGIN
 			-- 6. COMBINAÇÃO ATUAL
 			DECLARE @Combinacao VARCHAR(20)
 
-			SELECT @Combinacao =
-				STRING_AGG(NomeGrupo, '') WITHIN GROUP (ORDER BY NomeGrupo)
-			FROM #Top8
+			SELECT @Combinacao = STRING_AGG(NomeGrupo, '') WITHIN GROUP (ORDER BY NomeGrupo) FROM #Top8
 
 			PRINT 'COMBINACAO FIFA: ' + @Combinacao
 
