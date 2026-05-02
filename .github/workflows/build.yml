@@ -7,6 +7,7 @@ on:
 
 env:
   SOLUTION: 'BolaoNet.sln'
+  PROJECT_DEPLOY: 'BolaoNet.MVC\BolaoNet.MVC.csproj'
   BUILD_CONFIGURATION: Release 
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
   
@@ -97,8 +98,18 @@ jobs:
       # =========================
       # PUBLISH  
       # =========================
-      - name: Publish MVC
-        run: dotnet publish -c ${{ env.BUILD_CONFIGURATION }} -o publish
+      # - name: Publish MVC
+      #   run: dotnet publish -c ${{ env.BUILD_CONFIGURATION }} -o publish
+
+      - name: Build & Publish MVC
+        run: |
+          msbuild ${{ env.PROJECT_DEPLOY }} ^
+            /p:Configuration=Release ^
+            /p:DeployOnBuild=true ^
+            /p:WebPublishMethod=FileSystem ^
+            /p:PublishUrl=${{ github.workspace }}\publish ^
+            /p:DeleteExistingFiles=true
+
 
       # =========================
       # DACPAC COPY  
