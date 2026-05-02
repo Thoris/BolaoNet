@@ -68,7 +68,7 @@ jobs:
       # ========================= 
       - name: Build MVC
         #run: msbuild ${{ env.PROJECT_DEPLOY }} /p:Configuration=Release /p:DeployOnBuild=true /p:WebPublishMethod=FileSystem /p:PublishUrl="${{ github.workspace }}\publish"        
-        run: msbuild ${{ env.PROJECT_DEPLOY }} /p:GenerateDocumentation=true /p:VisualStudioVersion=12.0 /p:DeployOnBuild=true  /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true   /p:DeployDefaultTarget=WebPublish /p:PublishProfile=IIS 
+        run: msbuild ${{ env.PROJECT_DEPLOY }} /p:GenerateDocumentation=true /p:DeployOnBuild=true  /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DeployDefaultTarget=WebPublish /p:PublishProfile=IIS 
       # - name: Build + Publish MVC
       #   shell: pwsh
       #   run: |
