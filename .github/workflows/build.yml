@@ -67,8 +67,8 @@ jobs:
       # PUBLISH  
       # ========================= 
       - name: Build MVC
-        run: msbuild ${{ env.PROJECT_DEPLOY }} /p:Configuration=Release /p:DeployOnBuild=true /p:WebPublishMethod=FileSystem /p:PublishUrl="${{ github.workspace }}\publish"
-         
+        #run: msbuild ${{ env.PROJECT_DEPLOY }} /p:Configuration=Release /p:DeployOnBuild=true /p:WebPublishMethod=FileSystem /p:PublishUrl="${{ github.workspace }}\publish"        
+        run: msbuild ${{ env.PROJECT_DEPLOY }} /p:GenerateDocumentation=true /p:VisualStudioVersion=12.0 /p:DeployOnBuild=true  /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true   /p:DeployDefaultTarget=WebPublish /p:PublishProfile=IIS 
       # - name: Build + Publish MVC
       #   shell: pwsh
       #   run: |
@@ -132,7 +132,7 @@ jobs:
 
           # 2. Mostrar publish se existir
           Write-Host "`n=== PUBLISH CONTENT ==="
-          Get-ChildItem "${{ github.workspace }}\publish" -Recurse -File -ErrorAction SilentlyContinue |
+          Get-ChildItem "${{ github.workspace }}\deploy\MVC" -Recurse -File -ErrorAction SilentlyContinue |
             Select-Object FullName
 
           # 3. Mostrar MVC package output (MUITO importante no seu caso)
@@ -150,8 +150,8 @@ jobs:
       - name: Ensure publish folder exists
         shell: pwsh
         run: |
-          if (!(Test-Path "${{ github.workspace }}\publish")) {
-            New-Item -ItemType Directory -Force -Path "${{ github.workspace }}\publish"
+          if (!(Test-Path "${{ github.workspace }}\deploy\MVC")) {
+            New-Item -ItemType Directory -Force -Path "${{ github.workspace }}\deploy\MVC"
           }
 
       - name: Debug publish folder
@@ -174,7 +174,7 @@ jobs:
         run: |
           $buildNumber = "2.$(Get-Date -Format yy.MM.dd)$env:GITHUB_RUN_NUMBER"
 
-          $source = "${{ github.workspace }}\publish"
+          $source = "${{ github.workspace }}\deploy\MVC"
 
           Write-Host "Checking: $source"
 
