@@ -358,11 +358,11 @@
     <Content Include="Content\img\database\times\Burkina_Faso.gif" />
     <Content Include="Content\img\database\times\Burundi.gif" />
     <Content Include="Content\img\database\times\Bélgica.gif" />
-    <Content Include="Content\img\database\times\Bósnia e Herzegovina.gif" />
+    <Content Include="Content\img\database\times\Bósnia Herzegovina.gif" />
+    <Content Include="Content\img\database\times\Cabo Verde.gif" />
     <Content Include="Content\img\database\times\Camarões.gif" />
     <Content Include="Content\img\database\times\Cambodia.gif" />
     <Content Include="Content\img\database\times\Canadá.gif" />
-    <Content Include="Content\img\database\times\Cape_Verde.gif" />
     <Content Include="Content\img\database\times\Catar.gif" />
     <Content Include="Content\img\database\times\Central_African_Republic.gif" />
     <Content Include="Content\img\database\times\Chad.gif" />
@@ -379,6 +379,7 @@
     <Content Include="Content\img\database\times\Costa Rica.gif" />
     <Content Include="Content\img\database\times\Croácia.gif" />
     <Content Include="Content\img\database\times\Cuba.gif" />
+    <Content Include="Content\img\database\times\Curaçao.gif" />
     <Content Include="Content\img\database\times\Cyprus.gif" />
     <Content Include="Content\img\database\times\Democratic_Republic_of_the_Congo.gif" />
     <Content Include="Content\img\database\times\Dinamarca.gif" />
@@ -389,6 +390,7 @@
     <Content Include="Content\img\database\times\Equador.gif" />
     <Content Include="Content\img\database\times\Equatorial_Guinea.gif" />
     <Content Include="Content\img\database\times\Eritrea.gif" />
+    <Content Include="Content\img\database\times\Escócia.gif" />
     <Content Include="Content\img\database\times\Eslováquia.gif" />
     <Content Include="Content\img\database\times\Eslovênia.gif" />
     <Content Include="Content\img\database\times\Espanha.gif" />
@@ -425,13 +427,14 @@
     <Content Include="Content\img\database\times\Indonesia.gif" />
     <Content Include="Content\img\database\times\Inglaterra.gif" />
     <Content Include="Content\img\database\times\Iraq.gif" />
+    <Content Include="Content\img\database\times\Iraque.gif" />
     <Content Include="Content\img\database\times\Irã.gif" />
     <Content Include="Content\img\database\times\Islândia.gif" />
     <Content Include="Content\img\database\times\Israel.gif" />
     <Content Include="Content\img\database\times\Itália.gif" />
     <Content Include="Content\img\database\times\Jamaica.gif" />
     <Content Include="Content\img\database\times\Japão.gif" />
-    <Content Include="Content\img\database\times\Jordan.gif" />
+    <Content Include="Content\img\database\times\Jordânia.gif" />
     <Content Include="Content\img\database\times\Kazakhstan.gif" />
     <Content Include="Content\img\database\times\Kenya.gif" />
     <Content Include="Content\img\database\times\Kiribati.gif" />
@@ -476,7 +479,7 @@
     <Content Include="Content\img\database\times\Nigéria.gif" />
     <Content Include="Content\img\database\times\Niue.gif" />
     <Content Include="Content\img\database\times\Norfolk_Island.gif" />
-    <Content Include="Content\img\database\times\Norway.gif" />
+    <Content Include="Content\img\database\times\Noruega.gif" />
     <Content Include="Content\img\database\times\Nova Zelândia.gif" />
     <Content Include="Content\img\database\times\Oman.gif" />
     <Content Include="Content\img\database\times\Pakistan.gif" />
@@ -493,6 +496,7 @@
     <Content Include="Content\img\database\times\Portugal.gif" />
     <Content Include="Content\img\database\times\Puerto_Rico.gif" />
     <Content Include="Content\img\database\times\Qatar.gif" />
+    <Content Include="Content\img\database\times\RD Congo.gif" />
     <Content Include="Content\img\database\times\Republic_of_the_Congo.gif" />
     <Content Include="Content\img\database\times\República da Irlanda.gif" />
     <Content Include="Content\img\database\times\República Dominicana.gif" />
@@ -550,7 +554,7 @@
     <Content Include="Content\img\database\times\United_Kingdom.gif" />
     <Content Include="Content\img\database\times\Uruguai.gif" />
     <Content Include="Content\img\database\times\US_Virgin_Islands.gif" />
-    <Content Include="Content\img\database\times\Uzbekistan.gif" />
+    <Content Include="Content\img\database\times\Uzbequistão.gif" />
     <Content Include="Content\img\database\times\Vanuatu.gif" />
     <Content Include="Content\img\database\times\Vatican_City.gif" />
     <Content Include="Content\img\database\times\Venezuela.gif" />
