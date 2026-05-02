@@ -116,21 +116,49 @@ jobs:
       # =========================
       # DACPAC COPY  
       # =========================
+      # - name: Copy DacPac
+      #   shell: pwsh
+      #   run: |
+      #     New-Item -ItemType Directory -Force -Path deploy | Out-Null
+      #     Copy-Item "${{ github.workspace }}\BolaoNet.Database.SqlServer\bin\Release\*.dacpac" deploy -Force
+
+
       - name: Copy DacPac
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Force -Path deploy | Out-Null
-          Copy-Item "${{ github.workspace }}\BolaoNet.Database.SqlServer\bin\Release\*.dacpac" deploy -Force
+
+          $files = Copy-Item "${{ github.workspace }}\BolaoNet.Database.SqlServer\bin\Release\*.dacpac" deploy -Force -PassThru
+
+          Write-Host "Arquivos copiados: $($files.Count)"
+
 
       # =========================
       # TEMPLATES
       # =========================
-      - name: Copy Templates
+      # - name: Copy Templates
+      #   shell: pwsh
+      #   run: |
+      #     Copy-Item "${{ github.workspace }}\BolaoNet.Infra.Notification.Mail\TemplatesHtml\*" `
+      #       -Destination "${{ github.workspace }}\deploy\MVC\TemplatesHtml" `
+      #       -Recurse -Force
+
+      - name: Copy TemplatesHtml
         shell: pwsh
         run: |
-          Copy-Item "${{ github.workspace }}\BolaoNet.Infra.Notification.Mail\TemplatesHtml\*" `
-            -Destination "${{ github.workspace }}\deploy\MVC\TemplatesHtml" `
-            -Recurse -Force
+          $source = "${{ github.workspace }}\BolaoNet.Infra.Notification.Mail\TemplatesHtml"
+          $dest = "${{ github.workspace }}\deploy\MVC\TemplatesHtml"
+
+          New-Item -ItemType Directory -Force -Path $dest | Out-Null
+
+          $files = Get-ChildItem -Path $source -Recurse
+
+          Write-Host "Arquivos encontrados: $($files.Count)"
+
+          Copy-Item "$source\*" -Destination $dest -Recurse -Force
+
+          Write-Host "Copy finalizado"
+
 
       # =========================
       # ZIP
