@@ -1,42 +1,4 @@
-# name: CI-CD BolaoNet
 
-# on:
-#   push:
-#     branches:
-#       - main
-
-# jobs:
-#   build:
-#     runs-on: windows-latest
-
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v4
-
-#       - name: Setup .NET
-#         uses: actions/setup-dotnet@v4
-#         with:
-#           dotnet-version: 6.0.x
-
-#       - name: Restore
-#         run: dotnet restore
-
-#       - name: Build
-#         run: dotnet build --configuration Release
-
-#       - name: Publish
-#         run: dotnet publish -c Release -o publish
-
-#       - name: Zip artifact
-#         run: |
-#           powershell Compress-Archive -Path publish\* -DestinationPath app.zip
-
-#       - name: Upload artifact
-#         uses: actions/upload-artifact@v4
-#         with:
-#           name: drop
-#           path: app.zip
- 
 name: CI BolaoNet
 
 on:
@@ -140,56 +102,56 @@ jobs:
           path: deploy
 
           
-# =========================
-# DEPLOY - SOMEE
-# =========================
-  deploy-somee:
-    needs: build
-    runs-on: windows-latest
-    environment: dev-somee
+# # =========================
+# # DEPLOY - SOMEE
+# # =========================
+#   deploy-somee:
+#     needs: build
+#     runs-on: windows-latest
+#     environment: dev-somee
 
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: drop
+#     steps:
+#       - name: Download artifact
+#         uses: actions/download-artifact@v4
+#         with:
+#           name: drop
 
-      - name: Extract files
-        run: |
-          Expand-Archive -Path drop/app.zip -DestinationPath extracted
+#       - name: Extract files
+#         run: |
+#           Expand-Archive -Path drop/app.zip -DestinationPath extracted
 
-      #- name: Extract files
-      #  run: |
-      #    powershell Expand-Archive -Path app.zip -DestinationPath extracted
+#       #- name: Extract files
+#       #  run: |
+#       #    powershell Expand-Archive -Path app.zip -DestinationPath extracted
 
-      - name: Replace tokens in config
-        shell: pwsh
-        run: |
-          $files = Get-ChildItem -Path extracted -Recurse -Include *.config
-          foreach ($file in $files) {
-            (Get-Content $file.FullName) `
-              -replace '_#DB_SERVER#_', '${{ secrets.DB_SERVER }}' `
-              -replace '_#DB_NAME#_', '${{ secrets.DB_NAME }}' `
-              -replace '_#DB_USER#_', '${{ secrets.DB_USER }}' `
-              -replace '_#DB_PASSWORD#_', '${{ secrets.DB_PASSWORD }}' `
-              | Set-Content $file.FullName
-          }
+#       - name: Replace tokens in config
+#         shell: pwsh
+#         run: |
+#           $files = Get-ChildItem -Path extracted -Recurse -Include *.config
+#           foreach ($file in $files) {
+#             (Get-Content $file.FullName) `
+#               -replace '_#DB_SERVER#_', '${{ secrets.DB_SERVER }}' `
+#               -replace '_#DB_NAME#_', '${{ secrets.DB_NAME }}' `
+#               -replace '_#DB_USER#_', '${{ secrets.DB_USER }}' `
+#               -replace '_#DB_PASSWORD#_', '${{ secrets.DB_PASSWORD }}' `
+#               | Set-Content $file.FullName
+#           }
 
-      - name: Install SqlPackage
-        run: choco install sqlpackage
+#       - name: Install SqlPackage
+#         run: choco install sqlpackage
 
-      - name: Deploy Database
-        run: |
-          sqlpackage /Action:Publish `
-          /SourceFile:"./BolaoNet.Database.SqlServer.dacpac" `
-          /TargetConnectionString:"Server=${{ secrets.DB_SERVER }};Database=${{ secrets.DB_NAME }};User Id=${{ secrets.DB_USER }};Password=${{ secrets.DB_PASSWORD }};TrustServerCertificate=True" `
-          /p:BlockOnPossibleDataLoss=false
+#       - name: Deploy Database
+#         run: |
+#           sqlpackage /Action:Publish `
+#           /SourceFile:"./BolaoNet.Database.SqlServer.dacpac" `
+#           /TargetConnectionString:"Server=${{ secrets.DB_SERVER }};Database=${{ secrets.DB_NAME }};User Id=${{ secrets.DB_USER }};Password=${{ secrets.DB_PASSWORD }};TrustServerCertificate=True" `
+#           /p:BlockOnPossibleDataLoss=false
 
-      - name: FTP Deploy
-        uses: SamKirkland/FTP-Deploy-Action@latest
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: extracted/
-          server-dir: /www.bolaonet.somee.com/
+#       - name: FTP Deploy
+#         uses: SamKirkland/FTP-Deploy-Action@latest
+#         with:
+#           server: ${{ secrets.FTP_SERVER }}
+#           username: ${{ secrets.FTP_USERNAME }}
+#           password: ${{ secrets.FTP_PASSWORD }}
+#           local-dir: extracted/
+#           server-dir: /www.bolaonet.somee.com/
