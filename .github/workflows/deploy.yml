@@ -156,7 +156,11 @@ jobs:
 
       - name: Extract files
         run: |
-          powershell Expand-Archive -Path app.zip -DestinationPath extracted
+          Expand-Archive -Path drop/app.zip -DestinationPath extracted
+
+      #- name: Extract files
+      #  run: |
+      #    powershell Expand-Archive -Path app.zip -DestinationPath extracted
 
       - name: Replace tokens in config
         shell: pwsh
@@ -182,7 +186,7 @@ jobs:
           /p:BlockOnPossibleDataLoss=false
 
       - name: FTP Deploy
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        uses: SamKirkland/FTP-Deploy-Action@latest
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
