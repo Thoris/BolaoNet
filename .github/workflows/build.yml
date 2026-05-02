@@ -23,13 +23,26 @@ jobs:
       # RESTORE (MODERNO)
       # =========================
       - name: Restore
-        run: dotnet restore ${{ env.SOLUTION }}
+        run: dotnet restore ${{ env.SOLUTION }}  --verbosity normal
 
       # =========================
       # BUILD
       # =========================
-      - name: Build
-        run: dotnet build ${{ env.SOLUTION }} --configuration ${{ env.BUILD_CONFIGURATION }} --no-restore
+      - name: Locate MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Build solution
+        run: msbuild ${{ env.SOLUTION }} /p:Configuration=${{ env.BUILD_CONFIGURATION }} /p:Platform="Any CPU"
+
+
+      # - name: Build solution (MSBuild)
+      #   run: |
+      #     "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe" `
+      #       ${{ env.SOLUTION }} `
+      #       /p:Configuration=${{ env.BUILD_CONFIGURATION }} `
+      #       /p:Platform="Any CPU"
+      #- name: Build
+      #  run: dotnet build ${{ env.SOLUTION }} --configuration ${{ env.BUILD_CONFIGURATION }} --no-restore
 
       # =========================
       # TEST
