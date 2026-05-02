@@ -100,15 +100,17 @@ jobs:
       # =========================
       # - name: Publish MVC
       #   run: dotnet publish -c ${{ env.BUILD_CONFIGURATION }} -o publish
-
-      - name: Build & Publish MVC
-        run: |
-          msbuild ${{ env.PROJECT_DEPLOY }} ^
-            /p:Configuration=Release ^
-            /p:DeployOnBuild=true ^
-            /p:WebPublishMethod=FileSystem ^
-            /p:PublishUrl=${{ github.workspace }}\publish ^
-            /p:DeleteExistingFiles=true
+      - name: Build MVC
+        run: msbuild ${{ env.PROJECT_DEPLOY }} /p:Configuration=Release /p:DeployOnBuild=true /p:WebPublishMethod=FileSystem /p:PublishUrl="${{ github.workspace }}\publish"
+        
+      # - name: Build & Publish MVC
+      #   run: |
+      #     msbuild ${{ env.PROJECT_DEPLOY }} ^
+      #       /p:Configuration=Release ^
+      #       /p:DeployOnBuild=true ^
+      #       /p:WebPublishMethod=FileSystem ^
+      #       /p:PublishUrl=${{ github.workspace }}\publish ^
+      #       /p:DeleteExistingFiles=true
 
 
       # =========================
