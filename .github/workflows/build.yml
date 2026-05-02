@@ -32,50 +32,18 @@ jobs:
 
       - name: Restore
         run: nuget restore ${{ env.SOLUTION }} 
-        
-      # - name: Restore (NuGet)
-      #   run: nuget restore ${{ env.SOLUTION }} 
-
-      # - name: Restore
-      #   run: dotnet restore ${{ env.SOLUTION }}  --verbosity normal
 
       # =========================
       # BUILD
-      # =========================
-      # - name: Locate MSBuild
-      #   uses: microsoft/setup-msbuild@v2
+      # ========================= 
 
       - name: Build solution
         run: msbuild ${{ env.SOLUTION }} /p:Configuration=${{ env.BUILD_CONFIGURATION }} /p:Platform="Any CPU"
 
-
-      # - name: Build solution (MSBuild)
-      #   run: |
-      #     "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe" `
-      #       ${{ env.SOLUTION }} `
-      #       /p:Configuration=${{ env.BUILD_CONFIGURATION }} `
-      #       /p:Platform="Any CPU"
-      #- name: Build
-      #  run: dotnet build ${{ env.SOLUTION }} --configuration ${{ env.BUILD_CONFIGURATION }} --no-restore
-
       # =========================
       # TEST
       # =========================
-
-      # - name: Setup MSBuild
-      #   uses: microsoft/setup-msbuild@v2
-
-      # - name: Setup NuGet
-      #   uses: NuGet/setup-nuget@v2
-
-      # - name: Restore
-      #   run: nuget restore ${{ env.SOLUTION }}
-
-      # - name: Build solution
-      #   run: msbuild ${{ env.SOLUTION }} /p:Configuration=Release /p:Platform="Any CPU"        
-
-      # - name: Test
-      #   run: dotnet test --configuration ${{ env.BUILD_CONFIGURATION }} --no-build
+ 
       - name: Test
         run: msbuild ${{ env.SOLUTION }} /p:RunTests=true
 
@@ -97,32 +65,13 @@ jobs:
 
       # =========================
       # PUBLISH  
-      # =========================
-      # - name: Publish MVC
-      #   run: dotnet publish -c ${{ env.BUILD_CONFIGURATION }} -o publish
+      # ========================= 
       - name: Build MVC
         run: msbuild ${{ env.PROJECT_DEPLOY }} /p:Configuration=Release /p:DeployOnBuild=true /p:WebPublishMethod=FileSystem /p:PublishUrl="${{ github.workspace }}\publish"
-        
-      # - name: Build & Publish MVC
-      #   run: |
-      #     msbuild ${{ env.PROJECT_DEPLOY }} ^
-      #       /p:Configuration=Release ^
-      #       /p:DeployOnBuild=true ^
-      #       /p:WebPublishMethod=FileSystem ^
-      #       /p:PublishUrl=${{ github.workspace }}\publish ^
-      #       /p:DeleteExistingFiles=true
-
-
+         
       # =========================
       # DACPAC COPY  
-      # =========================
-      # - name: Copy DacPac
-      #   shell: pwsh
-      #   run: |
-      #     New-Item -ItemType Directory -Force -Path deploy | Out-Null
-      #     Copy-Item "${{ github.workspace }}\BolaoNet.Database.SqlServer\bin\Release\*.dacpac" deploy -Force
-
-
+      # ========================= 
       - name: Copy DacPac
         shell: pwsh
         run: |
@@ -136,13 +85,6 @@ jobs:
       # =========================
       # TEMPLATES
       # =========================
-      # - name: Copy Templates
-      #   shell: pwsh
-      #   run: |
-      #     Copy-Item "${{ github.workspace }}\BolaoNet.Infra.Notification.Mail\TemplatesHtml\*" `
-      #       -Destination "${{ github.workspace }}\deploy\MVC\TemplatesHtml" `
-      #       -Recurse -Force
-
       - name: Copy TemplatesHtml
         shell: pwsh
         run: |
@@ -167,13 +109,46 @@ jobs:
         shell: pwsh
         run: |
           $buildNumber = "2.$(Get-Date -Format yy.MM.dd)$env:GITHUB_RUN_NUMBER"
+
           New-Item -ItemType Directory -Force -Path deploy/zip | Out-Null
 
+          $source = "${{ github.workspace }}\BolaoNet.MVC\bin\Release"
+
+          if (!(Test-Path $source)) {
+            throw "Build output not found: $source"
+          }
+
           Compress-Archive `
-            -Path "${{ github.workspace }}/publish/*" `
+            -Path "$source\*" `
             -DestinationPath "deploy/zip/Mvc_$buildNumber.zip"
 
           echo "BUILD_NUMBER=$buildNumber" >> $env:GITHUB_ENV
+
+          Write-Host "ZIP criado com sucesso"
+          
+      # - name: Debug publish folder
+      #   shell: pwsh
+      #   run: |
+      #     Write-Host "Procurando arquivos..."
+
+      #     Get-ChildItem "${{ github.workspace }}" -Recurse -Directory |
+      #       Where-Object { $_.Name -eq "publish" -or $_.Name -eq "bin" } |
+      #       Select-Object FullName
+
+      #     Write-Host "=== BIN OUTPUT ==="
+      #     Get-ChildItem "${{ github.workspace }}\**\bin\Release" -Recurse -ErrorAction SilentlyContinue
+
+      # - name: Create ZIP
+      #   shell: pwsh
+      #   run: |
+      #     $buildNumber = "2.$(Get-Date -Format yy.MM.dd)$env:GITHUB_RUN_NUMBER"
+      #     New-Item -ItemType Directory -Force -Path deploy/zip | Out-Null
+
+      #     Compress-Archive `
+      #       -Path "${{ github.workspace }}/publish/*" `
+      #       -DestinationPath "deploy/zip/Mvc_$buildNumber.zip"
+
+      #     echo "BUILD_NUMBER=$buildNumber" >> $env:GITHUB_ENV
 
       # =========================
       # ARTIFACT
