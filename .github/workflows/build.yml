@@ -88,6 +88,7 @@ jobs:
       - name: Copy TemplatesHtml
         shell: pwsh
         run: |
+        
           $source = "${{ github.workspace }}\BolaoNet.Infra.Notification.Mail\TemplatesHtml"
           $dest = "${{ github.workspace }}\deploy\MVC\TemplatesHtml"
 
@@ -105,14 +106,28 @@ jobs:
       # =========================
       # ZIP
       # =========================
+      - name: Debug publish folder
+        shell: pwsh
+        run: |
+          Write-Host "Procurando arquivos..."
+
+          Get-ChildItem "${{ github.workspace }}" -Recurse -Directory |
+            Where-Object { $_.Name -eq "publish" -or $_.Name -eq "bin" } |
+            Select-Object FullName
+
+          Write-Host "=== BIN OUTPUT ==="
+          Get-ChildItem "${{ github.workspace }}\publish" -Recurse -ErrorAction SilentlyContinue
+
+
       - name: Create ZIP
         shell: pwsh
         run: |
+
           $buildNumber = "2.$(Get-Date -Format yy.MM.dd)$env:GITHUB_RUN_NUMBER"
 
           New-Item -ItemType Directory -Force -Path deploy/zip | Out-Null
 
-          $source = "${{ github.workspace }}\BolaoNet.MVC\bin\Release"
+          $source = "${{ github.workspace }}\publish"
 
           if (!(Test-Path $source)) {
             throw "Build output not found: $source"
@@ -125,7 +140,7 @@ jobs:
           echo "BUILD_NUMBER=$buildNumber" >> $env:GITHUB_ENV
 
           Write-Host "ZIP criado com sucesso"
-          
+
       # - name: Debug publish folder
       #   shell: pwsh
       #   run: |
