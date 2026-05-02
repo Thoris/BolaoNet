@@ -147,9 +147,13 @@ jobs:
             Where-Object { $_.Name -eq "bin" } |
             Select-Object FullName
 
-          Write-Host "`n=== STRUCTURE TREE ==="
-          tree "${{ github.workspace }}" /F
-          
+      - name: Ensure publish folder exists
+        shell: pwsh
+        run: |
+          if (!(Test-Path "${{ github.workspace }}\publish")) {
+            New-Item -ItemType Directory -Force -Path "${{ github.workspace }}\publish"
+          }
+
       - name: Create ZIP
         shell: pwsh
         run: |
@@ -165,7 +169,7 @@ jobs:
           }
 
           Compress-Archive `
-            -Path "$source\*" `
+            -Path "${{ github.workspace }}\publish\*" `
             -DestinationPath "deploy/zip/Mvc_$buildNumber.zip"
 
           echo "BUILD_NUMBER=$buildNumber" >> $env:GITHUB_ENV
