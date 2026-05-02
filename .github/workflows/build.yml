@@ -1,10 +1,9 @@
-
 name: CI BolaoNet
 
 on:
   push:
     branches:
-      - main
+      - master
 
 env:
   SOLUTION: '**/*.sln'
@@ -12,6 +11,7 @@ env:
 
 jobs:
   build:
+    name: Build
     runs-on: windows-latest
 
     steps:
