@@ -69,6 +69,15 @@ jobs:
       - name: Build MVC
         run: msbuild ${{ env.PROJECT_DEPLOY }} /p:Configuration=Release /p:DeployOnBuild=true /p:WebPublishMethod=FileSystem /p:PublishUrl="${{ github.workspace }}\publish"
          
+      # - name: Build + Publish MVC
+      #   shell: pwsh
+      #   run: |
+      #     msbuild ${{ env.PROJECT_DEPLOY }} `
+      #       /p:Configuration=Release `
+      #       /p:DeployOnBuild=true `
+      #       /p:WebPublishMethod=FileSystem `
+      #       /p:PublishUrl="${{ github.workspace }}\publish" `
+      #       /m
       # =========================
       # DACPAC COPY  
       # ========================= 
@@ -106,19 +115,41 @@ jobs:
       # =========================
       # ZIP
       # =========================
-      - name: Debug publish folder
+      - name: Debug build output
         shell: pwsh
         run: |
-          Write-Host "Procurando arquivos..."
+          Write-Host "==============================="
+          Write-Host "PESQUISA COMPLETA DE OUTPUT"
+          Write-Host "==============================="
 
-          Get-ChildItem "${{ github.workspace }}" -Recurse -Directory |
-            Where-Object { $_.Name -eq "publish" -or $_.Name -eq "bin" } |
+          # 1. Mostrar TODOS os arquivos relevantes
+          Write-Host "`n=== DLL / CONFIG / ZIP / XML ==="
+          Get-ChildItem "${{ github.workspace }}" -Recurse -File -ErrorAction SilentlyContinue |
+            Where-Object {
+              $_.Extension -in ".dll", ".config", ".xml", ".zip", ".pdb"
+            } |
             Select-Object FullName
 
-          Write-Host "=== BIN OUTPUT ==="
-          Get-ChildItem "${{ github.workspace }}\publish" -Recurse -ErrorAction SilentlyContinue
+          # 2. Mostrar publish se existir
+          Write-Host "`n=== PUBLISH CONTENT ==="
+          Get-ChildItem "${{ github.workspace }}\publish" -Recurse -File -ErrorAction SilentlyContinue |
+            Select-Object FullName
 
+          # 3. Mostrar MVC package output (MUITO importante no seu caso)
+          Write-Host "`n=== MVC PACKAGE OUTPUT ==="
+          Get-ChildItem "${{ github.workspace }}\BolaoNet.MVC\obj" -Recurse -File -ErrorAction SilentlyContinue |
+            Where-Object { $_.FullName -match "PackageTmp" } |
+            Select-Object FullName
 
+          # 4. Mostrar BINs
+          Write-Host "`n=== BIN OUTPUT ==="
+          Get-ChildItem "${{ github.workspace }}" -Recurse -Directory |
+            Where-Object { $_.Name -eq "bin" } |
+            Select-Object FullName
+
+          Write-Host "`n=== STRUCTURE TREE ==="
+          tree "${{ github.workspace }}" /F
+          
       - name: Create ZIP
         shell: pwsh
         run: |
