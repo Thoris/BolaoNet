@@ -337,7 +337,10 @@ jobs:
       - name: Install SqlPackage
         run: choco install sqlpackage
 
-
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: drop
 
       - name: Locate DACPAC
         id: dacpac
