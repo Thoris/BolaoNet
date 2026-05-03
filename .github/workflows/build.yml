@@ -23,7 +23,6 @@ jobs:
       # =========================
       # RESTORE
       # =========================
-
       - name: Setup NuGet
         uses: NuGet/setup-nuget@v2
 
@@ -36,14 +35,12 @@ jobs:
       # =========================
       # BUILD
       # ========================= 
-
       - name: Build solution
         run: msbuild ${{ env.SOLUTION }} /p:Configuration=${{ env.BUILD_CONFIGURATION }} /p:Platform="Any CPU"
 
       # =========================
       # TEST
       # =========================
- 
       - name: Test
         run: msbuild ${{ env.SOLUTION }} /p:RunTests=true
 
@@ -67,17 +64,8 @@ jobs:
       # PUBLISH  
       # ========================= 
       - name: Build MVC
-        #run: msbuild ${{ env.PROJECT_DEPLOY }} /p:Configuration=Release /p:DeployOnBuild=true /p:WebPublishMethod=FileSystem /p:PublishUrl="${{ github.workspace }}\publish"        
         run: msbuild ${{ env.PROJECT_DEPLOY }} /p:GenerateDocumentation=true /p:DeployOnBuild=true  /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DeployDefaultTarget=WebPublish /p:PublishProfile=IIS 
-      # - name: Build + Publish MVC
-      #   shell: pwsh
-      #   run: |
-      #     msbuild ${{ env.PROJECT_DEPLOY }} `
-      #       /p:Configuration=Release `
-      #       /p:DeployOnBuild=true `
-      #       /p:WebPublishMethod=FileSystem `
-      #       /p:PublishUrl="${{ github.workspace }}\publish" `
-      #       /m
+
       # =========================
       # DACPAC COPY  
       # ========================= 
@@ -89,7 +77,6 @@ jobs:
           $files = Copy-Item "${{ github.workspace }}\BolaoNet.Database.SqlServer\bin\Release\*.dacpac" deploy -Force -PassThru
 
           Write-Host "Arquivos copiados: $($files.Count)"
-
 
       # =========================
       # TEMPLATES
@@ -111,42 +98,40 @@ jobs:
 
           Write-Host "Copy finalizado"
 
+      # =========================
+      # AJUSTES DE WEBCONFIG E LOG
+      # =========================
+      - name: Replace Web.config (robusto)
+        shell: pwsh
+        run: |
+          $path = "${{ github.workspace }}\deploy\MVC"
+
+          if (!(Test-Path $path)) {
+            $path = "${{ github.workspace }}\BolaoNet.MVC\obj\Release\Package\PackageTmp"
+            Write-Host "Fallback path: $path"
+          }
+
+          $webConfig = "$path\web.config"
+          $devopsConfig = "$path\web.devops.config"
+
+          if (Test-Path $devopsConfig) {
+
+            if (Test-Path $webConfig) {
+              Remove-Item $webConfig -Force
+            }
+
+            Copy-Item $devopsConfig $webConfig -Force
+            Remove-Item $devopsConfig -Force
+
+            Write-Host "Config substituído com sucesso"
+
+          } else {
+            Write-Host "web.devops.config não encontrado"
+          }
 
       # =========================
       # ZIP
-      # =========================
-      - name: Debug build output
-        shell: pwsh
-        run: |
-          Write-Host "==============================="
-          Write-Host "PESQUISA COMPLETA DE OUTPUT"
-          Write-Host "==============================="
-
-          # 1. Mostrar TODOS os arquivos relevantes
-          Write-Host "`n=== DLL / CONFIG / ZIP / XML ==="
-          Get-ChildItem "${{ github.workspace }}" -Recurse -File -ErrorAction SilentlyContinue |
-            Where-Object {
-              $_.Extension -in ".dll", ".config", ".xml", ".zip", ".pdb"
-            } |
-            Select-Object FullName
-
-          # 2. Mostrar publish se existir
-          Write-Host "`n=== PUBLISH CONTENT ==="
-          Get-ChildItem "${{ github.workspace }}\deploy\MVC" -Recurse -File -ErrorAction SilentlyContinue |
-            Select-Object FullName
-
-          # 3. Mostrar MVC package output (MUITO importante no seu caso)
-          Write-Host "`n=== MVC PACKAGE OUTPUT ==="
-          Get-ChildItem "${{ github.workspace }}\BolaoNet.MVC\obj" -Recurse -File -ErrorAction SilentlyContinue |
-            Where-Object { $_.FullName -match "PackageTmp" } |
-            Select-Object FullName
-
-          # 4. Mostrar BINs
-          Write-Host "`n=== BIN OUTPUT ==="
-          Get-ChildItem "${{ github.workspace }}" -Recurse -Directory |
-            Where-Object { $_.Name -eq "bin" } |
-            Select-Object FullName
-
+      # ========================= 
       - name: Ensure publish folder exists
         shell: pwsh
         run: |
@@ -195,54 +180,7 @@ jobs:
           echo "BUILD_NUMBER=$buildNumber" >> $env:GITHUB_ENV
 
           Write-Host "ZIP criado com sucesso"
-
-
-      # - name: Create ZIP
-      #   shell: pwsh
-      #   run: |
-
-      #     $buildNumber = "2.$(Get-Date -Format yy.MM.dd)$env:GITHUB_RUN_NUMBER"
-
-      #     New-Item -ItemType Directory -Force -Path deploy/zip | Out-Null
-
-      #     $source = "${{ github.workspace }}\publish"
-
-      #     if (!(Test-Path $source)) {
-      #       throw "Build output not found: $source"
-      #     }
-
-      #     Compress-Archive `
-      #       -Path "${{ github.workspace }}\publish\*" `
-      #       -DestinationPath "deploy/zip/Mvc_$buildNumber.zip"
-
-      #     echo "BUILD_NUMBER=$buildNumber" >> $env:GITHUB_ENV
-
-      #     Write-Host "ZIP criado com sucesso"
-
-      # - name: Debug publish folder
-      #   shell: pwsh
-      #   run: |
-      #     Write-Host "Procurando arquivos..."
-
-      #     Get-ChildItem "${{ github.workspace }}" -Recurse -Directory |
-      #       Where-Object { $_.Name -eq "publish" -or $_.Name -eq "bin" } |
-      #       Select-Object FullName
-
-      #     Write-Host "=== BIN OUTPUT ==="
-      #     Get-ChildItem "${{ github.workspace }}\**\bin\Release" -Recurse -ErrorAction SilentlyContinue
-
-      # - name: Create ZIP
-      #   shell: pwsh
-      #   run: |
-      #     $buildNumber = "2.$(Get-Date -Format yy.MM.dd)$env:GITHUB_RUN_NUMBER"
-      #     New-Item -ItemType Directory -Force -Path deploy/zip | Out-Null
-
-      #     Compress-Archive `
-      #       -Path "${{ github.workspace }}/publish/*" `
-      #       -DestinationPath "deploy/zip/Mvc_$buildNumber.zip"
-
-      #     echo "BUILD_NUMBER=$buildNumber" >> $env:GITHUB_ENV
-
+ 
       # =========================
       # ARTIFACT
       # =========================
@@ -253,56 +191,96 @@ jobs:
           path: deploy
 
           
-# # =========================
-# # DEPLOY - SOMEE
-# # =========================
-#   deploy-somee:
-#     needs: build
-#     runs-on: windows-latest
-#     environment: dev-somee
+# =========================
+# DEPLOY - SOMEE
+# =========================
+  deploy-somee:
+    needs: build
+    runs-on: windows-latest
+    environment: Somee - PROD
 
-#     steps:
-#       - name: Download artifact
-#         uses: actions/download-artifact@v4
-#         with:
-#           name: drop
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: drop
 
-#       - name: Extract files
-#         run: |
-#           Expand-Archive -Path drop/app.zip -DestinationPath extracted
+      # - name: Extract files
+      #   run: |
+      #     Expand-Archive -Path drop/app.zip -DestinationPath extracted
 
-#       #- name: Extract files
-#       #  run: |
-#       #    powershell Expand-Archive -Path app.zip -DestinationPath extracted
+      - name: Extract files
+        shell: pwsh
+        run: |
+          $zip = Get-ChildItem -Path . -Recurse -Filter "*.zip" | Select-Object -First 1
 
-#       - name: Replace tokens in config
-#         shell: pwsh
-#         run: |
-#           $files = Get-ChildItem -Path extracted -Recurse -Include *.config
-#           foreach ($file in $files) {
-#             (Get-Content $file.FullName) `
-#               -replace '_#DB_SERVER#_', '${{ secrets.DB_SERVER }}' `
-#               -replace '_#DB_NAME#_', '${{ secrets.DB_NAME }}' `
-#               -replace '_#DB_USER#_', '${{ secrets.DB_USER }}' `
-#               -replace '_#DB_PASSWORD#_', '${{ secrets.DB_PASSWORD }}' `
-#               | Set-Content $file.FullName
-#           }
+          if (!$zip) {
+            throw "ZIP não encontrado"
+          }
 
-#       - name: Install SqlPackage
-#         run: choco install sqlpackage
+          Write-Host "ZIP encontrado: $($zip.FullName)"
 
-#       - name: Deploy Database
-#         run: |
-#           sqlpackage /Action:Publish `
-#           /SourceFile:"./BolaoNet.Database.SqlServer.dacpac" `
-#           /TargetConnectionString:"Server=${{ secrets.DB_SERVER }};Database=${{ secrets.DB_NAME }};User Id=${{ secrets.DB_USER }};Password=${{ secrets.DB_PASSWORD }};TrustServerCertificate=True" `
-#           /p:BlockOnPossibleDataLoss=false
+          Expand-Archive -Path $zip.FullName -DestinationPath extracted -Force
 
-#       - name: FTP Deploy
-#         uses: SamKirkland/FTP-Deploy-Action@latest
-#         with:
-#           server: ${{ secrets.FTP_SERVER }}
-#           username: ${{ secrets.FTP_USERNAME }}
-#           password: ${{ secrets.FTP_PASSWORD }}
-#           local-dir: extracted/
-#           server-dir: /www.bolaonet.somee.com/
+
+      - name: Replace tokens in config
+        shell: pwsh
+        run: |
+          $files = Get-ChildItem -Path extracted -Recurse -Include *.config
+          foreach ($file in $files) {
+            (Get-Content $file.FullName) `
+              -replace '_#DB_SERVER#_', '${{ secrets.DB_SERVER }}' `
+              -replace '_#DB_NAME#_', '${{ secrets.DB_NAME }}' `
+              -replace '_#DB_USER#_', '${{ secrets.DB_USER }}' `
+              -replace '_#DB_PASSWORD#_', '${{ secrets.DB_PASSWORD }}' `
+              | Set-Content $file.FullName
+          }
+
+      - name: Install SqlPackage
+        run: choco install sqlpackage
+
+
+      - name: Locate DacPac
+        id: dacpac
+        shell: pwsh
+        run: |
+          $dacpac = Get-ChildItem -Path . -Recurse -Filter "*.dacpac" | Select-Object -First 1
+
+          if (!$dacpac) {
+            throw "DACPAC não encontrado"
+          }
+
+          echo "path=$($dacpac.FullName)" >> $env:GITHUB_OUTPUT
+
+      # - name: Deploy Database
+      #   run: |
+      #     sqlpackage /Action:Publish `
+      #     /SourceFile:"./BolaoNet.Database.SqlServer.dacpac" `
+      #     /TargetConnectionString:"Server=${{ secrets.DB_SERVER }};Database=${{ secrets.DB_NAME }};User Id=${{ secrets.DB_USER }};Password=${{ secrets.DB_PASSWORD }};TrustServerCertificate=True" `
+      #     /p:BlockOnPossibleDataLoss=false
+
+      - name: Deploy Database
+        run: |
+          sqlpackage /Action:Publish `
+          /SourceFile:"${{ steps.dacpac.outputs.path }}" `
+          /TargetConnectionString:"Server=${{ secrets.DB_SERVER }};Database=${{ secrets.DB_NAME }};User Id=${{ secrets.DB_USER }};Password=${{ secrets.DB_PASSWORD }};TrustServerCertificate=True" `
+          /p:BlockOnPossibleDataLoss=false
+
+
+      # - name: FTP Deploy
+      #   uses: SamKirkland/FTP-Deploy-Action@latest
+      #   with:
+      #     server: ${{ secrets.FTP_SERVER }}
+      #     username: ${{ secrets.FTP_USERNAME }}
+      #     password: ${{ secrets.FTP_PASSWORD }}
+      #     local-dir: extracted/
+      #     server-dir: /www.bolaonet.somee.com/
+
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@latest
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: extracted/
+          server-dir: /www.bolaonet.somee.com/
