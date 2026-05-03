@@ -232,7 +232,6 @@ jobs:
       #         | Set-Content $file.FullName
       #     }
 
-
       - name: Replace tokens (root only)
         shell: pwsh
         run: |
@@ -248,50 +247,59 @@ jobs:
 
           Write-Host "Processando: $($file.FullName)"
 
-          (Get-Content $file.FullName) `
+          # 🔥 LEITURA SEGURA
+          $content = Get-Content $file.FullName -Raw
 
-            # =========================
-            # DATABASE
-            # =========================
-            -replace '_#db.server#_', '${{ vars.DB_SERVER }}' `
-            -replace '_#db.initial_catalog#_', '${{ vars.DB_INITIAL_CATALOG }}' `
-            -replace '_#db.username#_', '${{ vars.DB_USERNAME }}' `
-            -replace '_#db.password#_', '${{ vars.DB_PASSWORD }}' `
-            -replace '_#poolingconfig#_', '${{ vars.DB_POOLING_CONFIG }}' `
+          # =========================
+          # DATABASE
+          # =========================
+          $content = $content -replace '_#db.server#_', '${{ vars.DB_SERVER }}'
+          $content = $content -replace '_#db.initial_catalog#_', '${{ vars.DB_INITIAL_CATALOG }}'
+          $content = $content -replace '_#db.username#_', '${{ vars.DB_USERNAME }}'
+          $content = $content -replace '_#db.password#_', '${{ vars.DB_PASSWORD }}'
+          $content = $content -replace '_#poolingconfig#_', '${{ vars.DB_POOLING_CONFIG }}'
 
-            # =========================
-            # MAIL
-            # =========================
-            -replace '_#mail.enablessl#_', '${{ vars.MAIL_ENABLE_SSL }}' `
-            -replace '_#mail.smtp#_', '${{ vars.MAIL_SMTP }}' `
-            -replace '_#mail.port#_', '${{ vars.MAIL_PORT }}' `
-            -replace '_#mail.from#_', '${{ vars.MAIL_FROM }}' `
-            -replace '_#mail.password#_', '${{ vars.MAIL_PASSWORD }}' `
-            -replace '_#mail.signature#_', '${{ vars.MAIL_SIGNATURE }}' `
-            -replace '_#mail.url#_', '${{ vars.MAIL_URL }}' `
-            -replace '_#mail.templates.folder#_', '${{ vars.MAIL_TEMPLATES_FOLDER }}' `
+          # =========================
+          # MAIL
+          # =========================
+          $content = $content -replace '_#mail.enablessl#_', '${{ vars.MAIL_ENABLE_SSL }}'
+          $content = $content -replace '_#mail.smtp#_', '${{ vars.MAIL_SMTP }}'
+          $content = $content -replace '_#mail.port#_', '${{ vars.MAIL_PORT }}'
+          $content = $content -replace '_#mail.from#_', '${{ vars.MAIL_FROM }}'
+          $content = $content -replace '_#mail.password#_', '${{ vars.MAIL_PASSWORD }}'
+          $content = $content -replace '_#mail.signature#_', '${{ vars.MAIL_SIGNATURE }}'
+          $content = $content -replace '_#mail.url#_', '${{ vars.MAIL_URL }}'
+          $content = $content -replace '_#mail.templates.folder#_', '${{ vars.MAIL_TEMPLATES_FOLDER }}'
 
-            # =========================
-            # WEB API
-            # =========================
-            -replace '_#webapi.url#_', '${{ vars.API_URL }}' `
-            -replace '_#webapi.token#_', '${{ vars.API_TOKEN }}' `
+          # =========================
+          # WEB API
+          # =========================
+          $content = $content -replace '_#webapi.url#_', '${{ vars.API_URL }}'
+          $content = $content -replace '_#webapi.token#_', '${{ vars.API_TOKEN }}'
 
-            # =========================
-            # ENVIRONMENT
-            # =========================
-            -replace '_#environment#_', '${{ vars.ENVIRONMENT }}' `
+          # =========================
+          # ENVIRONMENT
+          # =========================
+          $content = $content -replace '_#environment#_', '${{ vars.ENVIRONMENT }}'
 
-            # =========================
-            # GOOGLE ANALYTICS
-            # =========================
-            -replace '_#googleanalytics.id#_', '${{ vars.GOOGLEANALYTICS_ID }}' `
+          # =========================
+          # GOOGLE ANALYTICS
+          # =========================
+          $content = $content -replace '_#googleanalytics.id#_', '${{ vars.GOOGLEANALYTICS_ID }}'
 
-            | Set-Content $file.FullName
+          # 🔥 GRAVAÇÃO
+          Set-Content $file.FullName $content
 
           Write-Host "✔ Tokens substituídos com sucesso"
-        
 
+      - name: Validate tokens
+        shell: pwsh
+        run: |
+          if (Select-String -Path "extracted\web.config" -Pattern "_#") {
+            throw "Ainda existem tokens não substituídos!"
+          } else {
+            Write-Host "✔ Todos tokens substituídos"
+          }
 
       - name: Install SqlPackage
         run: choco install sqlpackage
