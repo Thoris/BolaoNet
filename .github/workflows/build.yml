@@ -309,17 +309,20 @@ jobs:
       - name: Locate DACPAC
         id: dacpac
         shell: pwsh
-        run: |
-          $dacpac = Get-ChildItem "./deploy" -Recurse -Filter *.dacpac | Select-Object -First 1
+        run: | 
+          Write-Host "Procurando DACPAC..."
+
+          Get-ChildItem -Recurse | Select FullName
+
+          $dacpac = Get-ChildItem -Recurse -Filter *.dacpac | Select-Object -First 1
+
           if (!$dacpac) {
             throw "DACPAC não encontrado"
-            exit 1
           }
+
           Write-Host "DACPAC encontrado: $($dacpac.FullName)"
 
-          echo "path=$($dacpac.FullName)" >> $env:GITHUB_OUTPUT 
-
-
+          echo "path=$($dacpac.FullName)" >> $env:GITHUB_OUTPUT
 
 # =========================
 # DEPLOY DB (BOTÃO)
