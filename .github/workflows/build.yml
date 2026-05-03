@@ -222,8 +222,8 @@ jobs:
     runs-on: windows-latest
     environment: ${{ github.event.inputs.environment_name }}
 
-    outputs:
-      dacpac: ${{ steps.dacpac.outputs.path }}
+    #outputs:
+    #  dacpac: ${{ steps.dacpac.outputs.path }}
 
     steps:
       - uses: actions/download-artifact@v4
@@ -306,6 +306,39 @@ jobs:
           Write-Host "✔ Tokens substituídos com sucesso"
 
 
+      # - name: Locate DACPAC
+      #   id: dacpac
+      #   shell: pwsh
+      #   run: | 
+      #     Write-Host "Procurando DACPAC..."
+
+      #     Get-ChildItem -Recurse | Select FullName
+
+      #     $dacpac = Get-ChildItem -Recurse -Filter *.dacpac | Select-Object -First 1
+
+      #     if (!$dacpac) {
+      #       throw "DACPAC não encontrado"
+      #     }
+
+      #     Write-Host "DACPAC encontrado: $($dacpac.FullName)"
+
+      #     echo "path=$($dacpac.FullName)" >> $env:GITHUB_OUTPUT
+
+# =========================
+# DEPLOY DB (BOTÃO)
+# =========================
+  deploy-db:
+    needs: prepare-deploy 
+    if: github.event.inputs.deploy_target == 'db' || github.event.inputs.deploy_target == 'full'
+    runs-on: windows-latest
+    environment: ${{ github.event.inputs.environment_name }}
+
+    steps:
+      - name: Install SqlPackage
+        run: choco install sqlpackage
+
+
+
       - name: Locate DACPAC
         id: dacpac
         shell: pwsh
@@ -324,18 +357,7 @@ jobs:
 
           echo "path=$($dacpac.FullName)" >> $env:GITHUB_OUTPUT
 
-# =========================
-# DEPLOY DB (BOTÃO)
-# =========================
-  deploy-db:
-    needs: prepare-deploy 
-    if: github.event.inputs.deploy_target == 'db' || github.event.inputs.deploy_target == 'full'
-    runs-on: windows-latest
-    environment: ${{ github.event.inputs.environment_name }}
 
-    steps:
-      - name: Install SqlPackage
-        run: choco install sqlpackage
 
       # - name: Locate DacPac
       #   id: dacpac
@@ -350,12 +372,13 @@ jobs:
       #     echo "path=$($dacpac.FullName)" >> $env:GITHUB_OUTPUT
       - name: Debug DACPAC path
         run: |
-          echo "DACPAC PATH: ${{ needs.prepare-deploy.outputs.dacpac }}"
+          echo "DACPAC PATH: ${{ steps.dacpac.outputs.path }}"
+        #  echo "DACPAC PATH: ${{ needs.prepare-deploy.outputs.dacpac }}"
 
       - name: Deploy Database
         run: |
           sqlpackage /Action:Publish `
-          /SourceFile:"${{ needs.prepare-deploy.outputs.dacpac }}" `
+          /SourceFile:"${{ steps.dacpac.outputs.path }}" `
           /TargetConnectionString:"Server=${{ vars.DB_SERVER }};Database=${{ vars.DB_INITIAL_CATALOG }};User Id=${{ vars.DB_USERNAME }};Password=${{ vars.DB_PASSWORD }};TrustServerCertificate=True" `
           /p:BlockOnPossibleDataLoss=false /p:DropIndexesNotInSource=False
 
