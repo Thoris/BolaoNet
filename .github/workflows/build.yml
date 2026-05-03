@@ -9,7 +9,7 @@ env:
   SOLUTION: 'BolaoNet.sln'
   PROJECT_DEPLOY: 'BolaoNet.MVC\BolaoNet.MVC.csproj'
   BUILD_CONFIGURATION: Release 
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true 
   
 jobs:
   build:
@@ -205,10 +205,6 @@ jobs:
         with:
           name: drop
 
-      # - name: Extract files
-      #   run: |
-      #     Expand-Archive -Path drop/app.zip -DestinationPath extracted
-
       - name: Extract files
         shell: pwsh
         run: |
@@ -223,18 +219,76 @@ jobs:
           Expand-Archive -Path $zip.FullName -DestinationPath extracted -Force
 
 
-      - name: Replace tokens in config
+      # - name: Replace tokens in config
+      #   shell: pwsh
+      #   run: |
+      #     $files = Get-ChildItem -Path extracted -Recurse -Include *.config
+      #     foreach ($file in $files) {
+      #       (Get-Content $file.FullName) `
+      #         -replace '_#DB_SERVER#_', '${{ vars.DB_SERVER }}' `
+      #         -replace '_#DB_NAME#_', '${{ vars.DB_NAME }}' `
+      #         -replace '_#DB_USER#_', '${{ vars.DB_USER }}' `
+      #         -replace '_#DB_PASSWORD#_', '${{ vars.DB_PASSWORD }}' `
+      #         | Set-Content $file.FullName
+      #     }
+
+      - name: Replace tokens in web.config
         shell: pwsh
         run: |
-          $files = Get-ChildItem -Path extracted -Recurse -Include *.config
+          $path = "extracted"   # ajuste se necessário (deploy\MVC, PackageTmp, etc)
+
+          Write-Host "Iniciando replace em: $path"
+
+          $files = Get-ChildItem -Path $path -Recurse -Include web.config
+
           foreach ($file in $files) {
+
+            Write-Host "Processando: $($file.FullName)"
+
             (Get-Content $file.FullName) `
-              -replace '_#DB_SERVER#_', '${{ secrets.DB_SERVER }}' `
-              -replace '_#DB_NAME#_', '${{ secrets.DB_NAME }}' `
-              -replace '_#DB_USER#_', '${{ secrets.DB_USER }}' `
-              -replace '_#DB_PASSWORD#_', '${{ secrets.DB_PASSWORD }}' `
+
+              # =========================
+              # DATABASE
+              # =========================
+              -replace '_#db.server#_', '${{ vars.DB_SERVER }}' `
+              -replace '_#db.initial_catalog#_', '${{ vars.DB_INITIAL_CATALOG }}' `
+              -replace '_#db.username#_', '${{ vars.DB_USERNAME }}' `
+              -replace '_#db.password#_', '${{ vars.DB_PASSWORD }}' `
+              -replace '_#poolingconfig#_', '${{ vars.DB_POOLING_CONFIG }}' `
+
+              # =========================
+              # MAIL
+              # =========================
+              -replace '_#mail.enablessl#_', '${{ vars.MAIL_ENABLE_SSL }}' `
+              -replace '_#mail.smtp#_', '${{ vars.MAIL_SMTP }}' `
+              -replace '_#mail.port#_', '${{ vars.MAIL_PORT }}' `
+              -replace '_#mail.from#_', '${{ vars.MAIL_FROM }}' `
+              -replace '_#mail.password#_', '${{ vars.MAIL_PASSWORD }}' `
+              -replace '_#mail.signature#_', '${{ vars.MAIL_SIGNATURE }}' `
+              -replace '_#mail.url#_', '${{ vars.MAIL_URL }}' `
+              -replace '_#mail.templates.folder#_', '${{ vars.MAIL_TEMPLATES_FOLDER }}' `
+
+              # =========================
+              # WEB API
+              # =========================
+              -replace '_#webapi.url#_', '${{ vars.API_URL }}' `
+              -replace '_#webapi.token#_', '${{ vars.API_TOKEN }}' `
+
+              # =========================
+              # ENVIRONMENT
+              # =========================
+              -replace '_#environment#_', '${{ vars.ENVIRONMENT }}' `
+
+              # =========================
+              # GOOGLE ANALYTICS
+              # =========================
+              -replace '_#googleanalytics.id#_', '${{ vars.GOOGLEANALYTICS_ID }}' `
+
               | Set-Content $file.FullName
+
+            Write-Host "✔ Tokens substituídos com sucesso"
           }
+
 
       - name: Install SqlPackage
         run: choco install sqlpackage
@@ -252,35 +306,39 @@ jobs:
 
           echo "path=$($dacpac.FullName)" >> $env:GITHUB_OUTPUT
 
-      # - name: Deploy Database
-      #   run: |
-      #     sqlpackage /Action:Publish `
-      #     /SourceFile:"./BolaoNet.Database.SqlServer.dacpac" `
-      #     /TargetConnectionString:"Server=${{ secrets.DB_SERVER }};Database=${{ secrets.DB_NAME }};User Id=${{ secrets.DB_USER }};Password=${{ secrets.DB_PASSWORD }};TrustServerCertificate=True" `
-      #     /p:BlockOnPossibleDataLoss=false
-
       - name: Deploy Database
         run: |
           sqlpackage /Action:Publish `
           /SourceFile:"${{ steps.dacpac.outputs.path }}" `
-          /TargetConnectionString:"Server=${{ secrets.DB_SERVER }};Database=${{ secrets.DB_NAME }};User Id=${{ secrets.DB_USER }};Password=${{ secrets.DB_PASSWORD }};TrustServerCertificate=True" `
-          /p:BlockOnPossibleDataLoss=false
+          /TargetConnectionString:"Server=${{ vars.DB_SERVER }};Database=${{ vars.DB_INITIAL_CATALOG }};User Id=${{ vars.DB_USERNAME }};Password=${{ vars.DB_PASSWORD }};TrustServerCertificate=True" `
+          /p:BlockOnPossibleDataLoss=false /p:DropIndexesNotInSource=False
 
-
-      # - name: FTP Deploy
-      #   uses: SamKirkland/FTP-Deploy-Action@latest
-      #   with:
-      #     server: ${{ secrets.FTP_SERVER }}
-      #     username: ${{ secrets.FTP_USERNAME }}
-      #     password: ${{ secrets.FTP_PASSWORD }}
-      #     local-dir: extracted/
-      #     server-dir: /www.bolaonet.somee.com/
 
       - name: FTP Deploy
-        uses: SamKirkland/FTP-Deploy-Action@latest
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
+          server: ${{ vars.FTP_SERVER }}
+          username: ${{ vars.FTP_USERNAME }}
+          password: ${{ vars.FTP_PASSWORD }}
           local-dir: extracted/
-          server-dir: /www.bolaonet.somee.com/
+          server-dir: ${{ vars.FTP_DIRECTORY }} 
+
+
+      - name: Smoke Test
+        shell: pwsh
+        run: |
+          $url = ${{ vars.URL }}
+
+          try {
+            $response = Invoke-WebRequest -Uri $url -UseBasicParsing -TimeoutSec 20
+
+            if ($response.StatusCode -ne 200) {
+              throw "Status code inválido: $($response.StatusCode)"
+            }
+
+            Write-Host "Smoke test OK"
+          }
+          catch {
+            Write-Error "Falha no smoke test"
+            exit 1
+          }
