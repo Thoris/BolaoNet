@@ -220,6 +220,7 @@ jobs:
   prepare-deploy:
     needs: build
     runs-on: windows-latest
+    environment: ${{ github.event.inputs.environment_name }}
 
     outputs:
       dacpac: ${{ steps.dacpac.outputs.path }}
@@ -366,6 +367,7 @@ jobs:
     needs: prepare-deploy 
     if: github.event.inputs.deploy_target == 'db' || github.event.inputs.deploy_target == 'full'
     runs-on: windows-latest
+    environment: ${{ github.event.inputs.environment_name }}
 
     steps:
       - name: Install SqlPackage
@@ -398,6 +400,7 @@ jobs:
     needs: [prepare-deploy]
     if: contains(fromJson('["ftp_full","ftp_delta","full"]'), github.event.inputs.deploy_target)
     runs-on: windows-latest
+    environment: ${{ github.event.inputs.environment_name }}
 
     steps:
       - uses: actions/download-artifact@v4
