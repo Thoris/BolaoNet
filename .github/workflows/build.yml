@@ -212,8 +212,6 @@ jobs:
           name: drop
           path: deploy
 
-          
-
 # =========================
 # BASE (REUTILIZADO)
 # =========================
@@ -229,104 +227,6 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: drop
- 
-
-      # - name: Extract files
-      #   shell: pwsh
-      #   run: |
-      #     $zip = Get-ChildItem -Path . -Recurse -Filter "*.zip" | Select-Object -First 1
-
-      #     if (!$zip) {
-      #       throw "ZIP não encontrado"
-      #     }
-
-      #     Write-Host "ZIP encontrado: $($zip.FullName)"
-
-      #     Expand-Archive -Path $zip.FullName -DestinationPath extracted -Force
-
-
-      # - name: Replace tokens 
-      #   shell: pwsh
-      #   run: |
-      #     $file = Get-ChildItem "extracted" -Filter web.config -Recurse |
-      #       Where-Object {
-      #         $_.FullName -notmatch "\\bin\\|\\obj\\|\\Views\\|\\Scripts\\"
-      #       } |
-      #       Select-Object -First 1
-
-      #     if (!$file) {
-      #       throw "web.config raiz não encontrado"
-      #     }
-
-      #     Write-Host "Processando: $($file.FullName)"
-
-      #     # LEITURA SEGURA
-      #     $content = Get-Content $file.FullName -Raw
-
-      #     # =========================
-      #     # DATABASE
-      #     # =========================
-      #     $content = $content -replace '_#db.server#_', '${{ vars.DB_SERVER }}'
-      #     $content = $content -replace '_#db.initial_catalog#_', '${{ vars.DB_INITIAL_CATALOG }}'
-      #     $content = $content -replace '_#db.username#_', '${{ vars.DB_USERNAME }}'
-      #     $content = $content -replace '_#db.password#_', '${{ vars.DB_PASSWORD }}'
-      #     $content = $content -replace '_#poolingconfig#_', '${{ vars.DB_POOLING_CONFIG }}'
-
-      #     # =========================
-      #     # MAIL
-      #     # =========================
-      #     $content = $content -replace '_#mail.enablessl#_', '${{ vars.MAIL_ENABLE_SSL }}'
-      #     $content = $content -replace '_#mail.smtp#_', '${{ vars.MAIL_SMTP }}'
-      #     $content = $content -replace '_#mail.port#_', '${{ vars.MAIL_PORT }}'
-      #     $content = $content -replace '_#mail.from#_', '${{ vars.MAIL_FROM }}'
-      #     $content = $content -replace '_#mail.password#_', '${{ vars.MAIL_PASSWORD }}'
-      #     $content = $content -replace '_#mail.signature#_', '${{ vars.MAIL_SIGNATURE }}'
-      #     $content = $content -replace '_#mail.url#_', '${{ vars.MAIL_URL }}'
-      #     $content = $content -replace '_#mail.templates.folder#_', '${{ vars.MAIL_TEMPLATES_FOLDER }}'
-
-      #     # =========================
-      #     # WEB API
-      #     # =========================
-      #     $content = $content -replace '_#webapi.url#_', '${{ vars.API_URL }}'
-      #     $content = $content -replace '_#webapi.token#_', '${{ vars.API_TOKEN }}'
-
-      #     # =========================
-      #     # ENVIRONMENT
-      #     # =========================
-      #     $content = $content -replace '_#environment#_', '${{ vars.ENVIRONMENT }}'
-
-      #     # =========================
-      #     # GOOGLE ANALYTICS
-      #     # =========================
-      #     $content = $content -replace '_#googleanalytics.id#_', '${{ vars.GOOGLEANALYTICS_ID }}'
-
-      #     # GRAVAÇÃO
-      #     Set-Content $file.FullName $content
-
-      #     Write-Host "✔ Tokens substituídos com sucesso"
-
-
-      # - name: Debug Web.config (sanitizado)
-      #   shell: pwsh
-      #   run: |
-      #     $file = Get-ChildItem "extracted" -Recurse -Filter web.config |
-      #       Where-Object {
-      #         $_.FullName -notmatch "\\bin\\|\\obj\\|\\Views\\|\\Scripts\\"
-      #       } |
-      #       Select-Object -First 1
-
-      #     if (!$file) {
-      #       throw "web.config não encontrado"
-      #     }
-
-      #     $content = Get-Content $file.FullName -Raw
-
-      #     # mascara senha
-      #     $content = $content -replace '(password=)[^";]+', '$1*****'
-
-      #     Write-Host "=== WEB.CONFIG (SANITIZADO) ==="
-      #     Write-Host $content
-
           
       - name: Locate DACPAC
         id: dacpac
@@ -382,19 +282,6 @@ jobs:
 
           echo "path=$($dacpac.FullName)" >> $env:GITHUB_OUTPUT
 
-
-
-      # - name: Locate DacPac
-      #   id: dacpac
-      #   shell: pwsh
-      #   run: |
-      #     $dacpac = Get-ChildItem -Path . -Recurse -Filter "*.dacpac" | Select-Object -First 1
-
-      #     if (!$dacpac) {
-      #       throw "DACPAC não encontrado"
-      #     }
-
-      #     echo "path=$($dacpac.FullName)" >> $env:GITHUB_OUTPUT
       - name: Debug DACPAC path
         run: |
           echo "DACPAC PATH: ${{ steps.dacpac.outputs.path }}"
@@ -421,22 +308,6 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: drop
-
-
-
-      # - name: Extract files
-      #   shell: pwsh
-      #   run: |
-      #     $zip = Get-ChildItem -Path . -Recurse -Filter "*.zip" | Select-Object -First 1
-
-      #     if (!$zip) {
-      #       throw "ZIP não encontrado"
-      #     }
-
-      #     Write-Host "ZIP encontrado: $($zip.FullName)"
-
-      #     Expand-Archive -Path $zip.FullName -DestinationPath extracted -Force
-
 
       - name: Extract files
         shell: pwsh
@@ -563,22 +434,22 @@ jobs:
             **/*.zip
             **/*.rar
  
-      - name: Smoke Test
-        shell: pwsh
-        run: |
-          $url = "${{ vars.URL }}"
+      # - name: Smoke Test
+      #   shell: pwsh
+      #   run: |
+      #     $url = "${{ vars.URL }}"
 
-          try {
-            $response = Invoke-WebRequest -Uri $url -UseBasicParsing -TimeoutSec 20
+      #     try {
+      #       $response = Invoke-WebRequest -Uri $url -UseBasicParsing -TimeoutSec 20
 
-            if ($response.StatusCode -ne 200) {
-              throw "Status code inválido: $($response.StatusCode)"
-            }
+      #       if ($response.StatusCode -ne 200) {
+      #         throw "Status code inválido: $($response.StatusCode)"
+      #       }
 
-            Write-Host "Smoke test OK"
-          }
-          catch {
-            Write-Error "Falha no smoke test"
-            exit 1
-          }
+      #       Write-Host "Smoke test OK"
+      #     }
+      #     catch {
+      #       Write-Error "Falha no smoke test"
+      #       exit 1
+      #     }
  
