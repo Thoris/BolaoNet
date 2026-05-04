@@ -383,27 +383,26 @@ jobs:
 
           Write-Host "✔ Tokens substituídos com sucesso"
 
+      # - name: Debug Web.config (sanitizado)
+      #   shell: pwsh
+      #   run: |
+      #     $file = Get-ChildItem "extracted" -Recurse -Filter web.config |
+      #       Where-Object {
+      #         $_.FullName -notmatch "\\bin\\|\\obj\\|\\Views\\|\\Scripts\\"
+      #       } |
+      #       Select-Object -First 1
 
-      - name: Debug Web.config (sanitizado)
-        shell: pwsh
-        run: |
-          $file = Get-ChildItem "extracted" -Recurse -Filter web.config |
-            Where-Object {
-              $_.FullName -notmatch "\\bin\\|\\obj\\|\\Views\\|\\Scripts\\"
-            } |
-            Select-Object -First 1
+      #     if (!$file) {
+      #       throw "web.config não encontrado"
+      #     }
 
-          if (!$file) {
-            throw "web.config não encontrado"
-          }
+      #     $content = Get-Content $file.FullName -Raw
 
-          $content = Get-Content $file.FullName -Raw
+      #     # mascara senha
+      #     $content = $content -replace '(password=)[^";]+', '$1*****'
 
-          # mascara senha
-          $content = $content -replace '(password=)[^";]+', '$1*****'
-
-          Write-Host "=== WEB.CONFIG (SANITIZADO) ==="
-          Write-Host $content
+      #     Write-Host "=== WEB.CONFIG (SANITIZADO) ==="
+      #     Write-Host $content
 
       - name: FTP FULL
         if: github.event.inputs.deploy_target == 'ftp_full' || github.event.inputs.deploy_target == 'full'
