@@ -11,22 +11,59 @@ namespace BolaoNet.MVC.Security
     {
         #region Methods
 
+        //public static void SaveAuthentication(HttpResponseBase response, UserModelState model, bool rememberMe)
+        //{        
+        //    var userData = JsonConvert.SerializeObject(model);
+        //    var authenticationTicket = new FormsAuthenticationTicket(
+        //        1,
+        //        model.UserName,
+        //        DateTime.Now,
+        //        DateTime.Now.AddHours(1),
+        //        rememberMe,
+        //        userData);
+
+        //    var encryptedTicket = FormsAuthentication.Encrypt(authenticationTicket);
+        //    var httpCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+
+        //    response.Cookies.Add(httpCookie);
+
+        //}
+
         public static void SaveAuthentication(HttpResponseBase response, UserModelState model, bool rememberMe)
-        {        
+        {
             var userData = JsonConvert.SerializeObject(model);
+
+            // tempo de expiração
+            DateTime issued = DateTime.Now;
+            DateTime expiration = rememberMe
+                ? issued.AddDays(30)     // persistente
+                : issued.AddMinutes(60); // sessão curta
+
             var authenticationTicket = new FormsAuthenticationTicket(
                 1,
                 model.UserName,
-                DateTime.Now,
-                DateTime.Now.AddHours(1),
+                issued,
+                expiration,
                 rememberMe,
-                userData);
+                userData
+            );
 
             var encryptedTicket = FormsAuthentication.Encrypt(authenticationTicket);
-            var httpCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+
+            var httpCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket)
+            {
+                HttpOnly = true,
+                Secure = FormsAuthentication.RequireSSL, // true se usar HTTPS
+                SameSite = SameSiteMode.Lax
+            };
+
+            // 🔥 ESSENCIAL para "Lembrar-me"
+            if (rememberMe)
+            {
+                httpCookie.Expires = expiration;
+            }
 
             response.Cookies.Add(httpCookie);
-
         }
 
         public static void SetContextAuthentication(HttpRequest request)
