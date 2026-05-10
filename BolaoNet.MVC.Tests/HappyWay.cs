@@ -62,7 +62,8 @@ namespace BolaoNet.MVC.Tests
             IBolaoMembroApostasReportApp bolaoMembroApostasReportApp = kernel.Get<IBolaoMembroApostasReportApp>();
             IBolaoApostasInicioReportApp bolaoApostasInicioReportApp = kernel.Get<IBolaoApostasInicioReportApp>();
             IBolaoApostasFimReportApp bolaoApostasFimReportApp = kernel.Get<IBolaoApostasFimReportApp>();
-            IApostaExtraApp apostaExtraApp = kernel.Get<IApostaExtraApp>();                
+            IApostaExtraApp apostaExtraApp = kernel.Get<IApostaExtraApp>();
+            IApostaExtraUsuarioApp apostaExtraUsuarioApp = kernel.Get<IApostaExtraUsuarioApp>();
             IBolaoPremioApp bolaoPremioApp = kernel.Get<IBolaoPremioApp>();
             IBolaoCriterioPontosApp bolaoCriterioPontosApp = kernel.Get<IBolaoCriterioPontosApp>();
             IBolaoCriterioPontosTimesApp bolaoCriterioPontosTimesApp = kernel.Get<IBolaoCriterioPontosTimesApp>();
@@ -627,7 +628,9 @@ namespace BolaoNet.MVC.Tests
                         campeonatoTimeApp, 
                         bolaoCriterioPontosApp,
                         bolaoCriterioPontosTimesApp,
-                        bolaoAcertoTimePontoApp);
+                        bolaoAcertoTimePontoApp,
+                        apostaExtraApp,
+                        apostaExtraUsuarioApp);
 
 
                 Mocks.MvcMockHelpers.SetMockControllerContext(apostasJogoController, userAdmin);
@@ -786,6 +789,7 @@ namespace BolaoNet.MVC.Tests
             IBolaoApostasInicioReportApp bolaoApostasInicioReportApp = kernel.Get<IBolaoApostasInicioReportApp>();
             IBolaoApostasFimReportApp bolaoApostasFimReportApp = kernel.Get<IBolaoApostasFimReportApp>();
             IApostaExtraApp apostaExtraApp = kernel.Get<IApostaExtraApp>();
+            IApostaExtraUsuarioApp apostaExtraUsuarioApp = kernel.Get<IApostaExtraUsuarioApp>();
             IBolaoPremioApp bolaoPremioApp = kernel.Get<IBolaoPremioApp>();
             IBolaoCriterioPontosApp bolaoCriterioPontosApp = kernel.Get<IBolaoCriterioPontosApp>();
             IBolaoCriterioPontosTimesApp bolaoCriterioPontosTimesApp = kernel.Get<IBolaoCriterioPontosTimesApp>();
@@ -1431,7 +1435,9 @@ namespace BolaoNet.MVC.Tests
                         campeonatoTimeApp,
                         bolaoCriterioPontosApp,
                         bolaoCriterioPontosTimesApp,
-                        bolaoAcertoTimePontoApp);
+                        bolaoAcertoTimePontoApp,
+                        apostaExtraApp,
+                        apostaExtraUsuarioApp);
 
 
                 Mocks.MvcMockHelpers.SetMockControllerContext(apostasJogoController, userAdmin);
