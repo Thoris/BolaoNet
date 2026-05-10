@@ -101,7 +101,8 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
             int posicao1, 
             int posicao2,
             int golsTime1, 
-            int golsTime2)
+            int golsTime2,
+            int timeVencedorFinal)
         {
             IList<Domain.Entities.Boloes.ApostaExtraUsuario> res1;
             IList<Domain.Entities.Boloes.ApostaExtraUsuario> res2;
@@ -113,8 +114,8 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
             int pontos1 = GetPontos(apostasExtras, posicao1);
             int pontos2 = GetPontos(apostasExtras, posicao2);
 
-            string nomeTime1 = "";
-            string nomeTime2 = "";
+            string nomeTime1 = model.NomeTime1;
+            string nomeTime2 = model.NomeTime2;
 
             if (golsTime1 > golsTime2)
             {
@@ -127,7 +128,17 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
                 nomeTime2 = model.NomeTime1;
             }
             else
-            { 
+            {
+                if (timeVencedorFinal == 2)
+                {
+                    nomeTime1 = model.NomeTime2;
+                    nomeTime2 = model.NomeTime1;
+                }
+                else
+                {
+                    nomeTime1 = model.NomeTime1;
+                    nomeTime2 = model.NomeTime2;
+                }
             }
 
             for (int c= res1.Count-1; c >= 0; c-- ) 
@@ -144,38 +155,34 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
                     res2.RemoveAt(c);
                 }
             }
-            //TODO: Ajustar para caso de empate, onde o nome do time pode ser vazio ou conter a palavra "Empate"
-            //TODO: Efetuar o calculo correto dos pontos para contabilizar na soma total
             for (int c=0; c < model.Apostas.Count; c++)
             {
                 if (res1.Count == 0 && res2.Count == 0)
                 {
                     break;
                 }
-                //for (int l = 0;  l < res1.Count; l++)
-                //{
-                //    if (string.Compare(model.Apostas[c].UserName, res1[l].UserName, true) == 0)
-                //    {
-                //        model.Apostas[c].Pontos += pontos1;
-                //        model.Apostas[c].PontosAcertoTime += pontos1;
-                //        res1.RemoveAt(l);
-                //        break;
-                //    }
-                //}
-                //for (int l = 0; l < res2.Count; l++)
-                //{
-                //    if (string.Compare(model.Apostas[c].UserName, res2[l].UserName, true) == 0)
-                //    {
-                //        model.Apostas[c].Pontos += pontos2;
-                //        model.Apostas[c].PontosAcertoTime += pontos2;
-                //        res2.RemoveAt(l);
-                //        break;
-                //    }
-                //}
+                for (int l = 0; l < res1.Count; l++)
+                {
+                    if (string.Compare(model.Apostas[c].UserName, res1[l].UserName, true) == 0)
+                    {
+                        model.Apostas[c].PontosAcertoTime += pontos1;
+                        res1.RemoveAt(l);
+                        break;
+                    }
+                }
+                for (int l = 0; l < res2.Count; l++)
+                {
+                    if (string.Compare(model.Apostas[c].UserName, res2[l].UserName, true) == 0)
+                    {
+                        model.Apostas[c].PontosAcertoTime += pontos2;
+                        res2.RemoveAt(l);
+                        break;
+                    }
+                }
             }
         }
 
-        private void CalcularApostasExtras(ViewModels.Bolao.ApostasJogoViewModel model, int golsTime1, int golsTime2) 
+        private void CalcularApostasExtras(ViewModels.Bolao.ApostasJogoViewModel model, int golsTime1, int golsTime2, int timeVencedorFinal) 
         {
             //Se estiver na fase final
             if (string.Compare(model.NomeFase, CampeonatoFase.FaseFinal, true) == 0)
@@ -190,12 +197,12 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
                 //Se for o jogo final
                 if (model.PendenteTime1Ganhador)
                 {
-                    CalcularApostasExtrasPosicao(model, apostasExtras, usuariosAgrupado, 1, 2, golsTime1, golsTime2);
+                    CalcularApostasExtrasPosicao(model, apostasExtras, usuariosAgrupado, 1, 2, golsTime1, golsTime2, timeVencedorFinal);
                 }
                 //Se for disputa de terceiro lugar
                 else
                 {
-                    CalcularApostasExtrasPosicao(model, apostasExtras, usuariosAgrupado, 3, 4, golsTime1, golsTime2);
+                    CalcularApostasExtrasPosicao(model, apostasExtras, usuariosAgrupado, 3, 4, golsTime1, golsTime2, timeVencedorFinal);
                 }
             }
         }
@@ -377,7 +384,7 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
         {
             for (int c=0; c < model.Apostas.Count; c++)
             {
-                model.Apostas[c].TotalPontosClassificacao += (model.Apostas[c].Pontos ?? 0);
+                model.Apostas[c].TotalPontosClassificacao += (model.Apostas[c].Pontos ?? 0) + (model.Apostas[c].PontosAcertoTime ?? 0);
             }
 
             model.Apostas = model.Apostas.OrderByDescending(x => x.TotalPontosClassificacao).ToList();
@@ -483,7 +490,7 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
 
             model.Apostas = list;
 
-            CalcularApostasExtras(model, modelParam.SimulacaoGols1, modelParam.SimulacaoGols2);
+            CalcularApostasExtras(model, modelParam.SimulacaoGols1, modelParam.SimulacaoGols2, modelParam.TimeVencedorFinal);
             CalcularPercentuais(model);
             MergeClassificacao(model, membros);
             MergeSimulation(model);

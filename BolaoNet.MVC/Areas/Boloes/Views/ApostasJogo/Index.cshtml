@@ -180,6 +180,28 @@
                                     @Html.ValidationMessageFor(m => m.SimulacaoGols2)
                                 </div>
                             </div>
+
+
+                            @if (Model.NomeFase == "Final")
+                            {
+                                <div class="row"> 
+                                    <div class="col-sm-6">
+                                        <label>
+                                            @Html.RadioButtonFor(m => m.TimeVencedorFinal, 1, new { @checked = "checked" })
+                                            <img class="img-time" src="/Content/img/database/times/@(Model.NomeTime1).gif" />
+                                        </label>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <label>
+                                            @Html.RadioButtonFor(m => m.TimeVencedorFinal, 2)
+                                            <img class="img-time" src="/Content/img/database/times/@(Model.NomeTime2).gif" />
+                                        </label>
+                                    </div> 
+                                </div>
+                            }
+
+
                             <div class="row">
                                 <br/>
                                 <div class="col-sm-offset-3 col-sm-2 text-center">
@@ -220,6 +242,10 @@
                                             }                                            
                                             <td class="text-center">PT</td>
                                             <td class="text-center hidden-xs">Extra</td>
+                                            @if(Model.NomeFase == "Final")
+                                            {                                           
+                                                <td class="text-center hidden-xs">Acerto</td>
+                                            }
                                             <td class="text-center hidden-xs"></td>
                                             <td class="text-center hidden-xs">%</td>
                                         </tr>
@@ -293,6 +319,10 @@
                                                         <span class="glyphicon glyphicon-asterisk" />
                                                     }
                                                 </td>
+                                                @if(Model.NomeFase == "Final")
+                                                {                                           
+                                                    <td class="text-center hidden-xs">@Model.Apostas[c].PontosAcertoTime</td>
+                                                }
                                                 <td class="text-center hidden-xs">
                                                     @if (Model.Apostas[c].Automatico == 1)
                                                     {

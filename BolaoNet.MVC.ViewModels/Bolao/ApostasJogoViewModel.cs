@@ -24,7 +24,7 @@ namespace BolaoNet.MVC.ViewModels.Bolao
         [Range(0, 10)]
         [Required(ErrorMessage = "O campo gols 2 precisa ser preenchido.")]
         public int SimulacaoGols2 { get; set; }
-
+        public int TimeVencedorFinal { get; set; }
 
 
 
