@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BolaoNet.Domain.Entities.Campeonatos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,8 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
         private Application.Interfaces.Boloes.IBolaoCriterioPontosTimesApp _bolaoCriterioPontosTimesApp;
         private Application.Interfaces.Boloes.IBolaoCriterioPontosApp _bolaoCriterioPontosApp;
         private Application.Interfaces.Boloes.IBolaoAcertoTimePontoApp _bolaoAcertoTimePontoApp;
+        private Application.Interfaces.Boloes.IApostaExtraApp _apostaExtraApp;
+        private Application.Interfaces.Boloes.IApostaExtraUsuarioApp _apostaExtraUsuarioApp;
 
         #endregion
 
@@ -35,7 +38,9 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
             Application.Interfaces.Campeonatos.ICampeonatoTimeApp campeonatoTimeApp,
             Application.Interfaces.Boloes.IBolaoCriterioPontosApp bolaoCriterioPontosApp,
             Application.Interfaces.Boloes.IBolaoCriterioPontosTimesApp bolaoCriterioPontosTimesApp,
-            Application.Interfaces.Boloes.IBolaoAcertoTimePontoApp bolaoAcertoTimePontoApp
+            Application.Interfaces.Boloes.IBolaoAcertoTimePontoApp bolaoAcertoTimePontoApp,
+            Application.Interfaces.Boloes.IApostaExtraApp apostaExtraApp,
+            Application.Interfaces.Boloes.IApostaExtraUsuarioApp apostaExtraUsuarioApp
             )
             : base(bolaoMembroApp, bolaoApp, campeonatoApp, campeonatoFaseApp, campeonatoGrupoApp, campeonatoTimeApp)
         {
@@ -45,11 +50,155 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
             _bolaoCriterioPontosApp = bolaoCriterioPontosApp;
             _bolaoCriterioPontosTimesApp = bolaoCriterioPontosTimesApp;
             _bolaoAcertoTimePontoApp = bolaoAcertoTimePontoApp;
+            _apostaExtraApp = apostaExtraApp;
+            _apostaExtraUsuarioApp = apostaExtraUsuarioApp;
         }
 
         #endregion
 
         #region Methods
+
+        private bool GetListPosicao(
+            IList<IList<Domain.Entities.Boloes.ApostaExtraUsuario>> usuarios, 
+            int posicao1,
+            int posicao2,
+            out IList<Domain.Entities.Boloes.ApostaExtraUsuario> res1,
+            out IList<Domain.Entities.Boloes.ApostaExtraUsuario> res2)
+        {
+            res1 = new List<Domain.Entities.Boloes.ApostaExtraUsuario>();
+            res2 = new List<Domain.Entities.Boloes.ApostaExtraUsuario>();
+            for (int c=0; c < usuarios.Count; c++)
+            {
+                for (int i=0; i < usuarios[c].Count; i++)
+                {
+                    if (usuarios[c][i].Posicao == posicao1)
+                    {
+                        res1.Add(usuarios[c][i]);
+                    }
+                    else if (usuarios[c][i].Posicao == posicao2)
+                    {
+                        res2.Add(usuarios[c][i]);
+                    }
+                }
+            }
+            return  res1.Count > 0 || res2.Count > 0;
+        }
+
+        private int GetPontos(IList<Domain.Entities.Boloes.ApostaExtra> apostasExtras, int posicao)
+        {
+            for (int c=0; c < apostasExtras.Count; c++)
+            {
+                if (apostasExtras[c].Posicao == posicao)
+                    return apostasExtras[c].TotalPontos ?? 0;
+            }
+            return 0;
+        }
+
+        private void CalcularApostasExtrasPosicao(
+            ViewModels.Bolao.ApostasJogoViewModel model,
+            IList<Domain.Entities.Boloes.ApostaExtra> apostasExtras,
+            IList<IList<Domain.Entities.Boloes.ApostaExtraUsuario>> usuarios, 
+            int posicao1, 
+            int posicao2,
+            int golsTime1, 
+            int golsTime2)
+        {
+            IList<Domain.Entities.Boloes.ApostaExtraUsuario> res1;
+            IList<Domain.Entities.Boloes.ApostaExtraUsuario> res2;
+            var extras = GetListPosicao(usuarios, posicao1, posicao2, out res1, out res2);
+
+            if (!extras)
+                return;
+
+            int pontos1 = GetPontos(apostasExtras, posicao1);
+            int pontos2 = GetPontos(apostasExtras, posicao2);
+
+            string nomeTime1 = "";
+            string nomeTime2 = "";
+
+            if (golsTime1 > golsTime2)
+            {
+                nomeTime1 = model.NomeTime1;
+                nomeTime2 = model.NomeTime2;
+            }
+            else if (golsTime1 < golsTime2)
+            {
+                nomeTime1 = model.NomeTime2;
+                nomeTime2 = model.NomeTime1;
+            }
+            else
+            { 
+            }
+
+            for (int c= res1.Count-1; c >= 0; c-- ) 
+            {
+                if (string.Compare(res1[c].NomeTime, nomeTime1, true) != 0)
+                {
+                    res1.RemoveAt(c);
+                }
+            }
+            for (int c = res2.Count - 1; c >= 0; c--)
+            {
+                if (string.Compare(res2[c].NomeTime, nomeTime2, true) != 0)
+                {
+                    res2.RemoveAt(c);
+                }
+            }
+            //TODO: Ajustar para caso de empate, onde o nome do time pode ser vazio ou conter a palavra "Empate"
+            //TODO: Efetuar o calculo correto dos pontos para contabilizar na soma total
+            for (int c=0; c < model.Apostas.Count; c++)
+            {
+                if (res1.Count == 0 && res2.Count == 0)
+                {
+                    break;
+                }
+                //for (int l = 0;  l < res1.Count; l++)
+                //{
+                //    if (string.Compare(model.Apostas[c].UserName, res1[l].UserName, true) == 0)
+                //    {
+                //        model.Apostas[c].Pontos += pontos1;
+                //        model.Apostas[c].PontosAcertoTime += pontos1;
+                //        res1.RemoveAt(l);
+                //        break;
+                //    }
+                //}
+                //for (int l = 0; l < res2.Count; l++)
+                //{
+                //    if (string.Compare(model.Apostas[c].UserName, res2[l].UserName, true) == 0)
+                //    {
+                //        model.Apostas[c].Pontos += pontos2;
+                //        model.Apostas[c].PontosAcertoTime += pontos2;
+                //        res2.RemoveAt(l);
+                //        break;
+                //    }
+                //}
+            }
+        }
+
+        private void CalcularApostasExtras(ViewModels.Bolao.ApostasJogoViewModel model, int golsTime1, int golsTime2) 
+        {
+            //Se estiver na fase final
+            if (string.Compare(model.NomeFase, CampeonatoFase.FaseFinal, true) == 0)
+            {
+
+                IList<Domain.Entities.Boloes.ApostaExtra> apostasExtras =
+                    _apostaExtraApp.GetApostasBolao(this.SelectedBolao);
+
+                IList<IList<Domain.Entities.Boloes.ApostaExtraUsuario>> usuariosAgrupado =
+                    _apostaExtraUsuarioApp.GetApostasBolaoAgrupado(this.SelectedBolao);
+
+                //Se for o jogo final
+                if (model.PendenteTime1Ganhador)
+                {
+                    CalcularApostasExtrasPosicao(model, apostasExtras, usuariosAgrupado, 1, 2, golsTime1, golsTime2);
+                }
+                //Se for disputa de terceiro lugar
+                else
+                {
+                    CalcularApostasExtrasPosicao(model, apostasExtras, usuariosAgrupado, 3, 4, golsTime1, golsTime2);
+                }
+            }
+        }
 
         public void CalcularPercentuais(ViewModels.Bolao.ApostasJogoViewModel model)
         {
@@ -57,7 +206,6 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
             int totalTime2 = 0;
             int totalEmpate = 0;
             int total = 0;
-
 
             for (int c=0; c < model.Apostas.Count; c++)
             {
@@ -310,7 +458,6 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
             IList<Domain.Entities.Boloes.JogoUsuario> apostas =
                 _jogoUsuarioApp.GetApostasJogo(base.SelectedBolao, jogo);
 
-
             IList<Domain.Entities.Boloes.BolaoCriterioPontosTimes> bolaoCriterioPontosTimes =
                 _bolaoCriterioPontosTimesApp.GetCriterioPontosBolao(base.SelectedBolao);
 
@@ -324,29 +471,24 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
             if (acertoTimePonto != null)
                 pontosAcertoTime = acertoTimePonto.Pontos;
 
-
             apostas = Simulate(apostas, jogo.NomeTime1, jogo.NomeTime2, pontosAcertoTime,
                 bolaoCriterioPontosTimes, bolaoCriterioPontos, modelParam.SimulacaoGols1, modelParam.SimulacaoGols2);
             
-
             IList<ViewModels.Bolao.ApostaJogoUsuarioPontosViewModel> list =
                 Mapper.Map<IList<Domain.Entities.Boloes.JogoUsuario>,
                 IList<ViewModels.Bolao.ApostaJogoUsuarioPontosViewModel>>(apostas);
-
 
             IList<Domain.Entities.ValueObjects.BolaoClassificacaoVO> membros =
                 _bolaoMembroClassificacaoApp.LoadClassificacao(base.SelectedBolao, null);
 
             model.Apostas = list;
 
+            CalcularApostasExtras(model, modelParam.SimulacaoGols1, modelParam.SimulacaoGols2);
             CalcularPercentuais(model);
             MergeClassificacao(model, membros);
             MergeSimulation(model);
 
-
             model.Apostas = model.Apostas.OrderBy(x => x.Posicao).ToList();
-
-
 
             return View("Index", model);
         }

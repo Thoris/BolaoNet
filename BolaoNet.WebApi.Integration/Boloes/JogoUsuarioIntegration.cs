@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BolaoNet.Domain.Entities.Boloes;
+using BolaoNet.Domain.Entities.ValueObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -245,6 +247,17 @@ namespace BolaoNet.WebApi.Integration.Boloes
         {
             return base.HttpPostApi<IList<List<Domain.Entities.ValueObjects.StatClassificacaoVO>>>(
                 new Dictionary<string, string>(), bolao, "LoadIndiceEstatistica");
+        }
+
+        public IList<JogoUsuarioVO> LoadApostasOusadas(Bolao bolao, int totalMaximo)
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>();
+
+            parameters.Add("bolao", bolao);
+            parameters.Add("totalMaximo", totalMaximo);
+
+            return HttpPostApi<IList<Domain.Entities.ValueObjects.JogoUsuarioVO>>(
+                parameters, "LoadApostasOusadas");
         }
         #endregion
 

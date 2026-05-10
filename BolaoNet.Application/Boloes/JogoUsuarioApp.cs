@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BolaoNet.Domain.Entities.Boloes;
+using BolaoNet.Domain.Entities.ValueObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -105,6 +107,11 @@ namespace BolaoNet.Application.Boloes
         public IList<List<Domain.Entities.ValueObjects.StatClassificacaoVO>> LoadIndiceEstatistica(Domain.Entities.Boloes.Bolao bolao)
         {
             return Service.LoadIndiceEstatistica(bolao);
+        }
+
+        public IList<JogoUsuarioVO> LoadApostasOusadas(Bolao bolao, int totalMaximo)
+        {
+            return Service.LoadApostasOusadas(bolao, totalMaximo);
         }
 
         #endregion

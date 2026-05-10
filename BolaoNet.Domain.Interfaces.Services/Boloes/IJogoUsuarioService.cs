@@ -70,5 +70,7 @@ namespace BolaoNet.Domain.Interfaces.Services.Boloes
 
         IList<Entities.ValueObjects.StatClassificacaoVO> LoadEstatistica(Domain.Entities.Boloes.Bolao bolao);
         IList<List<Entities.ValueObjects.StatClassificacaoVO>> LoadIndiceEstatistica(Domain.Entities.Boloes.Bolao bolao);
+
+        IList<Entities.ValueObjects.JogoUsuarioVO> LoadApostasOusadas(Entities.Boloes.Bolao bolao, int totalMaximo);
     }
 }

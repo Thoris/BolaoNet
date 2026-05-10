@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BolaoNet.Domain.Entities.Boloes;
+using BolaoNet.Domain.Entities.ValueObjects;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
@@ -1908,6 +1910,55 @@ namespace BolaoNet.Infra.Data.EF.Boloes
                 };
 
             return q.ToList();
+        }
+
+        public IList<JogoUsuarioVO> LoadJogosOusados(string currentUserName, DateTime currentDateTime, Bolao bolao, int totalMaximo)
+        {
+
+            string command = "exec sp_JogosUsuarios_Load_Apostas_Ousadas " +
+                  "  @CurrentLogin " +
+                  ", @CurrentDateTime" +
+                  ", @NomeBolao" +
+                  ", @Total" +
+                  ", @ErrorNumber out" +
+                  ", @ErrorDescription out";
+
+            var errorNumber = new SqlParameter
+            {
+                ParameterName = "@ErrorNumber",
+                SqlDbType = System.Data.SqlDbType.Int,
+                Size = 3,
+                Direction = System.Data.ParameterDirection.Output
+            };
+            var errorDescription = new SqlParameter
+            {
+                ParameterName = "@ErrorDescription",
+                SqlDbType = System.Data.SqlDbType.VarChar,
+                Size = 255,
+                Direction = System.Data.ParameterDirection.Output
+            };
+
+            IList<Domain.Entities.ValueObjects.JogoUsuarioVO> res =
+                base.DataContext.Database.SqlQuery<Domain.Entities.ValueObjects.JogoUsuarioVO>(command,
+                                                        new SqlParameter("CurrentLogin", currentUserName),
+                                                        new SqlParameter("CurrentDateTime", currentDateTime),
+                                                        new SqlParameter("NomeBolao", bolao.Nome),
+                                                        new SqlParameter("Total", totalMaximo),
+                                                        errorNumber,
+                                                        errorDescription
+                                                    ).ToList();
+
+
+            int error = 0;
+            try
+            {
+                error = (int)errorNumber.Value;
+            }
+            catch
+            {
+
+            }
+            return res;
         }
 
         #endregion

@@ -111,6 +111,7 @@
     <Build Include="Tables\0048.Create_Table_Rss.sql" />
     <Build Include="Tables\0049.Create_Table_BoloesPremiacao.sql" />
     <Build Include="Tables\0050.Create_Table_BoloesAcertoTimePontos.sql" />
+    <None Include="build\0142.Create_Stored_Procedure_sp_JogosUsuarios_Load_Apostas_Ousadas.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="build\0054.Insert_Table_CriteriosFixos.sql" />

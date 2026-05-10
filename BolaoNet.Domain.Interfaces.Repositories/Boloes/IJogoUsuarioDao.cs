@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BolaoNet.Domain.Entities.Boloes;
+using BolaoNet.Domain.Entities.ValueObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -122,5 +124,6 @@ namespace BolaoNet.Domain.Interfaces.Repositories.Boloes
 
         IList<Entities.ValueObjects.StatClassificacaoVO> LoadEstatistica(string currentUserName, DateTime currentDateTime, Domain.Entities.Boloes.Bolao bolao);
         
+        IList<JogoUsuarioVO> LoadJogosOusados(string currentUserName, DateTime now, Bolao bolao, int totalMaximo);
     }
 }

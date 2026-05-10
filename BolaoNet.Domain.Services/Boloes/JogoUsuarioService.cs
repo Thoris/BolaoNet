@@ -1,4 +1,6 @@
-﻿using BolaoNet.Domain.Interfaces.Services.Logging;
+﻿using BolaoNet.Domain.Entities.Boloes;
+using BolaoNet.Domain.Entities.ValueObjects;
+using BolaoNet.Domain.Interfaces.Services.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -842,6 +844,27 @@ namespace BolaoNet.Domain.Services.Boloes
 
             list = org.OrderBy( x => x.UserName).ToList();
 
+        }
+
+        public IList<JogoUsuarioVO> LoadApostasOusadas(Bolao bolao, int totalMaximo)
+        {
+            if (bolao == null)
+                throw new ArgumentException("bolao");
+            if (string.IsNullOrEmpty(bolao.Nome))
+                throw new ArgumentException("bolao.Nome");
+
+            if (IsSaveLog)
+                CheckStart();
+
+            IList<Entities.ValueObjects.JogoUsuarioVO> res = Dao.LoadJogosOusados(base.CurrentUserName, DateTime.Now, bolao, totalMaximo);
+
+            if (IsSaveLog)
+            {
+                _logging.Debug(this, GetMessageTotalTime("Busca de jogos ousados do bolão [" + bolao.Nome + "] com máximo [" + totalMaximo + "] total: " + res.Count));
+            }
+
+
+            return res;
         }
 
         #endregion

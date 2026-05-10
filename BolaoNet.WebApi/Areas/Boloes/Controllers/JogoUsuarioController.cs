@@ -1,4 +1,6 @@
-﻿using BolaoNet.Services.Controllers;
+﻿using BolaoNet.Domain.Entities.Boloes;
+using BolaoNet.Domain.Entities.ValueObjects;
+using BolaoNet.Services.Controllers;
 using Newtonsoft.Json;
 using System;
 using System.Collections;
@@ -335,7 +337,13 @@ namespace BolaoNet.Services.Areas.Boloes.Controllers
             return Service.LoadIndiceEstatistica(bolao);
         }
 
-        #endregion        
-    
+        [HttpPost]
+        public IList<JogoUsuarioVO> LoadApostasOusadas(Bolao bolao, int totalMaximo)
+        {
+            return Service.LoadApostasOusadas(bolao, totalMaximo);
+        }
+
+        #endregion
+
     }
 }
