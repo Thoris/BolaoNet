@@ -457,13 +457,13 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
                 // Terça-feira, 14/07/2026
                 // =========================
                 CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 14, 16, 0, 0), "Dallas",
-                    nomeFase, nomeGrupo, rodada, 101, 97, true, 99, true, true),
+                    nomeFase, nomeGrupo, rodada, 101, 97, true, 98, true, true),
 
                 // =========================
                 // Quarta-feira, 15/07/2026
                 // =========================
                 CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 15, 16, 0, 0), "Atlanta",
-                    nomeFase, nomeGrupo, rodada, 102, 98, true, 100, true, true)
+                    nomeFase, nomeGrupo, rodada, 102, 99, true, 100, true, true)
             };
         }
 
