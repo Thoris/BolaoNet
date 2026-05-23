@@ -426,7 +426,7 @@ namespace BolaoNet.Domain.Services.Facade.Campeonatos
                 // Quinta-feira, 09/07/2026
                 // =========================
                 CreateJogo(base.Campeonato.Nome, new DateTime(2026, 7, 9, 17, 0, 0), "Boston",
-                    nomeFase, nomeGrupo, rodada, 97, 90, true, 89, true, true),
+                    nomeFase, nomeGrupo, rodada, 97, 89, true, 90, true, true),
 
                 // =========================
                 // Sexta-feira, 10/07/2026
