@@ -381,6 +381,8 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
                     Mapper.Map<ViewModels.Apostas.ApostaJogoEntryViewModel, Domain.Entities.Campeonatos.Jogo>
                     (list[c]);
 
+                if (list[c].SalvarApostaTime1 == null || list[c].SalvarApostaTime2 == null)
+                    continue;
 
                 int? ganhador = null;
                 if ((int)list[c].SalvarApostaTime1 == (int)list[c].SalvarApostaTime2)
