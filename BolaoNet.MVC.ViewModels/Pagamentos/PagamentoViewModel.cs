@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BolaoNet.MVC.ViewModels.Pagamentos
 {
@@ -39,6 +35,9 @@ namespace BolaoNet.MVC.ViewModels.Pagamentos
 
         [DisplayName("Descrição")]        
         public string Descricao { get; set; }
+
+        [DisplayName("Responsável")]
+        public string Responsavel { get; set; } = string.Empty;
 
         #endregion
     }

@@ -72,6 +72,9 @@
     <Compile Include="Bolao\BolaoHistoricoViewModel.cs" />
     <Compile Include="LogReporting\LogReportingViewModel.cs" />
     <Compile Include="Mensagens\MensagemViewModel.cs" />
+    <Compile Include="Pagamentos\PagamentoCalculoViewModel.cs" />
+    <Compile Include="Pagamentos\PagamentoDetailViewModel.cs" />
+    <Compile Include="Pagamentos\ResponsavelValorViewModel.cs" />
     <Compile Include="Users\ReleaseNotesViewModel.cs" />
     <Compile Include="Admin\BolaoIniciarPararViewModel.cs" />
     <Compile Include="Admin\BolaoIniciarStatusMembroViewModel.cs" />

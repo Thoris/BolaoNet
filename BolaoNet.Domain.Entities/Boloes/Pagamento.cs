@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BolaoNet.Domain.Entities.Boloes
 {
@@ -18,6 +14,7 @@ namespace BolaoNet.Domain.Entities.Boloes
             Cheque = 2,
             Deposito = 3,
             Outro = 4,
+            PIX = 5,
         }
 
         #endregion
@@ -46,6 +43,8 @@ namespace BolaoNet.Domain.Entities.Boloes
         public decimal ? Valor{get;set;}
 
         public string Descricao{get;set;}
+
+        public string Responsavel { get; set; }
 
         #endregion
         

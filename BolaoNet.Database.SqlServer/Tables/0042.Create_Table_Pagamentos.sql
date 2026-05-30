@@ -6,6 +6,7 @@ CREATE TABLE [dbo].[Pagamentos](
 	[PagamentoTipoID] [int] NOT NULL,
 	[Valor] [decimal](18, 2) NULL,
 	[Descricao] [varchar](255) NULL,
+	[Responsavel] [varchar](100) NULL,
 	[CreatedBy] [varchar](25) NULL,
 	[CreatedDate] [datetime] NULL,
 	[ModifiedBy] [varchar](25) NULL,
