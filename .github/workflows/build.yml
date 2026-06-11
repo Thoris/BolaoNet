@@ -26,6 +26,7 @@ on:
         options:
           - dev
           - stg
+          - bkp
           - prd
 env:
   SOLUTION: 'BolaoNet.sln'
