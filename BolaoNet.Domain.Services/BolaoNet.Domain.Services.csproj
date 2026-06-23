@@ -88,6 +88,10 @@
     <Compile Include="DadosBasicos\PagamentoTipoService.cs" />
     <Compile Include="DadosBasicos\TimeService.cs" />
     <Compile Include="Encrypt\EncryptDecrypt.cs" />
+    <Compile Include="EnriquecimentoDados\MatchEventService.cs" />
+    <Compile Include="EnriquecimentoDados\MatchOrchestrator.cs" />
+    <Compile Include="EnriquecimentoDados\MatchOrchestratorOpenFootball.cs" />
+    <Compile Include="EnriquecimentoDados\WorldCupMatchService.cs" />
     <Compile Include="Facade\BolaoFacadeService.cs" />
     <Compile Include="Facade\Boloes\BolaoCopaAmerica2019ServiceHelper.cs" />
     <Compile Include="Facade\Boloes\BolaoCopaMundo2010ServiceHelper.cs" />
@@ -138,6 +142,10 @@
     <ProjectReference Include="..\BolaoNet.Infra.Data.EF\BolaoNet.Infra.Data.EF.csproj">
       <Project>{d0a5e0bf-24a1-40a3-ab36-603db298ceb3}</Project>
       <Name>BolaoNet.Infra.Data.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Infra.External.API\BolaoNet.Infra.External.API.csproj">
+      <Project>{6e623768-6cd5-4a11-8022-66d10c67e109}</Project>
+      <Name>BolaoNet.Infra.External.API</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

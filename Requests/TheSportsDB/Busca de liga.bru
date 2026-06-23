@@ -1,0 +1,21 @@
+meta {
+  name: Busca de liga
+  type: http
+  seq: 5
+}
+
+get {
+  url: https://www.thesportsdb.com/api/v1/json/123/search_all_leagues.php?c=World&s=Soccer
+  body: none
+  auth: inherit
+}
+
+params:query {
+  c: World
+  s: Soccer
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

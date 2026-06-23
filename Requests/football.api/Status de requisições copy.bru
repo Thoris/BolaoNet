@@ -1,0 +1,20 @@
+meta {
+  name: Status de requisições copy
+  type: http
+  seq: 3
+}
+
+get {
+  url: https://v3.football.api-sports.io/status
+  body: none
+  auth: inherit
+}
+
+headers {
+  x-apisports-key: 46805bda3b143f2a58f680de6ac73a56
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

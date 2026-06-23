@@ -1,0 +1,21 @@
+meta {
+  name: Busca de todos os jogos
+  type: http
+  seq: 10
+}
+
+get {
+  url: https://www.thesportsdb.com/api/v1/json/123/eventsseason.php?id=4429&s=2026
+  body: none
+  auth: inherit
+}
+
+params:query {
+  id: 4429
+  s: 2026
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

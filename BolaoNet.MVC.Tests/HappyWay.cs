@@ -1,26 +1,28 @@
 ﻿//#define SAVE_DATA
 //#define SAVE_CLASSIFICACAO
 
-using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using BolaoNet.MVC.Tests.IoC;
-using Ninject;
-using BolaoNet.Application.Interfaces.Campeonatos;
-using BolaoNet.Application.Interfaces.Users;
+using BolaoNet.Application.EnriquecimentoDados;
 using BolaoNet.Application.Interfaces.Boloes;
-using BolaoNet.Application.Interfaces.Notification;
-using BolaoNet.Application.Interfaces.Facade.Campeonatos;
+using BolaoNet.Application.Interfaces.Campeonatos;
+using BolaoNet.Application.Interfaces.EnriquecimentoDados;
 using BolaoNet.Application.Interfaces.Facade;
-using System.Web.Mvc;
-using BolaoNet.Application.Interfaces.Reports;
-using BolaoNet.Tests.CopaDoMundoTests.BolaoCopaDoMundoTests;
-using System.Web;
-using System.Collections.Generic;
-using System.IO;
-using System.Diagnostics;
-using System.Linq;
+using BolaoNet.Application.Interfaces.Facade.Campeonatos;
 using BolaoNet.Application.Interfaces.Feed;
+using BolaoNet.Application.Interfaces.Notification;
+using BolaoNet.Application.Interfaces.Reports;
+using BolaoNet.Application.Interfaces.Users;
+using BolaoNet.MVC.Tests.IoC;
 using BolaoNet.Tests.CopaAmericaTests.BolaoCopaAmericaTests;
+using BolaoNet.Tests.CopaDoMundoTests.BolaoCopaDoMundoTests;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Ninject;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 
 namespace BolaoNet.MVC.Tests
 {
@@ -74,6 +76,9 @@ namespace BolaoNet.MVC.Tests
             IRssApp rssApp = kernel.Get<IRssApp>();
             IBolaoAcertoTimePontoApp bolaoAcertoTimePontoApp = kernel.Get<IBolaoAcertoTimePontoApp>();
 
+            IMatchOrchestrationApp matchOrchestrationApp = kernel.Get<IMatchOrchestrationApp>();
+            IWorldCupMatchApp worldCupMatchApp = kernel.Get<IWorldCupMatchApp>();
+            IMatchEventApp matchEventApp = kernel.Get<IMatchEventApp>();
 
             IUserFacadeApp userFacadeApp = kernel.Get<IUserFacadeApp>();
 
@@ -562,7 +567,10 @@ namespace BolaoNet.MVC.Tests
                         campeonatoFaseApp, 
                         campeonatoGrupoApp, 
                         campeonatoTimeApp,
-                        rssApp
+                        rssApp,
+                        matchOrchestrationApp,
+                        worldCupMatchApp,
+                        matchEventApp
                         );
 
                 Mocks.MvcMockHelpers.SetMockControllerContext(jogoResultadoController, userAdmin);
@@ -630,7 +638,9 @@ namespace BolaoNet.MVC.Tests
                         bolaoCriterioPontosTimesApp,
                         bolaoAcertoTimePontoApp,
                         apostaExtraApp,
-                        apostaExtraUsuarioApp);
+                        apostaExtraUsuarioApp,
+                        worldCupMatchApp,
+                        matchEventApp);
 
 
                 Mocks.MvcMockHelpers.SetMockControllerContext(apostasJogoController, userAdmin);
@@ -800,6 +810,9 @@ namespace BolaoNet.MVC.Tests
             IRssApp rssApp = kernel.Get<IRssApp>();
             IBolaoAcertoTimePontoApp bolaoAcertoTimePontoApp = kernel.Get<IBolaoAcertoTimePontoApp>();
 
+            IMatchOrchestrationApp matchOrchestrationApp = kernel.Get<IMatchOrchestrationApp>();
+            IWorldCupMatchApp worldCupMatchApp = kernel.Get<IWorldCupMatchApp>();
+            IMatchEventApp matchEventApp = kernel.Get<IMatchEventApp>();
             IUserFacadeApp userFacadeApp = kernel.Get<IUserFacadeApp>();
 
             //Mocks.HttpContextControllerMock mock = new Mocks.HttpContextControllerMock();
@@ -1369,7 +1382,10 @@ namespace BolaoNet.MVC.Tests
                         campeonatoFaseApp,
                         campeonatoGrupoApp,
                         campeonatoTimeApp,
-                        rssApp
+                        rssApp,
+                        matchOrchestrationApp,
+                        worldCupMatchApp,
+                        matchEventApp
                         );
 
                 Mocks.MvcMockHelpers.SetMockControllerContext(jogoResultadoController, userAdmin);
@@ -1437,7 +1453,9 @@ namespace BolaoNet.MVC.Tests
                         bolaoCriterioPontosTimesApp,
                         bolaoAcertoTimePontoApp,
                         apostaExtraApp,
-                        apostaExtraUsuarioApp);
+                        apostaExtraUsuarioApp,
+                        worldCupMatchApp,
+                        matchEventApp);
 
 
                 Mocks.MvcMockHelpers.SetMockControllerContext(apostasJogoController, userAdmin);

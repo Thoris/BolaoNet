@@ -102,6 +102,9 @@ namespace BolaoNet.MVC.AutoMapper
             Mapper.CreateMap<Domain.Entities.ValueObjects.Notification.ClassificacaoObject, ViewModels.Admin.AdminClassificacaoViewModel>();
             Mapper.CreateMap<Domain.Entities.ValueObjects.Notification.JogoObject, ViewModels.Admin.AdminJogoViewModel>();
 
+
+            Mapper.CreateMap< Domain.Entities.EnriquecimentoDados.MatchEvent, ViewModels.Bolao.ApostasJogoConcluidoGolViewModel>();
+
         }
     }
 }

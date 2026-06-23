@@ -1,0 +1,8 @@
+﻿CREATE TABLE ApiTeamAliases
+(
+    Id INT IDENTITY PRIMARY KEY,
+
+    LocalName NVARCHAR(100) NOT NULL,
+    ApiName NVARCHAR(100) NOT NULL,
+    ApiOpenFtName NVARCHAR(100) NOT NULL
+);

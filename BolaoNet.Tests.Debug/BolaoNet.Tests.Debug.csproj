@@ -186,6 +186,10 @@
       <Project>{d0a5e0bf-24a1-40a3-ab36-603db298ceb3}</Project>
       <Name>BolaoNet.Infra.Data.EF</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BolaoNet.Infra.External.API\BolaoNet.Infra.External.API.csproj">
+      <Project>{6e623768-6cd5-4a11-8022-66d10c67e109}</Project>
+      <Name>BolaoNet.Infra.External.API</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BolaoNet.Infra.Notification.Mail\BolaoNet.Infra.Notification.Mail.csproj">
       <Project>{634e95f1-4f38-4bdb-ad16-8dfcd6c73ab5}</Project>
       <Name>BolaoNet.Infra.Notification.Mail</Name>

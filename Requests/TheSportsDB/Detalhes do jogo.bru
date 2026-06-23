@@ -1,0 +1,20 @@
+meta {
+  name: Detalhes do jogo
+  type: http
+  seq: 12
+}
+
+get {
+  url: https://www.thesportsdb.com/api/v1/json/123/lookuptimeline.php?id=2461104
+  body: none
+  auth: inherit
+}
+
+params:query {
+  id: 2461104
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

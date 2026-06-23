@@ -20,6 +20,8 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
         private Application.Interfaces.Boloes.IBolaoAcertoTimePontoApp _bolaoAcertoTimePontoApp;
         private Application.Interfaces.Boloes.IApostaExtraApp _apostaExtraApp;
         private Application.Interfaces.Boloes.IApostaExtraUsuarioApp _apostaExtraUsuarioApp;
+        private Application.Interfaces.EnriquecimentoDados.IWorldCupMatchApp _worldCupMatchApp;
+        private Application.Interfaces.EnriquecimentoDados.IMatchEventApp _matchEventApp;
 
         #endregion
 
@@ -40,7 +42,9 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
             Application.Interfaces.Boloes.IBolaoCriterioPontosTimesApp bolaoCriterioPontosTimesApp,
             Application.Interfaces.Boloes.IBolaoAcertoTimePontoApp bolaoAcertoTimePontoApp,
             Application.Interfaces.Boloes.IApostaExtraApp apostaExtraApp,
-            Application.Interfaces.Boloes.IApostaExtraUsuarioApp apostaExtraUsuarioApp
+            Application.Interfaces.Boloes.IApostaExtraUsuarioApp apostaExtraUsuarioApp,
+            Application.Interfaces.EnriquecimentoDados.IWorldCupMatchApp worldCupMatchApp,
+            Application.Interfaces.EnriquecimentoDados.IMatchEventApp matchEventApp
             )
             : base(bolaoMembroApp, bolaoApp, campeonatoApp, campeonatoFaseApp, campeonatoGrupoApp, campeonatoTimeApp)
         {
@@ -52,6 +56,8 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
             _bolaoAcertoTimePontoApp = bolaoAcertoTimePontoApp;
             _apostaExtraApp = apostaExtraApp;
             _apostaExtraUsuarioApp = apostaExtraUsuarioApp;
+            _worldCupMatchApp = worldCupMatchApp;
+            _matchEventApp = matchEventApp;
         }
 
         #endregion
@@ -206,7 +212,6 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
                 }
             }
         }
-
         public void CalcularPercentuais(ViewModels.Bolao.ApostasJogoViewModel model)
         {
             int totalTime1 = 0;
@@ -448,6 +453,35 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
 
             model.Apostas = model.Apostas.OrderBy(x => x.Posicao).ToList();
 
+            if (jogo.ExternalId != null)
+            {
+                var match = _worldCupMatchApp.GetList(x => x.Id == jogo.ExternalId).FirstOrDefault();
+
+                if (match != null)
+                {
+                    var events = _matchEventApp.GetByMatch(match.Id);
+                    IList<ViewModels.Bolao.ApostasJogoConcluidoGolViewModel> evs =
+                        Mapper.Map<IList<Domain.Entities.EnriquecimentoDados.MatchEvent>,
+                        IList<ViewModels.Bolao.ApostasJogoConcluidoGolViewModel>>(events);
+
+                    for (int c = 0; c < evs.Count; c++)
+                    {
+                        if (c > 0)
+                        {
+                            evs[c].HomeScore = evs[c - 1].HomeScore;
+                            evs[c].AwayScore = evs[c - 1].AwayScore;
+                        }
+
+                        if (evs[c].IsHomeTeam)
+                            evs[c].HomeScore++;
+                        else
+                            evs[c].AwayScore++;
+
+                    }
+                    model.Eventos = evs;
+                }
+            }
+            
             return View(model);
         }
 

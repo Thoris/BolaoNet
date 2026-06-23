@@ -1,0 +1,20 @@
+meta {
+  name: Artilheiros
+  type: http
+  seq: 4
+}
+
+get {
+  url: http://api.football-data.org/v4/competitions/WC/scorers
+  body: none
+  auth: inherit
+}
+
+headers {
+  X-Auth-Token: 35033d5235de4a7f81388298abb2f971
+}
+
+settings {
+  encodeUrl: false
+  timeout: 0
+}

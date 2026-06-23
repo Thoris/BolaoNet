@@ -72,6 +72,9 @@
     <Reference Include="Ninject.Web.Mvc">
       <HintPath>..\packages\Ninject.MVC5.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -174,6 +177,7 @@
     <Compile Include="Areas\Boloes\Controllers\AcessoBolaoController.cs" />
     <Compile Include="Areas\Boloes\Controllers\ApostasExtrasController.cs" />
     <Compile Include="Areas\Boloes\Controllers\ApostasExtrasPossibilidadesController.cs" />
+    <Compile Include="Areas\Boloes\Controllers\ApostasConcluidoController.cs" />
     <Compile Include="Areas\Boloes\Controllers\ApostasJogoController.cs" />
     <Compile Include="Areas\Boloes\Controllers\ApostasOusadasController.cs" />
     <Compile Include="Areas\Boloes\Controllers\BaseBolaoAreaController.cs" />
@@ -692,6 +696,7 @@
     <Content Include="Areas\Apostas\Views\BolaoHistorico\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ClassificacaoNotificacao\Index.cshtml" />
     <Content Include="Areas\Boloes\Views\ApostasOusadas\Index.cshtml" />
+    <Content Include="Areas\Boloes\Views\ApostasConcluido\Index.cshtml" />
     <None Include="Content\js\jquery-1.10.2.intellisense.js" />
     <Content Include="Content\js\jquery-1.10.2.js" />
     <Content Include="Content\js\jquery-1.10.2.min.js" />

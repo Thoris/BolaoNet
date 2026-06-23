@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="23ddcf0c-6e25-44ab-83a1-e676135bc03e" ChangeDateTime="06/15/2026 00:24:14">
+    <Property Name="ElementName" Value="[dbo].[ApiMatchStatistics].[MatchExternalId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ApiMatchStatistics]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ExternalId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="7832d53e-7073-4fca-8f23-46770f89ce64" ChangeDateTime="06/15/2026 00:24:31">
+    <Property Name="ElementName" Value="[dbo].[ApiMatchEvents].[MatchExternalId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ApiMatchEvents]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ExternalId" />
+  </Operation>
+</Operations>

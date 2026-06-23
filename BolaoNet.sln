@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.1.32328.378
+# Visual Studio Version 18
+VisualStudioVersion = 18.6.11806.211 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ReferencedComponents", "ReferencedComponents", "{0DD79E73-9DDE-475A-A7AC-DDE941D14543}"
 EndProject
@@ -212,6 +212,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocFx", "Info\DocFx\DocFx.c
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Grafana", "Grafana", "{CA314C59-9586-4DC4-A7B7-7BAB30AC59C2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.6 - External Apis", "4.6 - External Apis", "{44DEC5A9-C7AA-4365-98F5-72A56C57C4B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BolaoNet.Infra.External.API", "BolaoNet.Infra.External.API\BolaoNet.Infra.External.API.csproj", "{6E623768-6CD5-4A11-8022-66D10C67E109}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -316,6 +320,10 @@ Global
 		{D28AD4BB-4EAD-4541-9052-2E275564EC4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D28AD4BB-4EAD-4541-9052-2E275564EC4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D28AD4BB-4EAD-4541-9052-2E275564EC4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E623768-6CD5-4A11-8022-66D10C67E109}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E623768-6CD5-4A11-8022-66D10C67E109}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E623768-6CD5-4A11-8022-66D10C67E109}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E623768-6CD5-4A11-8022-66D10C67E109}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -384,6 +392,8 @@ Global
 		{62D9AF82-389A-433F-837B-B550B42B1F93} = {41DA505B-A32F-4850-A054-09B1E5743B0C}
 		{D28AD4BB-4EAD-4541-9052-2E275564EC4D} = {62D9AF82-389A-433F-837B-B550B42B1F93}
 		{CA314C59-9586-4DC4-A7B7-7BAB30AC59C2} = {41DA505B-A32F-4850-A054-09B1E5743B0C}
+		{44DEC5A9-C7AA-4365-98F5-72A56C57C4B4} = {684FCDA3-B961-401C-B192-6CD6D471693E}
+		{6E623768-6CD5-4A11-8022-66D10C67E109} = {44DEC5A9-C7AA-4365-98F5-72A56C57C4B4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {51A094DF-D4A4-421B-B008-3EE537101966}

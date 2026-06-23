@@ -47,6 +47,9 @@
     <Compile Include="Boloes\BolaoPremiacaoApp.cs" />
     <Compile Include="Boloes\BolaoHistoricoApp.cs" />
     <Compile Include="Boloes\BolaoMembroPontoApp.cs" />
+    <Compile Include="EnriquecimentoDados\MatchEventApp.cs" />
+    <Compile Include="EnriquecimentoDados\MatchOrchestrationApp.cs" />
+    <Compile Include="EnriquecimentoDados\WorldCupMatchApp.cs" />
     <Compile Include="Facade\Boloes\BolaoListFacadeApp.cs" />
     <Compile Include="Facade\Campeonatos\CopaAmerica2019FacadeApp.cs" />
     <Compile Include="Facade\Campeonatos\CopaListFacadeApp.cs" />
@@ -143,6 +146,9 @@
     <Compile Include="Interfaces\DadosBasicos\IEstadioApp.cs" />
     <Compile Include="Interfaces\DadosBasicos\IPagamentoTipoApp.cs" />
     <Compile Include="Interfaces\DadosBasicos\ITimeApp.cs" />
+    <Compile Include="Interfaces\EnriquecimentoDados\IMatchEventApp.cs" />
+    <Compile Include="Interfaces\EnriquecimentoDados\IMatchOrchestrationApp.cs" />
+    <Compile Include="Interfaces\EnriquecimentoDados\IWorldCupMatchApp.cs" />
     <Compile Include="Interfaces\Facade\Boloes\IBolaoListFacadeApp.cs" />
     <Compile Include="Interfaces\Facade\Campeonatos\ICopaAmerica2019FacadeApp.cs" />
     <Compile Include="Interfaces\Facade\Campeonatos\ICopaListFacadeApp.cs" />

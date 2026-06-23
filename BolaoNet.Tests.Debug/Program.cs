@@ -1,6 +1,14 @@
 ﻿using BolaoNet.Application.Interfaces.Facade.Boloes;
 using BolaoNet.Application.Interfaces.Facade.Campeonatos;
 using BolaoNet.Application.Interfaces.Reports;
+using BolaoNet.Application.Services;
+using BolaoNet.Domain.Interfaces.Repositories.Campeonatos;
+using BolaoNet.Domain.Interfaces.Repositories.EnriquecimentoDados;
+using BolaoNet.Domain.Services.EnriquecimentoDados;
+using BolaoNet.Infra.External.API.OpenFootball.Client;
+using BolaoNet.Infra.External.API.OpenFootball.Services;
+using BolaoNet.Infra.External.API.TheSportsDb;
+using BolaoNet.Infra.External.API.TheSportsDb.Client;
 using Ninject;
 using System;
 using System.Collections.Generic;
@@ -19,6 +27,65 @@ namespace BolaoNet.Tests.Debug
 
         static void Main(string[] args)
         {
+
+            Ninject.StandardKernel k = (StandardKernel)NinjectCommon.CreateKernel();
+            OpenFootballClient oc = new OpenFootballClient();
+            OpenFootballService os = new OpenFootballService(oc);
+     
+            TheSportsDbClient client = new TheSportsDbClient();
+            TheSportsDbService theSportsDbService = new TheSportsDbService(client);
+
+            //Ninject.StandardKernel k = (StandardKernel)NinjectCommon.CreateKernel();
+            MatchOrchestrator matchOrchestrator = new MatchOrchestrator(
+                theSportsDbService,
+                k.Get<IMatchEventRepositoryDao>(), 
+                k.Get<IWorldCupMatchRepositoryDao>(), 
+                k.Get<ITeamAliasRepositoryDao>(),
+                k.Get<IJogoDao>(),
+                os);
+
+            matchOrchestrator.CreateMatches(2026).Wait();
+            matchOrchestrator.AssociateMatches(2026).Wait();
+            for (int c=0; c<104; c++) {
+                matchOrchestrator.UpdateMatch(c+1).Wait();
+            }
+
+            //matchOrchestrator.LoadExternalApiMatches("2026").Wait();
+
+
+
+
+            //matchOrchestrator.SyncMatchDeep("2391730").Wait();
+
+            var mat = k.Get<IWorldCupMatchRepositoryDao>().GetList(where: i => i.Status== "FT");
+            
+            foreach (var ma in mat) { matchOrchestrator.SyncMatchDeep(ma.ExternalId).Wait(); }
+ 
+            //var matches = theSportsDbService.GetMatchesAsync(TheSportsDbConstants.FifaWorldCupLeagueId, "2026").Result;
+
+            //var resMatches = theSportsDbService.GetMatchesByDateAsync(DateTime.Now.AddDays(1)).Result;
+
+            //foreach(var match in matches)
+            //{
+            //    var info = theSportsDbService.GetMatchDetailsAsync(match.ExternalId).Result;
+            //    if (info != null)
+            //    {
+
+            //    }
+            //}
+
+
+            //for (int c=0; c < resMatches.Count; c++)
+            //{
+            //    var details = theSportsDbService.GetMatchDetailsAsync(resMatches[c].ExternalId).Result;
+
+
+
+            //    if (details != null)
+            //    {
+
+            //    }
+            //}
 
             //new MVC.Tests.Execution().Execute();
             //return;

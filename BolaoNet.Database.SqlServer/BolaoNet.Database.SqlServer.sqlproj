@@ -173,5 +173,12 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\0051.Create_Table_Historico.sql" />
+    <Build Include="Tables\0052.Create_Table_ApiWorldCupMatches.sql" />
+    <Build Include="Tables\0053.Create_Table_ApiMatchEvents.sql" />
+    <Build Include="Tables\0054.Create_Table_ApiTeamAliases.sql" />
+    <None Include="build\0068.Insert_ApiTeamAliases.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="BolaoNet.Database.SqlServer.refactorlog" />
   </ItemGroup>
 </Project>

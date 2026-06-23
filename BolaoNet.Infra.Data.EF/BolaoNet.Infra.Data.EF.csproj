@@ -95,6 +95,9 @@
     <Compile Include="DadosBasicos\EstadioRepositoryDao.cs" />
     <Compile Include="DadosBasicos\PagamentoTipoRepositoryDao.cs" />
     <Compile Include="DadosBasicos\TimeRepositoryDao.cs" />
+    <Compile Include="EnriquecimentoDados\MatchEventRepositoryDao.cs" />
+    <Compile Include="EnriquecimentoDados\TeamAliasRepositoryDao.cs" />
+    <Compile Include="EnriquecimentoDados\WorldCupMatchRepositoryDao.cs" />
     <Compile Include="FactoryDaoEF.cs" />
     <Compile Include="Feed\RssRepositoryDao.cs" />
     <Compile Include="Initializers\SqlDataContextInitializer.cs" />
@@ -124,6 +127,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

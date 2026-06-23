@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "football.api",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

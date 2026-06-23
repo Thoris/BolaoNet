@@ -74,6 +74,10 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
             Bind<Domain.Interfaces.Repositories.Users.IRoleDao>().To<Infra.Data.EF.Users.RoleRepositoryDao>();
             Bind<Domain.Interfaces.Repositories.Users.IUserDao>().To<Infra.Data.EF.Users.UserRespositoryDao>();
             Bind<Domain.Interfaces.Repositories.Users.IUserInRoleDao>().To<Infra.Data.EF.Users.UserInRoleRepositoryDao>();
+
+            Bind<Domain.Interfaces.Repositories.EnriquecimentoDados.IMatchEventRepositoryDao>().To<Infra.Data.EF.EnriquecimentoDados.MatchEventRepositoryDao>();
+            Bind<Domain.Interfaces.Repositories.EnriquecimentoDados.ITeamAliasRepositoryDao>().To<Infra.Data.EF.EnriquecimentoDados.TeamAliasRepositoryDao>();
+            Bind<Domain.Interfaces.Repositories.EnriquecimentoDados.IWorldCupMatchRepositoryDao>().To<Infra.Data.EF.EnriquecimentoDados.WorldCupMatchRepositoryDao>();
         }
 
         #endregion

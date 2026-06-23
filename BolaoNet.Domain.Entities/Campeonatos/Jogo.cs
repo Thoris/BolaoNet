@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BolaoNet.Domain.Entities.Campeonatos
 {
@@ -83,6 +79,8 @@ namespace BolaoNet.Domain.Entities.Campeonatos
         public bool? PendenteTime2MelhorGrupos { get; set; }
 
         public bool? IsDesempate { get; set; }
+
+        public int ? ExternalId { get; set; }
 
         #endregion
 

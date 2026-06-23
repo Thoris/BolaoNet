@@ -92,6 +92,9 @@
     <Compile Include="DadosBasicos\EstadioConfiguration.cs" />
     <Compile Include="DadosBasicos\PagamentoTipoConfiguration.cs" />
     <Compile Include="DadosBasicos\TimeConfiguration.cs" />
+    <Compile Include="EnriquecimentoDados\MatchEventConfiguration.cs" />
+    <Compile Include="EnriquecimentoDados\TeamAliasConfiguration.cs" />
+    <Compile Include="EnriquecimentoDados\WorldCupMatchConfiguration.cs" />
     <Compile Include="Feed\RssConfiguration.cs" />
     <Compile Include="LogReporting\LogConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

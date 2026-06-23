@@ -1,0 +1,20 @@
+meta {
+  name: Search League
+  type: http
+  seq: 1
+}
+
+get {
+  url: https://www.thesportsdb.com/api/v1/json/123/lookupleague.php?id=4429
+  body: none
+  auth: inherit
+}
+
+params:query {
+  id: 4429
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

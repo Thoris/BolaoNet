@@ -51,6 +51,6 @@ namespace BolaoNet.Domain.Interfaces.Repositories.Campeonatos
 
         IList<Entities.Campeonatos.Jogo> GetJogosTimesPossibilidades(string currentUserName, DateTime currentDateTime,
             Entities.Campeonatos.Campeonato campeonato);
-        
+        Task<IEnumerable<Entities.Campeonatos.Jogo>> GetWithoutExternalId();
     }
 }

@@ -100,6 +100,10 @@ namespace BolaoNet.MVC.ViewModels.Bolao
 
         public IList<ApostaJogoUsuarioPontosViewModel> Apostas { get; set; }
 
+
+        public IList<ApostasJogoConcluidoGolViewModel> Eventos { get; set; }
+        public IList<ApostaJogoUsuarioPontosViewModel> NaoAcertadores { get; set; }
+
         #endregion
     }
 }

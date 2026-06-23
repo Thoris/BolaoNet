@@ -14,335 +14,475 @@
     @Html.HiddenFor(x => x.IsDesempate)
 
     @*<div class="wrapper wrapper-content animated fadeInRight">*@
-        <div class="row">
+<div class="row">
 
-            @*<div class="col-lg-8 col-xs-offset-2">*@
-            <div class="col-lg-8">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <h3>Jogo</h3>
+    @*<div class="col-lg-8 col-xs-offset-2">*@
+    <div class="col-lg-8">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h3>Jogo</h3>
+            </div>
+            <div class="ibox-content" style="display: block;">
+
+                <div class="row">
+                    <div class="form-group col-md-6 col-sm-6">
+                        <label>Fase:</label> @Model.NomeFase
                     </div>
-                    <div class="ibox-content" style="display: block;">
-
-                        <div class="row">
-                            <div class="form-group col-md-6 col-sm-6">
-                                <label>Fase:</label> @Model.NomeFase
-                            </div>
-                            <div class="form-group col-md-3 col-sm-3">
-                                <label>Grupo:</label> @Model.NomeGrupo
-                            </div>
-                            <div class="form-group col-md-3 col-sm-3">
-                                <label>Rodada:</label> @Model.Rodada
-                            </div>
-                        </div>
-                        <div class="row  text-center">
-                            <div class="form-group col-md-2 col-sm-2">
-                                <h3>
-                                    @Model.NomeTime1
-                                </h3>
-                            </div>
-                            <div class="form-group col-md-1 col-sm-1 ">
-                                <img class="img-time-resultado" src="@(Model.ImageTime1)" @*width="100%"*@ />
-                            </div>
-                            <div class="form-group col-md-2 col-sm-2 text-center">
-                                <h1><strong>
-                                    @if (Model.IsValido == true)
-                                    {
-                                        @Html.Raw(Model.GolsTime1.ToString());
-                                    }
-                                    else
-                                    {
-                                        @Html.Raw("-");
-                                    }
-                                </strong>
-                                </h1>
-                            </div>
-                            <div class="form-group col-md-2 col-sm-2 text-center">
-                                x
-                            </div>
-                            <div class="form-group col-md-2 col-sm-2 text-center">
-                                <h1><strong>
-                                    @if (Model.IsValido == true)
-                                    {
-                                        @Html.Raw(Model.GolsTime2.ToString());
-                                    }
-                                    else
-                                    {
-                                        @Html.Raw("-");
-                                    }
-                                    </strong>
-                                </h1>
-                            </div>
-                            <div class="form-group col-md-1 col-sm-1">
-                                <img class="img-time-resultado" src="@(Model.ImageTime2)" @*width="100%"*@ />
-                            </div>
-                            <div class="form-group col-md-2 col-sm-2">
-                                <h3>
-                                    @Model.NomeTime2
-                                </h3>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12 text-center">
-                                <label>Data do Jogo</label>
-                            </div>
-                            <div class="col-sm-12 text-center">
-                                @Model.DataJogo
-                            </div>
-
-                            @*@if(!Model.IsValido)
-                            { 
-                                <div class="col-sm-12">
-                                    <button class="btn btn-default" type="submit">Simular</button>
-                                </div>
-                            }*@
-                        </div>
-
-
+                    <div class="form-group col-md-3 col-sm-3">
+                        <label>Grupo:</label> @Model.NomeGrupo
                     </div>
-                    <div class="ibox-footer">
-                        <div class="row">
-                            <div class="col-sm-4 text-left">
-                                Time 1 : @Model.TotalApostasTime1 ( @Model.PercentualTime1.ToString("0.00") % )
+                    <div class="form-group col-md-3 col-sm-3">
+                        <label>Rodada:</label> @Model.Rodada
+                    </div>
+                </div>
+                <div class="row  text-center">
+                    <div class="form-group col-md-2 col-sm-2">
+                        <h3>
+                            @Model.NomeTime1
+                        </h3>
+                    </div>
+                    <div class="form-group col-md-1 col-sm-1 ">
+                        <img class="img-time-resultado" src="@(Model.ImageTime1)" @*width="100%"*@ />
+                    </div>
+                    <div class="form-group col-md-2 col-sm-2 text-center">
+                        <h1>
+                            <strong>
+                                @if (Model.IsValido == true)
+                                {
+                                    @Html.Raw(Model.GolsTime1.ToString());
+                                }
+                                else
+                                {
+                                    @Html.Raw("-");
+                                }
+                            </strong>
+                        </h1>
+                    </div>
+                    <div class="form-group col-md-2 col-sm-2 text-center">
+                        x
+                    </div>
+                    <div class="form-group col-md-2 col-sm-2 text-center">
+                        <h1>
+                            <strong>
+                                @if (Model.IsValido == true)
+                                {
+                                    @Html.Raw(Model.GolsTime2.ToString());
+                                }
+                                else
+                                {
+                                    @Html.Raw("-");
+                                }
+                            </strong>
+                        </h1>
+                    </div>
+                    <div class="form-group col-md-1 col-sm-1">
+                        <img class="img-time-resultado" src="@(Model.ImageTime2)" @*width="100%"*@ />
+                    </div>
+                    <div class="form-group col-md-2 col-sm-2">
+                        <h3>
+                            @Model.NomeTime2
+                        </h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <label>Data do Jogo</label>
+                    </div>
+                    <div class="col-sm-12 text-center">
+                        @Model.DataJogo
+                    </div>
+
+                    @*@if(!Model.IsValido)
+                        {
+                            <div class="col-sm-12">
+                                <button class="btn btn-default" type="submit">Simular</button>
                             </div>
-                            <div class="col-sm-4 text-center">
-                                Empate : @Model.TotalApostasEmpate ( @Model.PercentualEmpate.ToString("0.00") % )
-                            </div>
-                            <div class="col-sm-4 text-right">
-                                Time 2 : @Model.TotalApostasTime2 ( @Model.PercentualTime2.ToString("0.00") % )
-                            </div>
-                        </div>
+                        }*@
+                </div>
+
+
+            </div>
+            <div class="ibox-footer">
+                <div class="row">
+                    <div class="col-sm-4 text-left">
+                        Time 1 : @Model.TotalApostasTime1 ( @Model.PercentualTime1.ToString("0.00") % )
+                    </div>
+                    <div class="col-sm-4 text-center">
+                        Empate : @Model.TotalApostasEmpate ( @Model.PercentualEmpate.ToString("0.00") % )
+                    </div>
+                    <div class="col-sm-4 text-right">
+                        Time 2 : @Model.TotalApostasTime2 ( @Model.PercentualTime2.ToString("0.00") % )
                     </div>
                 </div>
             </div>
-
-            @if (Model.IsDesempate == true) // && Model.GolsTime1 == Model.GolsTime2)
-            {
-                @*<div class="col-lg-4 col-xs-offset-2">*@
-                <div class="col-lg-3 ">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <h5>Penaltis</h5>
-                        </div>
-                        <div class="ibox-content" style="display: block;">
-                            <div class="row">
-                                <div class="col-sm-2 col-xs-offset-3 text-left">
-                                    <h3>
-                                        @if (Model.PenaltisTime1 != null)
-                                        {
-                                            @Html.Raw(Model.PenaltisTime1.ToString());
-                                        }
-                                        else
-                                        {
-                                            @Html.Raw("-");
-                                        }
-                                    </h3>
-                                </div>
-                                <div class="col-sm-1 text-center">x</div>
-                                <div class="col-sm-2 text-right">
-                                    <h3>
-                                        @if (Model.PenaltisTime2 != null)
-                                        {
-                                            @Html.Raw(Model.PenaltisTime2.ToString());
-                                        }
-                                        else
-                                        {
-                                            @Html.Raw("-");
-                                        }
-                                    </h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            }
-
-            @if(!Model.IsValido)
-            { 
-                <div class="col-lg-3">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <h5>Simulação</h5>
-                        </div>
-                        <div class="ibox-content" style="display: block;">
-                            <div class="row">                                
-                                <div class="col-sm-5">
-                                    @*@Html.TextBoxFor(x => x.SimulacaoGols1, new { @class = "form-control" })*@
-                                    @Html.EditorFor(a => a.SimulacaoGols1, new { @class = "form-control input-sm" })
-                                    @Html.ValidationMessageFor(m => m.SimulacaoGols1)
-                                </div>
-                                <div class="col-sm-1 text-center">x</div>
-                                <div class="col-sm-5">
-                                    @*@Html.TextBoxFor(x => x.SimulacaoGols2, new { @class = "form-control" })*@
-                                    @Html.EditorFor(a => a.SimulacaoGols2, new { @class = "form-control input-sm" })
-
-
-                                    @Html.ValidationMessageFor(m => m.SimulacaoGols2)
-                                </div>
-                            </div>
-
-
-                            @if (Model.NomeFase == "Final")
-                            {
-                                <div class="row"> 
-                                    <div class="col-sm-6">
-                                        <label>
-                                            @Html.RadioButtonFor(m => m.TimeVencedorFinal, 1, new { @checked = "checked" })
-                                            <img class="img-time" src="/Content/img/database/times/@(Model.NomeTime1).gif" />
-                                        </label>
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <label>
-                                            @Html.RadioButtonFor(m => m.TimeVencedorFinal, 2)
-                                            <img class="img-time" src="/Content/img/database/times/@(Model.NomeTime2).gif" />
-                                        </label>
-                                    </div> 
-                                </div>
-                            }
-
-
-                            <div class="row">
-                                <br/>
-                                <div class="col-sm-offset-3 col-sm-2 text-center">
-                                    <input type="submit" onclick="javascript:showWait();" class="btn btn-primary btn-md center-block text-center " value="Simular" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            }
-
-          
-
-            <div class="col-lg-12">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <h5>Apostas</h5>
-                    </div>
-                    <div class="ibox-content" style="display: block;">
-                        <div class="row">
-                            <div class="form-group col-md-12 col-sm-12">
-                                <table class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <td class="text-center">Pos</td>   
-                                            <td class="hidden-xs"></td>                                      
-                                            <td class="text-center">PTG</td>   
-                                            <td class="hidden-xs"></td>                                        
-                                            <td class="text-center">Usuário</td>  
-                                            @if (Model.Apostas.Count > 0 && !string.IsNullOrEmpty(Model.Apostas[0].NomeTimeResult1))
-                                            {
-                                                <td class="hidden-xs"></td>
-                                            }
-                                            <td colspan="3" class="text-center">Apostas</td>
-                                            @if (Model.Apostas.Count > 0 && !string.IsNullOrEmpty(Model.Apostas[0].NomeTimeResult2))
-                                            {
-                                                <td class="hidden-xs"></td>
-                                            }                                            
-                                            <td class="text-center">PT</td>
-                                            <td class="text-center hidden-xs">Extra</td>
-                                            @if(Model.NomeFase == "Final")
-                                            {                                           
-                                                <td class="text-center hidden-xs">Acerto</td>
-                                            }
-                                            <td class="text-center hidden-xs"></td>
-                                            <td class="text-center hidden-xs">%</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @for (int c = 0; c < Model.Apostas.Count; c++)
-                                        {
-                                            <tr
-                                                @if (string.Compare(userNameLogged, Model.Apostas[c].UserName, true) == 0)
-                                                {
-                                                    @Html.Raw("class=\"info\"");
-                                                }                                                                                                
-                                                >
-                                                <td class="text-center">@Model.Apostas[c].Posicao</td>     
-                                                <td class="hidden-xs">
-                                                    @if(Model.Apostas[c].LastPosicao != 0)
-                                                    {
-                                                        if(Model.Apostas[c].Posicao == Model.Apostas[c].LastPosicao)
-                                                        {
-                                                            @Html.Raw("<span class=\"glyphicon glyphicon-stop black\">&nbsp;&nbsp;</span>");
-                                                        }
-                                                        else if (Model.Apostas[c].Posicao < Model.Apostas[c].LastPosicao)
-                                                        {
-                                                            @Html.Raw("<span class=\"glyphicon glyphicon-arrow-up blue\">&nbsp;" + (Model.Apostas[c].LastPosicao - Model.Apostas[c].Posicao) + "</span>");
-
-                                                        }
-                                                        else
-                                                        {
-                                                            @*<span class="glyphicon glyphicon-arrow-down ">*@
-                                                            @Html.Raw("<span style=\"color:red\" class=\"glyphicon glyphicon-arrow-down \">&nbsp;" + (Model.Apostas[c].Posicao - Model.Apostas[c].LastPosicao) + "</span>");
-                                                        }
-                                                    }
-                                                    
-                                                </td>                                         
-                                                <td class="text-center"><strong>@Model.Apostas[c].TotalPontosClassificacao</strong></td>
-                                                <td class="hidden-xs">
-                                                    <img class="img-username" src="/Content/img/database/profiles/@(Model.Apostas[c].UserName).gif?time=@(DateTime.Now)" />
-                                                </td>
-                                                <td class="text-center">@Model.Apostas[c].UserName</td>
-
-                                                @if (!string.IsNullOrEmpty (Model.Apostas[c].NomeTimeResult1))
-                                                {
-                                                    <td class="hidden-xs">
-                                                        <img class="img-time" src="/Content/img/database/times/@(Model.Apostas[c].NomeTimeResult1).gif" />
-                                                    </td>
-                                                }
-                                                <td class="text-center"><strong>@Model.Apostas[c].ApostaTime1</strong></td>
-                                                <td class="text-center">x</td>
-                                                <td class="text-center"><strong>@Model.Apostas[c].ApostaTime2</strong></td>
-
-                                                @if (!string.IsNullOrEmpty (Model.Apostas[c].NomeTimeResult2))
-                                                {
-                                                    <td class="hidden-xs">
-                                                        <img class="img-time" src="/Content/img/database/times/@(Model.Apostas[c].NomeTimeResult2).gif" />
-                                                    </td>
-                                                }
-                                                <td class="text-center">
-                                                    @if(Model.Apostas[c].Pontos != 0 && Model.Apostas[c].Pontos != null)
-                                                    { 
-                                                        <i class="fa fa-plus-circle" 
-                                                           style="color:@BolaoNet.MVC.Helpers.ColorPontosHelper.GetColorPontos(Model.Apostas[c].Pontos)" 
-                                                           aria-hidden="true"></i>
-                                                    }
-                                                    <strong style="color:@BolaoNet.MVC.Helpers.ColorPontosHelper.GetColorPontos(Model.Apostas[c].Pontos)">
-                                                        @(Model.Apostas[c].Pontos)
-                                                    </strong>
-                                                </td>
-                                                <td class="text-center hidden-xs">
-                                                    @if (Model.Apostas[c].IsMultiploTime == true)
-                                                    {
-                                                        <span class="glyphicon glyphicon-asterisk" />
-                                                    }
-                                                </td>
-                                                @if(Model.NomeFase == "Final")
-                                                {                                           
-                                                    <td class="text-center hidden-xs">@Model.Apostas[c].PontosAcertoTime</td>
-                                                }
-                                                <td class="text-center hidden-xs">
-                                                    @if (Model.Apostas[c].Automatico == 1)
-                                                    {
-                                                        <span class="glyphicon glyphicon-flash" />
-                                                    }
-                                                </td>
-                                                <td class="text-center hidden-xs">
-                                                    @Model.Apostas[c].TotalApostasResultado (@Model.Apostas[c].PercentualResultado.ToString("0.00") %)
-                                                </td>
-                                            </tr>
-                                        }
-                                    </tbody>
-                                </table>                               
-                            </div>                            
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-                   
         </div>
+    </div>
+
+    @if (Model.IsDesempate == true) // && Model.GolsTime1 == Model.GolsTime2)
+    {
+        @*<div class="col-lg-4 col-xs-offset-2">*@
+        <div class="col-lg-3 ">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Penaltis</h5>
+                </div>
+                <div class="ibox-content" style="display: block;">
+                    <div class="row">
+                        <div class="col-sm-2 col-xs-offset-3 text-left">
+                            <h3>
+                                @if (Model.PenaltisTime1 != null)
+                                {
+                                    @Html.Raw(Model.PenaltisTime1.ToString());
+                                }
+                                else
+                                {
+                                    @Html.Raw("-");
+                                }
+                            </h3>
+                        </div>
+                        <div class="col-sm-1 text-center">x</div>
+                        <div class="col-sm-2 text-right">
+                            <h3>
+                                @if (Model.PenaltisTime2 != null)
+                                {
+                                    @Html.Raw(Model.PenaltisTime2.ToString());
+                                }
+                                else
+                                {
+                                    @Html.Raw("-");
+                                }
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    @if (Model.IsValido)
+    {
+
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
+
+                <div class="ibox-title">
+                    <h5>Eventos da Partida</h5>
+                </div>
+
+                <div class="ibox-content"
+                     style="display:block; max-height:450px; overflow-y:auto; padding:8px;">
+
+                    @if (Model.Eventos != null && Model.Eventos.Any())
+                    {
+                        foreach (var evento in Model.Eventos)
+                        {
+                            <div style="
+                            display:flex;
+                            align-items:center;
+                            gap:8px;
+                            width:100%;
+                            padding:5px 0;
+                            border-bottom:1px solid #f5f5f5;
+                            font-size:12px;">
+
+                                <div style="
+                                width:55px;
+                                text-align:center;
+                                flex-shrink:0;">
+
+                                    @if (evento.EventType == "Início")
+                                    {
+                                        <span class="label label-default"
+                                              style="display:inline-block; min-width:50px;">
+                                            Início
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="label label-danger"
+                                              style="display:inline-block; min-width:50px;">
+                                            @(evento.Minute)@(evento.ExtraMinute != null && @evento.ExtraMinute != 0 ? "+" + evento.ExtraMinute : "")'
+                                        </span>
+                                    }
+
+                                </div>
+
+                                <div style="
+                                flex:1;
+                                display:flex;
+                                justify-content:@(evento.IsHomeTeam ? "flex-start" : "flex-end");
+                                overflow:hidden;">
+
+                                    @if (evento.EventType == "Início")
+                                    {
+                                        <strong>Início da partida</strong>
+                                    }
+                                    else
+                                    {
+                                        <div style="
+                                        max-width:100%;
+                                        overflow:hidden;
+                                        white-space:nowrap;
+                                        text-overflow:ellipsis;
+                                        text-align:@(evento.IsHomeTeam ? "left" : "right");">
+
+                                            <strong>@evento.PlayerName</strong>
+
+                                            @if (evento.IsOwnGoal)
+                                            {
+                                                <span class="text-danger">(contra)</span>
+                                            }
+                                            @if (evento.IsPenalty)
+                                            {
+                                                <span>(Penalty)</span>
+                                            }
+
+                                        </div>
+                                    }
+
+                                </div>
+
+                                <div style="
+                                width:70px;
+                                text-align:right;
+                                flex-shrink:0;
+                                font-size:15px;
+                                font-weight:bold;">
+
+                                    <span style="
+                                    color:@(evento.EventType != "Início" && evento.IsHomeTeam ? "#1ab394" : "#666");
+                                    font-weight:@(evento.EventType != "Início" && evento.IsHomeTeam ? "700" : "400");">
+
+                                        @evento.HomeScore
+
+                                    </span>
+
+                                    <span style="color:#999;"> x </span>
+
+                                    <span style="
+                                    color:@(evento.EventType != "Início" && !evento.IsHomeTeam ? "#1ab394" : "#666");
+                                    font-weight:@(evento.EventType != "Início" && !evento.IsHomeTeam ? "700" : "400");">
+
+                                        @evento.AwayScore
+
+                                    </span>
+
+                                </div>
+
+                            </div>
+                        }
+
+                        <div style="margin-top:12px;">
+
+                            @Html.ActionLink(
+                                "Ver acertadores por gol",
+                                "Index",
+                                "ApostasConcluido",
+                                new
+                                {
+                                    id = Model.JogoId
+                                },
+                                new
+                                {
+                                    @class = "btn btn-xs btn-primary btn-block"
+                                })
+
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="text-center text-muted">
+                            Nenhum evento encontrado.
+                        </div>
+                    }
+
+                </div>
+
+            </div>
+        </div>
+         
+    }
+    else
+    {
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Simulação</h5>
+                </div>
+                <div class="ibox-content" style="display: block;">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            @*@Html.TextBoxFor(x => x.SimulacaoGols1, new { @class = "form-control" })*@
+                            @Html.EditorFor(a => a.SimulacaoGols1, new { @class = "form-control input-sm" })
+                            @Html.ValidationMessageFor(m => m.SimulacaoGols1)
+                        </div>
+                        <div class="col-sm-1 text-center">x</div>
+                        <div class="col-sm-5">
+                            @*@Html.TextBoxFor(x => x.SimulacaoGols2, new { @class = "form-control" })*@
+                            @Html.EditorFor(a => a.SimulacaoGols2, new { @class = "form-control input-sm" })
+
+
+                            @Html.ValidationMessageFor(m => m.SimulacaoGols2)
+                        </div>
+                    </div>
+
+
+                    @if (Model.NomeFase == "Final")
+                    {
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label>
+                                    @Html.RadioButtonFor(m => m.TimeVencedorFinal, 1, new { @checked = "checked" })
+                                    <img class="img-time" src="/Content/img/database/times/@(Model.NomeTime1).gif" />
+                                </label>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label>
+                                    @Html.RadioButtonFor(m => m.TimeVencedorFinal, 2)
+                                    <img class="img-time" src="/Content/img/database/times/@(Model.NomeTime2).gif" />
+                                </label>
+                            </div>
+                        </div>
+                    }
+
+
+                    <div class="row">
+                        <br />
+                        <div class="col-sm-offset-3 col-sm-2 text-center">
+                            <input type="submit" onclick="javascript:showWait();" class="btn btn-primary btn-md center-block text-center " value="Simular" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+
+
+    <div class="col-lg-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Apostas</h5>
+            </div>
+            <div class="ibox-content" style="display: block;">
+                <div class="row">
+                    <div class="form-group col-md-12 col-sm-12">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <td class="text-center">Pos</td>
+                                    <td class="hidden-xs"></td>
+                                    <td class="text-center">PTG</td>
+                                    <td class="hidden-xs"></td>
+                                    <td class="text-center">Usuário</td>
+                                    @if (Model.Apostas.Count > 0 && !string.IsNullOrEmpty(Model.Apostas[0].NomeTimeResult1))
+                                    {
+                                        <td class="hidden-xs"></td>
+                                    }
+                                    <td colspan="3" class="text-center">Apostas</td>
+                                    @if (Model.Apostas.Count > 0 && !string.IsNullOrEmpty(Model.Apostas[0].NomeTimeResult2))
+                                    {
+                                        <td class="hidden-xs"></td>
+                                    }
+                                    <td class="text-center">PT</td>
+                                    <td class="text-center hidden-xs">Extra</td>
+                                    @if (Model.NomeFase == "Final")
+                                    {
+                                        <td class="text-center hidden-xs">Acerto</td>
+                                    }
+                                    <td class="text-center hidden-xs"></td>
+                                    <td class="text-center hidden-xs">%</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (int c = 0; c < Model.Apostas.Count; c++)
+                                {
+                                    <tr @if (string.Compare(userNameLogged, Model.Apostas[c].UserName, true) == 0) { @Html.Raw("class=\"info\"") ; }>
+                                        <td class="text-center">@Model.Apostas[c].Posicao</td>
+                                        <td class="hidden-xs">
+                                            @if (Model.Apostas[c].LastPosicao != 0)
+                                            {
+                                                if (Model.Apostas[c].Posicao == Model.Apostas[c].LastPosicao)
+                                                {
+                                                    @Html.Raw("<span class=\"glyphicon glyphicon-stop black\">&nbsp;&nbsp;</span>");
+                                                }
+                                                else if (Model.Apostas[c].Posicao < Model.Apostas[c].LastPosicao)
+                                                {
+                                                    @Html.Raw("<span class=\"glyphicon glyphicon-arrow-up blue\">&nbsp;" + (Model.Apostas[c].LastPosicao - Model.Apostas[c].Posicao) + "</span>");
+
+                                                }
+                                                else
+                                                {
+                                                    @*<span class="glyphicon glyphicon-arrow-down ">*@
+                                                    @Html.Raw("<span style=\"color:red\" class=\"glyphicon glyphicon-arrow-down \">&nbsp;" + (Model.Apostas[c].Posicao - Model.Apostas[c].LastPosicao) + "</span>");
+                                                }
+                                            }
+
+                                        </td>
+                                        <td class="text-center"><strong>@Model.Apostas[c].TotalPontosClassificacao</strong></td>
+                                        <td class="hidden-xs">
+                                            <img class="img-username" src="/Content/img/database/profiles/@(Model.Apostas[c].UserName).gif?time=@(DateTime.Now)" />
+                                        </td>
+                                        <td class="text-center">@Model.Apostas[c].UserName</td>
+
+                                        @if (!string.IsNullOrEmpty(Model.Apostas[c].NomeTimeResult1))
+                                        {
+                                            <td class="hidden-xs">
+                                                <img class="img-time" src="/Content/img/database/times/@(Model.Apostas[c].NomeTimeResult1).gif" />
+                                            </td>
+                                        }
+                                        <td class="text-center"><strong>@Model.Apostas[c].ApostaTime1</strong></td>
+                                        <td class="text-center">x</td>
+                                        <td class="text-center"><strong>@Model.Apostas[c].ApostaTime2</strong></td>
+
+                                        @if (!string.IsNullOrEmpty(Model.Apostas[c].NomeTimeResult2))
+                                        {
+                                            <td class="hidden-xs">
+                                                <img class="img-time" src="/Content/img/database/times/@(Model.Apostas[c].NomeTimeResult2).gif" />
+                                            </td>
+                                        }
+                                        <td class="text-center">
+                                            @if (Model.Apostas[c].Pontos != 0 && Model.Apostas[c].Pontos != null)
+                                            {
+                                                <i class="fa fa-plus-circle"
+                                                   style="color:@BolaoNet.MVC.Helpers.ColorPontosHelper.GetColorPontos(Model.Apostas[c].Pontos)"
+                                                   aria-hidden="true"></i>
+                                            }
+                                            <strong style="color:@BolaoNet.MVC.Helpers.ColorPontosHelper.GetColorPontos(Model.Apostas[c].Pontos)">
+                                                @(Model.Apostas[c].Pontos)
+                                            </strong>
+                                        </td>
+                                        <td class="text-center hidden-xs">
+                                            @if (Model.Apostas[c].IsMultiploTime == true)
+                                            {
+                                                <span class="glyphicon glyphicon-asterisk" />
+                                            }
+                                        </td>
+                                        @if (Model.NomeFase == "Final")
+                                        {
+                                            <td class="text-center hidden-xs">@Model.Apostas[c].PontosAcertoTime</td>
+                                        }
+                                        <td class="text-center hidden-xs">
+                                            @if (Model.Apostas[c].Automatico == 1)
+                                            {
+                                                <span class="glyphicon glyphicon-flash" />
+                                            }
+                                        </td>
+                                        <td class="text-center hidden-xs">
+                                            @Model.Apostas[c].TotalApostasResultado (@Model.Apostas[c].PercentualResultado.ToString("0.00") %)
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
     @*</div>*@
 }

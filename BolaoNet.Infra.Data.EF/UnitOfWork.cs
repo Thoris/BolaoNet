@@ -67,6 +67,14 @@ namespace BolaoNet.Infra.Data.EF
 
         public DbSet<Domain.Entities.Boloes.BolaoAcertoTimePonto> BolaoAcertoTimePontos { get; set; }
 
+
+        public DbSet<Domain.Entities.EnriquecimentoDados.MatchEvent> ApiMatchEvents { get; set; }
+
+        public DbSet<Domain.Entities.EnriquecimentoDados.TeamAlias> ApiTeamAlias { get; set; }
+
+        public DbSet<Domain.Entities.EnriquecimentoDados.WorldCupMatch> ApiWorldCupMatches { get; set; }
+
+
         #endregion
 
         #region Constructors/Destructors
@@ -248,6 +256,11 @@ namespace BolaoNet.Infra.Data.EF
             modelBuilder.Configurations.Add(new Mapping.Feed.RssConfiguration());
 
             modelBuilder.Configurations.Add(new Mapping.Boloes.BolaoAcertoTimePontoConfiguration());
+
+
+            modelBuilder.Configurations.Add(new Mapping.EnriquecimentoDados.MatchEventConfiguration()); 
+            modelBuilder.Configurations.Add(new Mapping.EnriquecimentoDados.TeamAliasConfiguration()); 
+            modelBuilder.Configurations.Add(new Mapping.EnriquecimentoDados.WorldCupMatchConfiguration()); 
 
             base.OnModelCreating(modelBuilder);
         }

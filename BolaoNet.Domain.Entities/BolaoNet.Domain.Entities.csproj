@@ -90,6 +90,9 @@
     <Compile Include="DadosBasicos\PagamentoTipo.cs" />
     <Compile Include="DadosBasicos\Time.cs" />
     <Compile Include="Base\Common\Interfaces\Validation\IValidationRule.cs" />
+    <Compile Include="EnriquecimentoDados\MatchEvent.cs" />
+    <Compile Include="EnriquecimentoDados\TeamAlias.cs" />
+    <Compile Include="EnriquecimentoDados\WorldCupMatch.cs" />
     <Compile Include="Feed\RssEntry.cs" />
     <Compile Include="LogReporting\LogEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

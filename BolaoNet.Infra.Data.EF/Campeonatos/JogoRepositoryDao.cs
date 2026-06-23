@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BolaoNet.Domain.Entities.Campeonatos;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -329,7 +330,12 @@ namespace BolaoNet.Infra.Data.EF.Campeonatos
                 !string.IsNullOrEmpty(x.NomeTime2) &&
                 x.IsDesempate == true).OrderByDescending( x=> x.JogoId).ToList<Domain.Entities.Campeonatos.Jogo>();
         }
-  
+
+        public async Task<IEnumerable<Jogo>> GetWithoutExternalId()
+        {
+            return base.GetList(x => x.ExternalId == null).ToList();
+        }
+
         #endregion
-     }
+    }
 }

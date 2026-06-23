@@ -92,8 +92,11 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
             Bind<Application.Interfaces.Reports.IBolaoMembroApostasReportApp>().To<Application.Reports.BolaoMembroApostasReportApp>();
             Bind<Application.Interfaces.Reports.IBolaoApostasInicioReportApp>().To<Application.Reports.BolaoApostasInicioReportApp>();
             Bind<Application.Interfaces.Reports.IBolaoApostasFimReportApp>().To<Application.Reports.BolaoApostasFimReportApp>();
-            
-            
+
+            Bind<Application.Interfaces.EnriquecimentoDados.IMatchEventApp>().To<Application.EnriquecimentoDados.MatchEventApp>();
+            Bind<Application.Interfaces.EnriquecimentoDados.IWorldCupMatchApp>().To<Application.EnriquecimentoDados.WorldCupMatchApp>();
+            Bind<Application.Interfaces.EnriquecimentoDados.IMatchOrchestrationApp>().To<Application.EnriquecimentoDados.MatchOrchestrationApp>();
+
         }
 
         #endregion

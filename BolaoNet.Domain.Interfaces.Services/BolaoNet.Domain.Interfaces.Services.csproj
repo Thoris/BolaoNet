@@ -86,6 +86,9 @@
     <Compile Include="DadosBasicos\IEstadioService.cs" />
     <Compile Include="DadosBasicos\IPagamentoTipoService.cs" />
     <Compile Include="DadosBasicos\ITimeService.cs" />
+    <Compile Include="EnriquecimentoDados\IMatchEventService.cs" />
+    <Compile Include="EnriquecimentoDados\IMatchOrchestrator.cs" />
+    <Compile Include="EnriquecimentoDados\IWorldCupMatchService.cs" />
     <Compile Include="Facade\Boloes\IBolaoFacadeService.cs" />
     <Compile Include="Facade\Boloes\IBolaoListFacadeService.cs" />
     <Compile Include="Facade\Campeonatos\ICopaAmerica2019FacadeService.cs" />

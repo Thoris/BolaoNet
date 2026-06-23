@@ -86,6 +86,9 @@
     <Compile Include="DadosBasicos\IEstadioDao.cs" />
     <Compile Include="DadosBasicos\IPagamentoTipoDao.cs" />
     <Compile Include="DadosBasicos\ITimeDao.cs" />
+    <Compile Include="EnriquecimentoDados\ITeamAliasRepositoryDao.cs" />
+    <Compile Include="EnriquecimentoDados\IMatchEventRepositoryDao.cs" />
+    <Compile Include="EnriquecimentoDados\IWorldCupMatchRepositoryDao.cs" />
     <Compile Include="Feed\IRssDao.cs" />
     <Compile Include="IFactoryDao.cs" />
     <Compile Include="LogReporting\ILogReportingDao.cs" />

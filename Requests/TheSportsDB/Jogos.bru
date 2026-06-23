@@ -1,0 +1,20 @@
+meta {
+  name: Jogos
+  type: http
+  seq: 2
+}
+
+get {
+  url: https://www.thesportsdb.com/api/v1/json/123/lookupevent.php?id=2044892
+  body: none
+  auth: inherit
+}
+
+params:query {
+  id: 2044892
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

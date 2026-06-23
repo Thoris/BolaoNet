@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "www.football-data.org",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

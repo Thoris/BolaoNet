@@ -94,6 +94,11 @@ namespace BolaoNet.Infra.CrossCutting.IoC.Modules
             Bind<Domain.Interfaces.Services.Reports.IBolaoApostasInicioReportService>().To<Domain.Services.Reports.BolaoApostasInicioReportService>().WithConstructorArgument("userName", userName);
             Bind<Domain.Interfaces.Services.Reports.IBolaoApostasFimReportService>().To<Domain.Services.Reports.BolaoApostasFimReportService>().WithConstructorArgument("userName", userName);
 
+            Bind<Domain.Interfaces.Services.EnriquecimentoDados.IMatchEventService>().To<Domain.Services.EnriquecimentoDados.MatchEventService>().WithConstructorArgument("userName", userName);
+            Bind<Domain.Interfaces.Services.EnriquecimentoDados.IWorldCupMatchService>().To<Domain.Services.EnriquecimentoDados.WorldCupMatchService>().WithConstructorArgument("userName", userName);
+            Bind<Domain.Interfaces.Services.EnriquecimentoDados.IMatchOrchestrator>().To<Domain.Services.EnriquecimentoDados.MatchOrchestrator>().WithConstructorArgument("userName", userName);
+
+
         }
 
         #endregion

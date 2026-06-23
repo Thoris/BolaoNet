@@ -1,9 +1,8 @@
 ﻿using AutoMapper;
-using BolaoNet.MVC.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace BolaoNet.MVC.Areas.Resultados.Controllers
@@ -14,6 +13,9 @@ namespace BolaoNet.MVC.Areas.Resultados.Controllers
 
         private Application.Interfaces.Campeonatos.IJogoApp _jogoApp;
         private Application.Interfaces.Feed.IRssApp _rssApp;
+        private Application.Interfaces.EnriquecimentoDados.IMatchEventApp _matchEventApp;
+        private Application.Interfaces.EnriquecimentoDados.IMatchOrchestrationApp _matchOrchestration;
+        private Application.Interfaces.EnriquecimentoDados.IWorldCupMatchApp _worldCupMatchApp;
 
         #endregion
 
@@ -27,13 +29,21 @@ namespace BolaoNet.MVC.Areas.Resultados.Controllers
             Application.Interfaces.Campeonatos.ICampeonatoFaseApp campeonatoFaseApp,
             Application.Interfaces.Campeonatos.ICampeonatoGrupoApp campeonatoGrupoApp,
             Application.Interfaces.Campeonatos.ICampeonatoTimeApp campeonatoTimeApp,
-            Application.Interfaces.Feed.IRssApp rssApp
+            Application.Interfaces.Feed.IRssApp rssApp,
+            Application.Interfaces.EnriquecimentoDados.IMatchOrchestrationApp matchOrchestrationApp,
+            Application.Interfaces.EnriquecimentoDados.IWorldCupMatchApp worldCupMatchApp,
+            Application.Interfaces.EnriquecimentoDados.IMatchEventApp matchEventApp
+
             )
             : base (bolaoMembroApp, bolaoApp, campeonatoApp, campeonatoFaseApp, 
             campeonatoGrupoApp, campeonatoTimeApp)
         {
             _jogoApp = jogoApp;
             _rssApp = rssApp;
+            _matchEventApp = matchEventApp;
+            _matchOrchestration = matchOrchestrationApp;
+            _worldCupMatchApp = worldCupMatchApp;
+
         }
 
         #endregion
@@ -41,7 +51,7 @@ namespace BolaoNet.MVC.Areas.Resultados.Controllers
         #region Actions
 
         [HttpGet]
-        public ActionResult Index(int id, string message)
+        public async Task<ActionResult> Index(int id, string message)
         {
             Domain.Entities.Campeonatos.Jogo jogo =
                 _jogoApp.Load(new Domain.Entities.Campeonatos.Jogo(base.SelectedNomeCampeonato, (int)id));
@@ -52,8 +62,110 @@ namespace BolaoNet.MVC.Areas.Resultados.Controllers
 
             model.Mensagem = message;
 
+            model.Eventos = new List<ViewModels.Bolao.ApostasJogoConcluidoGolViewModel>();
+            model.EventosAtualizados = false;
+            if (jogo.ExternalId != null)
+            {
+                var match = _worldCupMatchApp.GetList(x => x.Id == jogo.ExternalId).FirstOrDefault();
+
+                if (match != null && match.Status != "scheduled")
+                {
+                    model.ScoreAway = match.AwayScore;
+                    model.ScoreHome = match.HomeScore;
+                    model.Status = match.Status;
+
+                    var events = _matchEventApp.GetByMatch(match.Id);
+                    IList<ViewModels.Bolao.ApostasJogoConcluidoGolViewModel> evs =
+                        Mapper.Map<IList<Domain.Entities.EnriquecimentoDados.MatchEvent>,
+                        IList<ViewModels.Bolao.ApostasJogoConcluidoGolViewModel>>(events);
+
+                    model.Eventos = evs;
+                    model.EventosAtualizados = true;
+                    for (int c = 0; c < model.Eventos.Count; c++)
+                    {
+                        if (c > 0)
+                        {
+                            model.Eventos[c].HomeScore = model.Eventos[c - 1].HomeScore;
+                            model.Eventos[c].AwayScore = model.Eventos[c - 1].AwayScore;
+                        }
+
+                        if (model.Eventos[c].IsHomeTeam)
+                            model.Eventos[c].HomeScore++;
+                        else
+                            model.Eventos[c].AwayScore++;
+                    }
+                }
+            }
+
+            if (!model.EventosAtualizados && jogo.ExternalId != null)
+            {
+                try
+                {
+                    var res = await _matchOrchestration.LoadMatch((int)jogo.ExternalId);
+
+                    if (res != null)
+                    {
+                        model.ScoreAway = res.AwayScore;
+                        model.ScoreHome = res.HomeScore;
+                        model.Status = res.Status;
+                        foreach (var item in res.Events)
+                        {
+                            model.Eventos.Add(new ViewModels.Bolao.ApostasJogoConcluidoGolViewModel()
+                            {
+                                EventType = item.EventType,
+                                IsHomeTeam = item.IsHomeTeam ?? false,
+                                IsOwnGoal = item.IsOwnGoal ?? false,
+                                IsPenalty = item.IsPenalty ?? false,
+                                Minute = item.Minute ?? 0,
+                                PlayerName = item.PlayerName,
+                                RawDescription = item.RawDescription,
+                                TeamName = item.TeamName
+                            });
+                        }
+
+                        for (int c = 0; c < model.Eventos.Count; c++)
+                        {
+                            if (c > 0)
+                            {
+                                model.Eventos[c].HomeScore = model.Eventos[c - 1].HomeScore;
+                                model.Eventos[c].AwayScore = model.Eventos[c - 1].AwayScore;
+                            }
+                            if (model.Eventos[c].IsHomeTeam)
+                                model.Eventos[c].HomeScore++;
+                            else
+                                model.Eventos[c].AwayScore++;
+                        }
+                    }
+                }
+                catch(Exception ex)
+                {
+
+                }
+            }
+
             return View(model);
         }
+
+        [HttpGet] 
+        public async Task<ActionResult> SalvarEventos(int id)
+        {
+            try
+            {
+                Domain.Entities.Campeonatos.Jogo jogo =
+                    _jogoApp.Load(new Domain.Entities.Campeonatos.Jogo(base.SelectedNomeCampeonato, (int)id));
+
+                await _matchOrchestration.UpdateMatch(id);
+
+                ShowMessage("Eventos do jogo atualizados com sucesso.");
+            }
+            catch(Exception ex)
+            {
+                ShowErrorMessage("Erro ao atualizar os eventos do jogo: " + ex.Message);
+            }
+
+            return RedirectToAction("Index", new { id = id });
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Salvar(ViewModels.Resultados.JogoResultadoViewModel model)
@@ -73,8 +185,6 @@ namespace BolaoNet.MVC.Areas.Resultados.Controllers
                 }
             }
 
-
-
             if (isError)
             {
                 Domain.Entities.Campeonatos.Jogo jogoView =
@@ -86,8 +196,6 @@ namespace BolaoNet.MVC.Areas.Resultados.Controllers
 
                 return View("Index", modelView);
             }
-
-
             
             Domain.Entities.Campeonatos.Jogo jogo =
                 Mapper.Map<ViewModels.Resultados.JogoResultadoViewModel, Domain.Entities.Campeonatos.Jogo>

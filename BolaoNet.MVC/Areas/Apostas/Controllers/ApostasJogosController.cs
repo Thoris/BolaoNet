@@ -227,7 +227,6 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
             }
             return false;
         }
-
         private bool IsGrupoPreenchidoJogos(IList<Domain.Entities.ValueObjects.JogoUsuarioVO> data, string nomeGrupo, out IList<Domain.Entities.ValueObjects.JogoUsuarioVO> jogos)
         {
             jogos = new List<Domain.Entities.ValueObjects.JogoUsuarioVO>();
@@ -245,7 +244,6 @@ namespace BolaoNet.MVC.Areas.Apostas.Controllers
                 return false;
             }
         }
-
         private bool IsFasePreenchidaJogos(IList<Domain.Entities.ValueObjects.JogoUsuarioVO> data, string nomeFase, out IList<Domain.Entities.ValueObjects.JogoUsuarioVO> jogos)
         {
             jogos = new List<Domain.Entities.ValueObjects.JogoUsuarioVO>();

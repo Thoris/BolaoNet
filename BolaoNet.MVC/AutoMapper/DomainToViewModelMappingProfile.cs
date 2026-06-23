@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BolaoNet.MVC.ViewModels.Bolao;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,8 +45,10 @@ namespace BolaoNet.MVC.AutoMapper
             Mapper.CreateMap<ViewModels.Bolao.ApostaJogoUsuarioEntryViewModel, Domain.Entities.ValueObjects.JogoUsuarioVO>();
 
             Mapper.CreateMap<ViewModels.Bolao.ApostasJogoViewModel, Domain.Entities.Campeonatos.Jogo>();
+            Mapper.CreateMap<ViewModels.Bolao.ApostasJogoConcluidoGolViewModel, Domain.Entities.EnriquecimentoDados.MatchEvent>();
+            
             Mapper.CreateMap<ViewModels.Bolao.ApostaJogoUsuarioPontosViewModel, Domain.Entities.Boloes.JogoUsuario>();
-
+             
 
             Mapper.CreateMap<ViewModels.Bolao.ApostasExtrasUsuariosPontosViewModel, Domain.Entities.Boloes.ApostaExtraUsuario>();
             Mapper.CreateMap<ViewModels.Bolao.ApostasExtrasEntryViewModel, Domain.Entities.Boloes.ApostaExtra>();
@@ -99,7 +102,6 @@ namespace BolaoNet.MVC.AutoMapper
             Mapper.CreateMap<ViewModels.Bolao.BolaoComparacaoApostaJogoViewModel, Domain.Entities.ValueObjects.JogoUsuarioVO>();
 
             Mapper.CreateMap<ViewModels.Bolao.BolaoPremiacaoViewModel, Domain.Entities.Boloes.BolaoPremiacao>();
- 
 
         }
     }

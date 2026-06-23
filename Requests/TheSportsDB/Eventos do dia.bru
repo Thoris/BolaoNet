@@ -1,0 +1,20 @@
+meta {
+  name: Eventos do dia
+  type: http
+  seq: 9
+}
+
+get {
+  url: https://www.thesportsdb.com/api/v1/json/123/eventsday.php?d=2026-06-13
+  body: none
+  auth: inherit
+}
+
+params:query {
+  d: 2026-06-13
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

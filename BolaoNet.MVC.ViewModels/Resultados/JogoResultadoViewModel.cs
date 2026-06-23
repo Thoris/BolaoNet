@@ -1,8 +1,5 @@
-﻿using System;
+﻿using BolaoNet.MVC.ViewModels.Bolao;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BolaoNet.MVC.ViewModels.Resultados
 {
@@ -33,6 +30,14 @@ namespace BolaoNet.MVC.ViewModels.Resultados
         }
         public string Mensagem { get; set; }
         public bool ConfigurarJogoCorrente { get; set; }
+
+        public bool EventosAtualizados { get; set; }
+
+        public IList<ApostasJogoConcluidoGolViewModel> Eventos { get; set; }
+
+        public int ? ScoreAway { get; set; }
+        public int ? ScoreHome { get; set; }
+        public string Status { get; set; }
 
         #endregion
     }

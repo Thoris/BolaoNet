@@ -1,0 +1,20 @@
+meta {
+  name: Dados do jogo
+  type: http
+  seq: 7
+}
+
+get {
+  url: http://api.football-data.org/v4/matches/537328/head2head
+  body: none
+  auth: inherit
+}
+
+headers {
+  X-Auth-Token: 35033d5235de4a7f81388298abb2f971
+}
+
+settings {
+  encodeUrl: false
+  timeout: 0
+}

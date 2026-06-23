@@ -1,0 +1,25 @@
+meta {
+  name: Listar todos os jogos
+  type: http
+  seq: 3
+}
+
+get {
+  url: http://api.football-data.org/v4/competitions/2000/matches?matchday=1
+  body: none
+  auth: inherit
+}
+
+params:query {
+  matchday: 1
+}
+
+headers {
+  X-Unfold-Goals: true
+  X-Auth-Token: 35033d5235de4a7f81388298abb2f971
+}
+
+settings {
+  encodeUrl: false
+  timeout: 0
+}

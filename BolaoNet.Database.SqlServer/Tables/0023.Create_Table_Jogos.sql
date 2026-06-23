@@ -31,6 +31,7 @@ CREATE TABLE [dbo].[Jogos](
 	[PendenteTime1MelhorGrupos] [bit] NULL,
 	[PendenteTime2MelhorGrupos] [bit] NULL,
 	[IsDesempate] [bit] NULL,
+	[ExternalId] [int] NULL,
 	[CreatedBy] [varchar](25) NULL,
 	[CreatedDate] [datetime] NULL,
 	[ModifiedBy] [varchar](25) NULL,
