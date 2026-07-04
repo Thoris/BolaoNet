@@ -1,4 +1,5 @@
-﻿using BolaoNet.Domain.Interfaces.Services.Logging;
+﻿//#define EXTRACAO_PONTUAL
+using BolaoNet.Domain.Interfaces.Services.Logging;
 using BolaoNet.Domain.Services.Base;
 using System;
 using System.Collections.Generic;
@@ -70,7 +71,18 @@ namespace BolaoNet.Domain.Services.Reports
             Entities.ValueObjects.Reports.BolaoFinalVO res = new Entities.ValueObjects.Reports.BolaoFinalVO();
 
             IList<Domain.Entities.Boloes.BolaoMembro> membros = _bolaoMembro.GetListUsersInBolao(bolao);
-            Domain.Entities.Campeonatos.Campeonato campeonato = _campeonato.Load(new Entities.Campeonatos.Campeonato(bolao.NomeCampeonato));
+
+#if DEBUG && EXTRACAO_PONTUAL
+            for (int c = membros.Count - 1; c >= 0; c--)
+            {
+                if (membros[c].UserName != "toninha" && membros[c].UserName != "cspivetta" && membros[c].UserName != "helena bueno" && membros[c].UserName != "lmmpivetta")
+                    membros.RemoveAt(c);
+            }
+        
+#endif 
+
+
+        Domain.Entities.Campeonatos.Campeonato campeonato = _campeonato.Load(new Entities.Campeonatos.Campeonato(bolao.NomeCampeonato));
             res.TipoCampeonato = (Entities.Campeonatos.Campeonato.Tipos)(campeonato.TipoCampeonato == null ? 0 : campeonato.TipoCampeonato);
 
 

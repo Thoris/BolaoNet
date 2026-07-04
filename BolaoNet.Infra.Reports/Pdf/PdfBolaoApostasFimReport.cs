@@ -1,4 +1,5 @@
-﻿using BolaoNet.Domain.Entities.Campeonatos;
+﻿//#define REPLACE_ORIGINAL
+using BolaoNet.Domain.Entities.Campeonatos;
 using BolaoNet.Domain.Entities.ValueObjects;
 using ICSharpCode.SharpZipLib.Zip;
 using iTextSharp.text;
@@ -1248,7 +1249,12 @@ namespace BolaoNet.Infra.Reports.Pdf
 
             //Criando a imagem do time 
             PdfPCell cellImageTime = new PdfPCell();
+#if DEBUG && REPLACE_ORIGINAL
+            string timeFileImage = System.IO.Path.Combine(imagePath, (timeCasa ? (jogo.NomeTime1 ?? jogo.NomeTimeResult1) : (jogo.NomeTime2 ?? jogo.NomeTimeResult2)) + "." + imageExtension);
+#else
             string timeFileImage = System.IO.Path.Combine(imagePath, (timeCasa ? jogo.NomeTimeResult1 : jogo.NomeTimeResult2) + "." + imageExtension);
+
+#endif
             if (System.IO.File.Exists(timeFileImage))
             {
                 System.Drawing.Image img = System.Drawing.Bitmap.FromFile(timeFileImage);
@@ -1261,8 +1267,11 @@ namespace BolaoNet.Infra.Reports.Pdf
             cellImageTime.BorderWidth = 0;
 
             //Criando a descrição do time de fora
-
+#if DEBUG && REPLACE_ORIGINAL
+            string strTimeCasa = timeCasa ? (jogo.NomeTime1 ?? jogo.NomeTimeResult1) : (jogo.NomeTime2 ?? jogo.NomeTimeResult2);
+#else
             string strTimeCasa = timeCasa ? jogo.NomeTimeResult1 : jogo.NomeTimeResult2;
+#endif
             if (string.IsNullOrEmpty(strTimeCasa))
                 strTimeCasa = " ? ";
 
@@ -1733,9 +1742,15 @@ namespace BolaoNet.Infra.Reports.Pdf
             // Labels reais dos jogos
             int[][] layerLabels = new int[][]
             {
-                new int[] { 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88 }, // 16 avos
-                new int[] { 89, 90, 91, 92, 93, 94, 95, 96 },                               // oitavas
-                new int[] { 97, 98, 99, 100 },                                             // quartas
+                //new int[] { 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88 }, // 16 avos
+                //new int[] { 89, 90, 91, 92, 93, 94, 95, 96 },                               // oitavas
+                //new int[] { 97, 98, 99, 100 },                                             // quartas
+                //new int[] { 101, 102 },                                                    // semi
+                //new int[] { 104 }                                                          // final
+
+                new int[] { 74, 77, 73, 75, 83, 84, 81, 82,   76, 78, 79, 80, 86, 88, 85, 87 }, // 16 avos
+                new int[] { 89, 90, 93, 94,   91, 92, 95, 96 },                               // oitavas
+                new int[] { 97, 98,    99, 100 },                                             // quartas
                 new int[] { 101, 102 },                                                    // semi
                 new int[] { 104 }                                                          // final
             };
@@ -1868,7 +1883,7 @@ namespace BolaoNet.Infra.Reports.Pdf
         }
          
 
-        #endregion
+#endregion
 
         #region IBolaoApostasFimFormatReportService members
 

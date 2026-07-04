@@ -241,25 +241,49 @@ BEGIN
 			------------------------------------------------------------
 			IF OBJECT_ID('tempdb..#Ranking') IS NOT NULL DROP TABLE #Ranking
 
-			SELECT 
-				NomeTime,
-				NomeGrupo,
-				SUM(TotalPontos) AS Pontos,
-				SUM(TotalGolsPro - TotalGolsContra) AS Saldo,
-				SUM(TotalGolsPro) AS GolsPro,
-				ROW_NUMBER() OVER (
-					ORDER BY 
-						SUM(TotalPontos) DESC,
-						SUM(TotalGolsPro - TotalGolsContra) DESC,
-						SUM(TotalGolsPro) DESC
-				) AS RankTerceiro
-			INTO #Ranking
-			FROM CampeonatosClassificacao
-			WHERE NomeCampeonato = @NomeCampeonato
-			  AND NomeFase = 'Classificatória'
-			  AND Posicao = 3
-			GROUP BY NomeTime, NomeGrupo
+			--SELECT 
+			--	NomeTime,
+			--	NomeGrupo,
+			--	SUM(TotalPontos) AS Pontos,
+			--	SUM(TotalGolsPro - TotalGolsContra) AS Saldo,
+			--	SUM(TotalGolsPro) AS GolsPro,
+			--	ROW_NUMBER() OVER (
+			--		ORDER BY 
+			--			SUM(TotalPontos) DESC,
+			--			SUM(TotalGolsPro - TotalGolsContra) DESC,
+			--			SUM(TotalGolsPro) DESC
+			--	) AS RankTerceiro
+			--INTO #Ranking
+			--FROM CampeonatosClassificacao
+			--WHERE NomeCampeonato = @NomeCampeonato
+			--  AND NomeFase = 'Classificatória'
+			--  AND Posicao = 3
+			--GROUP BY NomeTime, NomeGrupo
 
+			SELECT *
+			INTO #Ranking
+			  FROM (			  
+					SELECT 			    
+						NomeTime,
+						NomeGrupo,
+						SUM(TotalPontos) AS Pontos,
+						SUM(TotalGolsPro - TotalGolsContra) AS Saldo,
+						SUM(TotalGolsPro) AS GolsPro, 
+						ROW_NUMBER() OVER (
+							ORDER BY 
+								SUM(TotalPontos) DESC,
+								SUM(TotalGolsPro - TotalGolsContra) DESC,
+								SUM(TotalGolsPro) DESC
+						) AS RankTerceiro,
+						(select posicao from CampeonatosClassificacao a where a.nometime = x.nometime and rodada = 3) posicao
+					FROM CampeonatosClassificacao x
+					WHERE NomeCampeonato = @NomeCampeonato
+					  AND NomeFase = 'Classificatória' 
+					GROUP BY NomeTime, NomeGrupo 
+								) y						
+			where y.posicao = 3
+
+			 
 			------------------------------------------------------------
 			-- 3. TOP 8 (CLASSIFICADOS)
 			------------------------------------------------------------

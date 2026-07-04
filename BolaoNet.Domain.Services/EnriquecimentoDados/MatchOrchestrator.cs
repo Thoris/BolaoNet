@@ -283,7 +283,17 @@ namespace BolaoNet.Domain.Services.EnriquecimentoDados
                 }
                 return apiMatchesOpenFootball.Count;
             }
-
+            else
+            {
+                foreach (var apiMatch in apiMatchesOpenFootball)
+                {
+                    if (apiMatch.Status != "finished")
+                    {
+                        apiMatch.Season = season.ToString();
+                        _worldCupMatchRepository.Insert(apiMatch);
+                    }
+                }
+            }
             return 0;
         }
 

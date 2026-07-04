@@ -332,6 +332,7 @@
                                     int count = 0;
                                     foreach (var evento in Model.Eventos)
                                     {
+                                        bool found = Model.GolsTime1 == evento.HomeScore && Model.GolsTime2 == evento.AwayScore;
                                         count++;
                                         <tr class="warning">
 
@@ -386,7 +387,7 @@
                                         {
                                             foreach (var aposta in evento.Acertadores.OrderBy(x => x.Posicao))
                                             {
-                                                <tr class="@(count == Model.Eventos.Count ? "success" : "")"
+                                                <tr class="@(found ? "success" : "")"
                                                     @if (string.Compare(userNameLogged, aposta.UserName, true) == 0) { @Html.Raw("style=\"font-weight:bold\"") }>
 
                                                     <td class="text-center">@aposta.Posicao</td>
@@ -532,7 +533,7 @@
                                                 </td>
                                                 <td class="text-center"><strong>@aposta.TotalPontosClassificacao</strong></td>
                                                 <td class="hidden-xs">
-                                                    <img class="img-username" src="/Content/img/database/profiles/@aposta.UserName).gif?time=@(DateTime.Now)" />
+                                                    <img class="img-username" src="/Content/img/database/profiles/@(aposta.UserName).gif?time=@(DateTime.Now)" />
                                                 </td>
                                                 <td class="text-center">@aposta.UserName</td>
 

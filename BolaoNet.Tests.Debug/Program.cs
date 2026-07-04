@@ -44,23 +44,27 @@ namespace BolaoNet.Tests.Debug
                 k.Get<IJogoDao>(),
                 os);
 
-            matchOrchestrator.CreateMatches(2026).Wait();
-            matchOrchestrator.AssociateMatches(2026).Wait();
-            for (int c=0; c<104; c++) {
-                matchOrchestrator.UpdateMatch(c+1).Wait();
+            //matchOrchestrator.CreateMatches(2026).Wait();
+            //matchOrchestrator.AssociateMatches(2026).Wait();
+
+
+            matchOrchestrator.UpdateMatch(222).Wait();
+
+            for (int c = 0; c < 104; c++)
+            {
+                matchOrchestrator.UpdateMatch(137 + 1 + c - 1).Wait();
             }
 
-            //matchOrchestrator.LoadExternalApiMatches("2026").Wait();
-
+            return;
 
 
 
             //matchOrchestrator.SyncMatchDeep("2391730").Wait();
 
-            var mat = k.Get<IWorldCupMatchRepositoryDao>().GetList(where: i => i.Status== "FT");
-            
-            foreach (var ma in mat) { matchOrchestrator.SyncMatchDeep(ma.ExternalId).Wait(); }
- 
+            //var mat = k.Get<IWorldCupMatchRepositoryDao>().GetList(where: i => i.Status== "FT");
+
+            //foreach (var ma in mat) { matchOrchestrator.SyncMatchDeep(ma.ExternalId).Wait(); }
+
             //var matches = theSportsDbService.GetMatchesAsync(TheSportsDbConstants.FifaWorldCupLeagueId, "2026").Result;
 
             //var resMatches = theSportsDbService.GetMatchesByDateAsync(DateTime.Now.AddDays(1)).Result;
@@ -126,48 +130,48 @@ namespace BolaoNet.Tests.Debug
 
 
 
-            var fim = bolaoApostasFimReportApp.Generate("fim.pdf", "fim.zip", "gif",
-            @"\BolaoNet.MVC\Content\img\database\profiles",
-            @"\BolaoNet.MVC\Content\img\database\times",
-            bolaoApostasFimReportApp.GetData(
-                new Domain.Entities.Boloes.Bolao("Copa do Mundo 2026")
-                {
-                    NomeCampeonato = "Copa do Mundo 2026"
-                }));
+            //var fim = bolaoApostasFimReportApp.Generate("fim.pdf", "fim.zip", "gif",
+            //@"C:\Thoris\Pessoal\Projetos\BolaoNet\BolaoNet.MVC\Content\img\database\profiles",
+            //@"C:\Thoris\Pessoal\Projetos\BolaoNet\BolaoNet.MVC\Content\img\database\times",
+            //bolaoApostasFimReportApp.GetData(
+            //    new Domain.Entities.Boloes.Bolao("Copa do Mundo 2026")
+            //    {
+            //        NomeCampeonato = "Copa do Mundo 2026"
+            //    }));
 
-            string pdfInicio = "fim.pdf";
-            if (System.IO.File.Exists(pdfInicio))
-                System.IO.File.Delete(pdfInicio);
-            using (var fileStream = File.Create(pdfInicio))
-            {
-                fim.Seek(0, SeekOrigin.Begin);
-                fim.CopyTo(fileStream);
-            }
-
-
-
-            return;
+            //string pdfInicio = "fim.pdf";
+            //if (System.IO.File.Exists(pdfInicio))
+            //    System.IO.File.Delete(pdfInicio);
+            //using (var fileStream = File.Create(pdfInicio))
+            //{
+            //    fim.Seek(0, SeekOrigin.Begin);
+            //    fim.CopyTo(fileStream);
+            //}
 
 
-            var inicio = bolaoApostasInicioReportApp.Generate("inicio.pdf", "inicio.zip", "gif",
-                @"\BolaoNet.MVC\Content\img\database\profiles",
-                @"\BolaoNet.MVC\Content\img\database\times",
-                bolaoApostasInicioReportApp.GetData(
-                    new Domain.Entities.Boloes.Bolao("Copa do Mundo 2026")
-                    {
-                        NomeCampeonato = "Copa do Mundo 2026"
-                    }));
 
-            pdfInicio = "inicio.pdf";
-            if (System.IO.File.Exists(pdfInicio))
-                System.IO.File.Delete(pdfInicio);
-            using (var fileStream = File.Create(pdfInicio))
-            {
-                inicio.Seek(0, SeekOrigin.Begin);
-                inicio.CopyTo(fileStream);
-            }
+            //return;
 
-            return;
+
+            //var inicio = bolaoApostasInicioReportApp.Generate("inicio.pdf", "inicio.zip", "gif",
+            //    @"\BolaoNet.MVC\Content\img\database\profiles",
+            //    @"\BolaoNet.MVC\Content\img\database\times",
+            //    bolaoApostasInicioReportApp.GetData(
+            //        new Domain.Entities.Boloes.Bolao("Copa do Mundo 2026")
+            //        {
+            //            NomeCampeonato = "Copa do Mundo 2026"
+            //        }));
+
+            //pdfInicio = "inicio.pdf";
+            //if (System.IO.File.Exists(pdfInicio))
+            //    System.IO.File.Delete(pdfInicio);
+            //using (var fileStream = File.Create(pdfInicio))
+            //{
+            //    inicio.Seek(0, SeekOrigin.Begin);
+            //    inicio.CopyTo(fileStream);
+            //}
+
+            //return;
 
             string baseFolder = @"C:\Thoris\Projetos\BolaoNet_git\";
             Stream streamMembro = bolaoMembroApostasReportApp.Generate("gif",

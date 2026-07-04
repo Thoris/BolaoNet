@@ -139,6 +139,8 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
 
             ViewModels.Bolao.ApostasJogoViewModel model =
                 Mapper.Map<Domain.Entities.Campeonatos.Jogo, ViewModels.Bolao.ApostasJogoViewModel>(jogo);
+            model.GolsTime1 = jogo.GolsTime1;
+            model.GolsTime2 = jogo.GolsTime2;
 
             IList<Domain.Entities.Boloes.JogoUsuario> apostas = 
                 _jogoUsuarioApp.GetApostasJogo(base.SelectedBolao, jogo);

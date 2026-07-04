@@ -448,25 +448,51 @@ BEGIN
 
 			IF OBJECT_ID('tempdb..#Ranking') IS NOT NULL DROP TABLE #Ranking
 
-			SELECT 
-				NomeTime,
-				NomeGrupo,
-				TotalPontos,
-				(TotalGolsPro - TotalGolsContra) AS Saldo,
-				TotalGolsPro,
-				ROW_NUMBER() OVER (
-					ORDER BY 
-						TotalPontos DESC,
-						(TotalGolsPro - TotalGolsContra) DESC,
-						TotalGolsPro DESC
-				) AS RankTerceiro
+			--SELECT 
+			--	NomeTime,
+			--	NomeGrupo,
+			--	TotalPontos,
+			--	(TotalGolsPro - TotalGolsContra) AS Saldo,
+			--	TotalGolsPro,
+			--	ROW_NUMBER() OVER (
+			--		ORDER BY 
+			--			TotalPontos DESC,
+			--			(TotalGolsPro - TotalGolsContra) DESC,
+			--			TotalGolsPro DESC
+			--	) AS RankTerceiro
+			--INTO #Ranking
+			--FROM BoloesCampeonatosClassificacaoUsuarios
+			--WHERE NomeCampeonato = @NomeCampeonato
+			--  AND NomeFase = 'Classificatória'
+			--  AND UserName = @UserName
+			--  AND NomeBolao = @NomeBolao
+			--  AND Posicao = 3
+
+
+			SELECT *
 			INTO #Ranking
-			FROM BoloesCampeonatosClassificacaoUsuarios
-			WHERE NomeCampeonato = @NomeCampeonato
-			  AND NomeFase = 'Classificatória'
-			  AND UserName = @UserName
-			  AND NomeBolao = @NomeBolao
-			  AND Posicao = 3
+			  FROM (			  
+					SELECT 			    
+						NomeTime,
+						NomeGrupo,
+						SUM(TotalPontos) AS Pontos,
+						SUM(TotalGolsPro - TotalGolsContra) AS Saldo,
+						SUM(TotalGolsPro) AS GolsPro, 
+						ROW_NUMBER() OVER (
+							ORDER BY 
+								SUM(TotalPontos) DESC,
+								SUM(TotalGolsPro - TotalGolsContra) DESC,
+								SUM(TotalGolsPro) DESC
+						) AS RankTerceiro,
+						(select posicao from BoloesCampeonatosClassificacaoUsuarios a where a.nometime = x.nometime and rodada = 3 and username = @UserName) posicao
+					FROM BoloesCampeonatosClassificacaoUsuarios x
+					WHERE NomeCampeonato = @NomeCampeonato
+					  AND NomeFase = 'Classificatória' 			
+					  AND UserName = @UserName
+			          AND NomeBolao = @NomeBolao
+					GROUP BY NomeTime, NomeGrupo 
+								) y						
+			where y.posicao = 3
 
 			IF OBJECT_ID('tempdb..#Top8') IS NOT NULL DROP TABLE #Top8
 
