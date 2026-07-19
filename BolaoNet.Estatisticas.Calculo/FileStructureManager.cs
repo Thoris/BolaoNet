@@ -22,12 +22,12 @@ namespace BolaoNet.Estatisticas.Calculo
         private const string Folder = ".\\Structure";
 
 
-        public const int JogoIdFinal = 64;
-        public const int JogoIdTerceiro = 63;
-        public const int JogoIdSemiFinal1 = 62;
-        public const int JogoIdSemiFinal2 = 61;
+        public const int JogoIdFinal = 104;
+        public const int JogoIdTerceiro = 103;
+        public const int JogoIdSemiFinal1 = 102;
+        public const int JogoIdSemiFinal2 = 101;
 
-        public const int JogoIdJogoPendente = 64;
+        public const int JogoIdJogoPendente = 104;
 
         #endregion
 

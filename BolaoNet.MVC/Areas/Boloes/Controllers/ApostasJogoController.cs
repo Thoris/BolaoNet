@@ -169,8 +169,13 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
                 }
                 for (int l = 0; l < res1.Count; l++)
                 {
-                    if (string.Compare(model.Apostas[c].UserName, res1[l].UserName, true) == 0)
+                    //if (string.Compare(model.Apostas[c].UserName, res1[l].UserName, true) == 0)
+                    if (string.Equals(
+                            model.Apostas[c].UserName?.Trim(),
+                            res1[l].UserName?.Trim(),
+                            StringComparison.OrdinalIgnoreCase))
                     {
+                        model.Apostas[c].PontosAcertoTime = model.Apostas[c].PontosAcertoTime ?? 0;
                         model.Apostas[c].PontosAcertoTime += pontos1;
                         res1.RemoveAt(l);
                         break;
@@ -178,8 +183,13 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
                 }
                 for (int l = 0; l < res2.Count; l++)
                 {
-                    if (string.Compare(model.Apostas[c].UserName, res2[l].UserName, true) == 0)
+                    //if (string.Compare(model.Apostas[c].UserName, res2[l].UserName, true) == 0)
+                    if (string.Equals(
+                        model.Apostas[c].UserName?.Trim(),
+                        res2[l].UserName?.Trim(),
+                        StringComparison.OrdinalIgnoreCase))
                     {
+                        model.Apostas[c].PontosAcertoTime = model.Apostas[c].PontosAcertoTime ?? 0;
                         model.Apostas[c].PontosAcertoTime += pontos2;
                         res2.RemoveAt(l);
                         break;
@@ -265,24 +275,26 @@ namespace BolaoNet.MVC.Areas.Boloes.Controllers
         }
         private void MergeClassificacao(ViewModels.Bolao.ApostasJogoViewModel model, IList<Domain.Entities.ValueObjects.BolaoClassificacaoVO> membros) //, bool somaPontosJogo)
         {
-            for (int c=membros.Count - 1; c >= 0; c--)
+            for (int c=membros.Count-1; c >= 0; c--)
             {
                 for (int i=0; i < model.Apostas.Count; i++)
                 {
-                    if (string.Compare (model.Apostas[i].UserName, membros[c].UserName, true) == 0)
+                    //if (string.Compare (model.Apostas[i].UserName, membros[c].UserName, true) == 0)
+                    if (string.Equals(
+                            model.Apostas[i].UserName?.Trim(),
+                            membros[c].UserName?.Trim(),
+                            StringComparison.OrdinalIgnoreCase))
                     {
                         model.Apostas[i].Posicao = (int)membros[c].Posicao;
                         model.Apostas[i].Nome = membros[c].FullName;
                         model.Apostas[i].TotalPontosClassificacao = (int)membros[c].TotalPontos;
-
-                        //if (somaPontosJogo)
-                        //    model.Apostas[i].TotalPontosClassificacao += model.Apostas[i].TotalApostasResultado;
-
+                         
                         membros.RemoveAt(c);
                         break;
                     }
                 }
             }
+
         }
         private IList<Domain.Entities.Boloes.JogoUsuario> Simulate(IList<Domain.Entities.Boloes.JogoUsuario> apostas, string nomeTime1, string nomeTime2, int pontosAcertoTime, IList<Domain.Entities.Boloes.BolaoCriterioPontosTimes> bolaoCriterioPontos, IList<Domain.Entities.Boloes.BolaoCriterioPontos> pontos, int gols1, int gols2)
         {

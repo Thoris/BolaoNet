@@ -461,7 +461,23 @@
                                         </td>
                                         @if (Model.NomeFase == "Final")
                                         {
-                                            <td class="text-center hidden-xs">@Model.Apostas[c].PontosAcertoTime</td>
+                                            if (@Model.Apostas[c].PontosAcertoTime > 0)
+                                            {
+                                                <td class="text-center hidden-xs">
+                                                    <i class="fa fa-plus-circle"
+                                                       style="color:@BolaoNet.MVC.Helpers.ColorPontosHelper.GetColorPontos(Model.Apostas[c].PontosAcertoTime)"
+                                                       aria-hidden="true"></i>
+
+                                                    <strong style="color:@BolaoNet.MVC.Helpers.ColorPontosHelper.GetColorPontos(Model.Apostas[c].PontosAcertoTime)">
+                                                        @Model.Apostas[c].PontosAcertoTime
+                                                    </strong>
+                                                    
+                                                </td>
+                                            }
+                                            else
+                                            {
+                                                <td></td>
+                                            }
                                         }
                                         <td class="text-center hidden-xs">
                                             @if (Model.Apostas[c].Automatico == 1)

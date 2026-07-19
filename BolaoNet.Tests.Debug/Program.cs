@@ -48,11 +48,15 @@ namespace BolaoNet.Tests.Debug
             //matchOrchestrator.AssociateMatches(2026).Wait();
 
 
-            matchOrchestrator.UpdateMatch(222).Wait();
+            //matchOrchestrator.UpdateMatch(225).Wait();
 
-            for (int c = 0; c < 104; c++)
+            var jogoInfo = k.Get<IWorldCupMatchRepositoryDao>();
+
+            var listJogo = jogoInfo.GetAll();
+
+            foreach(var jogo in listJogo)
             {
-                matchOrchestrator.UpdateMatch(137 + 1 + c - 1).Wait();
+               matchOrchestrator.UpdateMatch(jogo.Id).Wait();
             }
 
             return;

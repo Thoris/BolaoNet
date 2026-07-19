@@ -163,6 +163,16 @@ namespace BolaoNet.Estatisticas.Calculo
 
             #region Calcular possibilidades com base nas apostas
 
+            ////Remover os jogos que já ocorreram 
+            //for (int c=list.Count - 1; c>= 0; c--)
+            //{
+            //    if (list[c].IsValid)
+            //    {
+            //        list.RemoveAt(c);
+            //    }
+            //}
+
+
             DefinirPossibilidades(list);
             DefinirPossibilidades(extras);
 
@@ -648,7 +658,7 @@ namespace BolaoNet.Estatisticas.Calculo
         private void DefinirPossibilidades(IList<JogoInfo> jogos)
         {
             for (int c=0; c < jogos.Count; c++)
-            {
+            {  
                 IdentificarPossibilidades(jogos[c]);
             }
         }
