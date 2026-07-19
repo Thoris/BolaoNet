@@ -44,8 +44,8 @@ namespace BolaoNet.Tests.Debug
                 k.Get<IJogoDao>(),
                 os);
 
-            //matchOrchestrator.CreateMatches(2026).Wait();
-            //matchOrchestrator.AssociateMatches(2026).Wait();
+            matchOrchestrator.CreateMatches(2026).Wait();
+            matchOrchestrator.AssociateMatches(2026).Wait();
 
 
             //matchOrchestrator.UpdateMatch(225).Wait();

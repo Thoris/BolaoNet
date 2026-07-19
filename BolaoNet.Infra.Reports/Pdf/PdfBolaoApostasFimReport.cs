@@ -218,7 +218,7 @@ namespace BolaoNet.Infra.Reports.Pdf
 
             tableTitle.AddCell(cellTitleBolao);
             tableTitle.TotalWidth = 300;
-            tableTitle.WriteSelectedRows(0, -1, 30, 800, writer.DirectContent);
+            tableTitle.WriteSelectedRows(0, -1, 30, 830, writer.DirectContent);
 
 
 
@@ -226,13 +226,13 @@ namespace BolaoNet.Infra.Reports.Pdf
 
 
 
-            int spaceLeft = 40;
+            int spaceLeft = 38;
             int width = 520;
 
             for (int c = 0; c < regras.Count; c++)
             {
                 PdfPCell cellTitle = new PdfPCell(new Phrase(regras[c].Descricao,
-                    new Font(Font.HELVETICA, 9f, Font.BOLD, Color.BLACK)));
+                    new Font(Font.HELVETICA, 8.5f, Font.BOLD, Color.BLACK)));
                 cellTitle.HorizontalAlignment = Element.ALIGN_LEFT;
                 cellTitle.VerticalAlignment = Element.ALIGN_MIDDLE;
                 cellTitle.BorderWidth = 0;
@@ -240,7 +240,7 @@ namespace BolaoNet.Infra.Reports.Pdf
             }
 
             table.TotalWidth = width;
-            table.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 0), 700, writer.DirectContent);
+            table.WriteSelectedRows(0, -1, spaceLeft + ((width + spaceLeft) * 0), 780, writer.DirectContent);
 
 
         }

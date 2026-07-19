@@ -362,9 +362,9 @@ namespace BolaoNet.Estatisticas.Calculo
             #endregion
 
             #region Classificacao
-
-            //TODO: Retirar o comentário para efetuar o cálculo correto dos pontos
+             
             SavePontuacaoClassificacao(System.IO.Path.Combine(outputPath, "Classificacao_Pontos"), list);
+            SavePontuacaoAcumulada(System.IO.Path.Combine(outputPath, "Classificacao_Pontos"), System.IO.Path.Combine(outputPath, "Classificacao_Pontos_Acumulado"));
 
             string fileClassificacaoValidacao = System.IO.Path.Combine(outputPath, "ClassValidacao.txt");
             SaveClassificacao(fileClassificacaoValidacao, list);
@@ -1261,7 +1261,59 @@ namespace BolaoNet.Estatisticas.Calculo
             }
         }
 
+        private void SavePontuacaoAcumulada(string folderOrigem, string folderDestino)
+        {
+            if (!Directory.Exists(folderOrigem))
+                return;
 
-#endregion
+            if (!Directory.Exists(folderDestino))
+                Directory.CreateDirectory(folderDestino);
+
+            foreach (string arquivo in Directory.GetFiles(folderDestino))
+                File.Delete(arquivo);
+
+            foreach (string arquivoOrigem in Directory.GetFiles(folderOrigem, "*.txt"))
+            {
+                string arquivoDestino = Path.Combine(folderDestino, Path.GetFileName(arquivoOrigem));
+
+                int total = 0;
+
+                using (var reader = new StreamReader(arquivoOrigem))
+                using (var writer = new StreamWriter(arquivoDestino, false))
+                {
+                    string linha;
+
+                    while ((linha = reader.ReadLine()) != null)
+                    {
+                        // Procura pelo "=>"
+                        int pos = linha.IndexOf("=>");
+
+                        if (pos >= 0)
+                        {
+                            string valor = linha.Substring(pos + 2).Trim();
+
+                            if (int.TryParse(valor, out int pontos))
+                            {
+                                total += pontos;
+
+                                writer.WriteLine($"{linha}   {{{total}}}");
+                            }
+                            else
+                            {
+                                // Linha inválida
+                                writer.WriteLine(linha);
+                            }
+                        }
+                        else
+                        {
+                            // Jogos ainda não realizados
+                            writer.WriteLine(linha);
+                        }
+                    }
+                }
+            }
+        }
+
+        #endregion
     }
 }
